@@ -75,6 +75,42 @@ def handle_message(event):
                 models.TextSendMessage(text='PUSH!'),
             ]
         )
+    elif text == 'multicast':
+        line_bot_api.multicast(
+            [event.source.user_id], [
+                models.TextSendMessage(text='THIS IS A MULTICAST MESSAGE'),
+            ]
+        )
+    elif text == 'broadcast':
+        line_bot_api.broadcast(
+            [
+                models.TextSendMessage(text='THIS IS A BROADCAST MESSAGE'),
+            ]
+        )
+    elif text.startswith('broadcast '):  # broadcast 20190505
+        date = text.split(' ')[1]
+        print('Getting broadcast result: ' + date)
+        result = line_bot_api.get_message_delivery_broadcast(date)
+        line_bot_api.reply_message(
+            event.reply_token, [
+                models.TextSendMessage(text='Number of sent broadcast messages: ' + date),
+                models.TextSendMessage(text='status: ' + str(result.status)),
+                models.TextSendMessage(text='success: ' + str(result.success)),
+            ]
+        )
+    elif text == 'bye':
+        if isinstance(event.source, models.SourceGroup):
+            line_bot_api.reply_message(
+                event.reply_token, models.TextSendMessage(text='Leaving group'))
+            line_bot_api.leave_group(event.source.group_id)
+        elif isinstance(event.source, models.SourceRoom):
+            line_bot_api.reply_message(
+                event.reply_token, models.TextSendMessage(text='Leaving group'))
+            line_bot_api.leave_room(event.source.room_id)
+        else:
+            line_bot_api.reply_message(
+                event.reply_token,
+                models.TextSendMessage(text="Bot can't leave from 1:1 chat"))
     else:
         line_bot_api.reply_message(
             event.reply_token,
