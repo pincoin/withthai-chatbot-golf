@@ -204,3 +204,4 @@ fabric.properties
 
 # Project
 db.sqlite
+secret.json
