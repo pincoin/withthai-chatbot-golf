@@ -3,3 +3,5 @@ line-bot-sdk==1.16.0
 django-allauth==0.42.0
 django-model-utils==4.0.0
 djangorestframework==3.11.1
+# gunicorn
+# mysqlclient
