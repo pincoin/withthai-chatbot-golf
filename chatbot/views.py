@@ -39,4 +39,44 @@ class CallbackView(generic.View):
 
 @handler.add(models.MessageEvent, message=models.TextMessage)
 def handle_message(event):
-    line_bot_api.reply_message(event.reply_token, models.TextSendMessage(text=event.message.text))
+    text = event.message.text
+
+    if text == 'profile':
+        if isinstance(event.source, models.SourceUser):
+            profile = line_bot_api.get_profile(event.source.user_id)
+            line_bot_api.reply_message(
+                event.reply_token, [
+                    models.TextSendMessage(text='Display name: ' + profile.display_name),
+                    models.TextSendMessage(text='Status message: ' + str(profile.status_message))
+                ]
+            )
+        else:
+            line_bot_api.reply_message(
+                event.reply_token,
+                models.TextSendMessage(text="Bot can't use profile API without user ID"))
+    elif text == 'quota':
+        quota = line_bot_api.get_message_quota()
+        line_bot_api.reply_message(
+            event.reply_token, [
+                models.TextSendMessage(text='type: ' + quota.type),
+                models.TextSendMessage(text='value: ' + str(quota.value))
+            ]
+        )
+    elif text == 'quota_consumption':
+        quota_consumption = line_bot_api.get_message_quota_consumption()
+        line_bot_api.reply_message(
+            event.reply_token, [
+                models.TextSendMessage(text='total usage: ' + str(quota_consumption.total_usage)),
+            ]
+        )
+    elif text == 'push':
+        line_bot_api.push_message(
+            event.source.user_id, [
+                models.TextSendMessage(text='PUSH!'),
+            ]
+        )
+    else:
+        line_bot_api.reply_message(
+            event.reply_token,
+            models.TextSendMessage(text=text)
+        )
