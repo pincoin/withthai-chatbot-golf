@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-08-05 23:54+0700\n"
+"POT-Creation-Date: 2020-08-06 01:45+0700\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -21,6 +21,30 @@ msgstr ""
 #: chatbot/apps.py:7
 msgid "chatbot"
 msgstr "챗봇"
+
+#: chatbot/models.py:8
+msgid "Request header"
+msgstr "요청 헤더"
+
+#: chatbot/models.py:13
+msgid "Request body"
+msgstr "요청 바디"
+
+#: chatbot/models.py:18
+msgid "Response header"
+msgstr "응답 헤더"
+
+#: chatbot/models.py:23
+msgid "Response body"
+msgstr "응답 바디"
+
+#: chatbot/models.py:28
+msgid "Webhook log"
+msgstr "웹훅 로그"
+
+#: chatbot/models.py:29
+msgid "Webhook logs"
+msgstr "웹훅 로그"
 
 #: conf/settings/local.py:8
 msgid "Korean"
