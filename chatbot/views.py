@@ -13,7 +13,6 @@ from .models import WebhookRequestLog
 
 line_bot_api = linebot.LineBotApi(settings.LINE_CHANNEL_ACCESS_TOKEN)
 handler = linebot.WebhookHandler(settings.LINE_CHANNEL_SECRET)
-log = WebhookRequestLog()
 
 
 @method_decorator(csrf_exempt, name='dispatch')
@@ -23,6 +22,7 @@ class CallbackView(generic.View):
             signature = request.headers['X-Line-Signature']
             body = request.body.decode('utf-8')
 
+            log = WebhookRequestLog()
             log.request_header = request.headers
             log.request_body = body
             log.save()
@@ -114,6 +114,39 @@ def handle_message(event):
                 event.reply_token,
                 models.TextSendMessage(text="Bot can't leave from 1:1 chat")
             )
+    elif text == 'confirm':
+        confirm_template = models.ConfirmTemplate(text='Do it?', actions=[
+            models.MessageAction(label='Yes', text='Yes!'),
+            models.MessageAction(label='No', text='No!'),
+        ])
+        template_message = models.TemplateSendMessage(
+            alt_text='Confirm alt text', template=confirm_template)
+        line_bot_api.reply_message(event.reply_token, template_message)
+    elif text == 'buttons':
+        buttons_template = models.ButtonsTemplate(
+            title='My buttons sample', text='Hello, my buttons', actions=[
+                models.URIAction(label='Go to line.me', uri='https://line.me'),
+                models.PostbackAction(label='ping', data='ping'),
+                models.PostbackAction(label='ping with text', data='ping', text='ping'),
+                models.MessageAction(label='Translate Rice', text='米')
+            ])
+        template_message = models.TemplateSendMessage(
+            alt_text='Buttons alt text', template=buttons_template)
+        line_bot_api.reply_message(event.reply_token, template_message)
+    elif text == 'carousel':
+        carousel_template = models.CarouselTemplate(columns=[
+            models.CarouselColumn(text='hoge1', title='fuga1', actions=[
+                models.URIAction(label='Go to line.me', uri='https://line.me'),
+                models.PostbackAction(label='ping', data='ping')
+            ]),
+            models.CarouselColumn(text='hoge2', title='fuga2', actions=[
+                models.PostbackAction(label='ping with text', data='ping', text='ping'),
+                models.MessageAction(label='Translate Rice', text='米')
+            ]),
+        ])
+        template_message = models.TemplateSendMessage(
+            alt_text='Carousel alt text', template=carousel_template)
+        line_bot_api.reply_message(event.reply_token, template_message)
     else:
         try:
             line_bot_api.reply_message(
