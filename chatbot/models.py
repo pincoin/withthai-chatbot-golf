@@ -4,12 +4,12 @@ from model_utils import models as model_utils_models
 
 
 class WebhookRequestLog(model_utils_models.TimeStampedModel):
-    request_header = models.JSONField(
+    request_header = models.TextField(
         verbose_name=_('Request header'),
         blank=True,
     )
 
-    request_body = models.JSONField(
+    request_body = models.TextField(
         verbose_name=_('Request body'),
         blank=True,
     )

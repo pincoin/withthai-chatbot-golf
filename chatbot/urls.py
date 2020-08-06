@@ -7,4 +7,6 @@ app_name = 'chatbot'
 urlpatterns = [
     path('callback/',
          views.CallbackView.as_view(), name='callback'),
+
+    # callback/CLUB
 ]

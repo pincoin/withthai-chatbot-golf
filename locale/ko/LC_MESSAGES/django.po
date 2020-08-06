@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-08-06 01:45+0700\n"
+"POT-Creation-Date: 2020-08-06 19:25+0700\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -31,20 +31,20 @@ msgid "Request body"
 msgstr "요청 바디"
 
 #: chatbot/models.py:18
-msgid "Response header"
-msgstr "응답 헤더"
+msgid "Webhook request log"
+msgstr "웹훅 요청 로그"
 
-#: chatbot/models.py:23
-msgid "Response body"
-msgstr "응답 바디"
+#: chatbot/models.py:19
+msgid "Webhook request logs"
+msgstr "웹훅 요청 로그"
 
-#: chatbot/models.py:28
-msgid "Webhook log"
-msgstr "웹훅 로그"
+#: chatbot/models.py:24
+msgid "Message log"
+msgstr "메시지 로그"
 
-#: chatbot/models.py:29
-msgid "Webhook logs"
-msgstr "웹훅 로그"
+#: chatbot/models.py:25
+msgid "Message logs"
+msgstr "메시지 로그"
 
 #: conf/settings/local.py:8
 msgid "Korean"
@@ -57,14 +57,6 @@ msgstr "태국어"
 #: conf/settings/local.py:10
 msgid "English"
 msgstr "영어"
-
-#: conf/settings/local.py:11
-msgid "Japanese"
-msgstr "일본어"
-
-#: conf/settings/local.py:12
-msgid "Chinese"
-msgstr "중국어"
 
 #: golf/apps.py:7
 msgid "golf"

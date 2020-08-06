@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-08-05 23:54+0700\n"
+"POT-Creation-Date: 2020-08-06 19:25+0700\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -22,6 +22,30 @@ msgstr ""
 msgid "chatbot"
 msgstr ""
 
+#: chatbot/models.py:8
+msgid "Request header"
+msgstr ""
+
+#: chatbot/models.py:13
+msgid "Request body"
+msgstr ""
+
+#: chatbot/models.py:18
+msgid "Webhook request log"
+msgstr ""
+
+#: chatbot/models.py:19
+msgid "Webhook request logs"
+msgstr ""
+
+#: chatbot/models.py:24
+msgid "Message log"
+msgstr ""
+
+#: chatbot/models.py:25
+msgid "Message logs"
+msgstr ""
+
 #: conf/settings/local.py:8
 msgid "Korean"
 msgstr ""
@@ -32,14 +56,6 @@ msgstr ""
 
 #: conf/settings/local.py:10
 msgid "English"
-msgstr ""
-
-#: conf/settings/local.py:11
-msgid "Japanese"
-msgstr ""
-
-#: conf/settings/local.py:12
-msgid "Chinese"
 msgstr ""
 
 #: golf/apps.py:7
