@@ -9,7 +9,7 @@ from django.views.decorators.csrf import csrf_exempt
 from linebot import models
 from linebot.exceptions import InvalidSignatureError
 
-from .models import WebhookLog
+from .models import WebhookRequestLog
 
 line_bot_api = linebot.LineBotApi(settings.LINE_CHANNEL_ACCESS_TOKEN)
 handler = linebot.WebhookHandler(settings.LINE_CHANNEL_SECRET)
@@ -22,7 +22,7 @@ class CallbackView(generic.View):
             signature = request.headers['X-Line-Signature']
             body = request.body.decode('utf-8')
 
-            log = WebhookLog()
+            log = WebhookRequestLog()
             log.request_header = request.headers
             log.request_body = body
             log.save()

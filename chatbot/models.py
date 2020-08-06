@@ -3,27 +3,23 @@ from django.utils.translation import gettext_lazy as _
 from model_utils import models as model_utils_models
 
 
-class WebhookLog(model_utils_models.TimeStampedModel):
-    request_header = models.TextField(
+class WebhookRequestLog(model_utils_models.TimeStampedModel):
+    request_header = models.JSONField(
         verbose_name=_('Request header'),
         blank=True,
     )
 
-    request_body = models.TextField(
+    request_body = models.JSONField(
         verbose_name=_('Request body'),
         blank=True,
     )
 
-    response_header = models.TextField(
-        verbose_name=_('Response header'),
-        blank=True,
-    )
-
-    response_body = models.TextField(
-        verbose_name=_('Response body'),
-        blank=True,
-    )
-
     class Meta:
-        verbose_name = _('Webhook log')
-        verbose_name_plural = _('Webhook logs')
+        verbose_name = _('Webhook request log')
+        verbose_name_plural = _('Webhook request logs')
+
+
+class MessageLog(model_utils_models.TimeStampedModel):
+    class Meta:
+        verbose_name = _('Message log')
+        verbose_name_plural = _('Message logs')

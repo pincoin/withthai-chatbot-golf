@@ -8,8 +8,6 @@ LANGUAGES = [
     ('ko', _('Korean')),
     ('th', _('Thai')),
     ('en', _('English')),
-    ('ja', _('Japanese')),
-    ('zh-cn', _('Chinese')),
 ]
 LOCALE_PATHS = (
     os.path.join(BASE_DIR, 'locale'),
