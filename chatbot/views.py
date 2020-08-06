@@ -39,7 +39,7 @@ class CallbackView(generic.View):
 
 @handler.add(models.MessageEvent, message=models.TextMessage)
 def handle_message(event):
-    text = event.message.text
+    text = event.message.text.strip()
 
     if text == 'profile':
         if isinstance(event.source, models.SourceUser):
@@ -101,18 +101,70 @@ def handle_message(event):
     elif text == 'bye':
         if isinstance(event.source, models.SourceGroup):
             line_bot_api.reply_message(
-                event.reply_token, models.TextSendMessage(text='Leaving group'))
+                event.reply_token, models.TextSendMessage(text='Leaving group')
+            )
             line_bot_api.leave_group(event.source.group_id)
         elif isinstance(event.source, models.SourceRoom):
             line_bot_api.reply_message(
-                event.reply_token, models.TextSendMessage(text='Leaving group'))
+                event.reply_token, models.TextSendMessage(text='Leaving group')
+            )
             line_bot_api.leave_room(event.source.room_id)
         else:
             line_bot_api.reply_message(
                 event.reply_token,
-                models.TextSendMessage(text="Bot can't leave from 1:1 chat"))
+                models.TextSendMessage(text="Bot can't leave from 1:1 chat")
+            )
     else:
-        line_bot_api.reply_message(
-            event.reply_token,
-            models.TextSendMessage(text=text)
-        )
+        try:
+            line_bot_api.reply_message(
+                event.reply_token,
+                models.TextSendMessage(text=text)
+            )
+        except linebot.exceptions.LineBotApiError as e:
+            print(e.status_code)
+            print(e.request_id)
+            print(e.error.message)
+            print(e.error.details)
+
+
+@handler.add(models.FollowEvent)
+def handle_follow(event):
+    # event.source.user_id as followed
+    line_bot_api.reply_message(
+        event.reply_token, models.TextSendMessage(text='Got follow event')
+    )
+
+
+@handler.add(models.UnfollowEvent)
+def handle_unfollow(event):
+    # event.source.user_id mark as unfollowed
+    pass
+
+
+@handler.add(models.JoinEvent)
+def handle_join(event):
+    # event.source.user_id mark as joined
+    line_bot_api.reply_message(
+        event.reply_token,
+        models.TextSendMessage(text='Joined this ' + event.source.type)
+    )
+
+
+@handler.add(models.LeaveEvent)
+def handle_leave():
+    # event.source.user_id mark as left
+    pass
+
+
+@handler.add(models.MemberJoinedEvent)
+def handle_member_joined(event):
+    line_bot_api.reply_message(
+        event.reply_token,
+        models.TextSendMessage(text='Got memberJoined event. event={}'.format(event))
+    )
+
+
+@handler.add(models.MemberLeftEvent)
+def handle_member_left(event):
+    # event.source.user_id mark as left
+    pass
