@@ -21,7 +21,7 @@ TIME_ZONE = 'Asia/Bangkok'
 STATIC_URL = '/assets/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'assets/')
 STATICFILES_DIRS = [
-    '/home/ubuntu/.pyenv/versions/withthai-chatbot/lib/python3.8/site-packages/django/contrib/admin/static',
+    '/home/ubuntu/.pyenv/versions/withthai/lib/python3.8/site-packages/django/contrib/admin/static',
 ]
 STATICFILES_FINDERS = (
     'django.contrib.staticfiles.finders.FileSystemFinder',
