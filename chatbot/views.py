@@ -147,6 +147,55 @@ def handle_message(event):
         template_message = models.TemplateSendMessage(
             alt_text='Carousel alt text', template=carousel_template)
         line_bot_api.reply_message(event.reply_token, template_message)
+    elif text == 'image_carousel':
+        image_carousel_template = models.ImageCarouselTemplate(columns=[
+            models.ImageCarouselColumn(image_url='https://via.placeholder.com/1024x1024',
+                                       action=models.DatetimePickerAction(label='datetime',
+                                                                          data='datetime_postback',
+                                                                          mode='datetime')),
+            models.ImageCarouselColumn(image_url='https://via.placeholder.com/1024x1024',
+                                       action=models.DatetimePickerAction(label='date',
+                                                                          data='date_postback',
+                                                                          mode='date'))
+        ])
+        template_message = models.TemplateSendMessage(
+            alt_text='ImageCarousel alt text', template=image_carousel_template)
+        line_bot_api.reply_message(event.reply_token, template_message)
+    elif text == 'quick_reply':
+        line_bot_api.reply_message(
+            event.reply_token,
+            models.TextSendMessage(
+                text='Quick reply',
+                quick_reply=models.QuickReply(
+                    items=[
+                        models.QuickReplyButton(
+                            action=models.PostbackAction(label="label1", data="data1")
+                        ),
+                        models.QuickReplyButton(
+                            action=models.MessageAction(label="label2", text="text2")
+                        ),
+                        models.QuickReplyButton(
+                            action=models.DatetimePickerAction(label="label3",
+                                                               data="data3",
+                                                               mode="date")
+                        ),
+                        models.QuickReplyButton(
+                            action=models.CameraAction(label="label4")
+                        ),
+                        models.QuickReplyButton(
+                            action=models.CameraRollAction(label="label5")
+                        ),
+                        models.QuickReplyButton(
+                            action=models.LocationAction(label="label6")
+                        ),
+                    ])))
+    elif text == 'link_token' and isinstance(event.source, models.SourceUser):
+        link_token_response = line_bot_api.issue_link_token(event.source.user_id)
+        line_bot_api.reply_message(
+            event.reply_token, [
+                models.TextSendMessage(text='link_token: ' + link_token_response.link_token)
+            ]
+        )
     else:
         try:
             line_bot_api.reply_message(
