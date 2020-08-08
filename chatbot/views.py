@@ -72,8 +72,8 @@ class CallbackView(generic.View):
                     event.reply_token, [
                         models.LocationSendMessage(title=club.title_english,
                                                    address=club.address,
-                                                   latitude=club.latitude,
-                                                   longitude=club.longitude)
+                                                   latitude=float(club.latitude),
+                                                   longitude=float(club.longitude))
                     ]
                 )
             elif text == 'multicast':
