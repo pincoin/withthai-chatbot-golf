@@ -34,3 +34,33 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
 
 # Email reports
 ADMINS = [('devops', 'dev@withthai.com'), ]
+
+# Logging
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'handlers': {
+        'console': {
+            'level': 'DEBUG',
+            'class': 'logging.StreamHandler',
+        }
+    },
+    'loggers': {
+        'django.db.backends': {
+            'handlers': ['console'],
+            'level': 'DEBUG',
+        },
+        'golf': {
+            'handlers': ['console'],
+            'level': 'DEBUG',
+        },
+        'hotel': {
+            'handlers': ['console'],
+            'level': 'DEBUG',
+        },
+        'chatbot': {
+            'handlers': ['console'],
+            'level': 'DEBUG',
+        },
+    }
+}

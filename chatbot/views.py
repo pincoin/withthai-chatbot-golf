@@ -1,3 +1,5 @@
+import logging
+
 import linebot
 from django.conf import settings
 from django.http import (
@@ -19,9 +21,11 @@ class CallbackView(generic.View):
         super(CallbackView, self).__init__()
         self.line_bot_api = None
         self.handler = None
+        self.logger = logging.getLogger(__name__)
 
     def post(self, request, *args, **kwargs):
-        # club = golf_models.GolfClub.objects.get(slug=self.kwargs['slug'])
+        club = golf_models.GolfClub.objects.get(slug=self.kwargs['slug'])
+        self.logger.info(club.title_english)
 
         self.line_bot_api = linebot.LineBotApi(settings.LINE_CHANNEL_ACCESS_TOKEN)
         self.handler = linebot.WebhookHandler(settings.LINE_CHANNEL_SECRET)
