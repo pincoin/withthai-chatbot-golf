@@ -18,14 +18,23 @@ class WebhookRequestLog(model_utils_models.TimeStampedModel):
         verbose_name = _('Webhook request log')
         verbose_name_plural = _('Webhook request logs')
 
+    def __str__(self):
+        return '{}'.format(self.created)
+
 
 class EventLog(model_utils_models.TimeStampedModel):
     class Meta:
         verbose_name = _('Event log')
         verbose_name_plural = _('Event logs')
 
+    def __str__(self):
+        return '{}'.format(self.created)
+
 
 class MessageLog(model_utils_models.TimeStampedModel):
     class Meta:
         verbose_name = _('Message log')
         verbose_name_plural = _('Message logs')
+
+    def __str__(self):
+        return '{}'.format(self.created)

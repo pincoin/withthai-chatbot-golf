@@ -77,3 +77,6 @@ class GolfClub(model_utils_models.TimeStampedModel):
     class Meta:
         verbose_name = _('Golf club')
         verbose_name_plural = _('Golf clubs')
+
+    def __str__(self):
+        return '{}'.format(self.title_english)
