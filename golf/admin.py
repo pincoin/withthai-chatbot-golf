@@ -1,3 +1,10 @@
 from django.contrib import admin
 
-# Register your models here.
+from . import models
+
+
+class GolfClubAdmin(admin.ModelAdmin):
+    pass
+
+
+admin.site.register(models.GolfClub, GolfClubAdmin)
