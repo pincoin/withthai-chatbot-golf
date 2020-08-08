@@ -170,7 +170,7 @@ class CallbackView(generic.View):
                         quick_reply=models.QuickReply(
                             items=[
                                 models.QuickReplyButton(
-                                    action=models.PostbackAction(label="label1", data="data1")
+                                    action=models.PostbackAction(label="label1", data="action=buy&item=111")
                                 ),
                                 models.QuickReplyButton(
                                     action=models.MessageAction(label="label2", text="text2")
