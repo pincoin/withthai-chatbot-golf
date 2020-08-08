@@ -3,12 +3,11 @@
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
-#, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-08-06 19:25+0700\n"
+"POT-Creation-Date: 2020-08-08 20:37+0700\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -39,10 +38,18 @@ msgid "Webhook request logs"
 msgstr "웹훅 요청 로그"
 
 #: chatbot/models.py:24
+msgid "Event log"
+msgstr ""
+
+#: chatbot/models.py:25
+msgid "Event logs"
+msgstr ""
+
+#: chatbot/models.py:30
 msgid "Message log"
 msgstr "메시지 로그"
 
-#: chatbot/models.py:25
+#: chatbot/models.py:31
 msgid "Message logs"
 msgstr "메시지 로그"
 
@@ -61,6 +68,61 @@ msgstr "영어"
 #: golf/apps.py:7
 msgid "golf"
 msgstr "골프"
+
+#: golf/models.py:8
+msgid "Golf club English name"
+msgstr "골프장 영문 이름"
+
+#: golf/models.py:14
+msgid "Golf club Thai name"
+msgstr "골프장 태국 이름"
+
+#: golf/models.py:20
+msgid "Slug"
+msgstr "슬러그"
+
+#: golf/models.py:21
+msgid ""
+"A short label containing only letters, numbers, underscores or hyphens for "
+"URL"
+msgstr ""
+"짧은 URL 주소(알파벳, 숫자, 하이픈, 밑줄)"
+
+#: golf/models.py:29
+msgid "Line bot channel access token"
+msgstr "라인 봇 채널 액세스 토큰"
+
+#: golf/models.py:36
+msgid "Line bot channel secret"
+msgstr "라인 봇 채널 시크릿"
+
+#: golf/models.py:43
+msgid "Phone number"
+msgstr "전화번호"
+
+#: golf/models.py:50
+msgid "Email address"
+msgstr "이메일 주소"
+
+#: golf/models.py:57
+msgid "Fax number"
+msgstr "팩스번호"
+
+#: golf/models.py:64
+msgid "Website"
+msgstr "웹사이트"
+
+#: golf/models.py:71
+msgid "Golf club address"
+msgstr "골프장 주소"
+
+#: golf/models.py:78
+msgid "Golf club"
+msgstr "골프장"
+
+#: golf/models.py:79
+msgid "Golf clubs"
+msgstr "골프장"
 
 #: hotel/apps.py:7
 msgid "hotel"
