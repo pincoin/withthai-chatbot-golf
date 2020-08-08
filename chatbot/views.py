@@ -1,5 +1,4 @@
 import linebot
-from django.conf import settings
 from django.http import (
     HttpResponse, HttpResponseForbidden
 )
@@ -9,6 +8,7 @@ from django.views.decorators.csrf import csrf_exempt
 from linebot import models
 from linebot.exceptions import InvalidSignatureError
 
+from golf import models as golf_models
 from .models import WebhookRequestLog
 
 
@@ -20,8 +20,10 @@ class CallbackView(generic.View):
         self.handler = None
 
     def post(self, request, *args, **kwargs):
-        self.line_bot_api = linebot.LineBotApi(settings.LINE_CHANNEL_ACCESS_TOKEN)
-        self.handler = linebot.WebhookHandler(settings.LINE_CHANNEL_SECRET)
+        club = golf_models.GolfClub.objects.get(slug=self.kwargs['slug'])
+
+        self.line_bot_api = linebot.LineBotApi(club.line_bot_channel_access_token)
+        self.handler = linebot.WebhookHandler(club.line_bot_channel_secret)
 
         @self.handler.add(models.MessageEvent, message=models.TextMessage)
         def handle_message(event):

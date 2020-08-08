@@ -1,12 +1,10 @@
-from django.urls import path
+from django.urls import re_path
 
 from . import views
 
 app_name = 'chatbot'
 
 urlpatterns = [
-    path('callback/',
-         views.CallbackView.as_view(), name='callback'),
-
-    # callback/CLUB
+    re_path(r'^callback/(?P<slug>[-\w]+)/$',
+            views.CallbackView.as_view(), name='callback'),
 ]
