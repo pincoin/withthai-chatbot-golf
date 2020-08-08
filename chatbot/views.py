@@ -20,7 +20,7 @@ class CallbackView(generic.View):
         self.handler = linebot.WebhookHandler(settings.LINE_CHANNEL_SECRET)
 
         @self.handler.add(models.MessageEvent, message=models.TextMessage)
-        def handle_message(self, event):
+        def handle_message(event):
             text = event.message.text.strip()
 
             if text == 'profile':
