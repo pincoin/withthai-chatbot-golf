@@ -76,15 +76,15 @@ class GolfClub(model_utils_models.TimeStampedModel):
 
     latitude = models.DecimalField(
         verbose_name=_('Latitude'),
-        max_digits=9,
-        decimal_places=6,
+        max_digits=10,
+        decimal_places=7,
         default=0,
     )
 
     longitude = models.DecimalField(
         verbose_name=_('Longitude'),
-        max_digits=9,
-        decimal_places=6,
+        max_digits=10,
+        decimal_places=7,
         default=0,
     )
 
