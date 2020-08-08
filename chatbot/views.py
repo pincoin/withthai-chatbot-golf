@@ -16,6 +16,8 @@ from .models import WebhookRequestLog
 class CallbackView(generic.View):
     def __init__(self):
         super(CallbackView, self).__init__()
+        self.line_bot_api = None
+        self.handler = None
 
     def post(self, request, *args, **kwargs):
         self.line_bot_api = linebot.LineBotApi(settings.LINE_CHANNEL_ACCESS_TOKEN)
