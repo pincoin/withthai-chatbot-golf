@@ -19,13 +19,15 @@ from .models import WebhookRequestLog
 class CallbackView(generic.View):
     def __init__(self):
         super(CallbackView, self).__init__()
+        self.logger = logging.getLogger(__name__)
         self.line_bot_api = None
         self.handler = None
-        self.logger = logging.getLogger(__name__)
 
     def post(self, request, *args, **kwargs):
         club = golf_models.GolfClub.objects.get(slug=self.kwargs['slug'])
         self.logger.info(club.title_english)
+        self.logger.info(club.line_bot_channel_access_token)
+        self.logger.info(club.line_bot_channel_secret)
 
         self.line_bot_api = linebot.LineBotApi(settings.LINE_CHANNEL_ACCESS_TOKEN)
         self.handler = linebot.WebhookHandler(settings.LINE_CHANNEL_SECRET)
