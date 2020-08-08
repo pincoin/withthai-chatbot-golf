@@ -67,6 +67,15 @@ class CallbackView(generic.View):
                         models.TextSendMessage(text='PUSH!'),
                     ]
                 )
+            elif text == 'location':
+                self.line_bot_api.reply_message(
+                    event.reply_token, [
+                        models.LocationSendMessage(title=club.title_english,
+                                                   address=club.address,
+                                                   latitude=0,
+                                                   longitude=0)
+                    ]
+                )
             elif text == 'multicast':
                 self.line_bot_api.multicast(
                     [event.source.user_id], [
