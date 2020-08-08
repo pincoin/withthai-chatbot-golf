@@ -25,7 +25,7 @@ class GolfClub(model_utils_models.TimeStampedModel):
         allow_unicode=True,
     )
 
-    line_bot_channel_access_token = models.CharField(
+    line_bot_channel_access_token = models.TextField(
         verbose_name=_('Line bot channel access token'),
         max_length=255,
         blank=True,
