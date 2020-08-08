@@ -209,6 +209,12 @@ class CallbackView(generic.View):
                     print(e.error.message)
                     print(e.error.details)
 
+        @self.handler.add(models.PostbackEvent)
+        def handle_post_back(event):
+            self.line_bot_api.reply_message(
+                event.reply_token,
+                models.TextSendMessage(text='{} {}'.format(event.postback.data, event.postback.params)))
+
         @self.handler.add(models.FollowEvent)
         def handle_follow(event):
             # event.source.user_id as followed
