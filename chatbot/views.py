@@ -35,15 +35,15 @@ class CallbackView(generic.View):
 
             if text == 'profile':
                 if isinstance(event.source, models.SourceUser):
-                    profile = CallbackView.line_bot_api.get_profile(event.source.user_id)
-                    CallbackView.line_bot_api.reply_message(
+                    profile = self.line_bot_api.get_profile(event.source.user_id)
+                    self.line_bot_api.reply_message(
                         event.reply_token, [
                             models.TextSendMessage(text='Display name: ' + profile.display_name),
                             models.TextSendMessage(text='Status message: ' + str(profile.status_message))
                         ]
                     )
                 else:
-                    CallbackView.line_bot_api.reply_message(
+                    self.line_bot_api.reply_message(
                         event.reply_token,
                         models.TextSendMessage(text="Bot can't use profile API without user ID"))
             elif text == 'quota':
