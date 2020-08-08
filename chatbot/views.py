@@ -16,6 +16,8 @@ from .models import WebhookRequestLog
 class CallbackView(generic.View):
     def __init__(self):
         super(CallbackView, self).__init__()
+
+    def post(self, request, *args, **kwargs):
         self.line_bot_api = linebot.LineBotApi(settings.LINE_CHANNEL_ACCESS_TOKEN)
         self.handler = linebot.WebhookHandler(settings.LINE_CHANNEL_SECRET)
 
@@ -227,7 +229,6 @@ class CallbackView(generic.View):
             # event.source.user_id mark as left
             pass
 
-    def post(self, request, *args, **kwargs):
         if 'X-Line-Signature' in request.headers:
             signature = request.headers['X-Line-Signature']
             body = request.body.decode('utf-8')
