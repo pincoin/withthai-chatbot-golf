@@ -74,6 +74,20 @@ class GolfClub(model_utils_models.TimeStampedModel):
         null=True,
     )
 
+    latitude = models.DecimalField(
+        verbose_name=_('Latitude'),
+        max_digits=9,
+        decimal_places=6,
+        default=0,
+    )
+
+    longitude = models.DecimalField(
+        verbose_name=_('Longitude'),
+        max_digits=9,
+        decimal_places=6,
+        default=0,
+    )
+
     class Meta:
         verbose_name = _('Golf club')
         verbose_name_plural = _('Golf clubs')

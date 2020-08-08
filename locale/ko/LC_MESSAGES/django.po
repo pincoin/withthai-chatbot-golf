@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-08-08 20:37+0700\n"
+"POT-Creation-Date: 2020-08-08 23:50+0700\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -37,19 +37,19 @@ msgstr "웹훅 요청 로그"
 msgid "Webhook request logs"
 msgstr "웹훅 요청 로그"
 
-#: chatbot/models.py:24
+#: chatbot/models.py:27
 msgid "Event log"
 msgstr ""
 
-#: chatbot/models.py:25
+#: chatbot/models.py:28
 msgid "Event logs"
 msgstr ""
 
-#: chatbot/models.py:30
+#: chatbot/models.py:36
 msgid "Message log"
 msgstr "메시지 로그"
 
-#: chatbot/models.py:31
+#: chatbot/models.py:37
 msgid "Message logs"
 msgstr "메시지 로그"
 
@@ -85,8 +85,7 @@ msgstr "슬러그"
 msgid ""
 "A short label containing only letters, numbers, underscores or hyphens for "
 "URL"
-msgstr ""
-"짧은 URL 주소(알파벳, 숫자, 하이픈, 밑줄)"
+msgstr "짧은 URL 주소(알파벳, 숫자, 하이픈, 밑줄)"
 
 #: golf/models.py:29
 msgid "Line bot channel access token"
@@ -117,10 +116,18 @@ msgid "Golf club address"
 msgstr "골프장 주소"
 
 #: golf/models.py:78
+msgid "Latitude"
+msgstr "위도"
+
+#: golf/models.py:85
+msgid "Longitude"
+msgstr "경도"
+
+#: golf/models.py:92
 msgid "Golf club"
 msgstr "골프장"
 
-#: golf/models.py:79
+#: golf/models.py:93
 msgid "Golf clubs"
 msgstr "골프장"
 

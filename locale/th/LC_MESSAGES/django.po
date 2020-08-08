@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-08-08 20:37+0700\n"
+"POT-Creation-Date: 2020-08-08 23:50+0700\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -38,19 +38,19 @@ msgstr ""
 msgid "Webhook request logs"
 msgstr ""
 
-#: chatbot/models.py:24
+#: chatbot/models.py:27
 msgid "Event log"
 msgstr ""
 
-#: chatbot/models.py:25
+#: chatbot/models.py:28
 msgid "Event logs"
 msgstr ""
 
-#: chatbot/models.py:30
+#: chatbot/models.py:36
 msgid "Message log"
 msgstr ""
 
-#: chatbot/models.py:31
+#: chatbot/models.py:37
 msgid "Message logs"
 msgstr ""
 
@@ -117,10 +117,18 @@ msgid "Golf club address"
 msgstr ""
 
 #: golf/models.py:78
+msgid "Latitude"
+msgstr ""
+
+#: golf/models.py:85
+msgid "Longitude"
+msgstr ""
+
+#: golf/models.py:92
 msgid "Golf club"
 msgstr ""
 
-#: golf/models.py:79
+#: golf/models.py:93
 msgid "Golf clubs"
 msgstr ""
 
