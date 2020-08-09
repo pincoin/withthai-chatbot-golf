@@ -11,7 +11,7 @@ class GolfClubAdmin(admin.ModelAdmin):
 
 class LineUserAdmin(admin.ModelAdmin):
     list_display = ('line_user_id', 'follow_status', 'fullname')
-    list_filter = ('follow_status',)
+    list_filter = ('follow_status', 'golf_club__title_english')
     ordering = ['-created']
 
 

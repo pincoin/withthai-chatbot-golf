@@ -226,11 +226,12 @@ class CallbackView(generic.View):
         @self.handler.add(models.FollowEvent)
         def handle_follow(event):
             try:
-                user = golf_models.LineUser.objects.get(line_user_id=event.source.user_id)
+                user = golf_models.LineUser.objects.get(line_user_id=event.source.user_id, golf_club=club)
             except golf_models.LineUser.DoesNotExist:
                 user = golf_models.LineUser()
                 user.line_user_id = event.source.user_id
 
+            user.golf_club = club
             user.follow_status = golf_models.LineUser.FOLLOW_CHOICES.follow
             user.fullname = ''
             user.save()
@@ -242,7 +243,7 @@ class CallbackView(generic.View):
         @self.handler.add(models.UnfollowEvent)
         def handle_unfollow(event):
             try:
-                user = golf_models.LineUser.objects.get(line_user_id=event.source.user_id)
+                user = golf_models.LineUser.objects.get(line_user_id=event.source.user_id, golf_club=club)
                 user.follow_status = golf_models.LineUser.FOLLOW_CHOICES.unfollow
                 user.fullname = ''
                 user.save()

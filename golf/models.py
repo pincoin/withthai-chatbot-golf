@@ -107,7 +107,12 @@ class LineUser(model_utils_models.TimeStampedModel):
         verbose_name=_('LINE user ID'),
         max_length=48,
         db_index=True,
-        unique=True,
+    )
+
+    line_display_name = models.CharField(
+        verbose_name=_('LINE display name'),
+        max_length=128,
+        blank=True,
     )
 
     follow_status = models.IntegerField(
@@ -115,6 +120,13 @@ class LineUser(model_utils_models.TimeStampedModel):
         choices=FOLLOW_CHOICES,
         default=FOLLOW_CHOICES.follow,
         db_index=True,
+    )
+
+    golf_club = models.ForeignKey(
+        'golf.GolfClub',
+        verbose_name=_('Golf club'),
+        db_index=True,
+        on_delete=models.CASCADE,
     )
 
     fullname = models.CharField(
@@ -126,6 +138,8 @@ class LineUser(model_utils_models.TimeStampedModel):
     class Meta:
         verbose_name = _('LINE user')
         verbose_name_plural = _('LINE users')
+
+        unique_together = ('line_user_id', 'golf_club')
 
     def __str__(self):
         return f'{self.line_user_id}'
