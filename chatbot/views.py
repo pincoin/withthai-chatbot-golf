@@ -28,7 +28,6 @@ class CallbackView(generic.View):
                 models.PostbackAction(label='My booking', data='my'),
                 models.PostbackAction(label='Price List', data='price'),
                 models.PostbackAction(label='Promotion', data='promotion'),
-                models.PostbackAction(label='Info', data='info'),
             ])
 
     def post(self, request, *args, **kwargs):
