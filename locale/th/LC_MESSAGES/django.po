@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-08-09 16:20+0700\n"
+"POT-Creation-Date: 2020-08-09 20:35+0700\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -108,7 +108,7 @@ msgstr ""
 msgid "Longitude"
 msgstr ""
 
-#: golf/models.py:93
+#: golf/models.py:93 golf/models.py:127
 msgid "Golf club"
 msgstr ""
 
@@ -128,19 +128,23 @@ msgstr ""
 msgid "LINE user ID"
 msgstr ""
 
-#: golf/models.py:114
+#: golf/models.py:113
+msgid "LINE display name"
+msgstr ""
+
+#: golf/models.py:119
 msgid "Follow status"
 msgstr ""
 
-#: golf/models.py:121
+#: golf/models.py:133
 msgid "Fullname"
 msgstr ""
 
-#: golf/models.py:127
+#: golf/models.py:139
 msgid "LINE user"
 msgstr ""
 
-#: golf/models.py:128
+#: golf/models.py:140
 msgid "LINE users"
 msgstr ""
 
