@@ -231,6 +231,10 @@ class CallbackView(generic.View):
                 user = golf_models.LineUser()
                 user.line_user_id = event.source.user_id
 
+            if isinstance(event.source, models.SourceUser):
+                profile = self.line_bot_api.get_profile(event.source.user_id)
+                user.line_display_name = profile.display_name
+
             user.golf_club = club
             user.follow_status = golf_models.LineUser.FOLLOW_CHOICES.follow
             user.fullname = ''
