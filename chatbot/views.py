@@ -213,7 +213,7 @@ class CallbackView(generic.View):
         def handle_post_back(event):
             self.line_bot_api.reply_message(
                 event.reply_token,
-                models.TextSendMessage(text='{} {}'.format(event.postback.data, event.postback.params)))
+                models.TextSendMessage(text=f'{event.postback.data} {event.postback.params}'))
 
         @self.handler.add(models.FollowEvent)
         def handle_follow(event):
@@ -244,7 +244,7 @@ class CallbackView(generic.View):
         def handle_member_joined(event):
             self.line_bot_api.reply_message(
                 event.reply_token,
-                models.TextSendMessage(text='Got memberJoined event. event={}'.format(event))
+                models.TextSendMessage(text=f'Got memberJoined event. event={event}')
             )
 
         @self.handler.add(models.MemberLeftEvent)

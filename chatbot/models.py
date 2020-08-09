@@ -19,4 +19,4 @@ class WebhookRequestLog(model_utils_models.TimeStampedModel):
         verbose_name_plural = _('Webhook request logs')
 
     def __str__(self):
-        return '{}'.format(self.created)
+        return f'{self.created}'
