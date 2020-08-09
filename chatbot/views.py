@@ -221,6 +221,7 @@ class CallbackView(generic.View):
                 user = golf_models.LineUser.objects.get(line_user_id=event.source.user_id)
             except golf_models.LineUser.DoesNotExist:
                 user = golf_models.LineUser()
+                user.line_user_id = event.source.user_id
 
             user.follow_status = golf_models.LineUser.FOLLOW_CHOICES.follow
             user.fullname = ''
