@@ -38,8 +38,8 @@ class CallbackView(generic.View):
                     profile = self.line_bot_api.get_profile(event.source.user_id)
                     self.line_bot_api.reply_message(
                         event.reply_token, [
-                            models.TextSendMessage(text='Display name: ' + profile.display_name),
-                            models.TextSendMessage(text='Status message: ' + str(profile.status_message))
+                            models.TextSendMessage(text=f'Display name: {profile.display_name}'),
+                            models.TextSendMessage(text=f'Status message: {str(profile.status_message)}')
                         ]
                     )
                 else:
@@ -50,15 +50,15 @@ class CallbackView(generic.View):
                 quota = self.line_bot_api.get_message_quota()
                 self.line_bot_api.reply_message(
                     event.reply_token, [
-                        models.TextSendMessage(text='type: ' + quota.type),
-                        models.TextSendMessage(text='value: ' + str(quota.value))
+                        models.TextSendMessage(text=f'type: {quota.type}'),
+                        models.TextSendMessage(text=f'value: {str(quota.value)}')
                     ]
                 )
             elif text == 'quota_consumption':
                 quota_consumption = self.line_bot_api.get_message_quota_consumption()
                 self.line_bot_api.reply_message(
                     event.reply_token, [
-                        models.TextSendMessage(text='total usage: ' + str(quota_consumption.total_usage)),
+                        models.TextSendMessage(text=f'total usage: {str(quota_consumption.total_usage)}'),
                     ]
                 )
             elif text == 'push':
@@ -94,9 +94,9 @@ class CallbackView(generic.View):
                 result = self.line_bot_api.get_message_delivery_broadcast(date)
                 self.line_bot_api.reply_message(
                     event.reply_token, [
-                        models.TextSendMessage(text='Number of sent broadcast messages: ' + date),
-                        models.TextSendMessage(text='status: ' + str(result.status)),
-                        models.TextSendMessage(text='success: ' + str(result.success)),
+                        models.TextSendMessage(text=f'Number of sent broadcast messages: {date}'),
+                        models.TextSendMessage(text=f'status: {str(result.status)}'),
+                        models.TextSendMessage(text=f'success: {str(result.success)}'),
                     ]
                 )
             elif text == 'bye':
@@ -194,7 +194,7 @@ class CallbackView(generic.View):
                 link_token_response = self.line_bot_api.issue_link_token(event.source.user_id)
                 self.line_bot_api.reply_message(
                     event.reply_token, [
-                        models.TextSendMessage(text='link_token: ' + link_token_response.link_token)
+                        models.TextSendMessage(text=f'link_token: {link_token_response.link_token}')
                     ]
                 )
             else:
@@ -232,7 +232,7 @@ class CallbackView(generic.View):
             # event.source.user_id mark as joined
             self.line_bot_api.reply_message(
                 event.reply_token,
-                models.TextSendMessage(text='Joined this ' + event.source.type)
+                models.TextSendMessage(text=f'Joined this {event.source.type}')
             )
 
         @self.handler.add(models.LeaveEvent)
