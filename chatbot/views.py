@@ -22,6 +22,15 @@ class CallbackView(generic.View):
         self.line_bot_api = None
         self.handler = None
 
+        self.buttons_menu_template = models.ButtonsTemplate(
+            title='Menu', text='menu', actions=[
+                models.PostbackAction(label='New booking', data='new'),
+                models.PostbackAction(label='My booking', data='my'),
+                models.PostbackAction(label='Price List', data='price'),
+                models.PostbackAction(label='Promotion', data='promotion'),
+                models.PostbackAction(label='Info', data='info'),
+            ])
+
     def post(self, request, *args, **kwargs):
         club = golf_models.GolfClub.objects.get(slug=self.kwargs['slug'])
         self.logger.info(club.title_english)
@@ -227,9 +236,9 @@ class CallbackView(generic.View):
             user.fullname = ''
             user.save()
 
-            self.line_bot_api.reply_message(
-                event.reply_token, models.TextSendMessage(text='Got follow event')
-            )
+            template_message = models.TemplateSendMessage(alt_text='Menu', template=self.buttons_menu_template)
+
+            self.line_bot_api.reply_message(event.reply_token, template_message)
 
         @self.handler.add(models.UnfollowEvent)
         def handle_unfollow(event):
