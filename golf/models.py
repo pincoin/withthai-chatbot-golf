@@ -1,5 +1,6 @@
 from django.db import models
 from django.utils.translation import gettext_lazy as _
+from model_utils import Choices
 from model_utils import models as model_utils_models
 
 
@@ -94,3 +95,37 @@ class GolfClub(model_utils_models.TimeStampedModel):
 
     def __str__(self):
         return f'{self.title_english}'
+
+
+class LineUser(model_utils_models.TimeStampedModel):
+    FOLLOW_CHOICES = Choices(
+        (0, 'unfollow', _('Unfollow')),
+        (1, 'follow', _('Follow')),
+    )
+
+    line_user_id = models.CharField(
+        verbose_name=_('LINE user ID'),
+        max_length=48,
+        db_index=True,
+        unique=True,
+    )
+
+    follow_status = models.IntegerField(
+        verbose_name=_('Follow status'),
+        choices=FOLLOW_CHOICES,
+        default=FOLLOW_CHOICES.follow,
+        db_index=True,
+    )
+
+    fullname = models.CharField(
+        verbose_name=_('Fullname'),
+        max_length=32,
+        blank=True,
+    )
+
+    class Meta:
+        verbose_name = _('LINE user')
+        verbose_name_plural = _('LINE users')
+
+    def __str__(self):
+        return f'{self.line_user_id}'
