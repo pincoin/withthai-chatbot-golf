@@ -9,4 +9,11 @@ class GolfClubAdmin(admin.ModelAdmin):
     ordering = ['-created']
 
 
+class LineUserAdmin(admin.ModelAdmin):
+    list_display = ('line_user_id', 'follow_status', 'fullname')
+    list_filter = ('follow_status',)
+    ordering = ['-created']
+
+
 admin.site.register(models.GolfClub, GolfClubAdmin)
+admin.site.register(models.LineUser, LineUserAdmin)

@@ -217,15 +217,28 @@ class CallbackView(generic.View):
 
         @self.handler.add(models.FollowEvent)
         def handle_follow(event):
-            # event.source.user_id as followed
+            try:
+                user = golf_models.LineUser.objects.get(line_user_id=event.source.user_id)
+            except golf_models.LineUser.DoesNotExist:
+                user = golf_models.LineUser()
+
+            user.follow_status = golf_models.LineUser.FOLLOW_CHOICES.follow
+            user.fullname = ''
+            user.save()
+
             self.line_bot_api.reply_message(
                 event.reply_token, models.TextSendMessage(text='Got follow event')
             )
 
         @self.handler.add(models.UnfollowEvent)
         def handle_unfollow(event):
-            # event.source.user_id mark as unfollowed
-            pass
+            try:
+                user = golf_models.LineUser.objects.get(line_user_id=event.source.user_id)
+                user.follow_status = golf_models.LineUser.FOLLOW_CHOICES.unfollow
+                user.fullname = ''
+                user.save()
+            except golf_models.LineUser.DoesNotExist:
+                pass
 
         @self.handler.add(models.JoinEvent)
         def handle_join(event):
