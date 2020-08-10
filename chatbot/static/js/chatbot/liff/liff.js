@@ -31,29 +31,26 @@ window.onload = function (e) {
         });
     });
 
-    // メッセージの送信
     document.getElementById('sendmessagebutton').addEventListener('click', function () {
-        // https://developers.line.me/ja/reference/liff/#liffsendmessages()
         liff.sendMessages([{
-            'type': 'text',
-            'text': "You've successfully sent a message! Hooray!"
-        }]).then(function () {
-            window.alert('Message sent');
-        }).catch(function (error) {
-            window.alert('Error sending message: ' + error);
+                type: 'text',
+                text: 'Hello, World!'
+            }]
+        ).then(() => {
+            console.log('message sent');
+        }).catch((err) => {
+            console.log('error', err);
         });
     });
 };
 
-// プロファイルの取得と表示
 function getProfile() {
-    // https://developers.line.me/ja/reference/liff/#liffgetprofile()
-    liff.getProfile().then(function (profile) {
+    liff.getProfile().then(profile => {
         document.getElementById('userIdProfileField').textContent = profile.userId;
         document.getElementById('displayNameField').textContent = profile.displayName;
         document.getElementById('statusMessageField').textContent = profile.statusMessage;
-    }).catch(function (error) {
-        window.alert('Error getting profile: ' + error);
+    }).catch((err) => {
+        console.log('error', err);
     });
 }
 
