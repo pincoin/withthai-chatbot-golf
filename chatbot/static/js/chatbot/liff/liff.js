@@ -8,8 +8,7 @@ window.onload = function (e) {
         // start to use LIFF's api
         initializeApp(data);
     }).catch((err) => {
-        document.getElementById("liffAppContent").classList.add('hidden');
-        document.getElementById("liffInitErrorMessage").classList.remove('hidden');
+        console.log('error')
     });
 
     // LIFF アプリを閉じる
