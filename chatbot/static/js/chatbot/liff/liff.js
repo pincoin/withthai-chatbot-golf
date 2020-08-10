@@ -2,8 +2,19 @@ window.onload = function (e) {
     // init で初期化。基本情報を取得。
     // https://developers.line.me/ja/reference/liff/#initialize-liff-app
     liff.init(function (data) {
+
+
+    });
+
+    liff.init({
+        liffId: '1654038916-kOX5RXl4'
+    }).then(() => {
         getProfile();
+        // start to use LIFF's api
         initializeApp(data);
+    }).catch((err) => {
+        document.getElementById("liffAppContent").classList.add('hidden');
+        document.getElementById("liffInitErrorMessage").classList.remove('hidden');
     });
 
     // LIFF アプリを閉じる
