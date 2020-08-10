@@ -229,9 +229,10 @@ function toggleQrCodeReader() {
  */
 function toggleElement(elementId) {
     const elem = document.getElementById(elementId);
-    if (elem.offsetWidth > 0 && elem.offsetHeight > 0) {
-        elem.style.display = 'none';
+
+    if (elem.classList.contains('is-hidden')) {
+        elem.classList.remove('is-hidden');
     } else {
-        elem.style.display = 'block';
+        elem.classList.add('is-hidden');
     }
 }
