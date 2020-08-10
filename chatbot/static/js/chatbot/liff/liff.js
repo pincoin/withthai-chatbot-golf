@@ -45,12 +45,16 @@ window.onload = function (e) {
 };
 
 function getProfile() {
-    liff.getProfile().then(profile => {
+    liff.getProfile(function() {
+        alert('get profile');
+    }).then(profile => {
+        alert('profile');
         document.getElementById('userIdProfileField').textContent = profile.userId;
         document.getElementById('displayNameField').textContent = profile.displayName;
         document.getElementById('statusMessageField').textContent = profile.statusMessage;
     }).catch((err) => {
         console.log('error', err);
+        alert(err);
     });
 }
 
