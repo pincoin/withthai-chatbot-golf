@@ -300,3 +300,6 @@ class CallbackView(generic.View):
 
 class LiffView(generic.TemplateView):
     template_name = 'chatbot/liff/index.html'
+
+class Liff2View(generic.TemplateView):
+    template_name = 'chatbot/liff/index2.html'
