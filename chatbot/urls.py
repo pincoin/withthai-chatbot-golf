@@ -7,9 +7,6 @@ app_name = 'chatbot'
 urlpatterns = [
     re_path(r'^(?P<slug>[-\w]+)/callback/$',
             views.CallbackView.as_view(), name='callback'),
-    
-    re_path(r'^(?P<slug>[-\w]+)/liff/$',
-            views.LiffView.as_view(), name='liff-index'),
 
     re_path(r'^(?P<slug>[-\w]+)/liff2/$',
             views.Liff2View.as_view(), name='liff-starter2'),

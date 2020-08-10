@@ -298,8 +298,5 @@ class CallbackView(generic.View):
         return HttpResponseForbidden()
 
 
-class LiffView(generic.TemplateView):
-    template_name = 'chatbot/liff/index.html'
-
 class Liff2View(generic.TemplateView):
     template_name = 'chatbot/liff/index2.html'
