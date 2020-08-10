@@ -35,16 +35,12 @@ window.onload = function (e) {
     document.getElementById('sendmessagebutton').addEventListener('click', function () {
         // https://developers.line.me/ja/reference/liff/#liffsendmessages()
         liff.sendMessages([{
-            type: 'text',
-            text: "テキストメッセージの送信"
-        }, {
-            type: 'sticker',
-            packageId: '2',
-            stickerId: '144'
+            'type': 'text',
+            'text': "You've successfully sent a message! Hooray!"
         }]).then(function () {
-            window.alert("送信完了");
+            window.alert('Message sent');
         }).catch(function (error) {
-            window.alert("Error sending message: " + error);
+            window.alert('Error sending message: ' + error);
         });
     });
 };
@@ -52,7 +48,13 @@ window.onload = function (e) {
 // プロファイルの取得と表示
 function getProfile() {
     // https://developers.line.me/ja/reference/liff/#liffgetprofile()
-
+    liff.getProfile().then(function (profile) {
+        document.getElementById('userIdProfileField').textContent = profile.userId;
+        document.getElementById('displayNameField').textContent = profile.displayName;
+        document.getElementById('statusMessageField').textContent = profile.statusMessage;
+    }).catch(function (error) {
+        window.alert('Error getting profile: ' + error);
+    });
 }
 
 function initializeApp(data) {
