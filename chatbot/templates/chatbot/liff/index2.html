@@ -26,7 +26,7 @@
             <!-- ACCESS TOKEN DATA -->
             <div id="accessTokenData" class="is-hidden has-text-left">
                 <h2>Access Token</h2>
-                <a href="#" onclick="toggleAccessToken()">Close Access Token</a>
+                <a href="#" onclick="toggleAccessToken()" class="button">Close Access Token</a>
                 <table class="table is-fullwidth">
                     <tr>
                         <th>accessToken</th>
@@ -37,7 +37,7 @@
             <!-- SCAN QR RESULT -->
             <div id="scanQr" class="is-hidden has-text-left">
                 <h2>QR Code reader</h2>
-                <a href="#" onclick="toggleQrCodeReader()">Close QR Code Reader Result</a>
+                <a href="#" onclick="toggleQrCodeReader()" class="button">Close QR Code Reader Result</a>
                 <table class="table is-fullwidth">
                     <tr>
                         <th>scanCode Result</th>
@@ -48,7 +48,7 @@
             <!-- PROFILE INFO -->
             <div id="profileInfo" class="is-hidden has-text-left">
                 <h2>Profile</h2>
-                <a href="#" onclick="toggleProfileData()">Close Profile</a>
+                <a href="#" onclick="toggleProfileData()" class="button">Close Profile</a>
                 <div id="profilePictureDiv">
                 </div>
                 <table class="table is-fullwidth">
@@ -98,8 +98,8 @@
             </div>
             <!-- LOGIN LOGOUT BUTTONS -->
             <div class="buttons">
-                <button class="button" id="liffLoginButton">Log in</button>
-                <button class="button" id="liffLogoutButton">Log out</button>
+                <button class="button is-primary" id="liffLoginButton">Log in</button>
+                <button class="button is-danger" id="liffLogoutButton">Log out</button>
             </div>
             <div id="statusMessage">
                 <div id="isInClientMessage"></div>
