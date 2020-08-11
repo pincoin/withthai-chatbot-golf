@@ -10,8 +10,8 @@ from django.views.decorators.csrf import csrf_exempt
 from linebot import models
 from linebot.exceptions import InvalidSignatureError
 
+from chatbot.models import WebhookRequestLog
 from golf import models as golf_models
-from .models import WebhookRequestLog
 
 
 @method_decorator(csrf_exempt, name='dispatch')
@@ -296,7 +296,3 @@ class CallbackView(generic.View):
             return HttpResponse('OK')
 
         return HttpResponseForbidden()
-
-
-class Liff2View(generic.TemplateView):
-    template_name = 'chatbot/liff/index2.html'
