@@ -18,7 +18,7 @@ class LineUserAdmin(admin.ModelAdmin):
 
 class LiffAdmin(admin.ModelAdmin):
     list_display = ('golf_club', 'app_name', 'liff_id', 'endpoint_url')
-    list_filter = ('golf_club', 'app_name')
+    list_filter = ('golf_club__title_english', 'app_name')
     search_fields = ('liff_id', 'endpoint_url')
     ordering = ['-created']
 

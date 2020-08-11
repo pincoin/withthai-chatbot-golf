@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-08-11 18:58+0700\n"
+"POT-Creation-Date: 2020-08-11 23:17+0700\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -112,7 +112,7 @@ msgstr ""
 msgid "Longitude"
 msgstr ""
 
-#: golf/models.py:100 golf/models.py:134
+#: golf/models.py:100 golf/models.py:134 golf/models.py:158
 msgid "Golf club"
 msgstr ""
 
@@ -152,14 +152,30 @@ msgstr ""
 msgid "LINE users"
 msgstr ""
 
+#: golf/models.py:164
+msgid "LIFF app name"
+msgstr ""
+
+#: golf/models.py:170
+msgid "LIFF ID"
+msgstr ""
+
+#: golf/models.py:177
+msgid "Endpoint URL"
+msgstr ""
+
+#: golf/models.py:181 golf/models.py:182 liff/apps.py:7
+msgid "LIFF"
+msgstr ""
+
 #: hotel/apps.py:7
 msgid "hotel"
 msgstr ""
 
-#: liff/apps.py:7
-msgid "LIFF"
+#: liff/views.py:15
+msgid "Sample"
 msgstr ""
 
-#: liff/views.py:19
+#: liff/views.py:28
 msgid "New Booking"
 msgstr ""

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-08-11 18:58+0700\n"
+"POT-Creation-Date: 2020-08-11 23:17+0700\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -111,7 +111,7 @@ msgstr "위도"
 msgid "Longitude"
 msgstr "경도"
 
-#: golf/models.py:100 golf/models.py:134
+#: golf/models.py:100 golf/models.py:134 golf/models.py:158
 msgid "Golf club"
 msgstr "골프장"
 
@@ -151,14 +151,30 @@ msgstr "라인 사용자"
 msgid "LINE users"
 msgstr "라인 사용자"
 
+#: golf/models.py:164
+msgid "LIFF app name"
+msgstr "LIFF 앱 이름"
+
+#: golf/models.py:170
+msgid "LIFF ID"
+msgstr "LIFF ID"
+
+#: golf/models.py:177
+msgid "Endpoint URL"
+msgstr "최종연결 URL"
+
+#: golf/models.py:181 golf/models.py:182 liff/apps.py:7
+msgid "LIFF"
+msgstr "LIFF"
+
 #: hotel/apps.py:7
 msgid "hotel"
 msgstr "호텔"
 
-#: liff/apps.py:7
-msgid "LIFF"
-msgstr "LINE Front-end Framework"
+#: liff/views.py:15
+msgid "Sample"
+msgstr "예제"
 
-#: liff/views.py:19
+#: liff/views.py:28
 msgid "New Booking"
 msgstr "예약 문의"
