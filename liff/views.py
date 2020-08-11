@@ -17,7 +17,7 @@ class SampleView(viewmixins.LiffContextMixin, generic.TemplateView):
 
 
 class BookingCreateFormView(viewmixins.LiffContextMixin, generic.FormView):
-    app_name = 'sample'
+    app_name = 'request'
 
     template_name = 'liff/booking_create_form.html'
 
