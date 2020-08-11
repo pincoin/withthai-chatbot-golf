@@ -23,7 +23,7 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'assets/')
 STATICFILES_DIRS = [
     '/home/ubuntu/.pyenv/versions/withthai/lib/python3.8/site-packages/django/contrib/admin/static',
     os.path.join(BASE_DIR, 'conf', 'static'),
-    os.path.join(BASE_DIR, 'chatbot', 'static'),
+    os.path.join(BASE_DIR, 'liff', 'static'),
 ]
 STATICFILES_FINDERS = (
     'django.contrib.staticfiles.finders.FileSystemFinder',
@@ -61,6 +61,10 @@ LOGGING = {
             'level': 'DEBUG',
         },
         'chatbot': {
+            'handlers': ['console'],
+            'level': 'DEBUG',
+        },
+        'liff': {
             'handlers': ['console'],
             'level': 'DEBUG',
         },

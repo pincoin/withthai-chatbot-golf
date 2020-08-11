@@ -12,5 +12,8 @@ urlpatterns = [
     path('chatbot/',
          include('chatbot.urls', namespace='chatbot')),
 
+    path('liff/',
+         include('liff.urls', namespace='liff')),
+
     path('admin/', admin.site.urls),
 ]
