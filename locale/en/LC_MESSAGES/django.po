@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-08-11 17:06+0700\n"
+"POT-Creation-Date: 2020-08-11 18:58+0700\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -36,10 +36,6 @@ msgstr ""
 
 #: chatbot/models.py:19
 msgid "Webhook request logs"
-msgstr ""
-
-#: chatbot/views/liff.py:15
-msgid "New Booking"
 msgstr ""
 
 #: conf/settings/local.py:8
@@ -77,81 +73,93 @@ msgid ""
 msgstr ""
 
 #: golf/models.py:30
-msgid "Line bot channel access token"
+msgid "LINE bot channel access token"
 msgstr ""
 
 #: golf/models.py:37
-msgid "Line bot channel secret"
+msgid "LINE bot channel secret"
 msgstr ""
 
 #: golf/models.py:44
-msgid "Phone number"
+msgid "LINE notify access token"
 msgstr ""
 
 #: golf/models.py:51
-msgid "Email address"
+msgid "Phone number"
 msgstr ""
 
 #: golf/models.py:58
-msgid "Fax number"
+msgid "Email address"
 msgstr ""
 
 #: golf/models.py:65
-msgid "Website"
+msgid "Fax number"
 msgstr ""
 
 #: golf/models.py:72
-msgid "Golf club address"
+msgid "Website"
 msgstr ""
 
 #: golf/models.py:79
-msgid "Latitude"
+msgid "Golf club address"
 msgstr ""
 
 #: golf/models.py:86
+msgid "Latitude"
+msgstr ""
+
+#: golf/models.py:93
 msgid "Longitude"
 msgstr ""
 
-#: golf/models.py:93 golf/models.py:127
+#: golf/models.py:100 golf/models.py:134
 msgid "Golf club"
 msgstr ""
 
-#: golf/models.py:94
+#: golf/models.py:101
 msgid "Golf clubs"
 msgstr ""
 
-#: golf/models.py:102
+#: golf/models.py:109
 msgid "Unfollow"
 msgstr ""
 
-#: golf/models.py:103
+#: golf/models.py:110
 msgid "Follow"
 msgstr ""
 
-#: golf/models.py:107
+#: golf/models.py:114
 msgid "LINE user ID"
 msgstr ""
 
-#: golf/models.py:113
+#: golf/models.py:120
 msgid "LINE display name"
 msgstr ""
 
-#: golf/models.py:119
+#: golf/models.py:126
 msgid "Follow status"
 msgstr ""
 
-#: golf/models.py:133
+#: golf/models.py:140
 msgid "Fullname"
 msgstr ""
 
-#: golf/models.py:139
+#: golf/models.py:146
 msgid "LINE user"
 msgstr ""
 
-#: golf/models.py:140
+#: golf/models.py:147
 msgid "LINE users"
 msgstr ""
 
 #: hotel/apps.py:7
 msgid "hotel"
+msgstr ""
+
+#: liff/apps.py:7
+msgid "LIFF"
+msgstr ""
+
+#: liff/views.py:19
+msgid "New Booking"
 msgstr ""

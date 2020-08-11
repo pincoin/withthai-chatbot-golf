@@ -27,14 +27,21 @@ class GolfClub(model_utils_models.TimeStampedModel):
     )
 
     line_bot_channel_access_token = models.CharField(
-        verbose_name=_('Line bot channel access token'),
+        verbose_name=_('LINE bot channel access token'),
         max_length=255,
         blank=True,
         null=True,
     )
 
     line_bot_channel_secret = models.CharField(
-        verbose_name=_('Line bot channel secret'),
+        verbose_name=_('LINE bot channel secret'),
+        max_length=64,
+        blank=True,
+        null=True,
+    )
+
+    line_notify_access_token = models.CharField(
+        verbose_name=_('LINE notify access token'),
         max_length=64,
         blank=True,
         null=True,

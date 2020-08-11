@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-08-11 17:06+0700\n"
+"POT-Creation-Date: 2020-08-11 18:58+0700\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -36,10 +36,6 @@ msgstr "웹훅 요청 로그"
 #: chatbot/models.py:19
 msgid "Webhook request logs"
 msgstr "웹훅 요청 로그"
-
-#: chatbot/views/liff.py:15
-msgid "New Booking"
-msgstr "예약 문의"
 
 #: conf/settings/local.py:8
 msgid "Korean"
@@ -76,81 +72,93 @@ msgid ""
 msgstr "짧은 URL 주소(알파벳, 숫자, 하이픈, 밑줄)"
 
 #: golf/models.py:30
-msgid "Line bot channel access token"
+msgid "LINE bot channel access token"
 msgstr "라인 봇 채널 액세스 토큰"
 
 #: golf/models.py:37
-msgid "Line bot channel secret"
+msgid "LINE bot channel secret"
 msgstr "라인 봇 채널 시크릿"
 
 #: golf/models.py:44
+msgid "LINE notify access token"
+msgstr "라인 알리미 액세스 토큰"
+
+#: golf/models.py:51
 msgid "Phone number"
 msgstr "전화번호"
 
-#: golf/models.py:51
+#: golf/models.py:58
 msgid "Email address"
 msgstr "이메일 주소"
 
-#: golf/models.py:58
+#: golf/models.py:65
 msgid "Fax number"
 msgstr "팩스번호"
 
-#: golf/models.py:65
+#: golf/models.py:72
 msgid "Website"
 msgstr "웹사이트"
 
-#: golf/models.py:72
+#: golf/models.py:79
 msgid "Golf club address"
 msgstr "골프장 주소"
 
-#: golf/models.py:79
+#: golf/models.py:86
 msgid "Latitude"
 msgstr "위도"
 
-#: golf/models.py:86
+#: golf/models.py:93
 msgid "Longitude"
 msgstr "경도"
 
-#: golf/models.py:93 golf/models.py:127
+#: golf/models.py:100 golf/models.py:134
 msgid "Golf club"
 msgstr "골프장"
 
-#: golf/models.py:94
+#: golf/models.py:101
 msgid "Golf clubs"
 msgstr "골프장"
 
-#: golf/models.py:102
+#: golf/models.py:109
 msgid "Unfollow"
 msgstr "언팔로우"
 
-#: golf/models.py:103
+#: golf/models.py:110
 msgid "Follow"
 msgstr "팔로우"
 
-#: golf/models.py:107
+#: golf/models.py:114
 msgid "LINE user ID"
 msgstr "라인 아이디"
 
-#: golf/models.py:113
+#: golf/models.py:120
 msgid "LINE display name"
 msgstr "라인 표시 이름"
 
-#: golf/models.py:119
+#: golf/models.py:126
 msgid "Follow status"
 msgstr "팔로우"
 
-#: golf/models.py:133
+#: golf/models.py:140
 msgid "Fullname"
 msgstr "이름"
 
-#: golf/models.py:139
+#: golf/models.py:146
 msgid "LINE user"
 msgstr "라인 사용자"
 
-#: golf/models.py:140
+#: golf/models.py:147
 msgid "LINE users"
 msgstr "라인 사용자"
 
 #: hotel/apps.py:7
 msgid "hotel"
 msgstr "호텔"
+
+#: liff/apps.py:7
+msgid "LIFF"
+msgstr "LINE Front-end Framework"
+
+#: liff/views.py:19
+msgid "New Booking"
+msgstr "예약 문의"
