@@ -5,11 +5,11 @@ from . import forms
 
 
 class SampleView(generic.TemplateView):
-    template_name = 'chatbot/liff/index2.html'
+    template_name = 'liff/index2.html'
 
 
 class BookingCreateFormView(generic.FormView):
-    template_name = 'chatbot/liff/booking_create_form.html'
+    template_name = 'liff/booking_create_form.html'
 
     form_class = forms.BookingForm
 
