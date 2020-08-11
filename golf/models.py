@@ -150,3 +150,38 @@ class LineUser(model_utils_models.TimeStampedModel):
 
     def __str__(self):
         return f'{self.line_user_id}'
+
+
+class Liff(model_utils_models.TimeStampedModel):
+    golf_club = models.ForeignKey(
+        'golf.GolfClub',
+        verbose_name=_('Golf club'),
+        db_index=True,
+        on_delete=models.CASCADE,
+    )
+
+    app_name = models.CharField(
+        verbose_name=_('LIFF app name'),
+        max_length=48,
+        db_index=True,
+    )
+
+    liff_id = models.CharField(
+        verbose_name=_('LIFF ID'),
+        max_length=48,
+        db_index=True,
+        unique=True,
+    )
+
+    endpoint_url = models.URLField(
+        verbose_name=_('Endpoint URL'),
+    )
+
+    class Meta:
+        verbose_name = _('LIFF')
+        verbose_name_plural = _('LIFF')
+
+        unique_together = ('golf_club', 'app_name')
+
+    def __str__(self):
+        return f'{self.golf_club} - {self.app_name}'

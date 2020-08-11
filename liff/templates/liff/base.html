@@ -13,7 +13,7 @@
 {% block content %}{% endblock %}
 {% block javascript %}
 <script charset="utf-8" src="//static.line-scdn.net/liff/edge/2/sdk.js"></script>
-<script src="{% static 'js/liff/liff-starter.js' %}"></script>
+{% include './_liff_init.html' with liffId=liffId %}
 {% endblock %}
 </body>
 </html>

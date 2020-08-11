@@ -1,0 +1,16 @@
+{% extends 'liff/base.html' %}
+
+{% load static %}
+
+{% block stylesheet %}
+{{ block.super }}
+<link rel="stylesheet" href="{% static 'css/liff/style.css' %}">
+{% endblock %}}
+
+{% block content %}
+{% endblock %}
+
+{% block javascript %}
+{{ block.super }}
+<script src="{% static 'js/liff/booking-create-form.js' %}"></script>
+{% endblock %}
