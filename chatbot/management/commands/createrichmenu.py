@@ -35,11 +35,23 @@ class Command(BaseCommand):
             chat_bar_text="Menu",
             areas=[
                 models.RichMenuArea(
-                    bounds=models.RichMenuBounds(x=0, y=0, width=834, height=843),
-                    action=models.URIAction(label='with-thai', uri='https://withthai.com')),
+                    bounds=models.RichMenuBounds(x=0, y=0, width=833, height=843),
+                    action=models.URIAction(label='New Booking', uri='https://liff.line.me/1654038916-Q4Bd7BAj')),
                 models.RichMenuArea(
-                    bounds=models.RichMenuBounds(x=834, y=0, width=400, height=843),
-                    action=models.PostbackAction(label='Next Page', data='action=nextpage')),
+                    bounds=models.RichMenuBounds(x=833, y=0, width=834, height=843),
+                    action=models.PostbackAction(label='My Booking', data='ping2', text='ping'), ),
+                models.RichMenuArea(
+                    bounds=models.RichMenuBounds(x=1667, y=0, width=833, height=843),
+                    action=models.PostbackAction(label='My settings', data='ping3', text='ping'), ),
+                models.RichMenuArea(
+                    bounds=models.RichMenuBounds(x=0, y=843, width=833, height=843),
+                    action=models.PostbackAction(label='Promotions', data='ping4', text='ping'), ),
+                models.RichMenuArea(
+                    bounds=models.RichMenuBounds(x=833, y=843, width=834, height=843),
+                    action=models.PostbackAction(label='Price List', data='ping5', text='ping'), ),
+                models.RichMenuArea(
+                    bounds=models.RichMenuBounds(x=1667, y=843, width=833, height=843),
+                    action=models.PostbackAction(label='Course Info', data='ping6', text='ping'), ),
             ]
         )
         rich_menu_id = line_bot_api.create_rich_menu(rich_menu=rich_menu_to_create)
