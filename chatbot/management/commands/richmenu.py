@@ -4,7 +4,7 @@ import linebot
 from django.core.management.base import BaseCommand
 from linebot import models
 
-from golf.models import GolfClub
+from golf import models as golf_models
 
 
 class Command(BaseCommand):
@@ -22,7 +22,9 @@ class Command(BaseCommand):
                             help='Rich menu image')
 
     def handle(self, *args, **options):
-        club = GolfClub.objects.get(slug=options['club'][0])
+        club = golf_models.GolfClub.objects.get(slug=options['club'][0])
+
+        liff_app_request = golf_models.Liff.objects.get(golf_club=club, app_name='request')
 
         line_bot_api = linebot.LineBotApi(club.line_bot_channel_access_token)
 
@@ -42,22 +44,23 @@ class Command(BaseCommand):
             areas=[
                 models.RichMenuArea(
                     bounds=models.RichMenuBounds(x=0, y=0, width=833, height=843),
-                    action=models.URIAction(label='New Booking', uri='https://liff.line.me/1654038916-Q4Bd7BAj')),
+                    action=models.URIAction(label='New Booking',
+                                            uri=f'https://liff.line.me/{liff_app_request.liff_id}')),
                 models.RichMenuArea(
                     bounds=models.RichMenuBounds(x=833, y=0, width=834, height=843),
-                    action=models.MessageAction(label='My Booking', text='booking'), ),
+                    action=models.MessageAction(label='My Booking', text='booking'), ),  # Carousel
                 models.RichMenuArea(
                     bounds=models.RichMenuBounds(x=1667, y=0, width=833, height=843),
-                    action=models.MessageAction(label='My settings', text='settings'), ),
+                    action=models.MessageAction(label='My settings', text='settings'), ),  # LIFF
                 models.RichMenuArea(
                     bounds=models.RichMenuBounds(x=0, y=843, width=833, height=843),
-                    action=models.MessageAction(label='Promotions', text='promotions'), ),
+                    action=models.MessageAction(label='Promotions', text='promotions'), ),  # Carousel
                 models.RichMenuArea(
                     bounds=models.RichMenuBounds(x=833, y=843, width=834, height=843),
-                    action=models.MessageAction(label='Price List', text='price'), ),
+                    action=models.MessageAction(label='Price List', text='price'), ),  # Flex Message
                 models.RichMenuArea(
                     bounds=models.RichMenuBounds(x=1667, y=843, width=833, height=843),
-                    action=models.MessageAction(label='Course Info', text='info'), ),
+                    action=models.MessageAction(label='Course Info', text='info'), ),  # Flex Message
             ]
         )
         rich_menu_id = line_bot_api.create_rich_menu(rich_menu=rich_menu_to_create)
