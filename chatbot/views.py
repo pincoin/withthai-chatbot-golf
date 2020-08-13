@@ -41,19 +41,22 @@ class CallbackView(generic.View):
         def handle_message(event):
             text = event.message.text.strip()
 
-            if text == 'profile':
-                if isinstance(event.source, models.SourceUser):
-                    profile = self.line_bot_api.get_profile(event.source.user_id)
-                    self.line_bot_api.reply_message(
-                        event.reply_token, [
-                            models.TextSendMessage(text=f'Display name: {profile.display_name}'),
-                            models.TextSendMessage(text=f'Status message: {str(profile.status_message)}')
-                        ]
-                    )
-                else:
-                    self.line_bot_api.reply_message(
-                        event.reply_token,
-                        models.TextSendMessage(text="Bot can't use profile API without user ID"))
+            if text == 'booking':
+                self.line_bot_api.reply_message(
+                    event.reply_token,
+                    models.TextSendMessage(text='booking list - carousel message'))
+            elif text == 'promotions':
+                self.line_bot_api.reply_message(
+                    event.reply_token,
+                    models.TextSendMessage(text='promotions - carousel message'))
+            elif text == 'price':
+                self.line_bot_api.reply_message(
+                    event.reply_token,
+                    models.TextSendMessage(text='price list - flex or template message'))
+            elif text == 'info':
+                self.line_bot_api.reply_message(
+                    event.reply_token,
+                    models.TextSendMessage(text='info - flex or template message'))
             elif text == 'quota':
                 quota = self.line_bot_api.get_message_quota()
                 self.line_bot_api.reply_message(
