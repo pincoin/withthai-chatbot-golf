@@ -136,7 +136,7 @@ class CallbackView(generic.View):
                     title='My buttons sample', text='Hello, my buttons', actions=[
                         models.URIAction(label='Go to line.me', uri='https://line.me'),
                         models.PostbackAction(label='ping', data='ping'),
-                        models.PostbackAction(label='ping with text', data='ping', text='ping'),
+                        models.PostbackAction(label='ping with text', data='ping', display_text='ping'),
                         models.MessageAction(label='Translate Rice', text='米')
                     ])
                 template_message = models.TemplateSendMessage(
@@ -149,7 +149,7 @@ class CallbackView(generic.View):
                         models.PostbackAction(label='ping', data='ping')
                     ]),
                     models.CarouselColumn(text='hoge2', title='fuga2', actions=[
-                        models.PostbackAction(label='ping with text', data='ping', text='ping'),
+                        models.PostbackAction(label='ping with text', data='ping', display_text='ping'),
                         models.MessageAction(label='Translate Rice', text='米')
                     ]),
                 ])
