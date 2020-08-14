@@ -55,8 +55,14 @@ class CallbackView(generic.View):
                     models.TextSendMessage(text='price list - flex or template message'))
             elif text == 'info':
                 self.line_bot_api.reply_message(
-                    event.reply_token,
-                    models.TextSendMessage(text='info - flex or template message'))
+                    event.reply_token, [
+                        models.TextSendMessage(text='info - flex or template message'),
+                        models.LocationSendMessage(title=club.title_english,
+                                                   address=club.address,
+                                                   latitude=float(club.latitude),
+                                                   longitude=float(club.longitude)),
+                    ])
+
             elif text == 'quota':
                 quota = self.line_bot_api.get_message_quota()
                 self.line_bot_api.reply_message(
