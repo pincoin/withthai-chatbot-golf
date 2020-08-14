@@ -56,7 +56,18 @@ class CallbackView(generic.View):
             elif text == 'info':
                 self.line_bot_api.reply_message(
                     event.reply_token, [
-                        models.TextSendMessage(text='info - flex or template message'),
+                        models.FlexSendMessage(
+                            alt_text='hello',
+                            contents={
+                                'type': 'bubble',
+                                'direction': 'ltr',
+                                'hero': {
+                                    'type': 'image',
+                                    'url': 'https://scdn.line-apps.com/n/channel_devcenter/img/fx/01_1_cafe.png',
+                                    'size': 'full',
+                                    'aspectRatio': '20:13',
+                                    'aspectMode': 'cover',
+                                    'action': {'type': 'uri', 'uri': 'https://www.withthai.com', 'label': 'label'}}}),
                         models.LocationSendMessage(title=club.title_english,
                                                    address=club.address,
                                                    latitude=float(club.latitude),
