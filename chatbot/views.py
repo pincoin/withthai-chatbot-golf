@@ -49,6 +49,10 @@ class CallbackView(generic.View):
                 self.line_bot_api.reply_message(
                     event.reply_token,
                     models.TextSendMessage(text='promotions - carousel message'))
+            elif text == 'deals':
+                self.line_bot_api.reply_message(
+                    event.reply_token,
+                    models.TextSendMessage(text='deals - carousel message'))
             elif text == 'price':
                 self.line_bot_api.reply_message(
                     event.reply_token,
