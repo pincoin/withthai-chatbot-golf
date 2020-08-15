@@ -44,7 +44,13 @@ class CallbackView(generic.View):
             if text == 'booking':
                 self.line_bot_api.reply_message(
                     event.reply_token,
-                    models.TextSendMessage(text='booking list - carousel message'))
+                    models.TextSendMessage(text='booking list - carousel message',
+                                           quick_reply=models.QuickReply(
+                                               items=[
+                                                   models.QuickReplyButton(
+                                                       action=models.MessageAction(label='New booking',
+                                                                                   text='new')),
+                                               ])))
             elif text == 'price':
                 self.line_bot_api.reply_message(
                     event.reply_token,
