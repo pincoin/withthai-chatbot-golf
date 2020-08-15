@@ -3,6 +3,24 @@ from django.contrib import admin
 from . import models
 
 
+class AreaAdmin(admin.ModelAdmin):
+    list_display = ('title_english', 'slug', 'title_thai', 'title_korean', 'position')
+    prepopulated_fields = {'slug': ('title_english',)}
+    ordering = ['-position']
+
+
+class ProvinceAdmin(admin.ModelAdmin):
+    list_display = ('title_english', 'slug', 'title_thai', 'title_korean', 'position')
+    prepopulated_fields = {'slug': ('title_english',)}
+    ordering = ['-position']
+
+
+class DistrictAdmin(admin.ModelAdmin):
+    list_display = ('title_english', 'slug', 'title_thai', 'title_korean', 'position')
+    prepopulated_fields = {'slug': ('title_english',)}
+    ordering = ['-position']
+
+
 class GolfClubAdmin(admin.ModelAdmin):
     list_display = ('title_english', 'slug', 'phone', 'email')
     prepopulated_fields = {'slug': ('title_english',)}
@@ -23,6 +41,9 @@ class LiffAdmin(admin.ModelAdmin):
     ordering = ['-created']
 
 
+admin.site.register(models.Area, AreaAdmin)
+admin.site.register(models.Province, ProvinceAdmin)
+admin.site.register(models.District, DistrictAdmin)
 admin.site.register(models.GolfClub, GolfClubAdmin)
 admin.site.register(models.LineUser, LineUserAdmin)
 admin.site.register(models.Liff, LiffAdmin)
