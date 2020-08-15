@@ -4,6 +4,137 @@ from model_utils import Choices
 from model_utils import models as model_utils_models
 
 
+class Area(model_utils_models.TimeStampedModel):
+    title_english = models.CharField(
+        verbose_name=_('Area english name'),
+        max_length=255,
+    )
+
+    title_thai = models.CharField(
+        verbose_name=_('Area Thai name'),
+        max_length=255,
+    )
+
+    title_korean = models.CharField(
+        verbose_name=_('Area Korean name'),
+        max_length=255,
+    )
+
+    slug = models.SlugField(
+        verbose_name=_('Slug'),
+        help_text=_('A short label containing only letters, numbers, underscores or hyphens for URL'),
+        max_length=255,
+        db_index=True,
+        unique=True,
+        allow_unicode=True,
+    )
+
+    position = models.IntegerField(
+        verbose_name=_('Position'),
+        default=0,
+        db_index=True,
+    )
+
+    class Meta:
+        verbose_name = _('Area')
+        verbose_name_plural = _('Areas')
+
+    def __str__(self):
+        return f'{self.title_english}'
+
+
+class Province(model_utils_models.TimeStampedModel):
+    title_english = models.CharField(
+        verbose_name=_('Province English name'),
+        max_length=255,
+    )
+
+    title_thai = models.CharField(
+        verbose_name=_('Province Thai name'),
+        max_length=255,
+    )
+
+    title_korean = models.CharField(
+        verbose_name=_('Province Korean name'),
+        max_length=255,
+    )
+
+    slug = models.SlugField(
+        verbose_name=_('Slug'),
+        help_text=_('A short label containing only letters, numbers, underscores or hyphens for URL'),
+        max_length=255,
+        db_index=True,
+        unique=True,
+        allow_unicode=True,
+    )
+
+    area = models.ForeignKey(
+        'golf.Area',
+        verbose_name=_('Location area'),
+        db_index=True,
+        on_delete=models.CASCADE,
+    )
+
+    position = models.IntegerField(
+        verbose_name=_('Position'),
+        default=0,
+        db_index=True,
+    )
+
+    class Meta:
+        verbose_name = _('Province')
+        verbose_name_plural = _('Provinces')
+
+    def __str__(self):
+        return f'{self.title_english}'
+
+
+class District(model_utils_models.TimeStampedModel):
+    title_english = models.CharField(
+        verbose_name=_('District English name'),
+        max_length=255,
+    )
+
+    title_thai = models.CharField(
+        verbose_name=_('District Thai name'),
+        max_length=255,
+    )
+
+    title_korean = models.CharField(
+        verbose_name=_('District Korean name'),
+        max_length=255,
+    )
+
+    slug = models.SlugField(
+        verbose_name=_('Slug'),
+        help_text=_('A short label containing only letters, numbers, underscores or hyphens for URL'),
+        max_length=255,
+        db_index=True,
+        unique=True,
+        allow_unicode=True,
+    )
+
+    province = models.ForeignKey(
+        'golf.Province',
+        verbose_name=_('Province'),
+        db_index=True,
+        on_delete=models.CASCADE,
+    )
+
+    position = models.IntegerField(
+        verbose_name=_('Position'),
+        default=0,
+        db_index=True,
+    )
+
+    class Meta:
+        verbose_name = _('District')
+        verbose_name_plural = _('Districts')
+
+    def __str__(self):
+        return f'{self.title_english}'
+
+
 class GolfClub(model_utils_models.TimeStampedModel):
     title_english = models.CharField(
         verbose_name=_('Golf club English name'),
