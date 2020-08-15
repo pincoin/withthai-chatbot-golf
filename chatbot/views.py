@@ -125,6 +125,9 @@ class CallbackView(generic.View):
                                                                                     text='Hotels')),
                                 models.QuickReplyButton(action=models.MessageAction(label='Restaurants',
                                                                                     text='Restaurants')),
+                                models.QuickReplyButton(action=models.PostbackAction(label='My Booking label',
+                                                                                     display_text='My Booking text',
+                                                                                     data='booking')),
                             ])))
 
         @self.handler.add(models.PostbackEvent)
