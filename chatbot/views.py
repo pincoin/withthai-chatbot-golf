@@ -39,7 +39,7 @@ class CallbackView(generic.View):
 
         @self.handler.add(models.MessageEvent, message=models.TextMessage)
         def handle_message(event):
-            text = event.message.text.strip()
+            text = event.message.text.strip().lower()
 
             if text == 'booking':
                 self.line_bot_api.reply_message(
@@ -82,30 +82,6 @@ class CallbackView(generic.View):
                                                    longitude=float(club.longitude))
                     ]
                 )
-            elif text == 'help':
-                self.line_bot_api.reply_message(
-                    event.reply_token,
-                    models.TextSendMessage(
-                        text='Quick help commands',
-                        quick_reply=models.QuickReply(
-                            items=[
-                                models.QuickReplyButton(action=models.MessageAction(label='booking',
-                                                                                    text='booking')),
-                                models.QuickReplyButton(action=models.MessageAction(label='promotions',
-                                                                                    text='promotions')),
-                                models.QuickReplyButton(action=models.MessageAction(label='coupons',
-                                                                                    text='coupons')),
-                                models.QuickReplyButton(action=models.MessageAction(label='deals',
-                                                                                    text='deals')),
-                                models.QuickReplyButton(action=models.MessageAction(label='hotels',
-                                                                                    text='hotels')),
-                                models.QuickReplyButton(action=models.MessageAction(label='restaurants',
-                                                                                    text='restaurants')),
-                                models.QuickReplyButton(action=models.MessageAction(label='caddies',
-                                                                                    text='caddies')),
-                                models.QuickReplyButton(action=models.MessageAction(label='info',
-                                                                                    text='info')),
-                            ])))
             elif text == 'info':
                 self.line_bot_api.reply_message(
                     event.reply_token, [
@@ -126,116 +102,32 @@ class CallbackView(generic.View):
                                                    latitude=float(club.latitude),
                                                    longitude=float(club.longitude)),
                     ])
-            elif text == 'push':
-                self.line_bot_api.push_message(
-                    event.source.user_id, [
-                        models.TextSendMessage(text='PUSH!'),
-                    ]
-                )
-            elif text == 'multicast':
-                self.line_bot_api.multicast(
-                    [event.source.user_id], [
-                        models.TextSendMessage(text='THIS IS A MULTICAST MESSAGE'),
-                    ]
-                )
-            elif text == 'broadcast':
-                self.line_bot_api.broadcast(
-                    [
-                        models.TextSendMessage(text='THIS IS A BROADCAST MESSAGE'),
-                    ]
-                )
-            elif text.startswith('broadcast '):  # broadcast 20190505
-                date = text.split(' ')[1]
-                print('Getting broadcast result: ' + date)
-                result = self.line_bot_api.get_message_delivery_broadcast(date)
-                self.line_bot_api.reply_message(
-                    event.reply_token, [
-                        models.TextSendMessage(text=f'Number of sent broadcast messages: {date}'),
-                        models.TextSendMessage(text=f'status: {str(result.status)}'),
-                        models.TextSendMessage(text=f'success: {str(result.success)}'),
-                    ]
-                )
-            elif text == 'bye':
-                if isinstance(event.source, models.SourceGroup):
-                    self.line_bot_api.reply_message(
-                        event.reply_token, models.TextSendMessage(text='Leaving group')
-                    )
-                    self.line_bot_api.leave_group(event.source.group_id)
-                elif isinstance(event.source, models.SourceRoom):
-                    self.line_bot_api.reply_message(
-                        event.reply_token, models.TextSendMessage(text='Leaving group')
-                    )
-                    self.line_bot_api.leave_room(event.source.room_id)
-                else:
-                    self.line_bot_api.reply_message(
-                        event.reply_token,
-                        models.TextSendMessage(text="Bot can't leave from 1:1 chat")
-                    )
-            elif text == 'confirm':
-                confirm_template = models.ConfirmTemplate(text='Do it?', actions=[
-                    models.MessageAction(label='Yes', text='Yes!'),
-                    models.MessageAction(label='No', text='No!'),
-                ])
-                template_message = models.TemplateSendMessage(
-                    alt_text='Confirm alt text', template=confirm_template)
-                self.line_bot_api.reply_message(event.reply_token, template_message)
-            elif text == 'buttons':
-                buttons_template = models.ButtonsTemplate(
-                    title='My buttons sample', text='Hello, my buttons', actions=[
-                        models.URIAction(label='Go to line.me', uri='https://line.me'),
-                        models.PostbackAction(label='ping', data='ping'),
-                        models.PostbackAction(label='ping with text', data='ping', display_text='ping'),
-                        models.MessageAction(label='Translate Rice', text='米')
-                    ])
-                template_message = models.TemplateSendMessage(
-                    alt_text='Buttons alt text', template=buttons_template)
-                self.line_bot_api.reply_message(event.reply_token, template_message)
-            elif text == 'carousel':
-                carousel_template = models.CarouselTemplate(columns=[
-                    models.CarouselColumn(text='hoge1', title='fuga1', actions=[
-                        models.URIAction(label='Go to line.me', uri='https://line.me'),
-                        models.PostbackAction(label='ping', data='ping')
-                    ]),
-                    models.CarouselColumn(text='hoge2', title='fuga2', actions=[
-                        models.PostbackAction(label='ping with text', data='ping', display_text='ping'),
-                        models.MessageAction(label='Translate Rice', text='米')
-                    ]),
-                ])
-                template_message = models.TemplateSendMessage(
-                    alt_text='Carousel alt text', template=carousel_template)
-                self.line_bot_api.reply_message(event.reply_token, template_message)
-            elif text == 'image_carousel':
-                image_carousel_template = models.ImageCarouselTemplate(columns=[
-                    models.ImageCarouselColumn(image_url='https://via.placeholder.com/1024x1024',
-                                               action=models.DatetimePickerAction(label='datetime',
-                                                                                  data='datetime_postback',
-                                                                                  mode='datetime')),
-                    models.ImageCarouselColumn(image_url='https://via.placeholder.com/1024x1024',
-                                               action=models.DatetimePickerAction(label='date',
-                                                                                  data='date_postback',
-                                                                                  mode='date'))
-                ])
-                template_message = models.TemplateSendMessage(
-                    alt_text='ImageCarousel alt text', template=image_carousel_template)
-                self.line_bot_api.reply_message(event.reply_token, template_message)
-            elif text == 'link_token' and isinstance(event.source, models.SourceUser):
-                link_token_response = self.line_bot_api.issue_link_token(event.source.user_id)
-                self.line_bot_api.reply_message(
-                    event.reply_token, [
-                        models.TextSendMessage(text=f'link_token: {link_token_response.link_token}')
-                    ]
-                )
             else:
-                try:
-                    self.line_bot_api.reply_message(
-                        event.reply_token,
-                        models.TextSendMessage(text=text)
-                    )
-                except linebot.exceptions.LineBotApiError as e:
-                    print(e.status_code)
-                    print(e.request_id)
-                    print(e.error.message)
-                    print(e.error.details)
+                self.line_bot_api.reply_message(
+                    event.reply_token,
+                    models.TextSendMessage(
+                        text='Quick help commands',
+                        quick_reply=models.QuickReply(
+                            items=[
+                                models.QuickReplyButton(action=models.MessageAction(label='booking',
+                                                                                    text='booking')),
+                                models.QuickReplyButton(action=models.MessageAction(label='price',
+                                                                                    text='price')),
+                                models.QuickReplyButton(action=models.MessageAction(label='promotions',
+                                                                                    text='promotions')),
+                                models.QuickReplyButton(action=models.MessageAction(label='coupons',
+                                                                                    text='coupons')),
+                                models.QuickReplyButton(action=models.MessageAction(label='deals',
+                                                                                    text='deals')),
+                                models.QuickReplyButton(action=models.MessageAction(label='hotels',
+                                                                                    text='hotels')),
+                                models.QuickReplyButton(action=models.MessageAction(label='restaurants',
+                                                                                    text='restaurants')),
+                                models.QuickReplyButton(action=models.MessageAction(label='caddies',
+                                                                                    text='caddies')),
+                                models.QuickReplyButton(action=models.MessageAction(label='info',
+                                                                                    text='info')),
+                            ])))
 
         @self.handler.add(models.PostbackEvent)
         def handle_post_back(event):
