@@ -119,14 +119,14 @@ class CallbackView(generic.View):
                                                                                     text='coupons')),
                                 models.QuickReplyButton(action=models.MessageAction(label='deals',
                                                                                     text='deals')),
-                                models.QuickReplyButton(action=models.MessageAction(label='hotels',
-                                                                                    text='hotels')),
-                                models.QuickReplyButton(action=models.MessageAction(label='restaurants',
-                                                                                    text='restaurants')),
                                 models.QuickReplyButton(action=models.MessageAction(label='caddies',
                                                                                     text='caddies')),
                                 models.QuickReplyButton(action=models.MessageAction(label='info',
                                                                                     text='info')),
+                                models.QuickReplyButton(action=models.MessageAction(label='hotels',
+                                                                                    text='hotels')),
+                                models.QuickReplyButton(action=models.MessageAction(label='restaurants',
+                                                                                    text='restaurants')),
                             ])))
 
         @self.handler.add(models.PostbackEvent)
