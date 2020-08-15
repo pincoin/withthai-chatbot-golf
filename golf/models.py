@@ -206,6 +206,13 @@ class GolfClub(model_utils_models.TimeStampedModel):
         null=True,
     )
 
+    district = models.ForeignKey(
+        'golf.District',
+        verbose_name=_('District'),
+        db_index=True,
+        on_delete=models.CASCADE,
+    )
+
     address = models.CharField(
         verbose_name=_('Golf club address'),
         max_length=255,
