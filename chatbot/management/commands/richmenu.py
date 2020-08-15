@@ -44,23 +44,22 @@ class Command(BaseCommand):
             areas=[
                 models.RichMenuArea(
                     bounds=models.RichMenuBounds(x=0, y=0, width=833, height=843),
-                    action=models.URIAction(label='New Booking',
-                                            uri=f'https://liff.line.me/{liff_app_request.liff_id}')),
+                    action=models.MessageAction(label='Booking', text='Booking'), ),
                 models.RichMenuArea(
                     bounds=models.RichMenuBounds(x=833, y=0, width=834, height=843),
-                    action=models.MessageAction(label='My Booking', text='booking'), ),
+                    action=models.MessageAction(label='Price List', text='Price'), ),
                 models.RichMenuArea(
                     bounds=models.RichMenuBounds(x=1667, y=0, width=833, height=843),
-                    action=models.MessageAction(label='My settings', text='settings'), ),  # LIFF
+                    action=models.MessageAction(label='Promotions', text='Promotions'), ),
                 models.RichMenuArea(
                     bounds=models.RichMenuBounds(x=0, y=843, width=833, height=843),
-                    action=models.MessageAction(label='Promotions', text='promotions'), ),
+                    action=models.MessageAction(label='Course', text='Course'), ),
                 models.RichMenuArea(
                     bounds=models.RichMenuBounds(x=833, y=843, width=834, height=843),
-                    action=models.MessageAction(label='Price List', text='price'), ),
+                    action=models.MessageAction(label='Settings', text='Settings'), ),
                 models.RichMenuArea(
                     bounds=models.RichMenuBounds(x=1667, y=843, width=833, height=843),
-                    action=models.MessageAction(label='Course Info', text='info'), ),
+                    action=models.MessageAction(label='Help', text='help'), ),
             ]
         )
         rich_menu_id = line_bot_api.create_rich_menu(rich_menu=rich_menu_to_create)

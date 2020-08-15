@@ -53,6 +53,15 @@ class CallbackView(generic.View):
                 self.line_bot_api.reply_message(
                     event.reply_token,
                     models.TextSendMessage(text='promotions - carousel message'))
+            elif text == 'course':
+                self.line_bot_api.reply_message(
+                    event.reply_token,
+                    models.TextSendMessage(text='course - carousel message'))
+            elif text == 'settings':
+                self.line_bot_api.reply_message(
+                    event.reply_token,
+                    models.TextSendMessage(text='settings - carousel message'))
+
             elif text == 'coupons':
                 self.line_bot_api.reply_message(
                     event.reply_token,
@@ -125,9 +134,9 @@ class CallbackView(generic.View):
                                                                                     text='Hotels')),
                                 models.QuickReplyButton(action=models.MessageAction(label='Restaurants',
                                                                                     text='Restaurants')),
-                                models.QuickReplyButton(action=models.PostbackAction(label='My Booking label',
-                                                                                     display_text='My Booking text',
-                                                                                     data='booking')),
+                                models.QuickReplyButton(action=models.PostbackAction(label='표시내용',
+                                                                                     display_text='보내는내용',
+                                                                                     data='명령어')),
                             ])))
 
         @self.handler.add(models.PostbackEvent)
