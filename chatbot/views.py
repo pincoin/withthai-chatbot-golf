@@ -45,6 +45,10 @@ class CallbackView(generic.View):
                 self.line_bot_api.reply_message(
                     event.reply_token,
                     models.TextSendMessage(text='booking list - carousel message'))
+            elif text == 'price':
+                self.line_bot_api.reply_message(
+                    event.reply_token,
+                    models.TextSendMessage(text='price list - flex or template message'))
             elif text == 'promotions':
                 self.line_bot_api.reply_message(
                     event.reply_token,
@@ -57,6 +61,27 @@ class CallbackView(generic.View):
                 self.line_bot_api.reply_message(
                     event.reply_token,
                     models.TextSendMessage(text='deals - carousel message'))
+            elif text == 'hotels':
+                self.line_bot_api.reply_message(
+                    event.reply_token,
+                    models.TextSendMessage(text='hotels - carousel message'))
+            elif text == 'restaurants':
+                self.line_bot_api.reply_message(
+                    event.reply_token,
+                    models.TextSendMessage(text='restaurants - carousel message'))
+            elif text == 'caddies':
+                self.line_bot_api.reply_message(
+                    event.reply_token,
+                    models.TextSendMessage(text='caddies - carousel message'))
+            elif text == 'location':
+                self.line_bot_api.reply_message(
+                    event.reply_token, [
+                        models.LocationSendMessage(title=club.title_english,
+                                                   address=club.address,
+                                                   latitude=float(club.latitude),
+                                                   longitude=float(club.longitude))
+                    ]
+                )
             elif text == 'help':
                 self.line_bot_api.reply_message(
                     event.reply_token,
@@ -81,10 +106,6 @@ class CallbackView(generic.View):
                                 models.QuickReplyButton(action=models.MessageAction(label='info',
                                                                                     text='info')),
                             ])))
-            elif text == 'price':
-                self.line_bot_api.reply_message(
-                    event.reply_token,
-                    models.TextSendMessage(text='price list - flex or template message'))
             elif text == 'info':
                 self.line_bot_api.reply_message(
                     event.reply_token, [
@@ -105,35 +126,10 @@ class CallbackView(generic.View):
                                                    latitude=float(club.latitude),
                                                    longitude=float(club.longitude)),
                     ])
-
-            elif text == 'quota':
-                quota = self.line_bot_api.get_message_quota()
-                self.line_bot_api.reply_message(
-                    event.reply_token, [
-                        models.TextSendMessage(text=f'type: {quota.type}'),
-                        models.TextSendMessage(text=f'value: {str(quota.value)}')
-                    ]
-                )
-            elif text == 'quota_consumption':
-                quota_consumption = self.line_bot_api.get_message_quota_consumption()
-                self.line_bot_api.reply_message(
-                    event.reply_token, [
-                        models.TextSendMessage(text=f'total usage: {str(quota_consumption.total_usage)}'),
-                    ]
-                )
             elif text == 'push':
                 self.line_bot_api.push_message(
                     event.source.user_id, [
                         models.TextSendMessage(text='PUSH!'),
-                    ]
-                )
-            elif text == 'location':
-                self.line_bot_api.reply_message(
-                    event.reply_token, [
-                        models.LocationSendMessage(title=club.title_english,
-                                                   address=club.address,
-                                                   latitude=float(club.latitude),
-                                                   longitude=float(club.longitude))
                     ]
                 )
             elif text == 'multicast':
@@ -222,34 +218,6 @@ class CallbackView(generic.View):
                 template_message = models.TemplateSendMessage(
                     alt_text='ImageCarousel alt text', template=image_carousel_template)
                 self.line_bot_api.reply_message(event.reply_token, template_message)
-            elif text == 'quick_reply':
-                self.line_bot_api.reply_message(
-                    event.reply_token,
-                    models.TextSendMessage(
-                        text='Quick reply',
-                        quick_reply=models.QuickReply(
-                            items=[
-                                models.QuickReplyButton(
-                                    action=models.PostbackAction(label="label1", data="action=buy&item=111")
-                                ),
-                                models.QuickReplyButton(
-                                    action=models.MessageAction(label="label2", text="text2")
-                                ),
-                                models.QuickReplyButton(
-                                    action=models.DatetimePickerAction(label="label3",
-                                                                       data="data3",
-                                                                       mode="date")
-                                ),
-                                models.QuickReplyButton(
-                                    action=models.CameraAction(label="label4")
-                                ),
-                                models.QuickReplyButton(
-                                    action=models.CameraRollAction(label="label5")
-                                ),
-                                models.QuickReplyButton(
-                                    action=models.LocationAction(label="label6")
-                                ),
-                            ])))
             elif text == 'link_token' and isinstance(event.source, models.SourceUser):
                 link_token_response = self.line_bot_api.issue_link_token(event.source.user_id)
                 self.line_bot_api.reply_message(
