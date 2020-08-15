@@ -105,7 +105,7 @@ class CallbackView(generic.View):
                         text='Quick help commands',
                         quick_reply=models.QuickReply(
                             items=[
-                                models.QuickReplyButton(action=models.MessageAction(label='Booking',
+                                models.QuickReplyButton(action=models.MessageAction(label='My Booking',
                                                                                     text='Booking')),
                                 models.QuickReplyButton(action=models.MessageAction(label='Price',
                                                                                     text='Price')),
