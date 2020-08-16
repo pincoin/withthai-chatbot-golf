@@ -63,7 +63,7 @@ class CallbackView(generic.View):
                                                        action=models.MessageAction(label='New Booking',
                                                                                    text='New')),
                                                    models.QuickReplyButton(
-                                                       action=models.MessageAction(label='Profile',
+                                                       action=models.MessageAction(label='My Profile',
                                                                                    text='Profile')),
                                                ])))
             elif text in ['price', 'rate', 'fee']:
