@@ -22,12 +22,31 @@ class CallbackView(generic.View):
         self.line_bot_api = None
         self.handler = None
 
-        self.buttons_menu_template = models.ButtonsTemplate(
-            title='Menu', text='menu', actions=[
-                models.PostbackAction(label='New booking', data='new'),
-                models.PostbackAction(label='My booking', data='my'),
-                models.PostbackAction(label='Price List', data='price'),
-                models.PostbackAction(label='Promotion', data='promotion'),
+        self.help_quick_replies = models.QuickReply(
+            items=[
+                models.QuickReplyButton(action=models.MessageAction(label='My Booking',
+                                                                    text='Booking')),
+                models.QuickReplyButton(action=models.MessageAction(label='Price',
+                                                                    text='Price')),
+                models.QuickReplyButton(action=models.MessageAction(label='Promotions',
+                                                                    text='Promotions')),
+                models.QuickReplyButton(action=models.MessageAction(label='Coupons',
+                                                                    text='Coupons')),
+                models.QuickReplyButton(action=models.MessageAction(label='Hot Deals',
+                                                                    text='Deals')),
+                models.QuickReplyButton(action=models.MessageAction(label='Caddies',
+                                                                    text='Caddies')),
+                models.QuickReplyButton(action=models.MessageAction(label='Course Info',
+                                                                    text='Info')),
+                models.QuickReplyButton(action=models.MessageAction(label='Location',
+                                                                    text='Location')),
+                models.QuickReplyButton(action=models.MessageAction(label='Hotels',
+                                                                    text='Hotels')),
+                models.QuickReplyButton(action=models.MessageAction(label='Restaurants',
+                                                                    text='Restaurants')),
+                models.QuickReplyButton(action=models.PostbackAction(label='표시내용',
+                                                                     display_text='보내는내용',
+                                                                     data='명령어')),
             ])
 
     def post(self, request, *args, **kwargs):
@@ -118,32 +137,7 @@ class CallbackView(generic.View):
                     event.reply_token,
                     models.TextSendMessage(
                         text='Touch the button to send a message.',
-                        quick_reply=models.QuickReply(
-                            items=[
-                                models.QuickReplyButton(action=models.MessageAction(label='My Booking',
-                                                                                    text='Booking')),
-                                models.QuickReplyButton(action=models.MessageAction(label='Price',
-                                                                                    text='Price')),
-                                models.QuickReplyButton(action=models.MessageAction(label='Promotions',
-                                                                                    text='Promotions')),
-                                models.QuickReplyButton(action=models.MessageAction(label='Coupons',
-                                                                                    text='Coupons')),
-                                models.QuickReplyButton(action=models.MessageAction(label='Hot Deals',
-                                                                                    text='Deals')),
-                                models.QuickReplyButton(action=models.MessageAction(label='Caddies',
-                                                                                    text='Caddies')),
-                                models.QuickReplyButton(action=models.MessageAction(label='Course Info',
-                                                                                    text='Info')),
-                                models.QuickReplyButton(action=models.MessageAction(label='Location',
-                                                                                    text='Location')),
-                                models.QuickReplyButton(action=models.MessageAction(label='Hotels',
-                                                                                    text='Hotels')),
-                                models.QuickReplyButton(action=models.MessageAction(label='Restaurants',
-                                                                                    text='Restaurants')),
-                                models.QuickReplyButton(action=models.PostbackAction(label='표시내용',
-                                                                                     display_text='보내는내용',
-                                                                                     data='명령어')),
-                            ])))
+                        quick_reply=self.help_quick_replies))
 
         @self.handler.add(models.PostbackEvent)
         def handle_post_back(event):
@@ -168,9 +162,11 @@ class CallbackView(generic.View):
             user.fullname = ''
             user.save()
 
-            template_message = models.TemplateSendMessage(alt_text='Menu', template=self.buttons_menu_template)
-
-            self.line_bot_api.reply_message(event.reply_token, template_message)
+            self.line_bot_api.reply_message(
+                event.reply_token,
+                models.TextSendMessage(
+                    text='Touch the button to send a message.',
+                    quick_reply=self.help_quick_replies))
 
         @self.handler.add(models.UnfollowEvent)
         def handle_unfollow(event):
