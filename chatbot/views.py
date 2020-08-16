@@ -5,6 +5,7 @@ import linebot
 from django.http import (
     HttpResponse, HttpResponseForbidden
 )
+from django.template.defaultfilters import time
 from django.utils.decorators import method_decorator
 from django.views import generic
 from django.views.decorators.csrf import csrf_exempt
@@ -94,7 +95,7 @@ class CallbackView(generic.View):
                 contents['body']['contents'][0]['contents'][1]['text'] = club.phone
                 contents['body']['contents'][1]['contents'][1]['text'] = club.fax
                 contents['body']['contents'][2]['contents'][1]['text'] \
-                    = f'{club.business_hour_start} - {club.business_hour_end}'
+                    = '{} - {}'.format(time(club.business_hour_start, 'H:i'), time(club.business_hour_end, 'H:i'))
 
                 self.line_bot_api.reply_message(
                     event.reply_token, [
