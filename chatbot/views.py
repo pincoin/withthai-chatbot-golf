@@ -89,7 +89,7 @@ class CallbackView(generic.View):
             elif text in ['course', 'club']:
                 contents = json.loads(club.info)
 
-                contents['header']['contents']['text'] = club.title_english
+                contents['header']['contents'][0]['text'] = club.title_english
                 contents['hero']['action']['uri'] = club.website
                 contents['body']['contents'][0]['contents'][1] = club.phone
                 contents['body']['contents'][1]['contents'][1] = club.fax
