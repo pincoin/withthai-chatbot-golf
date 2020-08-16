@@ -60,7 +60,7 @@ class CallbackView(generic.View):
                                            quick_reply=models.QuickReply(
                                                items=[
                                                    models.QuickReplyButton(
-                                                       action=models.MessageAction(label='New booking',
+                                                       action=models.MessageAction(label='New Booking',
                                                                                    text='new')),
                                                ])))
             elif text in ['price', 'rate', 'fee']:
@@ -70,7 +70,7 @@ class CallbackView(generic.View):
                                            quick_reply=models.QuickReply(
                                                items=[
                                                    models.QuickReplyButton(
-                                                       action=models.MessageAction(label='New booking',
+                                                       action=models.MessageAction(label='New Booking',
                                                                                    text='new')),
                                                    models.QuickReplyButton(
                                                        action=models.MessageAction(label='Promotions',
@@ -115,7 +115,7 @@ class CallbackView(generic.View):
                                            quick_reply=models.QuickReply(
                                                items=[
                                                    models.QuickReplyButton(
-                                                       action=models.MessageAction(label='New booking',
+                                                       action=models.MessageAction(label='New Booking',
                                                                                    text='new')),
                                                    models.QuickReplyButton(
                                                        action=models.MessageAction(label='Hot Deals',
@@ -134,7 +134,7 @@ class CallbackView(generic.View):
                                            quick_reply=models.QuickReply(
                                                items=[
                                                    models.QuickReplyButton(
-                                                       action=models.MessageAction(label='New booking',
+                                                       action=models.MessageAction(label='New Booking',
                                                                                    text='new')),
                                                    models.QuickReplyButton(
                                                        action=models.MessageAction(label='Promotions',
@@ -153,7 +153,7 @@ class CallbackView(generic.View):
                                            quick_reply=models.QuickReply(
                                                items=[
                                                    models.QuickReplyButton(
-                                                       action=models.MessageAction(label='New booking',
+                                                       action=models.MessageAction(label='New Booking',
                                                                                    text='new')),
                                                    models.QuickReplyButton(
                                                        action=models.MessageAction(label='Promotions',
