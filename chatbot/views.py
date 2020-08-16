@@ -70,52 +70,26 @@ class CallbackView(generic.View):
                                                        action=models.MessageAction(label='New booking',
                                                                                    text='new')),
                                                ])))
-            elif text == 'price':
+            elif text in ['price', 'rate', 'fee']:
                 self.line_bot_api.reply_message(
                     event.reply_token,
                     models.TextSendMessage(text='price list - flex or template message'))
-            elif text == 'promotions':
+            elif text in ['promotions', 'promotion']:
                 self.line_bot_api.reply_message(
                     event.reply_token,
                     models.TextSendMessage(text='promotions - carousel message'))
-            elif text == 'course':
-                self.line_bot_api.reply_message(
-                    event.reply_token,
-                    models.TextSendMessage(text='course - carousel message'))
-            elif text == 'settings':
-                self.line_bot_api.reply_message(
-                    event.reply_token,
-                    models.TextSendMessage(text='settings - carousel message'))
-
-            elif text == 'coupons':
+            elif text in ['coupons', 'coupon']:
                 self.line_bot_api.reply_message(
                     event.reply_token,
                     models.TextSendMessage(text='coupons - carousel message'))
-            elif text == 'deals':
+            elif text in ['deals', 'deal', 'hot']:
                 self.line_bot_api.reply_message(
                     event.reply_token,
                     models.TextSendMessage(text='deals - carousel message'))
-            elif text == 'hotels':
+            elif text in ['course', 'club']:
                 self.line_bot_api.reply_message(
                     event.reply_token,
-                    models.TextSendMessage(text='hotels - carousel message'))
-            elif text == 'restaurants':
-                self.line_bot_api.reply_message(
-                    event.reply_token,
-                    models.TextSendMessage(text='restaurants - carousel message'))
-            elif text == 'caddies':
-                self.line_bot_api.reply_message(
-                    event.reply_token,
-                    models.TextSendMessage(text='caddies - carousel message'))
-            elif text == 'location':
-                self.line_bot_api.reply_message(
-                    event.reply_token, [
-                        models.LocationSendMessage(title=club.title_english,
-                                                   address=club.address,
-                                                   latitude=float(club.latitude),
-                                                   longitude=float(club.longitude))
-                    ]
-                )
+                    models.TextSendMessage(text='course - carousel message'))
             elif text == 'info':
                 self.line_bot_api.reply_message(
                     event.reply_token, [
@@ -132,6 +106,33 @@ class CallbackView(generic.View):
                                     'aspectMode': 'cover',
                                     'action': {'type': 'uri', 'uri': 'https://www.withthai.com', 'label': 'label'}}}),
                     ])
+            elif text in ['location', 'map']:
+                self.line_bot_api.reply_message(
+                    event.reply_token, [
+                        models.LocationSendMessage(title=club.title_english,
+                                                   address=club.address,
+                                                   latitude=float(club.latitude),
+                                                   longitude=float(club.longitude))])
+            elif text in ['caddies', 'caddie']:
+                self.line_bot_api.reply_message(
+                    event.reply_token,
+                    models.TextSendMessage(text='caddies - carousel message'))
+            elif text == 'layout':
+                self.line_bot_api.reply_message(
+                    event.reply_token,
+                    models.TextSendMessage(text='layout - carousel message'))
+            elif text in ['hotels', 'hotel', 'accommodation', 'accommodations']:
+                self.line_bot_api.reply_message(
+                    event.reply_token,
+                    models.TextSendMessage(text='hotels - carousel message'))
+            elif text in ['restaurants', 'restaurant', 'food']:
+                self.line_bot_api.reply_message(
+                    event.reply_token,
+                    models.TextSendMessage(text='restaurants - carousel message'))
+            elif text in ['settings', 'profile']:
+                self.line_bot_api.reply_message(
+                    event.reply_token,
+                    models.TextSendMessage(text='settings - carousel message'))
             else:
                 self.line_bot_api.reply_message(
                     event.reply_token,
