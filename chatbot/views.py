@@ -84,27 +84,38 @@ class CallbackView(generic.View):
                                                ])))
             elif text in ['course', 'club']:
                 self.line_bot_api.reply_message(
-                    event.reply_token,
-                    models.TextSendMessage(text='course - carousel message',
-                                           quick_reply=models.QuickReply(
-                                               items=[
-                                                   models.QuickReplyButton(
-                                                       action=models.MessageAction(label='Location',
-                                                                                   text='Location')),
-                                                   models.QuickReplyButton(
-                                                       action=models.MessageAction(label='Caddies',
-                                                                                   text='Caddies')),
-                                                   models.QuickReplyButton(
-                                                       action=models.MessageAction(label='Layout',
-                                                                                   text='Layout')),
-                                                   models.QuickReplyButton(
-                                                       action=models.MessageAction(label='Hotels',
-                                                                                   text='Hotels')),
-                                                   models.QuickReplyButton(
-                                                       action=models.MessageAction(label='Restaurants',
-                                                                                   text='Restaurants')),
-                                               ])
-                                           ))
+                    event.reply_token, [
+                        models.FlexSendMessage(
+                            alt_text='hello',
+                            contents={
+                                'type': 'bubble',
+                                'direction': 'ltr',
+                                'hero': {
+                                    'type': 'image',
+                                    'url': 'https://scdn.line-apps.com/n/channel_devcenter/img/fx/01_1_cafe.png',
+                                    'size': 'full',
+                                    'aspectRatio': '20:13',
+                                    'aspectMode': 'cover',
+                                    'action': {'type': 'uri', 'uri': 'https://www.withthai.com', 'label': 'label'}}},
+                            quick_reply=models.QuickReply(
+                                items=[
+                                    models.QuickReplyButton(
+                                        action=models.MessageAction(label='Location',
+                                                                    text='Location')),
+                                    models.QuickReplyButton(
+                                        action=models.MessageAction(label='Caddies',
+                                                                    text='Caddies')),
+                                    models.QuickReplyButton(
+                                        action=models.MessageAction(label='Layout',
+                                                                    text='Layout')),
+                                    models.QuickReplyButton(
+                                        action=models.MessageAction(label='Hotels',
+                                                                    text='Hotels')),
+                                    models.QuickReplyButton(
+                                        action=models.MessageAction(label='Restaurants',
+                                                                    text='Restaurants')),
+                                ]))
+                    ])
             elif text in ['promotions', 'promotion']:
                 self.line_bot_api.reply_message(
                     event.reply_token,
@@ -167,45 +178,120 @@ class CallbackView(generic.View):
                     event.reply_token,
                     models.TextSendMessage(text='settings - carousel message'))
 
-            elif text == 'course':
-                self.line_bot_api.reply_message(
-                    event.reply_token, [
-                        models.FlexSendMessage(
-                            alt_text='hello',
-                            contents={
-                                'type': 'bubble',
-                                'direction': 'ltr',
-                                'hero': {
-                                    'type': 'image',
-                                    'url': 'https://scdn.line-apps.com/n/channel_devcenter/img/fx/01_1_cafe.png',
-                                    'size': 'full',
-                                    'aspectRatio': '20:13',
-                                    'aspectMode': 'cover',
-                                    'action': {'type': 'uri', 'uri': 'https://www.withthai.com', 'label': 'label'}}}),
-                    ])
             elif text in ['location', 'map']:
                 self.line_bot_api.reply_message(
                     event.reply_token, [
                         models.LocationSendMessage(title=club.title_english,
                                                    address=club.address,
                                                    latitude=float(club.latitude),
-                                                   longitude=float(club.longitude))])
+                                                   longitude=float(club.longitude),
+                                                   quick_reply=models.QuickReply(
+                                                       items=[
+                                                           models.QuickReplyButton(
+                                                               action=models.MessageAction(label='Course',
+                                                                                           text='Course')),
+                                                           models.QuickReplyButton(
+                                                               action=models.MessageAction(label='Caddies',
+                                                                                           text='Caddies')),
+                                                           models.QuickReplyButton(
+                                                               action=models.MessageAction(label='Layout',
+                                                                                           text='Layout')),
+                                                           models.QuickReplyButton(
+                                                               action=models.MessageAction(label='Hotels',
+                                                                                           text='Hotels')),
+                                                           models.QuickReplyButton(
+                                                               action=models.MessageAction(label='Restaurants',
+                                                                                           text='Restaurants')),
+                                                       ])
+                                                   )])
             elif text in ['caddies', 'caddie']:
                 self.line_bot_api.reply_message(
                     event.reply_token,
-                    models.TextSendMessage(text='caddies - carousel message'))
+                    models.TextSendMessage(text='caddies - carousel message',
+                                           quick_reply=models.QuickReply(
+                                               items=[
+                                                   models.QuickReplyButton(
+                                                       action=models.MessageAction(label='Course',
+                                                                                   text='Course')),
+                                                   models.QuickReplyButton(
+                                                       action=models.MessageAction(label='Location',
+                                                                                   text='Location')),
+                                                   models.QuickReplyButton(
+                                                       action=models.MessageAction(label='Layout',
+                                                                                   text='Layout')),
+                                                   models.QuickReplyButton(
+                                                       action=models.MessageAction(label='Hotels',
+                                                                                   text='Hotels')),
+                                                   models.QuickReplyButton(
+                                                       action=models.MessageAction(label='Restaurants',
+                                                                                   text='Restaurants')),
+                                               ])))
             elif text == 'layout':
                 self.line_bot_api.reply_message(
                     event.reply_token,
-                    models.TextSendMessage(text='layout - carousel message'))
+                    models.TextSendMessage(text='layout - carousel message',
+                                           quick_reply=models.QuickReply(
+                                               items=[
+                                                   models.QuickReplyButton(
+                                                       action=models.MessageAction(label='Course',
+                                                                                   text='Course')),
+                                                   models.QuickReplyButton(
+                                                       action=models.MessageAction(label='Location',
+                                                                                   text='Location')),
+                                                   models.QuickReplyButton(
+                                                       action=models.MessageAction(label='Caddies',
+                                                                                   text='Caddies')),
+                                                   models.QuickReplyButton(
+                                                       action=models.MessageAction(label='Hotels',
+                                                                                   text='Hotels')),
+                                                   models.QuickReplyButton(
+                                                       action=models.MessageAction(label='Restaurants',
+                                                                                   text='Restaurants')),
+                                               ])))
             elif text in ['hotels', 'hotel', 'accommodation', 'accommodations']:
                 self.line_bot_api.reply_message(
                     event.reply_token,
-                    models.TextSendMessage(text='hotels - carousel message'))
+                    models.TextSendMessage(text='hotels - carousel message',
+                                           quick_reply=models.QuickReply(
+                                               items=[
+                                                   models.QuickReplyButton(
+                                                       action=models.MessageAction(label='Course',
+                                                                                   text='Course')),
+                                                   models.QuickReplyButton(
+                                                       action=models.MessageAction(label='Location',
+                                                                                   text='Location')),
+                                                   models.QuickReplyButton(
+                                                       action=models.MessageAction(label='Caddies',
+                                                                                   text='Caddies')),
+                                                   models.QuickReplyButton(
+                                                       action=models.MessageAction(label='Layout',
+                                                                                   text='Layout')),
+                                                   models.QuickReplyButton(
+                                                       action=models.MessageAction(label='Restaurants',
+                                                                                   text='Restaurants')),
+                                               ])))
             elif text in ['restaurants', 'restaurant', 'food']:
                 self.line_bot_api.reply_message(
                     event.reply_token,
-                    models.TextSendMessage(text='restaurants - carousel message'))
+                    models.TextSendMessage(text='restaurants - carousel message',
+                                           quick_reply=models.QuickReply(
+                                               items=[
+                                                   models.QuickReplyButton(
+                                                       action=models.MessageAction(label='Course',
+                                                                                   text='Course')),
+                                                   models.QuickReplyButton(
+                                                       action=models.MessageAction(label='Location',
+                                                                                   text='Location')),
+                                                   models.QuickReplyButton(
+                                                       action=models.MessageAction(label='Caddies',
+                                                                                   text='Caddies')),
+                                                   models.QuickReplyButton(
+                                                       action=models.MessageAction(label='Layout',
+                                                                                   text='Layout')),
+                                                   models.QuickReplyButton(
+                                                       action=models.MessageAction(label='Hotels',
+                                                                                   text='Hotels')),
+                                               ])))
 
             else:
                 self.line_bot_api.reply_message(
