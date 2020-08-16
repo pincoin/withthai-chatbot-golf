@@ -91,8 +91,8 @@ class CallbackView(generic.View):
 
                 contents['header']['contents'][0]['text'] = club.title_english
                 contents['hero']['action']['uri'] = club.website
-                contents['body']['contents'][0]['contents'][1] = club.phone
-                contents['body']['contents'][1]['contents'][1] = club.fax
+                contents['body']['contents'][0]['contents'][1]['text'] = club.phone
+                contents['body']['contents'][1]['contents'][1]['text'] = club.fax
 
                 self.line_bot_api.reply_message(
                     event.reply_token, [
