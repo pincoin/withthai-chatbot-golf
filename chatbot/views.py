@@ -34,19 +34,6 @@ class CallbackView(generic.View):
                                                                     text='Coupons')),
                 models.QuickReplyButton(action=models.MessageAction(label='Hot Deals',
                                                                     text='Deals')),
-                models.QuickReplyButton(action=models.MessageAction(label='Caddies',
-                                                                    text='Caddies')),
-                models.QuickReplyButton(action=models.MessageAction(label='Course Info',
-                                                                    text='Info')),
-                models.QuickReplyButton(action=models.MessageAction(label='Location',
-                                                                    text='Location')),
-                models.QuickReplyButton(action=models.MessageAction(label='Hotels',
-                                                                    text='Hotels')),
-                models.QuickReplyButton(action=models.MessageAction(label='Restaurants',
-                                                                    text='Restaurants')),
-                models.QuickReplyButton(action=models.PostbackAction(label='표시내용',
-                                                                     display_text='보내는내용',
-                                                                     data='명령어')),
             ])
 
     def post(self, request, *args, **kwargs):

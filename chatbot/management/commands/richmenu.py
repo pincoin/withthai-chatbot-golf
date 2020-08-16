@@ -50,16 +50,16 @@ class Command(BaseCommand):
                     action=models.MessageAction(label='Price List', text='Price'), ),
                 models.RichMenuArea(
                     bounds=models.RichMenuBounds(x=1667, y=0, width=833, height=843),
-                    action=models.MessageAction(label='Promotions', text='Promotions'), ),
-                models.RichMenuArea(
-                    bounds=models.RichMenuBounds(x=0, y=843, width=833, height=843),
                     action=models.MessageAction(label='Course', text='Course'), ),
                 models.RichMenuArea(
+                    bounds=models.RichMenuBounds(x=0, y=843, width=833, height=843),
+                    action=models.MessageAction(label='Promotions', text='Promotions'), ),
+                models.RichMenuArea(
                     bounds=models.RichMenuBounds(x=833, y=843, width=834, height=843),
-                    action=models.MessageAction(label='Settings', text='Settings'), ),
+                    action=models.MessageAction(label='Hot Deals', text='Deals'), ),
                 models.RichMenuArea(
                     bounds=models.RichMenuBounds(x=1667, y=843, width=833, height=843),
-                    action=models.MessageAction(label='Help', text='help'), ),
+                    action=models.MessageAction(label='Settings', text='Settings'), ),
             ]
         )
         rich_menu_id = line_bot_api.create_rich_menu(rich_menu=rich_menu_to_create)
