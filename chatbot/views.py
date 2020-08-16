@@ -87,11 +87,18 @@ class CallbackView(generic.View):
                                                                                    text='Coupons')),
                                                ])))
             elif text in ['course', 'club']:
+                contents = json.loads(club.info)
+
+                contents['header']['contents']['text'] = club.title_english
+                contents['hero']['action']['uri'] = club.website
+                contents['body']['contents'][0]['contents'][1] = club.phone
+                contents['body']['contents'][1]['contents'][1] = club.fax
+
                 self.line_bot_api.reply_message(
                     event.reply_token, [
                         models.FlexSendMessage(
                             alt_text=club.title_english,
-                            contents=json.loads(club.info),
+                            contents=contents,
                             quick_reply=models.QuickReply(
                                 items=[
                                     models.QuickReplyButton(
