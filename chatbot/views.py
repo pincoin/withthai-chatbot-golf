@@ -91,7 +91,7 @@ class CallbackView(generic.View):
                     event.reply_token, [
                         models.FlexSendMessage(
                             alt_text=club.title_english,
-                            contents=json.loads(club.course_info),
+                            contents=json.loads(club.info),
                             quick_reply=models.QuickReply(
                                 items=[
                                     models.QuickReplyButton(
