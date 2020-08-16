@@ -66,7 +66,22 @@ class CallbackView(generic.View):
             elif text in ['price', 'rate', 'fee']:
                 self.line_bot_api.reply_message(
                     event.reply_token,
-                    models.TextSendMessage(text='price list - flex or template message'))
+                    models.TextSendMessage(text='price list - flex or template message',
+                                           quick_reply=models.QuickReply(
+                                               items=[
+                                                   models.QuickReplyButton(
+                                                       action=models.MessageAction(label='New booking',
+                                                                                   text='new')),
+                                                   models.QuickReplyButton(
+                                                       action=models.MessageAction(label='Promotions',
+                                                                                   text='Promotions')),
+                                                   models.QuickReplyButton(
+                                                       action=models.MessageAction(label='Hot Deals',
+                                                                                   text='Deals')),
+                                                   models.QuickReplyButton(
+                                                       action=models.MessageAction(label='Coupons',
+                                                                                   text='Coupons')),
+                                               ])))
             elif text in ['course', 'club']:
                 self.line_bot_api.reply_message(
                     event.reply_token,
@@ -74,15 +89,51 @@ class CallbackView(generic.View):
             elif text in ['promotions', 'promotion']:
                 self.line_bot_api.reply_message(
                     event.reply_token,
-                    models.TextSendMessage(text='promotions - carousel message'))
+                    models.TextSendMessage(text='promotions - carousel message',
+                                           quick_reply=models.QuickReply(
+                                               items=[
+                                                   models.QuickReplyButton(
+                                                       action=models.MessageAction(label='New booking',
+                                                                                   text='new')),
+                                                   models.QuickReplyButton(
+                                                       action=models.MessageAction(label='Hot Deals',
+                                                                                   text='Deals')),
+                                                   models.QuickReplyButton(
+                                                       action=models.MessageAction(label='Coupons',
+                                                                                   text='Coupons')),
+                                               ])))
             elif text in ['deals', 'deal', 'hot']:
                 self.line_bot_api.reply_message(
                     event.reply_token,
-                    models.TextSendMessage(text='deals - carousel message'))
+                    models.TextSendMessage(text='deals - carousel message',
+                                           quick_reply=models.QuickReply(
+                                               items=[
+                                                   models.QuickReplyButton(
+                                                       action=models.MessageAction(label='New booking',
+                                                                                   text='new')),
+                                                   models.QuickReplyButton(
+                                                       action=models.MessageAction(label='Promotions',
+                                                                                   text='Promotions')),
+                                                   models.QuickReplyButton(
+                                                       action=models.MessageAction(label='Coupons',
+                                                                                   text='Coupons')),
+                                               ])))
             elif text in ['coupons', 'coupon']:
                 self.line_bot_api.reply_message(
                     event.reply_token,
-                    models.TextSendMessage(text='coupons - carousel message'))
+                    models.TextSendMessage(text='coupons - carousel message',
+                                           quick_reply=models.QuickReply(
+                                               items=[
+                                                   models.QuickReplyButton(
+                                                       action=models.MessageAction(label='New booking',
+                                                                                   text='new')),
+                                                   models.QuickReplyButton(
+                                                       action=models.MessageAction(label='Promotions',
+                                                                                   text='Promotions')),
+                                                   models.QuickReplyButton(
+                                                       action=models.MessageAction(label='Hot Deals',
+                                                                                   text='Deals')),
+                                               ])))
             elif text in ['settings', 'profile']:
                 self.line_bot_api.reply_message(
                     event.reply_token,
