@@ -93,6 +93,8 @@ class CallbackView(generic.View):
                 contents['hero']['action']['uri'] = club.website
                 contents['body']['contents'][0]['contents'][1]['text'] = club.phone
                 contents['body']['contents'][1]['contents'][1]['text'] = club.fax
+                contents['body']['contents'][2]['contents'][1]['text'] \
+                    = f'{club.business_hour_start} - {club.business_hour_end}'
 
                 self.line_bot_api.reply_message(
                     event.reply_token, [
