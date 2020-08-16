@@ -34,6 +34,8 @@ class CallbackView(generic.View):
                                                                     text='Coupons')),
                 models.QuickReplyButton(action=models.MessageAction(label='Hot Deals',
                                                                     text='Deals')),
+                models.QuickReplyButton(action=models.MessageAction(label='Settings',
+                                                                    text='Settings')),
             ])
 
     def post(self, request, *args, **kwargs):
@@ -47,6 +49,10 @@ class CallbackView(generic.View):
         def handle_message(event):
             text = event.message.text.strip().lower()
 
+            '''
+            Rich menu messages
+            booking, price, course, promotions, deals(or coupons), settings
+            '''
             if text == 'booking':
                 self.line_bot_api.reply_message(
                     event.reply_token,
@@ -61,22 +67,27 @@ class CallbackView(generic.View):
                 self.line_bot_api.reply_message(
                     event.reply_token,
                     models.TextSendMessage(text='price list - flex or template message'))
-            elif text in ['promotions', 'promotion']:
-                self.line_bot_api.reply_message(
-                    event.reply_token,
-                    models.TextSendMessage(text='promotions - carousel message'))
-            elif text in ['coupons', 'coupon']:
-                self.line_bot_api.reply_message(
-                    event.reply_token,
-                    models.TextSendMessage(text='coupons - carousel message'))
-            elif text in ['deals', 'deal', 'hot']:
-                self.line_bot_api.reply_message(
-                    event.reply_token,
-                    models.TextSendMessage(text='deals - carousel message'))
             elif text in ['course', 'club']:
                 self.line_bot_api.reply_message(
                     event.reply_token,
                     models.TextSendMessage(text='course - carousel message'))
+            elif text in ['promotions', 'promotion']:
+                self.line_bot_api.reply_message(
+                    event.reply_token,
+                    models.TextSendMessage(text='promotions - carousel message'))
+            elif text in ['deals', 'deal', 'hot']:
+                self.line_bot_api.reply_message(
+                    event.reply_token,
+                    models.TextSendMessage(text='deals - carousel message'))
+            elif text in ['coupons', 'coupon']:
+                self.line_bot_api.reply_message(
+                    event.reply_token,
+                    models.TextSendMessage(text='coupons - carousel message'))
+            elif text in ['settings', 'profile']:
+                self.line_bot_api.reply_message(
+                    event.reply_token,
+                    models.TextSendMessage(text='settings - carousel message'))
+
             elif text == 'info':
                 self.line_bot_api.reply_message(
                     event.reply_token, [
@@ -116,10 +127,7 @@ class CallbackView(generic.View):
                 self.line_bot_api.reply_message(
                     event.reply_token,
                     models.TextSendMessage(text='restaurants - carousel message'))
-            elif text in ['settings', 'profile']:
-                self.line_bot_api.reply_message(
-                    event.reply_token,
-                    models.TextSendMessage(text='settings - carousel message'))
+
             else:
                 self.line_bot_api.reply_message(
                     event.reply_token,
