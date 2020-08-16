@@ -128,7 +128,6 @@ class CallbackView(generic.View):
                                                 {
                                                     "type": "text",
                                                     "text": "Phone",
-                                                    "size": "sm",
                                                     "flex": 1
                                                 },
                                                 {
@@ -146,7 +145,6 @@ class CallbackView(generic.View):
                                                 {
                                                     "type": "text",
                                                     "text": "Fax",
-                                                    "size": "sm",
                                                     "flex": 1
                                                 },
                                                 {
