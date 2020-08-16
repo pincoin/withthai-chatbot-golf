@@ -89,9 +89,6 @@ class CallbackView(generic.View):
                                            quick_reply=models.QuickReply(
                                                items=[
                                                    models.QuickReplyButton(
-                                                       action=models.MessageAction(label='Info',
-                                                                                   text='Info')),
-                                                   models.QuickReplyButton(
                                                        action=models.MessageAction(label='Location',
                                                                                    text='Location')),
                                                    models.QuickReplyButton(
@@ -170,7 +167,7 @@ class CallbackView(generic.View):
                     event.reply_token,
                     models.TextSendMessage(text='settings - carousel message'))
 
-            elif text == 'info':
+            elif text == 'course':
                 self.line_bot_api.reply_message(
                     event.reply_token, [
                         models.FlexSendMessage(
