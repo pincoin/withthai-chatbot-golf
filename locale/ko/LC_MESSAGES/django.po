@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-08-15 16:34+0700\n"
+"POT-Creation-Date: 2020-08-17 01:42+0700\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -123,7 +123,7 @@ msgstr "군 태국 이름"
 msgid "District Korean name"
 msgstr "군 한국어 이름"
 
-#: golf/models.py:131
+#: golf/models.py:131 golf/models.py:225
 msgid "District"
 msgstr "군"
 
@@ -152,86 +152,98 @@ msgid "LINE notify access token"
 msgstr "라인 알리미 액세스 토큰"
 
 #: golf/models.py:182
+msgid "Course info"
+msgstr "골프장 개요"
+
+#: golf/models.py:188
+msgid "Business hour start"
+msgstr "업무시간 시작"
+
+#: golf/models.py:192
+msgid "Business hour end"
+msgstr "업무시간 종료"
+
+#: golf/models.py:196
 msgid "Phone number"
 msgstr "전화번호"
 
-#: golf/models.py:189
+#: golf/models.py:203
 msgid "Email address"
 msgstr "이메일 주소"
 
-#: golf/models.py:196
+#: golf/models.py:210
 msgid "Fax number"
 msgstr "팩스번호"
 
-#: golf/models.py:203
+#: golf/models.py:217
 msgid "Website"
 msgstr "웹사이트"
 
-#: golf/models.py:210
+#: golf/models.py:231
 msgid "Golf club address"
 msgstr "골프장 주소"
 
-#: golf/models.py:217
+#: golf/models.py:238
 msgid "Latitude"
 msgstr "위도"
 
-#: golf/models.py:224
+#: golf/models.py:245
 msgid "Longitude"
 msgstr "경도"
 
-#: golf/models.py:231 golf/models.py:265 golf/models.py:289
+#: golf/models.py:252 golf/models.py:286 golf/models.py:310
 msgid "Golf club"
 msgstr "골프장"
 
-#: golf/models.py:232
+#: golf/models.py:253
 msgid "Golf clubs"
 msgstr "골프장"
 
-#: golf/models.py:240
+#: golf/models.py:261
 msgid "Unfollow"
 msgstr "언팔로우"
 
-#: golf/models.py:241
+#: golf/models.py:262
 msgid "Follow"
 msgstr "팔로우"
 
-#: golf/models.py:245
+#: golf/models.py:266
 msgid "LINE user ID"
 msgstr "라인 아이디"
 
-#: golf/models.py:251
+#: golf/models.py:272
 msgid "LINE display name"
 msgstr "라인 표시 이름"
 
-#: golf/models.py:257
+#: golf/models.py:278
 msgid "Follow status"
 msgstr "팔로우"
 
-#: golf/models.py:271
+#: golf/models.py:292
 msgid "Fullname"
 msgstr "이름"
 
-#: golf/models.py:277
+#: golf/models.py:298
 msgid "LINE user"
 msgstr "라인 사용자"
 
-#: golf/models.py:278
+#: golf/models.py:299
 msgid "LINE users"
 msgstr "라인 사용자"
 
-#: golf/models.py:295
+#: golf/models.py:316
 msgid "LIFF app name"
 msgstr "LIFF 앱 이름"
 
-#: golf/models.py:301
+#: golf/models.py:322
 msgid "LIFF ID"
 msgstr "LIFF ID"
 
-#: golf/models.py:308
+#: golf/models.py:329
 msgid "Endpoint URL"
 msgstr "최종연결 URL"
 
-#: golf/models.py:312 golf/models.py:313 liff/apps.py:7
+#: golf/models.py:333 golf/models.py:334 liff/apps.py:7
 msgid "LIFF"
 msgstr "LIFF"
 

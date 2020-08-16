@@ -184,6 +184,14 @@ class GolfClub(model_utils_models.TimeStampedModel):
         null=True,
     )
 
+    business_hour_start = models.TimeField(
+        verbose_name=_('Business hour start'),
+    )
+
+    business_hour_end = models.TimeField(
+        verbose_name=_('Business hour end'),
+    )
+
     phone = models.CharField(
         verbose_name=_('Phone number'),
         max_length=32,

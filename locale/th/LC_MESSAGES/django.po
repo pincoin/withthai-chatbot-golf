@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-08-15 16:34+0700\n"
+"POT-Creation-Date: 2020-08-17 01:42+0700\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -124,7 +124,7 @@ msgstr ""
 msgid "District Korean name"
 msgstr ""
 
-#: golf/models.py:131
+#: golf/models.py:131 golf/models.py:225
 msgid "District"
 msgstr ""
 
@@ -153,86 +153,98 @@ msgid "LINE notify access token"
 msgstr ""
 
 #: golf/models.py:182
-msgid "Phone number"
+msgid "Course info"
 msgstr ""
 
-#: golf/models.py:189
-msgid "Email address"
+#: golf/models.py:188
+msgid "Business hour start"
+msgstr ""
+
+#: golf/models.py:192
+msgid "Business hour end"
 msgstr ""
 
 #: golf/models.py:196
-msgid "Fax number"
+msgid "Phone number"
 msgstr ""
 
 #: golf/models.py:203
-msgid "Website"
+msgid "Email address"
 msgstr ""
 
 #: golf/models.py:210
-msgid "Golf club address"
+msgid "Fax number"
 msgstr ""
 
 #: golf/models.py:217
+msgid "Website"
+msgstr ""
+
+#: golf/models.py:231
+msgid "Golf club address"
+msgstr ""
+
+#: golf/models.py:238
 msgid "Latitude"
 msgstr ""
 
-#: golf/models.py:224
+#: golf/models.py:245
 msgid "Longitude"
 msgstr ""
 
-#: golf/models.py:231 golf/models.py:265 golf/models.py:289
+#: golf/models.py:252 golf/models.py:286 golf/models.py:310
 msgid "Golf club"
 msgstr ""
 
-#: golf/models.py:232
+#: golf/models.py:253
 msgid "Golf clubs"
 msgstr ""
 
-#: golf/models.py:240
+#: golf/models.py:261
 msgid "Unfollow"
 msgstr ""
 
-#: golf/models.py:241
+#: golf/models.py:262
 msgid "Follow"
 msgstr ""
 
-#: golf/models.py:245
+#: golf/models.py:266
 msgid "LINE user ID"
 msgstr ""
 
-#: golf/models.py:251
+#: golf/models.py:272
 msgid "LINE display name"
 msgstr ""
 
-#: golf/models.py:257
+#: golf/models.py:278
 msgid "Follow status"
 msgstr ""
 
-#: golf/models.py:271
+#: golf/models.py:292
 msgid "Fullname"
 msgstr ""
 
-#: golf/models.py:277
+#: golf/models.py:298
 msgid "LINE user"
 msgstr ""
 
-#: golf/models.py:278
+#: golf/models.py:299
 msgid "LINE users"
 msgstr ""
 
-#: golf/models.py:295
+#: golf/models.py:316
 msgid "LIFF app name"
 msgstr ""
 
-#: golf/models.py:301
+#: golf/models.py:322
 msgid "LIFF ID"
 msgstr ""
 
-#: golf/models.py:308
+#: golf/models.py:329
 msgid "Endpoint URL"
 msgstr ""
 
-#: golf/models.py:312 golf/models.py:313 liff/apps.py:7
+#: golf/models.py:333 golf/models.py:334 liff/apps.py:7
 msgid "LIFF"
 msgstr ""
 
