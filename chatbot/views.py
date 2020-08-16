@@ -85,7 +85,29 @@ class CallbackView(generic.View):
             elif text in ['course', 'club']:
                 self.line_bot_api.reply_message(
                     event.reply_token,
-                    models.TextSendMessage(text='course - carousel message'))
+                    models.TextSendMessage(text='course - carousel message',
+                                           quick_reply=models.QuickReply(
+                                               items=[
+                                                   models.QuickReplyButton(
+                                                       action=models.MessageAction(label='Info',
+                                                                                   text='Info')),
+                                                   models.QuickReplyButton(
+                                                       action=models.MessageAction(label='Location',
+                                                                                   text='Location')),
+                                                   models.QuickReplyButton(
+                                                       action=models.MessageAction(label='Caddies',
+                                                                                   text='Caddies')),
+                                                   models.QuickReplyButton(
+                                                       action=models.MessageAction(label='Layout',
+                                                                                   text='Layout')),
+                                                   models.QuickReplyButton(
+                                                       action=models.MessageAction(label='Hotels',
+                                                                                   text='Hotels')),
+                                                   models.QuickReplyButton(
+                                                       action=models.MessageAction(label='Restaurants',
+                                                                                   text='Restaurants')),
+                                               ])
+                                           ))
             elif text in ['promotions', 'promotion']:
                 self.line_bot_api.reply_message(
                     event.reply_token,
@@ -101,6 +123,9 @@ class CallbackView(generic.View):
                                                    models.QuickReplyButton(
                                                        action=models.MessageAction(label='Coupons',
                                                                                    text='Coupons')),
+                                                   models.QuickReplyButton(
+                                                       action=models.MessageAction(label='Price List',
+                                                                                   text='Price')),
                                                ])))
             elif text in ['deals', 'deal', 'hot']:
                 self.line_bot_api.reply_message(
@@ -117,6 +142,9 @@ class CallbackView(generic.View):
                                                    models.QuickReplyButton(
                                                        action=models.MessageAction(label='Coupons',
                                                                                    text='Coupons')),
+                                                   models.QuickReplyButton(
+                                                       action=models.MessageAction(label='Price List',
+                                                                                   text='Price')),
                                                ])))
             elif text in ['coupons', 'coupon']:
                 self.line_bot_api.reply_message(
@@ -133,6 +161,9 @@ class CallbackView(generic.View):
                                                    models.QuickReplyButton(
                                                        action=models.MessageAction(label='Hot Deals',
                                                                                    text='Deals')),
+                                                   models.QuickReplyButton(
+                                                       action=models.MessageAction(label='Price List',
+                                                                                   text='Price')),
                                                ])))
             elif text in ['settings', 'profile']:
                 self.line_bot_api.reply_message(
