@@ -1,3 +1,4 @@
+import json
 import logging
 
 import linebot
@@ -89,93 +90,8 @@ class CallbackView(generic.View):
                 self.line_bot_api.reply_message(
                     event.reply_token, [
                         models.FlexSendMessage(
-                            alt_text='hello',
-                            contents={
-                                "type": "bubble",
-                                "header": {
-                                    "type": "box",
-                                    "layout": "vertical",
-                                    "contents": [
-                                        {
-                                            "type": "text",
-                                            "text": "SUMMIT WINDMILL GOLF CLUB",
-                                            "weight": "bold",
-                                            "color": "#FFFFFF"
-                                        }
-                                    ],
-                                    "backgroundColor": "#192E5B"
-                                },
-                                "hero": {
-                                    "type": "image",
-                                    "url": "https://storage.googleapis.com/hotels2thailand-storage/pictures/products/01465701-183899-original.jpg",
-                                    "size": "full",
-                                    "aspectMode": "cover",
-                                    "aspectRatio": "2:1",
-                                    "action": {
-                                        "type": "uri",
-                                        "label": "action",
-                                        "uri": "https://www.withthai.com"
-                                    }
-                                },
-                                "body": {
-                                    "type": "box",
-                                    "layout": "vertical",
-                                    "contents": [
-                                        {
-                                            "type": "box",
-                                            "layout": "baseline",
-                                            "contents": [
-                                                {
-                                                    "type": "text",
-                                                    "text": "Phone",
-                                                    "flex": 1
-                                                },
-                                                {
-                                                    "type": "text",
-                                                    "text": "02-123-1234",
-                                                    "wrap": True,
-                                                    "flex": 1
-                                                }
-                                            ]
-                                        },
-                                        {
-                                            "type": "box",
-                                            "layout": "baseline",
-                                            "contents": [
-                                                {
-                                                    "type": "text",
-                                                    "text": "Fax",
-                                                    "flex": 1
-                                                },
-                                                {
-                                                    "type": "text",
-                                                    "text": "02-123-1234",
-                                                    "wrap": True,
-                                                    "flex": 1
-                                                }
-                                            ]
-                                        },
-                                        {
-                                            "type": "box",
-                                            "layout": "baseline",
-                                            "contents": [
-                                                {
-                                                    "type": "text",
-                                                    "text": "Office Hours",
-                                                    "flex": 1,
-                                                    "wrap": True
-                                                },
-                                                {
-                                                    "type": "text",
-                                                    "text": "08:00 - 18:00",
-                                                    "wrap": True,
-                                                    "flex": 1
-                                                }
-                                            ]
-                                        }
-                                    ]
-                                }
-                            },
+                            alt_text=club.title_english,
+                            contents=json.loads(club.course_info),
                             quick_reply=models.QuickReply(
                                 items=[
                                     models.QuickReplyButton(

@@ -178,6 +178,12 @@ class GolfClub(model_utils_models.TimeStampedModel):
         null=True,
     )
 
+    info = models.TextField(
+        verbose_name=_('Course info'),
+        blank=True,
+        null=True,
+    )
+
     phone = models.CharField(
         verbose_name=_('Phone number'),
         max_length=32,
