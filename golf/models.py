@@ -178,7 +178,7 @@ class GolfClub(model_utils_models.TimeStampedModel):
         null=True,
     )
 
-    info = models.TextField(
+    info = models.JSONField(
         verbose_name=_('Course info'),
         blank=True,
         null=True,
