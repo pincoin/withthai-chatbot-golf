@@ -258,7 +258,8 @@ class GolfClub(model_utils_models.TimeStampedModel):
         self.info['hero']['action']['uri'] = self.website
         self.info['body']['contents'][0]['contents'][1]['text'] = self.phone
         self.info['body']['contents'][1]['contents'][1]['text'] = self.fax
-        self.info['body']['contents'][2]['contents'][1]['text'] \
+        self.info['body']['contents'][2]['contents'][1]['text'] = self.email
+        self.info['body']['contents'][3]['contents'][1]['text'] \
             = '{} - {}'.format(time(self.business_hour_start, 'H:i'), time(self.business_hour_end, 'H:i'))
 
         super(GolfClub, self).save(*args, **kwargs)
