@@ -39,6 +39,8 @@ class ScorecardTemplateView(viewmixins.LiffContextMixin, generic.TemplateView):
         context = super(ScorecardTemplateView, self).get_context_data(**kwargs)
 
         club = golf_models.GolfClub.objects.get(slug=self.kwargs['slug'])
+
+        context['title'] = _('Scorecard')
         context['hole'] = range(1, club.scorecard['hole'] + 1)
         context['scorecard'] = club.scorecard
 
