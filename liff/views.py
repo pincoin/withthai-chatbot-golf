@@ -1,6 +1,7 @@
 from django.utils.translation import ugettext_lazy as _
 from django.views import generic
 
+from golf import models as golf_models
 from . import forms
 from . import viewmixins
 
@@ -26,4 +27,19 @@ class BookingCreateFormView(viewmixins.LiffContextMixin, generic.FormView):
     def get_context_data(self, **kwargs):
         context = super(BookingCreateFormView, self).get_context_data(**kwargs)
         context['title'] = _('New Booking')
+        return context
+
+
+class ScorecardTemplateView(viewmixins.LiffContextMixin, generic.TemplateView):
+    app_name = 'scorecard'
+
+    template_name = 'liff/scorecard.html'
+
+    def get_context_data(self, **kwargs):
+        context = super(ScorecardTemplateView, self).get_context_data(**kwargs)
+
+        club = golf_models.GolfClub.objects.get(slug=self.kwargs['slug'])
+        context['hole'] = range(1, club.scorecard['hole'] + 1)
+        context['scorecard'] = club.scorecard
+
         return context

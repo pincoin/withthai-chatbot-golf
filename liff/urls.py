@@ -10,4 +10,7 @@ urlpatterns = [
 
     re_path(r'^(?P<slug>[-\w]+)/request/$',
             views.BookingCreateFormView.as_view(), name='request'),
+
+    re_path(r'^(?P<slug>[-\w]+)/scorecard/$',
+            views.ScorecardTemplateView.as_view(), name='request'),
 ]

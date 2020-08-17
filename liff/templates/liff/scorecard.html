@@ -1,0 +1,48 @@
+{% extends 'liff/base.html' %}
+
+{% load static i18n %}
+
+{% block stylesheet %}
+{{ block.super }}
+<link rel="stylesheet" href="{% static 'css/liff/style.css' %}">
+{% endblock %}}
+
+{% block content %}
+<section class="section px-1 py-0">
+    <table class="table">
+        <thead>
+        <tr>
+            <th>HOLE</th>
+            {% for hole in hole %}
+            <th>{{ hole }}</th>
+            {% endfor %}
+        </tr>
+        </thead>
+        <tbody>
+        {% for tee in scorecard.tee %}
+        <tr>
+            <th>{{ tee.color|upper }}</th>
+            {% for yard in tee.yard %}
+            <td>{{ yard }}</td>
+            {% endfor %}
+        </tr>
+        {% endfor %}
+        <tr>
+            <th>HANDICAP</th>
+            {% for handicap in scorecard.handicap %}
+            <td>{{ handicap }}</td>
+            {% endfor %}
+        </tr>
+        <tr>
+            <th>PAR</th>
+            {% for par in scorecard.par %}
+            <td>{{ par }}</td>
+            {% endfor %}
+        </tr>
+        </tbody>
+        <tfoot>
+
+        </tfoot>
+    </table>
+</section>
+{% endblock %}
