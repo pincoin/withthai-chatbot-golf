@@ -1,4 +1,3 @@
-import json
 import logging
 
 import linebot
@@ -88,20 +87,18 @@ class CallbackView(generic.View):
                                                                                    text='Coupons')),
                                                ])))
             elif text in ['course', 'club']:
-                contents = json.loads(club.info)
-
-                contents['header']['contents'][0]['text'] = club.title_english
-                contents['hero']['action']['uri'] = club.website
-                contents['body']['contents'][0]['contents'][1]['text'] = club.phone
-                contents['body']['contents'][1]['contents'][1]['text'] = club.fax
-                contents['body']['contents'][2]['contents'][1]['text'] \
+                club.info['header']['contents'][0]['text'] = club.title_english
+                club.info['hero']['action']['uri'] = club.website
+                club.info['body']['contents'][0]['contents'][1]['text'] = club.phone
+                club.info['body']['contents'][1]['contents'][1]['text'] = club.fax
+                club.info['body']['contents'][2]['contents'][1]['text'] \
                     = '{} - {}'.format(time(club.business_hour_start, 'H:i'), time(club.business_hour_end, 'H:i'))
 
                 self.line_bot_api.reply_message(
                     event.reply_token, [
                         models.FlexSendMessage(
                             alt_text=club.title_english,
-                            contents=contents,
+                            contents=club.info,
                             quick_reply=models.QuickReply(
                                 items=[
                                     models.QuickReplyButton(
