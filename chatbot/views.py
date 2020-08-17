@@ -4,7 +4,6 @@ import linebot
 from django.http import (
     HttpResponse, HttpResponseForbidden
 )
-from django.template.defaultfilters import time
 from django.utils.decorators import method_decorator
 from django.views import generic
 from django.views.decorators.csrf import csrf_exempt
@@ -87,13 +86,6 @@ class CallbackView(generic.View):
                                                                                    text='Coupons')),
                                                ])))
             elif text in ['course', 'club']:
-                club.info['header']['contents'][0]['text'] = club.title_english
-                club.info['hero']['action']['uri'] = club.website
-                club.info['body']['contents'][0]['contents'][1]['text'] = club.phone
-                club.info['body']['contents'][1]['contents'][1]['text'] = club.fax
-                club.info['body']['contents'][2]['contents'][1]['text'] \
-                    = '{} - {}'.format(time(club.business_hour_start, 'H:i'), time(club.business_hour_end, 'H:i'))
-
                 self.line_bot_api.reply_message(
                     event.reply_token, [
                         models.FlexSendMessage(

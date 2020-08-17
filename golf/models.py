@@ -1,4 +1,5 @@
 from django.db import models
+from django.template.defaultfilters import time
 from django.utils.translation import gettext_lazy as _
 from model_utils import Choices
 from model_utils import models as model_utils_models
@@ -251,6 +252,16 @@ class GolfClub(model_utils_models.TimeStampedModel):
     class Meta:
         verbose_name = _('Golf club')
         verbose_name_plural = _('Golf clubs')
+
+    def save(self, *args, **kwargs):
+        self.info['header']['contents'][0]['text'] = self.title_english
+        self.info['hero']['action']['uri'] = self.website
+        self.info['body']['contents'][0]['contents'][1]['text'] = self.phone
+        self.info['body']['contents'][1]['contents'][1]['text'] = self.fax
+        self.info['body']['contents'][2]['contents'][1]['text'] \
+            = '{} - {}'.format(time(self.business_hour_start, 'H:i'), time(self.business_hour_end, 'H:i'))
+
+        super(GolfClub, self).save(*args, **kwargs)
 
     def __str__(self):
         return f'{self.title_english}'
