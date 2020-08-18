@@ -26,7 +26,7 @@ class CallbackView(generic.View):
             items=[
                 models.QuickReplyButton(action=models.MessageAction(label='My Booking',
                                                                     text='Booking')),
-                models.QuickReplyButton(action=models.MessageAction(label='Price List',
+                models.QuickReplyButton(action=models.MessageAction(label='Price Table',
                                                                     text='Price')),
                 models.QuickReplyButton(action=models.MessageAction(label='Course',
                                                                     text='Course')),
@@ -69,7 +69,7 @@ class CallbackView(generic.View):
             elif text in ['price', 'rate', 'fee']:
                 self.line_bot_api.reply_message(
                     event.reply_token,
-                    models.TextSendMessage(text='price list - flex or template message',
+                    models.TextSendMessage(text='Price Table - flex or template message',
                                            quick_reply=models.QuickReply(
                                                items=[
                                                    models.QuickReplyButton(
@@ -107,7 +107,7 @@ class CallbackView(generic.View):
                                                        action=models.MessageAction(label='Coupons',
                                                                                    text='Coupons')),
                                                    models.QuickReplyButton(
-                                                       action=models.MessageAction(label='Price List',
+                                                       action=models.MessageAction(label='Price Table',
                                                                                    text='Price')),
                                                ])))
             elif text in ['deals', 'deal', 'hot']:
@@ -126,7 +126,7 @@ class CallbackView(generic.View):
                                                        action=models.MessageAction(label='Coupons',
                                                                                    text='Coupons')),
                                                    models.QuickReplyButton(
-                                                       action=models.MessageAction(label='Price List',
+                                                       action=models.MessageAction(label='Price Table',
                                                                                    text='Price')),
                                                ])))
             elif text in ['coupons', 'coupon']:
@@ -145,7 +145,7 @@ class CallbackView(generic.View):
                                                        action=models.MessageAction(label='Hot Deals',
                                                                                    text='Deals')),
                                                    models.QuickReplyButton(
-                                                       action=models.MessageAction(label='Price List',
+                                                       action=models.MessageAction(label='Price Table',
                                                                                    text='Price')),
                                                ])))
             elif text in ['settings', 'profile']:
