@@ -5,11 +5,37 @@
 {% block stylesheet %}
 {{ block.super }}
 <link rel="stylesheet" href="{% static 'css/liff/style.css' %}">
+<style>
+    .blue, .blue strong {
+        color: #ffffff;
+        background-color: #3333ff;
+    }
+
+    .brown, .brown strong {
+        color: #ffffff;
+        background-color: #c68c53;
+    }
+
+    .orange, .orange strong {
+        color: #ffffff;
+        background-color: #ff8533;
+    }
+
+    .red, .red strong {
+        color: #ffffff;
+        background-color: #ff3333;
+    }
+
+    .yellow, .yellow strong {
+        color: #000000;
+        background-color: #ffff33;
+    }
+</style>
 {% endblock %}}
 
 {% block content %}
 <section class="section px-1 py-0">
-    <table class="table">
+    <table class="table is-bordered is-narrow">
         <thead>
         <tr>
             <th>HOLE</th>
@@ -20,21 +46,21 @@
         </thead>
         <tbody>
         {% for tee in scorecard.tee %}
-        <tr>
-            <th>{{ tee.color|upper }}</th>
+        <tr class="{{tee.color}}">
+            <td><strong>{{ tee.color|upper }}</strong></td>
             {% for yard in tee.yard %}
             <td>{{ yard }}</td>
             {% endfor %}
         </tr>
         {% endfor %}
         <tr>
-            <th>HANDICAP</th>
+            <td><strong>HANDICAP</strong></td>
             {% for handicap in scorecard.handicap %}
             <td>{{ handicap }}</td>
             {% endfor %}
         </tr>
         <tr>
-            <th>PAR</th>
+            <td><strong>PAR</strong></td>
             {% for par in scorecard.par %}
             <td>{{ par }}</td>
             {% endfor %}
