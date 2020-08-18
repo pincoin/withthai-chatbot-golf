@@ -94,14 +94,8 @@ class CallbackView(generic.View):
                             quick_reply=models.QuickReply(
                                 items=[
                                     models.QuickReplyButton(
-                                        action=models.MessageAction(label='Location',
-                                                                    text='Location')),
-                                    models.QuickReplyButton(
                                         action=models.MessageAction(label='Caddies',
                                                                     text='Caddies')),
-                                    models.QuickReplyButton(
-                                        action=models.MessageAction(label='Layout',
-                                                                    text='Layout')),
                                     models.QuickReplyButton(
                                         action=models.MessageAction(label='Hotels',
                                                                     text='Hotels')),
@@ -188,9 +182,6 @@ class CallbackView(generic.View):
                                                                action=models.MessageAction(label='Caddies',
                                                                                            text='Caddies')),
                                                            models.QuickReplyButton(
-                                                               action=models.MessageAction(label='Layout',
-                                                                                           text='Layout')),
-                                                           models.QuickReplyButton(
                                                                action=models.MessageAction(label='Hotels',
                                                                                            text='Hotels')),
                                                            models.QuickReplyButton(
@@ -208,12 +199,6 @@ class CallbackView(generic.View):
                                                        action=models.MessageAction(label='Course',
                                                                                    text='Course')),
                                                    models.QuickReplyButton(
-                                                       action=models.MessageAction(label='Location',
-                                                                                   text='Location')),
-                                                   models.QuickReplyButton(
-                                                       action=models.MessageAction(label='Layout',
-                                                                                   text='Layout')),
-                                                   models.QuickReplyButton(
                                                        action=models.MessageAction(label='Hotels',
                                                                                    text='Hotels')),
                                                    models.QuickReplyButton(
@@ -229,9 +214,6 @@ class CallbackView(generic.View):
                                                    models.QuickReplyButton(
                                                        action=models.MessageAction(label='Course',
                                                                                    text='Course')),
-                                                   models.QuickReplyButton(
-                                                       action=models.MessageAction(label='Location',
-                                                                                   text='Location')),
                                                    models.QuickReplyButton(
                                                        action=models.MessageAction(label='Caddies',
                                                                                    text='Caddies')),
@@ -252,14 +234,8 @@ class CallbackView(generic.View):
                                                        action=models.MessageAction(label='Course',
                                                                                    text='Course')),
                                                    models.QuickReplyButton(
-                                                       action=models.MessageAction(label='Location',
-                                                                                   text='Location')),
-                                                   models.QuickReplyButton(
                                                        action=models.MessageAction(label='Caddies',
                                                                                    text='Caddies')),
-                                                   models.QuickReplyButton(
-                                                       action=models.MessageAction(label='Layout',
-                                                                                   text='Layout')),
                                                    models.QuickReplyButton(
                                                        action=models.MessageAction(label='Restaurants',
                                                                                    text='Restaurants')),
@@ -274,14 +250,8 @@ class CallbackView(generic.View):
                                                        action=models.MessageAction(label='Course',
                                                                                    text='Course')),
                                                    models.QuickReplyButton(
-                                                       action=models.MessageAction(label='Location',
-                                                                                   text='Location')),
-                                                   models.QuickReplyButton(
                                                        action=models.MessageAction(label='Caddies',
                                                                                    text='Caddies')),
-                                                   models.QuickReplyButton(
-                                                       action=models.MessageAction(label='Layout',
-                                                                                   text='Layout')),
                                                    models.QuickReplyButton(
                                                        action=models.MessageAction(label='Hotels',
                                                                                    text='Hotels')),
