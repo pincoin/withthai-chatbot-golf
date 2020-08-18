@@ -1,25 +1,30 @@
 /* Scorecard */
-.blue, .blue strong {
+.blue, .blue strong, .blue .fixed-col {
     color: #ffffff;
     background-color: #3333ff;
 }
 
-.brown, .brown strong {
+.white, .white strong, .white .fixed-col {
+    color: #000000;
+    background-color: #ffffff;
+}
+
+.brown, .brown strong, .brown .fixed-col {
     color: #ffffff;
     background-color: #c68c53;
 }
 
-.orange, .orange strong {
+.orange, .orange strong, .orange .fixed-col {
     color: #ffffff;
     background-color: #ff8533;
 }
 
-.red, .red strong {
+.red, .red strong, .red .fixed-col {
     color: #ffffff;
     background-color: #ff3333;
 }
 
-.yellow, .yellow strong {
+.yellow, .yellow strong, .yellow .fixed-col {
     color: #000000;
     background-color: #ffff33;
 }
