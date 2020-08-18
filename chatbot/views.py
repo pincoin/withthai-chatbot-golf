@@ -103,9 +103,6 @@ class CallbackView(generic.View):
                                         action=models.MessageAction(label='Layout',
                                                                     text='Layout')),
                                     models.QuickReplyButton(
-                                        action=models.URIAction(label='Scorecard',
-                                                                uri=f"https://liff.line.me/{club.liff['scorecard']['id']}")),
-                                    models.QuickReplyButton(
                                         action=models.MessageAction(label='Hotels',
                                                                     text='Hotels')),
                                     models.QuickReplyButton(
@@ -194,9 +191,6 @@ class CallbackView(generic.View):
                                                                action=models.MessageAction(label='Layout',
                                                                                            text='Layout')),
                                                            models.QuickReplyButton(
-                                                               action=models.URIAction(label='Scorecard',
-                                                                                       uri=f"https://liff.line.me/{club.liff['scorecard']['id']}")),
-                                                           models.QuickReplyButton(
                                                                action=models.MessageAction(label='Hotels',
                                                                                            text='Hotels')),
                                                            models.QuickReplyButton(
@@ -220,9 +214,6 @@ class CallbackView(generic.View):
                                                        action=models.MessageAction(label='Layout',
                                                                                    text='Layout')),
                                                    models.QuickReplyButton(
-                                                       action=models.URIAction(label='Scorecard',
-                                                                               uri=f"https://liff.line.me/{club.liff['scorecard']['id']}")),
-                                                   models.QuickReplyButton(
                                                        action=models.MessageAction(label='Hotels',
                                                                                    text='Hotels')),
                                                    models.QuickReplyButton(
@@ -244,9 +235,6 @@ class CallbackView(generic.View):
                                                    models.QuickReplyButton(
                                                        action=models.MessageAction(label='Caddies',
                                                                                    text='Caddies')),
-                                                   models.QuickReplyButton(
-                                                       action=models.URIAction(label='Scorecard',
-                                                                               uri=f"https://liff.line.me/{club.liff['scorecard']['id']}")),
                                                    models.QuickReplyButton(
                                                        action=models.MessageAction(label='Hotels',
                                                                                    text='Hotels')),
@@ -294,9 +282,6 @@ class CallbackView(generic.View):
                                                    models.QuickReplyButton(
                                                        action=models.MessageAction(label='Layout',
                                                                                    text='Layout')),
-                                                   models.QuickReplyButton(
-                                                       action=models.URIAction(label='Scorecard',
-                                                                               uri=f"https://liff.line.me/{club.liff['scorecard']['id']}")),
                                                    models.QuickReplyButton(
                                                        action=models.MessageAction(label='Hotels',
                                                                                    text='Hotels')),
