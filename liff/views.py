@@ -1,7 +1,6 @@
 from django.utils.translation import ugettext_lazy as _
 from django.views import generic
 
-from golf import models as golf_models
 from . import forms
 from . import viewmixins
 
@@ -38,10 +37,8 @@ class ScorecardTemplateView(viewmixins.LiffContextMixin, generic.TemplateView):
     def get_context_data(self, **kwargs):
         context = super(ScorecardTemplateView, self).get_context_data(**kwargs)
 
-        club = golf_models.GolfClub.objects.get(slug=self.kwargs['slug'])
-
         context['title'] = _('Scorecard')
-        context['hole'] = range(1, club.scorecard['hole'] + 1)
-        context['scorecard'] = club.scorecard
+        context['hole'] = range(1, self.club.scorecard['hole'] + 1)
+        context['scorecard'] = self.club.scorecard
 
         return context
