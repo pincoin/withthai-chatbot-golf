@@ -11,7 +11,7 @@
         height: 100%;
     }
 
-    .container {
+    .wrapper {
         overflow: scroll;
         position: relative;
     }
@@ -30,7 +30,7 @@
 
 {% block content %}
 <section class="section py-2 px-2">
-    <div class="container">
+    <div class="container wrapper">
         <table class="table is-bordered is-narrow">
             <thead>
             <tr class="white">
@@ -65,6 +65,9 @@
             <tfoot>
             </tfoot>
         </table>
+    </div>
+    <div class="container pt-4">
+        <button class="button is-success is-fullwidth" id="closeWindowButton">{% trans 'Close' %}</button>
     </div>
 </section>
 {% endblock %}
