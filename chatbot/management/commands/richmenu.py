@@ -24,8 +24,6 @@ class Command(BaseCommand):
     def handle(self, *args, **options):
         club = golf_models.GolfClub.objects.get(slug=options['club'][0])
 
-        liff_app_request = golf_models.Liff.objects.get(golf_club=club, app_name='request')
-
         line_bot_api = linebot.LineBotApi(club.line_bot_channel_access_token)
 
         # Delete all rich menus
@@ -47,7 +45,8 @@ class Command(BaseCommand):
                     action=models.MessageAction(label='My Booking', text='Booking'), ),
                 models.RichMenuArea(
                     bounds=models.RichMenuBounds(x=833, y=0, width=834, height=843),
-                    action=models.MessageAction(label='Price Table', text='Price'), ),
+                    action=models.URIAction(label='Price Table',
+                                            uri=f"https://liff.line.me/{club.liff['price']['id']}"), ),
                 models.RichMenuArea(
                     bounds=models.RichMenuBounds(x=1667, y=0, width=833, height=843),
                     action=models.MessageAction(label='Course', text='Course'), ),
