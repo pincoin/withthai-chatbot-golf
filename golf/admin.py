@@ -34,16 +34,8 @@ class LineUserAdmin(admin.ModelAdmin):
     ordering = ['-created']
 
 
-class LiffAdmin(admin.ModelAdmin):
-    list_display = ('golf_club', 'app_name', 'liff_id', 'endpoint_url')
-    list_filter = ('golf_club__title_english', 'app_name')
-    search_fields = ('liff_id', 'endpoint_url')
-    ordering = ['-created']
-
-
 admin.site.register(models.Area, AreaAdmin)
 admin.site.register(models.Province, ProvinceAdmin)
 admin.site.register(models.District, DistrictAdmin)
 admin.site.register(models.GolfClub, GolfClubAdmin)
 admin.site.register(models.LineUser, LineUserAdmin)
-admin.site.register(models.Liff, LiffAdmin)
