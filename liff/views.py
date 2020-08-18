@@ -29,6 +29,21 @@ class BookingCreateFormView(viewmixins.LiffContextMixin, generic.FormView):
         return context
 
 
+class PriceTableTemplateView(viewmixins.LiffContextMixin, generic.TemplateView):
+    app_name = 'price'
+
+    template_name = 'liff/price.html'
+
+    def get_context_data(self, **kwargs):
+        context = super(PriceTableTemplateView, self).get_context_data(**kwargs)
+
+        context['title'] = _('Price Table')
+        context['hole'] = range(1, self.club.scorecard['hole'] + 1)
+        context['scorecard'] = self.club.scorecard
+
+        return context
+
+
 class ScorecardTemplateView(viewmixins.LiffContextMixin, generic.TemplateView):
     app_name = 'scorecard'
 

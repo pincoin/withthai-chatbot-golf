@@ -1,0 +1,73 @@
+{% extends 'liff/base.html' %}
+
+{% load static i18n %}
+
+{% block stylesheet %}
+{{ block.super }}
+<link rel="stylesheet" href="{% static 'css/liff/style.css' %}">
+<style>
+    html, body {
+        overflow-y: hidden;
+        height: 100%;
+    }
+
+    .wrapper {
+        overflow: scroll;
+        position: relative;
+    }
+
+    table {
+        position: relative;
+    }
+
+    .fixed-col {
+        position: sticky;
+        left: 0;
+        top: 0;
+    }
+</style>
+{% endblock %}}
+
+{% block content %}
+<section class="section py-2 px-2">
+    <div class="container wrapper">
+        <table class="table is-bordered is-narrow">
+            <thead>
+            <tr class="white">
+                <th class="fixed-col">HOLE</th>
+                {% for hole in hole %}
+                <th class="has-text-centered">{{ hole }}</th>
+                {% endfor %}
+            </tr>
+            </thead>
+            <tbody>
+            {% for tee in scorecard.tee %}
+            <tr class="{{tee.color}}">
+                <td class="fixed-col"><strong>{{ tee.color|upper }}</strong></td>
+                {% for yard in tee.yard %}
+                <td class="has-text-right">{{ yard }}</td>
+                {% endfor %}
+            </tr>
+            {% endfor %}
+            <tr class="white">
+                <td class="fixed-col"><strong>HANDICAP</strong></td>
+                {% for handicap in scorecard.handicap %}
+                <td class="has-text-centered">{{ handicap }}</td>
+                {% endfor %}
+            </tr>
+            <tr class="white">
+                <td class="fixed-col"><strong>PAR</strong></td>
+                {% for par in scorecard.par %}
+                <td class="has-text-centered">{{ par }}</td>
+                {% endfor %}
+            </tr>
+            </tbody>
+            <tfoot>
+            </tfoot>
+        </table>
+    </div>
+    <div class="container pt-4">
+        <button class="button is-success is-fullwidth" id="closeWindowButton">{% trans 'Close' %}</button>
+    </div>
+</section>
+{% endblock %}
