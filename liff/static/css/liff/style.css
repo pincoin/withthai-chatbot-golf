@@ -43,3 +43,8 @@
     left: 0;
     top: 0;
 }
+
+.no-break-word {
+    white-space: nowrap;
+    word-break: keep-all;
+}
