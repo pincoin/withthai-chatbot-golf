@@ -1,3 +1,7 @@
+import json
+from pathlib import Path
+
+from django.conf import settings
 from django.db import models
 from django.template.defaultfilters import time
 from django.utils.translation import gettext_lazy as _
@@ -266,16 +270,19 @@ class GolfClub(model_utils_models.TimeStampedModel):
         verbose_name_plural = _('Golf clubs')
 
     def save(self, *args, **kwargs):
-        if self.info and self.liff:
-            self.info['header']['contents'][0]['text'] = self.title_english
-            self.info['hero']['action']['uri'] = self.website
-            self.info['body']['contents'][0]['contents'][1]['text'] = self.phone
-            self.info['body']['contents'][1]['contents'][1]['text'] = self.fax
-            self.info['body']['contents'][2]['contents'][1]['text'] = self.email
-            self.info['body']['contents'][3]['contents'][1]['text'] \
-                = '{} - {}'.format(time(self.business_hour_start, 'H:i'), time(self.business_hour_end, 'H:i'))
-            self.info['body']['contents'][4]['contents'][4]['action']['uri'] \
-                = f"https://liff.line.me/{self.liff['scorecard']['id']}"
+        if self.liff:
+            with open(Path(settings.BASE_DIR) / 'liff' / 'static' / 'js' / 'liff' / 'course.json') as json_file:
+                self.info = json.load(json_file)
+
+                self.info['header']['contents'][0]['text'] = self.title_english
+                self.info['hero']['action']['uri'] = self.website
+                self.info['body']['contents'][0]['contents'][1]['text'] = self.phone
+                self.info['body']['contents'][1]['contents'][1]['text'] = self.fax
+                self.info['body']['contents'][2]['contents'][1]['text'] = self.email
+                self.info['body']['contents'][3]['contents'][1]['text'] \
+                    = '{} - {}'.format(time(self.business_hour_start, 'H:i'), time(self.business_hour_end, 'H:i'))
+                self.info['body']['contents'][4]['contents'][4]['action']['uri'] \
+                    = f"https://liff.line.me/{self.liff['scorecard']['id']}"
 
         super(GolfClub, self).save(*args, **kwargs)
 

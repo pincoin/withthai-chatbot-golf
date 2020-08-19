@@ -24,6 +24,7 @@ class DistrictAdmin(admin.ModelAdmin):
 class GolfClubAdmin(admin.ModelAdmin):
     list_display = ('title_english', 'slug', 'phone', 'email')
     prepopulated_fields = {'slug': ('title_english',)}
+    readonly_fields = ('info',)
     ordering = ['-created']
 
 
