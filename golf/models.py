@@ -271,7 +271,8 @@ class GolfClub(model_utils_models.TimeStampedModel):
 
     def save(self, *args, **kwargs):
         if self.liff:
-            with open(Path(settings.BASE_DIR) / 'liff' / 'static' / 'js' / 'liff' / 'course.json') as json_file:
+            with open(Path(settings.BASE_DIR) / 'liff' / 'static' / 'js' / 'liff' / 'json' / 'course.json') \
+                    as json_file:
                 self.info = json.load(json_file)
 
                 self.info['header']['contents'][0]['text'] = self.title_english
