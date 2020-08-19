@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-08-17 23:45+0700\n"
+"POT-Creation-Date: 2020-08-19 09:02+0700\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -192,64 +192,52 @@ msgstr ""
 msgid "Longitude"
 msgstr ""
 
-#: golf/models.py:253
+#: golf/models.py:253 liff/apps.py:7
+msgid "LIFF"
+msgstr ""
+
+#: golf/models.py:259 liff/views.py:55
 msgid "Scorecard"
 msgstr ""
 
-#: golf/models.py:259 golf/models.py:304 golf/models.py:328
+#: golf/models.py:265 golf/models.py:312
 msgid "Golf club"
 msgstr ""
 
-#: golf/models.py:260
+#: golf/models.py:266
 msgid "Golf clubs"
 msgstr ""
 
-#: golf/models.py:279
+#: golf/models.py:287
 msgid "Unfollow"
 msgstr ""
 
-#: golf/models.py:280
+#: golf/models.py:288
 msgid "Follow"
 msgstr ""
 
-#: golf/models.py:284
+#: golf/models.py:292
 msgid "LINE user ID"
 msgstr ""
 
-#: golf/models.py:290
+#: golf/models.py:298
 msgid "LINE display name"
 msgstr ""
 
-#: golf/models.py:296
+#: golf/models.py:304
 msgid "Follow status"
 msgstr ""
 
-#: golf/models.py:310
+#: golf/models.py:318
 msgid "Fullname"
 msgstr ""
 
-#: golf/models.py:316
+#: golf/models.py:324
 msgid "LINE user"
 msgstr ""
 
-#: golf/models.py:317
+#: golf/models.py:325
 msgid "LINE users"
-msgstr ""
-
-#: golf/models.py:334
-msgid "LIFF app name"
-msgstr ""
-
-#: golf/models.py:340
-msgid "LIFF ID"
-msgstr ""
-
-#: golf/models.py:347
-msgid "Endpoint URL"
-msgstr ""
-
-#: golf/models.py:351 golf/models.py:352 liff/apps.py:7
-msgid "LIFF"
 msgstr ""
 
 #: hotel/apps.py:7
@@ -269,6 +257,14 @@ msgstr ""
 msgid "New Booking"
 msgstr ""
 
+#: liff/templates/liff/price.html:70 liff/templates/liff/scorecard.html:70
+msgid "Close"
+msgstr ""
+
 #: liff/views.py:15
 msgid "Sample"
+msgstr ""
+
+#: liff/views.py:40
+msgid "Price Table"
 msgstr ""

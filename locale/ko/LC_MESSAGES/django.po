@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-08-17 23:45+0700\n"
+"POT-Creation-Date: 2020-08-19 09:02+0700\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -191,65 +191,53 @@ msgstr "위도"
 msgid "Longitude"
 msgstr "경도"
 
-#: golf/models.py:253
+#: golf/models.py:253 liff/apps.py:7
+msgid "LIFF"
+msgstr "LIFF"
+
+#: golf/models.py:259 liff/views.py:55
 msgid "Scorecard"
 msgstr "스코어카드"
 
-#: golf/models.py:259 golf/models.py:304 golf/models.py:328
+#: golf/models.py:265 golf/models.py:312
 msgid "Golf club"
 msgstr "골프장"
 
-#: golf/models.py:260
+#: golf/models.py:266
 msgid "Golf clubs"
 msgstr "골프장"
 
-#: golf/models.py:279
+#: golf/models.py:287
 msgid "Unfollow"
 msgstr "언팔로우"
 
-#: golf/models.py:280
+#: golf/models.py:288
 msgid "Follow"
 msgstr "팔로우"
 
-#: golf/models.py:284
+#: golf/models.py:292
 msgid "LINE user ID"
 msgstr "라인 아이디"
 
-#: golf/models.py:290
+#: golf/models.py:298
 msgid "LINE display name"
 msgstr "라인 표시 이름"
 
-#: golf/models.py:296
+#: golf/models.py:304
 msgid "Follow status"
 msgstr "팔로우"
 
-#: golf/models.py:310
+#: golf/models.py:318
 msgid "Fullname"
 msgstr "이름"
 
-#: golf/models.py:316
+#: golf/models.py:324
 msgid "LINE user"
 msgstr "라인 사용자"
 
-#: golf/models.py:317
+#: golf/models.py:325
 msgid "LINE users"
 msgstr "라인 사용자"
-
-#: golf/models.py:334
-msgid "LIFF app name"
-msgstr "LIFF 앱 이름"
-
-#: golf/models.py:340
-msgid "LIFF ID"
-msgstr "LIFF ID"
-
-#: golf/models.py:347
-msgid "Endpoint URL"
-msgstr "최종연결 URL"
-
-#: golf/models.py:351 golf/models.py:352 liff/apps.py:7
-msgid "LIFF"
-msgstr "LIFF"
 
 #: hotel/apps.py:7
 msgid "hotel"
@@ -268,6 +256,14 @@ msgstr "인원"
 msgid "New Booking"
 msgstr "예약 문의"
 
+#: liff/templates/liff/price.html:70 liff/templates/liff/scorecard.html:70
+msgid "Close"
+msgstr "닫기"
+
 #: liff/views.py:15
 msgid "Sample"
 msgstr "예제"
+
+#: liff/views.py:40
+msgid "Price Table"
+msgstr "요금표"
