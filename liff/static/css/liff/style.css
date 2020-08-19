@@ -49,3 +49,26 @@
     white-space: nowrap;
     word-break: keep-all;
 }
+
+.weekdays {
+    color: #0000cc;
+}
+
+.holidays {
+    color: #ff0066;
+}
+
+.day-golf {
+    color: #000000;
+    background-color: #b3ffb3;
+}
+
+.twilight {
+    color: #000000;
+    background-color: #ffe0cc;
+}
+
+.night {
+    color: #000000;
+    background-color: #e6e6e6;
+}
