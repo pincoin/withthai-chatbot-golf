@@ -28,3 +28,18 @@
     color: #000000;
     background-color: #ffff33;
 }
+
+.wrapper {
+    overflow: scroll;
+    position: relative;
+}
+
+.table-relative {
+    position: relative;
+}
+
+.fixed-col {
+    position: sticky;
+    left: 0;
+    top: 0;
+}

@@ -10,28 +10,13 @@
         overflow-y: hidden;
         height: 100%;
     }
-
-    .wrapper {
-        overflow: scroll;
-        position: relative;
-    }
-
-    table {
-        position: relative;
-    }
-
-    .fixed-col {
-        position: sticky;
-        left: 0;
-        top: 0;
-    }
 </style>
 {% endblock %}}
 
 {% block content %}
 <section class="section py-2 px-2">
     <div class="container wrapper">
-        <table class="table is-bordered is-narrow">
+        <table class="table is-bordered is-narrow table-relative">
             <thead>
             <tr class="white">
                 <th class="fixed-col">HOLE</th>
