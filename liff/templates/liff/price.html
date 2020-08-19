@@ -5,83 +5,84 @@
 {% block stylesheet %}
 {{ block.super }}
 <link rel="stylesheet" href="{% static 'css/liff/style.css' %}">
-<style>
-    html, body {
-        overflow-y: hidden;
-        height: 100%;
-    }
-</style>
 {% endblock %}}
 
 {% block content %}
 <section class="section py-2 px-2">
     <div class="container wrapper">
-        <table class="table is-bordered is-narrow table-relative no-break-word">
+        <table class="table is-bordered is-narrow table-relative">
             <thead>
             <tr>
-                <th class="fixed-col" rowspan="3">&nbsp;</th>
-                <th class="has-text-centered" colspan="3">Weekdays</th>
-                <th class="has-text-centered" colspan="4">Holidays</th>
-            </tr>
-            <tr>
-                <th class="has-text-centered">Day</th>
-                <th class="has-text-centered">Twilight</th>
-                <th class="has-text-centered">Night</th>
-                <th class="has-text-centered">Day 1st</th>
-                <th class="has-text-centered">Day 2nd</th>
-                <th class="has-text-centered">Twilight</th>
-                <th class="has-text-centered">Night</th>
-            </tr>
-            <tr>
-                <th class="has-text-centered">06:00-14:00</th>
-                <th class="has-text-centered">14:30-15:34</th>
-                <th class="has-text-centered">16:00-19:30</th>
-                <th class="has-text-centered">06:00-08:16</th>
-                <th class="has-text-centered">10:48-13:04</th>
-                <th class="has-text-centered">15:36-17:20</th>
-                <th class="has-text-centered">17:36-19:00</th>
+                <th class="has-text-centered fixed-col">&nbsp;</th>
+                <th class="has-text-centered">Member</th>
+                <th class="has-text-centered">Associate Member</th>
+                <th class="has-text-centered">Member's Guest</th>
+                <th class="has-text-centered">Visitor</th>
             </tr>
             </thead>
-            <tbody>
+            <tbody class="no-break-word">
             <tr>
-                <td class="fixed-col"><strong>Member</strong></td>
-                <td class="has-text-right">0</td>
-                <td class="has-text-right">500</td>
-                <td class="has-text-right">900</td>
-                <td class="has-text-right">0</td>
-                <td class="has-text-right">0</td>
-                <td class="has-text-right">500</td>
-                <td class="has-text-right">900</td>
+                <td class="has-text-centered fixed-col">
+                    <strong>Weekdays<br>Day<br>06:00-14:00</strong>
+                </td>
+                <td class="has-text-right is-vcentered">0</td>
+                <td class="has-text-right is-vcentered">600</td>
+                <td class="has-text-right is-vcentered">2,500</td>
+                <td class="has-text-right is-vcentered">3,500</td>
             </tr>
             <tr>
-                <td class="fixed-col"><strong>Associate Member</strong></td>
-                <td class="has-text-right">600</td>
-                <td class="has-text-right">800</td>
-                <td class="has-text-right">900</td>
-                <td class="has-text-right">800</td>
-                <td class="has-text-right">800</td>
-                <td class="has-text-right">800</td>
-                <td class="has-text-right">900</td>
+                <td class="has-text-centered fixed-col">
+                    <strong>Weekdays<br>Twilight<br>14:30-15:34</strong>
+                </td>
+                <td class="has-text-right is-vcentered">500</td>
+                <td class="has-text-right is-vcentered">800</td>
+                <td class="has-text-right is-vcentered">1,800</td>
+                <td class="has-text-right is-vcentered">2,000</td>
             </tr>
             <tr>
-                <td class="fixed-col"><strong>Member's Guest</strong></td>
-                <td class="has-text-right">2,500</td>
-                <td class="has-text-right">1,800</td>
-                <td class="has-text-right">1,600</td>
-                <td class="has-text-right">3,000</td>
-                <td class="has-text-right">3,000</td>
-                <td class="has-text-right">1,800</td>
-                <td class="has-text-right">1,600</td>
+                <td class="has-text-centered fixed-col">
+                    <strong>Weekdays<br>Night<br>16:00-19:30</strong>
+                </td>
+                <td class="has-text-right is-vcentered">900</td>
+                <td class="has-text-right is-vcentered">900</td>
+                <td class="has-text-right is-vcentered">1,600</td>
+                <td class="has-text-right is-vcentered">1,600</td>
             </tr>
             <tr>
-                <td class="fixed-col"><strong>Visitor</strong></td>
-                <td class="has-text-right">3,500</td>
-                <td class="has-text-right">2,000</td>
-                <td class="has-text-right">1,600</td>
-                <td class="has-text-right">4,500</td>
-                <td class="has-text-right">4,500</td>
-                <td class="has-text-right">2,000</td>
-                <td class="has-text-right">1,600</td>
+                <td class="has-text-centered fixed-col">
+                    <strong>Holidays<br>Day 1st<br>06:00-08:16</strong>
+                </td>
+                <td class="has-text-right is-vcentered"></td>
+                <td class="has-text-right is-vcentered">800</td>
+                <td class="has-text-right is-vcentered">3,000</td>
+                <td class="has-text-right is-vcentered">4,500</td>
+            </tr>
+            <tr>
+                <td class="has-text-centered fixed-col">
+                    <strong>Holidays<br>Day 2nd<br>10:48-13:04</strong>
+                </td>
+                <td class="has-text-right is-vcentered">0</td>
+                <td class="has-text-right is-vcentered">800</td>
+                <td class="has-text-right is-vcentered">3,000</td>
+                <td class="has-text-right is-vcentered">4,500</td>
+            </tr>
+            <tr>
+                <td class="has-text-centered fixed-col">
+                    <strong>Holidays<br>Twilight<br>15:36-17:20</strong>
+                </td>
+                <td class="has-text-right is-vcentered">500</td>
+                <td class="has-text-right is-vcentered">800</td>
+                <td class="has-text-right is-vcentered">1,800</td>
+                <td class="has-text-right is-vcentered">2,000</td>
+            </tr>
+            <tr>
+                <td class="has-text-centered fixed-col">
+                    <strong>Holidays<br>Night<br>17:36-19:00</strong>
+                </td>
+                <td class="has-text-right is-vcentered">900</td>
+                <td class="has-text-right is-vcentered">900</td>
+                <td class="has-text-right is-vcentered">1,600</td>
+                <td class="has-text-right is-vcentered">1,600</td>
             </tr>
             </tbody>
             <tfoot>
