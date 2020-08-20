@@ -11,6 +11,9 @@ class Command(BaseCommand):
 
     '''
     python manage.py rate with-thai /home/ubuntu/Projects/withthai/golf/static/js/golf/json/rate.json
+    
+    rate.json format
+    Array: Seasons x Timeslots x Customer groups
     '''
 
     def add_arguments(self, parser):
