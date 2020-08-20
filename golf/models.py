@@ -396,9 +396,21 @@ class Season(model_utils_models.TimeStampedModel):
 
 
 class Timeslot(model_utils_models.TimeStampedModel):
+    DAY_CHOICES = Choices(
+        (0, 'weekday', _('Weekday')),
+        (1, 'weekend', _('Weekend')),
+    )
+
     title_english = models.CharField(
         verbose_name=_('Timeslot name'),
         max_length=255,
+    )
+
+    day_of_week = models.IntegerField(
+        verbose_name=_('Day of week'),
+        choices=DAY_CHOICES,
+        default=DAY_CHOICES.weekday,
+        db_index=True,
     )
 
     slot_start = models.TimeField(
@@ -415,11 +427,6 @@ class Timeslot(model_utils_models.TimeStampedModel):
 
 
 class Rate(model_utils_models.TimeStampedModel):
-    DAY_CHOICES = Choices(
-        (0, 'weekday', _('Weekday')),
-        (1, 'weekend', _('Weekend')),
-    )
-
     customer_group = models.ForeignKey(
         'golf.CustomerGroup',
         verbose_name=_('Customer group'),
@@ -432,13 +439,6 @@ class Rate(model_utils_models.TimeStampedModel):
         verbose_name=_('Season'),
         db_index=True,
         on_delete=models.CASCADE,
-    )
-
-    day_of_week = models.IntegerField(
-        verbose_name=_('Day of week'),
-        choices=DAY_CHOICES,
-        default=DAY_CHOICES.weekday,
-        db_index=True,
     )
 
     timeslot = models.ForeignKey(
