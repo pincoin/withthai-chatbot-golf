@@ -83,7 +83,7 @@ class TimeslotAdmin(admin.ModelAdmin):
     list_display_links = ('title_english',)
     list_filter = ('golf_club__title_english',)
     raw_id_fields = ('golf_club',)
-    ordering = ['golf_club', 'slot_start']
+    ordering = ['golf_club', 'day_of_week', 'slot_start']
 
 
 admin.site.register(models.Area, AreaAdmin)
