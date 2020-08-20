@@ -14,6 +14,18 @@ class Command(BaseCommand):
     
     rate.json format
     Array: Seasons x Timeslots x Customer groups
+    
+    [
+        [
+            [0, 600, 2500, 3500],
+            [500, 800, 1800, 2000],
+            [900, 900, 1600, 1600],
+            [0, 800, 3000, 4500],
+            [0, 800, 3000, 4500],
+            [500, 800, 1800, 2000],
+            [900, 900, 1600, 1600]
+        ]
+    ]
     '''
 
     def add_arguments(self, parser):
