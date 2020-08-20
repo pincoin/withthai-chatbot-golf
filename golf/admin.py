@@ -58,6 +58,8 @@ class LineUserAdmin(admin.ModelAdmin):
 class RateAdmin(admin.ModelAdmin):
     list_display = ('customer_group', 'season', 'timeslot', 'green_fee_list_price', 'green_fee_selling_price')
     list_filter = ('season__golf_club__title_english',)
+    raw_id_fields = ('customer_group', 'season', 'timeslot')
+    # form = forms.RateAdminForm
 
 
 admin.site.register(models.Area, AreaAdmin)
@@ -66,3 +68,7 @@ admin.site.register(models.District, DistrictAdmin)
 admin.site.register(models.GolfClub, GolfClubAdmin)
 admin.site.register(models.LineUser, LineUserAdmin)
 admin.site.register(models.Rate, RateAdmin)
+
+admin.site.register(models.CustomerGroup)
+admin.site.register(models.Season)
+admin.site.register(models.Timeslot)
