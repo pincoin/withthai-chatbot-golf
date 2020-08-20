@@ -377,6 +377,13 @@ class CustomerGroup(model_utils_models.TimeStampedModel):
 
 
 class Season(model_utils_models.TimeStampedModel):
+    golf_club = models.ForeignKey(
+        'golf.GolfClub',
+        verbose_name=_('Golf club'),
+        db_index=True,
+        on_delete=models.CASCADE,
+    )
+
     title_english = models.CharField(
         verbose_name=_('Season name'),
         max_length=255,
@@ -396,6 +403,13 @@ class Season(model_utils_models.TimeStampedModel):
 
 
 class Timeslot(model_utils_models.TimeStampedModel):
+    golf_club = models.ForeignKey(
+        'golf.GolfClub',
+        verbose_name=_('Golf club'),
+        db_index=True,
+        on_delete=models.CASCADE,
+    )
+
     DAY_CHOICES = Choices(
         (0, 'weekday', _('Weekday')),
         (1, 'weekend', _('Weekend')),
@@ -430,6 +444,13 @@ class Rate(model_utils_models.TimeStampedModel):
     customer_group = models.ForeignKey(
         'golf.CustomerGroup',
         verbose_name=_('Customer group'),
+        db_index=True,
+        on_delete=models.CASCADE,
+    )
+
+    golf_club = models.ForeignKey(
+        'golf.GolfClub',
+        verbose_name=_('Golf club'),
         db_index=True,
         on_delete=models.CASCADE,
     )
