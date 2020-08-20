@@ -10,6 +10,10 @@ from golf import models as golf_models
 class Command(BaseCommand):
     help = 'Create rich menu'
 
+    '''
+    python manage.py richmenu with-thai /home/ubuntu/Projects/withthai/liff/static/images/liff/rich_menu_sample.png
+    '''
+
     def add_arguments(self, parser):
         parser.add_argument('club',
                             nargs=1,
