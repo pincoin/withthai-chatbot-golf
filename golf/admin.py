@@ -35,8 +35,28 @@ class LineUserAdmin(admin.ModelAdmin):
     ordering = ['-created']
 
 
+class CustomerGroupAdmin(admin.ModelAdmin):
+    pass
+
+
+class SeasonAdmin(admin.ModelAdmin):
+    pass
+
+
+class TimeslotAdmin(admin.ModelAdmin):
+    pass
+
+
+class RateAdmin(admin.ModelAdmin):
+    pass
+
+
 admin.site.register(models.Area, AreaAdmin)
 admin.site.register(models.Province, ProvinceAdmin)
 admin.site.register(models.District, DistrictAdmin)
 admin.site.register(models.GolfClub, GolfClubAdmin)
 admin.site.register(models.LineUser, LineUserAdmin)
+admin.site.register(models.CustomerGroup, CustomerGroupAdmin)
+admin.site.register(models.Season, SeasonAdmin)
+admin.site.register(models.Timeslot, TimeslotAdmin)
+admin.site.register(models.Rate, RateAdmin)
