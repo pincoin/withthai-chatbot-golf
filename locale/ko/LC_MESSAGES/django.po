@@ -213,7 +213,7 @@ msgstr "스코어카드"
 
 #: golf/models.py:275
 msgid "Working status"
-msgstr ""
+msgstr "영업상태"
 
 #: golf/models.py:282 golf/models.py:334 golf/models.py:358
 msgid "Golf club"

@@ -375,6 +375,9 @@ class CustomerGroup(model_utils_models.TimeStampedModel):
         verbose_name = _('Customer group')
         verbose_name_plural = _('Customer groups')
 
+    def __str__(self):
+        return f'{self.title_english}'
+
 
 class Season(model_utils_models.TimeStampedModel):
     golf_club = models.ForeignKey(
@@ -400,6 +403,9 @@ class Season(model_utils_models.TimeStampedModel):
     class Meta:
         verbose_name = _('Season')
         verbose_name_plural = _('Seasons')
+
+    def __str__(self):
+        return f'{self.title_english}-{self.season_start}-{self.season_end}'
 
 
 class Timeslot(model_utils_models.TimeStampedModel):
@@ -439,18 +445,14 @@ class Timeslot(model_utils_models.TimeStampedModel):
         verbose_name = _('Timeslot')
         verbose_name_plural = _('Timeslots')
 
+    def __str__(self):
+        return f'{self.title_english}-{self.slot_start}-{self.slot_end}'
+
 
 class Rate(model_utils_models.TimeStampedModel):
     customer_group = models.ForeignKey(
         'golf.CustomerGroup',
         verbose_name=_('Customer group'),
-        db_index=True,
-        on_delete=models.CASCADE,
-    )
-
-    golf_club = models.ForeignKey(
-        'golf.GolfClub',
-        verbose_name=_('Golf club'),
         db_index=True,
         on_delete=models.CASCADE,
     )
