@@ -141,6 +141,12 @@ class District(model_utils_models.TimeStampedModel):
 
 
 class GolfClub(model_utils_models.TimeStampedModel):
+    WORKING_CHOICES = Choices(
+        (0, 'open', _('Open')),
+        (1, 'closed', _('Closed')),
+        (2, 'suspended', _('Suspended')),
+    )
+
     title_english = models.CharField(
         verbose_name=_('Golf club English name'),
         max_length=255,
@@ -265,6 +271,13 @@ class GolfClub(model_utils_models.TimeStampedModel):
         null=True,
     )
 
+    working_status = models.IntegerField(
+        verbose_name=_('Working status'),
+        choices=WORKING_CHOICES,
+        default=WORKING_CHOICES.open,
+        db_index=True,
+    )
+
     class Meta:
         verbose_name = _('Golf club')
         verbose_name_plural = _('Golf clubs')
@@ -337,3 +350,118 @@ class LineUser(model_utils_models.TimeStampedModel):
 
     def __str__(self):
         return f'{self.line_user_id}'
+
+
+class CustomerGroup(model_utils_models.TimeStampedModel):
+    golf_club = models.ForeignKey(
+        'golf.GolfClub',
+        verbose_name=_('Golf club'),
+        db_index=True,
+        on_delete=models.CASCADE,
+    )
+
+    title_english = models.CharField(
+        verbose_name=_('Customer group name'),
+        max_length=255,
+    )
+
+    position = models.IntegerField(
+        verbose_name=_('Position'),
+        default=0,
+        db_index=True,
+    )
+
+    class Meta:
+        verbose_name = _('Customer group')
+        verbose_name_plural = _('Customer groups')
+
+
+class Season(model_utils_models.TimeStampedModel):
+    title_english = models.CharField(
+        verbose_name=_('Season name'),
+        max_length=255,
+    )
+
+    season_start = models.DateField(
+        verbose_name=_('Season start date'),
+    )
+
+    season_end = models.DateField(
+        verbose_name=_('Season end date'),
+    )
+
+    class Meta:
+        verbose_name = _('Season')
+        verbose_name_plural = _('Seasons')
+
+
+class Timeslot(model_utils_models.TimeStampedModel):
+    title_english = models.CharField(
+        verbose_name=_('Timeslot name'),
+        max_length=255,
+    )
+
+    slot_start = models.TimeField(
+        verbose_name=_('Timeslot start time'),
+    )
+
+    slot_end = models.TimeField(
+        verbose_name=_('Timeslot end time'),
+    )
+
+    class Meta:
+        verbose_name = _('Timeslot')
+        verbose_name_plural = _('Timeslots')
+
+
+class Rate(model_utils_models.TimeStampedModel):
+    DAY_CHOICES = Choices(
+        (0, 'weekday', _('Weekday')),
+        (1, 'weekend', _('Weekend')),
+    )
+
+    customer_group = models.ForeignKey(
+        'golf.CustomerGroup',
+        verbose_name=_('Customer group'),
+        db_index=True,
+        on_delete=models.CASCADE,
+    )
+
+    season = models.ForeignKey(
+        'golf.Season',
+        verbose_name=_('Season'),
+        db_index=True,
+        on_delete=models.CASCADE,
+    )
+
+    day_of_week = models.IntegerField(
+        verbose_name=_('Day of week'),
+        choices=DAY_CHOICES,
+        default=DAY_CHOICES.weekday,
+        db_index=True,
+    )
+
+    timeslot = models.ForeignKey(
+        'golf.Timeslot',
+        verbose_name=_('Timeslot'),
+        db_index=True,
+        on_delete=models.CASCADE,
+    )
+
+    green_fee_list_price = models.DecimalField(
+        verbose_name=_('Green fee list price'),
+        max_digits=11,
+        decimal_places=2,
+        help_text=_('THB'),
+    )
+
+    green_fee_selling_price = models.DecimalField(
+        verbose_name=_('Green fee selling price'),
+        max_digits=11,
+        decimal_places=2,
+        help_text=_('THB'),
+    )
+
+    class Meta:
+        verbose_name = _('Service rate')
+        verbose_name_plural = _('Service rates')
