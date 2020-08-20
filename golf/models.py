@@ -446,7 +446,7 @@ class Timeslot(model_utils_models.TimeStampedModel):
         verbose_name_plural = _('Timeslots')
 
     def __str__(self):
-        return f'{self.title_english}-{self.slot_start}-{self.slot_end}'
+        return f'{self.title_english}-{self.day_of_week}-{self.slot_start}-{self.slot_end}'
 
 
 class Rate(model_utils_models.TimeStampedModel):
