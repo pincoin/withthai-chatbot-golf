@@ -62,13 +62,33 @@ class RateAdmin(admin.ModelAdmin):
     # form = forms.RateAdminForm
 
 
+class CustomerGroupAdmin(admin.ModelAdmin):
+    list_display = ('golf_club', 'title_english', 'position')
+    list_filter = ('golf_club__title_english',)
+    raw_id_fields = ('golf_club',)
+    ordering = ['golf_club', 'position']
+
+
+class SeasonAdmin(admin.ModelAdmin):
+    list_display = ('golf_club', 'title_english', 'season_start', 'season_end')
+    list_filter = ('golf_club__title_english',)
+    raw_id_fields = ('golf_club',)
+    ordering = ['golf_club', 'season_start']
+
+
+class TimeslotAdmin(admin.ModelAdmin):
+    list_display = ('golf_club', 'title_english', 'day_of_week', 'slot_start', 'slot_end')
+    list_filter = ('golf_club__title_english',)
+    raw_id_fields = ('golf_club',)
+    ordering = ['golf_club', 'slot_start']
+
+
 admin.site.register(models.Area, AreaAdmin)
 admin.site.register(models.Province, ProvinceAdmin)
 admin.site.register(models.District, DistrictAdmin)
 admin.site.register(models.GolfClub, GolfClubAdmin)
 admin.site.register(models.LineUser, LineUserAdmin)
 admin.site.register(models.Rate, RateAdmin)
-
-admin.site.register(models.CustomerGroup)
-admin.site.register(models.Season)
-admin.site.register(models.Timeslot)
+admin.site.register(models.CustomerGroup, CustomerGroupAdmin)
+admin.site.register(models.Season, SeasonAdmin)
+admin.site.register(models.Timeslot, TimeslotAdmin)
