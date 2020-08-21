@@ -50,11 +50,11 @@
     word-break: keep-all;
 }
 
-.weekdays {
+.week0 {
     color: #0000cc;
 }
 
-.holidays {
+.week1 {
     color: #ff471a;
 }
 

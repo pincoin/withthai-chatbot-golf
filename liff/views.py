@@ -1,6 +1,7 @@
 from django.utils.translation import ugettext_lazy as _
 from django.views import generic
 
+from golf import models as golf_models
 from . import forms
 from . import viewmixins
 
@@ -37,9 +38,45 @@ class PriceTableTemplateView(viewmixins.LiffContextMixin, generic.TemplateView):
     def get_context_data(self, **kwargs):
         context = super(PriceTableTemplateView, self).get_context_data(**kwargs)
 
+        rates = golf_models.Rate.objects \
+            .select_related('season', 'timeslot', 'customer_group') \
+            .filter(season__golf_club=self.club,
+                    timeslot__golf_club=self.club,
+                    customer_group__golf_club=self.club) \
+            .order_by('season__season_start',
+                      'timeslot__day_of_week',
+                      'timeslot__slot_start',
+                      'customer_group__position')
+
+        seasons = golf_models.Season.objects \
+            .filter(golf_club=self.club) \
+            .order_by('season_start')
+
+        timeslots = golf_models.Timeslot.objects \
+            .filter(golf_club=self.club) \
+            .order_by('day_of_week', 'slot_start')
+
+        customer_groups = golf_models.CustomerGroup.objects \
+            .filter(golf_club=self.club) \
+            .order_by('position')
+
+        price_table = {}
+        for rate in rates:
+            if rate.season_id not in price_table:
+                price_table[rate.season_id] = {}
+
+            if rate.timeslot_id not in price_table[rate.season_id]:
+                price_table[rate.season_id][rate.timeslot_id] = {}
+
+            price_table[rate.season_id][rate.timeslot_id][rate.customer_group_id] = rate.green_fee_list_price
+
         context['title'] = _('Price Table')
-        context['hole'] = range(1, self.club.scorecard['hole'] + 1)
-        context['scorecard'] = self.club.scorecard
+
+        context['seasons'] = seasons
+        context['timeslots'] = timeslots
+        context['customer_groups'] = customer_groups
+
+        context['price_table'] = price_table
 
         return context
 

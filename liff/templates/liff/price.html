@@ -1,6 +1,7 @@
 {% extends 'liff/base.html' %}
 
 {% load static i18n %}
+{% load liff_tags %}
 
 {% block stylesheet %}
 {{ block.super }}
@@ -10,84 +11,40 @@
 {% block content %}
 <section class="section py-2 px-2">
     <div class="container wrapper">
+        {% for season in seasons %}
+        <h1>{{ season.season_start|date:'Y-m-d' }} - {{ season.season_end|date:'Y-m-d' }}</h1>
         <table class="table is-bordered is-narrow table-relative">
             <thead>
             <tr class="white">
                 <th class="has-text-centered fixed-col">&nbsp;</th>
-                <th class="has-text-centered">Member</th>
-                <th class="has-text-centered">Associate Member</th>
-                <th class="has-text-centered">Member's Guest</th>
-                <th class="has-text-centered">Visitor</th>
+
+                {% for customer_group in customer_groups %}
+                <th class="has-text-centered">{{ customer_group.title_english }}</th>
+                {% endfor %}
             </tr>
             </thead>
             <tbody class="no-break-word">
-            <tr class="day-golf">
+            {% for timeslot in timeslots %}
+            <tr class="{{ timeslot.title_english }}">
                 <td class="has-text-centered fixed-col">
-                    <strong><span class="weekdays">Weekdays</span><br>Day<br>06:00-14:00</strong>
+                    <strong>
+                        <span class="week{{ timeslot.day_of_week}}">{{ timeslot.get_day_of_week_display }}</span>
+                        <br>
+                        {{ timeslot.title_english }}
+                        <br>
+                        {{ timeslot.slot_start|time:'H:i' }}-{{ timeslot.slot_end|time:'H:i' }}
+                    </strong>
                 </td>
-                <td class="has-text-right is-vcentered">0</td>
-                <td class="has-text-right is-vcentered">600</td>
-                <td class="has-text-right is-vcentered">2,500</td>
-                <td class="has-text-right is-vcentered">3,500</td>
-            </tr>
-            <tr class="twilight">
-                <td class="has-text-centered fixed-col">
-                    <strong><span class="weekdays">Weekdays</span><br>Twilight<br>14:30-15:34</strong>
+                {% for customer_group in customer_groups %}
+                <td class="has-text-right is-vcentered">
+                    {% green_fee price_table season.id timeslot.id customer_group.id %}
                 </td>
-                <td class="has-text-right is-vcentered">500</td>
-                <td class="has-text-right is-vcentered">800</td>
-                <td class="has-text-right is-vcentered">1,800</td>
-                <td class="has-text-right is-vcentered">2,000</td>
+                {% endfor %}
             </tr>
-            <tr class="night">
-                <td class="has-text-centered fixed-col">
-                    <strong><span class="weekdays">Weekdays</span><br>Night<br>16:00-19:30</strong>
-                </td>
-                <td class="has-text-right is-vcentered">900</td>
-                <td class="has-text-right is-vcentered">900</td>
-                <td class="has-text-right is-vcentered">1,600</td>
-                <td class="has-text-right is-vcentered">1,600</td>
-            </tr>
-            <tr class="day-golf">
-                <td class="has-text-centered fixed-col">
-                    <strong><span class="holidays">Holidays</span><br>Day 1st<br>06:00-08:16</strong>
-                </td>
-                <td class="has-text-right is-vcentered">0</td>
-                <td class="has-text-right is-vcentered">800</td>
-                <td class="has-text-right is-vcentered">3,000</td>
-                <td class="has-text-right is-vcentered">4,500</td>
-            </tr>
-            <tr class="day-golf">
-                <td class="has-text-centered fixed-col">
-                    <strong><span class="holidays">Holidays</span><br>Day 2nd<br>10:48-13:04</strong>
-                </td>
-                <td class="has-text-right is-vcentered">0</td>
-                <td class="has-text-right is-vcentered">800</td>
-                <td class="has-text-right is-vcentered">3,000</td>
-                <td class="has-text-right is-vcentered">4,500</td>
-            </tr>
-            <tr class="twilight">
-                <td class="has-text-centered fixed-col">
-                    <strong><span class="holidays">Holidays</span><br>Twilight<br>15:36-17:20</strong>
-                </td>
-                <td class="has-text-right is-vcentered">500</td>
-                <td class="has-text-right is-vcentered">800</td>
-                <td class="has-text-right is-vcentered">1,800</td>
-                <td class="has-text-right is-vcentered">2,000</td>
-            </tr>
-            <tr class="night">
-                <td class="has-text-centered fixed-col">
-                    <strong><span class="holidays">Holidays</span><br>Night<br>17:36-19:00</strong>
-                </td>
-                <td class="has-text-right is-vcentered">900</td>
-                <td class="has-text-right is-vcentered">900</td>
-                <td class="has-text-right is-vcentered">1,600</td>
-                <td class="has-text-right is-vcentered">1,600</td>
-            </tr>
+            {% endfor %}
             </tbody>
-            <tfoot>
-            </tfoot>
         </table>
+        {% endfor %}
     </div>
     <div class="container pt-4">
         <button class="button is-success is-fullwidth" id="closeWindowButton">{% trans 'Close' %}</button>
