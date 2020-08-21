@@ -58,17 +58,17 @@
     color: #ff471a;
 }
 
-.day-golf, .day-golf .fixed-col {
+.day, .day .fixed-col {
     color: #001a00;
-    background-color: #b3ffb3;
+    background-color: #c8ffbc;
 }
 
 .twilight, .twilight .fixed-col {
     color: #993d00;
-    background-color: #ffe0cc;
+    background-color: #fbffbc;
 }
 
 .night, .night .fixed-col {
     color: #000000;
-    background-color: #e6e6e6;
+    background-color: #ccfeff;
 }

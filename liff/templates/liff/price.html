@@ -25,7 +25,7 @@
             </thead>
             <tbody class="no-break-word">
             {% for timeslot in timeslots %}
-            <tr class="{{ timeslot.title_english }}">
+            <tr class="{{ timeslot.title_english|lower }}">
                 <td class="has-text-centered fixed-col">
                     <strong>
                         <span class="week{{ timeslot.day_of_week}}">{{ timeslot.get_day_of_week_display }}</span>
