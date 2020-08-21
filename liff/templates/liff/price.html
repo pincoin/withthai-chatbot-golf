@@ -12,7 +12,9 @@
 <section class="section py-2 px-2">
     <div class="container wrapper">
         {% for season in seasons %}
-        <h1>{{ season.season_start|date:'Y-m-d' }} - {{ season.season_end|date:'Y-m-d' }}</h1>
+        <h1 class="has-text-weight-bold has-text-centered mb-2">
+            {{ season.season_start|date:'Y.m.d' }} - {{ season.season_end|date:'Y.m.d' }}
+        </h1>
         <table class="table is-bordered is-narrow table-relative">
             <thead>
             <tr class="white">

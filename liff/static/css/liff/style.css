@@ -52,10 +52,12 @@
 
 .week0 {
     color: #0000cc;
+    font-weight: bold;
 }
 
 .week1 {
     color: #ff471a;
+    font-weight: bold;
 }
 
 .day, .day .fixed-col {
