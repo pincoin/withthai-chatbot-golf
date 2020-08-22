@@ -1,3 +1,10 @@
+/* Common */
+.button-close {
+    color: #ffffff;
+    background-color: #ff6666;
+    border-color: transparent;
+}
+
 /* Scorecard */
 .blue, .blue strong, .blue .fixed-col {
     color: #ffffff;
@@ -50,6 +57,7 @@
     word-break: keep-all;
 }
 
+/* Price Table */
 .week0 {
     color: #0000cc;
     font-weight: bold;
