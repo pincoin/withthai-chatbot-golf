@@ -131,7 +131,10 @@ class CallbackView(generic.View):
             elif text == 'layout':
                 self.line_bot_api.reply_message(
                     event.reply_token,
-                    models.TextSendMessage(text='layout - carousel message'))
+                    image_message=models.ImageSendMessage(
+                        original_content_url='https://loremflickr.com/640/360',
+                        preview_image_url='https://loremflickr.com/640/360'
+                    ))
             elif text in ['hotels', 'hotel', 'accommodation', 'accommodations']:
                 self.line_bot_api.reply_message(
                     event.reply_token,
