@@ -147,6 +147,21 @@ class GolfClub(model_utils_models.TimeStampedModel):
         (2, 'suspended', _('Suspended')),
     )
 
+    CADDIE_COMPULSORY_CHOICES = Choices(
+        (0, 'optional', _('Optional')),
+        (1, 'compulsory', _('Compulsory')),
+    )
+
+    CART_COMPULSORY_CHOICES = Choices(
+        (0, 'optional', _('Optional')),
+        (1, 'compulsory', _('Compulsory')),
+        (2, 'compulsory2', _('Compulsory 2 player+')),
+        (3, 'compulsory3', _('Compulsory 3 player+')),
+        (4, 'compulsory4', _('Compulsory 4 player+')),
+        (5, 'compulsory5', _('Compulsory 5 player+')),
+        (6, 'compulsory6', _('Compulsory 6 player+')),
+    )
+
     title_english = models.CharField(
         verbose_name=_('Golf club English name'),
         max_length=255,
@@ -257,6 +272,20 @@ class GolfClub(model_utils_models.TimeStampedModel):
         max_digits=10,
         decimal_places=7,
         default=0,
+    )
+
+    caddie_compulsory = models.IntegerField(
+        verbose_name=_('Caddie compulsory'),
+        choices=CADDIE_COMPULSORY_CHOICES,
+        default=CADDIE_COMPULSORY_CHOICES.compulsory,
+        db_index=True,
+    )
+
+    cart_compulsory = models.IntegerField(
+        verbose_name=_('Cart compulsory'),
+        choices=CART_COMPULSORY_CHOICES,
+        default=CART_COMPULSORY_CHOICES.optional,
+        db_index=True,
     )
 
     liff = models.JSONField(
@@ -449,7 +478,7 @@ class Timeslot(model_utils_models.TimeStampedModel):
         return f'{self.title_english}-{self.day_of_week}-{self.slot_start}-{self.slot_end}'
 
 
-class Rate(model_utils_models.TimeStampedModel):
+class GreenFee(model_utils_models.TimeStampedModel):
     customer_group = models.ForeignKey(
         'golf.CustomerGroup',
         verbose_name=_('Customer group'),
@@ -471,20 +500,20 @@ class Rate(model_utils_models.TimeStampedModel):
         on_delete=models.CASCADE,
     )
 
-    green_fee_list_price = models.DecimalField(
-        verbose_name=_('Green fee list price'),
+    list_price = models.DecimalField(
+        verbose_name=_('List price'),
         max_digits=11,
         decimal_places=2,
         help_text=_('THB'),
     )
 
-    green_fee_selling_price = models.DecimalField(
-        verbose_name=_('Green fee selling price'),
+    selling_price = models.DecimalField(
+        verbose_name=_('Selling price'),
         max_digits=11,
         decimal_places=2,
         help_text=_('THB'),
     )
 
     class Meta:
-        verbose_name = _('Service rate')
-        verbose_name_plural = _('Service rates')
+        verbose_name = _('Green fee')
+        verbose_name_plural = _('Green fee')

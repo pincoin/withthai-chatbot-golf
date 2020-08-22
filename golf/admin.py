@@ -49,7 +49,8 @@ class GolfClubAdmin(admin.ModelAdmin):
         (_('Golf club'), {
             'fields': ('title_english', 'title_thai', 'slug',
                        'working_status', 'business_hour_start', 'business_hour_end',
-                       'phone', 'email', 'fax', 'website', 'address', 'latitude', 'longitude', 'district')
+                       'phone', 'email', 'fax', 'website', 'address', 'latitude', 'longitude', 'district',
+                       'caddie_compulsory', 'cart_compulsory')
         }),
         ('LINE', {
             'fields': ('line_bot_channel_access_token', 'line_bot_channel_secret', 'line_notify_access_token',
@@ -67,8 +68,8 @@ class LineUserAdmin(admin.ModelAdmin):
     ordering = ['-created']
 
 
-class RateAdmin(admin.ModelAdmin):
-    list_display = ('customer_group', 'season', 'timeslot', 'green_fee_list_price', 'green_fee_selling_price')
+class GreenFeeAdmin(admin.ModelAdmin):
+    list_display = ('customer_group', 'season', 'timeslot', 'list_price', 'selling_price')
     list_filter = ('season__golf_club__title_english',)
     raw_id_fields = ('customer_group', 'season', 'timeslot')
     # form = forms.RateAdminForm
@@ -103,7 +104,7 @@ admin.site.register(models.Province, ProvinceAdmin)
 admin.site.register(models.District, DistrictAdmin)
 admin.site.register(models.GolfClub, GolfClubAdmin)
 admin.site.register(models.LineUser, LineUserAdmin)
-admin.site.register(models.Rate, RateAdmin)
+admin.site.register(models.GreenFee, GreenFeeAdmin)
 admin.site.register(models.CustomerGroup, CustomerGroupAdmin)
 admin.site.register(models.Season, SeasonAdmin)
 admin.site.register(models.Timeslot, TimeslotAdmin)

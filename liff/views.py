@@ -38,7 +38,7 @@ class PriceTableTemplateView(viewmixins.LiffContextMixin, generic.TemplateView):
     def get_context_data(self, **kwargs):
         context = super(PriceTableTemplateView, self).get_context_data(**kwargs)
 
-        rates = golf_models.Rate.objects \
+        green_fees = golf_models.GreenFee.objects \
             .select_related('season', 'timeslot', 'customer_group') \
             .filter(season__golf_club=self.club,
                     timeslot__golf_club=self.club,
@@ -61,14 +61,14 @@ class PriceTableTemplateView(viewmixins.LiffContextMixin, generic.TemplateView):
             .order_by('position')
 
         price_table = {}
-        for rate in rates:
-            if rate.season_id not in price_table:
-                price_table[rate.season_id] = {}
+        for green_fee in green_fees:
+            if green_fee.season_id not in price_table:
+                price_table[green_fee.season_id] = {}
 
-            if rate.timeslot_id not in price_table[rate.season_id]:
-                price_table[rate.season_id][rate.timeslot_id] = {}
+            if green_fee.timeslot_id not in price_table[green_fee.season_id]:
+                price_table[green_fee.season_id][green_fee.timeslot_id] = {}
 
-            price_table[rate.season_id][rate.timeslot_id][rate.customer_group_id] = rate.green_fee_list_price
+            price_table[green_fee.season_id][green_fee.timeslot_id][green_fee.customer_group_id] = green_fee.list_price
 
         context['title'] = _('Price Table')
 
