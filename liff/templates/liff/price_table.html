@@ -1,6 +1,6 @@
 {% extends 'liff/base.html' %}
 
-{% load static i18n %}
+{% load static i18n humanize %}
 {% load liff_tags %}
 
 {% block stylesheet %}
@@ -18,7 +18,7 @@
         <table class="table is-bordered is-narrow table-relative">
             <thead>
             <tr class="white">
-                <th class="has-text-centered fixed-col">&nbsp;</th>
+                <th class="has-text-centered fixed-col">{% trans 'Green Fee' %}</th>
 
                 {% for customer_group in customer_groups %}
                 <th class="has-text-centered">{{ customer_group.title_english }}</th>
@@ -45,6 +45,24 @@
             </tr>
             {% endfor %}
             </tbody>
+            <tfoot>
+            <tr class="white">
+                <td class="has-text-centered fixed-col">
+                    <strong>{% trans 'Caddie Fee' %}</strong>
+                </td>
+                <td class="has-text-right" colspan="{{ customer_groups|length }}">
+                    <strong>{{ season.caddie_fee_list_price|floatformat:0|intcomma }}</strong>
+                </td>
+            </tr>
+            <tr class="white">
+                <td class="has-text-centered fixed-col">
+                    <strong>{% trans 'Cart Fee' %}</strong>
+                </td>
+                <td class="has-text-right" colspan="{{ customer_groups|length }}">
+                    <strong>{{ season.cart_fee_list_price|floatformat:0|intcomma }}</strong>
+                </td>
+            </tr>
+            </tfoot>
         </table>
         {% endfor %}
     </div>

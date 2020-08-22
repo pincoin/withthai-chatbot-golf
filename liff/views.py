@@ -33,7 +33,7 @@ class BookingCreateFormView(viewmixins.LiffContextMixin, generic.FormView):
 class PriceTableTemplateView(viewmixins.LiffContextMixin, generic.TemplateView):
     app_name = 'price'
 
-    template_name = 'liff/price.html'
+    template_name = 'liff/price_table.html'
 
     def get_context_data(self, **kwargs):
         context = super(PriceTableTemplateView, self).get_context_data(**kwargs)

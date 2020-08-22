@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-08-22 19:24+0700\n"
+"POT-Creation-Date: 2020-08-22 21:35+0700\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -406,8 +406,21 @@ msgstr ""
 msgid "New Booking"
 msgstr ""
 
-#: liff/templates/liff/price.html:52 liff/templates/liff/scorecard.html:55
+#: liff/templates/liff/price.html:52 liff/templates/liff/price_table.html:66
+#: liff/templates/liff/scorecard.html:55
 msgid "Close"
+msgstr ""
+
+#: liff/templates/liff/price_table.html:21
+msgid "Green Fee"
+msgstr ""
+
+#: liff/templates/liff/price_table.html:50
+msgid "Caddie Fee"
+msgstr ""
+
+#: liff/templates/liff/price_table.html:56
+msgid "Cart Fee"
 msgstr ""
 
 #: liff/views.py:16
