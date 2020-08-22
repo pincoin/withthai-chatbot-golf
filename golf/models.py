@@ -271,12 +271,6 @@ class GolfClub(model_utils_models.TimeStampedModel):
         null=True,
     )
 
-    price_table = models.JSONField(
-        verbose_name=_('Price table'),
-        blank=True,
-        null=True,
-    )
-
     working_status = models.IntegerField(
         verbose_name=_('Working status'),
         choices=WORKING_CHOICES,
