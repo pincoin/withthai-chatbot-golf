@@ -50,7 +50,7 @@
                 <td class="has-text-centered fixed-col">
                     <strong>{% trans 'Caddie Fee' %}</strong>
                 </td>
-                <td class="has-text-centered" colspan="{{ customer_groups|length }}">
+                <td class="has-text-right" colspan="{{ customer_groups|length }}">
                     <strong>{{ season.caddie_fee_list_price|floatformat:0|intcomma }}</strong>
                 </td>
             </tr>
@@ -58,7 +58,7 @@
                 <td class="has-text-centered fixed-col">
                     <strong>{% trans 'Cart Fee' %}</strong>
                 </td>
-                <td class="has-text-centered" colspan="{{ customer_groups|length }}">
+                <td class="has-text-right" colspan="{{ customer_groups|length }}">
                     <strong>{{ season.cart_fee_list_price|floatformat:0|intcomma }}</strong>
                 </td>
             </tr>
