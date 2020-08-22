@@ -11,6 +11,17 @@ urlpatterns = [
     re_path(r'^(?P<slug>[-\w]+)/request/$',
             views.BookingCreateFormView.as_view(), name='request'),
 
+    # User
+    # Create - request
+    # Update - accept
+    # Read - list / detail
+    # Delete - drop
+
+    # Golf club manager
+    # Update - confirm / offer
+    # Read - list / detail
+    # Delete - no
+
     re_path(r'^(?P<slug>[-\w]+)/price/$',
             views.PriceTableTemplateView.as_view(), name='price'),
 

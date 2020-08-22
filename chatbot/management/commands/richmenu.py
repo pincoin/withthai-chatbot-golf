@@ -46,7 +46,8 @@ class Command(BaseCommand):
             areas=[
                 models.RichMenuArea(
                     bounds=models.RichMenuBounds(x=0, y=0, width=833, height=843),
-                    action=models.MessageAction(label='My Booking', text='Booking'), ),
+                    action=models.URIAction(label='New Booking',
+                                            uri=f"https://liff.line.me/{club.liff['request']['id']}"), ),
                 models.RichMenuArea(
                     bounds=models.RichMenuBounds(x=833, y=0, width=834, height=843),
                     action=models.URIAction(label='Price Table',
