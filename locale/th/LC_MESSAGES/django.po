@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-08-22 18:20+0700\n"
+"POT-Creation-Date: 2020-08-22 19:24+0700\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -50,7 +50,7 @@ msgid "English"
 msgstr ""
 
 #: golf/admin.py:49 golf/models.py:311 golf/models.py:363 golf/models.py:387
-#: golf/models.py:414 golf/models.py:443
+#: golf/models.py:414 golf/models.py:471
 msgid "Golf club"
 msgstr ""
 
@@ -296,7 +296,7 @@ msgstr ""
 msgid "Customer group name"
 msgstr ""
 
-#: golf/models.py:404 golf/models.py:484
+#: golf/models.py:404 golf/models.py:512
 msgid "Customer group"
 msgstr ""
 
@@ -316,59 +316,76 @@ msgstr ""
 msgid "Season end date"
 msgstr ""
 
-#: golf/models.py:433 golf/models.py:491
-msgid "Season"
+#: golf/models.py:433
+msgid "Caddie fee list price"
 msgstr ""
 
-#: golf/models.py:434
-msgid "Seasons"
-msgstr ""
-
-#: golf/models.py:449
-msgid "Weekday"
-msgstr ""
-
-#: golf/models.py:450
-msgid "Weekend"
-msgstr ""
-
-#: golf/models.py:454
-msgid "Timeslot name"
-msgstr ""
-
-#: golf/models.py:459
-msgid "Day of week"
-msgstr ""
-
-#: golf/models.py:466
-msgid "Timeslot start time"
-msgstr ""
-
-#: golf/models.py:470
-msgid "Timeslot end time"
-msgstr ""
-
-#: golf/models.py:474 golf/models.py:498
-msgid "Timeslot"
-msgstr ""
-
-#: golf/models.py:475
-msgid "Timeslots"
-msgstr ""
-
-#: golf/models.py:504
-msgid "List price"
-msgstr ""
-
-#: golf/models.py:507 golf/models.py:514
+#: golf/models.py:436 golf/models.py:443 golf/models.py:450 golf/models.py:457
+#: golf/models.py:535 golf/models.py:542
 msgid "THB"
 msgstr ""
 
-#: golf/models.py:511
+#: golf/models.py:440
+msgid "Caddie fee selling price"
+msgstr ""
+
+#: golf/models.py:447
+msgid "Cart fee list price"
+msgstr ""
+
+#: golf/models.py:454
+msgid "Cart fee selling price"
+msgstr ""
+
+#: golf/models.py:461 golf/models.py:519
+msgid "Season"
+msgstr ""
+
+#: golf/models.py:462
+msgid "Seasons"
+msgstr ""
+
+#: golf/models.py:477
+msgid "Weekday"
+msgstr ""
+
+#: golf/models.py:478
+msgid "Weekend"
+msgstr ""
+
+#: golf/models.py:482
+msgid "Timeslot name"
+msgstr ""
+
+#: golf/models.py:487
+msgid "Day of week"
+msgstr ""
+
+#: golf/models.py:494
+msgid "Timeslot start time"
+msgstr ""
+
+#: golf/models.py:498
+msgid "Timeslot end time"
+msgstr ""
+
+#: golf/models.py:502 golf/models.py:526
+msgid "Timeslot"
+msgstr ""
+
+#: golf/models.py:503
+msgid "Timeslots"
+msgstr ""
+
+#: golf/models.py:532
+msgid "List price"
+msgstr ""
+
+#: golf/models.py:539
 msgid "Selling price"
 msgstr ""
 
-#: golf/models.py:518 golf/models.py:519
+#: golf/models.py:546 golf/models.py:547
 msgid "Green fee"
 msgstr ""
 

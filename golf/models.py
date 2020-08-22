@@ -429,6 +429,34 @@ class Season(model_utils_models.TimeStampedModel):
         verbose_name=_('Season end date'),
     )
 
+    caddie_fee_list_price = models.DecimalField(
+        verbose_name=_('Caddie fee list price'),
+        max_digits=11,
+        decimal_places=2,
+        help_text=_('THB'),
+    )
+
+    caddie_selling_price = models.DecimalField(
+        verbose_name=_('Caddie fee selling price'),
+        max_digits=11,
+        decimal_places=2,
+        help_text=_('THB'),
+    )
+
+    cart_fee_list_price = models.DecimalField(
+        verbose_name=_('Cart fee list price'),
+        max_digits=11,
+        decimal_places=2,
+        help_text=_('THB'),
+    )
+
+    cart_selling_price = models.DecimalField(
+        verbose_name=_('Cart fee selling price'),
+        max_digits=11,
+        decimal_places=2,
+        help_text=_('THB'),
+    )
+
     class Meta:
         verbose_name = _('Season')
         verbose_name_plural = _('Seasons')
