@@ -132,8 +132,8 @@ class CallbackView(generic.View):
                 self.line_bot_api.reply_message(
                     event.reply_token,
                     models.ImageSendMessage(
-                        original_content_url='https://loremflickr.com/640/360',
-                        preview_image_url='https://loremflickr.com/640/360'))
+                        original_content_url='https://loremflickr.com/cache/resized/3553_3806423994_1c05ef2e12_z_640_360_nofilter.jpg',
+                        preview_image_url='https://loremflickr.com/cache/resized/3553_3806423994_1c05ef2e12_z_640_360_nofilter.jpg'))
             elif text in ['hotels', 'hotel', 'accommodation', 'accommodations']:
                 self.line_bot_api.reply_message(
                     event.reply_token,
