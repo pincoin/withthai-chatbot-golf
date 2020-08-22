@@ -69,16 +69,19 @@
 }
 
 .day, .day .fixed-col {
-    color: #001a00;
+    color: #000000;
     background-color: #c8ffbc;
+    font-weight: bold;
 }
 
 .twilight, .twilight .fixed-col {
-    color: #993d00;
+    color: #000000;
     background-color: #fbffbc;
+    font-weight: bold;
 }
 
 .night, .night .fixed-col {
     color: #000000;
     background-color: #ccfeff;
+    font-weight: bold;
 }
