@@ -13,16 +13,30 @@
         <div class="card">
             <header class="card-header has-background-warning">
                 <h1 class="card-header-title px-2 py-1">
-                    {% trans 'Booking Info' %}
+                    WITH THAI
                 </h1>
             </header>
-            <div class="card-content px-2 py-2">
-                <div class="content">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nec iaculis mauris.
-                    <a href="#">@bulmaio</a>. <a href="#">#css</a> <a href="#">#responsive</a>
-                    <br>
-                    <time datetime="2016-1-1">11:09 PM - 1 Jan 2016</time>
-                </div>
+            <div class="card-content px-0 py-1">
+                <table class="table is-fullwidth is-narrow quotation-table">
+                    <tbody>
+                    <tr>
+                        <td class="has-text-weight-bold">{% trans 'Name' %}</td>
+                        <td class="has-text-right">400</td>
+                    </tr>
+                    <tr>
+                        <td class="has-text-weight-bold">{% trans 'Tee-off' %}</td>
+                        <td class="has-text-right">4,500</td>
+                    </tr>
+                    <tr>
+                        <td class="has-text-weight-bold">{% trans 'Golfer #' %}</td>
+                        <td class="has-text-right">900</td>
+                    </tr>
+                    <tr>
+                        <td class="has-text-weight-bold">{% trans 'Cart #' %}</td>
+                        <td class="has-text-right">900</td>
+                    </tr>
+                    </tbody>
+                </table>
             </div>
             <footer class="card-footer">
 
@@ -31,11 +45,11 @@
         <div class="card">
             <header class="card-header has-background-warning">
                 <h1 class="card-header-title px-2 py-1">
-                    {% trans 'Booking Quotation' %}
+                    {% trans 'ORDER DETAILS' %}
                 </h1>
             </header>
             <div class="card-content px-0 py-1">
-                <table class="table is-fullwidth is-bordered is-narrow quotation-table">
+                <table class="table is-fullwidth is-narrow quotation-table">
                     <thead>
                     <tr>
                         <th class="has-text-centered">{% trans 'Item' %}</th>
