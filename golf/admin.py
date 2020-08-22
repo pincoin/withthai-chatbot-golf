@@ -1,4 +1,5 @@
 from django.contrib import admin
+from django.utils.translation import gettext_lazy as _
 
 from . import models
 
@@ -44,6 +45,17 @@ class GolfClubAdmin(admin.ModelAdmin):
     list_filter = ('district__province__title_english',)
     prepopulated_fields = {'slug': ('title_english',)}
     readonly_fields = ('info',)
+    fieldsets = (
+        (_('Golf club'), {
+            'fields': ('title_english', 'title_thai', 'slug',
+                       'working_status', 'business_hour_start', 'business_hour_end',
+                       'phone', 'email', 'fax', 'website', 'address', 'latitude', 'longitude', 'district')
+        }),
+        ('LINE', {
+            'fields': ('line_bot_channel_access_token', 'line_bot_channel_secret', 'line_notify_access_token',
+                       'info', 'liff', 'scorecard', 'price_table')
+        })
+    )
     inlines = [CustomerGroupInline, SeasonInline, TimeslotInline]
     ordering = ['-created']
 
