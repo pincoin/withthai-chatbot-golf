@@ -150,31 +150,31 @@ msgstr "휴업"
 
 #: golf/models.py:151 golf/models.py:156
 msgid "Optional"
-msgstr ""
+msgstr "선택"
 
 #: golf/models.py:152 golf/models.py:157
 msgid "Compulsory"
-msgstr ""
+msgstr "필수"
 
 #: golf/models.py:158
 msgid "Compulsory 2 player+"
-msgstr ""
+msgstr "2인 이상 필수"
 
 #: golf/models.py:159
 msgid "Compulsory 3 player+"
-msgstr ""
+msgstr "3인 이상 필수"
 
 #: golf/models.py:160
 msgid "Compulsory 4 player+"
-msgstr ""
+msgstr "4인 이상 필수"
 
 #: golf/models.py:161
 msgid "Compulsory 5 player+"
-msgstr ""
+msgstr "5인 이상 필수"
 
 #: golf/models.py:162
 msgid "Compulsory 6 player+"
-msgstr ""
+msgstr "6인 이상 필수"
 
 #: golf/models.py:166
 msgid "Golf club English name"
@@ -238,11 +238,11 @@ msgstr "경도"
 
 #: golf/models.py:278
 msgid "Caddie compulsory"
-msgstr ""
+msgstr "캐디 필수"
 
 #: golf/models.py:285
 msgid "Cart compulsory"
-msgstr ""
+msgstr "카트 필수"
 
 #: golf/models.py:292 liff/apps.py:7
 msgid "LIFF"
