@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-08-22 21:35+0700\n"
+"POT-Creation-Date: 2020-08-23 02:43+0700\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -393,35 +393,58 @@ msgstr "그린피"
 msgid "hotel"
 msgstr "호텔"
 
-#: liff/templates/liff/booking_create_form.html:15
-#: liff/templates/liff/booking_create_form.html:17
-msgid "Tee-off"
-msgstr "티오프"
+#: liff/templates/liff/booking_create_form.html:16
+msgid "Booking Info"
+msgstr "예약 사항"
 
-#: liff/templates/liff/booking_create_form.html:77
-msgid "Golfer #"
+#: liff/templates/liff/booking_create_form.html:34
+msgid "Booking Quotation"
+msgstr "예약 견적"
+
+#: liff/templates/liff/booking_create_form.html:41
+msgid "Item"
+msgstr "항목"
+
+#: liff/templates/liff/booking_create_form.html:42
+msgid "Price"
+msgstr "가격"
+
+#: liff/templates/liff/booking_create_form.html:43
+msgid "PAX"
 msgstr "인원"
 
-#: liff/templates/liff/booking_create_form.html:156 liff/views.py:29
-msgid "New Booking"
-msgstr "예약 문의"
+#: liff/templates/liff/booking_create_form.html:44
+msgid "Amount"
+msgstr "금액"
 
-#: liff/templates/liff/price.html:52 liff/templates/liff/price_table.html:66
-#: liff/templates/liff/scorecard.html:55
-msgid "Close"
-msgstr "닫기"
-
+#: liff/templates/liff/booking_create_form.html:49
 #: liff/templates/liff/price_table.html:21
 msgid "Green Fee"
 msgstr "그린피"
 
-#: liff/templates/liff/price_table.html:50
+#: liff/templates/liff/booking_create_form.html:55
+#: liff/templates/liff/price_table.html:51
 msgid "Caddie Fee"
 msgstr "캐디피"
 
-#: liff/templates/liff/price_table.html:56
+#: liff/templates/liff/booking_create_form.html:61
+#: liff/templates/liff/price_table.html:59
 msgid "Cart Fee"
 msgstr "카트피"
+
+#: liff/templates/liff/booking_create_form.html:69
+msgid "Total Amount"
+msgstr "합계금액"
+
+#: liff/templates/liff/booking_create_form.html:79 liff/views.py:29
+msgid "New Booking"
+msgstr "예약 문의"
+
+#: liff/templates/liff/booking_create_form.html:82
+#: liff/templates/liff/price.html:52 liff/templates/liff/price_table.html:70
+#: liff/templates/liff/scorecard.html:55
+msgid "Close"
+msgstr "닫기"
 
 #: liff/views.py:16
 msgid "Sample"

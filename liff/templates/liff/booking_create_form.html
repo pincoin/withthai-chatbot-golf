@@ -8,155 +8,80 @@
 {% endblock %}}
 
 {% block content %}
-<section class="section px-1 py-0">
-    <div class="field is-horizontal">
-        <div class="field-label is-normal">
-            <label class="label"
-                   for="{{ form.round_date.id_for_label }}">{% trans 'Tee-off' %}</label>
-            <label class="label is-hidden"
-                   for="{{ form.round_time.id_for_label }}">{% trans 'Tee-off' %}</label>
-        </div>
-        <div class="field-body">
-            <div class="field has-addons has-addons-fullwidth has-addons-right">
-                <div class="control">
-                    <input class="input{% if form.round_date.errors %} is-danger{% endif %}"
-                           type="date"
-                           id="{{ form.round_date.id_for_label }}"
-                           name="{{ form.round_date.name }}"
-                           value="{{ form.round_date.value|default_if_none:'' }}"
-                           placeholder="YYYY-MM-DD">
-                </div>
-                <div class="control{% if form.round_date.errors and not form.round_time.errors %} time-input-margin{% endif %}">
-                    <input class="input{% if form.round_time.errors %} is-danger{% endif %}"
-                           type="time"
-                           id="{{ form.round_time.id_for_label }}"
-                           name="{{ form.round_time.name }}"
-                           value="{{ form.round_time.value|default_if_none:'' }}"
-                           placeholder="HH:MM" step="60">
+<section class="section px-2 py-2">
+    <div class="container">
+        <div class="card">
+            <header class="card-header has-background-warning">
+                <h1 class="card-header-title">
+                    {% trans 'Booking Info' %}
+                </h1>
+            </header>
+            <div class="card-content px-2 py-2">
+                <div class="content">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nec iaculis mauris.
+                    <a href="#">@bulmaio</a>. <a href="#">#css</a> <a href="#">#responsive</a>
+                    <br>
+                    <time datetime="2016-1-1">11:09 PM - 1 Jan 2016</time>
                 </div>
             </div>
-        </div>
-    </div>
-    {% if form.round_date.errors or form.round_time.errors %}
-    <div class="field is-horizontal">
-        <div class="field-label"></div>
-        <div class="field-body">
-            <article class="message is-danger booking-form-alert">
-                <div class="message-body">
-                    <ul>
-                        {% for error in form.round_date.errors %}
-                        <li>{{ error|escape }}</li>
-                        {% endfor %}
-                        {% for error in form.round_time.errors %}
-                        <li>{{ error|escape }}</li>
-                        {% endfor %}
-                    </ul>
-                </div>
-            </article>
-        </div>
-    </div>
-    {% endif %}
+            <footer class="card-footer">
 
-    <div class="field is-horizontal">
-        <div class="field-label is-normal">
-            <label class="label">Name</label>
+            </footer>
         </div>
-        <div class="field-body">
-            <div class="field is-narrow">
-                <div class="control">
-                    <input class="input" type="text" placeholder="Customer name">
-                </div>
+        <div class="card">
+            <header class="card-header has-background-warning">
+                <h1 class="card-header-title">
+                    {% trans 'Booking Quotation' %}
+                </h1>
+            </header>
+            <div class="card-content px-0 py-1">
+                <table class="table is-fullwidth is-bordered is-narrow quotation-table">
+                    <thead>
+                    <tr>
+                        <th class="has-text-centered">{% trans 'Item' %}</th>
+                        <th class="has-text-centered">{% trans 'Price' %}</th>
+                        <th class="has-text-centered">{% trans 'PAX' %}</th>
+                        <th class="has-text-centered">{% trans 'Amount' %}</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td class="has-text-weight-bold">{% trans 'Green Fee' %}</td>
+                        <td class="has-text-right">4,500</td>
+                        <td class="has-text-centered">3</td>
+                        <td class="has-text-right">13,500</td>
+                    </tr>
+                    <tr>
+                        <td class="has-text-weight-bold">{% trans 'Caddie Fee' %}</td>
+                        <td class="has-text-right">400</td>
+                        <td class="has-text-centered">3</td>
+                        <td class="has-text-right">1,200</td>
+                    </tr>
+                    <tr>
+                        <td class="has-text-weight-bold">{% trans 'Cart Fee' %}</td>
+                        <td class="has-text-right">900</td>
+                        <td class="has-text-centered">3</td>
+                        <td class="has-text-right">2,700</td>
+                    </tr>
+                    </tbody>
+                    <tfoot>
+                    <tr>
+                        <td class="has-text-weight-bold">{% trans 'Total Amount' %}</td>
+                        <td class="has-text-weight-bold has-text-right" colspan="3">
+                            <span class="total-amount">17,400</span>
+                        </td>
+                    </tr>
+                    </tfoot>
+                </table>
             </div>
-        </div>
-    </div>
-
-    <div class="field is-horizontal">
-        <div class="field-label is-normal">
-            <label class="label"
-                   for="{{ form.pax.id_for_label }}">
-                {% trans 'Golfer #' %}
-            </label>
-        </div>
-        <div class="field-body">
-            <div class="field has-addons">
-                <div class="control">
-                    <a class="button" id="minus-button">
-                        <i class="fas fa-minus fa-fw"></i>
-                    </a>
-                </div>
-                <div class="control is-expanded">
-                    <div class="select is-fullwidth{% if form.pax.errors %} is-danger{% endif %}">
-                        <select id="{{ form.pax.id_for_label }}"
-                                name="{{ form.pax.name }}"
-                                class="pax-select">
-                        </select>
-                    </div>
-                </div>
-                <div class="control">
-                    <a class="button" id="plus-button">
-                        <i class="fas fa-plus fa-fw"></i>
-                    </a>
-                </div>
-            </div>
-        </div>
-    </div>
-    {% if form.pax.errors %}
-    <div class="field is-horizontal">
-        <div class="field-label"></div>
-        <div class="field-body">
-            <article class="message is-danger booking-form-alert">
-                <div class="message-body">
-                    <ul>
-                        {% for error in form.pax.errors %}
-                        <li>{{ error|escape }}</li>
-                        {% endfor %}
-                    </ul>
-                </div>
-            </article>
-        </div>
-    </div>
-    {% endif %}
-
-    <div class="field is-horizontal">
-        <div class="field-label is-normal">
-            <label class="label">Cart #</label>
-        </div>
-        <div class="field-body">
-            <div class="field has-addons">
-                <div class="control">
-                    <a class="button">
-                        <i class="fas fa-minus fa-fw"></i>
-                    </a>
-                </div>
-                <div class="control is-expanded">
-                    <div class="select is-fullwidth{% if form.pax.errors %} is-danger{% endif %}">
-                        <select
-                                name="{{ form.pax.name }}"
-                                class="pax-select">
-                        </select>
-                    </div>
-                </div>
-                <div class="control">
-                    <a class="button">
-                        <i class="fas fa-plus fa-fw"></i>
-                    </a>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="field is-horizontal">
-        <div class="field-label">
-            <!-- Left empty for spacing -->
-        </div>
-        <div class="field-body">
-            <div class="field">
-                <p class="control">
-                    <a class="button is-primary is-fullwidth">
-                        {% trans 'New Booking' %}
-                    </a>
-                </p>
-            </div>
+            <footer class="card-footer">
+                <button class="card-footer-item button-save">
+                    {% trans 'New Booking' %}
+                </button>
+                <button class="card-footer-item button-close" id="closeWindowButton">
+                    {% trans 'Close' %}
+                </button>
+            </footer>
         </div>
     </div>
 </section>

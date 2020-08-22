@@ -1,4 +1,10 @@
 /* Common */
+.button-save {
+    color: #ffffff;
+    background-color: #5ab381;
+    border-color: transparent;
+}
+
 .button-close {
     color: #ffffff;
     background-color: #ff6666;
@@ -84,4 +90,13 @@
     color: #000000;
     background-color: #ccfeff;
     font-weight: bold;
+}
+
+/* Quotation Table */
+.quotation-table {
+    font-size: .9rem;
+}
+
+.total-amount {
+    font-size: 1rem;
 }
