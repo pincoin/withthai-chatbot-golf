@@ -10,74 +10,72 @@
 {% block content %}
 <section class="section px-2 py-2">
     <div class="container">
-        <div class="card pb-4 quotation-card">
+        <div class="card quotation-card">
             <header class="card-header quotation-card-header">
-                <h1 class="card-header-title px-2 py-1">
+                <p class="card-header-title">
                     WITH THAI
-                </h1>
+                </p>
             </header>
-            <div class="card-content px-0 py-1">
-                <div class="ml-2">
-                    <div class="field is-horizontal">
-                        <div class="field-label is-normal">
-                            <label class="label" for="tee_off_date">{% trans 'Tee-off Date/Time' %}</label>
-                            <label class="label is-hidden" for="tee_off_time"></label>
+            <div class="card-content">
+                <div class="field is-horizontal">
+                    <div class="field-label is-normal">
+                        <label class="label" for="tee_off_date">{% trans 'Tee-off Date/Time' %}</label>
+                        <label class="label is-hidden" for="tee_off_time"></label>
+                    </div>
+                    <div class="field-body">
+                        <div class="field">
+                            <p class="control is-expanded has-icons-left">
+                                <input class="input" type="date" placeholder="Name" id="tee_off_date">
+                                <span class="icon is-small is-left"><i class="fas fa-calendar"></i></span>
+                            </p>
                         </div>
-                        <div class="field-body">
-                            <div class="field">
-                                <p class="control is-expanded has-icons-left">
-                                    <input class="input" type="date" placeholder="Name" id="tee_off_date">
-                                    <span class="icon is-small is-left"><i class="fas fa-calendar"></i></span>
-                                </p>
-                            </div>
-                            <div class="field">
-                                <p class="control is-expanded has-icons-left">
-                                    <input class="input" type="time" placeholder="Name" id="tee_off_time">
-                                    <span class="icon is-small is-left"><i class="fas fa-clock"></i></span>
-                                </p>
-                            </div>
+                        <div class="field">
+                            <p class="control is-expanded has-icons-left">
+                                <input class="input" type="time" placeholder="Name" id="tee_off_time">
+                                <span class="icon is-small is-left"><i class="fas fa-clock"></i></span>
+                            </p>
                         </div>
                     </div>
-                    <div class="field is-horizontal">
-                        <div class="field-label is-normal">
-                            <label class="label" for="tee_off_date">{% trans 'Golfer #' %}</label>
-                            <label class="label is-hidden" for="pax"></label>
-                        </div>
-                        <div class="field-body">
-                            <div class="field">
-                                <p class="control has-icons-left">
-                                    <input class="input" type="text" placeholder="4" id="pax">
-                                    <span class="icon is-small is-left"><i class="fas fa-user-friends"></i></span>
-                                </p>
-                            </div>
+                </div>
+                <div class="field is-horizontal">
+                    <div class="field-label is-normal">
+                        <label class="label" for="tee_off_date">{% trans 'Golfer #' %}</label>
+                        <label class="label is-hidden" for="pax"></label>
+                    </div>
+                    <div class="field-body">
+                        <div class="field">
+                            <p class="control has-icons-left">
+                                <input class="input" type="text" placeholder="4" id="pax">
+                                <span class="icon is-small is-left"><i class="fas fa-user-friends"></i></span>
+                            </p>
                         </div>
                     </div>
-                    <div class="field is-horizontal">
-                        <div class="field-label is-normal">
-                            <label class="label" for="tee_off_date">{% trans 'Cart #' %}</label>
-                            <label class="label is-hidden" for="cart"></label>
-                        </div>
-                        <div class="field-body">
-                            <div class="field">
-                                <p class="control has-icons-left">
-                                    <input class="input" type="text" placeholder="4" id="cart">
-                                    <span class="icon is-small is-left"><i class="fas fa-truck-pickup"></i></span>
-                                </p>
-                            </div>
+                </div>
+                <div class="field is-horizontal">
+                    <div class="field-label is-normal">
+                        <label class="label" for="tee_off_date">{% trans 'Cart #' %}</label>
+                        <label class="label is-hidden" for="cart"></label>
+                    </div>
+                    <div class="field-body">
+                        <div class="field">
+                            <p class="control has-icons-left">
+                                <input class="input" type="text" placeholder="4" id="cart">
+                                <span class="icon is-small is-left"><i class="fas fa-truck-pickup"></i></span>
+                            </p>
                         </div>
                     </div>
-                    <div class="field is-horizontal">
-                        <div class="field-label is-normal">
-                            <label class="label" for="tee_off_date">{% trans 'Customer Name' %}</label>
-                            <label class="label is-hidden" for="name"></label>
-                        </div>
-                        <div class="field-body">
-                            <div class="field">
-                                <p class="control has-icons-left">
-                                    <input class="input" type="text" placeholder="Name" id="name">
-                                    <span class="icon is-small is-left"><i class="far fa-address-card"></i></span>
-                                </p>
-                            </div>
+                </div>
+                <div class="field is-horizontal">
+                    <div class="field-label is-normal">
+                        <label class="label" for="tee_off_date">{% trans 'Customer Name' %}</label>
+                        <label class="label is-hidden" for="name"></label>
+                    </div>
+                    <div class="field-body">
+                        <div class="field">
+                            <p class="control has-icons-left">
+                                <input class="input" type="text" placeholder="Name" id="name">
+                                <span class="icon is-small is-left"><i class="far fa-address-card"></i></span>
+                            </p>
                         </div>
                     </div>
                 </div>
@@ -85,51 +83,49 @@
         </div>
         <div class="card quotation-card">
             <header class="card-header quotation-card-header">
-                <h1 class="card-header-title px-2 py-1">
+                <p class="card-header-title">
                     {% trans 'ORDER DETAILS' %}
-                </h1>
+                </p>
             </header>
-            <div class="card-content px-0 py-1">
-                <div class="ml-2">
-                    <table class="table is-fullwidth is-narrow quotation-table">
-                        <thead>
-                        <tr>
-                            <th class="has-text-centered">{% trans 'Item' %}</th>
-                            <th class="has-text-centered">{% trans 'Price' %}</th>
-                            <th class="has-text-centered">{% trans 'PAX' %}</th>
-                            <th class="has-text-centered">{% trans 'Amount' %}</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        <tr>
-                            <td class="has-text-weight-bold">{% trans 'Green Fee' %}</td>
-                            <td class="has-text-right">4,500</td>
-                            <td class="has-text-centered">3</td>
-                            <td class="has-text-right">13,500</td>
-                        </tr>
-                        <tr>
-                            <td class="has-text-weight-bold">{% trans 'Caddie Fee' %}</td>
-                            <td class="has-text-right">400</td>
-                            <td class="has-text-centered">3</td>
-                            <td class="has-text-right">1,200</td>
-                        </tr>
-                        <tr>
-                            <td class="has-text-weight-bold">{% trans 'Cart Fee' %}</td>
-                            <td class="has-text-right">900</td>
-                            <td class="has-text-centered">3</td>
-                            <td class="has-text-right">2,700</td>
-                        </tr>
-                        </tbody>
-                        <tfoot>
-                        <tr>
-                            <td class="has-text-weight-bold">{% trans 'Total Amount' %}</td>
-                            <td class="has-text-weight-bold has-text-right" colspan="3">
-                                <span class="total-amount">17,400</span>
-                            </td>
-                        </tr>
-                        </tfoot>
-                    </table>
-                </div>
+            <div class="card-content">
+                <table class="table is-fullwidth is-narrow quotation-table">
+                    <thead>
+                    <tr>
+                        <th class="has-text-centered">{% trans 'Item' %}</th>
+                        <th class="has-text-centered">{% trans 'Price' %}</th>
+                        <th class="has-text-centered">{% trans 'PAX' %}</th>
+                        <th class="has-text-centered">{% trans 'Amount' %}</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td class="has-text-weight-bold">{% trans 'Green Fee' %}</td>
+                        <td class="has-text-right">4,500</td>
+                        <td class="has-text-centered">3</td>
+                        <td class="has-text-right">13,500</td>
+                    </tr>
+                    <tr>
+                        <td class="has-text-weight-bold">{% trans 'Caddie Fee' %}</td>
+                        <td class="has-text-right">400</td>
+                        <td class="has-text-centered">3</td>
+                        <td class="has-text-right">1,200</td>
+                    </tr>
+                    <tr>
+                        <td class="has-text-weight-bold">{% trans 'Cart Fee' %}</td>
+                        <td class="has-text-right">900</td>
+                        <td class="has-text-centered">3</td>
+                        <td class="has-text-right">2,700</td>
+                    </tr>
+                    </tbody>
+                    <tfoot>
+                    <tr>
+                        <td class="has-text-weight-bold">{% trans 'Total Amount' %}</td>
+                        <td class="has-text-weight-bold has-text-right" colspan="3">
+                            <span class="total-amount">17,400</span>
+                        </td>
+                    </tr>
+                    </tfoot>
+                </table>
             </div>
             <footer class="card-footer buttons">
                 <button class="card-footer-item button button-save">
