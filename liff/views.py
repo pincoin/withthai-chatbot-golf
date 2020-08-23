@@ -17,26 +17,27 @@ class SampleView(viewmixins.LiffContextMixin, generic.TemplateView):
         return context
 
 
-class BookingCreateFormView(viewmixins.LiffContextMixin, generic.FormView):
+class GolfBookingCreateFormView(viewmixins.LiffContextMixin, generic.FormView):
     app_name = 'request'
 
-    template_name = 'liff/booking_create_form.html'
+    template_name = 'liff/golf_booking_create_form.html'
 
-    form_class = forms.BookingForm
+    form_class = forms.GolfBookingForm
 
     def get_context_data(self, **kwargs):
-        context = super(BookingCreateFormView, self).get_context_data(**kwargs)
+        context = super(GolfBookingCreateFormView, self).get_context_data(**kwargs)
         context['title'] = _('New Booking')
+        context['golf_club'] = self.club
         return context
 
 
-class PriceTableTemplateView(viewmixins.LiffContextMixin, generic.TemplateView):
+class GolfPriceTableTemplateView(viewmixins.LiffContextMixin, generic.TemplateView):
     app_name = 'price'
 
-    template_name = 'liff/price_table.html'
+    template_name = 'liff/golf_price_table.html'
 
     def get_context_data(self, **kwargs):
-        context = super(PriceTableTemplateView, self).get_context_data(**kwargs)
+        context = super(GolfPriceTableTemplateView, self).get_context_data(**kwargs)
 
         green_fees = golf_models.GreenFee.objects \
             .select_related('season', 'timeslot', 'customer_group') \
@@ -81,13 +82,13 @@ class PriceTableTemplateView(viewmixins.LiffContextMixin, generic.TemplateView):
         return context
 
 
-class ScorecardTemplateView(viewmixins.LiffContextMixin, generic.TemplateView):
+class GolfScorecardTemplateView(viewmixins.LiffContextMixin, generic.TemplateView):
     app_name = 'scorecard'
 
-    template_name = 'liff/scorecard.html'
+    template_name = 'liff/golf_scorecard.html'
 
     def get_context_data(self, **kwargs):
-        context = super(ScorecardTemplateView, self).get_context_data(**kwargs)
+        context = super(GolfScorecardTemplateView, self).get_context_data(**kwargs)
 
         context['title'] = _('Scorecard')
         context['hole'] = range(1, self.club.scorecard['hole'] + 1)
