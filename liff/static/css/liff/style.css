@@ -100,3 +100,8 @@
 .total-amount {
     font-size: 1rem;
 }
+
+.quotation-card-header {
+    box-shadow: none;
+    background-color: #feffd5;
+}
