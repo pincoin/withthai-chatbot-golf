@@ -111,7 +111,8 @@
                     <div class="field-body">
                         <div class="field">
                             <p class="control has-icons-left">
-                                <input class="input" type="text" placeholder="Type in English or Thai" id="name">
+                                <input class="input" type="text" id="name"
+                                       placeholder="{% trans 'Type in English or Thai' %}">
                                 <span class="icon is-small is-left"><i class="far fa-address-card"></i></span>
                             </p>
                         </div>
@@ -129,27 +130,27 @@
                 <table class="table is-fullwidth is-narrow quotation-table">
                     <thead>
                     <tr>
-                        <th class="has-text-centered">Item</th>
-                        <th class="has-text-centered">Price</th>
-                        <th class="has-text-centered">PAX</th>
-                        <th class="has-text-centered">Amount</th>
+                        <th class="has-text-centered">{% trans 'Item' %}</th>
+                        <th class="has-text-centered">{% trans 'Price' %}</th>
+                        <th class="has-text-centered">{% trans 'PAX' %}</th>
+                        <th class="has-text-centered">{% trans 'Amount' %}</th>
                     </tr>
                     </thead>
                     <tbody>
                     <tr>
-                        <td class="has-text-weight-bold">Green Fee</td>
+                        <td class="has-text-weight-bold">{% trans 'Green Fee' %}</td>
                         <td class="has-text-right">4,500</td>
                         <td class="has-text-centered">3</td>
                         <td class="has-text-right">13,500</td>
                     </tr>
                     <tr>
-                        <td class="has-text-weight-bold">Caddie Fee</td>
+                        <td class="has-text-weight-bold">{% trans 'Caddie Fee' %}</td>
                         <td class="has-text-right">400</td>
                         <td class="has-text-centered">3</td>
                         <td class="has-text-right">1,200</td>
                     </tr>
                     <tr>
-                        <td class="has-text-weight-bold">Cart Fee</td>
+                        <td class="has-text-weight-bold">{% trans 'Cart Fee' %}</td>
                         <td class="has-text-right">900</td>
                         <td class="has-text-centered">3</td>
                         <td class="has-text-right">2,700</td>
@@ -157,7 +158,7 @@
                     </tbody>
                     <tfoot>
                     <tr>
-                        <td class="has-text-weight-bold">Total Amount</td>
+                        <td class="has-text-weight-bold">{% trans 'Total Amount' %}</td>
                         <td class="has-text-weight-bold has-text-right" colspan="3">
                             <span class="total-amount">17,400</span>
                         </td>

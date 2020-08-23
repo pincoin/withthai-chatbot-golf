@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-08-23 02:43+0700\n"
+"POT-Creation-Date: 2020-08-24 02:12+0700\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -393,54 +393,70 @@ msgstr ""
 msgid "hotel"
 msgstr ""
 
-#: liff/templates/liff/booking_create_form.html:16
-msgid "Booking Info"
-msgstr ""
-
-#: liff/templates/liff/booking_create_form.html:34
-msgid "Booking Quotation"
-msgstr ""
-
-#: liff/templates/liff/booking_create_form.html:41
-msgid "Item"
+#: liff/templates/liff/booking_create_form.html:22
+msgid "Tee-off Date/Time"
 msgstr ""
 
 #: liff/templates/liff/booking_create_form.html:42
+msgid "Golfer #"
+msgstr ""
+
+#: liff/templates/liff/booking_create_form.html:75
+msgid "Cart #"
+msgstr ""
+
+#: liff/templates/liff/booking_create_form.html:108
+msgid "Customer Name"
+msgstr ""
+
+#: liff/templates/liff/booking_create_form.html:115
+msgid "Type in English or Thai"
+msgstr ""
+
+#: liff/templates/liff/booking_create_form.html:126
+msgid "ORDER DETAILS"
+msgstr ""
+
+#: liff/templates/liff/booking_create_form.html:133
+msgid "Item"
+msgstr ""
+
+#: liff/templates/liff/booking_create_form.html:134
 msgid "Price"
 msgstr ""
 
-#: liff/templates/liff/booking_create_form.html:43
+#: liff/templates/liff/booking_create_form.html:135
 msgid "PAX"
 msgstr ""
 
-#: liff/templates/liff/booking_create_form.html:44
+#: liff/templates/liff/booking_create_form.html:136
 msgid "Amount"
 msgstr ""
 
-#: liff/templates/liff/booking_create_form.html:49
+#: liff/templates/liff/booking_create_form.html:141
 #: liff/templates/liff/price_table.html:21
 msgid "Green Fee"
 msgstr ""
 
-#: liff/templates/liff/booking_create_form.html:55
+#: liff/templates/liff/booking_create_form.html:147
 #: liff/templates/liff/price_table.html:51
 msgid "Caddie Fee"
 msgstr ""
 
-#: liff/templates/liff/booking_create_form.html:61
+#: liff/templates/liff/booking_create_form.html:153
 #: liff/templates/liff/price_table.html:59
 msgid "Cart Fee"
 msgstr ""
 
-#: liff/templates/liff/booking_create_form.html:69
+#: liff/templates/liff/booking_create_form.html:161
 msgid "Total Amount"
 msgstr ""
 
-#: liff/templates/liff/booking_create_form.html:79 liff/views.py:29
+#: liff/templates/liff/booking_create_form.html:171 liff/views.py:29
 msgid "New Booking"
 msgstr ""
 
-#: liff/templates/liff/booking_create_form.html:82
+#: liff/templates/liff/booking_create_form.html:174
 #: liff/templates/liff/price.html:52 liff/templates/liff/price_table.html:70
 #: liff/templates/liff/scorecard.html:55
 msgid "Close"
