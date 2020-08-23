@@ -45,29 +45,67 @@
                 </div>
                 <div class="field is-horizontal">
                     <div class="field-label is-normal">
-                        <label class="label" for="tee_off_date">{% trans 'Golfer #' %}</label>
-                        <label class="label is-hidden" for="pax"></label>
+                        <label class="label" for="pax">{% trans 'Golfer #' %}</label>
                     </div>
                     <div class="field-body">
-                        <div class="field">
-                            <p class="control has-icons-left">
-                                <input class="input" type="text" placeholder="4" id="pax">
+                        <div class="field has-addons">
+                            <div class="control">
+                                <a class="button" id="pax-minus-button">
+                                    <i class="fas fa-minus fa-fw"></i>
+                                </a>
+                            </div>
+                            <div class="control is-expanded has-icons-left">
+                                <div class="select is-fullwidth">
+                                    <select id="pax"
+                                            name="pax"
+                                            class="">
+                                        <option value="1">1</option>
+                                        <option value="2">2</option>
+                                        <option value="3">3</option>
+                                        <option value="4">4</option>
+                                        <option value="5">5</option>
+                                    </select>
+                                </div>
                                 <span class="icon is-small is-left"><i class="fas fa-user-friends"></i></span>
-                            </p>
+                            </div>
+                            <div class="control">
+                                <a class="button" id="pax-plus-button">
+                                    <i class="fas fa-plus fa-fw"></i>
+                                </a>
+                            </div>
                         </div>
                     </div>
                 </div>
                 <div class="field is-horizontal">
                     <div class="field-label is-normal">
-                        <label class="label" for="tee_off_date">{% trans 'Cart #' %}</label>
-                        <label class="label is-hidden" for="cart"></label>
+                        <label class="label" for="cart">{% trans 'Cart #' %}</label>
                     </div>
                     <div class="field-body">
-                        <div class="field">
-                            <p class="control has-icons-left">
-                                <input class="input" type="text" placeholder="4" id="cart">
+                        <div class="field has-addons">
+                            <div class="control">
+                                <a class="button" id="cart-minus-button">
+                                    <i class="fas fa-minus fa-fw"></i>
+                                </a>
+                            </div>
+                            <div class="control is-expanded has-icons-left">
+                                <div class="select is-fullwidth">
+                                    <select id="cart"
+                                            name="cart"
+                                            class="">
+                                        <option value="1">1</option>
+                                        <option value="2">2</option>
+                                        <option value="3">3</option>
+                                        <option value="4">4</option>
+                                        <option value="5">5</option>
+                                    </select>
+                                </div>
                                 <span class="icon is-small is-left"><i class="fas fa-truck-pickup"></i></span>
-                            </p>
+                            </div>
+                            <div class="control">
+                                <a class="button" id="cart-plus-button">
+                                    <i class="fas fa-plus fa-fw"></i>
+                                </a>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -79,7 +117,7 @@
                     <div class="field-body">
                         <div class="field">
                             <p class="control has-icons-left">
-                                <input class="input" type="text" placeholder="Name" id="name">
+                                <input class="input" type="text" placeholder="Type in English or Thai" id="name">
                                 <span class="icon is-small is-left"><i class="far fa-address-card"></i></span>
                             </p>
                         </div>
