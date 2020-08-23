@@ -103,7 +103,7 @@
 
 .quotation-card {
     box-shadow: none;
-    margin-bottom: 1.6rem;
+    margin-bottom: 1.4rem;
 }
 
 .quotation-card-header {
@@ -117,7 +117,7 @@
 }
 
 .quotation-card .card-content {
-    margin-top: .8rem;
+    margin-top: .6rem;
     padding: .1rem .5rem;
 }
 
