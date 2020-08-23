@@ -124,3 +124,7 @@
 .quotation-card footer {
     margin-top: 1rem;
 }
+
+.select-has-text-centered {
+    text-align-last: center;
+}
