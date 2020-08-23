@@ -10,7 +10,7 @@
 {% block content %}
 <section class="section px-2 py-2">
     <div class="container">
-        <div class="card">
+        <div class="card pb-4 quotation-card">
             <header class="card-header quotation-card-header">
                 <h1 class="card-header-title px-2 py-1">
                     WITH THAI
@@ -39,7 +39,7 @@
                 </table>
             </div>
         </div>
-        <div class="card">
+        <div class="card quotation-card">
             <header class="card-header quotation-card-header">
                 <h1 class="card-header-title px-2 py-1">
                     {% trans 'ORDER DETAILS' %}
@@ -85,11 +85,11 @@
                     </tfoot>
                 </table>
             </div>
-            <footer class="card-footer">
-                <button class="card-footer-item button-save">
+            <footer class="card-footer buttons">
+                <button class="card-footer-item button button-save">
                     {% trans 'New Booking' %}
                 </button>
-                <button class="card-footer-item button-close" id="closeWindowButton">
+                <button class="card-footer-item button button-close" id="closeWindowButton">
                     {% trans 'Close' %}
                 </button>
             </footer>

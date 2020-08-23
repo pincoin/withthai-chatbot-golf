@@ -101,6 +101,10 @@
     font-size: 1rem;
 }
 
+.quotation-card {
+    box-shadow: none;
+}
+
 .quotation-card-header {
     box-shadow: none;
     background-color: #feffd5;
