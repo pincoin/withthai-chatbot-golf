@@ -23,17 +23,23 @@
                         <label class="label is-hidden" for="tee_off_time"></label>
                     </div>
                     <div class="field-body">
-                        <div class="field">
-                            <p class="control is-expanded has-icons-left">
-                                <input class="input" type="date" placeholder="Name" id="tee_off_date">
-                                <span class="icon is-small is-left"><i class="fas fa-calendar"></i></span>
-                            </p>
-                        </div>
-                        <div class="field">
-                            <p class="control is-expanded has-icons-left">
-                                <input class="input" type="time" placeholder="Name" id="tee_off_time">
-                                <span class="icon is-small is-left"><i class="fas fa-clock"></i></span>
-                            </p>
+                        <div class="field has-addons has-addons-fullwidth has-addons-right">
+                            <div class="control">
+                                <input class="input"
+                                       type="date"
+                                       id="tee_off_date"
+                                       name="tee_off_date"
+                                       value=""
+                                       placeholder="YYYY-MM-DD">
+                            </div>
+                            <div class="control">
+                                <input class="input"
+                                       type="time"
+                                       id="tee_off_time"
+                                       name="tee_off_time"
+                                       value=""
+                                       placeholder="HH:MM" step="60">
+                            </div>
                         </div>
                     </div>
                 </div>
