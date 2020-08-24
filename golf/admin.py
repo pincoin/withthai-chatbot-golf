@@ -41,16 +41,18 @@ class DistrictAdmin(admin.ModelAdmin):
 
 
 class GolfClubAdmin(admin.ModelAdmin):
-    list_display = ('title_english', 'slug', 'phone', 'email')
-    list_filter = ('district__province__title_english',)
+    list_display = ('title_english', 'slug', 'phone', 'email', 'working_status')
+    list_filter = ('district__province__title_english', 'working_status')
     prepopulated_fields = {'slug': ('title_english',)}
     readonly_fields = ('info',)
     fieldsets = (
         (_('Golf club'), {
             'fields': ('title_english', 'title_thai', 'slug',
-                       'working_status', 'business_hour_start', 'business_hour_end',
+                       'hole', 'working_status', 'business_hour_start', 'business_hour_end',
                        'phone', 'email', 'fax', 'website', 'address', 'latitude', 'longitude', 'district',
-                       'caddie_compulsory', 'cart_compulsory')
+                       'caddie_compulsory', 'cart_compulsory', 'max_pax',
+                       'weekdays_min_in_advance', 'weekdays_max_in_advance',
+                       'weekend_min_in_advance', 'weekend_max_in_advance')
         }),
         ('LINE', {
             'fields': ('line_bot_channel_access_token', 'line_bot_channel_secret', 'line_notify_access_token',

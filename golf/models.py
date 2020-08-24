@@ -141,6 +141,13 @@ class District(model_utils_models.TimeStampedModel):
 
 
 class GolfClub(model_utils_models.TimeStampedModel):
+    HOLE_CHOICES = Choices(
+        (0, 'eighteen', _('18 Holes')),
+        (1, 'nine', _('9 Holes')),
+        (2, 'twentyseven', _('27 Holes')),
+        (3, 'thirtysix', _('36 Holes')),
+    )
+
     WORKING_CHOICES = Choices(
         (0, 'open', _('Open')),
         (1, 'closed', _('Closed')),
@@ -272,6 +279,42 @@ class GolfClub(model_utils_models.TimeStampedModel):
         max_digits=10,
         decimal_places=7,
         default=0,
+    )
+
+    hole = models.IntegerField(
+        verbose_name=_('No. of holes'),
+        choices=HOLE_CHOICES,
+        default=HOLE_CHOICES.eighteen,
+        db_index=True,
+    )
+
+    max_pax = models.IntegerField(
+        verbose_name=_('Max PAX'),
+        default=4,
+    )
+
+    weekdays_min_in_advance = models.IntegerField(
+        verbose_name=_('Weekdays minimum in advance'),
+        default=1,
+        db_index=True,
+    )
+
+    weekdays_max_in_advance = models.IntegerField(
+        verbose_name=_('Weekdays maximum in advance'),
+        default=30,
+        db_index=True,
+    )
+
+    weekend_min_in_advance = models.IntegerField(
+        verbose_name=_('Weekend minimum in advance'),
+        default=1,
+        db_index=True,
+    )
+
+    weekend_max_in_advance = models.IntegerField(
+        verbose_name=_('Weekend maximum in advance'),
+        default=7,
+        db_index=True,
     )
 
     caddie_compulsory = models.IntegerField(
