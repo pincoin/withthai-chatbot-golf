@@ -4,6 +4,7 @@ from pathlib import Path
 from django.conf import settings
 from django.db import models
 from django.template.defaultfilters import time
+from django.utils import translation
 from django.utils.translation import gettext_lazy as _
 from model_utils import Choices
 from model_utils import models as model_utils_models
@@ -360,15 +361,20 @@ class GolfClub(model_utils_models.TimeStampedModel):
                     as json_file:
                 self.info = json.load(json_file)
 
+                translation.activate('en')
+
                 self.info['header']['contents'][0]['text'] = self.title_english
                 self.info['hero']['action']['uri'] = self.website
-                self.info['body']['contents'][0]['contents'][1]['text'] = self.phone
-                self.info['body']['contents'][1]['contents'][1]['text'] = self.fax
-                self.info['body']['contents'][2]['contents'][1]['text'] = self.email
-                self.info['body']['contents'][3]['contents'][1]['text'] \
+                self.info['body']['contents'][0]['contents'][1]['text'] = self.get_hole_display()
+                self.info['body']['contents'][1]['contents'][1]['text'] = self.phone
+                self.info['body']['contents'][2]['contents'][1]['text'] = self.fax
+                self.info['body']['contents'][3]['contents'][1]['text'] = self.email
+                self.info['body']['contents'][4]['contents'][1]['text'] \
                     = '{} - {}'.format(time(self.business_hour_start, 'H:i'), time(self.business_hour_end, 'H:i'))
-                self.info['body']['contents'][4]['contents'][4]['action']['uri'] \
+                self.info['body']['contents'][5]['contents'][4]['action']['uri'] \
                     = f"https://liff.line.me/{self.liff['scorecard']['id']}"
+
+                translation.deactivate()
 
         super(GolfClub, self).save(*args, **kwargs)
 

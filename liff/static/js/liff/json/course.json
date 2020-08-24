@@ -36,6 +36,25 @@
         "contents": [
           {
             "type": "text",
+            "text": "Hole",
+            "flex": 1,
+            "size": "sm",
+            "weight": "bold"
+          },
+          {
+            "type": "text",
+            "text": "18 Hole",
+            "flex": 2,
+            "size": "sm"
+          }
+        ]
+      },
+      {
+        "type": "box",
+        "layout": "baseline",
+        "contents": [
+          {
+            "type": "text",
             "text": "Phone",
             "flex": 1,
             "weight": "bold",
