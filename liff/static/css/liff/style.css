@@ -11,6 +11,15 @@
     border-color: transparent;
 }
 
+.select-has-text-centered {
+    text-align-last: center;
+}
+
+.no-break-word {
+    white-space: nowrap;
+    word-break: keep-all;
+}
+
 /* Scorecard */
 .blue, .blue strong, .blue .fixed-col {
     color: #ffffff;
@@ -47,20 +56,15 @@
     position: relative;
 }
 
-.table-relative {
+.scorecard-table-relative {
     position: relative;
-    font-size: .8rem;
+    font-size: 1rem;
 }
 
 .fixed-col {
     position: sticky;
     left: 0;
     top: 0;
-}
-
-.no-break-word {
-    white-space: nowrap;
-    word-break: keep-all;
 }
 
 /* Price Table */
@@ -90,6 +94,11 @@
     color: #000000;
     background-color: #ccfeff;
     font-weight: bold;
+}
+
+.price-table-relative {
+    position: relative;
+    font-size: .8rem;
 }
 
 /* Quotation Table */
@@ -123,8 +132,4 @@
 
 .quotation-card footer {
     margin-top: 1rem;
-}
-
-.select-has-text-centered {
-    text-align-last: center;
 }
