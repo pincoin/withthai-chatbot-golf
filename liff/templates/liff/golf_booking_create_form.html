@@ -19,19 +19,31 @@
             <div class="card-content">
                 <div class="field is-horizontal">
                     <div class="field-label is-normal">
-                        <label class="label" for="tee_off_date">{% trans 'Tee-off Date/Time' %}</label>
-                        <label class="label is-hidden" for="tee_off_time"></label>
+                        <label class="label" for="{{ form.round_date.id_for_label }}">
+                            {% trans 'Tee-off Date/Time' %}
+                        </label>
+                        <label class="label is-hidden" for="{{ form.round_time.id_for_label }}"></label>
                     </div>
                     <div class="field-body">
                         <div class="field">
                             <p class="control is-expanded has-icons-left">
-                                <input class="input" type="date" placeholder="Name" id="tee_off_date">
+                                <input class="input"
+                                       type="date"
+                                       id="{{ form.round_date.id_for_label }}"
+                                       name="{{ form.round_date.name }}"
+                                       value="{{ form.round_date.value|default_if_none:'' }}"
+                                       placeholder="YYYY-MM-DD">
                                 <span class="icon is-small is-left"><i class="fas fa-calendar"></i></span>
                             </p>
                         </div>
                         <div class="field">
                             <p class="control is-expanded has-icons-left">
-                                <input class="input" type="time" placeholder="Name" id="tee_off_time">
+                                <input class="input"
+                                       type="time"
+                                       id="{{ form.round_time.id_for_label }}"
+                                       name="{{ form.round_time.name }}"
+                                       value="{{ form.round_time.value|default_if_none:'' }}"
+                                       placeholder="HH:MM" step="60">
                                 <span class="icon is-small is-left"><i class="fas fa-clock"></i></span>
                             </p>
                         </div>
@@ -39,7 +51,7 @@
                 </div>
                 <div class="field is-horizontal">
                     <div class="field-label is-normal">
-                        <label class="label" for="pax">{% trans 'Golfer #' %}</label>
+                        <label class="label" for="{{ form.pax.id_for_label }}">{% trans 'Golfer #' %}</label>
                     </div>
                     <div class="field-body">
                         <div class="field has-addons">
@@ -50,14 +62,18 @@
                             </div>
                             <div class="control is-expanded has-icons-left">
                                 <div class="select is-fullwidth select-has-text-centered">
-                                    <select id="pax"
-                                            name="pax"
-                                            class="">
-                                        <option value="1">1</option>
-                                        <option value="2">2</option>
-                                        <option value="3">3</option>
-                                        <option value="4">4</option>
-                                        <option value="5">5</option>
+                                    <select id="{{ form.pax.id_for_label }}"
+                                            name="{{ form.pax.name }}">
+                                        {% for choice in form.pax.field.choices %}
+                                        {% if forloop.counter0 <= golf_club.max_pax %}
+                                        <option value="{{ choice.0 }}"
+                                                {% if forloop.counter0 == 3 %}
+                                                selected
+                                                {% endif %}>
+                                            {{ choice.1 }}
+                                        </option>
+                                        {% endif %}
+                                        {% endfor %}
                                     </select>
                                 </div>
                                 <span class="icon is-small is-left"><i class="fas fa-user-friends"></i></span>
@@ -72,7 +88,7 @@
                 </div>
                 <div class="field is-horizontal">
                     <div class="field-label is-normal">
-                        <label class="label" for="cart">{% trans 'Cart #' %}</label>
+                        <label class="label" for="{{ form.cart.id_for_label }}">{% trans 'Cart #' %}</label>
                     </div>
                     <div class="field-body">
                         <div class="field has-addons">
@@ -83,14 +99,18 @@
                             </div>
                             <div class="control is-expanded has-icons-left">
                                 <div class="select is-fullwidth select-has-text-centered">
-                                    <select id="cart"
-                                            name="cart"
-                                            class="">
-                                        <option value="1">1</option>
-                                        <option value="2">2</option>
-                                        <option value="3">3</option>
-                                        <option value="4">4</option>
-                                        <option value="5">5</option>
+                                    <select id="{{ form.cart.id_for_label }}"
+                                            name="{{ form.cart.name }}">
+                                        {% for choice in form.cart.field.choices %}
+                                        {% if forloop.counter0 <= golf_club.max_pax %}
+                                        <option value="{{ choice.0 }}"
+                                                {% if forloop.counter0 == 3 %}
+                                                selected
+                                                {% endif %}>
+                                            {{ choice.1 }}
+                                        </option>
+                                        {% endif %}
+                                        {% endfor %}
                                     </select>
                                 </div>
                                 <span class="icon is-small is-left"><i class="fas fa-truck-pickup"></i></span>
@@ -105,13 +125,18 @@
                 </div>
                 <div class="field is-horizontal">
                     <div class="field-label is-normal">
-                        <label class="label" for="tee_off_date">{% trans 'Customer Name' %}</label>
-                        <label class="label is-hidden" for="name"></label>
+                        <label class="label" for="{{ form.customer_name.id_for_label }}">
+                            {% trans 'Customer Name' %}
+                        </label>
                     </div>
                     <div class="field-body">
                         <div class="field">
                             <p class="control has-icons-left">
-                                <input class="input" type="text" id="name"
+                                <input class="input"
+                                       type="text"
+                                       id="{{ form.customer_name.id_for_label }}"
+                                       name="{{ form.customer_name.name }}"
+                                       value="{{ form.customer_name.value|default_if_none:'' }}"
                                        placeholder="{% trans 'Type in English or Thai' %}">
                                 <span class="icon is-small is-left"><i class="far fa-address-card"></i></span>
                             </p>
@@ -139,28 +164,28 @@
                     <tbody>
                     <tr>
                         <td class="has-text-weight-bold">{% trans 'Green Fee' %}</td>
-                        <td class="has-text-right">4,500</td>
-                        <td class="has-text-centered">3</td>
-                        <td class="has-text-right">13,500</td>
+                        <td class="has-text-right"></td>
+                        <td class="has-text-centered"></td>
+                        <td class="has-text-right"></td>
                     </tr>
                     <tr>
                         <td class="has-text-weight-bold">{% trans 'Caddie Fee' %}</td>
-                        <td class="has-text-right">400</td>
-                        <td class="has-text-centered">3</td>
-                        <td class="has-text-right">1,200</td>
+                        <td class="has-text-right"></td>
+                        <td class="has-text-centered"></td>
+                        <td class="has-text-right"></td>
                     </tr>
                     <tr>
                         <td class="has-text-weight-bold">{% trans 'Cart Fee' %}</td>
-                        <td class="has-text-right">900</td>
-                        <td class="has-text-centered">3</td>
-                        <td class="has-text-right">2,700</td>
+                        <td class="has-text-right"></td>
+                        <td class="has-text-centered"></td>
+                        <td class="has-text-right"></td>
                     </tr>
                     </tbody>
                     <tfoot>
                     <tr>
                         <td class="has-text-weight-bold">{% trans 'Total Amount' %}</td>
                         <td class="has-text-weight-bold has-text-right" colspan="3">
-                            <span class="total-amount">17,400</span>
+                            <span class="total-amount"></span>
                         </td>
                     </tr>
                     </tfoot>

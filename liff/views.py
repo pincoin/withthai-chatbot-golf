@@ -24,10 +24,18 @@ class GolfBookingCreateFormView(viewmixins.LiffContextMixin, generic.FormView):
 
     form_class = forms.GolfBookingForm
 
+    def get_form_kwargs(self):
+        kwargs = super(GolfBookingCreateFormView, self).get_form_kwargs()
+
+        kwargs['request'] = self.request
+        kwargs['golf_club'] = self.golf_club
+
+        return kwargs
+
     def get_context_data(self, **kwargs):
         context = super(GolfBookingCreateFormView, self).get_context_data(**kwargs)
         context['title'] = _('New Booking')
-        context['golf_club'] = self.club
+        context['golf_club'] = self.golf_club
         return context
 
 
@@ -41,24 +49,24 @@ class GolfPriceTableTemplateView(viewmixins.LiffContextMixin, generic.TemplateVi
 
         green_fees = golf_models.GreenFee.objects \
             .select_related('season', 'timeslot', 'customer_group') \
-            .filter(season__golf_club=self.club,
-                    timeslot__golf_club=self.club,
-                    customer_group__golf_club=self.club) \
+            .filter(season__golf_club=self.golf_club,
+                    timeslot__golf_club=self.golf_club,
+                    customer_group__golf_club=self.golf_club) \
             .order_by('season__season_start',
                       'timeslot__day_of_week',
                       'timeslot__slot_start',
                       'customer_group__position')
 
         seasons = golf_models.Season.objects \
-            .filter(golf_club=self.club) \
+            .filter(golf_club=self.golf_club) \
             .order_by('season_start')
 
         timeslots = golf_models.Timeslot.objects \
-            .filter(golf_club=self.club) \
+            .filter(golf_club=self.golf_club) \
             .order_by('day_of_week', 'slot_start')
 
         customer_groups = golf_models.CustomerGroup.objects \
-            .filter(golf_club=self.club) \
+            .filter(golf_club=self.golf_club) \
             .order_by('position')
 
         price_table = {}
@@ -91,7 +99,7 @@ class GolfScorecardTemplateView(viewmixins.LiffContextMixin, generic.TemplateVie
         context = super(GolfScorecardTemplateView, self).get_context_data(**kwargs)
 
         context['title'] = _('Scorecard')
-        context['hole'] = range(1, self.club.scorecard['hole'] + 1)
-        context['scorecard'] = self.club.scorecard
+        context['hole'] = range(1, self.golf_club.scorecard['hole'] + 1)
+        context['scorecard'] = self.golf_club.scorecard
 
         return context
