@@ -12,6 +12,9 @@ urlpatterns = [
     path('chatbot/',
          include('chatbot.urls', namespace='chatbot')),
 
+    path('golf/',
+         include('golf.urls', namespace='golf')),
+
     path('liff/',
          include('liff.urls', namespace='liff')),
 
