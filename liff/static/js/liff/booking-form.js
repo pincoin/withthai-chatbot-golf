@@ -67,17 +67,7 @@ document
         round_date.setAttribute('max', formatDate(max_date));
 
         let round_time_start = fees[0]['slot_start'];
-        let round_time_end = fees[0]['slot_end'];
-
-        for (i = 1; i < fees.length; i++) {
-            if (round_time_start > fees[i]['slot_start']) {
-                round_time_start = fees[i]['slot_start'];
-            }
-
-            if (round_time_end < fees[i]['slot_end']) {
-                round_time_end = fees[i]['slot_end'];
-            }
-        }
+        let round_time_end = fees[fees.length - 1]['slot_end'];
 
         round_time.value = round_time_start;
         round_time.setAttribute('min', round_time_start);
