@@ -76,14 +76,20 @@ document
         document
             .getElementById('pax-plus-button')
             .addEventListener('click', function (e) {
-                pax.value = Number(pax.value) + 1;
+                if (round_date.value && round_time.value && pax.value < golf_club['max_pax']) {
+                    pax.value = Number(pax.value) + 1;
+                }
+
                 pax.dispatchEvent(new Event('change'));
             });
 
         document
             .getElementById('pax-minus-button')
             .addEventListener('click', function (e) {
-                pax.value = Number(pax.value) - 1;
+                if (round_date.value && round_time.value && pax.value > golf_club['min_pax']) {
+                    pax.value = Number(pax.value) - 1;
+                }
+
                 pax.dispatchEvent(new Event('change'));
             });
 
