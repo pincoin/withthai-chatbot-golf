@@ -63,7 +63,7 @@
                             <div class="control is-expanded has-icons-left">
                                 <div class="select is-fullwidth select-has-text-centered">
                                     <select id="{{ form.pax.id_for_label }}"
-                                            name="{{ form.pax.name }}">
+                                            name="{{ form.pax.name }}" disabled class="select-disabled">
                                         {% for choice in form.pax.field.choices %}
                                         <option value="{{ choice.0 }}">
                                             {{ choice.1 }}
@@ -95,7 +95,7 @@
                             <div class="control is-expanded has-icons-left">
                                 <div class="select is-fullwidth select-has-text-centered">
                                     <select id="{{ form.cart.id_for_label }}"
-                                            name="{{ form.cart.name }}">
+                                            name="{{ form.cart.name }}" disabled class="select-disabled">
                                         {% for choice in form.cart.field.choices %}
                                         <option value="{{ choice.0 }}">
                                             {{ choice.1 }}

@@ -79,7 +79,10 @@ document
                 if (round_date.value && round_time.value && pax.value < golf_club['max_pax']) {
                     pax.value = Number(pax.value) + 1;
 
-                    if (golf_club['cart_compulsory'] === 1) {
+                    if ((golf_club['cart_compulsory'] === 0 && Number(cart.value) > 0)
+                        || golf_club['cart_compulsory'] === 1
+                        || (golf_club['cart_compulsory'] > 1 && Number(pax.value) >= golf_club['cart_compulsory'])
+                        || Number(cart.value) >= Number(pax.value)) {
                         cart.value = pax.value;
                     }
                 }
@@ -93,7 +96,10 @@ document
                 if (round_date.value && round_time.value && pax.value > golf_club['min_pax']) {
                     pax.value = Number(pax.value) - 1;
 
-                    if (golf_club['cart_compulsory'] === 1) {
+                    if ((golf_club['cart_compulsory'] === 0 && Number(cart.value) > 0)
+                        || golf_club['cart_compulsory'] === 1
+                        || (golf_club['cart_compulsory'] > 1 && Number(pax.value) >= golf_club['cart_compulsory'])
+                        || Number(cart.value) >= Number(pax.value)) {
                         cart.value = pax.value;
                     }
                 }
@@ -119,7 +125,7 @@ document
             .addEventListener('click', function (e) {
                 if (round_date.value
                     && round_time.value
-                    && cart.value > golf_club['cart_compulsory']
+                    && cart.value > 0
                     && golf_club['cart_compulsory'] !== 1) {
                     cart.value = Number(cart.value) - 1;
                 }
@@ -132,17 +138,17 @@ document
                 if (round_date.value && round_time.value && pax.value && cart.value) {
                     // 1. 검증
                     // 1-1. round_date 예약 가능 일자
-                    console.log(round_date.value);
+                    //console.log(round_date.value);
 
                     // 1-2. round_time 예약 가능 시간대 확인
-                    console.log(round_time.value);
+                    //console.log(round_time.value);
 
                     // 1-4. 인원 최소, 최대값 범위 확인
-                    console.log(pax.value);
+                    //console.log(pax.value);
 
                     // 1-4. 카트 수량 최소, 최대값 범위 확인
                     // 1-5. 카트 의무
-                    console.log(cart.value);
+                    //console.log(cart.value);
 
                     // 2. 견적 계산
                 }

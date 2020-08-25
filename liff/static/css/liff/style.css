@@ -133,3 +133,10 @@
 .quotation-card footer {
     margin-top: 1rem;
 }
+
+.select-disabled {
+    background-color: #fff;
+    border-color: #dbdbdb !important;
+    border-radius: 4px;
+    color: #000000 !important;
+}
