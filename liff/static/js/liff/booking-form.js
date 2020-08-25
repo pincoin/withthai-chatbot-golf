@@ -1,3 +1,16 @@
+function formatDate(date) {
+    month = '' + (date.getMonth() + 1);
+    day = '' + date.getDate();
+    year = date.getFullYear();
+
+    if (month.length < 2)
+        month = '0' + month;
+    if (day.length < 2)
+        day = '0' + day;
+
+    return [year, month, day].join('-');
+}
+
 document
     .addEventListener('DOMContentLoaded', (event) => {
         let round_date = document.getElementById('id_round_date');
@@ -19,9 +32,56 @@ document
 
         let fee_total_amount = document.getElementById('fee-total-amount');
 
-        console.log(club);
-        console.log(holidays);
+        const today = new Date();
+        const hour = today.toLocaleString('en-US', {
+            timeZone: 'Asia/Bangkok',
+            hour: 'numeric',
+            hour12: false
+        });
+        const day = today.toLocaleString('en-US', {
+            timeZone: 'Asia/Bangkok',
+            weekday: 'short',
+        });
+
+        console.log(today);
+        console.log(hour);
+        console.log(day);
+        console.log(golf_club);
         console.log(fees);
+        console.log(holidays);
+
+        // 1. Arrange round date and time range
+        let min_date = new Date(today);
+        let max_date = new Date(today);
+
+        if (hour >= 17 && hour < 24) {
+            min_date.setDate(min_date.getDate() + golf_club['weekdays_min_in_advance'] + 1);
+            max_date.setDate(max_date.getDate() + golf_club['weekdays_max_in_advance'] + 1);
+        } else {
+            min_date.setDate(min_date.getDate() + golf_club['weekdays_min_in_advance']);
+            max_date.setDate(max_date.getDate() + golf_club['weekdays_max_in_advance']);
+        }
+
+        round_date.value = formatDate(min_date);
+        round_date.setAttribute('min', formatDate(min_date));
+        round_date.setAttribute('max', formatDate(max_date));
+
+        let round_time_start = fees[0]['slot_start'];
+        let round_time_end = fees[0]['slot_end'];
+
+        for (i = 1; i < fees.length; i++) {
+            if (round_time_start > fees[i]['slot_start']) {
+                round_time_start = fees[i]['slot_start'];
+            }
+
+            if (round_time_end < fees[i]['slot_end']) {
+                round_time_end = fees[i]['slot_end'];
+            }
+        }
+
+        round_time.value = round_time_start;
+        round_time.setAttribute('min', round_time_start);
+        round_time.setAttribute('max', round_time_end);
 
         document
             .getElementById('pax-plus-button')

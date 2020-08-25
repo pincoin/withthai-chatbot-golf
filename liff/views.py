@@ -55,7 +55,7 @@ class GolfBookingCreateFormView(viewmixins.LiffContextMixin, generic.FormView):
 
         # Build JSON data
         data = {
-            'club': {
+            'golf_club': {
                 'min_pax': self.golf_club.min_pax,
                 'max_pax': self.golf_club.max_pax,
                 'caddie_compulsory': self.golf_club.caddie_compulsory,
@@ -64,8 +64,8 @@ class GolfBookingCreateFormView(viewmixins.LiffContextMixin, generic.FormView):
                 'weekdays_max_in_advance': self.golf_club.weekdays_max_in_advance,
                 'weekend_min_in_advance': self.golf_club.weekend_min_in_advance,
                 'weekend_max_in_advance': self.golf_club.weekend_max_in_advance,
-                'business_hour_start': self.golf_club.business_hour_start,
-                'business_hour_end': self.golf_club.business_hour_end,
+                'business_hour_start': self.golf_club.business_hour_start.strftime('%H:%M'),
+                'business_hour_end': self.golf_club.business_hour_end.strftime('%H:%M'),
             },
             'fees': [],
             'holidays': [],

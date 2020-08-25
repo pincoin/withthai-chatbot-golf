@@ -197,12 +197,9 @@
 {% block javascript %}
 {{ block.super }}
 <script>
-    // 공휴일 목록 json
-    // 요금 정보 json
-    // 골프장 정보 json
     const data = {{ json | safe }};
 
-    let club = data['club'];
+    let golf_club = data['golf_club'];
     let fees = data['fees'];
     let holidays = data['holidays'];
 </script>
