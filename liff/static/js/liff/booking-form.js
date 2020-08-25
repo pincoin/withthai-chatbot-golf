@@ -19,9 +19,9 @@ document
 
         let fee_total_amount = document.getElementById('fee-total-amount');
 
-        // 공휴일 목록 json
-        // 요금 정보 json
-        // 골프장 정보 json
+        console.log(club);
+        console.log(holidays);
+        console.log(fees);
 
         document
             .getElementById('pax-plus-button')

@@ -1,3 +1,6 @@
+import json
+
+from django.utils import timezone
 from django.utils.translation import ugettext_lazy as _
 from django.views import generic
 
@@ -36,6 +39,53 @@ class GolfBookingCreateFormView(viewmixins.LiffContextMixin, generic.FormView):
         context = super(GolfBookingCreateFormView, self).get_context_data(**kwargs)
         context['title'] = _('New Booking')
         context['golf_club'] = self.golf_club
+
+        fees = golf_models.GreenFee.objects \
+            .select_related('season', 'timeslot', 'customer_group') \
+            .filter(season__golf_club=self.golf_club,
+                    timeslot__golf_club=self.golf_club,
+                    customer_group__golf_club=self.golf_club) \
+            .order_by('season__season_start',
+                      'timeslot__day_of_week',
+                      'timeslot__slot_start',
+                      'customer_group__position')
+
+        holidays = golf_models.Holiday.objects \
+            .filter(holiday__gte=timezone.make_aware(timezone.localtime().today()))
+
+        # Build JSON data
+        data = {
+            'club': {
+                'min_pax': self.golf_club.min_pax,
+                'max_pax': self.golf_club.max_pax,
+                'caddie_compulsory': self.golf_club.caddie_compulsory,
+                'cart_compulsory': self.golf_club.cart_compulsory,
+                'weekdays_min_in_advance': self.golf_club.weekdays_min_in_advance,
+                'weekdays_max_in_advance': self.golf_club.weekdays_max_in_advance,
+                'weekend_min_in_advance': self.golf_club.weekend_min_in_advance,
+                'weekend_max_in_advance': self.golf_club.weekend_max_in_advance,
+            },
+            'fees': [],
+            'holidays': [],
+        }
+
+        for fee in fees:
+            data['fees'].append({
+                'season_start': fee.season.season_start.strftime('%Y-%m-%d'),
+                'season_end': fee.season.season_end.strftime('%Y-%m-%d'),
+                'weekday': fee.timeslot.day_of_week,
+                'slot_start': fee.timeslot.slot_start.strftime('%H:%M'),
+                'slot_end': fee.timeslot.slot_end.strftime('%H:%M'),
+                'green_fee': int(fee.selling_price),
+                'caddie_fee': int(fee.season.caddie_selling_price),
+                'cart_fee': int(fee.season.cart_selling_price),
+            })
+
+        for holiday in holidays:
+            data['holidays'].append(holiday.holiday.strftime('%Y-%m-%d'))
+
+        context['json'] = json.dumps(data)
+
         return context
 
 
