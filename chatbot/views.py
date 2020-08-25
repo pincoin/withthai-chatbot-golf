@@ -49,10 +49,9 @@ class CallbackView(generic.View):
         def handle_message(event):
             text = event.message.text.strip().lower()
 
-            '''
-            Rich menu messages
-            booking, price, course, promotions, deals(or coupons), settings
-            '''
+            # regular expression test: new\s".+"\s\d\d\d\d-\d\d-\d\d\s\d\d:\d\d\s\dPAX\s\dCART
+            # new "John Doe" 2020-08-10 12:30 3PAX 3CART
+
             if text == 'booking':
                 self.line_bot_api.reply_message(
                     event.reply_token,
