@@ -111,11 +111,8 @@ document
             .getElementById('cart-plus-button')
             .addEventListener('click', function (e) {
                 if (round_date.value && round_time.value && cart.value < pax.value) {
-                    if (golf_club['cart_compulsory'] === 0) {
-                        cart.value = Number(cart.value) + 1;
-                    }
-
-                    if (golf_club['cart_compulsory'] > 1 && Number(pax.value) < golf_club['cart_compulsory']) {
+                    if (golf_club['cart_compulsory'] === 0
+                        || (golf_club['cart_compulsory'] > 1 && Number(pax.value) < golf_club['cart_compulsory'])) {
                         cart.value = Number(cart.value) + 1;
                     }
 
@@ -127,11 +124,8 @@ document
             .getElementById('cart-minus-button')
             .addEventListener('click', function (e) {
                 if (round_date.value && round_time.value && cart.value > 0) {
-                    if (golf_club['cart_compulsory'] === 0) {
-                        cart.value = Number(cart.value) - 1;
-                    }
-
-                    if (golf_club['cart_compulsory'] > 1 && Number(pax.value) < golf_club['cart_compulsory']) {
+                    if (golf_club['cart_compulsory'] === 0
+                        || (golf_club['cart_compulsory'] > 1 && Number(pax.value) < golf_club['cart_compulsory'])) {
                         cart.value = Number(cart.value) - 1;
                     }
 
