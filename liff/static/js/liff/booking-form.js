@@ -19,6 +19,10 @@ document
 
         let fee_total_amount = document.getElementById('fee-total-amount');
 
+        // 공휴일 목록 json
+        // 요금 정보 json
+        // 골프장 정보 json
+
         document
             .getElementById('pax-plus-button')
             .addEventListener('click', function (e) {
@@ -46,10 +50,21 @@ document
         [round_date, round_time, pax, cart].forEach(function (element) {
             element.addEventListener('change', function (e) {
                 if (round_date.value && round_time.value && pax.value && cart.value) {
+                    // 1. 검증
+                    // 1-1. round_date 예약 가능 일자
                     console.log(round_date.value);
+
+                    // 1-2. round_time 예약 가능 시간대 확인
                     console.log(round_time.value);
+
+                    // 1-4. 인원 최소, 최대값 범위 확인
                     console.log(pax.value);
+
+                    // 1-4. 카트 수량 최소, 최대값 범위 확인
+                    // 1-5. 카트 의무
                     console.log(cart.value);
+
+                    // 2. 견적 계산
                 }
             });
         });
