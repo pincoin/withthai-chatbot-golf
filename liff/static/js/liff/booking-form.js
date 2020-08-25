@@ -27,24 +27,28 @@ document
             .getElementById('pax-plus-button')
             .addEventListener('click', function (e) {
                 pax.value = Number(pax.value) + 1;
+                pax.dispatchEvent(new Event('change'));
             });
 
         document
             .getElementById('pax-minus-button')
             .addEventListener('click', function (e) {
                 pax.value = Number(pax.value) - 1;
+                pax.dispatchEvent(new Event('change'));
             });
 
         document
             .getElementById('cart-plus-button')
             .addEventListener('click', function (e) {
                 cart.value = Number(cart.value) + 1;
+                cart.dispatchEvent(new Event('change'));
             });
 
         document
             .getElementById('cart-minus-button')
             .addEventListener('click', function (e) {
                 cart.value = Number(cart.value) - 1;
+                cart.dispatchEvent(new Event('change'));
             });
 
         [round_date, round_time, pax, cart].forEach(function (element) {
