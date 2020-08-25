@@ -64,6 +64,8 @@ class GolfBookingCreateFormView(viewmixins.LiffContextMixin, generic.FormView):
                 'weekdays_max_in_advance': self.golf_club.weekdays_max_in_advance,
                 'weekend_min_in_advance': self.golf_club.weekend_min_in_advance,
                 'weekend_max_in_advance': self.golf_club.weekend_max_in_advance,
+                'business_hour_start': self.golf_club.business_hour_start,
+                'business_hour_end': self.golf_club.business_hour_end,
             },
             'fees': [],
             'holidays': [],
