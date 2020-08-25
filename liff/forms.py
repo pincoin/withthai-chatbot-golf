@@ -18,9 +18,11 @@ class GolfBookingForm(forms.Form):
 
         super(GolfBookingForm, self).__init__(*args, **kwargs)
 
-        self.fields['pax'].choices = tuple((str(i), str(i)) for i in [x for x in
-                                                                      range(int(self.golf_club.min_pax),
-                                                                            int(self.golf_club.max_pax) + 1)])
-        self.fields['cart'].choices = tuple((str(i), str(i)) for i in [x for x in
-                                                                       range(int(self.golf_club.cart_compulsory),
-                                                                             int(self.golf_club.max_pax) + 1)])
+        self.fields['pax'].choices \
+            = tuple((str(i), str(i)) for i in [x for x in
+                                               range(self.golf_club.min_pax,
+                                                     self.golf_club.max_pax + 1)])
+        self.fields['cart'].choices \
+            = tuple((str(i), str(i)) for i in [x for x in
+                                               range(1 if self.golf_club.cart_compulsory == 1 else 0,
+                                                     self.golf_club.max_pax + 1)])
