@@ -54,7 +54,7 @@ document
         let min_date = new Date(today);
         let max_date = new Date(today);
 
-        if (hour >= 17 && hour < 24) {
+        if (hour >= golf_club['business_hour_end'].split(':')[0] && hour < 24) {
             min_date.setDate(min_date.getDate() + golf_club['weekdays_min_in_advance'] + 1);
             max_date.setDate(max_date.getDate() + golf_club['weekdays_max_in_advance'] + 1);
         } else {
