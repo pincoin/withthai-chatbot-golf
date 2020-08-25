@@ -309,6 +309,11 @@ class GolfClub(model_utils_models.TimeStampedModel):
         db_index=True,
     )
 
+    min_pax = models.IntegerField(
+        verbose_name=_('Min PAX'),
+        default=1,
+    )
+
     max_pax = models.IntegerField(
         verbose_name=_('Max PAX'),
         default=4,
