@@ -56,7 +56,7 @@ class GolfClubAdmin(admin.ModelAdmin):
             'fields': ('title_english', 'title_thai', 'slug',
                        'hole', 'working_status', 'business_hour_start', 'business_hour_end',
                        'phone', 'email', 'fax', 'website', 'address', 'latitude', 'longitude', 'district',
-                       'caddie_compulsory', 'cart_compulsory', 'max_pax',
+                       'caddie_compulsory', 'cart_compulsory', 'min_pax', 'max_pax',
                        'weekdays_min_in_advance', 'weekdays_max_in_advance',
                        'weekend_min_in_advance', 'weekend_max_in_advance')
         }),
