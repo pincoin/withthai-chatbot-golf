@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-08-24 18:41+0700\n"
+"POT-Creation-Date: 2020-08-25 17:27+0700\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -49,8 +49,8 @@ msgstr ""
 msgid "English"
 msgstr ""
 
-#: golf/admin.py:49 golf/models.py:354 golf/models.py:406 golf/models.py:430
-#: golf/models.py:457 golf/models.py:514
+#: golf/admin.py:49 golf/models.py:375 golf/models.py:432 golf/models.py:456
+#: golf/models.py:483 golf/models.py:540
 msgid "Golf club"
 msgstr ""
 
@@ -58,374 +58,390 @@ msgstr ""
 msgid "golf"
 msgstr ""
 
-#: golf/models.py:14
+#: golf/models.py:15
+msgid "Holiday name"
+msgstr ""
+
+#: golf/models.py:20
+msgid "Holiday day"
+msgstr ""
+
+#: golf/models.py:26
+msgid "Holiday"
+msgstr ""
+
+#: golf/models.py:27
+msgid "Holidays"
+msgstr ""
+
+#: golf/models.py:35
 msgid "Area english name"
 msgstr ""
 
-#: golf/models.py:19
+#: golf/models.py:40
 msgid "Area Thai name"
 msgstr ""
 
-#: golf/models.py:24
+#: golf/models.py:45
 msgid "Area Korean name"
 msgstr ""
 
-#: golf/models.py:29 golf/models.py:68 golf/models.py:114 golf/models.py:185
+#: golf/models.py:50 golf/models.py:89 golf/models.py:135 golf/models.py:206
 msgid "Slug"
 msgstr ""
 
-#: golf/models.py:30 golf/models.py:69 golf/models.py:115 golf/models.py:186
+#: golf/models.py:51 golf/models.py:90 golf/models.py:136 golf/models.py:207
 msgid ""
 "A short label containing only letters, numbers, underscores or hyphens for "
 "URL"
 msgstr ""
 
-#: golf/models.py:38 golf/models.py:84 golf/models.py:130 golf/models.py:441
+#: golf/models.py:59 golf/models.py:105 golf/models.py:151 golf/models.py:467
 msgid "Position"
 msgstr ""
 
-#: golf/models.py:44
+#: golf/models.py:65
 msgid "Area"
 msgstr ""
 
-#: golf/models.py:45
+#: golf/models.py:66
 msgid "Areas"
 msgstr ""
 
-#: golf/models.py:53
+#: golf/models.py:74
 msgid "Province English name"
 msgstr ""
 
-#: golf/models.py:58
+#: golf/models.py:79
 msgid "Province Thai name"
 msgstr ""
 
-#: golf/models.py:63
+#: golf/models.py:84
 msgid "Province Korean name"
 msgstr ""
 
-#: golf/models.py:78
+#: golf/models.py:99
 msgid "Location area"
 msgstr ""
 
-#: golf/models.py:90 golf/models.py:124
+#: golf/models.py:111 golf/models.py:145
 msgid "Province"
 msgstr ""
 
-#: golf/models.py:91
+#: golf/models.py:112
 msgid "Provinces"
 msgstr ""
 
-#: golf/models.py:99
+#: golf/models.py:120
 msgid "District English name"
 msgstr ""
 
-#: golf/models.py:104
+#: golf/models.py:125
 msgid "District Thai name"
 msgstr ""
 
-#: golf/models.py:109
+#: golf/models.py:130
 msgid "District Korean name"
 msgstr ""
 
-#: golf/models.py:136 golf/models.py:258
+#: golf/models.py:157 golf/models.py:279
 msgid "District"
 msgstr ""
 
-#: golf/models.py:137
+#: golf/models.py:158
 msgid "Districts"
 msgstr ""
 
-#: golf/models.py:145
+#: golf/models.py:166
 msgid "18 Holes"
 msgstr ""
 
-#: golf/models.py:146
+#: golf/models.py:167
 msgid "9 Holes"
 msgstr ""
 
-#: golf/models.py:147
+#: golf/models.py:168
 msgid "27 Holes"
 msgstr ""
 
-#: golf/models.py:148
+#: golf/models.py:169
 msgid "36 Holes"
 msgstr ""
 
-#: golf/models.py:152
+#: golf/models.py:173
 msgid "Open"
 msgstr ""
 
-#: golf/models.py:153
+#: golf/models.py:174
 msgid "Closed"
 msgstr ""
 
-#: golf/models.py:154
+#: golf/models.py:175
 msgid "Suspended"
 msgstr ""
 
-#: golf/models.py:158 golf/models.py:163
+#: golf/models.py:179 golf/models.py:184
 msgid "Optional"
 msgstr ""
 
-#: golf/models.py:159 golf/models.py:164
+#: golf/models.py:180 golf/models.py:185
 msgid "Compulsory"
 msgstr ""
 
-#: golf/models.py:165
+#: golf/models.py:186
 msgid "Compulsory 2 player+"
 msgstr ""
 
-#: golf/models.py:166
+#: golf/models.py:187
 msgid "Compulsory 3 player+"
 msgstr ""
 
-#: golf/models.py:167
+#: golf/models.py:188
 msgid "Compulsory 4 player+"
 msgstr ""
 
-#: golf/models.py:168
+#: golf/models.py:189
 msgid "Compulsory 5 player+"
 msgstr ""
 
-#: golf/models.py:169
+#: golf/models.py:190
 msgid "Compulsory 6 player+"
 msgstr ""
 
-#: golf/models.py:173
+#: golf/models.py:194
 msgid "Golf club English name"
 msgstr ""
 
-#: golf/models.py:179
+#: golf/models.py:200
 msgid "Golf club Thai name"
 msgstr ""
 
-#: golf/models.py:194
+#: golf/models.py:215
 msgid "LINE bot channel access token"
 msgstr ""
 
-#: golf/models.py:201
+#: golf/models.py:222
 msgid "LINE bot channel secret"
 msgstr ""
 
-#: golf/models.py:208
+#: golf/models.py:229
 msgid "LINE notify access token"
 msgstr ""
 
-#: golf/models.py:215
+#: golf/models.py:236
 msgid "Course info"
 msgstr ""
 
-#: golf/models.py:221
+#: golf/models.py:242
 msgid "Business hour start"
 msgstr ""
 
-#: golf/models.py:225
+#: golf/models.py:246
 msgid "Business hour end"
 msgstr ""
 
-#: golf/models.py:229
+#: golf/models.py:250
 msgid "Phone number"
 msgstr ""
 
-#: golf/models.py:236
+#: golf/models.py:257
 msgid "Email address"
 msgstr ""
 
-#: golf/models.py:243
+#: golf/models.py:264
 msgid "Fax number"
 msgstr ""
 
-#: golf/models.py:250
+#: golf/models.py:271
 msgid "Website"
 msgstr ""
 
-#: golf/models.py:264
+#: golf/models.py:285
 msgid "Golf club address"
 msgstr ""
 
-#: golf/models.py:271
+#: golf/models.py:292
 msgid "Latitude"
 msgstr ""
 
-#: golf/models.py:278
+#: golf/models.py:299
 msgid "Longitude"
 msgstr ""
 
-#: golf/models.py:285
+#: golf/models.py:306
 msgid "No. of holes"
 msgstr ""
 
-#: golf/models.py:292
+#: golf/models.py:313
 msgid "Max PAX"
 msgstr ""
 
-#: golf/models.py:297
+#: golf/models.py:318
 msgid "Weekdays minimum in advance"
 msgstr ""
 
-#: golf/models.py:303
+#: golf/models.py:324
 msgid "Weekdays maximum in advance"
 msgstr ""
 
-#: golf/models.py:309
+#: golf/models.py:330
 msgid "Weekend minimum in advance"
 msgstr ""
 
-#: golf/models.py:315
+#: golf/models.py:336
 msgid "Weekend maximum in advance"
 msgstr ""
 
-#: golf/models.py:321
+#: golf/models.py:342
 msgid "Caddie compulsory"
 msgstr ""
 
-#: golf/models.py:328
+#: golf/models.py:349
 msgid "Cart compulsory"
 msgstr ""
 
-#: golf/models.py:335 liff/apps.py:7
+#: golf/models.py:356 liff/apps.py:7
 msgid "LIFF"
 msgstr ""
 
-#: golf/models.py:341 liff/views.py:93
+#: golf/models.py:362 liff/views.py:101
 msgid "Scorecard"
 msgstr ""
 
-#: golf/models.py:347
+#: golf/models.py:368
 msgid "Working status"
 msgstr ""
 
-#: golf/models.py:355
+#: golf/models.py:376
 msgid "Golf clubs"
 msgstr ""
 
-#: golf/models.py:381
+#: golf/models.py:407
 msgid "Unfollow"
 msgstr ""
 
-#: golf/models.py:382
+#: golf/models.py:408
 msgid "Follow"
 msgstr ""
 
-#: golf/models.py:386
+#: golf/models.py:412
 msgid "LINE user ID"
 msgstr ""
 
-#: golf/models.py:392
+#: golf/models.py:418
 msgid "LINE display name"
 msgstr ""
 
-#: golf/models.py:398
+#: golf/models.py:424
 msgid "Follow status"
 msgstr ""
 
-#: golf/models.py:412
+#: golf/models.py:438
 msgid "Fullname"
 msgstr ""
 
-#: golf/models.py:418
+#: golf/models.py:444
 msgid "LINE user"
 msgstr ""
 
-#: golf/models.py:419
+#: golf/models.py:445
 msgid "LINE users"
 msgstr ""
 
-#: golf/models.py:436
+#: golf/models.py:462
 msgid "Customer group name"
 msgstr ""
 
-#: golf/models.py:447 golf/models.py:555
+#: golf/models.py:473 golf/models.py:581
 msgid "Customer group"
 msgstr ""
 
-#: golf/models.py:448
+#: golf/models.py:474
 msgid "Customer groups"
 msgstr ""
 
-#: golf/models.py:463
+#: golf/models.py:489
 msgid "Season name"
 msgstr ""
 
-#: golf/models.py:468
+#: golf/models.py:494
 msgid "Season start date"
 msgstr ""
 
-#: golf/models.py:472
+#: golf/models.py:498
 msgid "Season end date"
 msgstr ""
 
-#: golf/models.py:476
+#: golf/models.py:502
 msgid "Caddie fee list price"
 msgstr ""
 
-#: golf/models.py:479 golf/models.py:486 golf/models.py:493 golf/models.py:500
-#: golf/models.py:578 golf/models.py:585
+#: golf/models.py:505 golf/models.py:512 golf/models.py:519 golf/models.py:526
+#: golf/models.py:604 golf/models.py:611
 msgid "THB"
 msgstr ""
 
-#: golf/models.py:483
+#: golf/models.py:509
 msgid "Caddie fee selling price"
 msgstr ""
 
-#: golf/models.py:490
+#: golf/models.py:516
 msgid "Cart fee list price"
 msgstr ""
 
-#: golf/models.py:497
+#: golf/models.py:523
 msgid "Cart fee selling price"
 msgstr ""
 
-#: golf/models.py:504 golf/models.py:562
+#: golf/models.py:530 golf/models.py:588
 msgid "Season"
 msgstr ""
 
-#: golf/models.py:505
+#: golf/models.py:531
 msgid "Seasons"
 msgstr ""
 
-#: golf/models.py:520
+#: golf/models.py:546
 msgid "Weekday"
 msgstr ""
 
-#: golf/models.py:521
+#: golf/models.py:547
 msgid "Weekend"
 msgstr ""
 
-#: golf/models.py:525
+#: golf/models.py:551
 msgid "Timeslot name"
 msgstr ""
 
-#: golf/models.py:530
+#: golf/models.py:556
 msgid "Day of week"
 msgstr ""
 
-#: golf/models.py:537
+#: golf/models.py:563
 msgid "Timeslot start time"
 msgstr ""
 
-#: golf/models.py:541
+#: golf/models.py:567
 msgid "Timeslot end time"
 msgstr ""
 
-#: golf/models.py:545 golf/models.py:569
+#: golf/models.py:571 golf/models.py:595
 msgid "Timeslot"
 msgstr ""
 
-#: golf/models.py:546
+#: golf/models.py:572
 msgid "Timeslots"
 msgstr ""
 
-#: golf/models.py:575
+#: golf/models.py:601
 msgid "List price"
 msgstr ""
 
-#: golf/models.py:582
+#: golf/models.py:608
 msgid "Selling price"
 msgstr ""
 
-#: golf/models.py:589 golf/models.py:590
+#: golf/models.py:615 golf/models.py:616
 msgid "Green fee"
 msgstr ""
 
@@ -434,88 +450,88 @@ msgid "hotel"
 msgstr ""
 
 #: liff/templates/liff/booking_create_form.html:22
-#: liff/templates/liff/golf_booking_create_form.html:22
+#: liff/templates/liff/golf_booking_create_form.html:23
 msgid "Tee-off Date/Time"
 msgstr ""
 
 #: liff/templates/liff/booking_create_form.html:42
-#: liff/templates/liff/golf_booking_create_form.html:42
+#: liff/templates/liff/golf_booking_create_form.html:54
 msgid "Golfer #"
 msgstr ""
 
 #: liff/templates/liff/booking_create_form.html:75
-#: liff/templates/liff/golf_booking_create_form.html:75
+#: liff/templates/liff/golf_booking_create_form.html:91
 msgid "Cart #"
 msgstr ""
 
 #: liff/templates/liff/booking_create_form.html:108
-#: liff/templates/liff/golf_booking_create_form.html:108
+#: liff/templates/liff/golf_booking_create_form.html:129
 msgid "Customer Name"
 msgstr ""
 
 #: liff/templates/liff/booking_create_form.html:115
-#: liff/templates/liff/golf_booking_create_form.html:115
+#: liff/templates/liff/golf_booking_create_form.html:140
 msgid "Type in English or Thai"
 msgstr ""
 
 #: liff/templates/liff/booking_create_form.html:126
-#: liff/templates/liff/golf_booking_create_form.html:126
+#: liff/templates/liff/golf_booking_create_form.html:151
 msgid "ORDER DETAILS"
 msgstr ""
 
 #: liff/templates/liff/booking_create_form.html:133
-#: liff/templates/liff/golf_booking_create_form.html:133
+#: liff/templates/liff/golf_booking_create_form.html:158
 msgid "Item"
 msgstr ""
 
 #: liff/templates/liff/booking_create_form.html:134
-#: liff/templates/liff/golf_booking_create_form.html:134
+#: liff/templates/liff/golf_booking_create_form.html:159
 msgid "Price"
 msgstr ""
 
 #: liff/templates/liff/booking_create_form.html:135
-#: liff/templates/liff/golf_booking_create_form.html:135
+#: liff/templates/liff/golf_booking_create_form.html:160
 msgid "PAX"
 msgstr ""
 
 #: liff/templates/liff/booking_create_form.html:136
-#: liff/templates/liff/golf_booking_create_form.html:136
+#: liff/templates/liff/golf_booking_create_form.html:161
 msgid "Amount"
 msgstr ""
 
 #: liff/templates/liff/booking_create_form.html:141
-#: liff/templates/liff/golf_booking_create_form.html:141
+#: liff/templates/liff/golf_booking_create_form.html:166
 #: liff/templates/liff/golf_price_table.html:21
 #: liff/templates/liff/price_table.html:21
 msgid "Green Fee"
 msgstr ""
 
 #: liff/templates/liff/booking_create_form.html:147
-#: liff/templates/liff/golf_booking_create_form.html:147
+#: liff/templates/liff/golf_booking_create_form.html:172
 #: liff/templates/liff/golf_price_table.html:51
 #: liff/templates/liff/price_table.html:51
 msgid "Caddie Fee"
 msgstr ""
 
 #: liff/templates/liff/booking_create_form.html:153
-#: liff/templates/liff/golf_booking_create_form.html:153
+#: liff/templates/liff/golf_booking_create_form.html:178
 #: liff/templates/liff/golf_price_table.html:59
 #: liff/templates/liff/price_table.html:59
 msgid "Cart Fee"
 msgstr ""
 
 #: liff/templates/liff/booking_create_form.html:161
-#: liff/templates/liff/golf_booking_create_form.html:161
+#: liff/templates/liff/golf_booking_create_form.html:186
 msgid "Total Amount"
 msgstr ""
 
 #: liff/templates/liff/booking_create_form.html:171
-#: liff/templates/liff/golf_booking_create_form.html:171 liff/views.py:29
+#: liff/templates/liff/golf_booking_create_form.html:196 liff/views.py:37
 msgid "New Booking"
 msgstr ""
 
 #: liff/templates/liff/booking_create_form.html:174
-#: liff/templates/liff/golf_booking_create_form.html:174
+#: liff/templates/liff/golf_booking_create_form.html:199
 #: liff/templates/liff/golf_price_table.html:70
 #: liff/templates/liff/golf_scorecard.html:55 liff/templates/liff/price.html:52
 #: liff/templates/liff/price_table.html:70
@@ -527,6 +543,6 @@ msgstr ""
 msgid "Sample"
 msgstr ""
 
-#: liff/views.py:74
+#: liff/views.py:82
 msgid "Price Table"
 msgstr ""

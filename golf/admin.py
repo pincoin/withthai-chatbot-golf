@@ -22,6 +22,12 @@ class TimeslotInline(admin.TabularInline):
     extra = 1
 
 
+class HolidayAdmin(admin.ModelAdmin):
+    list_display = ('title', 'holiday')
+    date_hierarchy = 'holiday'
+    ordering = ('-holiday',)
+
+
 class AreaAdmin(admin.ModelAdmin):
     list_display = ('title_english', 'slug', 'title_thai', 'title_korean', 'position')
     prepopulated_fields = {'slug': ('title_english',)}
@@ -101,6 +107,7 @@ class TimeslotAdmin(admin.ModelAdmin):
     ordering = ['golf_club', 'day_of_week', 'slot_start']
 
 
+admin.site.register(models.Holiday, HolidayAdmin)
 admin.site.register(models.Area, AreaAdmin)
 admin.site.register(models.Province, ProvinceAdmin)
 admin.site.register(models.District, DistrictAdmin)

@@ -10,6 +10,26 @@ from model_utils import Choices
 from model_utils import models as model_utils_models
 
 
+class Holiday(model_utils_models.TimeStampedModel):
+    title = models.CharField(
+        verbose_name=_('Holiday name'),
+        max_length=255,
+    )
+
+    holiday = models.DateField(
+        verbose_name=_('Holiday day'),
+        db_index=True,
+        unique=True,
+    )
+
+    class Meta:
+        verbose_name = _('Holiday')
+        verbose_name_plural = _('Holidays')
+
+    def __str__(self):
+        return f'{self.title} {self.holiday}'
+
+
 class Area(model_utils_models.TimeStampedModel):
     title_english = models.CharField(
         verbose_name=_('Area english name'),
