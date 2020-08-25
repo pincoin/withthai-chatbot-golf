@@ -4,7 +4,7 @@
 
 {% block stylesheet %}
 {{ block.super }}
-<link rel="stylesheet" href="{% static 'css/liff/style.css' %}">
+<link href="{% static 'css/liff/style.css' %}" rel="stylesheet">
 {% endblock %}}
 
 {% block content %}
@@ -28,22 +28,22 @@
                         <div class="field">
                             <p class="control is-expanded has-icons-left">
                                 <input class="input"
-                                       type="date"
                                        id="{{ form.round_date.id_for_label }}"
                                        name="{{ form.round_date.name }}"
-                                       value="{{ form.round_date.value|default_if_none:'' }}"
-                                       placeholder="YYYY-MM-DD">
+                                       placeholder="YYYY-MM-DD"
+                                       type="date"
+                                       value="{{ form.round_date.value|default_if_none:'' }}">
                                 <span class="icon is-small is-left"><i class="fas fa-calendar"></i></span>
                             </p>
                         </div>
                         <div class="field">
                             <p class="control is-expanded has-icons-left">
                                 <input class="input"
-                                       type="time"
                                        id="{{ form.round_time.id_for_label }}"
                                        name="{{ form.round_time.name }}"
-                                       value="{{ form.round_time.value|default_if_none:'' }}"
-                                       placeholder="HH:MM" step="60">
+                                       placeholder="HH:MM"
+                                       step="60"
+                                       type="time" value="{{ form.round_time.value|default_if_none:'' }}">
                                 <span class="icon is-small is-left"><i class="fas fa-clock"></i></span>
                             </p>
                         </div>
@@ -71,7 +71,6 @@
                                                 selected
                                                 {% endif %}>
                                             {{ choice.1 }}
-                                        </option>
                                         {% endif %}
                                         {% endfor %}
                                     </select>
@@ -108,7 +107,6 @@
                                                 selected
                                                 {% endif %}>
                                             {{ choice.1 }}
-                                        </option>
                                         {% endif %}
                                         {% endfor %}
                                     </select>
@@ -133,11 +131,11 @@
                         <div class="field">
                             <p class="control has-icons-left">
                                 <input class="input"
-                                       type="text"
                                        id="{{ form.customer_name.id_for_label }}"
                                        name="{{ form.customer_name.name }}"
-                                       value="{{ form.customer_name.value|default_if_none:'' }}"
-                                       placeholder="{% trans 'Type in English or Thai' %}">
+                                       placeholder="{% trans 'Type in English or Thai' %}"
+                                       type="text"
+                                       value="{{ form.customer_name.value|default_if_none:'' }}">
                                 <span class="icon is-small is-left"><i class="far fa-address-card"></i></span>
                             </p>
                         </div>
@@ -164,28 +162,28 @@
                     <tbody>
                     <tr>
                         <td class="has-text-weight-bold">{% trans 'Green Fee' %}</td>
-                        <td class="has-text-right"></td>
-                        <td class="has-text-centered"></td>
-                        <td class="has-text-right"></td>
+                        <td class="has-text-right" id="green-fee-unit-price"></td>
+                        <td class="has-text-centered" id="green-fee-pax"></td>
+                        <td class="has-text-right" id="green-fee-amount"></td>
                     </tr>
                     <tr>
                         <td class="has-text-weight-bold">{% trans 'Caddie Fee' %}</td>
-                        <td class="has-text-right"></td>
-                        <td class="has-text-centered"></td>
-                        <td class="has-text-right"></td>
+                        <td class="has-text-right" id="caddie-fee-unit-price"></td>
+                        <td class="has-text-centered" id="caddie-fee-pax"></td>
+                        <td class="has-text-right" id="caddie-fee-amount"></td>
                     </tr>
                     <tr>
                         <td class="has-text-weight-bold">{% trans 'Cart Fee' %}</td>
-                        <td class="has-text-right"></td>
-                        <td class="has-text-centered"></td>
-                        <td class="has-text-right"></td>
+                        <td class="has-text-right" id="cart-fee-unit-price"></td>
+                        <td class="has-text-centered" id="cart-fee-pax"></td>
+                        <td class="has-text-right" id="cart-fee-amount"></td>
                     </tr>
                     </tbody>
                     <tfoot>
                     <tr>
                         <td class="has-text-weight-bold">{% trans 'Total Amount' %}</td>
                         <td class="has-text-weight-bold has-text-right" colspan="3">
-                            <span class="total-amount"></span>
+                            <span class="total-amount" id="fee-total-amount"></span>
                         </td>
                     </tr>
                     </tfoot>
@@ -206,5 +204,5 @@
 
 {% block javascript %}
 {{ block.super }}
-<script src="{% static 'js/liff/booking-create-form.js' %}"></script>
+<script src="{% static 'js/liff/booking-form.js' %}"></script>
 {% endblock %}
