@@ -21,7 +21,6 @@ class GolfBookingForm(forms.Form):
         self.fields['pax'].choices = tuple((str(i), str(i)) for i in [x for x in
                                                                       range(int(self.golf_club.min_pax),
                                                                             int(self.golf_club.max_pax) + 1)])
-
         self.fields['cart'].choices = tuple((str(i), str(i)) for i in [x for x in
-                                                                       range(1,
+                                                                       range(int(self.golf_club.cart_compulsory),
                                                                              int(self.golf_club.max_pax) + 1)])

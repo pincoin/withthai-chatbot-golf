@@ -96,14 +96,20 @@ document
         document
             .getElementById('cart-plus-button')
             .addEventListener('click', function (e) {
-                cart.value = Number(cart.value) + 1;
+                if (round_date.value && round_time.value && cart.value < pax.value) {
+                    cart.value = Number(cart.value) + 1;
+                }
+
                 cart.dispatchEvent(new Event('change'));
             });
 
         document
             .getElementById('cart-minus-button')
             .addEventListener('click', function (e) {
-                cart.value = Number(cart.value) - 1;
+                if (round_date.value && round_time.value && cart.value > golf_club['cart_compulsory']) {
+                    cart.value = Number(cart.value) - 1;
+                }
+
                 cart.dispatchEvent(new Event('change'));
             });
 
