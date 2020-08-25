@@ -1,5 +1,7 @@
 document
     .addEventListener('DOMContentLoaded', (event) => {
+        let round_date = document.getElementById('id_round_date');
+        let round_time = document.getElementById('id_round_time');
         let pax = document.getElementById('id_pax');
         let cart = document.getElementById('id_cart');
 
@@ -40,4 +42,15 @@ document
             .addEventListener('click', function (e) {
                 cart.value = Number(cart.value) - 1;
             });
+
+        [round_date, round_time, pax, cart].forEach(function (element) {
+            element.addEventListener('change', function (e) {
+                if (round_date.value && round_time.value && pax.value && cart.value) {
+                    console.log(round_date.value);
+                    console.log(round_time.value);
+                    console.log(pax.value);
+                    console.log(cart.value);
+                }
+            });
+        });
     });
