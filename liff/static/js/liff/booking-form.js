@@ -78,6 +78,10 @@ document
             .addEventListener('click', function (e) {
                 if (round_date.value && round_time.value && pax.value < golf_club['max_pax']) {
                     pax.value = Number(pax.value) + 1;
+
+                    if (golf_club['cart_compulsory'] === 1) {
+                        cart.value = pax.value;
+                    }
                 }
 
                 pax.dispatchEvent(new Event('change'));
@@ -88,6 +92,10 @@ document
             .addEventListener('click', function (e) {
                 if (round_date.value && round_time.value && pax.value > golf_club['min_pax']) {
                     pax.value = Number(pax.value) - 1;
+
+                    if (golf_club['cart_compulsory'] === 1) {
+                        cart.value = pax.value;
+                    }
                 }
 
                 pax.dispatchEvent(new Event('change'));
@@ -96,7 +104,10 @@ document
         document
             .getElementById('cart-plus-button')
             .addEventListener('click', function (e) {
-                if (round_date.value && round_time.value && cart.value < pax.value) {
+                if (round_date.value
+                    && round_time.value
+                    && cart.value < pax.value
+                    && golf_club['cart_compulsory'] !== 1) {
                     cart.value = Number(cart.value) + 1;
                 }
 
@@ -106,7 +117,10 @@ document
         document
             .getElementById('cart-minus-button')
             .addEventListener('click', function (e) {
-                if (round_date.value && round_time.value && cart.value > golf_club['cart_compulsory']) {
+                if (round_date.value
+                    && round_time.value
+                    && cart.value > golf_club['cart_compulsory']
+                    && golf_club['cart_compulsory'] !== 1) {
                     cart.value = Number(cart.value) - 1;
                 }
 
