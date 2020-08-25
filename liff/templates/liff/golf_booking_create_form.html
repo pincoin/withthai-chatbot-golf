@@ -65,13 +65,9 @@
                                     <select id="{{ form.pax.id_for_label }}"
                                             name="{{ form.pax.name }}">
                                         {% for choice in form.pax.field.choices %}
-                                        {% if forloop.counter0 <= golf_club.max_pax %}
-                                        <option value="{{ choice.0 }}"
-                                                {% if forloop.counter0 == 3 %}
-                                                selected
-                                                {% endif %}>
+                                        <option value="{{ choice.0 }}">
                                             {{ choice.1 }}
-                                        {% endif %}
+                                        </option>
                                         {% endfor %}
                                     </select>
                                 </div>
@@ -101,13 +97,9 @@
                                     <select id="{{ form.cart.id_for_label }}"
                                             name="{{ form.cart.name }}">
                                         {% for choice in form.cart.field.choices %}
-                                        {% if forloop.counter0 <= golf_club.max_pax %}
-                                        <option value="{{ choice.0 }}"
-                                                {% if forloop.counter0 == 3 %}
-                                                selected
-                                                {% endif %}>
+                                        <option value="{{ choice.0 }}">
                                             {{ choice.1 }}
-                                        {% endif %}
+                                        </option>
                                         {% endfor %}
                                     </select>
                                 </div>
