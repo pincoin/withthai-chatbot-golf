@@ -192,7 +192,7 @@ class CallbackView(generic.View):
 
                 membership = golf_models.LineUserMembership.objects.get(line_user_id=event.source.user_id)
                 membership.delete()
-            except golf_models.LineUser.DoesNotExist:
+            except (golf_models.LineUser.DoesNotExist, golf_models.LineUserMembership.DoesNotExist):
                 pass
 
         @self.handler.add(models.JoinEvent)
