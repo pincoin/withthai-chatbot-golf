@@ -66,6 +66,7 @@ class GolfBookingCreateFormView(viewmixins.LiffContextMixin, generic.FormView):
                 'weekend_max_in_advance': self.golf_club.weekend_max_in_advance,
                 'business_hour_start': self.golf_club.business_hour_start.strftime('%H:%M'),
                 'business_hour_end': self.golf_club.business_hour_end.strftime('%H:%M'),
+                'customer_group': self.golf_club.customer_group_id,
             },
             'fees': [],
             'holidays': [],
@@ -81,6 +82,7 @@ class GolfBookingCreateFormView(viewmixins.LiffContextMixin, generic.FormView):
                 'green_fee': int(fee.selling_price),
                 'caddie_fee': int(fee.season.caddie_selling_price),
                 'cart_fee': int(fee.season.cart_selling_price),
+                'customer_group': fee.customer_group_id,
             })
 
         for holiday in holidays:
