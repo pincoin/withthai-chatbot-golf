@@ -158,7 +158,7 @@ class CallbackView(generic.View):
         @self.handler.add(models.FollowEvent)
         def handle_follow(event):
             try:
-                user = golf_models.LineUser.objects.get(line_user_id=event.source.user_id, golf_club=golf_club)
+                user = golf_models.LineUser.objects.get(line_user_id=event.source.user_id)
             except golf_models.LineUser.DoesNotExist:
                 user = golf_models.LineUser()
                 user.line_user_id = event.source.user_id
@@ -167,10 +167,14 @@ class CallbackView(generic.View):
                 profile = self.line_bot_api.get_profile(event.source.user_id)
                 user.line_display_name = profile.display_name
 
-            user.golf_club = golf_club
             user.follow_status = golf_models.LineUser.FOLLOW_CHOICES.follow
             user.fullname = ''
             user.save()
+
+            membership = golf_models.LineUserMembership()
+            membership.line_user = user
+            membership.customer_group = golf_club.customer_group
+            membership.save()
 
             self.line_bot_api.reply_message(
                 event.reply_token,
@@ -181,10 +185,13 @@ class CallbackView(generic.View):
         @self.handler.add(models.UnfollowEvent)
         def handle_unfollow(event):
             try:
-                user = golf_models.LineUser.objects.get(line_user_id=event.source.user_id, golf_club=golf_club)
+                user = golf_models.LineUser.objects.get(line_user_id=event.source.user_id)
                 user.follow_status = golf_models.LineUser.FOLLOW_CHOICES.unfollow
                 user.fullname = ''
                 user.save()
+
+                membership = golf_models.LineUserMembership.objects.get(line_user_id=event.source.user_id)
+                membership.delete()
             except golf_models.LineUser.DoesNotExist:
                 pass
 
