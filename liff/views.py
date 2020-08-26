@@ -56,6 +56,7 @@ class GolfBookingCreateFormView(viewmixins.LiffContextMixin, generic.FormView):
         # Build JSON data
         data = {
             'golf_club': {
+                'slug': self.golf_club.slug,
                 'min_pax': self.golf_club.min_pax,
                 'max_pax': self.golf_club.max_pax,
                 'caddie_compulsory': self.golf_club.caddie_compulsory,
