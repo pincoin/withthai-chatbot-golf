@@ -39,11 +39,11 @@ class CallbackView(generic.View):
             ])
 
     def post(self, request, *args, **kwargs):
-        club = golf_models.GolfClub.objects.get(slug=self.kwargs['slug'])
-        self.logger.info(club.title_english)
+        golf_club = golf_models.GolfClub.objects.get(slug=self.kwargs['slug'])
+        self.logger.info(golf_club.title_english)
 
-        self.line_bot_api = linebot.LineBotApi(club.line_bot_channel_access_token)
-        self.handler = linebot.WebhookHandler(club.line_bot_channel_secret)
+        self.line_bot_api = linebot.LineBotApi(golf_club.line_bot_channel_access_token)
+        self.handler = linebot.WebhookHandler(golf_club.line_bot_channel_secret)
 
         @self.handler.add(models.MessageEvent, message=models.TextMessage)
         def handle_message(event):
@@ -79,8 +79,8 @@ class CallbackView(generic.View):
                 self.line_bot_api.reply_message(
                     event.reply_token, [
                         models.FlexSendMessage(
-                            alt_text=club.title_english,
-                            contents=club.info)])
+                            alt_text=golf_club.title_english,
+                            contents=golf_club.info)])
             elif text in ['promotions', 'promotion']:
                 self.line_bot_api.reply_message(
                     event.reply_token,
@@ -119,10 +119,10 @@ class CallbackView(generic.View):
             elif text in ['location', 'map']:
                 self.line_bot_api.reply_message(
                     event.reply_token, [
-                        models.LocationSendMessage(title=club.title_english,
-                                                   address=club.address,
-                                                   latitude=float(club.latitude),
-                                                   longitude=float(club.longitude))])
+                        models.LocationSendMessage(title=golf_club.title_english,
+                                                   address=golf_club.address,
+                                                   latitude=float(golf_club.latitude),
+                                                   longitude=float(golf_club.longitude))])
             elif text in ['caddies', 'caddie']:
                 self.line_bot_api.reply_message(
                     event.reply_token,
@@ -158,7 +158,7 @@ class CallbackView(generic.View):
         @self.handler.add(models.FollowEvent)
         def handle_follow(event):
             try:
-                user = golf_models.LineUser.objects.get(line_user_id=event.source.user_id, golf_club=club)
+                user = golf_models.LineUser.objects.get(line_user_id=event.source.user_id, golf_club=golf_club)
             except golf_models.LineUser.DoesNotExist:
                 user = golf_models.LineUser()
                 user.line_user_id = event.source.user_id
@@ -167,7 +167,7 @@ class CallbackView(generic.View):
                 profile = self.line_bot_api.get_profile(event.source.user_id)
                 user.line_display_name = profile.display_name
 
-            user.golf_club = club
+            user.golf_club = golf_club
             user.follow_status = golf_models.LineUser.FOLLOW_CHOICES.follow
             user.fullname = ''
             user.save()
@@ -181,7 +181,7 @@ class CallbackView(generic.View):
         @self.handler.add(models.UnfollowEvent)
         def handle_unfollow(event):
             try:
-                user = golf_models.LineUser.objects.get(line_user_id=event.source.user_id, golf_club=club)
+                user = golf_models.LineUser.objects.get(line_user_id=event.source.user_id, golf_club=golf_club)
                 user.follow_status = golf_models.LineUser.FOLLOW_CHOICES.unfollow
                 user.fullname = ''
                 user.save()
