@@ -424,6 +424,7 @@ class LineUser(model_utils_models.TimeStampedModel):
         verbose_name=_('LINE user ID'),
         max_length=48,
         db_index=True,
+        unique=True,
     )
 
     line_display_name = models.CharField(
