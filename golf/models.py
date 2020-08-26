@@ -472,8 +472,6 @@ class LineUserMembership(models.Model):
         verbose_name = _('LINE user membership')
         verbose_name_plural = _('LINE user membership')
 
-        unique_together = ('customer_group', 'line_user')
-
 
 class CustomerGroup(model_utils_models.TimeStampedModel):
     golf_club = models.ForeignKey(

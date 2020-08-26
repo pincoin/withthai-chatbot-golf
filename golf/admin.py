@@ -22,6 +22,11 @@ class TimeslotInline(admin.TabularInline):
     extra = 1
 
 
+class LineUserListInline(admin.TabularInline):
+    model = models.CustomerGroup.line_users.through
+    extra = 1
+
+
 class HolidayAdmin(admin.ModelAdmin):
     list_display = ('title', 'holiday')
     date_hierarchy = 'holiday'
@@ -88,6 +93,7 @@ class CustomerGroupAdmin(admin.ModelAdmin):
     list_display_links = ('title_english',)
     list_filter = ('golf_club__title_english',)
     raw_id_fields = ('golf_club',)
+    inlines = [LineUserListInline, ]
     ordering = ['golf_club', 'position']
 
 
