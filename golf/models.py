@@ -238,6 +238,13 @@ class GolfClub(model_utils_models.TimeStampedModel):
         null=True,
     )
 
+    customer_group = models.ForeignKey(
+        'golf.CustomerGroup',
+        verbose_name=_('Default customer group'),
+        db_index=True,
+        on_delete=models.CASCADE,
+    )
+
     business_hour_start = models.TimeField(
         verbose_name=_('Business hour start'),
     )
@@ -432,13 +439,6 @@ class LineUser(model_utils_models.TimeStampedModel):
         db_index=True,
     )
 
-    golf_club = models.ForeignKey(
-        'golf.GolfClub',
-        verbose_name=_('Golf club'),
-        db_index=True,
-        on_delete=models.CASCADE,
-    )
-
     fullname = models.CharField(
         verbose_name=_('Fullname'),
         max_length=32,
@@ -449,10 +449,30 @@ class LineUser(model_utils_models.TimeStampedModel):
         verbose_name = _('LINE user')
         verbose_name_plural = _('LINE users')
 
-        unique_together = ('line_user_id', 'golf_club')
-
     def __str__(self):
         return f'{self.line_user_id}'
+
+
+class LineUserMembership(models.Model):
+    line_user = models.ForeignKey(
+        'golf.LineUser',
+        verbose_name=_('LINE user'),
+        db_index=True,
+        on_delete=models.CASCADE,
+    )
+
+    customer_group = models.ForeignKey(
+        'golf.CustomerGroup',
+        verbose_name=_('Customer group'),
+        db_index=True,
+        on_delete=models.CASCADE,
+    )
+
+    class Meta:
+        verbose_name = _('LINE user membership')
+        verbose_name_plural = _('LINE user membership')
+
+        unique_together = ('customer_group', 'line_user')
 
 
 class CustomerGroup(model_utils_models.TimeStampedModel):
@@ -461,6 +481,13 @@ class CustomerGroup(model_utils_models.TimeStampedModel):
         verbose_name=_('Golf club'),
         db_index=True,
         on_delete=models.CASCADE,
+    )
+
+    line_users = models.ManyToManyField(
+        'golf.CustomerGroup',
+        verbose_name=_('LINE users'),
+        db_index=True,
+        through='golf.LineUserMembership'
     )
 
     title_english = models.CharField(

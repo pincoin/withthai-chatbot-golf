@@ -56,7 +56,7 @@ class GolfClubAdmin(admin.ModelAdmin):
             'fields': ('title_english', 'title_thai', 'slug',
                        'hole', 'working_status', 'business_hour_start', 'business_hour_end',
                        'phone', 'email', 'fax', 'website', 'address', 'latitude', 'longitude', 'district',
-                       'caddie_compulsory', 'cart_compulsory', 'min_pax', 'max_pax',
+                       'caddie_compulsory', 'cart_compulsory', 'min_pax', 'max_pax', 'customer_group',
                        'weekdays_min_in_advance', 'weekdays_max_in_advance',
                        'weekend_min_in_advance', 'weekend_max_in_advance')
         }),
@@ -70,9 +70,9 @@ class GolfClubAdmin(admin.ModelAdmin):
 
 
 class LineUserAdmin(admin.ModelAdmin):
-    list_display = ('line_user_id', 'line_display_name', 'golf_club', 'follow_status', 'fullname')
-    list_filter = ('follow_status', 'golf_club__title_english')
-    readonly_fields = ('line_user_id', 'line_display_name', 'golf_club', 'follow_status')
+    list_display = ('line_user_id', 'line_display_name', 'follow_status', 'fullname')
+    list_filter = ('follow_status',)
+    # readonly_fields = ('line_user_id', 'line_display_name', 'golf_club', 'follow_status')
     ordering = ['-created']
 
 
