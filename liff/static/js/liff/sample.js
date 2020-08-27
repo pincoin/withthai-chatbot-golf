@@ -1,11 +1,6 @@
 /**
  * Initialize the app by calling functions handling individual app components
  */
-window.onload = function () {
-    liff_init();
-    initializeApp();
-}
-
 function initializeApp() {
     displayLiffData();
     displayIsInClientInfo();
