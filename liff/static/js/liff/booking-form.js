@@ -31,6 +31,26 @@ function runApp() {
 
     let fee_total_amount = document.getElementById('fee-total-amount');
 
+    let customer_group = 0;
+
+    function setCartByPax(diff) {
+        pax.value = Number(pax.value) + diff;
+
+        if ((golf_club['cart_compulsory'] === 0 && Number(cart.value) > 0)
+            || golf_club['cart_compulsory'] === 1
+            || (golf_club['cart_compulsory'] > 1 && Number(pax.value) >= golf_club['cart_compulsory'])
+            || Number(cart.value) >= Number(pax.value)) {
+            cart.value = pax.value;
+        }
+    }
+
+    function setCart(diff) {
+        if (golf_club['cart_compulsory'] === 0
+            || (golf_club['cart_compulsory'] > 1 && Number(pax.value) < golf_club['cart_compulsory'])) {
+            cart.value = Number(cart.value) + diff;
+        }
+    }
+
     if (liff.isLoggedIn() && liff.isInClient()) {
         liff.getProfile().then(function (profile) {
             fetch('/golf/' + golf_club['slug'] + '/' + profile.userId + '/customer-group.json')
@@ -38,11 +58,13 @@ function runApp() {
                     return response.json();
                 })
                 .then(function (myJson) {
-                    window.alert(JSON.stringify(myJson));
+                    window.alert(JSON.stringify(myJson)['customer_group_id']);
                 });
         }).catch(function (error) {
             window.alert('Error getting profile: ' + error);
         });
+    } else {
+        customer_group = 4;
     }
 
     const today = new Date();
@@ -62,6 +84,7 @@ function runApp() {
     console.log(golf_club);
     console.log(fees);
     console.log(holidays);
+    console.log(customer_group);
 
     // 1. Arrange round date and time range
     let min_date = new Date(today);
@@ -91,15 +114,7 @@ function runApp() {
         .getElementById('pax-plus-button')
         .addEventListener('click', function (e) {
             if (round_date.value && round_time.value && pax.value < golf_club['max_pax']) {
-                pax.value = Number(pax.value) + 1;
-
-                if ((golf_club['cart_compulsory'] === 0 && Number(cart.value) > 0)
-                    || golf_club['cart_compulsory'] === 1
-                    || (golf_club['cart_compulsory'] > 1 && Number(pax.value) >= golf_club['cart_compulsory'])
-                    || Number(cart.value) >= Number(pax.value)) {
-                    cart.value = pax.value;
-                }
-
+                setCartByPax(1);
                 pax.dispatchEvent(new Event('change'));
             }
         });
@@ -108,15 +123,7 @@ function runApp() {
         .getElementById('pax-minus-button')
         .addEventListener('click', function (e) {
             if (round_date.value && round_time.value && pax.value > golf_club['min_pax']) {
-                pax.value = Number(pax.value) - 1;
-
-                if ((golf_club['cart_compulsory'] === 0 && Number(cart.value) > 0)
-                    || golf_club['cart_compulsory'] === 1
-                    || (golf_club['cart_compulsory'] > 1 && Number(pax.value) >= golf_club['cart_compulsory'])
-                    || Number(cart.value) >= Number(pax.value)) {
-                    cart.value = pax.value;
-                }
-
+                setCartByPax(-1);
                 pax.dispatchEvent(new Event('change'));
             }
         });
@@ -125,11 +132,7 @@ function runApp() {
         .getElementById('cart-plus-button')
         .addEventListener('click', function (e) {
             if (round_date.value && round_time.value && cart.value < pax.value) {
-                if (golf_club['cart_compulsory'] === 0
-                    || (golf_club['cart_compulsory'] > 1 && Number(pax.value) < golf_club['cart_compulsory'])) {
-                    cart.value = Number(cart.value) + 1;
-                }
-
+                setCart(1);
                 cart.dispatchEvent(new Event('change'));
             }
         });
@@ -138,11 +141,7 @@ function runApp() {
         .getElementById('cart-minus-button')
         .addEventListener('click', function (e) {
             if (round_date.value && round_time.value && cart.value > 0) {
-                if (golf_club['cart_compulsory'] === 0
-                    || (golf_club['cart_compulsory'] > 1 && Number(pax.value) < golf_club['cart_compulsory'])) {
-                    cart.value = Number(cart.value) - 1;
-                }
-
+                setCart(-1);
                 cart.dispatchEvent(new Event('change'));
             }
         });
@@ -215,8 +214,6 @@ function runApp() {
                                     Number(slot_start[0]), Number(slot_start[1]))
                                     && rtime.getTime() <= new Date(2020, 0, 1,
                                         Number(slot_end[0]), Number(slot_end[1]))) {
-
-                                    console.log(fees[i]);
 
                                     out1 = true;
                                     break;
