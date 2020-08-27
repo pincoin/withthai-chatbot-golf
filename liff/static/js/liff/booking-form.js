@@ -4,6 +4,23 @@ Date.prototype.formatDate = function () {
         + '-' + ('0' + this.getDate()).slice(-2);
 }
 
+function getCurrentTime() {
+    const now = new Date();
+
+    return {
+        'date': now,
+        'hour': now.toLocaleString('en-US', {
+            timeZone: 'Asia/Bangkok',
+            hour: 'numeric',
+            hour12: false
+        }),
+        'day': now.toLocaleString('en-US', {
+            timeZone: 'Asia/Bangkok',
+            weekday: 'short',
+        })
+    }
+}
+
 function isHoliday(roundDate) {
     // return 0: Weekday 1: Holiday
 
@@ -165,22 +182,13 @@ function runApp() {
 
     let customerGroup = 0;
 
-    const today = new Date();
-    const hour = today.toLocaleString('en-US', {
-        timeZone: 'Asia/Bangkok',
-        hour: 'numeric',
-        hour12: false
-    });
-    const day = today.toLocaleString('en-US', {
-        timeZone: 'Asia/Bangkok',
-        weekday: 'short',
-    });
+    const now = getCurrentTime();
 
     // 1. Arrange round date and time range
-    const minDate = new Date(today);
-    const maxDate = new Date(today);
+    const minDate = new Date(now['date']);
+    const maxDate = new Date(now['date']);
 
-    if (hour >= golf_club['business_hour_end'].split(':')[0] && hour < 24) {
+    if (now['hour'] >= golf_club['business_hour_end'].split(':')[0] && now['hour'] < 24) {
         minDate.setDate(minDate.getDate() + golf_club['weekdays_min_in_advance'] + 1);
         maxDate.setDate(maxDate.getDate() + golf_club['weekdays_max_in_advance'] + 1);
     } else {
@@ -271,7 +279,7 @@ function runApp() {
     [roundDate, roundTime, pax, cart].forEach(function (element) {
         element.addEventListener('change', function (e) {
             if (roundDate.value && roundTime.value && pax.value && cart.value) {
-                const fee = calculateFees(roundDate, roundTime, pax, cart, customerGroup, today, hour, day);
+                const fee = calculateFees(roundDate, roundTime, pax, cart, customerGroup);
 
                 displayQuotation(greenFeeUnitPrice, greenFeePax, greenFeeAmount,
                     caddieFeeUnitPrice, caddieFeePax, caddieFeeAmount,
