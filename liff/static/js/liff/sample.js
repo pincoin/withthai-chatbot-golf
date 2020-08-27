@@ -3,6 +3,7 @@
  */
 window.onload = function () {
     liff_init();
+    initializeApp();
 }
 
 function initializeApp() {
