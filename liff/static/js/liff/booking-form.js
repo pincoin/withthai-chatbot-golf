@@ -12,7 +12,7 @@ function isHoliday(round_date) {
         return 1;
     }
     // Public holidays
-    for (i = 0; i < holidays.length; i++) {
+    for (let i = 0; i < holidays.length; i++) {
         const holiday = holidays[i].split('-');
 
         if (round_date.getTime() === new Date(Number(holiday[0]),
