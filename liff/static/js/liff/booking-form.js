@@ -11,6 +11,36 @@ function formatDate(date) {
     return [year, month, day].join('-');
 }
 
+function iskHoliday(round_date) {
+    // Weekend Saturday and Sunday
+    let weekday = 0;
+
+    if (round_date.getDay() === 6 || round_date.getDay() === 0) {
+        weekday = 1;
+    }
+
+    // Public holidays
+    let out = false;
+
+    for (i = 0; i < holidays.length; i++) {
+        const holiday = holidays[i].split('-');
+
+        if (round_date.getTime() === new Date(Number(holiday[0]),
+            Number(holiday[1]) - 1,
+            Number(holiday[2])).getTime()) {
+            out = true;
+            weekday = 1;
+            break;
+        }
+
+        if (out) {
+            break;
+        }
+    }
+
+    return weekday;
+}
+
 function setCartByPax(cart, pax, cart_compulsory, diff) {
     pax.value = Number(pax.value) + diff;
 
@@ -26,6 +56,63 @@ function setCart(cart, pax, cart_compulsory, diff) {
     if (cart_compulsory === 0
         || (cart_compulsory > 1 && Number(pax.value) < cart_compulsory)) {
         cart.value = Number(cart.value) + diff;
+    }
+}
+
+function calculateFees(round_date, round_time, pax, cart, today, hour, day) {
+    const round_date_elements = round_date.value.split('-');
+    const round_time_elements = round_time.value.split(':');
+
+    const round_date_object = new Date(Number(round_date_elements[0]),
+        Number(round_date_elements[1]) - 1,
+        Number(round_date_elements[2]));
+
+    const round_time_object = new Date(2020, 0, 1,
+        Number(round_time_elements[0]),
+        Number(round_time_elements[1]));
+
+    let weekday = iskHoliday(round_date_object);
+
+    console.log(weekday);
+
+    let out1 = false;
+
+    // Calculate fees
+    if (weekday === 0
+        || (weekday === 1
+            && round_date_object.getTime() - today.getTime() < golf_club['weekend_max_in_advance'] * 24 * 60 * 60 * 1000)
+        && day.toUpperCase() !== 'SAT'
+        && day.toUpperCase() !== 'SUN') {
+        for (i = 0; i < fees.length; i++) {
+            if (fees[i]['weekday'] === weekday) {
+                // check whether round date is within season
+                const season_start = fees[i]['season_start'].split('-');
+                const season_end = fees[i]['season_end'].split('-');
+
+                if (round_date_object.getTime() >= new Date(Number(season_start[0]),
+                    Number(season_start[1]) - 1,
+                    Number(season_start[2])).getTime()
+                    && round_date_object.getTime() <= new Date(Number(season_end[0]),
+                        Number(season_end[1]) - 1,
+                        Number(season_end[2])).getTime()) {
+                    // check whether round time is within available slot time
+                    const slot_start = fees[i]['slot_start'].split(':');
+                    const slot_end = fees[i]['slot_end'].split(':');
+
+                    if (round_time_object.getTime() >= new Date(2020, 0, 1,
+                        Number(slot_start[0]), Number(slot_start[1]))
+                        && round_time_object.getTime() <= new Date(2020, 0, 1,
+                            Number(slot_end[0]), Number(slot_end[1]))) {
+
+                        out1 = true;
+                        break;
+                    }
+                }
+            }
+            if (out1) {
+                break;
+            }
+        }
     }
 }
 
@@ -82,10 +169,11 @@ function runApp() {
     console.log(today);
     console.log(hour);
     console.log(day);
+    console.log(customer_group);
+
     console.log(golf_club);
     console.log(fees);
     console.log(holidays);
-    console.log(customer_group);
 
     // 1. Arrange round date and time range
     let min_date = new Date(today);
@@ -150,82 +238,7 @@ function runApp() {
     [round_date, round_time, pax, cart].forEach(function (element) {
         element.addEventListener('change', function (e) {
             if (round_date.value && round_time.value && pax.value && cart.value) {
-                const round_date_elements = round_date.value.split('-');
-                const round_time_elements = round_time.value.split(':');
-
-                const rdate = new Date(Number(round_date_elements[0]),
-                    Number(round_date_elements[1]) - 1,
-                    Number(round_date_elements[2]));
-
-                const rtime = new Date(2020, 0, 1,
-                    Number(round_time_elements[0]),
-                    Number(round_time_elements[1]));
-
-                // Check if round date is  weekend
-                let weekday = 0;
-
-                if (rdate.getDay() === 6 || rdate.getDay() === 0) {
-                    weekday = 1;
-                }
-
-                // Check if round date is public holiday
-                let out = false;
-
-                for (i = 0; i < holidays.length; i++) {
-                    const holiday = holidays[i].split('-');
-
-                    if (rdate.getTime() === new Date(Number(holiday[0]),
-                        Number(holiday[1]) - 1,
-                        Number(holiday[2])).getTime()) {
-                        out = true;
-                        weekday = 1;
-                        break;
-                    }
-
-                    if (out) {
-                        break;
-                    }
-                }
-
-                let out1 = false;
-
-                // 4. Calculate fees
-                if (weekday === 0
-                    || (weekday === 1
-                        && rdate.getTime() - today.getTime() < golf_club['weekend_max_in_advance'] * 24 * 60 * 60 * 1000)
-                    && day.toUpperCase() !== 'SAT'
-                    && day.toUpperCase() !== 'SUN') {
-                    for (i = 0; i < fees.length; i++) {
-                        if (fees[i]['weekday'] === weekday) {
-                            // check whether round date is within season
-                            const season_start = fees[i]['season_start'].split('-');
-                            const season_end = fees[i]['season_end'].split('-');
-
-                            if (rdate.getTime() >= new Date(Number(season_start[0]),
-                                Number(season_start[1]) - 1,
-                                Number(season_start[2])).getTime()
-                                && rdate.getTime() <= new Date(Number(season_end[0]),
-                                    Number(season_end[1]) - 1,
-                                    Number(season_end[2])).getTime()) {
-                                // check whether round time is within available slot time
-                                const slot_start = fees[i]['slot_start'].split(':');
-                                const slot_end = fees[i]['slot_end'].split(':');
-
-                                if (rtime.getTime() >= new Date(2020, 0, 1,
-                                    Number(slot_start[0]), Number(slot_start[1]))
-                                    && rtime.getTime() <= new Date(2020, 0, 1,
-                                        Number(slot_end[0]), Number(slot_end[1]))) {
-
-                                    out1 = true;
-                                    break;
-                                }
-                            }
-                        }
-                        if (out1) {
-                            break;
-                        }
-                    }
-                }
+                calculateFees(round_date, round_time, pax, cart, today, hour, day);
             }
         });
     });
