@@ -1,13 +1,13 @@
 <script>
-    window.onload = function () {
+    function liff_init() {
         liff.init({
             liffId: "{{ liffId }}"
         }).then(() => {
-            initializeApp();
+            // initializeApp();
         }).catch((err) => {
             console.log('failed to initialize LIFF');
         });
-    };
+    }
 
     function initializeApp() {
         console.log(liff.getVersion());

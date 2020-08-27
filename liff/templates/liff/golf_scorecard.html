@@ -56,3 +56,12 @@
     </div>
 </section>
 {% endblock %}
+
+{% block javascript %}
+{{ block.super }}
+<script>
+    window.onload = function () {
+        liff_init();
+    }
+</script>
+{% endblock %}
