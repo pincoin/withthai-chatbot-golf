@@ -118,32 +118,30 @@ function displayQuotation(greenFeeUnitPrice, greenFeePax, greenFeeAmount,
                           caddieFeeUnitPrice, caddieFeePax, caddieFeeAmount,
                           cartFeeUnitPrice, cartFeePax, cartFeeAmount,
                           feeTotalAmount, fee, pax, cart) {
+    greenFeePax.textContent = Number(pax.value);
+    caddieFeePax.textContent = Number(pax.value);
+    cartFeePax.textContent = Number(cart.value);
+
     if (fee !== false) {
         greenFeeUnitPrice.textContent = fee['greenFee'].toLocaleString('en');
-        greenFeePax.textContent = Number(pax.value);
         greenFeeAmount.textContent = (fee['greenFee'] * Number(pax.value)).toLocaleString('en');
 
         caddieFeeUnitPrice.textContent = fee['caddieFee'].toLocaleString('en');
-        caddieFeePax.textContent = Number(pax.value);
         caddieFeeAmount.textContent = (fee['caddieFee'] * Number(pax.value)).toLocaleString('en');
 
         cartFeeUnitPrice.textContent = fee['cartFee'].toLocaleString('en');
-        cartFeePax.textContent = Number(cart.value);
         cartFeeAmount.textContent = (fee['cartFee'] * Number(cart.value)).toLocaleString('en');
 
         feeTotalAmount.textContent = ((fee['greenFee'] + fee['caddieFee']) * Number(pax.value)
             + fee['cartFee'] * Number(cart.value)).toLocaleString('en');
     } else {
         greenFeeUnitPrice.textContent = 'N/A';
-        greenFeePax.textContent = Number(pax.value);
         greenFeeAmount.textContent = 'N/A';
 
         caddieFeeUnitPrice.textContent = 'N/A';
-        caddieFeePax.textContent = Number(pax.value);
         caddieFeeAmount.textContent = 'N/A';
 
         cartFeeUnitPrice.textContent = 'N/A';
-        cartFeePax.textContent = Number(cart.value);
         cartFeeAmount.textContent = 'N/A';
 
         feeTotalAmount.textContent = 'N/A';
