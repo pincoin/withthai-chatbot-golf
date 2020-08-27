@@ -55,7 +55,7 @@ function calculateFees(roundDate, roundTime, pax, cart, customerGroup, today, ho
         Number(roundTimeElements[0]),
         Number(roundTimeElements[1]));
 
-    let weekday = isHoliday(roundDateObject);
+    const weekday = isHoliday(roundDateObject);
 
     for (let i = 0; i < fees.length; i++) {
         if (customerGroup !== fees[i]['customer_group']) {
@@ -143,25 +143,25 @@ function validateForm(roundDate, roundTime, pax, cart, customerGroup) {
 }
 
 function runApp() {
-    let roundDate = document.getElementById('id_round_date');
-    let roundTime = document.getElementById('id_round_time');
-    let pax = document.getElementById('id_pax');
-    let cart = document.getElementById('id_cart');
-    let customerName = document.getElementById('id_customer_name');
+    const roundDate = document.getElementById('id_round_date');
+    const roundTime = document.getElementById('id_round_time');
+    const pax = document.getElementById('id_pax');
+    const cart = document.getElementById('id_cart');
+    const customerName = document.getElementById('id_customer_name');
 
-    let greenFeeUnitPrice = document.getElementById('green-fee-unit-price');
-    let greenFeePax = document.getElementById('green-fee-pax');
-    let greenFeeAmount = document.getElementById('green-fee-amount');
+    const greenFeeUnitPrice = document.getElementById('green-fee-unit-price');
+    const greenFeePax = document.getElementById('green-fee-pax');
+    const greenFeeAmount = document.getElementById('green-fee-amount');
 
-    let caddieFeeUnitPrice = document.getElementById('caddie-fee-unit-price');
-    let caddieFeePax = document.getElementById('caddie-fee-pax');
-    let caddieFeeAmount = document.getElementById('caddie-fee-amount');
+    const caddieFeeUnitPrice = document.getElementById('caddie-fee-unit-price');
+    const caddieFeePax = document.getElementById('caddie-fee-pax');
+    const caddieFeeAmount = document.getElementById('caddie-fee-amount');
 
-    let cartFeeUnitPrice = document.getElementById('cart-fee-unit-price');
-    let cartFeePax = document.getElementById('cart-fee-pax');
-    let cartFeeAmount = document.getElementById('cart-fee-amount');
+    const cartFeeUnitPrice = document.getElementById('cart-fee-unit-price');
+    const cartFeePax = document.getElementById('cart-fee-pax');
+    const cartFeeAmount = document.getElementById('cart-fee-amount');
 
-    let feeTotalAmount = document.getElementById('fee-total-amount');
+    const feeTotalAmount = document.getElementById('fee-total-amount');
 
     let customerGroup = 0;
 
@@ -177,8 +177,8 @@ function runApp() {
     });
 
     // 1. Arrange round date and time range
-    let minDate = new Date(today);
-    let maxDate = new Date(today);
+    const minDate = new Date(today);
+    const maxDate = new Date(today);
 
     if (hour >= golf_club['business_hour_end'].split(':')[0] && hour < 24) {
         minDate.setDate(minDate.getDate() + golf_club['weekdays_min_in_advance'] + 1);
@@ -192,8 +192,8 @@ function runApp() {
     roundDate.setAttribute('min', minDate.formatDate());
     roundDate.setAttribute('max', maxDate.formatDate());
 
-    let roundTimeStart = fees[0]['slot_start'];
-    let roundTimeEnd = fees[fees.length - 1]['slot_end'];
+    const roundTimeStart = fees[0]['slot_start'];
+    const roundTimeEnd = fees[fees.length - 1]['slot_end'];
 
     roundTime.value = roundTimeStart;
     roundTime.setAttribute('min', roundTimeStart);
