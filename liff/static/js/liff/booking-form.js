@@ -110,6 +110,8 @@ function calculateFees(round_date, round_time, pax, cart, customer_group, today,
         }
     }
 
+    window.alert('Invalid round date or time');
+
     /*
     if (weekday === 0
         || (weekday === 1
