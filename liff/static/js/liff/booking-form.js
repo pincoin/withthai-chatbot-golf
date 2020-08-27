@@ -4,18 +4,18 @@ Date.prototype.formatDate = function () {
         + '-' + ('0' + this.getDate()).slice(-2);
 }
 
-function isHoliday(round_date) {
+function isHoliday(roundDate) {
     // return 0: Weekday 1: Holiday
 
     // Weekend Saturday and Sunday
-    if (round_date.getDay() === 6 || round_date.getDay() === 0) {
+    if (roundDate.getDay() === 6 || roundDate.getDay() === 0) {
         return 1;
     }
     // Public holidays
     for (let i = 0; i < holidays.length; i++) {
         const holiday = holidays[i].split('-');
 
-        if (round_date.getTime() === new Date(Number(holiday[0]),
+        if (roundDate.getTime() === new Date(Number(holiday[0]),
             Number(holiday[1]) - 1,
             Number(holiday[2])).getTime()) {
             return 1;
@@ -25,98 +25,98 @@ function isHoliday(round_date) {
     return 0;
 }
 
-function setCartByPax(cart, pax, cart_compulsory, diff) {
+function setCartByPax(cart, pax, cartCompulsory, diff) {
     pax.value = Number(pax.value) + diff;
 
-    if ((cart_compulsory === 0 && Number(cart.value) > 0)
-        || cart_compulsory === 1
-        || (cart_compulsory > 1 && Number(pax.value) >= cart_compulsory)
+    if ((cartCompulsory === 0 && Number(cart.value) > 0)
+        || cartCompulsory === 1
+        || (cartCompulsory > 1 && Number(pax.value) >= cartCompulsory)
         || Number(cart.value) >= Number(pax.value)) {
         cart.value = pax.value;
     }
 }
 
-function setCart(cart, pax, cart_compulsory, diff) {
-    if (cart_compulsory === 0
-        || (cart_compulsory > 1 && Number(pax.value) < cart_compulsory)) {
+function setCart(cart, pax, cartCompulsory, diff) {
+    if (cartCompulsory === 0
+        || (cartCompulsory > 1 && Number(pax.value) < cartCompulsory)) {
         cart.value = Number(cart.value) + diff;
     }
 }
 
-function calculateFees(round_date, round_time, pax, cart, customer_group, today, hour, day) {
-    const round_date_elements = round_date.value.split('-');
-    const round_time_elements = round_time.value.split(':');
+function calculateFees(roundDate, roundTime, pax, cart, customerGroup, today, hour, day) {
+    const roundDateElements = roundDate.value.split('-');
+    const roundTimeElements = roundTime.value.split(':');
 
-    const round_date_object = new Date(Number(round_date_elements[0]),
-        Number(round_date_elements[1]) - 1,
-        Number(round_date_elements[2]));
+    const roundDateObject = new Date(Number(roundDateElements[0]),
+        Number(roundDateElements[1]) - 1,
+        Number(roundDateElements[2]));
 
-    const round_time_object = new Date(2020, 0, 1,
-        Number(round_time_elements[0]),
-        Number(round_time_elements[1]));
+    const roundTimeObject = new Date(2020, 0, 1,
+        Number(roundTimeElements[0]),
+        Number(roundTimeElements[1]));
 
-    let weekday = isHoliday(round_date_object);
+    let weekday = isHoliday(roundDateObject);
 
     for (let i = 0; i < fees.length; i++) {
-        if (customer_group !== fees[i]['customer_group']) {
+        if (customerGroup !== fees[i]['customer_group']) {
             continue;
         }
         if (fees[i]['weekday'] !== weekday) {
             continue;
         }
-        const season_start = fees[i]['season_start'].split('-');
-        const season_end = fees[i]['season_end'].split('-');
+        const sessionStart = fees[i]['season_start'].split('-');
+        const sessionEnd = fees[i]['season_end'].split('-');
 
-        if (round_date_object.getTime() < new Date(Number(season_start[0]),
-            Number(season_start[1]) - 1,
-            Number(season_start[2])).getTime()
-            || round_date_object.getTime() > new Date(Number(season_end[0]),
-                Number(season_end[1]) - 1,
-                Number(season_end[2])).getTime()) {
+        if (roundDateObject.getTime() < new Date(Number(sessionStart[0]),
+            Number(sessionStart[1]) - 1,
+            Number(sessionStart[2])).getTime()
+            || roundDateObject.getTime() > new Date(Number(sessionEnd[0]),
+                Number(sessionEnd[1]) - 1,
+                Number(sessionEnd[2])).getTime()) {
             continue;
         }
 
-        const slot_start = fees[i]['slot_start'].split(':');
-        const slot_end = fees[i]['slot_end'].split(':');
+        const timeslotStart = fees[i]['slot_start'].split(':');
+        const timeslotEnd = fees[i]['slot_end'].split(':');
 
-        if (round_time_object.getTime() < new Date(2020, 0, 1,
-            Number(slot_start[0]), Number(slot_start[1]))
-            || round_time_object.getTime() > new Date(2020, 0, 1,
-                Number(slot_end[0]), Number(slot_end[1]))) {
+        if (roundTimeObject.getTime() < new Date(2020, 0, 1,
+            Number(timeslotStart[0]), Number(timeslotStart[1]))
+            || roundTimeObject.getTime() > new Date(2020, 0, 1,
+                Number(timeslotEnd[0]), Number(timeslotEnd[1]))) {
             continue;
         }
 
         return {
-            'green_fee': fees[i]['green_fee'],
-            'caddie_fee': fees[i]['caddie_fee'],
-            'cart_fee': fees[i]['cart_fee']
+            'greenFee': fees[i]['green_fee'],
+            'caddieFee': fees[i]['caddie_fee'],
+            'cartFee': fees[i]['cart_fee']
         }
     }
 
     window.alert('Invalid round date or time');
 }
 
-function displayQuotation(green_fee_unit_price, green_fee_pax, green_fee_amount,
-                          caddie_fee_unit_price, caddie_fee_pax, caddie_fee_amount,
-                          cart_fee_unit_price, cart_fee_pax, cart_fee_amount, fee_total_amount, fee, pax, cart) {
-    green_fee_unit_price.textContent = fee['green_fee'].toLocaleString('en');
-    green_fee_pax.textContent = Number(pax.value);
-    green_fee_amount.textContent = (fee['green_fee'] * Number(pax.value)).toLocaleString('en');
+function displayQuotation(greenFeeUnitPrice, greenFeePax, greenFeeAmount,
+                          caddieFeeUnitPrice, caddieFeePax, caddieFeeAmount,
+                          cartFeeUnitPrice, cartFeePax, cartFeeAmount, feeTotalAmount, fee, pax, cart) {
+    greenFeeUnitPrice.textContent = fee['greenFee'].toLocaleString('en');
+    greenFeePax.textContent = Number(pax.value);
+    greenFeeAmount.textContent = (fee['greenFee'] * Number(pax.value)).toLocaleString('en');
 
-    caddie_fee_unit_price.textContent = fee['caddie_fee'].toLocaleString('en');
-    caddie_fee_pax.textContent = Number(pax.value);
-    caddie_fee_amount.textContent = (fee['caddie_fee'] * Number(pax.value)).toLocaleString('en');
+    caddieFeeUnitPrice.textContent = fee['caddieFee'].toLocaleString('en');
+    caddieFeePax.textContent = Number(pax.value);
+    caddieFeeAmount.textContent = (fee['caddieFee'] * Number(pax.value)).toLocaleString('en');
 
-    cart_fee_unit_price.textContent = fee['cart_fee'].toLocaleString('en');
-    cart_fee_pax.textContent = Number(cart.value);
-    cart_fee_amount.textContent = (fee['cart_fee'] * Number(cart.value)).toLocaleString('en');
+    cartFeeUnitPrice.textContent = fee['cartFee'].toLocaleString('en');
+    cartFeePax.textContent = Number(cart.value);
+    cartFeeAmount.textContent = (fee['cartFee'] * Number(cart.value)).toLocaleString('en');
 
-    fee_total_amount.textContent = ((fee['green_fee'] + fee['caddie_fee']) * Number(pax.value)
-        + fee['cart_fee'] * Number(cart.value)).toLocaleString('en');
+    feeTotalAmount.textContent = ((fee['greenFee'] + fee['caddieFee']) * Number(pax.value)
+        + fee['cartFee'] * Number(cart.value)).toLocaleString('en');
 }
 
-function validateRoundDate(round_date) {
-    console.log(round_date.value);
+function validateRoundDate(roundDate) {
+    console.log(roundDate.value);
 
     /*
     if (weekday === 0
@@ -128,42 +128,42 @@ function validateRoundDate(round_date) {
     */
 }
 
-function validateRoundTime(round_time) {
-    console.log(round_time.value);
+function validateRoundTime(roundTime) {
+    console.log(roundTime.value);
 }
 
-function validateForm(round_date, round_time, pax, cart, customer_name) {
-    validateRoundDate(round_date);
+function validateForm(roundDate, roundTime, pax, cart, customerGroup) {
+    validateRoundDate(roundDate);
 
-    validateRoundTime(round_time);
+    validateRoundTime(roundTime);
 
     console.log(pax.value);
     console.log(cart.value);
-    console.log(customer_name.value);
+    console.log(customerGroup.value);
 }
 
 function runApp() {
-    let round_date = document.getElementById('id_round_date');
-    let round_time = document.getElementById('id_round_time');
+    let roundDate = document.getElementById('id_round_date');
+    let roundTime = document.getElementById('id_round_time');
     let pax = document.getElementById('id_pax');
     let cart = document.getElementById('id_cart');
-    let customer_name = document.getElementById('id_customer_name');
+    let customerName = document.getElementById('id_customer_name');
 
-    let green_fee_unit_price = document.getElementById('green-fee-unit-price');
-    let green_fee_pax = document.getElementById('green-fee-pax');
-    let green_fee_amount = document.getElementById('green-fee-amount');
+    let greenFeeUnitPrice = document.getElementById('green-fee-unit-price');
+    let greenFeePax = document.getElementById('green-fee-pax');
+    let greenFeeAmount = document.getElementById('green-fee-amount');
 
-    let caddie_fee_unit_price = document.getElementById('caddie-fee-unit-price');
-    let caddie_fee_pax = document.getElementById('caddie-fee-pax');
-    let caddie_fee_amount = document.getElementById('caddie-fee-amount');
+    let caddieFeeUnitPrice = document.getElementById('caddie-fee-unit-price');
+    let caddieFeePax = document.getElementById('caddie-fee-pax');
+    let caddieFeeAmount = document.getElementById('caddie-fee-amount');
 
-    let cart_fee_unit_price = document.getElementById('cart-fee-unit-price');
-    let cart_fee_pax = document.getElementById('cart-fee-pax');
-    let cart_fee_amount = document.getElementById('cart-fee-amount');
+    let cartFeeUnitPrice = document.getElementById('cart-fee-unit-price');
+    let cartFeePax = document.getElementById('cart-fee-pax');
+    let cartFeeAmount = document.getElementById('cart-fee-amount');
 
-    let fee_total_amount = document.getElementById('fee-total-amount');
+    let feeTotalAmount = document.getElementById('fee-total-amount');
 
-    let customer_group = 0;
+    let customerGroup = 0;
 
     const today = new Date();
     const hour = today.toLocaleString('en-US', {
@@ -177,27 +177,27 @@ function runApp() {
     });
 
     // 1. Arrange round date and time range
-    let min_date = new Date(today);
-    let max_date = new Date(today);
+    let minDate = new Date(today);
+    let maxDate = new Date(today);
 
     if (hour >= golf_club['business_hour_end'].split(':')[0] && hour < 24) {
-        min_date.setDate(min_date.getDate() + golf_club['weekdays_min_in_advance'] + 1);
-        max_date.setDate(max_date.getDate() + golf_club['weekdays_max_in_advance'] + 1);
+        minDate.setDate(minDate.getDate() + golf_club['weekdays_min_in_advance'] + 1);
+        maxDate.setDate(maxDate.getDate() + golf_club['weekdays_max_in_advance'] + 1);
     } else {
-        min_date.setDate(min_date.getDate() + golf_club['weekdays_min_in_advance']);
-        max_date.setDate(max_date.getDate() + golf_club['weekdays_max_in_advance']);
+        minDate.setDate(minDate.getDate() + golf_club['weekdays_min_in_advance']);
+        maxDate.setDate(maxDate.getDate() + golf_club['weekdays_max_in_advance']);
     }
 
-    round_date.value = min_date.formatDate();
-    round_date.setAttribute('min', min_date.formatDate());
-    round_date.setAttribute('max', max_date.formatDate());
+    roundDate.value = minDate.formatDate();
+    roundDate.setAttribute('min', minDate.formatDate());
+    roundDate.setAttribute('max', maxDate.formatDate());
 
-    let round_time_start = fees[0]['slot_start'];
-    let round_time_end = fees[fees.length - 1]['slot_end'];
+    let roundTimeStart = fees[0]['slot_start'];
+    let roundTimeEnd = fees[fees.length - 1]['slot_end'];
 
-    round_time.value = round_time_start;
-    round_time.setAttribute('min', round_time_start);
-    round_time.setAttribute('max', round_time_end);
+    roundTime.value = roundTimeStart;
+    roundTime.setAttribute('min', roundTimeStart);
+    roundTime.setAttribute('max', roundTimeEnd);
 
     if (liff.isLoggedIn() && liff.isInClient()) {
         liff.getProfile().then(function (profile) {
@@ -206,28 +206,28 @@ function runApp() {
                     return response.json();
                 })
                 .then(function (myJson) {
-                    customer_group = myJson['customer_group_id'];
+                    customerGroup = myJson['customer_group_id'];
 
-                    if (round_date.value && round_time.value && pax.value && cart.value) {
-                        const fee = calculateFees(round_date, round_time, pax, cart, customer_group, today, hour, day);
+                    if (roundDate.value && roundTime.value && pax.value && cart.value) {
+                        const fee = calculateFees(roundDate, roundTime, pax, cart, customerGroup, today, hour, day);
 
-                        displayQuotation(green_fee_unit_price, green_fee_pax, green_fee_amount,
-                            caddie_fee_unit_price, caddie_fee_pax, caddie_fee_amount,
-                            cart_fee_unit_price, cart_fee_pax, cart_fee_amount, fee_total_amount, fee, pax, cart);
+                        displayQuotation(greenFeeUnitPrice, greenFeePax, greenFeeAmount,
+                            caddieFeeUnitPrice, caddieFeePax, caddieFeeAmount,
+                            cartFeeUnitPrice, cartFeePax, cartFeeAmount, feeTotalAmount, fee, pax, cart);
                     }
                 });
         }).catch(function (error) {
             window.alert('Error getting profile: ' + error);
         });
     } else {
-        customer_group = 4;
+        customerGroup = 4;
 
-        if (round_date.value && round_time.value && pax.value && cart.value) {
-            const fee = calculateFees(round_date, round_time, pax, cart, customer_group, today, hour, day);
+        if (roundDate.value && roundTime.value && pax.value && cart.value) {
+            const fee = calculateFees(roundDate, roundTime, pax, cart, customerGroup, today, hour, day);
 
-            displayQuotation(green_fee_unit_price, green_fee_pax, green_fee_amount,
-                caddie_fee_unit_price, caddie_fee_pax, caddie_fee_amount,
-                cart_fee_unit_price, cart_fee_pax, cart_fee_amount, fee_total_amount, fee, pax, cart);
+            displayQuotation(greenFeeUnitPrice, greenFeePax, greenFeeAmount,
+                caddieFeeUnitPrice, caddieFeePax, caddieFeeAmount,
+                cartFeeUnitPrice, cartFeePax, cartFeeAmount, feeTotalAmount, fee, pax, cart);
         }
     }
 
@@ -235,7 +235,7 @@ function runApp() {
     document
         .getElementById('pax-plus-button')
         .addEventListener('click', function (e) {
-            if (round_date.value && round_time.value && pax.value < golf_club['max_pax']) {
+            if (roundDate.value && roundTime.value && pax.value < golf_club['max_pax']) {
                 setCartByPax(cart, pax, golf_club['cart_compulsory'], 1);
                 pax.dispatchEvent(new Event('change'));
             }
@@ -244,7 +244,7 @@ function runApp() {
     document
         .getElementById('pax-minus-button')
         .addEventListener('click', function (e) {
-            if (round_date.value && round_time.value && pax.value > golf_club['min_pax']) {
+            if (roundDate.value && roundTime.value && pax.value > golf_club['min_pax']) {
                 setCartByPax(cart, pax, golf_club['cart_compulsory'], -1);
                 pax.dispatchEvent(new Event('change'));
             }
@@ -253,7 +253,7 @@ function runApp() {
     document
         .getElementById('cart-plus-button')
         .addEventListener('click', function (e) {
-            if (round_date.value && round_time.value && cart.value < pax.value) {
+            if (roundDate.value && roundTime.value && cart.value < pax.value) {
                 setCart(cart, pax, golf_club['cart_compulsory'], 1);
                 cart.dispatchEvent(new Event('change'));
             }
@@ -262,20 +262,20 @@ function runApp() {
     document
         .getElementById('cart-minus-button')
         .addEventListener('click', function (e) {
-            if (round_date.value && round_time.value && cart.value > 0) {
+            if (roundDate.value && roundTime.value && cart.value > 0) {
                 setCart(cart, pax, golf_club['cart_compulsory'], -1);
                 cart.dispatchEvent(new Event('change'));
             }
         });
 
-    [round_date, round_time, pax, cart].forEach(function (element) {
+    [roundDate, roundTime, pax, cart].forEach(function (element) {
         element.addEventListener('change', function (e) {
-            if (round_date.value && round_time.value && pax.value && cart.value) {
-                const fee = calculateFees(round_date, round_time, pax, cart, customer_group, today, hour, day);
+            if (roundDate.value && roundTime.value && pax.value && cart.value) {
+                const fee = calculateFees(roundDate, roundTime, pax, cart, customerGroup, today, hour, day);
 
-                displayQuotation(green_fee_unit_price, green_fee_pax, green_fee_amount,
-                    caddie_fee_unit_price, caddie_fee_pax, caddie_fee_amount,
-                    cart_fee_unit_price, cart_fee_pax, cart_fee_amount, fee_total_amount, fee, pax, cart);
+                displayQuotation(greenFeeUnitPrice, greenFeePax, greenFeeAmount,
+                    caddieFeeUnitPrice, caddieFeePax, caddieFeeAmount,
+                    cartFeeUnitPrice, cartFeePax, cartFeeAmount, feeTotalAmount, fee, pax, cart);
             }
         });
     });
@@ -283,6 +283,6 @@ function runApp() {
     document
         .getElementById('new-booking-button')
         .addEventListener('click', function (e) {
-            validateForm(round_date, round_time, pax, cart, customer_name);
+            validateForm(roundDate, roundTime, pax, cart, customerName);
         });
 }
