@@ -172,6 +172,8 @@ function validateRoundDate(roundDate) {
             return false;
         }
     }
+
+    return true;
 }
 
 function validateRoundTime(roundTime) {
@@ -308,11 +310,17 @@ function runApp() {
     [roundDate, roundTime, pax, cart].forEach(function (element) {
         element.addEventListener('change', function (e) {
             if (roundDate.value && roundTime.value && pax.value && cart.value) {
-                const fee = calculateFees(roundDate, roundTime, pax, cart, customerGroup);
+                if (validateRoundDate(roundDate)) {
+                    const fee = calculateFees(roundDate, roundTime, pax, cart, customerGroup);
 
-                displayQuotation(greenFeeUnitPrice, greenFeePax, greenFeeAmount,
-                    caddieFeeUnitPrice, caddieFeePax, caddieFeeAmount,
-                    cartFeeUnitPrice, cartFeePax, cartFeeAmount, feeTotalAmount, fee, pax, cart);
+                    displayQuotation(greenFeeUnitPrice, greenFeePax, greenFeeAmount,
+                        caddieFeeUnitPrice, caddieFeePax, caddieFeeAmount,
+                        cartFeeUnitPrice, cartFeePax, cartFeeAmount, feeTotalAmount, fee, pax, cart);
+                } else {
+                    displayQuotation(greenFeeUnitPrice, greenFeePax, greenFeeAmount,
+                        caddieFeeUnitPrice, caddieFeePax, caddieFeeAmount,
+                        cartFeeUnitPrice, cartFeePax, cartFeeAmount, feeTotalAmount, false, pax, cart);
+                }
             }
         });
     });
