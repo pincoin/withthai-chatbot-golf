@@ -1,28 +1,26 @@
 <script>
-    function liff_init() {
+    window.onload = function () {
         liff.init({
             liffId: "{{ liffId }}"
         }).then(() => {
-            checkAppStatus();
+            console.log(liff.getVersion());
+            console.log(liff.getLineVersion());
+            console.log(liff.isInClient());
+            console.log(liff.isLoggedIn());
+            console.log(liff.getOS());
+            console.log(liff.getLanguage());
+
+            initializeApp();
         }).catch((err) => {
             console.log('failed to initialize LIFF');
         });
-    }
 
-    function checkAppStatus() {
-        console.log(liff.getVersion());
-        console.log(liff.getLineVersion());
-        console.log(liff.isInClient());
-        console.log(liff.isLoggedIn());
-        console.log(liff.getOS());
-        console.log(liff.getLanguage());
+        document.getElementById('closeWindowButton').addEventListener('click', function () {
+            if (!liff.isInClient()) {
+                sendAlertIfNotInClient();
+            } else {
+                liff.closeWindow();
+            }
+        });
     }
-
-    document.getElementById('closeWindowButton').addEventListener('click', function () {
-        if (!liff.isInClient()) {
-            sendAlertIfNotInClient();
-        } else {
-            liff.closeWindow();
-        }
-    });
 </script>
