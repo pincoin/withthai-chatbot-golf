@@ -3,13 +3,13 @@
         liff.init({
             liffId: "{{ liffId }}"
         }).then(() => {
-            // initializeApp();
+            checkAppStatus();
         }).catch((err) => {
             console.log('failed to initialize LIFF');
         });
     }
 
-    function initializeApp() {
+    function checkAppStatus() {
         console.log(liff.getVersion());
         console.log(liff.getLineVersion());
         console.log(liff.isInClient());
