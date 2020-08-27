@@ -43,7 +43,7 @@ function setCart(cart, pax, cartCompulsory, diff) {
     }
 }
 
-function calculateFees(roundDate, roundTime, pax, cart, customerGroup, today, hour, day) {
+function calculateFees(roundDate, roundTime, pax, cart, customerGroup) {
     const roundDateElements = roundDate.value.split('-');
     const roundTimeElements = roundTime.value.split(':');
 
@@ -209,7 +209,7 @@ function runApp() {
                     customerGroup = myJson['customer_group_id'];
 
                     if (roundDate.value && roundTime.value && pax.value && cart.value) {
-                        const fee = calculateFees(roundDate, roundTime, pax, cart, customerGroup, today, hour, day);
+                        const fee = calculateFees(roundDate, roundTime, pax, cart, customerGroup);
 
                         displayQuotation(greenFeeUnitPrice, greenFeePax, greenFeeAmount,
                             caddieFeeUnitPrice, caddieFeePax, caddieFeeAmount,
@@ -223,7 +223,7 @@ function runApp() {
         customerGroup = 4;
 
         if (roundDate.value && roundTime.value && pax.value && cart.value) {
-            const fee = calculateFees(roundDate, roundTime, pax, cart, customerGroup, today, hour, day);
+            const fee = calculateFees(roundDate, roundTime, pax, cart, customerGroup);
 
             displayQuotation(greenFeeUnitPrice, greenFeePax, greenFeeAmount,
                 caddieFeeUnitPrice, caddieFeePax, caddieFeeAmount,
