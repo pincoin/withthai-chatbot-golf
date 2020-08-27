@@ -38,6 +38,7 @@ function iskHoliday(round_date) {
         }
     }
 
+    // 0: Weekday 1: Holiday
     return weekday;
 }
 
@@ -59,7 +60,7 @@ function setCart(cart, pax, cart_compulsory, diff) {
     }
 }
 
-function calculateFees(round_date, round_time, pax, cart, today, hour, day) {
+function calculateFees(round_date, round_time, pax, cart, customer_group, today, hour, day) {
     const round_date_elements = round_date.value.split('-');
     const round_time_elements = round_time.value.split(':');
 
@@ -73,11 +74,43 @@ function calculateFees(round_date, round_time, pax, cart, today, hour, day) {
 
     let weekday = iskHoliday(round_date_object);
 
-    console.log(weekday);
+    for (let i = 0; i < fees.length; i++) {
+        if (customer_group !== fees[i]['customer_group']) {
+            continue;
+        }
+        if (fees[i]['weekday'] !== weekday) {
+            continue;
+        }
+        const season_start = fees[i]['season_start'].split('-');
+        const season_end = fees[i]['season_end'].split('-');
 
-    let out1 = false;
+        if (round_date_object.getTime() < new Date(Number(season_start[0]),
+            Number(season_start[1]) - 1,
+            Number(season_start[2])).getTime()
+            || round_date_object.getTime() > new Date(Number(season_end[0]),
+                Number(season_end[1]) - 1,
+                Number(season_end[2])).getTime()) {
+            continue;
+        }
 
-    // Calculate fees
+        const slot_start = fees[i]['slot_start'].split(':');
+        const slot_end = fees[i]['slot_end'].split(':');
+
+        if (round_time_object.getTime() < new Date(2020, 0, 1,
+            Number(slot_start[0]), Number(slot_start[1]))
+            || round_time_object.getTime() > new Date(2020, 0, 1,
+                Number(slot_end[0]), Number(slot_end[1]))) {
+            continue;
+        }
+
+        return {
+            'green_fee': fees[i]['green_fee'],
+            'caddie_fee': fees[i]['caddie_fee'],
+            'cart_fee': fees[i]['cart_fee']
+        }
+    }
+
+    /*
     if (weekday === 0
         || (weekday === 1
             && round_date_object.getTime() - today.getTime() < golf_club['weekend_max_in_advance'] * 24 * 60 * 60 * 1000)
@@ -104,16 +137,17 @@ function calculateFees(round_date, round_time, pax, cart, today, hour, day) {
                         && round_time_object.getTime() <= new Date(2020, 0, 1,
                             Number(slot_end[0]), Number(slot_end[1]))) {
 
-                        out1 = true;
+                        out = true;
                         break;
                     }
                 }
             }
-            if (out1) {
+            if (out) {
                 break;
             }
         }
     }
+    */
 }
 
 function runApp() {
@@ -166,15 +200,6 @@ function runApp() {
         customer_group = 4;
     }
 
-    console.log(today);
-    console.log(hour);
-    console.log(day);
-    console.log(customer_group);
-
-    console.log(golf_club);
-    console.log(fees);
-    console.log(holidays);
-
     // 1. Arrange round date and time range
     let min_date = new Date(today);
     let max_date = new Date(today);
@@ -197,6 +222,11 @@ function runApp() {
     round_time.value = round_time_start;
     round_time.setAttribute('min', round_time_start);
     round_time.setAttribute('max', round_time_end);
+
+    if (round_date.value && round_time.value && pax.value && cart.value) {
+        const fee = calculateFees(round_date, round_time, pax, cart, customer_group, today, hour, day);
+        console.log(fee);
+    }
 
     // 2. Event handlers
     document
@@ -238,7 +268,8 @@ function runApp() {
     [round_date, round_time, pax, cart].forEach(function (element) {
         element.addEventListener('change', function (e) {
             if (round_date.value && round_time.value && pax.value && cart.value) {
-                calculateFees(round_date, round_time, pax, cart, today, hour, day);
+                const fee = calculateFees(round_date, round_time, pax, cart, customer_group, today, hour, day);
+                console.log(fee);
             }
         });
     });
