@@ -1,14 +1,7 @@
-function formatDate(date) {
-    let month = '' + (date.getMonth() + 1);
-    let day = '' + date.getDate();
-    let year = date.getFullYear();
-
-    if (month.length < 2)
-        month = '0' + month;
-    if (day.length < 2)
-        day = '0' + day;
-
-    return [year, month, day].join('-');
+Date.prototype.formatDate = function () {
+    return this.getFullYear()
+        + '-' + ('0' + (this.getMonth() + 1)).slice(-2)
+        + '-' + ('0' + this.getDate()).slice(-2);
 }
 
 function isHoliday(round_date) {
@@ -195,9 +188,9 @@ function runApp() {
         max_date.setDate(max_date.getDate() + golf_club['weekdays_max_in_advance']);
     }
 
-    round_date.value = formatDate(min_date);
-    round_date.setAttribute('min', formatDate(min_date));
-    round_date.setAttribute('max', formatDate(max_date));
+    round_date.value = min_date.formatDate();
+    round_date.setAttribute('min', min_date.formatDate());
+    round_date.setAttribute('max', max_date.formatDate());
 
     let round_time_start = fees[0]['slot_start'];
     let round_time_end = fees[fees.length - 1]['slot_end'];
