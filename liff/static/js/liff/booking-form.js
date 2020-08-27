@@ -123,20 +123,20 @@ function calculateFees(round_date, round_time, pax, cart, customer_group, today,
 function display_quotation(green_fee_unit_price, green_fee_pax, green_fee_amount,
                            caddie_fee_unit_price, caddie_fee_pax, caddie_fee_amount,
                            cart_fee_unit_price, cart_fee_pax, cart_fee_amount, fee_total_amount, fee, pax, cart) {
-    green_fee_unit_price.textContent = fee['green_fee'];
+    green_fee_unit_price.textContent = fee['green_fee'].toLocaleString('en');
     green_fee_pax.textContent = Number(pax.value);
-    green_fee_amount.textContent = fee['green_fee'] * Number(pax.value);
+    green_fee_amount.textContent = (fee['green_fee'] * Number(pax.value)).toLocaleString('en');
 
-    caddie_fee_unit_price.textContent = fee['caddie_fee'];
+    caddie_fee_unit_price.textContent = fee['caddie_fee'].toLocaleString('en');
     caddie_fee_pax.textContent = Number(pax.value);
-    caddie_fee_amount.textContent = fee['caddie_fee'] * Number(pax.value);
+    caddie_fee_amount.textContent = (fee['caddie_fee'] * Number(pax.value)).toLocaleString('en');
 
-    cart_fee_unit_price.textContent = fee['cart_fee'];
+    cart_fee_unit_price.textContent = fee['cart_fee'].toLocaleString('en');
     cart_fee_pax.textContent = Number(cart.value);
-    cart_fee_amount.textContent = fee['cart_fee'] * Number(cart.value);
+    cart_fee_amount.textContent = (fee['cart_fee'] * Number(cart.value)).toLocaleString('en');
 
-    fee_total_amount.textContent = (fee['green_fee'] + fee['caddie_fee']) * Number(pax.value)
-        + fee['cart_fee'] * Number(cart.value);
+    fee_total_amount.textContent = ((fee['green_fee'] + fee['caddie_fee']) * Number(pax.value)
+        + fee['cart_fee'] * Number(cart.value)).toLocaleString('en');
 }
 
 function runApp() {
