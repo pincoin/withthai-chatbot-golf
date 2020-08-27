@@ -12,34 +12,24 @@ function formatDate(date) {
 }
 
 function iskHoliday(round_date) {
+    // return 0: Weekday 1: Holiday
+
     // Weekend Saturday and Sunday
-    let weekday = 0;
-
     if (round_date.getDay() === 6 || round_date.getDay() === 0) {
-        weekday = 1;
+        return 1;
     }
-
     // Public holidays
-    let out = false;
-
     for (i = 0; i < holidays.length; i++) {
         const holiday = holidays[i].split('-');
 
         if (round_date.getTime() === new Date(Number(holiday[0]),
             Number(holiday[1]) - 1,
             Number(holiday[2])).getTime()) {
-            out = true;
-            weekday = 1;
-            break;
-        }
-
-        if (out) {
-            break;
+            return 1;
         }
     }
 
-    // 0: Weekday 1: Holiday
-    return weekday;
+    return 0;
 }
 
 function setCartByPax(cart, pax, cart_compulsory, diff) {
