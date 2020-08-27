@@ -11,6 +11,24 @@ function formatDate(date) {
     return [year, month, day].join('-');
 }
 
+function setCartByPax(cart, pax, cart_compulsory, diff) {
+    pax.value = Number(pax.value) + diff;
+
+    if ((cart_compulsory === 0 && Number(cart.value) > 0)
+        || cart_compulsory === 1
+        || (cart_compulsory > 1 && Number(pax.value) >= cart_compulsory)
+        || Number(cart.value) >= Number(pax.value)) {
+        cart.value = pax.value;
+    }
+}
+
+function setCart(cart, pax, cart_compulsory, diff) {
+    if (cart_compulsory === 0
+        || (cart_compulsory > 1 && Number(pax.value) < cart_compulsory)) {
+        cart.value = Number(cart.value) + diff;
+    }
+}
+
 function runApp() {
     let round_date = document.getElementById('id_round_date');
     let round_time = document.getElementById('id_round_time');
@@ -33,23 +51,16 @@ function runApp() {
 
     let customer_group = 0;
 
-    function setCartByPax(diff) {
-        pax.value = Number(pax.value) + diff;
-
-        if ((golf_club['cart_compulsory'] === 0 && Number(cart.value) > 0)
-            || golf_club['cart_compulsory'] === 1
-            || (golf_club['cart_compulsory'] > 1 && Number(pax.value) >= golf_club['cart_compulsory'])
-            || Number(cart.value) >= Number(pax.value)) {
-            cart.value = pax.value;
-        }
-    }
-
-    function setCart(diff) {
-        if (golf_club['cart_compulsory'] === 0
-            || (golf_club['cart_compulsory'] > 1 && Number(pax.value) < golf_club['cart_compulsory'])) {
-            cart.value = Number(cart.value) + diff;
-        }
-    }
+    const today = new Date();
+    const hour = today.toLocaleString('en-US', {
+        timeZone: 'Asia/Bangkok',
+        hour: 'numeric',
+        hour12: false
+    });
+    const day = today.toLocaleString('en-US', {
+        timeZone: 'Asia/Bangkok',
+        weekday: 'short',
+    });
 
     if (liff.isLoggedIn() && liff.isInClient()) {
         liff.getProfile().then(function (profile) {
@@ -66,17 +77,6 @@ function runApp() {
     } else {
         customer_group = 4;
     }
-
-    const today = new Date();
-    const hour = today.toLocaleString('en-US', {
-        timeZone: 'Asia/Bangkok',
-        hour: 'numeric',
-        hour12: false
-    });
-    const day = today.toLocaleString('en-US', {
-        timeZone: 'Asia/Bangkok',
-        weekday: 'short',
-    });
 
     console.log(today);
     console.log(hour);
@@ -114,7 +114,7 @@ function runApp() {
         .getElementById('pax-plus-button')
         .addEventListener('click', function (e) {
             if (round_date.value && round_time.value && pax.value < golf_club['max_pax']) {
-                setCartByPax(1);
+                setCartByPax(cart, pax, golf_club['cart_compulsory'], 1);
                 pax.dispatchEvent(new Event('change'));
             }
         });
@@ -123,7 +123,7 @@ function runApp() {
         .getElementById('pax-minus-button')
         .addEventListener('click', function (e) {
             if (round_date.value && round_time.value && pax.value > golf_club['min_pax']) {
-                setCartByPax(-1);
+                setCartByPax(cart, pax, golf_club['cart_compulsory'], -1);
                 pax.dispatchEvent(new Event('change'));
             }
         });
@@ -132,7 +132,7 @@ function runApp() {
         .getElementById('cart-plus-button')
         .addEventListener('click', function (e) {
             if (round_date.value && round_time.value && cart.value < pax.value) {
-                setCart(1);
+                setCart(cart, pax, golf_club['cart_compulsory'], 1);
                 cart.dispatchEvent(new Event('change'));
             }
         });
@@ -141,7 +141,7 @@ function runApp() {
         .getElementById('cart-minus-button')
         .addEventListener('click', function (e) {
             if (round_date.value && round_time.value && cart.value > 0) {
-                setCart(-1);
+                setCart(cart, pax, golf_club['cart_compulsory'], -1);
                 cart.dispatchEvent(new Event('change'));
             }
         });
