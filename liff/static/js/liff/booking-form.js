@@ -69,7 +69,8 @@ function runApp() {
                     return response.json();
                 })
                 .then(function (myJson) {
-                    window.alert(JSON.stringify(myJson)['customer_group_id']);
+                    customer_group = myJson['customer_group_id'];
+                    window.alert(customer_group);
                 });
         }).catch(function (error) {
             window.alert('Error getting profile: ' + error);
