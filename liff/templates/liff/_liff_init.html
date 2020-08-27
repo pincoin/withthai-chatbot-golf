@@ -1,5 +1,5 @@
 <script>
-    window.onload = function () {
+    document.addEventListener('DOMContentLoaded', function () {
         liff.init({
             liffId: "{{ liffId }}"
         }).then(() => {
@@ -22,5 +22,5 @@
                 liff.closeWindow();
             }
         });
-    }
+    });
 </script>
