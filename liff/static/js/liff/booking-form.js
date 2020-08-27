@@ -116,38 +116,27 @@ function calculateFees(round_date, round_time, pax, cart, customer_group, today,
             && round_date_object.getTime() - today.getTime() < golf_club['weekend_max_in_advance'] * 24 * 60 * 60 * 1000)
         && day.toUpperCase() !== 'SAT'
         && day.toUpperCase() !== 'SUN') {
-        for (i = 0; i < fees.length; i++) {
-            if (fees[i]['weekday'] === weekday) {
-                // check whether round date is within season
-                const season_start = fees[i]['season_start'].split('-');
-                const season_end = fees[i]['season_end'].split('-');
-
-                if (round_date_object.getTime() >= new Date(Number(season_start[0]),
-                    Number(season_start[1]) - 1,
-                    Number(season_start[2])).getTime()
-                    && round_date_object.getTime() <= new Date(Number(season_end[0]),
-                        Number(season_end[1]) - 1,
-                        Number(season_end[2])).getTime()) {
-                    // check whether round time is within available slot time
-                    const slot_start = fees[i]['slot_start'].split(':');
-                    const slot_end = fees[i]['slot_end'].split(':');
-
-                    if (round_time_object.getTime() >= new Date(2020, 0, 1,
-                        Number(slot_start[0]), Number(slot_start[1]))
-                        && round_time_object.getTime() <= new Date(2020, 0, 1,
-                            Number(slot_end[0]), Number(slot_end[1]))) {
-
-                        out = true;
-                        break;
-                    }
-                }
-            }
-            if (out) {
-                break;
-            }
-        }
     }
     */
+}
+
+function display_quotation(green_fee_unit_price, green_fee_pax, green_fee_amount,
+                           caddie_fee_unit_price, caddie_fee_pax, caddie_fee_amount,
+                           cart_fee_unit_price, cart_fee_pax, cart_fee_amount, fee_total_amount, fee, pax, cart) {
+    green_fee_unit_price.textContent = fee['green_fee'];
+    green_fee_pax.textContent = Number(pax.value);
+    green_fee_amount.textContent = fee['green_fee'] * Number(pax.value);
+
+    caddie_fee_unit_price.textContent = fee['caddie_fee'];
+    caddie_fee_pax.textContent = Number(pax.value);
+    caddie_fee_amount.textContent = fee['caddie_fee'] * Number(pax.value);
+
+    cart_fee_unit_price.textContent = fee['cart_fee'];
+    cart_fee_pax.textContent = Number(cart.value);
+    cart_fee_amount.textContent = fee['cart_fee'] * Number(cart.value);
+
+    fee_total_amount.textContent = (fee['green_fee'] + fee['caddie_fee']) * Number(pax.value)
+        + fee['cart_fee'] * Number(cart.value);
 }
 
 function runApp() {
@@ -225,7 +214,10 @@ function runApp() {
 
     if (round_date.value && round_time.value && pax.value && cart.value) {
         const fee = calculateFees(round_date, round_time, pax, cart, customer_group, today, hour, day);
-        console.log(fee);
+
+        display_quotation(green_fee_unit_price, green_fee_pax, green_fee_amount,
+            caddie_fee_unit_price, caddie_fee_pax, caddie_fee_amount,
+            cart_fee_unit_price, cart_fee_pax, cart_fee_amount, fee_total_amount, fee, pax, cart);
     }
 
     // 2. Event handlers
@@ -269,7 +261,10 @@ function runApp() {
         element.addEventListener('change', function (e) {
             if (round_date.value && round_time.value && pax.value && cart.value) {
                 const fee = calculateFees(round_date, round_time, pax, cart, customer_group, today, hour, day);
-                console.log(fee);
+
+                display_quotation(green_fee_unit_price, green_fee_pax, green_fee_amount,
+                    caddie_fee_unit_price, caddie_fee_pax, caddie_fee_amount,
+                    cart_fee_unit_price, cart_fee_pax, cart_fee_amount, fee_total_amount, fee, pax, cart);
             }
         });
     });
