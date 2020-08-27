@@ -172,22 +172,6 @@ function runApp() {
         weekday: 'short',
     });
 
-    if (liff.isLoggedIn() && liff.isInClient()) {
-        liff.getProfile().then(function (profile) {
-            fetch('/golf/' + golf_club['slug'] + '/' + profile.userId + '/customer-group.json')
-                .then(function (response) {
-                    return response.json();
-                })
-                .then(function (myJson) {
-                    customer_group = myJson['customer_group_id'];
-                    window.alert(customer_group);
-                });
-        }).catch(function (error) {
-            window.alert('Error getting profile: ' + error);
-        });
-    } else {
-        customer_group = 4;
-    }
 
     // 1. Arrange round date and time range
     let min_date = new Date(today);
@@ -212,12 +196,36 @@ function runApp() {
     round_time.setAttribute('min', round_time_start);
     round_time.setAttribute('max', round_time_end);
 
-    if (round_date.value && round_time.value && pax.value && cart.value) {
-        const fee = calculateFees(round_date, round_time, pax, cart, customer_group, today, hour, day);
+    if (liff.isLoggedIn() && liff.isInClient()) {
+        liff.getProfile().then(function (profile) {
+            fetch('/golf/' + golf_club['slug'] + '/' + profile.userId + '/customer-group.json')
+                .then(function (response) {
+                    return response.json();
+                })
+                .then(function (myJson) {
+                    customer_group = myJson['customer_group_id'];
 
-        display_quotation(green_fee_unit_price, green_fee_pax, green_fee_amount,
-            caddie_fee_unit_price, caddie_fee_pax, caddie_fee_amount,
-            cart_fee_unit_price, cart_fee_pax, cart_fee_amount, fee_total_amount, fee, pax, cart);
+                    if (round_date.value && round_time.value && pax.value && cart.value) {
+                        const fee = calculateFees(round_date, round_time, pax, cart, customer_group, today, hour, day);
+
+                        display_quotation(green_fee_unit_price, green_fee_pax, green_fee_amount,
+                            caddie_fee_unit_price, caddie_fee_pax, caddie_fee_amount,
+                            cart_fee_unit_price, cart_fee_pax, cart_fee_amount, fee_total_amount, fee, pax, cart);
+                    }
+                });
+        }).catch(function (error) {
+            window.alert('Error getting profile: ' + error);
+        });
+    } else {
+        customer_group = 4;
+
+        if (round_date.value && round_time.value && pax.value && cart.value) {
+            const fee = calculateFees(round_date, round_time, pax, cart, customer_group, today, hour, day);
+
+            display_quotation(green_fee_unit_price, green_fee_pax, green_fee_amount,
+                caddie_fee_unit_price, caddie_fee_pax, caddie_fee_amount,
+                cart_fee_unit_price, cart_fee_pax, cart_fee_amount, fee_total_amount, fee, pax, cart);
+        }
     }
 
     // 2. Event handlers
