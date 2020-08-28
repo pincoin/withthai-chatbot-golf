@@ -190,18 +190,6 @@ function validateForm(roundDate, roundTime, pax, cart, customerGroup) {
     console.log(customerGroup.value);
 }
 
-function getCustomerGroup() {
-    const access_token = liff.getAccessToken();
-
-    fetch('/golf/' + golf_club['slug'] + '/customer-group.json?access_token=' + access_token)
-        .then(function (response) {
-            return response.json();
-        })
-        .then(function (myJson) {
-            return myJson['customer_group_id'];
-        });
-}
-
 function runApp() {
     const roundDate = document.getElementById('id_round_date');
     const roundTime = document.getElementById('id_round_time');
@@ -227,7 +215,7 @@ function runApp() {
 
     const now = getCurrentTime();
 
-    // 1. Arrange round date and time range
+    // 1. Initialize round date and time range form
     const minDate = new Date(now['date']);
     const maxDate = new Date(now['date']);
 
@@ -250,7 +238,7 @@ function runApp() {
     roundTime.setAttribute('min', roundTimeStart);
     roundTime.setAttribute('max', roundTimeEnd);
 
-    if (!liff.isLoggedIn()) {
+    if (!liff.isLoggedIn() && !liff.isInClient()) {
         liff.login();
     }
 
