@@ -148,7 +148,7 @@ function displayQuotation(greenFeeUnitPrice, greenFeePax, greenFeeAmount,
     }
 }
 
-function validateRoundDate(roundDate) {
+function validateRoundDate(roundDate, errorNotification) {
     const roundDateElements = roundDate.value.split('-');
 
     const roundDateObject = new Date(Number(roundDateElements[0]),
@@ -162,13 +162,19 @@ function validateRoundDate(roundDate) {
     if (weekday === 0
         && roundDateObject.getTime() - now['date'].getTime()
         > golf_club['weekday_max_in_advance'] * 24 * 60 * 60 * 1000) {
-        window.alert('Round date is not available.');
+        errorNotification.textContent = 'Round date is not available.';
+        if (errorNotification.classList.contains('is-hidden')) {
+            errorNotification.classList.remove('is-hidden');
+        }
         return false;
     } else if (weekday === 1) {
         if (roundDateObject.getTime() - now['date'].getTime()
             > golf_club['weekend_max_in_advance'] * 24 * 60 * 60 * 1000
             || now['day'] === 'SAT' || now['day'] === 'SUN') {
-            window.alert('Round date is not available');
+            errorNotification.textContent = 'Round date is not available.';
+            if (errorNotification.classList.contains('is-hidden')) {
+                errorNotification.classList.remove('is-hidden');
+            }
             return false;
         }
     }
@@ -192,8 +198,8 @@ function validateCustomerGroup(customerGroup) {
     console.log(customerGroup.value);
 }
 
-function validateForm(roundDate, roundTime, pax, cart, customerGroup) {
-    validateRoundDate(roundDate);
+function validateForm(roundDate, roundTime, pax, cart, customerGroup, errorNotification) {
+    validateRoundDate(roundDate, errorNotification);
     validateRoundTime(roundTime);
     validatePax(pax);
     validateCart(cart);
@@ -220,6 +226,8 @@ function runApp() {
     const cartFeeAmount = document.getElementById('cart-fee-amount');
 
     const feeTotalAmount = document.getElementById('fee-total-amount');
+
+    const errorNotification = document.getElementById('error-notification');
 
     let customerGroup = 0;
 
@@ -310,7 +318,12 @@ function runApp() {
     [roundDate, roundTime, pax, cart].forEach(function (element) {
         element.addEventListener('change', function (e) {
             if (roundDate.value && roundTime.value && pax.value && cart.value) {
-                if (validateRoundDate(roundDate)) {
+                errorNotification.textContent = '';
+                if (!errorNotification.classList.contains('is-hidden')) {
+                    errorNotification.classList.add('is-hidden');
+                }
+
+                if (validateRoundDate(roundDate, errorNotification)) {
                     const fee = calculateFees(roundDate, roundTime, pax, cart, customerGroup);
 
                     displayQuotation(greenFeeUnitPrice, greenFeePax, greenFeeAmount,
@@ -328,6 +341,6 @@ function runApp() {
     document
         .getElementById('new-booking-button')
         .addEventListener('click', function (e) {
-            validateForm(roundDate, roundTime, pax, cart, customerName);
+            validateForm(roundDate, roundTime, pax, cart, customerName, errorNotification);
         });
 }
