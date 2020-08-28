@@ -180,14 +180,24 @@ function validateRoundTime(roundTime) {
     console.log(roundTime.value);
 }
 
+function validatePax(pax) {
+    console.log(pax.value);
+}
+
+function validateCart(cart) {
+    console.log(cart.value);
+}
+
+function validateCustomerGroup(customerGroup) {
+    console.log(customerGroup.value);
+}
+
 function validateForm(roundDate, roundTime, pax, cart, customerGroup) {
     validateRoundDate(roundDate);
-
     validateRoundTime(roundTime);
-
-    console.log(pax.value);
-    console.log(cart.value);
-    console.log(customerGroup.value);
+    validatePax(pax);
+    validateCart(cart);
+    validateCustomerGroup(customerGroup);
 }
 
 function runApp() {
