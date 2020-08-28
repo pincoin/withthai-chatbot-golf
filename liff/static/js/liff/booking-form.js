@@ -222,12 +222,25 @@ function validateCart(cart) {
     return true;
 }
 
-function validateCustomerGroup(customerGroup) {
-    console.log(customerGroup.value);
+function validateCustomerName(customerName, errorNotification) {
+    if (!customerName.value || 0 === customerName.length) {
+        errorNotification.textContent = 'Please, type your name in Thai or English.';
+        if (errorNotification.classList.contains('is-hidden')) {
+            errorNotification.classList.remove('is-hidden');
+        }
+        return false;
+    }
+    if (customerName.value.match(/^[\u0E00-\u0E7F a-zA-Z0-9.,]+$/g) === null) {
+        errorNotification.textContent = 'Your name must be written in Thai or English.';
+        if (errorNotification.classList.contains('is-hidden')) {
+            errorNotification.classList.remove('is-hidden');
+        }
+        return false;
+    }
     return true;
 }
 
-function validateForm(roundDate, roundTime, pax, cart, customerGroup, errorNotification) {
+function validateForm(roundDate, roundTime, pax, cart, customerName, errorNotification) {
     if (!validateRoundDate(roundDate, errorNotification)) {
         return false;
     }
@@ -241,7 +254,7 @@ function validateForm(roundDate, roundTime, pax, cart, customerGroup, errorNotif
         return false;
     }
 
-    return validateCustomerGroup(customerGroup);
+    return validateCustomerName(customerName, errorNotification);
 }
 
 function runApp() {
