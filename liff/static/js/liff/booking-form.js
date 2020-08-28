@@ -254,15 +254,23 @@ function runApp() {
         liff.login();
     }
 
-    customerGroup = getCustomerGroup();
+    const access_token = liff.getAccessToken();
 
-    if (roundDate.value && roundTime.value && pax.value && cart.value) {
-        const fee = calculateFees(roundDate, roundTime, pax, cart, customerGroup);
+    fetch('/golf/' + golf_club['slug'] + '/customer-group.json?access_token=' + access_token)
+        .then(function (response) {
+            return response.json();
+        })
+        .then(function (myJson) {
+            customerGroup = myJson['customer_group_id'];
 
-        displayQuotation(greenFeeUnitPrice, greenFeePax, greenFeeAmount,
-            caddieFeeUnitPrice, caddieFeePax, caddieFeeAmount,
-            cartFeeUnitPrice, cartFeePax, cartFeeAmount, feeTotalAmount, fee, pax, cart);
-    }
+            if (roundDate.value && roundTime.value && pax.value && cart.value) {
+                const fee = calculateFees(roundDate, roundTime, pax, cart, customerGroup);
+
+                displayQuotation(greenFeeUnitPrice, greenFeePax, greenFeeAmount,
+                    caddieFeeUnitPrice, caddieFeePax, caddieFeeAmount,
+                    cartFeeUnitPrice, cartFeePax, cartFeeAmount, feeTotalAmount, fee, pax, cart);
+            }
+        });
 
     // 2. Event handlers
     document
