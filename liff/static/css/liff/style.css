@@ -20,6 +20,10 @@
     word-break: keep-all;
 }
 
+.input::placeholder {
+    color: #333333;
+}
+
 /* Scorecard */
 .blue, .blue strong, .blue .fixed-col {
     color: #ffffff;
