@@ -11,6 +11,6 @@ urlpatterns = [
     re_path(r'^(?P<slug>[-\w]+)/scorecard.json$',
             views.GolfClubScorecardJson.as_view(), name='scorecard'),
 
-    re_path(r'^(?P<slug>[-\w]+)/(?P<access_token>[-\w]+)/customer-group.json$',
+    re_path(r'^(?P<slug>[-\w]+)/customer-group.json$',
             views.GolfClubCustomerGroup.as_view(), name='customer-group'),
 ]

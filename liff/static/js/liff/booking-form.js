@@ -190,6 +190,18 @@ function validateForm(roundDate, roundTime, pax, cart, customerGroup) {
     console.log(customerGroup.value);
 }
 
+function getCustomerGroup() {
+    const access_token = liff.getAccessToken();
+
+    fetch('/golf/' + golf_club['slug'] + '/customer-group.json?access_token=' + access_token)
+        .then(function (response) {
+            return response.json();
+        })
+        .then(function (myJson) {
+            return myJson['customer_group_id'];
+        });
+}
+
 function runApp() {
     const roundDate = document.getElementById('id_round_date');
     const roundTime = document.getElementById('id_round_time');
@@ -241,23 +253,16 @@ function runApp() {
     if (!liff.isLoggedIn()) {
         liff.login();
     }
-    const access_token = liff.getAccessToken();
 
-    fetch('/golf/' + golf_club['slug'] + '/' + access_token + '/customer-group.json')
-        .then(function (response) {
-            return response.json();
-        })
-        .then(function (myJson) {
-            customerGroup = myJson['customer_group_id'];
+    customerGroup = getCustomerGroup();
 
-            if (roundDate.value && roundTime.value && pax.value && cart.value) {
-                const fee = calculateFees(roundDate, roundTime, pax, cart, customerGroup);
+    if (roundDate.value && roundTime.value && pax.value && cart.value) {
+        const fee = calculateFees(roundDate, roundTime, pax, cart, customerGroup);
 
-                displayQuotation(greenFeeUnitPrice, greenFeePax, greenFeeAmount,
-                    caddieFeeUnitPrice, caddieFeePax, caddieFeeAmount,
-                    cartFeeUnitPrice, cartFeePax, cartFeeAmount, feeTotalAmount, fee, pax, cart);
-            }
-        });
+        displayQuotation(greenFeeUnitPrice, greenFeePax, greenFeeAmount,
+            caddieFeeUnitPrice, caddieFeePax, caddieFeeAmount,
+            cartFeeUnitPrice, cartFeePax, cartFeeAmount, feeTotalAmount, fee, pax, cart);
+    }
 
     // 2. Event handlers
     document

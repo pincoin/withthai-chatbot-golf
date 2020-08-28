@@ -34,19 +34,18 @@ class GolfClubScorecardJson(generic.TemplateView):
 
 class GolfClubCustomerGroup(generic.TemplateView):
     def render_to_response(self, context, **response_kwargs):
-        profile = get_profile(self.kwargs['access_token'])
+        profile = get_profile(self.request.GET['access_token'])
 
-        membership = models.LineUserMembership \
-            .objects.get(line_user__line_user_id=profile['userId'],
-                         customer_group__golf_club__slug=self.kwargs['slug'])
-
-        print(profile)
-        print(membership)
-
-        data = {
-            'customer_group_id': membership.customer_group_id,
-            'customer_group_title_english': membership.customer_group.title_english,
-        }
+        try:
+            membership = models.LineUserMembership \
+                .objects.get(line_user__line_user_id=profile['userId'],
+                             customer_group__golf_club__slug=self.kwargs['slug'])
+            data = {
+                'customer_group_id': membership.customer_group_id,
+                'customer_group_title_english': membership.customer_group.title_english,
+            }
+        except models.LineUserMembership.DoesNotExist:
+            data = {}
 
         return JsonResponse(
             data,
