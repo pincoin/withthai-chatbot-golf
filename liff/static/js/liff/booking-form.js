@@ -182,28 +182,66 @@ function validateRoundDate(roundDate, errorNotification) {
     return true;
 }
 
-function validateRoundTime(roundTime) {
-    console.log(roundTime.value);
+function validateRoundTime(roundTime, errorNotification) {
+    const roundTimeElements = roundTime.value.split(':');
+
+    const roundTimeStartElements = fees[0]['slot_start'].split(':');
+    const roundTimeEndElements = fees[fees.length - 1]['slot_end'].split(':');
+
+    const roundTimeObject = new Date(2020, 0, 1,
+        Number(roundTimeElements[0]),
+        Number(roundTimeElements[1]));
+
+    if (roundTimeObject.getTime() < new Date(2020, 0, 1,
+        Number(roundTimeStartElements[0]), Number(roundTimeStartElements[1]))
+        || roundTimeObject.getTime() > new Date(2020, 0, 1,
+            Number(roundTimeEndElements[0]), Number(roundTimeEndElements[1]))) {
+        errorNotification.textContent = 'Round time is not available.';
+        if (errorNotification.classList.contains('is-hidden')) {
+            errorNotification.classList.remove('is-hidden');
+        }
+        return false;
+    }
+
+    return true;
 }
 
-function validatePax(pax) {
-    console.log(pax.value);
+function validatePax(pax, errorNotification) {
+    if (Number(pax.value) < golf_club['min_pax'] || Number(pax.value) > golf_club['max_pax']) {
+        errorNotification.textContent = 'PAX is not available.';
+        if (errorNotification.classList.contains('is-hidden')) {
+            errorNotification.classList.remove('is-hidden');
+        }
+        return false;
+    }
+    return true;
 }
 
 function validateCart(cart) {
     console.log(cart.value);
+    return true;
 }
 
 function validateCustomerGroup(customerGroup) {
     console.log(customerGroup.value);
+    return true;
 }
 
 function validateForm(roundDate, roundTime, pax, cart, customerGroup, errorNotification) {
-    validateRoundDate(roundDate, errorNotification);
-    validateRoundTime(roundTime);
-    validatePax(pax);
-    validateCart(cart);
-    validateCustomerGroup(customerGroup);
+    if (!validateRoundDate(roundDate, errorNotification)) {
+        return false;
+    }
+    if (!validateRoundTime(roundTime, errorNotification)) {
+        return false;
+    }
+    if (!validatePax(pax, errorNotification)) {
+        return false;
+    }
+    if (!validateCart(cart)) {
+        return false;
+    }
+
+    return validateCustomerGroup(customerGroup);
 }
 
 function runApp() {
@@ -323,7 +361,7 @@ function runApp() {
                     errorNotification.classList.add('is-hidden');
                 }
 
-                if (validateRoundDate(roundDate, errorNotification)) {
+                if (validateRoundDate(roundDate, errorNotification) && validateRoundTime(roundTime, errorNotification)) {
                     const fee = calculateFees(roundDate, roundTime, pax, cart, customerGroup);
 
                     displayQuotation(greenFeeUnitPrice, greenFeePax, greenFeeAmount,
