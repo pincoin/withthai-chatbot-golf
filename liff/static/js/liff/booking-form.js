@@ -238,36 +238,24 @@ function runApp() {
     roundTime.setAttribute('min', roundTimeStart);
     roundTime.setAttribute('max', roundTimeEnd);
 
-    if (liff.isLoggedIn() && liff.isInClient()) {
-        liff.getProfile().then(function (profile) {
-            fetch('/golf/' + golf_club['slug'] + '/' + profile.userId + '/customer-group.json')
-                .then(function (response) {
-                    return response.json();
-                })
-                .then(function (myJson) {
-                    customerGroup = myJson['customer_group_id'];
+    if (liff.isLoggedIn()) {
+        const access_token = liff.getAccessToken();
 
-                    if (roundDate.value && roundTime.value && pax.value && cart.value) {
-                        const fee = calculateFees(roundDate, roundTime, pax, cart, customerGroup);
+        fetch('/golf/' + golf_club['slug'] + '/' + access_token + '/customer-group.json')
+            .then(function (response) {
+                return response.json();
+            })
+            .then(function (myJson) {
+                customerGroup = myJson['customer_group_id'];
 
-                        displayQuotation(greenFeeUnitPrice, greenFeePax, greenFeeAmount,
-                            caddieFeeUnitPrice, caddieFeePax, caddieFeeAmount,
-                            cartFeeUnitPrice, cartFeePax, cartFeeAmount, feeTotalAmount, fee, pax, cart);
-                    }
-                });
-        }).catch(function (error) {
-            window.alert('Error getting profile: ' + error);
-        });
-    } else {
-        customerGroup = 4;
+                if (roundDate.value && roundTime.value && pax.value && cart.value) {
+                    const fee = calculateFees(roundDate, roundTime, pax, cart, customerGroup);
 
-        if (roundDate.value && roundTime.value && pax.value && cart.value) {
-            const fee = calculateFees(roundDate, roundTime, pax, cart, customerGroup);
-
-            displayQuotation(greenFeeUnitPrice, greenFeePax, greenFeeAmount,
-                caddieFeeUnitPrice, caddieFeePax, caddieFeeAmount,
-                cartFeeUnitPrice, cartFeePax, cartFeeAmount, feeTotalAmount, fee, pax, cart);
-        }
+                    displayQuotation(greenFeeUnitPrice, greenFeePax, greenFeeAmount,
+                        caddieFeeUnitPrice, caddieFeePax, caddieFeeAmount,
+                        cartFeeUnitPrice, cartFeePax, cartFeeAmount, feeTotalAmount, fee, pax, cart);
+                }
+            });
     }
 
     // 2. Event handlers

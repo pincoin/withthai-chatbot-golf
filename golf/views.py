@@ -2,6 +2,7 @@ from django.http import JsonResponse
 from django.views import generic
 
 from . import models
+from .utils import get_profile
 
 
 class GolfClubFeeJson(generic.TemplateView):
@@ -33,9 +34,14 @@ class GolfClubScorecardJson(generic.TemplateView):
 
 class GolfClubCustomerGroup(generic.TemplateView):
     def render_to_response(self, context, **response_kwargs):
+        profile = get_profile(self.kwargs['access_token'])
+
         membership = models.LineUserMembership \
-            .objects.get(line_user__line_user_id=self.kwargs['line_user_id'],
+            .objects.get(line_user__line_user_id=profile['userId'],
                          customer_group__golf_club__slug=self.kwargs['slug'])
+
+        print(profile)
+        print(membership)
 
         data = {
             'customer_group_id': membership.customer_group_id,
