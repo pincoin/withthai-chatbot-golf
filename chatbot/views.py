@@ -56,7 +56,9 @@ class CallbackView(generic.View):
             if match := re.compile('New\s".+"\s\d\d\d\d-\d\d-\d\d\s\d\d:\d\d\s\dPAX\s\dCART', re.I).match(text):
                 self.line_bot_api.reply_message(
                     event.reply_token,
-                    models.TextSendMessage(text='We will notify the available tee-off date/time within 15 minutes.'))
+                    models.TextSendMessage(text='We will notify you'
+                                                ' of the available tee-off date/time'
+                                                ' within 15 minutes.'))
             elif text == 'booking':
                 self.line_bot_api.reply_message(
                     event.reply_token,
