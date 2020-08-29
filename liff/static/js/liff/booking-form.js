@@ -214,7 +214,7 @@ function validateRoundDate(roundDate, errorNotification) {
                     thursday.setDate((thursday.getDay() + 4) % 7 + thursday.getDate());
                     break;
             }
-            
+
             if (roundDateObject.getTime() > thursday.getTime()) {
                 error = true;
             }
@@ -376,7 +376,6 @@ function runApp() {
     roundTime.setAttribute('max', roundTimeEnd);
 
     // 2. Retrieve customer group from server using access token
-    /*
     if (!liff.isLoggedIn() && !liff.isInClient()) {
         liff.login();
     }
@@ -397,8 +396,7 @@ function runApp() {
                     caddieFeeUnitPrice, caddieFeePax, caddieFeeAmount,
                     cartFeeUnitPrice, cartFeePax, cartFeeAmount, feeTotalAmount, fee, pax, cart);
             }
-        });*/
-    customerGroup = 4;
+        });
 
     // 3. Add event handlers
     document
