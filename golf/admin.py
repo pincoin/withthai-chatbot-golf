@@ -63,7 +63,7 @@ class GolfClubAdmin(admin.ModelAdmin):
                        'phone', 'email', 'fax', 'website', 'address', 'latitude', 'longitude', 'district',
                        'caddie_compulsory', 'cart_compulsory', 'min_pax', 'max_pax', 'customer_group',
                        'weekdays_min_in_advance', 'weekdays_max_in_advance',
-                       'weekend_min_in_advance', 'weekend_max_in_advance')
+                       'weekend_min_in_advance', 'weekend_max_in_advance', 'weekend_booking_on_monday')
         }),
         ('LINE', {
             'fields': ('line_bot_channel_access_token', 'line_bot_channel_secret', 'line_notify_access_token',
