@@ -165,23 +165,41 @@ function displayQuotation(greenFeeUnitPrice, greenFeePax, greenFeeAmount,
 }
 
 function validateRoundDate(roundDate, errorNotification) {
+    // Tee-off date
     const roundDateElements = roundDate.value.split('-');
-
     const roundDateObject = new Date(Number(roundDateElements[0]), Number(roundDateElements[1]) - 1, Number(roundDateElements[2]));
 
+    // Tee-off date = weekday or holiday
     const weekday = isHoliday(roundDateObject);
 
+    // Booking date
     const now = getCurrentTime();
+    now['date'].setHours(0, 0, 0, 0);
 
-    if (weekday === 0
-        && roundDateObject.getTime() - now['date'].getTime() > golf_club['weekday_max_in_advance'] * 24 * 60 * 60 * 1000) {
-        roundDate.error_field();
+    // Tee-off date minimum
+    const minDate = new Date(now['date']);
 
-        errorNotification.textContent = 'Round date is not available.';
-        errorNotification.show();
-        return false;
-    } else if (weekday === 1) {
-        if (roundDateObject.getTime() - now['date'].getTime() > golf_club['weekend_max_in_advance'] * 24 * 60 * 60 * 1000) {
+    // Increase a day if office is closed.
+    let nextDay = 0;
+
+    if (now['hour'] >= golf_club['business_hour_end'].split(':')[0] && now['hour'] < 24) {
+        nextDay = 1;
+    }
+
+    minDate.setDate(minDate.getDate() + golf_club['weekdays_min_in_advance'] + nextDay);
+
+    if (weekday === 0) { // weekday
+        if (roundDateObject.getTime() < minDate.getTime()
+            || roundDateObject.getTime() - now['date'].getTime() > golf_club['weekday_max_in_advance'] * 24 * 60 * 60 * 1000) {
+            roundDate.error_field();
+
+            errorNotification.textContent = 'Round date is not available.';
+            errorNotification.show();
+            return false;
+        }
+    } else if (weekday === 1) { // holiday
+        if (roundDateObject.getTime() < minDate.getTime()
+            || roundDateObject.getTime() - now['date'].getTime() > golf_club['weekend_max_in_advance'] * 24 * 60 * 60 * 1000) {
             roundDate.error_field();
 
             errorNotification.textContent = 'Round date is not available.';
@@ -330,11 +348,11 @@ function runApp() {
     roundTime.setAttribute('min', roundTimeStart);
     roundTime.setAttribute('max', roundTimeEnd);
 
+    // 2. Retrieve customer group from server using access token
     if (!liff.isLoggedIn() && !liff.isInClient()) {
         liff.login();
     }
 
-    // 2. Retrieve customer group from server using access token
     const access_token = liff.getAccessToken();
 
     fetch('/golf/' + golf_club['slug'] + '/customer-group.json?access_token=' + access_token)
