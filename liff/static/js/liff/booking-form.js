@@ -465,6 +465,18 @@ function runApp() {
     document
         .getElementById('new-booking-button')
         .addEventListener('click', function (e) {
-            validateForm(roundDate, roundTime, pax, cart, customerName, errorNotification);
+            if (validateForm(roundDate, roundTime, pax, cart, customerName, errorNotification)) {
+                if (!liff.isInClient()) {
+                    sendAlertIfNotInClient();
+                } else {
+                    liff.sendMessages([{
+                        'type': 'text',
+                        'text': 'new' + roundDate.value + roundTime.value + pax.value + cart.value + customerName.value
+                    }]).then(function () {
+                    }).catch(function (error) {
+                        window.alert('Error sending message: ' + error);
+                    });
+                }
+            }
         });
 }
