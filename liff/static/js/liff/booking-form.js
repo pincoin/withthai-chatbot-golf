@@ -38,7 +38,6 @@ function isHoliday(roundDate) {
             return 1;
         }
     }
-
     return 0;
 }
 
@@ -178,7 +177,6 @@ function validateRoundDate(roundDate, errorNotification) {
             return false;
         }
     }
-
     return true;
 }
 
@@ -202,7 +200,6 @@ function validateRoundTime(roundTime, errorNotification) {
         }
         return false;
     }
-
     return true;
 }
 
@@ -217,8 +214,27 @@ function validatePax(pax, errorNotification) {
     return true;
 }
 
-function validateCart(cart) {
-    console.log(cart.value);
+function validateCart(cart, errorNotification) {
+    let min_pax = 0;
+
+    if (golf_club['cart_compulsory'] === 0) {
+        min_pax = 0;
+    } else if (golf_club['cart_compulsory'] === 1) {
+        min_pax = golf_club['min_pax'];
+    } else if (golf_club['cart_compulsory'] > 1) {
+        if (golf_club['cart_compulsory'] > 1 && golf_club['cart_compulsory'] > golf_club['min_pax'] > 1) {
+            min_pax = golf_club['min_pax'];
+        } else {
+            min_pax = 0;
+        }
+    }
+    if (Number(cart.value) > golf_club('max_pax') || Number(cart.value) < min_pax) {
+        errorNotification.textContent = 'Cart is not available.';
+        if (errorNotification.classList.contains('is-hidden')) {
+            errorNotification.classList.remove('is-hidden');
+        }
+        return false;
+    }
     return true;
 }
 
@@ -250,10 +266,9 @@ function validateForm(roundDate, roundTime, pax, cart, customerName, errorNotifi
     if (!validatePax(pax, errorNotification)) {
         return false;
     }
-    if (!validateCart(cart)) {
+    if (!validateCart(cart, errorNotification)) {
         return false;
     }
-
     return validateCustomerName(customerName, errorNotification);
 }
 
@@ -374,7 +389,7 @@ function runApp() {
                     errorNotification.classList.add('is-hidden');
                 }
 
-                if (validateRoundDate(roundDate, errorNotification) && validateRoundTime(roundTime, errorNotification)) {
+                if (validateForm(roundDate, roundTime, pax, cart, customerName, errorNotification)) {
                     const fee = calculateFees(roundDate, roundTime, pax, cart, customerGroup);
 
                     displayQuotation(greenFeeUnitPrice, greenFeePax, greenFeeAmount,
