@@ -1,4 +1,5 @@
 import logging
+import re
 
 import linebot
 from django.http import (
@@ -52,7 +53,11 @@ class CallbackView(generic.View):
             # regular expression test: New\s".+"\s\d\d\d\d-\d\d-\d\d\s\d\d:\d\d\s\dPAX\s\dCART
             # New "John Doe" 2020-08-10 12:30 3PAX 3CART
 
-            if text == 'booking':
+            if match := re.compile('New\s".+"\s\d\d\d\d-\d\d-\d\d\s\d\d:\d\d\s\dPAX\s\dCART', re.I).match(text):
+                self.line_bot_api.reply_message(
+                    event.reply_token,
+                    models.TextSendMessage(text='We will notify the available tee-off date/time within 15 minutes.'))
+            elif text == 'booking':
                 self.line_bot_api.reply_message(
                     event.reply_token,
                     models.TextSendMessage(text='booking list - carousel message',
