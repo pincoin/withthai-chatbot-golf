@@ -1,4 +1,6 @@
 import json
+import uuid
+from decimal import Decimal
 from pathlib import Path
 
 from django.conf import settings
@@ -663,3 +665,84 @@ class GreenFee(model_utils_models.TimeStampedModel):
     class Meta:
         verbose_name = _('Green fee')
         verbose_name_plural = _('Green fee')
+
+
+class GolfBookingOrder(model_utils_models.TimeStampedModel):
+    order_no = models.UUIDField(
+        verbose_name=_('Order no'),
+        unique=True,
+        default=uuid.uuid4,
+        editable=False
+    )
+
+    user = models.ForeignKey(
+        settings.AUTH_USER_MODEL,
+        verbose_name=_('User'),
+        db_index=True,
+        null=True,
+        blank=True,
+        editable=True,
+        on_delete=models.SET_NULL,
+    )
+
+    line_user = models.ForeignKey(
+        'golf.LineUser',
+        verbose_name=_('LINE user'),
+        db_index=True,
+        null=True,
+        blank=True,
+        editable=True,
+        on_delete=models.SET_NULL,
+    )
+
+    fullname = models.CharField(
+        verbose_name=_('Fullname'),
+        max_length=64,
+        blank=True,
+    )
+
+    user_agent = models.TextField(
+        verbose_name=_('User-agent'),
+        blank=True,
+    )
+
+    accept_language = models.TextField(
+        verbose_name=_('Accept-language'),
+        blank=True,
+    )
+
+    ip_address = models.GenericIPAddressField(
+        verbose_name=_('IP address'),
+        blank=True,
+        null=True,
+    )
+
+    # Max = 999,999,999.99
+    total_list_price = models.DecimalField(
+        verbose_name=_('Total list price'),
+        max_digits=11,
+        decimal_places=2,
+        default=Decimal('0.00'),
+    )
+
+    total_selling_price = models.DecimalField(
+        verbose_name=_('Total selling price'),
+        max_digits=11,
+        decimal_places=2,
+        default=Decimal('0.00'),
+    )
+
+    parent = models.ForeignKey(
+        'self',
+        verbose_name=_('Parent'),
+        db_index=True,
+        null=True,
+        on_delete=models.CASCADE,
+    )
+
+    class Meta:
+        verbose_name = _('Golf booking order')
+        verbose_name_plural = _('Golf booking orders')
+
+    def __str__(self):
+        return f'{self.user} {self.total_selling_price} {self.created}'
