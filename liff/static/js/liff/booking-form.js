@@ -66,9 +66,7 @@ function isHoliday(roundDate) {
     for (let i = 0; i < holidays.length; i++) {
         const holiday = holidays[i].split('-');
 
-        if (roundDate.getTime() === new Date(Number(holiday[0]),
-            Number(holiday[1]) - 1,
-            Number(holiday[2])).getTime()) {
+        if (roundDate.getTime() === new Date(Number(holiday[0]), Number(holiday[1]) - 1, Number(holiday[2])).getTime()) {
             return 1;
         }
     }
@@ -97,13 +95,8 @@ function calculateFees(roundDate, roundTime, pax, cart, customerGroup) {
     const roundDateElements = roundDate.value.split('-');
     const roundTimeElements = roundTime.value.split(':');
 
-    const roundDateObject = new Date(Number(roundDateElements[0]),
-        Number(roundDateElements[1]) - 1,
-        Number(roundDateElements[2]));
-
-    const roundTimeObject = new Date(2020, 0, 1,
-        Number(roundTimeElements[0]),
-        Number(roundTimeElements[1]));
+    const roundDateObject = new Date(Number(roundDateElements[0]), Number(roundDateElements[1]) - 1, Number(roundDateElements[2]));
+    const roundTimeObject = new Date(2020, 0, 1, Number(roundTimeElements[0]), Number(roundTimeElements[1]));
 
     const weekday = isHoliday(roundDateObject);
 
@@ -117,22 +110,16 @@ function calculateFees(roundDate, roundTime, pax, cart, customerGroup) {
         const sessionStart = fees[i]['season_start'].split('-');
         const sessionEnd = fees[i]['season_end'].split('-');
 
-        if (roundDateObject.getTime() < new Date(Number(sessionStart[0]),
-            Number(sessionStart[1]) - 1,
-            Number(sessionStart[2])).getTime()
-            || roundDateObject.getTime() > new Date(Number(sessionEnd[0]),
-                Number(sessionEnd[1]) - 1,
-                Number(sessionEnd[2])).getTime()) {
+        if (roundDateObject.getTime() < new Date(Number(sessionStart[0]), Number(sessionStart[1]) - 1, Number(sessionStart[2])).getTime()
+            || roundDateObject.getTime() > new Date(Number(sessionEnd[0]), Number(sessionEnd[1]) - 1, Number(sessionEnd[2])).getTime()) {
             continue;
         }
 
         const timeslotStart = fees[i]['slot_start'].split(':');
         const timeslotEnd = fees[i]['slot_end'].split(':');
 
-        if (roundTimeObject.getTime() < new Date(2020, 0, 1,
-            Number(timeslotStart[0]), Number(timeslotStart[1]))
-            || roundTimeObject.getTime() > new Date(2020, 0, 1,
-                Number(timeslotEnd[0]), Number(timeslotEnd[1]))) {
+        if (roundTimeObject.getTime() < new Date(2020, 0, 1, Number(timeslotStart[0]), Number(timeslotStart[1]))
+            || roundTimeObject.getTime() > new Date(2020, 0, 1, Number(timeslotEnd[0]), Number(timeslotEnd[1]))) {
             continue;
         }
 
@@ -180,26 +167,21 @@ function displayQuotation(greenFeeUnitPrice, greenFeePax, greenFeeAmount,
 function validateRoundDate(roundDate, errorNotification) {
     const roundDateElements = roundDate.value.split('-');
 
-    const roundDateObject = new Date(Number(roundDateElements[0]),
-        Number(roundDateElements[1]) - 1,
-        Number(roundDateElements[2]));
+    const roundDateObject = new Date(Number(roundDateElements[0]), Number(roundDateElements[1]) - 1, Number(roundDateElements[2]));
 
     const weekday = isHoliday(roundDateObject);
 
     const now = getCurrentTime();
 
     if (weekday === 0
-        && roundDateObject.getTime() - now['date'].getTime()
-        > golf_club['weekday_max_in_advance'] * 24 * 60 * 60 * 1000) {
+        && roundDateObject.getTime() - now['date'].getTime() > golf_club['weekday_max_in_advance'] * 24 * 60 * 60 * 1000) {
         roundDate.error_field();
 
         errorNotification.textContent = 'Round date is not available.';
         errorNotification.show();
         return false;
     } else if (weekday === 1) {
-        if (roundDateObject.getTime() - now['date'].getTime()
-            > golf_club['weekend_max_in_advance'] * 24 * 60 * 60 * 1000
-            || now['day'] === 'SAT' || now['day'] === 'SUN') {
+        if (roundDateObject.getTime() - now['date'].getTime() > golf_club['weekend_max_in_advance'] * 24 * 60 * 60 * 1000) {
             roundDate.error_field();
 
             errorNotification.textContent = 'Round date is not available.';
@@ -216,14 +198,10 @@ function validateRoundTime(roundTime, errorNotification) {
     const roundTimeStartElements = fees[0]['slot_start'].split(':');
     const roundTimeEndElements = fees[fees.length - 1]['slot_end'].split(':');
 
-    const roundTimeObject = new Date(2020, 0, 1,
-        Number(roundTimeElements[0]),
-        Number(roundTimeElements[1]));
+    const roundTimeObject = new Date(2020, 0, 1, Number(roundTimeElements[0]), Number(roundTimeElements[1]));
 
-    if (roundTimeObject.getTime() < new Date(2020, 0, 1,
-        Number(roundTimeStartElements[0]), Number(roundTimeStartElements[1]))
-        || roundTimeObject.getTime() > new Date(2020, 0, 1,
-            Number(roundTimeEndElements[0]), Number(roundTimeEndElements[1]))) {
+    if (roundTimeObject.getTime() < new Date(2020, 0, 1, Number(roundTimeStartElements[0]), Number(roundTimeStartElements[1]))
+        || roundTimeObject.getTime() > new Date(2020, 0, 1, Number(roundTimeEndElements[0]), Number(roundTimeEndElements[1]))) {
         roundTime.error_field();
 
         errorNotification.textContent = 'Round time is not available.';
