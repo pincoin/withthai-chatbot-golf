@@ -350,7 +350,6 @@ function runApp() {
     roundTime.setAttribute('min', roundTimeStart);
     roundTime.setAttribute('max', roundTimeEnd);
 
-    /*
     if (!liff.isLoggedIn() && !liff.isInClient()) {
         liff.login();
     }
@@ -372,8 +371,7 @@ function runApp() {
                     cartFeeUnitPrice, cartFeePax, cartFeeAmount, feeTotalAmount, fee, pax, cart);
             }
         });
-*/
-    customerGroup = 4;
+
     // 2. Event handlers
     document
         .getElementById('pax-plus-button')
