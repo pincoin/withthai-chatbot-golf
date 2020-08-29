@@ -475,6 +475,12 @@ class LineUserMembership(models.Model):
 
 
 class CustomerGroup(model_utils_models.TimeStampedModel):
+    MEMBER_CHOICES = Choices(
+        (0, 'member', _('Member')),
+        (1, 'member_guest', _('Member guest')),
+        (2, 'visitor', _('Visitor')),
+    )
+
     golf_club = models.ForeignKey(
         'golf.GolfClub',
         verbose_name=_('Golf club'),
@@ -492,6 +498,13 @@ class CustomerGroup(model_utils_models.TimeStampedModel):
     title_english = models.CharField(
         verbose_name=_('Customer group name'),
         max_length=255,
+    )
+
+    category = models.IntegerField(
+        verbose_name=_('Member categories'),
+        choices=MEMBER_CHOICES,
+        default=MEMBER_CHOICES.visitor,
+        db_index=True,
     )
 
     position = models.IntegerField(

@@ -89,7 +89,7 @@ class GreenFeeAdmin(admin.ModelAdmin):
 
 
 class CustomerGroupAdmin(admin.ModelAdmin):
-    list_display = ('golf_club', 'title_english', 'position')
+    list_display = ('golf_club', 'title_english', 'category', 'position')
     list_display_links = ('title_english',)
     list_filter = ('golf_club__title_english',)
     raw_id_fields = ('golf_club',)
