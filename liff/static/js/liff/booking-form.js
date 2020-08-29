@@ -154,16 +154,12 @@ function displayQuotation(greenFeeUnitPrice, greenFeePax, greenFeeAmount,
         feeTotalAmount.textContent = ((fee['greenFee'] + fee['caddieFee']) * Number(pax.value)
             + fee['cartFee'] * Number(cart.value)).toLocaleString('en');
     } else {
-        greenFeeUnitPrice.textContent = 'N/A';
-        greenFeeAmount.textContent = 'N/A';
-
-        caddieFeeUnitPrice.textContent = 'N/A';
-        caddieFeeAmount.textContent = 'N/A';
-
-        cartFeeUnitPrice.textContent = 'N/A';
-        cartFeeAmount.textContent = 'N/A';
-
-        feeTotalAmount.textContent = 'N/A';
+        [greenFeeUnitPrice, greenFeeAmount,
+            caddieFeeUnitPrice, caddieFeeAmount,
+            cartFeeUnitPrice, cartFeeAmount,
+            feeTotalAmount].forEach(function (element) {
+            element.textContent = 'N/A';
+        });
     }
 }
 
