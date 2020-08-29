@@ -12,8 +12,8 @@ from linebot import models
 from linebot.exceptions import InvalidSignatureError
 
 from chatbot.models import WebhookRequestLog
-from golf import models as golf_models
 from conf import tasks
+from golf import models as golf_models
 
 
 @method_decorator(csrf_exempt, name='dispatch')
@@ -54,12 +54,16 @@ class CallbackView(generic.View):
             # regular expression test: New\s".+"\s\d\d\d\d-\d\d-\d\d\s\d\d:\d\d\s\dPAX\s\dCART
             # New "John Doe" 2020-08-10 12:30 3PAX 3CART
 
-            if match := re.compile('New\s".+"\s\d\d\d\d-\d\d-\d\d\s\d\d:\d\d\s\dPAX\s\dCART', re.I).match(text):
+            if match := re \
+                    .compile('New\s"(.+)"\s(\d\d\d\d-\d\d-\d\d)\s(\d\d:\d\d)\s(\d)PAX\s(\d)CART', re.I) \
+                    .match(text):
                 # 골프장 별 미결제 주문이 2건이 있는지
 
                 # 문자열 파싱 후 레코드 추가
 
-                tasks.send_notification_line.delay(golf_club.line_notify_access_token, text)
+                notification = f'{match[1]} {match[2]} {match[3]} {match[4]} {match[5]}'
+
+                tasks.send_notification_line.delay(golf_club.line_notify_access_token, notification)
 
                 # 골프장 영업시간 이내 - 15분 이내에 통보
                 # 골프장 영업시간 종료 후 24시 이전 - 내일 오전 8시 이후에 통보
