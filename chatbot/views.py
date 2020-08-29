@@ -13,6 +13,7 @@ from linebot.exceptions import InvalidSignatureError
 
 from chatbot.models import WebhookRequestLog
 from golf import models as golf_models
+from conf import tasks
 
 
 @method_decorator(csrf_exempt, name='dispatch')
@@ -54,11 +55,21 @@ class CallbackView(generic.View):
             # New "John Doe" 2020-08-10 12:30 3PAX 3CART
 
             if match := re.compile('New\s".+"\s\d\d\d\d-\d\d-\d\d\s\d\d:\d\d\s\dPAX\s\dCART', re.I).match(text):
+                # 골프장 별 미결제 주문이 2건이 있는지
+
+                # 문자열 파싱 후 레코드 추가
+
+                tasks.send_notification_line.delay(golf_club.line_notify_access_token, text)
+
+                # 골프장 영업시간 이내 - 15분 이내에 통보
+                # 골프장 영업시간 종료 후 24시 이전 - 내일 오전 8시 이후에 통보
+                # 골프장 24시 이후 영업시간 이전 - 금일 오전 8시 이후에 통보
+
+                message = 'We will notify you of the available tee-off date/time within 15 minutes.'
+
                 self.line_bot_api.reply_message(
                     event.reply_token,
-                    models.TextSendMessage(text='We will notify you'
-                                                ' of the available tee-off date/time'
-                                                ' within 15 minutes.'))
+                    models.TextSendMessage(text=message))
             elif text == 'booking':
                 self.line_bot_api.reply_message(
                     event.reply_token,
