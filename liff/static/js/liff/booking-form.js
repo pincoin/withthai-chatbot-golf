@@ -174,10 +174,6 @@ function validateRoundDate(roundDate, errorNotification) {
 
     // Booking date
     const now = getCurrentTime();
-    now['date'].setHours(0, 0, 0, 0);
-
-    // Tee-off date minimum
-    const minDate = new Date(now['date']);
 
     // Increase a day if office is closed.
     let nextDay = 0;
@@ -186,28 +182,59 @@ function validateRoundDate(roundDate, errorNotification) {
         nextDay = 1;
     }
 
+    // Tee-off date minimum
+    const minDate = new Date(now['date'].setHours(0, 0, 0, 0));
+
     minDate.setDate(minDate.getDate() + golf_club['weekdays_min_in_advance'] + nextDay);
+
+    let error = false;
 
     if (weekday === 0) { // weekday
         if (roundDateObject.getTime() < minDate.getTime()
             || roundDateObject.getTime() - now['date'].getTime() > golf_club['weekday_max_in_advance'] * 24 * 60 * 60 * 1000) {
-            roundDate.error_field();
-
-            errorNotification.textContent = 'Round date is not available.';
-            errorNotification.show();
-            return false;
+            error = true;
         }
     } else if (weekday === 1) { // holiday
-        if (roundDateObject.getTime() < minDate.getTime()
-            || roundDateObject.getTime() - now['date'].getTime() > golf_club['weekend_max_in_advance'] * 24 * 60 * 60 * 1000) {
-            roundDate.error_field();
+        if (golf_club['weekend_booking_on_monday'] === true) {
+            let thursday = new Date();
 
-            errorNotification.textContent = 'Round date is not available.';
-            errorNotification.show();
-            return false;
+            switch (now['date'].getDay()) {
+                case 1:
+                case 2:
+                case 3:
+                    // Booking day = Mon(1), Tue(2), Wed(3) -> Round day = Until Thu of NEXT week
+                    thursday.setDate((thursday.getDay() + 4) % 7 + thursday.getDate() + 7);
+                    break;
+
+                case 4:
+                case 5:
+                case 6:
+                case 0:
+                    // Booking day = Thu(4), Fri(5), Sat(6), Sun(0) -> Round day Until Thu of this week
+                    thursday.setDate((thursday.getDay() + 4) % 7 + thursday.getDate());
+                    break;
+            }
+            
+            if (roundDateObject.getTime() > thursday.getTime()) {
+                error = true;
+            }
+        } else {
+            if (roundDateObject.getTime() < minDate.getTime()
+                || roundDateObject.getTime() - now['date'].getTime() > golf_club['weekend_max_in_advance'] * 24 * 60 * 60 * 1000) {
+                error = true;
+            }
         }
     }
-    return true;
+
+    if (error) {
+        roundDate.error_field();
+
+        errorNotification.textContent = 'Round date is not available.';
+        errorNotification.show();
+        return false;
+    } else {
+        return true;
+    }
 }
 
 function validateRoundTime(roundTime, errorNotification) {
@@ -349,6 +376,7 @@ function runApp() {
     roundTime.setAttribute('max', roundTimeEnd);
 
     // 2. Retrieve customer group from server using access token
+    /*
     if (!liff.isLoggedIn() && !liff.isInClient()) {
         liff.login();
     }
@@ -369,7 +397,8 @@ function runApp() {
                     caddieFeeUnitPrice, caddieFeePax, caddieFeeAmount,
                     cartFeeUnitPrice, cartFeePax, cartFeeAmount, feeTotalAmount, fee, pax, cart);
             }
-        });
+        });*/
+    customerGroup = 4;
 
     // 3. Add event handlers
     document
