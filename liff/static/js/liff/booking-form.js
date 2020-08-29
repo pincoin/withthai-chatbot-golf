@@ -471,8 +471,9 @@ function runApp() {
                 } else {
                     liff.sendMessages([{
                         'type': 'text',
-                        'text': 'new' + roundDate.value + roundTime.value + pax.value + cart.value + customerName.value
+                        'text': 'new "' + customerName.value + '" ' + roundDate.value + ' ' + roundTime.value + ' ' + pax.value + 'PAX ' + cart.value + 'CART'
                     }]).then(function () {
+                        liff.closeWindow();
                     }).catch(function (error) {
                         window.alert('Error sending message: ' + error);
                     });
