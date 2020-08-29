@@ -4,6 +4,26 @@ Date.prototype.formatDate = function () {
         + '-' + ('0' + this.getDate()).slice(-2);
 }
 
+HTMLElement.prototype.show = function () {
+    if (this.classList.contains('is-hidden')) {
+        this.classList.remove('is-hidden');
+    }
+}
+
+HTMLElement.prototype.hide = function () {
+    if (!this.classList.contains('is-hidden')) {
+        this.classList.add('is-hidden');
+    }
+}
+
+HTMLElement.prototype.toggle = function () {
+    if (this.classList.contains('is-hidden')) {
+        this.classList.remove('is-hidden');
+    } else {
+        this.classList.add('is-hidden');
+    }
+}
+
 function getCurrentTime() {
     const now = new Date();
 
@@ -166,9 +186,7 @@ function validateRoundDate(roundDate, errorNotification) {
         }
 
         errorNotification.textContent = 'Round date is not available.';
-        if (errorNotification.classList.contains('is-hidden')) {
-            errorNotification.classList.remove('is-hidden');
-        }
+        errorNotification.show();
         return false;
     } else if (weekday === 1) {
         if (roundDateObject.getTime() - now['date'].getTime()
@@ -179,9 +197,7 @@ function validateRoundDate(roundDate, errorNotification) {
             }
 
             errorNotification.textContent = 'Round date is not available.';
-            if (errorNotification.classList.contains('is-hidden')) {
-                errorNotification.classList.remove('is-hidden');
-            }
+            errorNotification.show();
             return false;
         }
     }
@@ -207,9 +223,7 @@ function validateRoundTime(roundTime, errorNotification) {
         }
 
         errorNotification.textContent = 'Round time is not available.';
-        if (errorNotification.classList.contains('is-hidden')) {
-            errorNotification.classList.remove('is-hidden');
-        }
+        errorNotification.show();
         return false;
     }
     return true;
@@ -222,9 +236,7 @@ function validatePax(pax, errorNotification) {
         }
 
         errorNotification.textContent = 'PAX is not available.';
-        if (errorNotification.classList.contains('is-hidden')) {
-            errorNotification.classList.remove('is-hidden');
-        }
+        errorNotification.show();
         return false;
     }
     return true;
@@ -250,9 +262,7 @@ function validateCart(cart, errorNotification) {
         }
 
         errorNotification.textContent = 'Cart is not available.';
-        if (errorNotification.classList.contains('is-hidden')) {
-            errorNotification.classList.remove('is-hidden');
-        }
+        errorNotification.show();
         return false;
     }
     return true;
@@ -265,9 +275,7 @@ function validateCustomerName(customerName, errorNotification) {
         }
 
         errorNotification.textContent = 'Please, type your name in Thai or English.';
-        if (errorNotification.classList.contains('is-hidden')) {
-            errorNotification.classList.remove('is-hidden');
-        }
+        errorNotification.show();
         return false;
     }
     if (customerName.value.match(/^[\u0E00-\u0E7F a-zA-Z0-9.,]+$/g) === null) {
@@ -276,9 +284,7 @@ function validateCustomerName(customerName, errorNotification) {
         }
 
         errorNotification.textContent = 'Your name must be written in Thai or English.';
-        if (errorNotification.classList.contains('is-hidden')) {
-            errorNotification.classList.remove('is-hidden');
-        }
+        errorNotification.show();
         return false;
     }
     return true;
@@ -413,9 +419,7 @@ function runApp() {
         element.addEventListener('change', function (e) {
             if (roundDate.value && roundTime.value && pax.value && cart.value) {
                 errorNotification.textContent = '';
-                if (!errorNotification.classList.contains('is-hidden')) {
-                    errorNotification.classList.add('is-hidden');
-                }
+                errorNotification.hide();
 
                 if (validateRoundDate(roundDate, errorNotification)
                     && validateRoundTime(roundTime, errorNotification)
