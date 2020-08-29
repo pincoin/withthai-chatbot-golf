@@ -228,7 +228,7 @@ function validateCart(cart, errorNotification) {
             min_pax = 0;
         }
     }
-    if (Number(cart.value) > golf_club('max_pax') || Number(cart.value) < min_pax) {
+    if (Number(cart.value) > golf_club['max_pax'] || Number(cart.value) < min_pax) {
         errorNotification.textContent = 'Cart is not available.';
         if (errorNotification.classList.contains('is-hidden')) {
             errorNotification.classList.remove('is-hidden');
@@ -389,7 +389,10 @@ function runApp() {
                     errorNotification.classList.add('is-hidden');
                 }
 
-                if (validateForm(roundDate, roundTime, pax, cart, customerName, errorNotification)) {
+                if (validateRoundDate(roundDate, errorNotification)
+                    && validateRoundTime(roundTime, errorNotification)
+                    && validatePax(pax, errorNotification)
+                    && validateCart(cart, errorNotification)) {
                     const fee = calculateFees(roundDate, roundTime, pax, cart, customerGroup);
 
                     displayQuotation(greenFeeUnitPrice, greenFeePax, greenFeeAmount,
