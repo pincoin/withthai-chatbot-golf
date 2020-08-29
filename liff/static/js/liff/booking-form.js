@@ -24,6 +24,18 @@ HTMLElement.prototype.toggle = function () {
     }
 }
 
+HTMLElement.prototype.error_field = function () {
+    if (!this.classList.contains('is-danger')) {
+        this.classList.add('is-danger');
+    }
+}
+
+HTMLElement.prototype.clear_error_field = function () {
+    if (this.classList.contains('is-danger')) {
+        this.classList.remove('is-danger');
+    }
+}
+
 function getCurrentTime() {
     const now = new Date();
 
@@ -177,9 +189,7 @@ function validateRoundDate(roundDate, errorNotification) {
     if (weekday === 0
         && roundDateObject.getTime() - now['date'].getTime()
         > golf_club['weekday_max_in_advance'] * 24 * 60 * 60 * 1000) {
-        if (!roundDate.classList.contains('is-danger')) {
-            roundDate.classList.add('is-danger');
-        }
+        roundDate.error_field();
 
         errorNotification.textContent = 'Round date is not available.';
         errorNotification.show();
@@ -188,9 +198,7 @@ function validateRoundDate(roundDate, errorNotification) {
         if (roundDateObject.getTime() - now['date'].getTime()
             > golf_club['weekend_max_in_advance'] * 24 * 60 * 60 * 1000
             || now['day'] === 'SAT' || now['day'] === 'SUN') {
-            if (!roundDate.classList.contains('is-danger')) {
-                roundDate.classList.add('is-danger');
-            }
+            roundDate.error_field();
 
             errorNotification.textContent = 'Round date is not available.';
             errorNotification.show();
@@ -214,9 +222,7 @@ function validateRoundTime(roundTime, errorNotification) {
         Number(roundTimeStartElements[0]), Number(roundTimeStartElements[1]))
         || roundTimeObject.getTime() > new Date(2020, 0, 1,
             Number(roundTimeEndElements[0]), Number(roundTimeEndElements[1]))) {
-        if (!roundTime.classList.contains('is-danger')) {
-            roundTime.classList.add('is-danger');
-        }
+        roundTime.error_field();
 
         errorNotification.textContent = 'Round time is not available.';
         errorNotification.show();
@@ -227,9 +233,7 @@ function validateRoundTime(roundTime, errorNotification) {
 
 function validatePax(pax, errorNotification) {
     if (Number(pax.value) < golf_club['min_pax'] || Number(pax.value) > golf_club['max_pax']) {
-        if (!pax.classList.contains('is-danger')) {
-            pax.classList.add('is-danger');
-        }
+        pax.error_field();
 
         errorNotification.textContent = 'PAX is not available.';
         errorNotification.show();
@@ -253,9 +257,7 @@ function validateCart(cart, errorNotification) {
         }
     }
     if (Number(cart.value) > golf_club['max_pax'] || Number(cart.value) < min_pax) {
-        if (!cart.classList.contains('is-danger')) {
-            cart.classList.add('is-danger');
-        }
+        cart.error_field();
 
         errorNotification.textContent = 'Cart is not available.';
         errorNotification.show();
@@ -266,18 +268,14 @@ function validateCart(cart, errorNotification) {
 
 function validateCustomerName(customerName, errorNotification) {
     if (!customerName.value || 0 === customerName.length) {
-        if (!customerName.classList.contains('is-danger')) {
-            customerName.classList.add('is-danger');
-        }
+        customerName.error_field();
 
         errorNotification.textContent = 'Please, type your name in Thai or English.';
         errorNotification.show();
         return false;
     }
     if (customerName.value.match(/^[\u0E00-\u0E7F a-zA-Z0-9.,]+$/g) === null) {
-        if (!customerName.classList.contains('is-danger')) {
-            customerName.classList.add('is-danger');
-        }
+        customerName.error_field();
 
         errorNotification.textContent = 'Your name must be written in Thai or English.';
         errorNotification.show();
@@ -417,15 +415,14 @@ function runApp() {
                 errorNotification.textContent = '';
                 errorNotification.hide();
 
+                [roundDate, roundTime, pax, cart].forEach(function (element) {
+                    element.clear_error_field();
+                });
+
                 if (validateRoundDate(roundDate, errorNotification)
                     && validateRoundTime(roundTime, errorNotification)
                     && validatePax(pax, errorNotification)
                     && validateCart(cart, errorNotification)) {
-                    [roundDate, roundTime, pax, cart].forEach(function (element) {
-                        if (element.classList.contains('is-danger')) {
-                            element.classList.remove('is-danger');
-                        }
-                    });
                     const fee = calculateFees(roundDate, roundTime, pax, cart, customerGroup);
 
                     displayQuotation(greenFeeUnitPrice, greenFeePax, greenFeeAmount,
