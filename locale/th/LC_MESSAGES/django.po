@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-08-29 12:43+0700\n"
+"POT-Creation-Date: 2020-08-29 17:31+0700\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -49,8 +49,8 @@ msgstr ""
 msgid "English"
 msgstr ""
 
-#: golf/admin.py:60 golf/models.py:387 golf/models.py:486 golf/models.py:527
-#: golf/models.py:584
+#: golf/admin.py:60 golf/models.py:392 golf/models.py:491 golf/models.py:532
+#: golf/models.py:589
 msgid "Golf club"
 msgstr ""
 
@@ -96,7 +96,7 @@ msgid ""
 "URL"
 msgstr ""
 
-#: golf/models.py:59 golf/models.py:105 golf/models.py:151 golf/models.py:511
+#: golf/models.py:59 golf/models.py:105 golf/models.py:151 golf/models.py:516
 msgid "Position"
 msgstr ""
 
@@ -301,175 +301,179 @@ msgid "Weekend maximum in advance"
 msgstr ""
 
 #: golf/models.py:354
+msgid "Weekend booking on Monday"
+msgstr ""
+
+#: golf/models.py:359
 msgid "Caddie compulsory"
 msgstr ""
 
-#: golf/models.py:361
+#: golf/models.py:366
 msgid "Cart compulsory"
 msgstr ""
 
-#: golf/models.py:368 liff/apps.py:7
+#: golf/models.py:373 liff/apps.py:7
 msgid "LIFF"
 msgstr ""
 
-#: golf/models.py:374 liff/views.py:156
+#: golf/models.py:379 liff/views.py:156
 msgid "Scorecard"
 msgstr ""
 
-#: golf/models.py:380
+#: golf/models.py:385
 msgid "Working status"
 msgstr ""
 
-#: golf/models.py:388
+#: golf/models.py:393
 msgid "Golf clubs"
 msgstr ""
 
-#: golf/models.py:419
+#: golf/models.py:424
 msgid "Unfollow"
 msgstr ""
 
-#: golf/models.py:420
+#: golf/models.py:425
 msgid "Follow"
 msgstr ""
 
-#: golf/models.py:424
+#: golf/models.py:429
 msgid "LINE user ID"
 msgstr ""
 
-#: golf/models.py:431
+#: golf/models.py:436
 msgid "LINE display name"
 msgstr ""
 
-#: golf/models.py:437
+#: golf/models.py:442
 msgid "Follow status"
 msgstr ""
 
-#: golf/models.py:444
+#: golf/models.py:449
 msgid "Fullname"
 msgstr ""
 
-#: golf/models.py:450 golf/models.py:460
+#: golf/models.py:455 golf/models.py:465
 msgid "LINE user"
 msgstr ""
 
-#: golf/models.py:451 golf/models.py:493
+#: golf/models.py:456 golf/models.py:498
 msgid "LINE users"
 msgstr ""
 
-#: golf/models.py:467 golf/models.py:517 golf/models.py:625
+#: golf/models.py:472 golf/models.py:522 golf/models.py:630
 msgid "Customer group"
 msgstr ""
 
-#: golf/models.py:473 golf/models.py:474
+#: golf/models.py:478 golf/models.py:479
 msgid "LINE user membership"
 msgstr ""
 
-#: golf/models.py:479
+#: golf/models.py:484
 msgid "Member"
 msgstr ""
 
-#: golf/models.py:480
+#: golf/models.py:485
 msgid "Member guest"
 msgstr ""
 
-#: golf/models.py:481
+#: golf/models.py:486
 msgid "Visitor"
 msgstr ""
 
-#: golf/models.py:499
+#: golf/models.py:504
 msgid "Customer group name"
 msgstr ""
 
-#: golf/models.py:504
+#: golf/models.py:509
 msgid "Member categories"
 msgstr ""
 
-#: golf/models.py:518
+#: golf/models.py:523
 msgid "Customer groups"
 msgstr ""
 
-#: golf/models.py:533
+#: golf/models.py:538
 msgid "Season name"
 msgstr ""
 
-#: golf/models.py:538
+#: golf/models.py:543
 msgid "Season start date"
 msgstr ""
 
-#: golf/models.py:542
+#: golf/models.py:547
 msgid "Season end date"
 msgstr ""
 
-#: golf/models.py:546
+#: golf/models.py:551
 msgid "Caddie fee list price"
 msgstr ""
 
-#: golf/models.py:549 golf/models.py:556 golf/models.py:563 golf/models.py:570
-#: golf/models.py:648 golf/models.py:655
+#: golf/models.py:554 golf/models.py:561 golf/models.py:568 golf/models.py:575
+#: golf/models.py:653 golf/models.py:660
 msgid "THB"
 msgstr ""
 
-#: golf/models.py:553
+#: golf/models.py:558
 msgid "Caddie fee selling price"
 msgstr ""
 
-#: golf/models.py:560
+#: golf/models.py:565
 msgid "Cart fee list price"
 msgstr ""
 
-#: golf/models.py:567
+#: golf/models.py:572
 msgid "Cart fee selling price"
 msgstr ""
 
-#: golf/models.py:574 golf/models.py:632
+#: golf/models.py:579 golf/models.py:637
 msgid "Season"
 msgstr ""
 
-#: golf/models.py:575
+#: golf/models.py:580
 msgid "Seasons"
 msgstr ""
 
-#: golf/models.py:590
+#: golf/models.py:595
 msgid "Weekday"
 msgstr ""
 
-#: golf/models.py:591
+#: golf/models.py:596
 msgid "Weekend"
 msgstr ""
 
-#: golf/models.py:595
+#: golf/models.py:600
 msgid "Timeslot name"
 msgstr ""
 
-#: golf/models.py:600
+#: golf/models.py:605
 msgid "Day of week"
 msgstr ""
 
-#: golf/models.py:607
+#: golf/models.py:612
 msgid "Timeslot start time"
 msgstr ""
 
-#: golf/models.py:611
+#: golf/models.py:616
 msgid "Timeslot end time"
 msgstr ""
 
-#: golf/models.py:615 golf/models.py:639
+#: golf/models.py:620 golf/models.py:644
 msgid "Timeslot"
 msgstr ""
 
-#: golf/models.py:616
+#: golf/models.py:621
 msgid "Timeslots"
 msgstr ""
 
-#: golf/models.py:645
+#: golf/models.py:650
 msgid "List price"
 msgstr ""
 
-#: golf/models.py:652
+#: golf/models.py:657
 msgid "Selling price"
 msgstr ""
 
-#: golf/models.py:659 golf/models.py:660
+#: golf/models.py:664 golf/models.py:665
 msgid "Green fee"
 msgstr ""
 

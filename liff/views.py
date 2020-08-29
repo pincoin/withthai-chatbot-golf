@@ -65,6 +65,7 @@ class GolfBookingCreateFormView(viewmixins.LiffContextMixin, generic.FormView):
                 'weekdays_max_in_advance': self.golf_club.weekdays_max_in_advance,
                 'weekend_min_in_advance': self.golf_club.weekend_min_in_advance,
                 'weekend_max_in_advance': self.golf_club.weekend_max_in_advance,
+                'weekend_booking_on_monday': self.golf_club.weekend_booking_on_monday,
                 'business_hour_start': self.golf_club.business_hour_start.strftime('%H:%M'),
                 'business_hour_end': self.golf_club.business_hour_end.strftime('%H:%M'),
                 'customer_group': self.golf_club.customer_group_id,

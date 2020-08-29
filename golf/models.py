@@ -350,6 +350,11 @@ class GolfClub(model_utils_models.TimeStampedModel):
         db_index=True,
     )
 
+    weekend_booking_on_monday = models.BooleanField(
+        verbose_name=_('Weekend booking on Monday'),
+        default=False,
+    )
+
     caddie_compulsory = models.IntegerField(
         verbose_name=_('Caddie compulsory'),
         choices=CADDIE_COMPULSORY_CHOICES,
