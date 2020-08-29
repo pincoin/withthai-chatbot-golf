@@ -24,6 +24,8 @@ EMAIL_USE_TLS = secret['EMAIL_USE_TLS']
 EMAIL_NO_REPLY = secret['EMAIL_NO_REPLY']
 EMAIL_CUSTOMER_SERVICE = secret['EMAIL_CUSTOMER_SERVICE']
 
+LINE_NOTIFY_ACCESS_TOKEN = secret['LINE_NOTIFY_ACCESS_TOKEN']
+
 # Application definition
 INSTALLED_APPS = [
     'django.contrib.admin',
