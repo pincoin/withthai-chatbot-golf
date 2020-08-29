@@ -12,6 +12,7 @@ HTMLElement.prototype.show = function () {
 
 HTMLElement.prototype.hide = function () {
     if (!this.classList.contains('is-hidden')) {
+        this.textContent = '';
         this.classList.add('is-hidden');
     }
 }
@@ -20,6 +21,7 @@ HTMLElement.prototype.toggle = function () {
     if (this.classList.contains('is-hidden')) {
         this.classList.remove('is-hidden');
     } else {
+        this.textContent = '';
         this.classList.add('is-hidden');
     }
 }
@@ -412,7 +414,6 @@ function runApp() {
     [roundDate, roundTime, pax, cart].forEach(function (element) {
         element.addEventListener('change', function (e) {
             if (roundDate.value && roundTime.value && pax.value && cart.value) {
-                errorNotification.textContent = '';
                 errorNotification.hide();
 
                 [roundDate, roundTime, pax, cart].forEach(function (element) {
