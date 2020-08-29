@@ -356,6 +356,7 @@ function runApp() {
         liff.login();
     }
 
+    // 2. Retrieve customer group from server using access token
     const access_token = liff.getAccessToken();
 
     fetch('/golf/' + golf_club['slug'] + '/customer-group.json?access_token=' + access_token)
@@ -374,7 +375,7 @@ function runApp() {
             }
         });
 
-    // 2. Event handlers
+    // 3. Add event handlers
     document
         .getElementById('pax-plus-button')
         .addEventListener('click', function (e) {
