@@ -121,7 +121,8 @@ class TimeslotAdmin(admin.ModelAdmin):
 
 
 class GolfBookingOrderAdmin(admin.ModelAdmin):
-    list_display = ('golf_club', 'fullname', 'round_date', 'round_time', 'pax', 'cart', 'total_selling_price')
+    list_display = ('golf_club', 'fullname', 'round_date', 'round_time', 'pax', 'cart', 'total_selling_price',
+                    'order_status', 'payment_status')
     list_display_links = ('golf_club', 'fullname')
     readonly_fields = ('user_agent', 'accept_language', 'ip_address')
     list_filter = ('golf_club__title_english',)
