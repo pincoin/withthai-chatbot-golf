@@ -789,6 +789,13 @@ class GolfBookingOrderProduct(model_utils_models.TimeStampedModel):
         on_delete=models.CASCADE,
     )
 
+    customer_group = models.ForeignKey(
+        'golf.CustomerGroup',
+        verbose_name=_('Customer group'),
+        db_index=True,
+        on_delete=models.CASCADE,
+    )
+
     product = models.IntegerField(
         verbose_name=_('Product'),
         choices=PRODUCT_CHOICES,

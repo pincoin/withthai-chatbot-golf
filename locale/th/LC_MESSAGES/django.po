@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-08-31 01:12+0700\n"
+"POT-Creation-Date: 2020-08-31 01:18+0700\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -360,7 +360,7 @@ msgstr ""
 msgid "LINE users"
 msgstr ""
 
-#: golf/models.py:474 golf/models.py:524 golf/models.py:632
+#: golf/models.py:474 golf/models.py:524 golf/models.py:632 golf/models.py:794
 msgid "Customer group"
 msgstr ""
 
@@ -465,11 +465,11 @@ msgstr ""
 msgid "Timeslots"
 msgstr ""
 
-#: golf/models.py:652 golf/models.py:801
+#: golf/models.py:652 golf/models.py:808
 msgid "List price"
 msgstr ""
 
-#: golf/models.py:659 golf/models.py:808
+#: golf/models.py:659 golf/models.py:815
 msgid "Selling price"
 msgstr ""
 
@@ -542,19 +542,19 @@ msgstr ""
 msgid "Cart fee"
 msgstr ""
 
-#: golf/models.py:793
+#: golf/models.py:800
 msgid "Product"
 msgstr ""
 
-#: golf/models.py:815
+#: golf/models.py:822
 msgid "Quantity"
 msgstr ""
 
-#: golf/models.py:828
+#: golf/models.py:835
 msgid "Golf booking order product"
 msgstr ""
 
-#: golf/models.py:829
+#: golf/models.py:836
 msgid "Golf booking order products"
 msgstr ""
 
