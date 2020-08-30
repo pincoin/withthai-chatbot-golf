@@ -80,13 +80,11 @@ class CallbackView(generic.View):
                 # 6. Notification to customer
                 now = timezone.localtime().time()
 
-                message = ''
-
                 if golf_club.business_hour_start <= now <= golf_club.business_hour_end:
                     message = 'We will notify you of the available tee-off date/time within 15 minutes.'
                 elif golf_club.business_hour_end < now <= datetime.time(23, 59, 59):
                     message = 'We will notify you of the available tee-off date/time after 8 am tomorrow morning.'
-                elif datetime.time(23, 59, 59) <= now < golf_club.business_hour_start:
+                else:  # datetime.time(0, 0, 0) <= now < golf_club.business_hour_start
                     message = 'We will notify you of the available tee-off date/time after 8 am this morning.'
 
                 self.line_bot_api.reply_message(
