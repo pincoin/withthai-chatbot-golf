@@ -1,3 +1,4 @@
+import datetime
 import logging
 import re
 
@@ -5,6 +6,7 @@ import linebot
 from django.http import (
     HttpResponse, HttpResponseForbidden
 )
+from django.utils import timezone
 from django.utils.decorators import method_decorator
 from django.views import generic
 from django.views.decorators.csrf import csrf_exempt
@@ -76,10 +78,16 @@ class CallbackView(generic.View):
                 tasks.send_notification_line.delay(golf_club.line_notify_access_token, notification)
 
                 # 6. Notification to customer
-                # 골프장 영업시간 이내 - 15분 이내에 통보
-                # 골프장 영업시간 종료 후 24시 이전 - 내일 오전 8시 이후에 통보
-                # 골프장 24시 이후 영업시간 이전 - 금일 오전 8시 이후에 통보
-                message = 'We will notify you of the available tee-off date/time within 15 minutes.'
+                now = timezone.localtime().time()
+
+                message = ''
+
+                if golf_club.business_hour_start <= now <= golf_club.business_hour_end:
+                    message = 'We will notify you of the available tee-off date/time within 15 minutes.'
+                elif golf_club.business_hour_end < now <= datetime.time(23, 59, 59):
+                    message = 'We will notify you of the available tee-off date/time after 8 am tomorrow morning.'
+                elif datetime.time(23, 59, 59) <= now < golf_club.business_hour_start:
+                    message = 'We will notify you of the available tee-off date/time after 8 am this morning.'
 
                 self.line_bot_api.reply_message(
                     event.reply_token,
