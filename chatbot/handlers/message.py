@@ -28,12 +28,18 @@ def command_new(event, line_bot_api, **kwargs):
 
     # 3. Message data validation
     # 3.1. match[2] Round date book availability check
+    round_date = timezone.datetime.strptime(match[2], '%Y-%m-%d')
+
+    # 휴일/평일 확인
 
     # 3.2. match[3] Round time
+    round_time = timezone.datetime.strptime(match[3], '%H:%M').time()
 
     # 3.3. match[4] PAX
+    pax = int(match[4])
 
     # 3.4. match[5] CART
+    cart = int(match[5])
 
     # 3.5. match[1] Customer name
 
@@ -73,8 +79,14 @@ def command_new(event, line_bot_api, **kwargs):
     order.golf_club = golf_club
     order.line_user = membership.line_user
     order.fullname = match[1]
+    order.round_date = round_date
+    order.round_time = round_time
+    order.pax = pax
+    order.cart = cart
     order.total_list_price = 0
     order.total_selling_price = 0
+    order.order_status = order.ORDER_STATUS_CHOICES.open
+    order.payment_status = order.PAYMENT_STATUS_CHOICES.unpaid
     order.save()
 
     '''
