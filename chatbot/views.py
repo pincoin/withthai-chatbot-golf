@@ -1,5 +1,4 @@
 import logging
-import logging
 import re
 
 import linebot
@@ -14,7 +13,9 @@ from linebot.exceptions import InvalidSignatureError
 
 from chatbot.models import WebhookRequestLog
 from golf import models as golf_models
-from .handlers import message
+from .handlers import (
+    message, follow, unfollow
+)
 
 
 @method_decorator(csrf_exempt, name='dispatch')
@@ -24,22 +25,6 @@ class CallbackView(generic.View):
         self.logger = logging.getLogger(__name__)
         self.line_bot_api = None
         self.handler = None
-
-        self.help_quick_replies = models.QuickReply(
-            items=[
-                models.QuickReplyButton(action=models.MessageAction(label='My Booking',
-                                                                    text='Booking')),
-                models.QuickReplyButton(action=models.MessageAction(label='Price Table',
-                                                                    text='Price')),
-                models.QuickReplyButton(action=models.MessageAction(label='Course',
-                                                                    text='Course')),
-                models.QuickReplyButton(action=models.MessageAction(label='Promotions',
-                                                                    text='Promotions')),
-                models.QuickReplyButton(action=models.MessageAction(label='Coupons',
-                                                                    text='Coupons')),
-                models.QuickReplyButton(action=models.MessageAction(label='Hot Deals',
-                                                                    text='Deals')),
-            ])
 
     def post(self, request, *args, **kwargs):
         golf_club = golf_models.GolfClub.objects.get(slug=self.kwargs['slug'])
@@ -55,74 +40,49 @@ class CallbackView(generic.View):
                     .match(text):
                 message.command_new(event, self.line_bot_api, match=match, golf_club=golf_club)
             elif text == 'booking':
-                self.line_bot_api.reply_message(
-                    event.reply_token,
-                    models.TextSendMessage(text='booking list - carousel message',
-                                           quick_reply=models.QuickReply(
-                                               items=[
-                                                   models.QuickReplyButton(
-                                                       action=models.MessageAction(label='My Profile',
-                                                                                   text='Profile')),
-                                               ])))
+                message.command_booking(event, self.line_bot_api)
             elif text in ['price', 'rate', 'fee']:
-                self.line_bot_api.reply_message(
-                    event.reply_token,
-                    models.TextSendMessage(text='Price Table - flex or template message'))
+                message.command_price(event, self.line_bot_api)
             elif text in ['course', 'club']:
-                self.line_bot_api.reply_message(
-                    event.reply_token, [
-                        models.FlexSendMessage(
-                            alt_text=golf_club.title_english,
-                            contents=golf_club.info)])
+                message.command_course(event, self.line_bot_api, golf_club=golf_club)
             elif text in ['promotions', 'promotion']:
-                self.line_bot_api.reply_message(
-                    event.reply_token,
-                    models.TextSendMessage(text='promotions - carousel message'))
+                message.command_promotions(event, self.line_bot_api)
             elif text in ['deals', 'deal', 'hot']:
-                self.line_bot_api.reply_message(
-                    event.reply_token,
-                    models.TextSendMessage(text='deals - carousel message'))
+                message.command_deals(event, self.line_bot_api)
             elif text in ['coupons', 'coupon']:
-                self.line_bot_api.reply_message(
-                    event.reply_token,
-                    models.TextSendMessage(text='coupons - carousel message'))
+                message.command_coupons(event, self.line_bot_api)
             elif text in ['settings', 'profile']:
-                self.line_bot_api.reply_message(
-                    event.reply_token,
-                    models.TextSendMessage(text='settings - carousel message'))
-
+                message.command_settings(event, self.line_bot_api)
             elif text in ['location', 'map']:
-                self.line_bot_api.reply_message(
-                    event.reply_token, [
-                        models.LocationSendMessage(title=golf_club.title_english,
-                                                   address=golf_club.address,
-                                                   latitude=float(golf_club.latitude),
-                                                   longitude=float(golf_club.longitude))])
+                message.command_location(event, self.line_bot_api)
             elif text in ['caddies', 'caddie']:
-                self.line_bot_api.reply_message(
-                    event.reply_token,
-                    models.TextSendMessage(text='caddies - carousel message'))
+                message.command_caddies(event, self.line_bot_api)
             elif text == 'layout':
-                self.line_bot_api.reply_message(
-                    event.reply_token,
-                    models.ImageSendMessage(
-                        original_content_url='https://loremflickr.com/cache/resized/3553_3806423994_1c05ef2e12_z_640_360_nofilter.jpg',
-                        preview_image_url='https://loremflickr.com/cache/resized/3553_3806423994_1c05ef2e12_z_640_360_nofilter.jpg'))
+                message.command_layout(event, self.line_bot_api)
             elif text in ['hotels', 'hotel', 'accommodation', 'accommodations']:
-                self.line_bot_api.reply_message(
-                    event.reply_token,
-                    models.TextSendMessage(text='hotels - carousel message'))
+                message.command_hotels(event, self.line_bot_api)
             elif text in ['restaurants', 'restaurant', 'food']:
-                self.line_bot_api.reply_message(
-                    event.reply_token,
-                    models.TextSendMessage(text='restaurants - carousel message'))
-
+                message.command_restaurants(event, self.line_bot_api)
             else:
                 self.line_bot_api.reply_message(
                     event.reply_token,
                     models.TextSendMessage(
                         text='Touch the button to send a message.',
-                        quick_reply=self.help_quick_replies))
+                        quick_reply=models.QuickReply(
+                            items=[
+                                models.QuickReplyButton(action=models.MessageAction(label='My Booking',
+                                                                                    text='Booking')),
+                                models.QuickReplyButton(action=models.MessageAction(label='Price Table',
+                                                                                    text='Price')),
+                                models.QuickReplyButton(action=models.MessageAction(label='Course',
+                                                                                    text='Course')),
+                                models.QuickReplyButton(action=models.MessageAction(label='Promotions',
+                                                                                    text='Promotions')),
+                                models.QuickReplyButton(action=models.MessageAction(label='Coupons',
+                                                                                    text='Coupons')),
+                                models.QuickReplyButton(action=models.MessageAction(label='Hot Deals',
+                                                                                    text='Deals')),
+                            ])))
 
         @self.handler.add(models.PostbackEvent)
         def handle_post_back(event):
@@ -132,46 +92,11 @@ class CallbackView(generic.View):
 
         @self.handler.add(models.FollowEvent)
         def handle_follow(event):
-            try:
-                user = golf_models.LineUser.objects.get(line_user_id=event.source.user_id)
-            except golf_models.LineUser.DoesNotExist:
-                user = golf_models.LineUser()
-                user.line_user_id = event.source.user_id
-
-            if isinstance(event.source, models.SourceUser):
-                profile = self.line_bot_api.get_profile(event.source.user_id)
-                user.line_display_name = profile.display_name
-
-            user.follow_status = golf_models.LineUser.FOLLOW_CHOICES.follow
-            user.fullname = ''
-            user.save()
-
-            membership = golf_models.LineUserMembership()
-            membership.line_user = user
-            membership.customer_group = golf_club.customer_group
-            membership.save()
-
-            self.line_bot_api.reply_message(
-                event.reply_token,
-                models.TextSendMessage(
-                    text='Touch the button to send a message.',
-                    quick_reply=self.help_quick_replies))
+            follow.command_follow(event, self.line_bot_api, golf_club=golf_club)
 
         @self.handler.add(models.UnfollowEvent)
         def handle_unfollow(event):
-            try:
-                user = golf_models.LineUser.objects.get(line_user_id=event.source.user_id)
-                user.follow_status = golf_models.LineUser.FOLLOW_CHOICES.unfollow
-                user.fullname = ''
-                user.save()
-
-                membership = golf_models.LineUserMembership.objects \
-                    .select_related('line_user', 'customer_group') \
-                    .get(line_user__line_user_id=event.source.user_id,
-                         customer_group__golf_club=golf_club)
-                membership.delete()
-            except (golf_models.LineUser.DoesNotExist, golf_models.LineUserMembership.DoesNotExist):
-                pass
+            unfollow.command_unfollow(event, self.line_bot_api, golf_club=golf_club)
 
         @self.handler.add(models.JoinEvent)
         def handle_join(event):
