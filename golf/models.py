@@ -708,6 +708,26 @@ class GolfBookingOrder(model_utils_models.TimeStampedModel):
         blank=True,
     )
 
+    round_date = models.DateField(
+        verbose_name=_('Round date'),
+        db_index=True,
+    )
+
+    round_time = models.TimeField(
+        verbose_name=_('Round time'),
+        db_index=True,
+    )
+
+    pax = models.IntegerField(
+        verbose_name=_('PAX'),
+        default=1,
+    )
+
+    cart = models.IntegerField(
+        verbose_name=_('Cart'),
+        default=0,
+    )
+
     user_agent = models.TextField(
         verbose_name=_('User-agent'),
         blank=True,

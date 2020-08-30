@@ -15,10 +15,16 @@ def command_new(event, line_bot_api, **kwargs):
     # 1. Check if 2 unpaid booking exist
 
     # 2. Retrieve LINE user
-    membership = golf_models.LineUserMembership.objects \
-        .select_related('line_user', 'customer_group') \
-        .get(line_user__line_user_id=event.source.user_id,
-             customer_group__golf_club=golf_club)
+    try:
+        membership = golf_models.LineUserMembership.objects \
+            .select_related('line_user', 'customer_group') \
+            .get(line_user__line_user_id=event.source.user_id,
+                 customer_group__golf_club=golf_club)
+    except golf_models.LineUserMembership.DoesNotExist:
+        line_bot_api.reply_message(
+            event.reply_token,
+            models.TextSendMessage(text='Invalid golf course or LINE ID'))
+        return
 
     # 3. Message data validation
     # 3.1. match[2] Round date book availability check
