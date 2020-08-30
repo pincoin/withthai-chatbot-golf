@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-08-30 02:17+0700\n"
+"POT-Creation-Date: 2020-08-30 17:23+0700\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -50,7 +50,7 @@ msgid "English"
 msgstr ""
 
 #: golf/admin.py:60 golf/models.py:394 golf/models.py:493 golf/models.py:534
-#: golf/models.py:591
+#: golf/models.py:591 golf/models.py:680
 msgid "Golf club"
 msgstr ""
 
@@ -348,11 +348,11 @@ msgstr ""
 msgid "Follow status"
 msgstr ""
 
-#: golf/models.py:451 golf/models.py:699
+#: golf/models.py:451 golf/models.py:706
 msgid "Fullname"
 msgstr ""
 
-#: golf/models.py:457 golf/models.py:467 golf/models.py:690
+#: golf/models.py:457 golf/models.py:467 golf/models.py:697
 msgid "LINE user"
 msgstr ""
 
@@ -465,15 +465,15 @@ msgstr ""
 msgid "Timeslots"
 msgstr ""
 
-#: golf/models.py:652
+#: golf/models.py:652 golf/models.py:781
 msgid "List price"
 msgstr ""
 
-#: golf/models.py:659
+#: golf/models.py:659 golf/models.py:788
 msgid "Selling price"
 msgstr ""
 
-#: golf/models.py:666 golf/models.py:667
+#: golf/models.py:666 golf/models.py:667 golf/models.py:760
 msgid "Green fee"
 msgstr ""
 
@@ -481,40 +481,64 @@ msgstr ""
 msgid "Order no"
 msgstr ""
 
-#: golf/models.py:680
+#: golf/models.py:687
 msgid "User"
 msgstr ""
 
-#: golf/models.py:705
+#: golf/models.py:712
 msgid "User-agent"
 msgstr ""
 
-#: golf/models.py:710
+#: golf/models.py:717
 msgid "Accept-language"
 msgstr ""
 
-#: golf/models.py:715
+#: golf/models.py:722
 msgid "IP address"
 msgstr ""
 
-#: golf/models.py:722
+#: golf/models.py:729
 msgid "Total list price"
 msgstr ""
 
-#: golf/models.py:729
+#: golf/models.py:736
 msgid "Total selling price"
 msgstr ""
 
-#: golf/models.py:737
+#: golf/models.py:744
 msgid "Parent"
 msgstr ""
 
-#: golf/models.py:744
+#: golf/models.py:751 golf/models.py:767
 msgid "Golf booking order"
 msgstr ""
 
-#: golf/models.py:745
+#: golf/models.py:752
 msgid "Golf booking orders"
+msgstr ""
+
+#: golf/models.py:761
+msgid "Caddie fee"
+msgstr ""
+
+#: golf/models.py:762
+msgid "Cart fee"
+msgstr ""
+
+#: golf/models.py:773
+msgid "Product"
+msgstr ""
+
+#: golf/models.py:795
+msgid "Quantity"
+msgstr ""
+
+#: golf/models.py:804
+msgid "Golf booking order product"
+msgstr ""
+
+#: golf/models.py:805
+msgid "Golf booking order products"
 msgstr ""
 
 #: hotel/apps.py:7

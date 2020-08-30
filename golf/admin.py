@@ -27,6 +27,12 @@ class LineUserListInline(admin.TabularInline):
     extra = 1
 
 
+class GolfBookingOrderProductInline(admin.TabularInline):
+    model = models.GolfBookingOrderProduct
+    ordering = ['product', ]
+    extra = 1
+
+
 class HolidayAdmin(admin.ModelAdmin):
     list_display = ('title', 'holiday')
     date_hierarchy = 'holiday'
@@ -114,7 +120,12 @@ class TimeslotAdmin(admin.ModelAdmin):
 
 
 class GolfBookingOrderAdmin(admin.ModelAdmin):
+    list_display = ('golf_club', 'fullname', 'total_selling_price')
     readonly_fields = ('user_agent', 'accept_language', 'ip_address')
+    list_filter = ('golf_club__title_english',)
+    inlines = [GolfBookingOrderProductInline, ]
+    date_hierarchy = 'created'
+    ordering = ['-created', ]
 
 
 admin.site.register(models.Holiday, HolidayAdmin)

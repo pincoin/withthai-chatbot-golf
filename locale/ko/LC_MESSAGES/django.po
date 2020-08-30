@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-08-30 02:17+0700\n"
+"POT-Creation-Date: 2020-08-30 17:23+0700\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -50,7 +50,7 @@ msgid "English"
 msgstr "영어"
 
 #: golf/admin.py:60 golf/models.py:394 golf/models.py:493 golf/models.py:534
-#: golf/models.py:591
+#: golf/models.py:591 golf/models.py:680
 msgid "Golf club"
 msgstr "골프장"
 
@@ -348,11 +348,11 @@ msgstr "라인 표시 이름"
 msgid "Follow status"
 msgstr "팔로우"
 
-#: golf/models.py:451 golf/models.py:699
+#: golf/models.py:451 golf/models.py:706
 msgid "Fullname"
 msgstr "이름"
 
-#: golf/models.py:457 golf/models.py:467 golf/models.py:690
+#: golf/models.py:457 golf/models.py:467 golf/models.py:697
 msgid "LINE user"
 msgstr "라인 사용자"
 
@@ -465,15 +465,15 @@ msgstr "시간대"
 msgid "Timeslots"
 msgstr "시간대"
 
-#: golf/models.py:652
+#: golf/models.py:652 golf/models.py:781
 msgid "List price"
 msgstr "정가"
 
-#: golf/models.py:659
+#: golf/models.py:659 golf/models.py:788
 msgid "Selling price"
 msgstr "판매가"
 
-#: golf/models.py:666 golf/models.py:667
+#: golf/models.py:666 golf/models.py:667 golf/models.py:760
 msgid "Green fee"
 msgstr "그린피"
 
@@ -481,41 +481,65 @@ msgstr "그린피"
 msgid "Order no"
 msgstr "주문번호"
 
-#: golf/models.py:680
+#: golf/models.py:687
 msgid "User"
 msgstr "사용자"
 
-#: golf/models.py:705
+#: golf/models.py:712
 msgid "User-agent"
 msgstr "User-agent"
 
-#: golf/models.py:710
+#: golf/models.py:717
 msgid "Accept-language"
 msgstr "Accept-language"
 
-#: golf/models.py:715
+#: golf/models.py:722
 msgid "IP address"
 msgstr "IP 주소"
 
-#: golf/models.py:722
+#: golf/models.py:729
 msgid "Total list price"
 msgstr "정가 합계"
 
-#: golf/models.py:729
+#: golf/models.py:736
 msgid "Total selling price"
 msgstr "판매가 합계"
 
-#: golf/models.py:737
+#: golf/models.py:744
 msgid "Parent"
 msgstr "부모"
 
-#: golf/models.py:744
+#: golf/models.py:751 golf/models.py:767
 msgid "Golf booking order"
 msgstr "골프 예약 주문"
 
-#: golf/models.py:745
+#: golf/models.py:752
 msgid "Golf booking orders"
 msgstr "골프 예약 주문"
+
+#: golf/models.py:761
+msgid "Caddie fee"
+msgstr "캐디피"
+
+#: golf/models.py:762
+msgid "Cart fee"
+msgstr "카트피"
+
+#: golf/models.py:773
+msgid "Product"
+msgstr "상품"
+
+#: golf/models.py:795
+msgid "Quantity"
+msgstr "수량"
+
+#: golf/models.py:804
+msgid "Golf booking order product"
+msgstr "골프 예약 주문 상품"
+
+#: golf/models.py:805
+msgid "Golf booking order products"
+msgstr "골프 예약 주문 상품"
 
 #: hotel/apps.py:7
 msgid "hotel"

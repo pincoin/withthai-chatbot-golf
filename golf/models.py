@@ -753,3 +753,56 @@ class GolfBookingOrder(model_utils_models.TimeStampedModel):
 
     def __str__(self):
         return f'{self.user} {self.total_selling_price} {self.created}'
+
+
+class GolfBookingOrderProduct(model_utils_models.TimeStampedModel):
+    PRODUCT_CHOICES = Choices(
+        (0, 'green_fee', _('Green fee')),
+        (1, 'caddie_fee', _('Caddie fee')),
+        (2, 'cart_fee', _('Cart fee')),
+    )
+
+    order = models.ForeignKey(
+        'golf.GolfBookingOrder',
+        verbose_name=_('Golf booking order'),
+        db_index=True,
+        on_delete=models.CASCADE,
+    )
+
+    product = models.IntegerField(
+        verbose_name=_('Product'),
+        choices=PRODUCT_CHOICES,
+        default=PRODUCT_CHOICES.green_fee,
+        db_index=True,
+    )
+
+    # Max = 999,999,999.99
+    list_price = models.DecimalField(
+        verbose_name=_('List price'),
+        max_digits=11,
+        decimal_places=2,
+        default=Decimal('0.00'),
+    )
+
+    selling_price = models.DecimalField(
+        verbose_name=_('Selling price'),
+        max_digits=11,
+        decimal_places=2,
+        default=Decimal('0.00'),
+    )
+
+    quantity = models.IntegerField(
+        verbose_name=_('Quantity'),
+        default=0,
+    )
+
+    @property
+    def subtotal(self):
+        return self.selling_price * self.quantity
+
+    class Meta:
+        verbose_name = _('Golf booking order product')
+        verbose_name_plural = _('Golf booking order products')
+
+    def __str__(self):
+        return f'order - {self.order.order_no} / product - {self.get_product_display()}'
