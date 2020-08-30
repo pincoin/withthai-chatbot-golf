@@ -675,6 +675,13 @@ class GolfBookingOrder(model_utils_models.TimeStampedModel):
         editable=False
     )
 
+    golf_club = models.ForeignKey(
+        'golf.GolfClub',
+        verbose_name=_('Golf club'),
+        db_index=True,
+        on_delete=models.CASCADE,
+    )
+
     user = models.ForeignKey(
         settings.AUTH_USER_MODEL,
         verbose_name=_('User'),
