@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-08-31 01:41+0700\n"
+"POT-Creation-Date: 2020-08-31 02:12+0700\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -168,12 +168,12 @@ msgstr ""
 msgid "36 Holes"
 msgstr ""
 
-#: golf/models.py:175 golf/models.py:672
-msgid "Open"
+#: golf/models.py:175
+msgid "Course open"
 msgstr ""
 
-#: golf/models.py:176 golf/models.py:676
-msgid "Closed"
+#: golf/models.py:176
+msgid "Course closed"
 msgstr ""
 
 #: golf/models.py:177
@@ -477,16 +477,24 @@ msgstr ""
 msgid "Green fee"
 msgstr ""
 
+#: golf/models.py:672
+msgid "Booking open"
+msgstr ""
+
 #: golf/models.py:673
-msgid "Confirmed"
+msgid "Booking confirmed"
 msgstr ""
 
 #: golf/models.py:674
-msgid "Offered"
+msgid "Booking offered"
 msgstr ""
 
 #: golf/models.py:675
-msgid "Accepted"
+msgid "Booking accepted"
+msgstr ""
+
+#: golf/models.py:676
+msgid "Booking closed"
 msgstr ""
 
 #: golf/models.py:680

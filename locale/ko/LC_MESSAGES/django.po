@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-08-31 01:41+0700\n"
+"POT-Creation-Date: 2020-08-31 02:12+0700\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -168,12 +168,12 @@ msgstr "27홀"
 msgid "36 Holes"
 msgstr "36홀"
 
-#: golf/models.py:175 golf/models.py:672
-msgid "Open"
+#: golf/models.py:175
+msgid "Course open"
 msgstr "영업중"
 
-#: golf/models.py:176 golf/models.py:676
-msgid "Closed"
+#: golf/models.py:176
+msgid "Course closed"
 msgstr "영업종료"
 
 #: golf/models.py:177
@@ -477,17 +477,25 @@ msgstr "판매가"
 msgid "Green fee"
 msgstr "그린피"
 
+#: golf/models.py:672
+msgid "Booking open"
+msgstr "예약문의"
+
 #: golf/models.py:673
-msgid "Confirmed"
-msgstr "확정"
+msgid "Booking confirmed"
+msgstr "예약확정"
 
 #: golf/models.py:674
-msgid "Offered"
-msgstr "제안"
+msgid "Booking offered"
+msgstr "예약제안"
 
 #: golf/models.py:675
-msgid "Accepted"
-msgstr "수락"
+msgid "Booking accepted"
+msgstr "예약수락"
+
+#: golf/models.py:676
+msgid "Booking closed"
+msgstr "예약무효"
 
 #: golf/models.py:680
 msgid "Unpaid"

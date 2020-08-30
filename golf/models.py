@@ -172,8 +172,8 @@ class GolfClub(model_utils_models.TimeStampedModel):
     )
 
     WORKING_CHOICES = Choices(
-        (0, 'open', _('Open')),
-        (1, 'closed', _('Closed')),
+        (0, 'open', _('Course open')),
+        (1, 'closed', _('Course closed')),
         (2, 'suspended', _('Suspended')),
     )
 
@@ -669,11 +669,11 @@ class GreenFee(model_utils_models.TimeStampedModel):
 
 class GolfBookingOrder(model_utils_models.TimeStampedModel):
     ORDER_STATUS_CHOICES = Choices(
-        (0, 'open', _('Open')),
-        (1, 'confirmed', _('Confirmed')),
-        (2, 'offered', _('Offered')),
-        (3, 'accepted', _('Accepted')),
-        (4, 'closed', _('Closed')),
+        (0, 'open', _('Booking open')),
+        (1, 'confirmed', _('Booking confirmed')),
+        (2, 'offered', _('Booking offered')),
+        (3, 'accepted', _('Booking accepted')),
+        (4, 'closed', _('Booking closed')),
     )
 
     PAYMENT_STATUS_CHOICES = Choices(
