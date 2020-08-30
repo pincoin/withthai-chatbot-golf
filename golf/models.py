@@ -800,6 +800,10 @@ class GolfBookingOrderProduct(model_utils_models.TimeStampedModel):
     def subtotal(self):
         return self.selling_price * self.quantity
 
+    @property
+    def list_price_subtotal(self):
+        return self.list_price * self.quantity
+
     class Meta:
         verbose_name = _('Golf booking order product')
         verbose_name_plural = _('Golf booking order products')
