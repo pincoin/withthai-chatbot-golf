@@ -62,6 +62,7 @@ class CallbackView(generic.View):
 
                 # 3. Booking model
                 order = golf_models.GolfBookingOrder()
+                order.golf_club = golf_club
                 order.line_user = line_user
                 order.fullname = match[1]
                 order.total_list_price = 0
