@@ -668,6 +668,20 @@ class GreenFee(model_utils_models.TimeStampedModel):
 
 
 class GolfBookingOrder(model_utils_models.TimeStampedModel):
+    ORDER_STATUS_CHOICES = Choices(
+        (0, 'open', _('Open')),
+        (1, 'confirmed', _('Confirmed')),
+        (2, 'offered', _('Offered')),
+        (3, 'accepted', _('Accepted')),
+        (4, 'closed', _('Closed')),
+    )
+
+    PAYMENT_STATUS_CHOICES = Choices(
+        (0, 'unpaid', _('Unpaid')),
+        (1, 'paid', _('Paid')),
+        (2, 'refunded', _('Refunded')),
+    )
+
     order_no = models.UUIDField(
         verbose_name=_('Order no'),
         unique=True,
@@ -765,6 +779,20 @@ class GolfBookingOrder(model_utils_models.TimeStampedModel):
         db_index=True,
         null=True,
         on_delete=models.CASCADE,
+    )
+
+    order_status = models.IntegerField(
+        verbose_name=_('Order status'),
+        choices=ORDER_STATUS_CHOICES,
+        default=ORDER_STATUS_CHOICES.open,
+        db_index=True,
+    )
+
+    payment_status = models.IntegerField(
+        verbose_name=_('Payment status'),
+        choices=PAYMENT_STATUS_CHOICES,
+        default=PAYMENT_STATUS_CHOICES.unpaid,
+        db_index=True,
     )
 
     class Meta:
