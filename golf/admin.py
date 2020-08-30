@@ -113,6 +113,10 @@ class TimeslotAdmin(admin.ModelAdmin):
     ordering = ['golf_club', 'day_of_week', 'slot_start']
 
 
+class GolfBookingOrderAdmin(admin.ModelAdmin):
+    readonly_fields = ('user_agent', 'accept_language', 'ip_address')
+
+
 admin.site.register(models.Holiday, HolidayAdmin)
 admin.site.register(models.Area, AreaAdmin)
 admin.site.register(models.Province, ProvinceAdmin)
@@ -123,3 +127,4 @@ admin.site.register(models.GreenFee, GreenFeeAdmin)
 admin.site.register(models.CustomerGroup, CustomerGroupAdmin)
 admin.site.register(models.Season, SeasonAdmin)
 admin.site.register(models.Timeslot, TimeslotAdmin)
+admin.site.register(models.GolfBookingOrder, GolfBookingOrderAdmin)
