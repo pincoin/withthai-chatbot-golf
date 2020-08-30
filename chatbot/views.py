@@ -228,9 +228,10 @@ class CallbackView(generic.View):
                 user.fullname = ''
                 user.save()
 
-                membership = golf_models.LineUserMembership \
-                    .objects.get(line_user__line_user_id=event.source.user_id,
-                                 customer_group__golf_club=golf_club)
+                membership = golf_models.LineUserMembership.objects \
+                    .select_related('line_user', 'customer_group') \
+                    .get(line_user__line_user_id=event.source.user_id,
+                         customer_group__golf_club=golf_club)
                 membership.delete()
             except (golf_models.LineUser.DoesNotExist, golf_models.LineUserMembership.DoesNotExist):
                 pass
