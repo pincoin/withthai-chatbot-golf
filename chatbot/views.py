@@ -1,4 +1,4 @@
-import datetime
+import logging
 import logging
 import re
 
@@ -6,7 +6,6 @@ import linebot
 from django.http import (
     HttpResponse, HttpResponseForbidden
 )
-from django.utils import timezone
 from django.utils.decorators import method_decorator
 from django.views import generic
 from django.views.decorators.csrf import csrf_exempt
@@ -14,8 +13,8 @@ from linebot import models
 from linebot.exceptions import InvalidSignatureError
 
 from chatbot.models import WebhookRequestLog
-from conf import tasks
 from golf import models as golf_models
+from .handlers import message
 
 
 @method_decorator(csrf_exempt, name='dispatch')
@@ -44,8 +43,6 @@ class CallbackView(generic.View):
 
     def post(self, request, *args, **kwargs):
         golf_club = golf_models.GolfClub.objects.get(slug=self.kwargs['slug'])
-        self.logger.info(golf_club.title_english)
-
         self.line_bot_api = linebot.LineBotApi(golf_club.line_bot_channel_access_token)
         self.handler = linebot.WebhookHandler(golf_club.line_bot_channel_secret)
 
@@ -56,40 +53,7 @@ class CallbackView(generic.View):
             if match := re \
                     .compile('New\s"(.+)"\s(\d\d\d\d-\d\d-\d\d)\s(\d\d:\d\d)\s(\d)PAX\s(\d)CART', re.I) \
                     .match(text):
-                # New "John Doe" 2020-08-10 12:30 3PAX 3CART
-                # 1. Check if 2 unpaid booking exist
-
-                # 2. Retrieve LINE user
-                line_user = golf_models.LineUser.objects.get(line_user_id=event.source.user_id)
-
-                # 3. Booking model
-                order = golf_models.GolfBookingOrder()
-                order.golf_club = golf_club
-                order.line_user = line_user
-                order.fullname = match[1]
-                order.total_list_price = 0
-                order.total_selling_price = 0
-                order.save()
-
-                # 4. Fee models
-
-                # 5. Notification to golf club
-                notification = f'{match[1]} {match[2]} {match[3]} {match[4]} {match[5]}'
-                tasks.send_notification_line.delay(golf_club.line_notify_access_token, notification)
-
-                # 6. Notification to customer
-                now = timezone.localtime().time()
-
-                if golf_club.business_hour_start <= now <= golf_club.business_hour_end:
-                    message = 'We will notify you of the available tee-off date/time within 15 minutes.'
-                elif golf_club.business_hour_end < now <= datetime.time(23, 59, 59):
-                    message = 'We will notify you of the available tee-off date/time after 8 am tomorrow morning.'
-                else:  # datetime.time(0, 0, 0) <= now < golf_club.business_hour_start
-                    message = 'We will notify you of the available tee-off date/time after 8 am this morning.'
-
-                self.line_bot_api.reply_message(
-                    event.reply_token,
-                    models.TextSendMessage(text=message))
+                message.command_new(event, self.line_bot_api, match=match, golf_club=golf_club)
             elif text == 'booking':
                 self.line_bot_api.reply_message(
                     event.reply_token,
@@ -97,22 +61,13 @@ class CallbackView(generic.View):
                                            quick_reply=models.QuickReply(
                                                items=[
                                                    models.QuickReplyButton(
-                                                       action=models.MessageAction(label='New Booking',
-                                                                                   text='New')),
-                                                   models.QuickReplyButton(
                                                        action=models.MessageAction(label='My Profile',
                                                                                    text='Profile')),
                                                ])))
             elif text in ['price', 'rate', 'fee']:
                 self.line_bot_api.reply_message(
                     event.reply_token,
-                    models.TextSendMessage(text='Price Table - flex or template message',
-                                           quick_reply=models.QuickReply(
-                                               items=[
-                                                   models.QuickReplyButton(
-                                                       action=models.MessageAction(label='New Booking',
-                                                                                   text='New')),
-                                               ])))
+                    models.TextSendMessage(text='Price Table - flex or template message'))
             elif text in ['course', 'club']:
                 self.line_bot_api.reply_message(
                     event.reply_token, [
@@ -122,33 +77,15 @@ class CallbackView(generic.View):
             elif text in ['promotions', 'promotion']:
                 self.line_bot_api.reply_message(
                     event.reply_token,
-                    models.TextSendMessage(text='promotions - carousel message',
-                                           quick_reply=models.QuickReply(
-                                               items=[
-                                                   models.QuickReplyButton(
-                                                       action=models.MessageAction(label='New Booking',
-                                                                                   text='New')),
-                                               ])))
+                    models.TextSendMessage(text='promotions - carousel message'))
             elif text in ['deals', 'deal', 'hot']:
                 self.line_bot_api.reply_message(
                     event.reply_token,
-                    models.TextSendMessage(text='deals - carousel message',
-                                           quick_reply=models.QuickReply(
-                                               items=[
-                                                   models.QuickReplyButton(
-                                                       action=models.MessageAction(label='New Booking',
-                                                                                   text='New')),
-                                               ])))
+                    models.TextSendMessage(text='deals - carousel message'))
             elif text in ['coupons', 'coupon']:
                 self.line_bot_api.reply_message(
                     event.reply_token,
-                    models.TextSendMessage(text='coupons - carousel message',
-                                           quick_reply=models.QuickReply(
-                                               items=[
-                                                   models.QuickReplyButton(
-                                                       action=models.MessageAction(label='New Booking',
-                                                                                   text='New')),
-                                               ])))
+                    models.TextSendMessage(text='coupons - carousel message'))
             elif text in ['settings', 'profile']:
                 self.line_bot_api.reply_message(
                     event.reply_token,
