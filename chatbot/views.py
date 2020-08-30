@@ -54,7 +54,7 @@ class CallbackView(generic.View):
             elif text in ['settings', 'profile']:
                 message.command_settings(event, self.line_bot_api)
             elif text in ['location', 'map']:
-                message.command_location(event, self.line_bot_api)
+                message.command_location(event, self.line_bot_api, golf_club=golf_club)
             elif text in ['caddies', 'caddie']:
                 message.command_caddies(event, self.line_bot_api)
             elif text == 'layout':
