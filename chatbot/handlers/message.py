@@ -42,7 +42,7 @@ def command_new(event, line_bot_api, **kwargs):
     if not validators.validate_pax(pax, golf_club=golf_club):
         line_bot_api.reply_message(
             event.reply_token,
-            models.TextSendMessage(text='Invalid PAX'))
+            models.TextSendMessage(text=f'Invalid PAX: {golf_club.min_pax} - {golf_club.max_pax}'))
         return
 
     # 3.4. match[5] CART
