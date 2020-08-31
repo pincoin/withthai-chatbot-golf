@@ -203,15 +203,15 @@ function validateRoundDate(roundDate, errorNotification) {
                 case 2:
                 case 3:
                     // Booking day = Mon(1), Tue(2), Wed(3) -> Round day = Until Thu of NEXT week
-                    thursday.setDate((thursday.getDay() + 4) % 7 + thursday.getDate() + 7);
+                    thursday.setDate(thursday.getDate() + (4 - thursday.getDay()) + 7);
                     break;
 
                 case 4:
                 case 5:
                 case 6:
                 case 0:
-                    // Booking day = Thu(4), Fri(5), Sat(6), Sun(0) -> Round day Until Thu of this week
-                    thursday.setDate((thursday.getDay() + 4) % 7 + thursday.getDate());
+                    // Booking day = Thu(4), Fri(5), Sat(6), Sun(0) -> Round day Until coming Thu
+                    thursday.setDate(thursday.getDate() + (11 - thursday.getDay()));
                     break;
             }
 
