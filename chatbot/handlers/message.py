@@ -28,25 +28,28 @@ def command_new(event, line_bot_api, **kwargs):
         return
 
     # 3. Message data validation
-    # 3.1. match[2] Round date book availability check
-    round_date = timezone.datetime.strptime(match[2], '%Y-%m-%d')
-
-    # 휴일/평일 확인
-
-    # 3.2. match[3] Round time
-    round_time = timezone.datetime.strptime(match[3], '%H:%M').time()
-
-    # 3.3. match[4] PAX
+    # 3.1 match[4] PAX
     if not validators.validate_pax(pax := int(match[4]), golf_club=golf_club):
         line_bot_api.reply_message(
             event.reply_token,
-            models.TextSendMessage(text=f'Invalid PAX: {golf_club.min_pax} - {golf_club.max_pax}'))
+            models.TextSendMessage(text=f'Invalid PAX: {golf_club.min_pax} to {golf_club.max_pax}'))
         return
 
-    # 3.4. match[5] CART
+    # 3.2. match[5] CART
     cart = int(match[5])
 
-    # 3.5. match[1] Customer name
+    # 3.3. match[1] Customer name
+
+    # 3.4. match[2] Round date book availability check
+    if not validators.validate_round_date(round_date := timezone.datetime.strptime(match[2], '%Y-%m-%d'),
+                                          golf_club=golf_club):
+        line_bot_api.reply_message(
+            event.reply_token,
+            models.TextSendMessage(text=f'Invalid round date'))
+        return
+
+    # 3.5. match[3] Round time
+    round_time = timezone.datetime.strptime(match[3], '%H:%M').time()
 
     # Season & timeslot & weekday/holiday & customer group & club &
 
