@@ -37,9 +37,7 @@ def command_new(event, line_bot_api, **kwargs):
     round_time = timezone.datetime.strptime(match[3], '%H:%M').time()
 
     # 3.3. match[4] PAX
-    pax = int(match[4])
-
-    if not validators.validate_pax(pax, golf_club=golf_club):
+    if not validators.validate_pax(pax := int(match[4]), golf_club=golf_club):
         line_bot_api.reply_message(
             event.reply_token,
             models.TextSendMessage(text=f'Invalid PAX: {golf_club.min_pax} - {golf_club.max_pax}'))
