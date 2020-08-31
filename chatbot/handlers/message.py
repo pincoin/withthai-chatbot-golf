@@ -5,6 +5,7 @@ from linebot import models
 
 from conf import tasks
 from golf import models as golf_models
+from .. import validators
 
 
 def command_new(event, line_bot_api, **kwargs):
@@ -37,6 +38,12 @@ def command_new(event, line_bot_api, **kwargs):
 
     # 3.3. match[4] PAX
     pax = int(match[4])
+
+    if not validators.validate_pax(pax, golf_club=golf_club):
+        line_bot_api.reply_message(
+            event.reply_token,
+            models.TextSendMessage(text='Invalid PAX'))
+        return
 
     # 3.4. match[5] CART
     cart = int(match[5])
