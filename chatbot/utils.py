@@ -2,8 +2,8 @@ from golf import models as golf_models
 
 
 def is_holiday(round_date):
-    if round_date.weekday() not in [5, 6]:
-        return False
+    if round_date.weekday() in [5, 6]:
+        return True
 
     try:
         golf_models.Holiday.objects.get(holiday=round_date)

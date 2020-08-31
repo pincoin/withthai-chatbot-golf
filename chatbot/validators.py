@@ -27,7 +27,7 @@ def validate_round_date(round_date, **kwargs):
                 # Booking day = Thu(3), Fri(4), Sat(5), Sun(6) -> Round day Until Thu of this week
                 thursday = now + timezone.timedelta(10 - now.weekday())
 
-            if round_date > thursday:
+            if timezone.make_aware(round_date) > thursday:
                 return False
 
         else:
