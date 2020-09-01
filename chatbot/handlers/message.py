@@ -94,14 +94,14 @@ def command_new(event, line_bot_api, **kwargs):
 
     fees = golf_models.GreenFee.objects \
         .filter(season__golf_club=golf_club,
-                timeslot__golf_club=golf_club,
-                customer_group__golf_club=golf_club,
                 season__season_start__lte=round_date,
                 season__season_end__gte=round_date,
+                timeslot__golf_club=golf_club,
                 timeslot__slot_start__lte=round_time,
                 timeslot__slot_end__gte=round_time,
-                customer_group=membership.customer_group,
-                timeslot__day_of_week=1 if holiday else 0)
+                timeslot__day_of_week=1 if holiday else 0,
+                customer_group__golf_club=golf_club,
+                customer_group=membership.customer_group)
 
     if len(fees) != 1:
         line_bot_api.reply_message(
