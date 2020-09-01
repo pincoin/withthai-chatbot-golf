@@ -83,7 +83,7 @@ def command_new(event, line_bot_api, **kwargs):
         return
 
     # 3.5. match[3] Round time
-    if not validators.validate_round_date(round_time := timezone.datetime.strptime(match[3], '%H:%M').time(),
+    if not validators.validate_round_time(round_time := timezone.datetime.strptime(match[3], '%H:%M').time(),
                                           golf_club=golf_club):
         line_bot_api.reply_message(
             event.reply_token,
