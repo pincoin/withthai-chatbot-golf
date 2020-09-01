@@ -82,7 +82,7 @@ class GolfBookingCreateFormView(viewmixins.LiffContextMixin, generic.FormView):
                 'slot_start': fee.timeslot.slot_start.strftime('%H:%M'),
                 'slot_end': fee.timeslot.slot_end.strftime('%H:%M'),
                 'green_fee': int(fee.selling_price),
-                'caddie_fee': int(fee.season.caddie_selling_price),
+                'caddie_fee': int(fee.season.caddie_fee_selling_price),
                 'cart_fee': int(fee.season.cart_selling_price),
                 'customer_group': fee.customer_group_id,
             })

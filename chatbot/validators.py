@@ -3,13 +3,10 @@ import re
 from django.utils import timezone
 
 from golf import models as golf_models
-from . import utils
 
 
-def validate_round_date(round_date, **kwargs):
+def validate_round_date(round_date, holiday, **kwargs):
     golf_club = kwargs['golf_club']
-
-    holiday = utils.is_holiday(round_date)
 
     next_day = 0
 

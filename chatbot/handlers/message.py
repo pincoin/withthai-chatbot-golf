@@ -1,14 +1,18 @@
 import datetime
+import logging
 
 from django.utils import timezone
 from linebot import models
 
 from conf import tasks
 from golf import models as golf_models
+from .. import utils
 from .. import validators
 
 
 def command_new(event, line_bot_api, **kwargs):
+    logger = logging.getLogger(__name__)
+
     golf_club = kwargs['golf_club']
     match = kwargs['match']
 
@@ -76,6 +80,7 @@ def command_new(event, line_bot_api, **kwargs):
 
     # 3.4. match[2] Round date
     if not validators.validate_round_date(round_date := timezone.datetime.strptime(match[2], '%Y-%m-%d'),
+                                          holiday := utils.is_holiday(round_date),
                                           golf_club=golf_club):
         line_bot_api.reply_message(
             event.reply_token,
@@ -90,7 +95,24 @@ def command_new(event, line_bot_api, **kwargs):
             models.TextSendMessage(text=f'Invalid Round Time'))
         return
 
-    # Season & timeslot & weekday/holiday & customer group & club
+    fees = golf_models.GreenFee.objects \
+        .filter(season__golf_club=golf_club,
+                timeslot__golf_club=golf_club,
+                customer_group__golf_club=golf_club,
+                season__season_start__lte=round_date,
+                season__season_end__gte=round_date,
+                timeslot__slot_start__lte=round_time,
+                timeslot__slot_end__gte=round_time,
+                customer_group=membership.customer_group,
+                timeslot__day_of_week=1 if holiday else 0)
+
+    if len(fees) != 1:
+        line_bot_api.reply_message(
+            event.reply_token,
+            models.TextSendMessage(text='Invalid Booking Data'))
+        return
+
+    logger.debug(f'{fees[0].selling_price} {fees[0].caddie_fee_selling_price} {fees[0].cart_fee_selling_price}')
 
     '''
     # 4. Calculate fees
