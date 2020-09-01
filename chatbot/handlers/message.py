@@ -12,7 +12,7 @@ def command_new(event, line_bot_api, **kwargs):
     golf_club = kwargs['golf_club']
     match = kwargs['match']
 
-    # New "John Doe" 2020-08-10 12:30 3PAX 3CART
+    # New "John Doe" 2020-08-10 12:30 3GOLFER 3CART
 
     # 1. Retrieve LINE user
     try:
@@ -47,14 +47,14 @@ def command_new(event, line_bot_api, **kwargs):
     if not validators.validate_pax(pax := int(match[4]), golf_club=golf_club):
         line_bot_api.reply_message(
             event.reply_token,
-            models.TextSendMessage(text=f'Invalid PAX: {golf_club.min_pax} to {golf_club.max_pax}'))
+            models.TextSendMessage(text=f'Invalid Golfer#: {golf_club.min_pax} to {golf_club.max_pax}'))
         return
 
     # 3.2. match[5] CART
     if not validators.validate_cart(cart := int(match[5]), pax, golf_club=golf_club):
         line_bot_api.reply_message(
             event.reply_token,
-            models.TextSendMessage(text=f'Invalid Cart'))
+            models.TextSendMessage(text=f'Invalid Cart#'))
         return
 
     # 3.3. match[1] Customer name
