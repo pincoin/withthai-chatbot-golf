@@ -112,34 +112,33 @@ def command_new(event, line_bot_api, **kwargs):
             models.TextSendMessage(text='Invalid Booking Data'))
         return
 
-    logger.debug(f'{fees[0].selling_price} {fees[0].season.caddie_fee_selling_price} {fees[0].season.cart_fee_selling_price}')
+    logger.debug(
+        f'{fees[0].selling_price} {fees[0].season.caddie_fee_selling_price} {fees[0].season.cart_fee_selling_price}')
 
-    '''
     # 4. Calculate fees
     # 4.1. Green fee
-    order_product_list = []
-
     green_fee = golf_models.GolfBookingOrderProduct()
     green_fee.product = golf_models.GolfBookingOrderProduct.PRODUCT_CHOICES.green_fee
-    green_fee.list_price = 0
-    green_fee.selling_price = 0
-    green_fee.quantity = int(match[4])
+    green_fee.list_price = fees[0].list_price
+    green_fee.selling_price = fees[0].selling_price
+    green_fee.quantity = pax
 
     # 4.2. Caddie fee
     caddie_fee = golf_models.GolfBookingOrderProduct()
     caddie_fee.product = golf_models.GolfBookingOrderProduct.PRODUCT_CHOICES.caddie_fee
-    caddie_fee.list_price = 0
-    caddie_fee.selling_price = 0
-    caddie_fee.quantity = int(match[4])
+    caddie_fee.list_price = fees[0].season.caddie_fee_list_price
+    caddie_fee.selling_price = fees[0].season.caddie_fee_selling_price
+    caddie_fee.quantity = pax
 
     # 4.3. Cart fee
-    if int(match[5]) > 0:
+    cart_fee = None
+
+    if cart > 0:
         cart_fee = golf_models.GolfBookingOrderProduct()
         cart_fee.product = golf_models.GolfBookingOrderProduct.PRODUCT_CHOICES.cart_fee
-        cart_fee.list_price = 0
-        cart_fee.selling_price = 0
-        cart_fee.quantity = int(match[5])
-    '''
+        cart_fee.list_price = fees[0].season.cart_fee_list_price
+        cart_fee.selling_price = fees[0].season.cart_fee_selling_price
+        cart_fee.quantity = cart
 
     # 5. Save models
     order = golf_models.GolfBookingOrder()
@@ -150,16 +149,22 @@ def command_new(event, line_bot_api, **kwargs):
     order.round_time = round_time
     order.pax = pax
     order.cart = cart
-    order.total_list_price = 0
-    order.total_selling_price = 0
+    order.total_list_price = green_fee.list_price_subtotal + caddie_fee.list_price_subtotal \
+                             + cart_fee.list_price_subtotal if cart_fee else 0
+    order.total_selling_price = green_fee.subtotal + caddie_fee.subtotal \
+                                + cart_fee.subtotal if cart_fee else 0
     order.order_status = order.ORDER_STATUS_CHOICES.open
     order.payment_status = order.PAYMENT_STATUS_CHOICES.unpaid
     order.save()
 
-    '''
     green_fee.order = order
     caddie_fee.order = order
-    '''
+
+    if not cart_fee:
+        cart_fee.order = order
+
+    golf_models.GolfBookingOrderProduct.objects \
+        .bulk_create([green_fee, caddie_fee, cart_fee] if cart_fee else [green_fee, caddie_fee])
 
     # 5. Notification to golf club
     notification = f'{match[1]} {match[2]} {match[3]} {match[4]} {match[5]}'
