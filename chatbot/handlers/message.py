@@ -52,9 +52,16 @@ def command_new(event, line_bot_api, **kwargs):
 
     # 3.2. match[5] CART
     if not validators.validate_cart(cart := int(match[5]), pax, golf_club=golf_club):
+        error_message = 'Invalid Cart#'
+
+        if golf_club.cart_compulsory == 1:
+            error_message = 'Invalid Cart#: Cart required'
+        elif golf_club.cart_compulsory > 1:
+            error_message = f'Invalid Cart#: Cart required {golf_club.cart_compulsory}+ Golfer'
+
         line_bot_api.reply_message(
             event.reply_token,
-            models.TextSendMessage(text=f'Invalid Cart#'))
+            models.TextSendMessage(text=error_message))
         return
 
     # 3.3. match[1] Customer name
