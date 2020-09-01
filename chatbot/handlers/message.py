@@ -122,6 +122,7 @@ def command_new(event, line_bot_api, **kwargs):
     green_fee.list_price = fees[0].list_price
     green_fee.selling_price = fees[0].selling_price
     green_fee.quantity = pax
+    green_fee.customer_group = membership.customer_group
 
     # 4.2. Caddie fee
     caddie_fee = golf_models.GolfBookingOrderProduct()
@@ -129,6 +130,7 @@ def command_new(event, line_bot_api, **kwargs):
     caddie_fee.list_price = fees[0].season.caddie_fee_list_price
     caddie_fee.selling_price = fees[0].season.caddie_fee_selling_price
     caddie_fee.quantity = pax
+    caddie_fee.customer_group = membership.customer_group
 
     # 4.3. Cart fee
     cart_fee = None
@@ -139,6 +141,7 @@ def command_new(event, line_bot_api, **kwargs):
         cart_fee.list_price = fees[0].season.cart_fee_list_price
         cart_fee.selling_price = fees[0].season.cart_fee_selling_price
         cart_fee.quantity = cart
+        cart_fee.customer_group = membership.customer_group
 
     # 5. Save models
     order = golf_models.GolfBookingOrder()
