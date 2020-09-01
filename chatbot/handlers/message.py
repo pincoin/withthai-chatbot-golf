@@ -1,5 +1,4 @@
 import datetime
-import logging
 
 from django.utils import timezone
 from linebot import models
@@ -11,8 +10,6 @@ from .. import validators
 
 
 def command_new(event, line_bot_api, **kwargs):
-    logger = logging.getLogger(__name__)
-
     golf_club = kwargs['golf_club']
     match = kwargs['match']
 
@@ -111,9 +108,6 @@ def command_new(event, line_bot_api, **kwargs):
             event.reply_token,
             models.TextSendMessage(text='Invalid Booking Data'))
         return
-
-    logger.debug(
-        f'{fees[0].selling_price} {fees[0].season.caddie_fee_selling_price} {fees[0].season.cart_fee_selling_price}')
 
     # 4. Calculate fees
     # 4.1. Green fee
