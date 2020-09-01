@@ -13,9 +13,8 @@ def command_new(event, line_bot_api, **kwargs):
     match = kwargs['match']
 
     # New "John Doe" 2020-08-10 12:30 3PAX 3CART
-    # 1. Check if 2 unpaid booking exist
 
-    # 2. Retrieve LINE user
+    # 1. Retrieve LINE user
     try:
         membership = golf_models.LineUserMembership.objects \
             .select_related('line_user', 'customer_group') \
@@ -28,7 +27,7 @@ def command_new(event, line_bot_api, **kwargs):
         return
 
     # 2. Check if N unpaid booking exist
-    if count := golf_models.GolfBookingOrder.objects \
+    if (count := golf_models.GolfBookingOrder.objects \
                         .filter(golf_club=golf_club,
                                 line_user=membership.line_user,
                                 order_status__in=[golf_models.GolfBookingOrder.ORDER_STATUS_CHOICES.open,
@@ -36,7 +35,7 @@ def command_new(event, line_bot_api, **kwargs):
                                                   golf_models.GolfBookingOrder.ORDER_STATUS_CHOICES.accepted,
                                                   golf_models.GolfBookingOrder.ORDER_STATUS_CHOICES.confirmed],
                                 payment_status=golf_models.GolfBookingOrder.PAYMENT_STATUS_CHOICES.unpaid) \
-                        .count() >= golf_club.multiple_booking_orders:
+                        .count()) >= golf_club.multiple_booking_orders:
         line_bot_api.reply_message(
             event.reply_token,
             models.TextSendMessage(
