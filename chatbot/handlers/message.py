@@ -160,14 +160,18 @@ def command_new(event, line_bot_api, **kwargs):
     order.payment_status = order.PAYMENT_STATUS_CHOICES.unpaid
     order.save()
 
+    logger.debug(f'{order}')
+
     green_fee.order = order
+    green_fee.save()
+    logger.debug(f'{green_fee}')
+
     caddie_fee.order = order
+    caddie_fee.save()
 
     if not cart_fee:
         cart_fee.order = order
-
-    golf_models.GolfBookingOrderProduct.objects \
-        .bulk_create([green_fee, caddie_fee, cart_fee] if cart_fee else [green_fee, caddie_fee])
+        cart_fee.save()
 
     # 5. Notification to golf club
     notification = f'{match[1]} {match[2]} {match[3]} {match[4]} {match[5]}'
