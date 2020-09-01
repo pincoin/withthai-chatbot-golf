@@ -33,35 +33,36 @@ class CallbackView(generic.View):
 
         @self.handler.add(models.MessageEvent, message=models.TextMessage)
         def handle_message(event):
-            text = event.message.text.strip().lower()
+            text = event.message.text.strip()
+            text_lowercase = text.lower()
 
             if match := re \
                     .compile('New\s"(.+)"\s(\d\d\d\d-\d\d-\d\d)\s(\d\d:\d\d)\s(\d)\sGOLFER\s(\d)\sCART', re.I) \
                     .match(text):
                 message.command_new(event, self.line_bot_api, match=match, golf_club=golf_club)
-            elif text == 'booking':
+            elif text_lowercase == 'booking':
                 message.command_booking(event, self.line_bot_api)
-            elif text in ['price', 'rate', 'fee']:
+            elif text_lowercase in ['price', 'rate', 'fee']:
                 message.command_price(event, self.line_bot_api)
-            elif text in ['course', 'club']:
+            elif text_lowercase in ['course', 'club']:
                 message.command_course(event, self.line_bot_api, golf_club=golf_club)
-            elif text in ['promotions', 'promotion']:
+            elif text_lowercase in ['promotions', 'promotion']:
                 message.command_promotions(event, self.line_bot_api)
-            elif text in ['deals', 'deal', 'hot']:
+            elif text_lowercase in ['deals', 'deal', 'hot']:
                 message.command_deals(event, self.line_bot_api)
-            elif text in ['coupons', 'coupon']:
+            elif text_lowercase in ['coupons', 'coupon']:
                 message.command_coupons(event, self.line_bot_api)
-            elif text in ['settings', 'profile']:
+            elif text_lowercase in ['settings', 'profile']:
                 message.command_settings(event, self.line_bot_api)
-            elif text in ['location', 'map']:
+            elif text_lowercase in ['location', 'map']:
                 message.command_location(event, self.line_bot_api, golf_club=golf_club)
-            elif text in ['caddies', 'caddie']:
+            elif text_lowercase in ['caddies', 'caddie']:
                 message.command_caddies(event, self.line_bot_api)
-            elif text == 'layout':
+            elif text_lowercase == 'layout':
                 message.command_layout(event, self.line_bot_api)
-            elif text in ['hotels', 'hotel', 'accommodation', 'accommodations']:
+            elif text_lowercase in ['hotels', 'hotel', 'accommodation', 'accommodations']:
                 message.command_hotels(event, self.line_bot_api)
-            elif text in ['restaurants', 'restaurant', 'food']:
+            elif text_lowercase in ['restaurants', 'restaurant', 'food']:
                 message.command_restaurants(event, self.line_bot_api)
             else:
                 self.line_bot_api.reply_message(
