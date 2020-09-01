@@ -57,7 +57,10 @@ def command_new(event, line_bot_api, **kwargs):
         if golf_club.cart_compulsory == 1:
             error_message = 'Invalid Cart#: Cart required'
         elif golf_club.cart_compulsory > 1:
-            error_message = f'Invalid Cart#: Cart required {golf_club.cart_compulsory}+ Golfer'
+            if pax >= golf_club.cart_compulsory:
+                error_message = f'Invalid Cart#: Cart required {golf_club.cart_compulsory}+ Golfer'
+            else:
+                error_message = 'Invalid Cart#'
 
         line_bot_api.reply_message(
             event.reply_token,
