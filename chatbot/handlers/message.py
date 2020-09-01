@@ -112,7 +112,7 @@ def command_new(event, line_bot_api, **kwargs):
             models.TextSendMessage(text='Invalid Booking Data'))
         return
 
-    logger.debug(f'{fees[0].selling_price} {fees[0].caddie_fee_selling_price} {fees[0].cart_fee_selling_price}')
+    logger.debug(f'{fees[0].selling_price} {fees[0].season.caddie_fee_selling_price} {fees[0].season.cart_fee_selling_price}')
 
     '''
     # 4. Calculate fees

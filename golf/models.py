@@ -575,7 +575,7 @@ class Season(model_utils_models.TimeStampedModel):
         help_text=_('THB'),
     )
 
-    cart_selling_price = models.DecimalField(
+    cart_fee_selling_price = models.DecimalField(
         verbose_name=_('Cart fee selling price'),
         max_digits=11,
         decimal_places=2,
