@@ -357,6 +357,11 @@ class GolfClub(model_utils_models.TimeStampedModel):
         default=False,
     )
 
+    multiple_booking_orders = models.PositiveIntegerField(
+        verbose_name=_('Multiple booking orders'),
+        default=1,
+    )
+
     caddie_compulsory = models.IntegerField(
         verbose_name=_('Caddie compulsory'),
         choices=CADDIE_COMPULSORY_CHOICES,
