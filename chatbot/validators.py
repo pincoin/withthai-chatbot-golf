@@ -1,3 +1,5 @@
+import re
+
 from django.utils import timezone
 
 from . import utils
@@ -78,5 +80,8 @@ def validate_cart(cart, pax, **kwargs):
     return True
 
 
-def validate_customer_name():
-    return True
+def validate_customer_name(customer_name, **kwargs):
+    if re.compile(u'^[\u0E00-\u0E7F A-Za-z0-9]+$', re.UNICODE).match(customer_name):
+        return True
+
+    return False

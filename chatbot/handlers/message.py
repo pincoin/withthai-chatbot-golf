@@ -39,7 +39,7 @@ def command_new(event, line_bot_api, **kwargs):
         line_bot_api.reply_message(
             event.reply_token,
             models.TextSendMessage(
-                text=f'You cannot make a new booking because you already have unpaid {count} booking orders'))
+                text=f'You cannot make a new booking because you already have the unpaid {count} booking orders'))
         return
 
     # 3. Message data validation
@@ -58,6 +58,11 @@ def command_new(event, line_bot_api, **kwargs):
         return
 
     # 3.3. match[1] Customer name
+    if not validators.validate_customer_name(customer_name := match[1]):
+        line_bot_api.reply_message(
+            event.reply_token,
+            models.TextSendMessage(text=f'Invalid customer name: Your name must be written in Thai or English.'))
+        return
 
     # 3.4. match[2] Round date
     if not validators.validate_round_date(round_date := timezone.datetime.strptime(match[2], '%Y-%m-%d'),
@@ -103,7 +108,7 @@ def command_new(event, line_bot_api, **kwargs):
     order = golf_models.GolfBookingOrder()
     order.golf_club = golf_club
     order.line_user = membership.line_user
-    order.fullname = match[1]
+    order.fullname = customer_name
     order.round_date = round_date
     order.round_time = round_time
     order.pax = pax
