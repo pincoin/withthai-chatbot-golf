@@ -12,7 +12,7 @@ def command_new(event, line_bot_api, **kwargs):
     golf_club = kwargs['golf_club']
     match = kwargs['match']
 
-    # New "John Doe" 2020-08-10 12:30 3GOLFER 3CART
+    # New "John Doe" 2020-08-10 12:30 3 GOLFER 3 CART
 
     # 1. Retrieve LINE user
     try:

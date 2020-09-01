@@ -36,7 +36,7 @@ class CallbackView(generic.View):
             text = event.message.text.strip().lower()
 
             if match := re \
-                    .compile('New\s"(.+)"\s(\d\d\d\d-\d\d-\d\d)\s(\d\d:\d\d)\s(\d)GOLFER\s(\d)CART', re.I) \
+                    .compile('New\s"(.+)"\s(\d\d\d\d-\d\d-\d\d)\s(\d\d:\d\d)\s(\d)\sGOLFER\s(\d)\sCART', re.I) \
                     .match(text):
                 message.command_new(event, self.line_bot_api, match=match, golf_club=golf_club)
             elif text == 'booking':
