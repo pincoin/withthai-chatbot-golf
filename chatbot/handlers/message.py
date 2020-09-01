@@ -36,7 +36,7 @@ def command_new(event, line_bot_api, **kwargs):
         return
 
     # 3.2. match[5] CART
-    if not validators.validate_cart(cart := int(match[5]), golf_club=golf_club):
+    if not validators.validate_cart(cart := int(match[5]), pax, golf_club=golf_club):
         line_bot_api.reply_message(
             event.reply_token,
             models.TextSendMessage(text=f'Invalid Cart'))

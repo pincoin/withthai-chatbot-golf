@@ -57,7 +57,7 @@ def validate_pax(pax, **kwargs):
     return False
 
 
-def validate_cart(cart, **kwargs):
+def validate_cart(cart, pax, **kwargs):
     golf_club = kwargs['golf_club']
 
     min_pax = 0
@@ -72,7 +72,7 @@ def validate_cart(cart, **kwargs):
         else:
             min_pax = 0
 
-    if cart > golf_club.max_pax or cart < min_pax:
+    if cart > pax or cart < min_pax:
         return False
 
     return True
