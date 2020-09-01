@@ -267,7 +267,7 @@ function validatePax(pax, errorNotification) {
     return true;
 }
 
-function validateCart(cart, errorNotification) {
+function validateCart(cart, pax, errorNotification) {
     let min_pax = 0;
 
     if (golf_club['cart_compulsory'] === 0) {
@@ -281,7 +281,7 @@ function validateCart(cart, errorNotification) {
             min_pax = 0;
         }
     }
-    if (Number(cart.value) > golf_club['max_pax'] || Number(cart.value) < min_pax) {
+    if (Number(cart.value) > Number(pax.value) || Number(cart.value) < min_pax) {
         cart.error_field();
 
         errorNotification.textContent = 'Cart is not available.';
@@ -319,7 +319,7 @@ function validateForm(roundDate, roundTime, pax, cart, customerName, errorNotifi
     if (!validatePax(pax, errorNotification)) {
         return false;
     }
-    if (!validateCart(cart, errorNotification)) {
+    if (!validateCart(cart, pax, errorNotification)) {
         return false;
     }
     return validateCustomerName(customerName, errorNotification);
@@ -447,7 +447,7 @@ function runApp() {
                 if (validateRoundDate(roundDate, errorNotification)
                     && validateRoundTime(roundTime, errorNotification)
                     && validatePax(pax, errorNotification)
-                    && validateCart(cart, errorNotification)) {
+                    && validateCart(cart, pax, errorNotification)) {
                     const fee = calculateFees(roundDate, roundTime, pax, cart, customerGroup);
 
                     displayQuotation(greenFeeUnitPrice, greenFeePax, greenFeeAmount,
