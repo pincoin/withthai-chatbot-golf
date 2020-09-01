@@ -18,6 +18,7 @@ def validate_round_date(round_date, **kwargs):
         next_day += 1
 
     min_date = now + timezone.timedelta(days=golf_club.weekdays_min_in_advance + next_day)
+    min_date = min_date.replace(hour=0, minute=0, second=0, microsecond=0)
 
     if holiday:
         if golf_club.weekend_booking_on_monday:
