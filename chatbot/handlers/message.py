@@ -36,11 +36,15 @@ def command_new(event, line_bot_api, **kwargs):
         return
 
     # 3.2. match[5] CART
-    cart = int(match[5])
+    if not validators.validate_cart(cart := int(match[5]), golf_club=golf_club):
+        line_bot_api.reply_message(
+            event.reply_token,
+            models.TextSendMessage(text=f'Invalid Cart'))
+        return
 
     # 3.3. match[1] Customer name
 
-    # 3.4. match[2] Round date book availability check
+    # 3.4. match[2] Round date
     if not validators.validate_round_date(round_date := timezone.datetime.strptime(match[2], '%Y-%m-%d'),
                                           golf_club=golf_club):
         line_bot_api.reply_message(
@@ -51,9 +55,7 @@ def command_new(event, line_bot_api, **kwargs):
     # 3.5. match[3] Round time
     round_time = timezone.datetime.strptime(match[3], '%H:%M').time()
 
-    # Season & timeslot & weekday/holiday & customer group & club &
-
-    # Name check
+    # Season & timeslot & weekday/holiday & customer group & club
 
     '''
     # 4. Calculate fees
