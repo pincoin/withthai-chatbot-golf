@@ -23,7 +23,7 @@ def command_new(event, line_bot_api, **kwargs):
     except golf_models.LineUserMembership.DoesNotExist:
         line_bot_api.reply_message(
             event.reply_token,
-            models.TextSendMessage(text='Invalid golf course or LINE ID'))
+            models.TextSendMessage(text='Invalid Golf Course or LINE ID'))
         return
 
     # 2. Check if N unpaid booking exist
@@ -68,7 +68,7 @@ def command_new(event, line_bot_api, **kwargs):
     if not validators.validate_customer_name(customer_name := match[1]):
         line_bot_api.reply_message(
             event.reply_token,
-            models.TextSendMessage(text=f'Invalid customer name: Your name must be written in Thai or English.'))
+            models.TextSendMessage(text='Invalid Customer Name: Your name must be written in Thai or English.'))
         return
 
     # 3.4. match[2] Round date
@@ -76,7 +76,7 @@ def command_new(event, line_bot_api, **kwargs):
                                           golf_club=golf_club):
         line_bot_api.reply_message(
             event.reply_token,
-            models.TextSendMessage(text=f'Invalid round date'))
+            models.TextSendMessage(text=f'Invalid Round Date'))
         return
 
     # 3.5. match[3] Round time
