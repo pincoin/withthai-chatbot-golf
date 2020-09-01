@@ -41,6 +41,7 @@ def command_new(event, line_bot_api, **kwargs):
             event.reply_token,
             models.TextSendMessage(
                 text=f'You cannot make a new booking because you already have unpaid {count} booking orders'))
+        return
 
     # 3. Message data validation
     # 3.1 match[4] PAX
