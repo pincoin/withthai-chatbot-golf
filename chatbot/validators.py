@@ -2,6 +2,7 @@ import re
 
 from django.utils import timezone
 
+from golf import models as golf_models
 from . import utils
 
 
@@ -47,8 +48,22 @@ def validate_round_date(round_date, **kwargs):
     return True
 
 
-def validate_round_time():
-    return True
+def validate_round_time(round_time, **kwargs):
+    golf_club = kwargs['golf_club']
+
+    timeslots = golf_models.Timeslot.objects \
+        .select_related('golf_club') \
+        .filter(golf_club=golf_club) \
+        .order_by('slot_start')
+
+    if len(timeslots) > 0:
+        timeslot_start = timeslots[0].slot_start
+        timeslot_end = timeslots[len(timeslots) - 1].slot_end
+
+        if timeslot_start <= round_time <= timeslot_end:
+            return True
+
+    return False
 
 
 def validate_pax(pax, **kwargs):
