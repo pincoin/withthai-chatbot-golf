@@ -62,18 +62,17 @@ def validate_cart(cart, **kwargs):
 
     min_pax = 0
 
-    if golf_club.golf_club.cart_compulsory == 0:
+    if golf_club.cart_compulsory == 0:
         min_pax = 0
-    elif golf_club.golf_club.cart_compulsory == 1:
-        min_pax = golf_club.golf_club.min_pax
-    elif golf_club.golf_club.cart_compulsory > 1:
-        if golf_club.golf_club.cart_compulsory > 1 \
-                and golf_club.golf_club.cart_compulsory > golf_club.golf_club.min_pax > 1:
-            min_pax = golf_club.golf_club.min_pax
+    elif golf_club.cart_compulsory == 1:
+        min_pax = golf_club.min_pax
+    elif golf_club.cart_compulsory > 1:
+        if golf_club.cart_compulsory > 1 and golf_club.cart_compulsory > golf_club.min_pax > 1:
+            min_pax = golf_club.min_pax
         else:
             min_pax = 0
 
-    if cart > golf_club.golf_club.min_pax or cart < min_pax:
+    if cart > golf_club.min_pax or cart < min_pax:
         return False
 
     return True
