@@ -27,15 +27,15 @@ def command_new(event, line_bot_api, **kwargs):
         return
 
     # 2. Check if N unpaid booking exist
-    if (count := golf_models.GolfBookingOrder.objects \
-                        .filter(golf_club=golf_club,
-                                line_user=membership.line_user,
-                                order_status__in=[golf_models.GolfBookingOrder.ORDER_STATUS_CHOICES.open,
-                                                  golf_models.GolfBookingOrder.ORDER_STATUS_CHOICES.offered,
-                                                  golf_models.GolfBookingOrder.ORDER_STATUS_CHOICES.accepted,
-                                                  golf_models.GolfBookingOrder.ORDER_STATUS_CHOICES.confirmed],
-                                payment_status=golf_models.GolfBookingOrder.PAYMENT_STATUS_CHOICES.unpaid) \
-                        .count()) >= golf_club.multiple_booking_orders:
+    if (count := golf_models.GolfBookingOrder.objects
+            .filter(golf_club=golf_club,
+                    line_user=membership.line_user,
+                    order_status__in=[golf_models.GolfBookingOrder.ORDER_STATUS_CHOICES.open,
+                                      golf_models.GolfBookingOrder.ORDER_STATUS_CHOICES.offered,
+                                      golf_models.GolfBookingOrder.ORDER_STATUS_CHOICES.accepted,
+                                      golf_models.GolfBookingOrder.ORDER_STATUS_CHOICES.confirmed],
+                    payment_status=golf_models.GolfBookingOrder.PAYMENT_STATUS_CHOICES.unpaid)
+            .count()) >= golf_club.multiple_booking_orders:
         line_bot_api.reply_message(
             event.reply_token,
             models.TextSendMessage(
