@@ -72,7 +72,7 @@ def validate_cart(cart, **kwargs):
         else:
             min_pax = 0
 
-    if cart > golf_club.min_pax or cart < min_pax:
+    if cart > golf_club.max_pax or cart < min_pax:
         return False
 
     return True
