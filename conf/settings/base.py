@@ -42,6 +42,7 @@ INSTALLED_APPS += [
     'hotel',
     'chatbot',
     'liff',
+    'console',
 ]
 
 MIDDLEWARE = [
