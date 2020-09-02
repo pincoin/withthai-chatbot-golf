@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-09-02 12:00+0700\n"
+"POT-Creation-Date: 2020-09-02 13:59+0700\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -53,6 +53,18 @@ msgstr "영어"
 #: golf/models.py:596 golf/models.py:699 golf/models.py:891
 msgid "Golf club"
 msgstr "골프장"
+
+#: golf/admin.py:137
+msgid "Promotion"
+msgstr "프로모션"
+
+#: golf/admin.py:140
+msgid "Promotion Conditions"
+msgstr "프로모션 조건"
+
+#: golf/admin.py:145
+msgid "Discount"
+msgstr "할인"
 
 #: golf/apps.py:7
 msgid "golf"
@@ -615,8 +627,8 @@ msgid "Minus"
 msgstr "차감"
 
 #: golf/models.py:886
-msgid "Set"
-msgstr "설정"
+msgid "Assign"
+msgstr "할당"
 
 #: golf/models.py:897
 msgid "Promotion title"

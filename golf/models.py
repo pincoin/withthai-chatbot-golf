@@ -883,7 +883,7 @@ class GolfBookingPromotion(model_utils_models.TimeStampedModel):
     DISCOUNT_METHOD_CHOICES = Choices(
         (0, 'percent', _('Percent')),
         (1, 'minus', _('Minus')),
-        (2, 'set', _('Set')),
+        (2, 'assign', _('Assign')),
     )
 
     golf_club = models.ForeignKey(
@@ -983,7 +983,7 @@ class GolfBookingPromotion(model_utils_models.TimeStampedModel):
         null=True,
     )
 
-    customer_group = models.ForeignKey(
+    condition_customer_group = models.ForeignKey(
         'golf.CustomerGroup',
         verbose_name=_('Customer group condition'),
         blank=True,

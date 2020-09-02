@@ -132,6 +132,25 @@ class GolfBookingOrderAdmin(admin.ModelAdmin):
     ordering = ['-round_date', 'round_time']
 
 
+class GolfBookingPromotionAdmin(admin.ModelAdmin):
+    list_display = ('golf_club', 'title', 'promotion_start', 'promotion_end', 'active')
+    list_filter = ('golf_club__title_english',)
+    fieldsets = (
+        (_('Promotion'), {
+            'fields': ('golf_club', 'title', 'promotion_start', 'promotion_end', 'active')
+        }),
+        (_('Promotion Conditions'), {
+            'fields': ('condition_monday', 'condition_tuesday', 'condition_wednesday', 'condition_thursday',
+                       'condition_friday', 'condition_saturday', 'condition_sunday', 'condition_holiday',
+                       'condition_time_start', 'condition_time_end',
+                       'condition_pax', 'condition_cart', 'condition_customer_group')
+        }),
+        (_('Discount'), {
+            'fields': ('discount_fee', 'discount_method', 'discount_amount')
+        }),
+    )
+
+
 admin.site.register(models.Holiday, HolidayAdmin)
 admin.site.register(models.Area, AreaAdmin)
 admin.site.register(models.Province, ProvinceAdmin)
@@ -143,3 +162,4 @@ admin.site.register(models.CustomerGroup, CustomerGroupAdmin)
 admin.site.register(models.Season, SeasonAdmin)
 admin.site.register(models.Timeslot, TimeslotAdmin)
 admin.site.register(models.GolfBookingOrder, GolfBookingOrderAdmin)
+admin.site.register(models.GolfBookingPromotion, GolfBookingPromotionAdmin)
