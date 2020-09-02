@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-09-01 14:24+0700\n"
+"POT-Creation-Date: 2020-09-02 12:00+0700\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -50,7 +50,7 @@ msgid "English"
 msgstr "영어"
 
 #: golf/admin.py:66 golf/models.py:399 golf/models.py:498 golf/models.py:539
-#: golf/models.py:596 golf/models.py:699
+#: golf/models.py:596 golf/models.py:699 golf/models.py:891
 msgid "Golf club"
 msgstr "골프장"
 
@@ -477,7 +477,7 @@ msgstr "정가"
 msgid "Selling price"
 msgstr "판매가"
 
-#: golf/models.py:671 golf/models.py:672 golf/models.py:813
+#: golf/models.py:671 golf/models.py:672 golf/models.py:813 golf/models.py:877
 msgid "Green fee"
 msgstr "그린피"
 
@@ -578,11 +578,11 @@ msgstr "골프 예약 주문"
 msgid "Golf booking orders"
 msgstr "골프 예약 주문"
 
-#: golf/models.py:814
+#: golf/models.py:814 golf/models.py:878
 msgid "Caddie fee"
 msgstr "캐디피"
 
-#: golf/models.py:815
+#: golf/models.py:815 golf/models.py:879
 msgid "Cart fee"
 msgstr "카트피"
 
@@ -601,6 +601,110 @@ msgstr "골프 예약 주문 상품"
 #: golf/models.py:869
 msgid "Golf booking order products"
 msgstr "골프 예약 주문 상품"
+
+#: golf/models.py:880
+msgid "Total amount"
+msgstr "합계금액"
+
+#: golf/models.py:884
+msgid "Percent"
+msgstr "비율"
+
+#: golf/models.py:885
+msgid "Minus"
+msgstr "차감"
+
+#: golf/models.py:886
+msgid "Set"
+msgstr "설정"
+
+#: golf/models.py:897
+msgid "Promotion title"
+msgstr "프로모션 이름"
+
+#: golf/models.py:902
+msgid "Promotion start date"
+msgstr "프로모션 시작일"
+
+#: golf/models.py:906
+msgid "Promotion end date"
+msgstr "프로모션 종료일"
+
+#: golf/models.py:910
+msgid "Promotion active"
+msgstr "프로모션 활성"
+
+#: golf/models.py:915
+msgid "Monday condition"
+msgstr "월요일 조건"
+
+#: golf/models.py:921
+msgid "Tuesday condition"
+msgstr "화요일 조건"
+
+#: golf/models.py:927
+msgid "Wednesday condition"
+msgstr "수요일 조건"
+
+#: golf/models.py:933
+msgid "Thursday condition"
+msgstr "목요일 조건"
+
+#: golf/models.py:939
+msgid "Friday condition"
+msgstr "금요일 조건"
+
+#: golf/models.py:945
+msgid "Saturday condition"
+msgstr "토요일 조건"
+
+#: golf/models.py:951
+msgid "Sunday condition"
+msgstr "일요일 조건"
+
+#: golf/models.py:957
+msgid "Holiday condition"
+msgstr "공휴일 조건"
+
+#: golf/models.py:963
+msgid "Time start condition"
+msgstr "시작 시간 조건"
+
+#: golf/models.py:969
+msgid "Time end condition"
+msgstr "시간 종료 조건"
+
+#: golf/models.py:975
+msgid "PAX condition"
+msgstr "인원수 조건"
+
+#: golf/models.py:981
+msgid "Cart condition"
+msgstr "카트수량 조건"
+
+#: golf/models.py:988
+msgid "Customer group condition"
+msgstr "고객 그룹 조건"
+
+#: golf/models.py:996
+msgid "Discount fee"
+msgstr "할인대상"
+
+#: golf/models.py:1003
+msgid "Discount method"
+msgstr "할인방법"
+
+#: golf/models.py:1010
+msgid "Discount amount"
+msgstr "할인액"
+
+#: golf/models.py:1017
+msgid "Golf booking promotion"
+msgstr "골프 예약 프로모션"
+
+#: golf/models.py:1018
+msgid "Golf booking promotions"
+msgstr "골프 예약 프로모션"
 
 #: hotel/apps.py:7
 msgid "hotel"

@@ -870,3 +870,152 @@ class GolfBookingOrderProduct(model_utils_models.TimeStampedModel):
 
     def __str__(self):
         return f'order - {self.order.order_no} / product - {self.get_product_display()}'
+
+
+class GolfBookingPromotion(model_utils_models.TimeStampedModel):
+    DISCOUNT_FEE_CHOICES = Choices(
+        (0, 'green_fee', _('Green fee')),
+        (1, 'caddie_fee', _('Caddie fee')),
+        (2, 'cart_fee', _('Cart fee')),
+        (3, 'total', _('Total amount')),
+    )
+
+    DISCOUNT_METHOD_CHOICES = Choices(
+        (0, 'percent', _('Percent')),
+        (1, 'minus', _('Minus')),
+        (2, 'set', _('Set')),
+    )
+
+    golf_club = models.ForeignKey(
+        'golf.GolfClub',
+        verbose_name=_('Golf club'),
+        db_index=True,
+        on_delete=models.CASCADE,
+    )
+
+    title = models.CharField(
+        verbose_name=_('Promotion title'),
+        max_length=255,
+    )
+
+    promotion_start = models.DateField(
+        verbose_name=_('Promotion start date'),
+    )
+
+    promotion_end = models.DateField(
+        verbose_name=_('Promotion end date'),
+    )
+
+    active = models.BooleanField(
+        verbose_name=_('Promotion active'),
+        default=True,
+    )
+
+    condition_monday = models.BooleanField(
+        verbose_name=_('Monday condition'),
+        blank=True,
+        null=True,
+    )
+
+    condition_tuesday = models.BooleanField(
+        verbose_name=_('Tuesday condition'),
+        blank=True,
+        null=True,
+    )
+
+    condition_wednesday = models.BooleanField(
+        verbose_name=_('Wednesday condition'),
+        blank=True,
+        null=True,
+    )
+
+    condition_thursday = models.BooleanField(
+        verbose_name=_('Thursday condition'),
+        blank=True,
+        null=True,
+    )
+
+    condition_friday = models.BooleanField(
+        verbose_name=_('Friday condition'),
+        blank=True,
+        null=True,
+    )
+
+    condition_saturday = models.BooleanField(
+        verbose_name=_('Saturday condition'),
+        blank=True,
+        null=True,
+    )
+
+    condition_sunday = models.BooleanField(
+        verbose_name=_('Sunday condition'),
+        blank=True,
+        null=True,
+    )
+
+    condition_holiday = models.BooleanField(
+        verbose_name=_('Holiday condition'),
+        blank=True,
+        null=True,
+    )
+
+    condition_time_start = models.TimeField(
+        verbose_name=_('Time start condition'),
+        blank=True,
+        null=True,
+    )
+
+    condition_time_end = models.TimeField(
+        verbose_name=_('Time end condition'),
+        blank=True,
+        null=True,
+    )
+
+    condition_pax = models.IntegerField(
+        verbose_name=_('PAX condition'),
+        blank=True,
+        null=True,
+    )
+
+    condition_cart = models.IntegerField(
+        verbose_name=_('Cart condition'),
+        blank=True,
+        null=True,
+    )
+
+    customer_group = models.ForeignKey(
+        'golf.CustomerGroup',
+        verbose_name=_('Customer group condition'),
+        blank=True,
+        null=True,
+        db_index=True,
+        on_delete=models.CASCADE,
+    )
+
+    discount_fee = models.IntegerField(
+        verbose_name=_('Discount fee'),
+        choices=DISCOUNT_FEE_CHOICES,
+        default=DISCOUNT_FEE_CHOICES.green_fee,
+        db_index=True,
+    )
+
+    discount_method = models.IntegerField(
+        verbose_name=_('Discount method'),
+        choices=DISCOUNT_METHOD_CHOICES,
+        default=DISCOUNT_METHOD_CHOICES.percent,
+        db_index=True,
+    )
+
+    discount_amount = models.DecimalField(
+        verbose_name=_('Discount amount'),
+        max_digits=10,
+        decimal_places=7,
+        default=0,
+    )
+
+    class Meta:
+        verbose_name = _('Golf booking promotion')
+        verbose_name_plural = _('Golf booking promotions')
+
+    def __str__(self):
+        return f'{self.title}'

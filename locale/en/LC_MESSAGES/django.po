@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-09-01 14:24+0700\n"
+"POT-Creation-Date: 2020-09-02 12:00+0700\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -50,7 +50,7 @@ msgid "English"
 msgstr ""
 
 #: golf/admin.py:66 golf/models.py:399 golf/models.py:498 golf/models.py:539
-#: golf/models.py:596 golf/models.py:699
+#: golf/models.py:596 golf/models.py:699 golf/models.py:891
 msgid "Golf club"
 msgstr ""
 
@@ -477,7 +477,7 @@ msgstr ""
 msgid "Selling price"
 msgstr ""
 
-#: golf/models.py:671 golf/models.py:672 golf/models.py:813
+#: golf/models.py:671 golf/models.py:672 golf/models.py:813 golf/models.py:877
 msgid "Green fee"
 msgstr ""
 
@@ -578,11 +578,11 @@ msgstr ""
 msgid "Golf booking orders"
 msgstr ""
 
-#: golf/models.py:814
+#: golf/models.py:814 golf/models.py:878
 msgid "Caddie fee"
 msgstr ""
 
-#: golf/models.py:815
+#: golf/models.py:815 golf/models.py:879
 msgid "Cart fee"
 msgstr ""
 
@@ -600,6 +600,110 @@ msgstr ""
 
 #: golf/models.py:869
 msgid "Golf booking order products"
+msgstr ""
+
+#: golf/models.py:880
+msgid "Total amount"
+msgstr ""
+
+#: golf/models.py:884
+msgid "Percent"
+msgstr ""
+
+#: golf/models.py:885
+msgid "Minus"
+msgstr ""
+
+#: golf/models.py:886
+msgid "Set"
+msgstr ""
+
+#: golf/models.py:897
+msgid "Promotion title"
+msgstr ""
+
+#: golf/models.py:902
+msgid "Promotion start date"
+msgstr ""
+
+#: golf/models.py:906
+msgid "Promotion end date"
+msgstr ""
+
+#: golf/models.py:910
+msgid "Promotion active"
+msgstr ""
+
+#: golf/models.py:915
+msgid "Monday condition"
+msgstr ""
+
+#: golf/models.py:921
+msgid "Tuesday condition"
+msgstr ""
+
+#: golf/models.py:927
+msgid "Wednesday condition"
+msgstr ""
+
+#: golf/models.py:933
+msgid "Thursday condition"
+msgstr ""
+
+#: golf/models.py:939
+msgid "Friday condition"
+msgstr ""
+
+#: golf/models.py:945
+msgid "Saturday condition"
+msgstr ""
+
+#: golf/models.py:951
+msgid "Sunday condition"
+msgstr ""
+
+#: golf/models.py:957
+msgid "Holiday condition"
+msgstr ""
+
+#: golf/models.py:963
+msgid "Time start condition"
+msgstr ""
+
+#: golf/models.py:969
+msgid "Time end condition"
+msgstr ""
+
+#: golf/models.py:975
+msgid "PAX condition"
+msgstr ""
+
+#: golf/models.py:981
+msgid "Cart condition"
+msgstr ""
+
+#: golf/models.py:988
+msgid "Customer group condition"
+msgstr ""
+
+#: golf/models.py:996
+msgid "Discount fee"
+msgstr ""
+
+#: golf/models.py:1003
+msgid "Discount method"
+msgstr ""
+
+#: golf/models.py:1010
+msgid "Discount amount"
+msgstr ""
+
+#: golf/models.py:1017
+msgid "Golf booking promotion"
+msgstr ""
+
+#: golf/models.py:1018
+msgid "Golf booking promotions"
 msgstr ""
 
 #: hotel/apps.py:7
