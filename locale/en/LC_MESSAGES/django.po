@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-09-02 17:54+0700\n"
+"POT-Creation-Date: 2020-09-02 23:26+0700\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -51,6 +51,86 @@ msgstr ""
 
 #: console/apps.py:7
 msgid "console"
+msgstr ""
+
+#: console/templates/console/base.html:30
+msgid "Booking"
+msgstr ""
+
+#: console/templates/console/base.html:34
+msgid "Customers"
+msgstr ""
+
+#: console/templates/console/base.html:39
+msgid "LINE Users"
+msgstr ""
+
+#: console/templates/console/base.html:45
+msgid "Marketing"
+msgstr ""
+
+#: console/templates/console/base.html:50
+msgid "Promotions"
+msgstr ""
+
+#: console/templates/console/base.html:53
+msgid "Coupons"
+msgstr ""
+
+#: console/templates/console/base.html:56
+msgid "Hot Deals"
+msgstr ""
+
+#: console/templates/console/base.html:62
+msgid "Report"
+msgstr ""
+
+#: console/templates/console/base.html:67
+msgid "Daily Sales"
+msgstr ""
+
+#: console/templates/console/base.html:70
+msgid "Monthly Sales"
+msgstr ""
+
+#: console/templates/console/base.html:73
+msgid "Best Promotions"
+msgstr ""
+
+#: console/templates/console/base.html:76
+msgid "Best Customers"
+msgstr ""
+
+#: console/templates/console/base.html:79
+msgid "Sales by Customer Groups"
+msgstr ""
+
+#: console/templates/console/base.html:82
+msgid "Sales by Payment"
+msgstr ""
+
+#: console/templates/console/base.html:88
+msgid "Settings"
+msgstr ""
+
+#: console/templates/console/base.html:93
+msgid "Golf Club"
+msgstr ""
+
+#: console/templates/console/base.html:96 golf/models.py:587
+msgid "Seasons"
+msgstr ""
+
+#: console/templates/console/base.html:99 golf/models.py:628
+msgid "Timeslots"
+msgstr ""
+
+#: console/templates/console/base.html:102
+msgid "Customer Groups"
+msgstr ""
+
+#: console/templates/console/base.html:105 liff/views.py:138
+msgid "Price Table"
 msgstr ""
 
 #: golf/admin.py:66 golf/models.py:399 golf/models.py:498 golf/models.py:539
@@ -449,10 +529,6 @@ msgstr ""
 msgid "Season"
 msgstr ""
 
-#: golf/models.py:587
-msgid "Seasons"
-msgstr ""
-
 #: golf/models.py:602
 msgid "Weekday"
 msgstr ""
@@ -479,10 +555,6 @@ msgstr ""
 
 #: golf/models.py:627 golf/models.py:651
 msgid "Timeslot"
-msgstr ""
-
-#: golf/models.py:628
-msgid "Timeslots"
 msgstr ""
 
 #: golf/models.py:657 golf/models.py:841
@@ -813,10 +885,6 @@ msgstr ""
 
 #: liff/views.py:19
 msgid "Sample"
-msgstr ""
-
-#: liff/views.py:138
-msgid "Price Table"
 msgstr ""
 
 #: shop/apps.py:7

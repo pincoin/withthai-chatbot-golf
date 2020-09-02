@@ -2,7 +2,7 @@
 <html lang="en">
 {% load i18n static %}
 <head>
-    <title>HOME</title>
+    <title>{% block title %}{% endblock %}</title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -111,10 +111,10 @@
             <div class="navbar-end">
                 <div class="navbar-item">
                     <div class="buttons">
-                        <a class="button is-primary">
+                        <a class="button is-small is-info">
                             <strong>Sign up</strong>
                         </a>
-                        <a class="button is-light">
+                        <a class="button is-small is-light">
                             Log in
                         </a>
                     </div>

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-09-02 17:54+0700\n"
+"POT-Creation-Date: 2020-09-02 23:26+0700\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -52,6 +52,86 @@ msgstr "영어"
 #: console/apps.py:7
 msgid "console"
 msgstr "콘솔"
+
+#: console/templates/console/base.html:30
+msgid "Booking"
+msgstr "예약관리"
+
+#: console/templates/console/base.html:34
+msgid "Customers"
+msgstr "고객관리"
+
+#: console/templates/console/base.html:39
+msgid "LINE Users"
+msgstr "라인 사용자"
+
+#: console/templates/console/base.html:45
+msgid "Marketing"
+msgstr "마케팅"
+
+#: console/templates/console/base.html:50
+msgid "Promotions"
+msgstr "프로모션"
+
+#: console/templates/console/base.html:53
+msgid "Coupons"
+msgstr "쿠폰"
+
+#: console/templates/console/base.html:56
+msgid "Hot Deals"
+msgstr "핫딜"
+
+#: console/templates/console/base.html:62
+msgid "Report"
+msgstr "보고서"
+
+#: console/templates/console/base.html:67
+msgid "Daily Sales"
+msgstr "일간 매출"
+
+#: console/templates/console/base.html:70
+msgid "Monthly Sales"
+msgstr "월간 매출"
+
+#: console/templates/console/base.html:73
+msgid "Best Promotions"
+msgstr "우수 프로모션"
+
+#: console/templates/console/base.html:76
+msgid "Best Customers"
+msgstr "우수 고객"
+
+#: console/templates/console/base.html:79
+msgid "Sales by Customer Groups"
+msgstr "고객 그룹별 매출"
+
+#: console/templates/console/base.html:82
+msgid "Sales by Payment"
+msgstr "결제수단별 매출"
+
+#: console/templates/console/base.html:88
+msgid "Settings"
+msgstr "설정"
+
+#: console/templates/console/base.html:93
+msgid "Golf Club"
+msgstr "골프장"
+
+#: console/templates/console/base.html:96 golf/models.py:587
+msgid "Seasons"
+msgstr "기간"
+
+#: console/templates/console/base.html:99 golf/models.py:628
+msgid "Timeslots"
+msgstr "시간대"
+
+#: console/templates/console/base.html:102
+msgid "Customer Groups"
+msgstr "고객 그룹"
+
+#: console/templates/console/base.html:105 liff/views.py:138
+msgid "Price Table"
+msgstr "요금표"
 
 #: golf/admin.py:66 golf/models.py:399 golf/models.py:498 golf/models.py:539
 #: golf/models.py:596 golf/models.py:699 golf/models.py:891
@@ -449,10 +529,6 @@ msgstr "카트피 판매가"
 msgid "Season"
 msgstr "기간"
 
-#: golf/models.py:587
-msgid "Seasons"
-msgstr "기간"
-
 #: golf/models.py:602
 msgid "Weekday"
 msgstr "평일"
@@ -479,10 +555,6 @@ msgstr "시간대 종료시간"
 
 #: golf/models.py:627 golf/models.py:651
 msgid "Timeslot"
-msgstr "시간대"
-
-#: golf/models.py:628
-msgid "Timeslots"
 msgstr "시간대"
 
 #: golf/models.py:657 golf/models.py:841
@@ -814,10 +886,6 @@ msgstr "닫기"
 #: liff/views.py:19
 msgid "Sample"
 msgstr "예제"
-
-#: liff/views.py:138
-msgid "Price Table"
-msgstr "요금표"
 
 #: shop/apps.py:7
 msgid "shop"
