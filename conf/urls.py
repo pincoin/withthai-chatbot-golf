@@ -18,5 +18,8 @@ urlpatterns = [
     path('liff/',
          include('liff.urls', namespace='liff')),
 
+    path('console/',
+         include('console.urls', namespace='console')),
+
     path('admin/', admin.site.urls),
 ]

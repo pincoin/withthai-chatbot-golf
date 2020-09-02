@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load i18n static %}
+<head>
+    <title>HOME</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/bulma@0.9.0/css/bulma.min.css">
+</head>
+<body>
+<nav class="navbar is-warning" role="navigation" aria-label="main navigation">
+    <div class="container is-fluid">
+        <div class="navbar-brand">
+            <a class="navbar-item" href="https://bulma.io">
+                <img src="{% static 'images/console/logo.png' %}" width="98" height="30" alt="with thai logo">
+            </a>
+
+            <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false"
+               data-target="navbarBasicExample">
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+            </a>
+        </div>
+
+        <div id="navbarBasicExample" class="navbar-menu">
+            <div class="navbar-start">
+                <a class="navbar-item">
+                    {% trans 'Booking' %}
+                </a>
+                <div class="navbar-item has-dropdown is-hoverable">
+                    <a class="navbar-link">
+                        {% trans 'Customers' %}
+                    </a>
+
+                    <div class="navbar-dropdown">
+                        <a class="navbar-item">
+                            {% trans 'LINE Users' %}
+                        </a>
+                    </div>
+                </div>
+                <div class="navbar-item has-dropdown is-hoverable">
+                    <a class="navbar-link">
+                        {% trans 'Marketing' %}
+                    </a>
+
+                    <div class="navbar-dropdown">
+                        <a class="navbar-item">
+                            {% trans 'Promotions' %}
+                        </a>
+                        <a class="navbar-item">
+                            {% trans 'Coupons' %}
+                        </a>
+                        <a class="navbar-item">
+                            {% trans 'Hot Deals' %}
+                        </a>
+                    </div>
+                </div>
+                <div class="navbar-item has-dropdown is-hoverable">
+                    <a class="navbar-link">
+                        {% trans 'Report' %}
+                    </a>
+
+                    <div class="navbar-dropdown">
+                        <a class="navbar-item">
+                            {% trans 'Daily Sales' %}
+                        </a>
+                        <a class="navbar-item">
+                            {% trans 'Monthly Sales' %}
+                        </a>
+                        <a class="navbar-item">
+                            {% trans 'Best Promotions' %}
+                        </a>
+                        <a class="navbar-item">
+                            {% trans 'Best Customers' %}
+                        </a>
+                        <a class="navbar-item">
+                            {% trans 'Sales by Customer Groups' %}
+                        </a>
+                        <a class="navbar-item">
+                            {% trans 'Sales by Payment' %}
+                        </a>
+                    </div>
+                </div>
+                <div class="navbar-item has-dropdown is-hoverable">
+                    <a class="navbar-link">
+                        {% trans 'Settings' %}
+                    </a>
+
+                    <div class="navbar-dropdown">
+                        <a class="navbar-item">
+                            {% trans 'Golf Club' %}
+                        </a>
+                        <a class="navbar-item">
+                            {% trans 'Seasons' %}
+                        </a>
+                        <a class="navbar-item">
+                            {% trans 'Timeslots' %}
+                        </a>
+                        <a class="navbar-item">
+                            {% trans 'Customer Groups' %}
+                        </a>
+                        <a class="navbar-item">
+                            {% trans 'Price Table' %}
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="navbar-end">
+                <div class="navbar-item">
+                    <div class="buttons">
+                        <a class="button is-primary">
+                            <strong>Sign up</strong>
+                        </a>
+                        <a class="button is-light">
+                            Log in
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+{% block content %}
+{% endblock %}
+<script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
+</body>
+</html>

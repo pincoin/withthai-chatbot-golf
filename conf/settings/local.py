@@ -24,6 +24,7 @@ STATICFILES_DIRS = [
     '/home/ubuntu/.pyenv/versions/withthai/lib/python3.8/site-packages/django/contrib/admin/static',
     os.path.join(BASE_DIR, 'conf', 'static'),
     os.path.join(BASE_DIR, 'liff', 'static'),
+    os.path.join(BASE_DIR, 'console', 'static'),
 ]
 STATICFILES_FINDERS = (
     'django.contrib.staticfiles.finders.FileSystemFinder',
