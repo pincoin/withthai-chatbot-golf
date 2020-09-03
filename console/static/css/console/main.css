@@ -16,16 +16,18 @@
 /* Mobile */
 @media (max-width: 1023px) {
     .section-mobile {
-        padding: .5rem;
+        padding: .1rem .5rem;
     }
 
     .section-mobile .container {
-        padding: 0 1rem;
+        padding: 0;
     }
 
     .order-list {
-        padding-top: 1.5rem;
-        border-bottom: 1px solid #000000;
+        margin: 1rem 0;
+        padding: .5rem;
+        box-shadow: 1px 1px 8px 2px rgba(0, 0, 0, 0.2);
+        border-radius: 8px;
     }
 
     .order-list .column {
