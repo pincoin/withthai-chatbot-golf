@@ -1,5 +1,82 @@
 {% extends './base.html' %}
 
+{% load i18n static humanize %}
+
 {% block content %}
-order detail
+<div class="section section-mobile">
+    <div class="container is-fluid order-detail">
+        <div class="columns is-mobile">
+            <div class="column is-5 has-text-right-tablet">
+                {% trans 'Order No' %}
+            </div>
+            <div class="column is-7">
+                {{ order.order_no|truncatechars:9 }}
+            </div>
+        </div>
+        <div class="columns is-mobile">
+            <div class="column is-5 has-text-right-tablet">
+                {% trans 'Customer Name' %}
+            </div>
+            <div class="column is-7">
+                {{ order.fullname }}
+            </div>
+        </div>
+        <div class="columns is-mobile">
+            <div class="column is-5 has-text-right-tablet">
+                {% trans 'Customer Group' %}
+            </div>
+            <div class="column is-7">
+                {{ order.customer_group.title_english }}
+            </div>
+        </div>
+        <div class="columns is-mobile">
+            <div class="column is-5 has-text-right-tablet">
+                {% trans 'Tee-off Date/Time' %}
+            </div>
+            <div class="column is-7">
+                {{ order.round_date|date:'Y-m-d' }} {{ order.round_time|date:'H:i' }}
+            </div>
+        </div>
+        <div class="columns is-mobile">
+            <div class="column is-5 has-text-right-tablet">
+                {% trans 'PAX' %}
+            </div>
+            <div class="column is-7">
+                {{ order.pax }}
+            </div>
+        </div>
+        <div class="columns is-mobile">
+            <div class="column is-5 has-text-right-tablet">
+                {% trans 'Cart' %}
+            </div>
+            <div class="column is-7">
+                {{ order.cart }}
+            </div>
+        </div>
+        <div class="columns is-mobile">
+            <div class="column is-5 has-text-right-tablet">
+                {% trans 'Total' %}
+            </div>
+            <div class="column is-7">
+                {{ order.total_selling_price|floatformat:0|intcomma }} THB
+            </div>
+        </div>
+        <div class="columns is-mobile">
+            <div class="column is-5 has-text-right-tablet">
+                {% trans 'Order Status' %}
+            </div>
+            <div class="column is-7">
+                {{ order.get_order_status_display }}
+            </div>
+        </div>
+        <div class="columns is-mobile">
+            <div class="column is-5 has-text-right-tablet">
+                {% trans 'Payment Status' %}
+            </div>
+            <div class="column is-7">
+                {{ order.get_payment_status_display }}
+            </div>
+        </div>
+    </div>
+</div>
 {% endblock %}

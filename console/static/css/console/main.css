@@ -1,4 +1,8 @@
 /* Common */
+body {
+    font-family: Prompt, "Roboto", "Lucida Grande", "DejaVu Sans", "Bitstream Vera Sans", Verdana, Arial, sans-serif
+}
+
 .no-break-word {
     white-space: nowrap;
     word-break: keep-all;
@@ -40,6 +44,7 @@
     .order-list {
         margin: 1rem 0;
         padding: .5rem;
+
         box-shadow: 1px 1px 8px 2px rgba(0, 0, 0, 0.2);
         border-radius: 8px;
     }
@@ -50,5 +55,20 @@
 
     .pull-mobile-right-desktop-center {
         float: right;
+    }
+
+    .order-detail {
+        margin-top: 1rem;
+
+        box-shadow: 1px 1px 8px 2px rgba(0, 0, 0, 0.2);
+        border-radius: 8px;
+    }
+
+    .order-detail .columns {
+        padding: .4rem;
+    }
+
+    .order-detail .columns .column {
+        padding: 0 .5rem;
     }
 }
