@@ -7,6 +7,11 @@
 
 /* Desktop */
 @media (min-width: 1024px) {
+    .logo {
+        margin-left: 1rem;
+
+    }
+
     .order-list {
         padding: .1rem;
         border-bottom: 1px solid #000000;
@@ -15,6 +20,10 @@
 
 /* Mobile */
 @media (max-width: 1023px) {
+    .mobile-navbar-container {
+        padding: 0 !important;
+    }
+
     .section-mobile {
         padding: .1rem .5rem;
     }
