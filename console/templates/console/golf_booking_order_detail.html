@@ -17,7 +17,7 @@
             <div class="column is-5 has-text-right-tablet">
                 {% trans 'Customer Name' %}
             </div>
-            <div class="column is-7">
+            <div class="column is-7 has-text-weight-bold">
                 {{ order.fullname }}
             </div>
         </div>
@@ -25,7 +25,7 @@
             <div class="column is-5 has-text-right-tablet">
                 {% trans 'Customer Group' %}
             </div>
-            <div class="column is-7">
+            <div class="column is-7 has-text-weight-bold">
                 {{ order.customer_group.title_english }}
             </div>
         </div>
@@ -33,7 +33,8 @@
             <div class="column is-5 has-text-right-tablet">
                 {% trans 'Tee-off Date/Time' %}
             </div>
-            <div class="column is-7">
+            <div class="column is-7 has-text-weight-bold">
+                <i class="fas fa-golf-ball fa-fw"></i>
                 {{ order.round_date|date:'Y-m-d' }} {{ order.round_time|date:'H:i' }}
             </div>
         </div>
@@ -41,15 +42,16 @@
             <div class="column is-5 has-text-right-tablet">
                 {% trans 'PAX' %}
             </div>
-            <div class="column is-7">
-                {{ order.pax }}
+            <div class="column is-7 has-text-weight-bold">
+                <i class="fas fa-users fa-fw"></i> {{ order.pax }}
             </div>
         </div>
         <div class="columns is-mobile">
             <div class="column is-5 has-text-right-tablet">
                 {% trans 'Cart' %}
             </div>
-            <div class="column is-7">
+            <div class="column is-7 has-text-weight-bold">
+                <i class="fas fa-truck-pickup fa-fw"></i>
                 {{ order.cart }}
             </div>
         </div>
@@ -57,7 +59,8 @@
             <div class="column is-5 has-text-right-tablet">
                 {% trans 'Total' %}
             </div>
-            <div class="column is-7">
+            <div class="column is-7 has-text-weight-bold">
+                <i class="fas fa-coins fa-fw"></i>
                 {{ order.total_selling_price|floatformat:0|intcomma }} THB
             </div>
         </div>
@@ -66,7 +69,13 @@
                 {% trans 'Order Status' %}
             </div>
             <div class="column is-7">
-                {{ order.get_order_status_display }}
+                {% if order.order_status == order.ORDER_STATUS_CHOICES.open or order.order_status == order.ORDER_STATUS_CHOICES.offered or order.order_status == order.ORDER_STATUS_CHOICES.accepted %}
+                <span class="tag is-info">{{ order.get_order_status_display }}</span>
+                {% elif order.order_status == order.ORDER_STATUS_CHOICES.confirmed %}
+                <span class="tag is-success">{{ order.get_order_status_display }}</span>
+                {% elif order.order_status == order.ORDER_STATUS_CHOICES.closed %}
+                <span class="tag is-warning">{{ order.get_order_status_display }}</span>
+                {% endif %}
             </div>
         </div>
         <div class="columns is-mobile">
@@ -74,7 +83,13 @@
                 {% trans 'Payment Status' %}
             </div>
             <div class="column is-7">
-                {{ order.get_payment_status_display }}
+                {% if order.payment_status == order.PAYMENT_STATUS_CHOICES.unpaid %}
+                <span class="tag is-info">{{ order.get_payment_status_display }}</span>
+                {% elif order.payment_status == order.PAYMENT_STATUS_CHOICES.paid %}
+                <span class="tag is-success">{{ order.get_payment_status_display }}</span>
+                {% elif order.payment_status == order.PAYMENT_STATUS_CHOICES.refunded %}
+                <span class="tag is-danger">{{ order.get_payment_status_display }}</span>
+                {% endif %}
             </div>
         </div>
     </div>
