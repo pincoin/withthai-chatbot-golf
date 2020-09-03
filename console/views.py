@@ -19,6 +19,7 @@ class GolfBookingOrderListView(generic.ListView):
 
     def get_queryset(self):
         return golf_models.GolfBookingOrder.objects \
+            .select_related('customer_group') \
             .filter(golf_club__slug=self.kwargs['slug']) \
             .order_by('-round_date', 'round_time')
 

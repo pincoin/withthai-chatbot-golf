@@ -3,3 +3,36 @@
     white-space: nowrap;
     word-break: keep-all;
 }
+
+
+/* Desktop */
+@media (min-width: 1024px) {
+    .order-list {
+        padding: .1rem;
+        border-bottom: 1px solid #000000;
+    }
+}
+
+/* Mobile */
+@media (max-width: 1023px) {
+    .section-mobile {
+        padding: .5rem;
+    }
+
+    .section-mobile .container {
+        padding: 0 1rem;
+    }
+
+    .order-list {
+        padding: 1rem 0;
+        border-bottom: 1px solid #000000;
+    }
+
+    .order-list .column {
+        padding: .1rem .3rem;
+    }
+
+    .pull-mobile-right-desktop-center {
+        float: right;
+    }
+}

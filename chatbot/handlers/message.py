@@ -142,6 +142,7 @@ def command_new(event, line_bot_api, **kwargs):
     order.golf_club = golf_club
     order.line_user = membership.line_user
     order.fullname = customer_name
+    order.customer_group = membership.customer_group
     order.round_date = round_date
     order.round_time = round_time
     order.pax = pax

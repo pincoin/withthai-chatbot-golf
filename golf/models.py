@@ -727,6 +727,15 @@ class GolfBookingOrder(model_utils_models.TimeStampedModel):
         blank=True,
     )
 
+    customer_group = models.ForeignKey(
+        'golf.CustomerGroup',
+        verbose_name=_('Customer group'),
+        null=True,
+        blank=True,
+        db_index=True,
+        on_delete=models.SET_NULL,
+    )
+
     round_date = models.DateField(
         verbose_name=_('Round date'),
         db_index=True,
