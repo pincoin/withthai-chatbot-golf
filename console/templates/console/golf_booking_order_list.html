@@ -1,5 +1,54 @@
 {% extends './base.html' %}
 
+{% load static i18n humanize %}
+
 {% block content %}
-list list list
+<div class="section">
+    <div class="container is-fluid px-0">
+        <div class="table-container">
+            <table class="table is-striped is-narrow is-hoverable is-fullwidth">
+                <thead>
+                <tr>
+                    <th class="no-break-word">{% trans 'Order No' %}</th>
+                    <th class="no-break-word">{% trans 'Tee-off Date/Time' %}</th>
+                    <th class="no-break-word">{% trans 'PAX' %}</th>
+                    <th class="no-break-word">{% trans 'Cart' %}</th>
+                    <th class="no-break-word">{% trans 'Customer Name' %}</th>
+                    <th class="no-break-word">{% trans 'Total' %}</th>
+                    <th class="no-break-word">{% trans 'Order Status' %}</th>
+                    <th class="no-break-word">{% trans 'Payment Status' %}</th>
+                </tr>
+                </thead>
+                <tfoot>
+                <tr>
+                </tr>
+                </tfoot>
+                <tbody>
+                {% for order in orders %}
+                <tr>
+                    <td>
+                        <a href="{% url 'console:golf-booking-order-detail' slug order.order_no %}">
+                            {{ order.order_no|truncatechars:11 }}
+                        </a>
+                    </td>
+                    <td>{{ order.round_date}} {{ order.round_time }}</td>
+                    <td>{{ order.pax }}</td>
+                    <td>{{ order.cart }}</td>
+                    <td>
+                        {{ order.fullname }}
+                    </td>
+                    <td>{{ order.total_selling_price|floatformat:0|intcomma }}</td>
+                    <td>
+                        {{ order.get_order_status_display }}
+                    </td>
+                    <td>
+                        {{ order.get_payment_status_display }}
+                    </td>
+                </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
 {% endblock %}

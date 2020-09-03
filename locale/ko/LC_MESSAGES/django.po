@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-09-02 23:26+0700\n"
+"POT-Creation-Date: 2020-09-03 13:09+0700\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -53,85 +53,123 @@ msgstr "영어"
 msgid "console"
 msgstr "콘솔"
 
-#: console/templates/console/base.html:30
+#: console/templates/console/base.html:33
 msgid "Booking"
 msgstr "예약관리"
 
-#: console/templates/console/base.html:34
+#: console/templates/console/base.html:37
 msgid "Customers"
 msgstr "고객관리"
 
-#: console/templates/console/base.html:39
+#: console/templates/console/base.html:42
 msgid "LINE Users"
 msgstr "라인 사용자"
 
-#: console/templates/console/base.html:45
+#: console/templates/console/base.html:48
 msgid "Marketing"
 msgstr "마케팅"
 
-#: console/templates/console/base.html:50
+#: console/templates/console/base.html:53
 msgid "Promotions"
 msgstr "프로모션"
 
-#: console/templates/console/base.html:53
+#: console/templates/console/base.html:56
 msgid "Coupons"
 msgstr "쿠폰"
 
-#: console/templates/console/base.html:56
+#: console/templates/console/base.html:59
 msgid "Hot Deals"
 msgstr "핫딜"
 
-#: console/templates/console/base.html:62
+#: console/templates/console/base.html:65
 msgid "Report"
 msgstr "보고서"
 
-#: console/templates/console/base.html:67
+#: console/templates/console/base.html:70
 msgid "Daily Sales"
 msgstr "일간 매출"
 
-#: console/templates/console/base.html:70
+#: console/templates/console/base.html:73
 msgid "Monthly Sales"
 msgstr "월간 매출"
 
-#: console/templates/console/base.html:73
+#: console/templates/console/base.html:76
 msgid "Best Promotions"
 msgstr "우수 프로모션"
 
-#: console/templates/console/base.html:76
+#: console/templates/console/base.html:79
 msgid "Best Customers"
 msgstr "우수 고객"
 
-#: console/templates/console/base.html:79
+#: console/templates/console/base.html:82
 msgid "Sales by Customer Groups"
 msgstr "고객 그룹별 매출"
 
-#: console/templates/console/base.html:82
+#: console/templates/console/base.html:85
 msgid "Sales by Payment"
 msgstr "결제수단별 매출"
 
-#: console/templates/console/base.html:88
+#: console/templates/console/base.html:91
 msgid "Settings"
 msgstr "설정"
 
-#: console/templates/console/base.html:93
+#: console/templates/console/base.html:96
 msgid "Golf Club"
 msgstr "골프장"
 
-#: console/templates/console/base.html:96 golf/models.py:587
+#: console/templates/console/base.html:99 golf/models.py:587
 msgid "Seasons"
 msgstr "기간"
 
-#: console/templates/console/base.html:99 golf/models.py:628
+#: console/templates/console/base.html:102 golf/models.py:628
 msgid "Timeslots"
 msgstr "시간대"
 
-#: console/templates/console/base.html:102
+#: console/templates/console/base.html:105
 msgid "Customer Groups"
 msgstr "고객 그룹"
 
-#: console/templates/console/base.html:105 liff/views.py:138
+#: console/templates/console/base.html:108 liff/views.py:138
 msgid "Price Table"
 msgstr "요금표"
+
+#: console/templates/console/golf_booking_order_list.html:12
+msgid "Order No"
+msgstr "주문번호"
+
+#: console/templates/console/golf_booking_order_list.html:13
+#: liff/templates/liff/booking_create_form.html:22
+#: liff/templates/liff/golf_booking_create_form.html:23
+msgid "Tee-off Date/Time"
+msgstr "티오프 일자/시각"
+
+#: console/templates/console/golf_booking_order_list.html:14 golf/models.py:741
+#: liff/templates/liff/booking_create_form.html:135
+#: liff/templates/liff/golf_booking_create_form.html:152
+msgid "PAX"
+msgstr "인원"
+
+#: console/templates/console/golf_booking_order_list.html:15 golf/models.py:746
+msgid "Cart"
+msgstr "카트"
+
+#: console/templates/console/golf_booking_order_list.html:16
+#: liff/templates/liff/booking_create_form.html:108
+#: liff/templates/liff/golf_booking_create_form.html:119
+msgid "Customer Name"
+msgstr "예약자 이름"
+
+#: console/templates/console/golf_booking_order_list.html:17
+msgid "Total"
+msgstr "합계"
+
+#: console/templates/console/golf_booking_order_list.html:18
+msgid "Order Status"
+msgstr "예약상태"
+
+#: console/templates/console/golf_booking_order_list.html:19
+msgid "Payment Status"
+msgstr "결제상태"
 
 #: golf/admin.py:66 golf/models.py:399 golf/models.py:498 golf/models.py:539
 #: golf/models.py:596 golf/models.py:699 golf/models.py:891
@@ -617,15 +655,6 @@ msgstr "라운드 일자"
 msgid "Round time"
 msgstr "라운드 시각"
 
-#: golf/models.py:741 liff/templates/liff/booking_create_form.html:135
-#: liff/templates/liff/golf_booking_create_form.html:152
-msgid "PAX"
-msgstr "인원"
-
-#: golf/models.py:746
-msgid "Cart"
-msgstr "카트"
-
 #: golf/models.py:751
 msgid "User-agent"
 msgstr "User-agent"
@@ -798,11 +827,6 @@ msgstr "골프 예약 프로모션"
 msgid "hotel"
 msgstr "호텔"
 
-#: liff/templates/liff/booking_create_form.html:22
-#: liff/templates/liff/golf_booking_create_form.html:23
-msgid "Tee-off Date/Time"
-msgstr "티오프 일자/시각"
-
 #: liff/templates/liff/booking_create_form.html:42
 #: liff/templates/liff/golf_booking_create_form.html:54
 msgid "Golfer #"
@@ -812,11 +836,6 @@ msgstr "인원"
 #: liff/templates/liff/golf_booking_create_form.html:86
 msgid "Cart #"
 msgstr "카트 수량"
-
-#: liff/templates/liff/booking_create_form.html:108
-#: liff/templates/liff/golf_booking_create_form.html:119
-msgid "Customer Name"
-msgstr "예약자 이름"
 
 #: liff/templates/liff/booking_create_form.html:115
 #: liff/templates/liff/golf_booking_create_form.html:128
