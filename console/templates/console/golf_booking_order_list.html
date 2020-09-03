@@ -23,13 +23,13 @@
             <div class="column is-2-tablet is-6-mobile is-family-monospace has-text-right-mobile">
                 {{ order.round_date|date:'Y-m-d' }} {{ order.round_time|date:'H:i' }}
             </div>
-            <div class="column is-1-tablet is-offset-5-mobile is-2-mobile is-family-monospace has-text-right">
+            <div class="column is-1-tablet is-offset-3-mobile is-2-mobile is-family-monospace has-text-right">
                 {{ order.pax }} PAX
             </div>
-            <div class="column is-1-tablet is-2-mobile is-family-monospace has-text-right">
+            <div class="column is-1-tablet is-3-mobile is-family-monospace has-text-right">
                 {{ order.cart }} CART
             </div>
-            <div class="column is-1-tablet is-3-mobile is-family-monospace has-text-right">
+            <div class="column is-1-tablet is-4-mobile is-family-monospace has-text-right">
                 {{ order.total_selling_price|floatformat:0|intcomma }} THB
             </div>
             <div class="column is-4-tablet is-12-mobile has-text-right-mobile">
