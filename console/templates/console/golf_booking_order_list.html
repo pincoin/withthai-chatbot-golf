@@ -35,6 +35,9 @@
             <div class="column is-4-tablet is-12-mobile has-text-right-mobile">
                 <a href="{% url 'console:golf-booking-order-detail' slug order.order_no %}">
                     {{ order.fullname }}
+                    {% if order.customer_group.title_english %}
+                    <span class="tag is-danger is-light">{{ order.customer_group.title_english }}</span>
+                    {% endif %}
                 </a>
             </div>
         </div>
