@@ -7,32 +7,32 @@
     <div class="container is-fluid">
         {% for order in orders %}
         <div class="columns is-multiline is-mobile order-list">
-            <div class="column is-1-tablet is-4-mobile is-family-monospace">
+            <div class="column is-1-tablet is-hidden-mobile is-family-monospace">
                 <a href="{% url 'console:golf-booking-order-detail' slug order.order_no %}">
                     {{ order.order_no|truncatechars:11 }}
                 </a>
             </div>
-            <div class="column is-2-tablet is-8-mobile">
+            <div class="column is-2-tablet is-6-mobile">
                 <a href="{% url 'console:golf-booking-order-detail' slug order.order_no %}">
-                    <div class="tags has-addons pull-mobile-right-desktop-center">
+                    <div class="tags has-addons">
                         <span class="tag is-success">{{ order.get_order_status_display }}</span>
                         <span class="tag is-info">{{ order.get_payment_status_display }}</span>
                     </div>
                 </a>
             </div>
-            <div class="column is-2-tablet is-6-mobile is-family-monospace">
+            <div class="column is-2-tablet is-6-mobile is-family-monospace has-text-right-mobile">
                 {{ order.round_date|date:'Y-m-d' }} {{ order.round_time|date:'H:i' }}
             </div>
-            <div class="column is-1-tablet is-3-mobile is-family-monospace has-text-right">
+            <div class="column is-1-tablet is-offset-5-mobile is-2-mobile is-family-monospace has-text-right">
                 {{ order.pax }} PAX
             </div>
-            <div class="column is-1-tablet is-3-mobile is-family-monospace has-text-right">
+            <div class="column is-1-tablet is-2-mobile is-family-monospace has-text-right">
                 {{ order.cart }} CART
             </div>
-            <div class="column is-1-tablet is-4-mobile is-family-monospace has-text-right">
+            <div class="column is-1-tablet is-3-mobile is-family-monospace has-text-right">
                 {{ order.total_selling_price|floatformat:0|intcomma }} THB
             </div>
-            <div class="column is-4-tablet is-8-mobile has-text-right-mobile">
+            <div class="column is-4-tablet is-12-mobile has-text-right-mobile">
                 <a href="{% url 'console:golf-booking-order-detail' slug order.order_no %}">
                     {{ order.fullname }}
                 </a>
