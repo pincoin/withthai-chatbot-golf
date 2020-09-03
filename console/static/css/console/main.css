@@ -24,6 +24,11 @@
         padding: 0 !important;
     }
 
+    .burger-icon {
+        font-size: 2rem;
+        margin: .5rem;
+    }
+
     .section-mobile {
         padding: .1rem .5rem;
     }
