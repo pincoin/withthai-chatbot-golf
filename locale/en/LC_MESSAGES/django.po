@@ -609,35 +609,35 @@ msgstr ""
 
 #: golf/models.py:677
 msgid "Booking open"
-msgstr ""
+msgstr "Open"
 
 #: golf/models.py:678
 msgid "Booking confirmed"
-msgstr ""
+msgstr "Confirmed"
 
 #: golf/models.py:679
 msgid "Booking offered"
-msgstr ""
+msgstr "Offered"
 
 #: golf/models.py:680
 msgid "Booking accepted"
-msgstr ""
+msgstr "Accepted"
 
 #: golf/models.py:681
 msgid "Booking closed"
-msgstr ""
+msgstr "Closed"
 
 #: golf/models.py:685
 msgid "Unpaid"
-msgstr ""
+msgstr "Unpaid"
 
 #: golf/models.py:686
 msgid "Paid"
-msgstr ""
+msgstr "Paid"
 
 #: golf/models.py:687
 msgid "Refunded"
-msgstr ""
+msgstr "Refunded"
 
 #: golf/models.py:691
 msgid "Order no"

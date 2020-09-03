@@ -15,10 +15,24 @@
             <div class="column is-2-tablet is-7-mobile">
                 <a href="{% url 'console:golf-booking-order-detail' slug order.order_no %}">
                     <div class="tags has-addons">
-                        <span class="tag is-primary is-light">{{ order.get_order_status_display }}</span>
-                        <span class="tag is-info is-light">{{ order.get_payment_status_display }}</span>
+                        {% if order.order_status == order.ORDER_STATUS_CHOICES.open or order.order_status == order.ORDER_STATUS_CHOICES.offered or order.order_status == order.ORDER_STATUS_CHOICES.accepted %}
+                        <span class="tag is-info">{{ order.get_order_status_display }}</span>
+                        {% elif order.order_status == order.ORDER_STATUS_CHOICES.confirmed %}
+                        <span class="tag is-success">{{ order.get_order_status_display }}</span>
+                        {% elif order.order_status == order.ORDER_STATUS_CHOICES.closed %}
+                        <span class="tag is-warning">{{ order.get_order_status_display }}</span>
+                        {% endif %}
+
+                        {% if order.payment_status == order.PAYMENT_STATUS_CHOICES.unpaid %}
+                        <span class="tag is-info">{{ order.get_payment_status_display }}</span>
+                        {% elif order.payment_status == order.PAYMENT_STATUS_CHOICES.paid %}
+                        <span class="tag is-success">{{ order.get_payment_status_display }}</span>
+                        {% elif order.payment_status == order.PAYMENT_STATUS_CHOICES.refunded %}
+                        <span class="tag is-danger">{{ order.get_payment_status_display }}</span>
+                        {% endif %}
+
                         {% if order.customer_group.title_english %}
-                        <span class="tag is-warning is-light">{{ order.customer_group.title_english }}</span>
+                        <span class="tag is-dark">{{ order.customer_group.title_english }}</span>
                         {% endif %}
                     </div>
                 </a>

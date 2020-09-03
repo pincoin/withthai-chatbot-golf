@@ -1,6 +1,7 @@
 from django.views import generic
 
 from golf import models as golf_models
+from .viewmixins import EnglishContextMixin
 
 
 class HomeView(generic.TemplateView):
@@ -12,7 +13,7 @@ class HomeView(generic.TemplateView):
         return context
 
 
-class GolfBookingOrderListView(generic.ListView):
+class GolfBookingOrderListView(EnglishContextMixin, generic.ListView):
     template_name = 'console/golf_booking_order_list.html'
 
     context_object_name = 'orders'
