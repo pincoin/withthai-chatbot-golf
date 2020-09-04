@@ -8,6 +8,9 @@ body {
     word-break: keep-all;
 }
 
+.card {
+    box-shadow: none;
+}
 
 /* Desktop */
 @media (min-width: 1024px) {
@@ -35,6 +38,15 @@ body {
 
 /* Mobile */
 @media (max-width: 1023px) {
+    /* Bulma */
+    .card-content {
+        padding: .5rem;
+    }
+
+    .menu {
+        padding: .5rem 0 0 .5rem;
+    }
+
     .mobile-navbar-container {
         padding: 0 !important;
     }
@@ -45,7 +57,7 @@ body {
     }
 
     .section {
-        padding: .1rem .5rem;
+        padding: .1rem 0;
     }
 
     .order-list {
