@@ -10,6 +10,7 @@ body {
 
 .card {
     box-shadow: none;
+    padding-bottom: 5rem;
 }
 
 /* Desktop */
