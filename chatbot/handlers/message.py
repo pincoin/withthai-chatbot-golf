@@ -1,5 +1,6 @@
 import datetime
 
+from django.template.defaultfilters import date
 from django.urls import reverse
 from django.utils import timezone
 from linebot import models
@@ -167,8 +168,9 @@ def command_new(event, line_bot_api, **kwargs):
 
     # 5. Notification to golf club
     url = reverse('console:golf-booking-order-detail', args=(golf_club.slug, order.order_no))
+    round_date_formatted = date(round_date, 'Y-m-d')
     notification = (
-        f'New\n"{customer_name}"\n{round_date}\n{round_time}\n{pax} GOLFER\n{cart} CART\n'
+        f'New\n"{customer_name}"\n{round_date_formatted}\n{round_time}\n{pax} GOLFER\n{cart} CART\n'
         f'https://www.withthai.com{url}'
     )
     tasks.send_notification_line.delay(golf_club.line_notify_access_token, notification)
