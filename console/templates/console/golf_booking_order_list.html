@@ -96,11 +96,18 @@
                     </div>
                     <div class="column is-4-tablet is-12-mobile has-text-right-mobile">
                         {% if order.customer_group.title_english %}
-                        <span class="tag status-customer-{{ order.customer_group.id|modulo:5 }}">{{ order.customer_group.title_english }}</span>
+                        <span class="tag status-customer-{{ order.customer_group.id|modulo:5 }} is-hidden-mobile mr-3">
+                            {{ order.customer_group.title_english }}
+                        </span>
                         {% endif %}
                         <a href="{% url 'console:golf-booking-order-detail' slug order.order_no %}">
                             {{ order.fullname }}
                         </a>
+                        {% if order.customer_group.title_english %}
+                        <span class="tag status-customer-{{ order.customer_group.id|modulo:5 }} is-hidden-tablet ml-2">
+                            {{ order.customer_group.title_english }}
+                        </span>
+                        {% endif %}
                     </div>
                 </div>
                 {% endfor %}
