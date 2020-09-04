@@ -20,7 +20,7 @@
                 </div>
                 <div class="column is-1-tablet is-8-mobile">
                     <a href="{% url 'console:golf-booking-order-detail' slug order.order_no %}">
-                        <div class="tags has-addons pull-mobile-right-desktop-center is-hidden-tablet">
+                        <div class="tags has-addons is-hidden-tablet status-tags">
                             {% if order.order_status == order.ORDER_STATUS_CHOICES.open %}
                             <span class="tag is-info">{{ order.get_order_status_display }}</span>
                             {% elif order.order_status == order.ORDER_STATUS_CHOICES.offered %}

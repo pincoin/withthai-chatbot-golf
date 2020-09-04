@@ -60,8 +60,13 @@ body {
         padding: .03rem 0;
     }
 
-    .pull-mobile-right-desktop-center {
+    .status-tags {
         float: right;
+        margin-bottom: 0 !important;
+    }
+
+    .status-tags .tag {
+        margin-bottom: 0;
     }
 
     .order-detail {
