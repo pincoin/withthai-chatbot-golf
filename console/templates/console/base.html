@@ -74,6 +74,16 @@
                                 {% trans 'Refund Requests' %}
                             </a>
                         </li>
+                        <li>
+                            <a href="{% url 'console:golf-booking-order-list' slug %}?day=today">
+                                {% trans 'Today' %}
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{% url 'console:golf-booking-order-list' slug %}?day=tomorrow">
+                                {% trans 'Tomorrow' %}
+                            </a>
+                        </li>
                     </ul>
                 </li>
             </ul>
@@ -139,7 +149,7 @@
     </div>
     <div class="column is-11">
 
-            {% block content %}{% endblock %}
+        {% block content %}{% endblock %}
 
     </div>
 </div>

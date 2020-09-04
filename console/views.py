@@ -1,4 +1,5 @@
 from django.shortcuts import get_object_or_404
+from django.utils import timezone
 from django.views import generic
 
 from golf import models as golf_models
@@ -39,6 +40,14 @@ class GolfBookingOrderListView(EnglishContextMixin, generic.ListView):
             elif self.request.GET['payment_status'].strip() == 'refund_requests':
                 queryset = queryset \
                     .filter(payment_status=golf_models.GolfBookingOrder.PAYMENT_STATUS_CHOICES.refund_requests)
+
+        if 'day' in self.request.GET and self.request.GET['day']:
+            if self.request.GET['day'].strip() == 'today':
+                queryset = queryset \
+                    .filter(round_date=timezone.datetime.today())
+            elif self.request.GET['day'].strip() == 'tomorrow':
+                queryset = queryset \
+                    .filter(round_date=timezone.datetime.today() + timezone.timedelta(days=1))
 
         return queryset.order_by('-round_date', 'round_time')
 
