@@ -83,6 +83,31 @@ body {
     color: #fff !important;
 }
 
+.status-customer-0 {
+    background-color: #8900ff !important;
+    color: #fff !important;
+}
+
+.status-customer-1 {
+    background-color: #943cdf !important;
+    color: #fff !important;
+}
+
+.status-customer-2 {
+    background-color: #b000ff !important;
+    color: #fff !important;
+}
+
+.status-customer-3 {
+    background-color: #b93dff !important;
+    color: #fff !important;
+}
+
+.status-customer-4 {
+    background-color: #cc7aea !important;
+    color: #fff !important;
+}
+
 /* Desktop */
 @media (min-width: 1024px) {
     .logo {
