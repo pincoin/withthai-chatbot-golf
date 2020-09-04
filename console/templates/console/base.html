@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="{% static 'css/console/main.css' %}">
 </head>
 <body>
-<nav class="navbar navbar-top" >
+<nav class="navbar navbar-top">
     <div class="container is-fluid mobile-navbar-container">
         <div class="navbar-brand">
             <a class="navbar-item" href="{% url 'console:home' slug %}">
@@ -54,9 +54,26 @@
                 </li>
                 <li>
                     <ul>
-                        <li><a>{% trans 'Open / Accepted' %}</a></li>
-                        <li><a>{% trans 'Unpaid' %}</a></li>
-                        <li><a>{% trans 'Refund Requests' %}</a></li>
+                        <li>
+                            <a href="{% url 'console:golf-booking-order-list' slug %}?order_status=open">
+                                {% trans 'Open' %}
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{% url 'console:golf-booking-order-list' slug %}?order_status=accepted">
+                                {% trans 'Accepted' %}
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{% url 'console:golf-booking-order-list' slug %}?payment_status=unpaid">
+                                {% trans 'Unpaid' %}
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{% url 'console:golf-booking-order-list' slug %}?payment_status=refund_requests">
+                                {% trans 'Refund Requests' %}
+                            </a>
+                        </li>
                     </ul>
                 </li>
             </ul>

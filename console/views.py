@@ -20,10 +20,27 @@ class GolfBookingOrderListView(EnglishContextMixin, generic.ListView):
     context_object_name = 'orders'
 
     def get_queryset(self):
-        return golf_models.GolfBookingOrder.objects \
+        queryset = golf_models.GolfBookingOrder.objects \
             .select_related('customer_group') \
-            .filter(golf_club__slug=self.kwargs['slug']) \
-            .order_by('-round_date', 'round_time')
+            .filter(golf_club__slug=self.kwargs['slug'])
+
+        if 'order_status' in self.request.GET and self.request.GET['order_status']:
+            if self.request.GET['order_status'].strip() == 'open':
+                queryset = queryset \
+                    .filter(order_status=golf_models.GolfBookingOrder.ORDER_STATUS_CHOICES.open)
+            elif self.request.GET['order_status'].strip() == 'accepted':
+                queryset = queryset \
+                    .filter(order_status=golf_models.GolfBookingOrder.ORDER_STATUS_CHOICES.accepted)
+
+        if 'payment_status' in self.request.GET and self.request.GET['payment_status']:
+            if self.request.GET['payment_status'].strip() == 'unpaid':
+                queryset = queryset \
+                    .filter(payment_status=golf_models.GolfBookingOrder.PAYMENT_STATUS_CHOICES.unpaid)
+            elif self.request.GET['payment_status'].strip() == 'refund_requests':
+                queryset = queryset \
+                    .filter(payment_status=golf_models.GolfBookingOrder.PAYMENT_STATUS_CHOICES.refund_requests)
+
+        return queryset.order_by('-round_date', 'round_time')
 
     def get_context_data(self, **kwargs):
         context = super(GolfBookingOrderListView, self).get_context_data(**kwargs)
