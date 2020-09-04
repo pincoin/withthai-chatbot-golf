@@ -13,17 +13,23 @@ body {
 @media (min-width: 1024px) {
     .logo {
         margin-left: 1rem;
+    }
 
+    .menu {
+        padding: 1.5rem 0 0 1.5rem;
+    }
+
+    .section {
+        padding: 2.5rem 1rem;
     }
 
     .order-list {
-        padding: .1rem;
         border-bottom: 1px solid #000000;
     }
 
     .order-list .column {
-        padding-top: .1rem;
-        padding-bottom: .1rem;
+        padding-top: .5rem;
+        padding-bottom: .5rem;
     }
 }
 
@@ -38,12 +44,8 @@ body {
         margin: .5rem;
     }
 
-    .section-mobile {
+    .section {
         padding: .1rem .5rem;
-    }
-
-    .section-mobile .container {
-        padding: 0;
     }
 
     .order-list {

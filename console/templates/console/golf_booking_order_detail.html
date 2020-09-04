@@ -3,95 +3,114 @@
 {% load i18n static humanize %}
 
 {% block content %}
-<div class="section section-mobile">
-    <div class="container is-fluid order-detail">
-        <div class="columns is-mobile">
-            <div class="column is-5 has-text-right-tablet">
-                {% trans 'Order No' %}
-            </div>
-            <div class="column is-7">
-                {{ order.order_no|truncatechars:9 }}
-            </div>
-        </div>
-        <div class="columns is-mobile">
-            <div class="column is-5 has-text-right-tablet">
-                {% trans 'Customer Name' %}
-            </div>
-            <div class="column is-7 has-text-weight-bold">
-                {{ order.fullname }}
-            </div>
-        </div>
-        <div class="columns is-mobile">
-            <div class="column is-5 has-text-right-tablet">
-                {% trans 'Customer Group' %}
-            </div>
-            <div class="column is-7 has-text-weight-bold">
-                {{ order.customer_group.title_english }}
-            </div>
-        </div>
-        <div class="columns is-mobile">
-            <div class="column is-5 has-text-right-tablet">
-                {% trans 'Tee-off Date/Time' %}
-            </div>
-            <div class="column is-7 has-text-weight-bold">
-                <i class="fas fa-golf-ball fa-fw"></i>
-                {{ order.round_date|date:'Y-m-d' }} {{ order.round_time|date:'H:i' }}
-            </div>
-        </div>
-        <div class="columns is-mobile">
-            <div class="column is-5 has-text-right-tablet">
-                {% trans 'PAX' %}
-            </div>
-            <div class="column is-7 has-text-weight-bold">
-                <i class="fas fa-users fa-fw"></i> {{ order.pax }}
-            </div>
-        </div>
-        <div class="columns is-mobile">
-            <div class="column is-5 has-text-right-tablet">
-                {% trans 'Cart' %}
-            </div>
-            <div class="column is-7 has-text-weight-bold">
-                <i class="fas fa-truck-pickup fa-fw"></i>
-                {{ order.cart }}
-            </div>
-        </div>
-        <div class="columns is-mobile">
-            <div class="column is-5 has-text-right-tablet">
-                {% trans 'Total' %}
-            </div>
-            <div class="column is-7 has-text-weight-bold">
-                <i class="fas fa-coins fa-fw"></i>
-                {{ order.total_selling_price|floatformat:0|intcomma }} THB
-            </div>
-        </div>
-        <div class="columns is-mobile">
-            <div class="column is-5 has-text-right-tablet">
-                {% trans 'Order Status' %}
-            </div>
-            <div class="column is-7">
-                {% if order.order_status == order.ORDER_STATUS_CHOICES.open or order.order_status == order.ORDER_STATUS_CHOICES.offered or order.order_status == order.ORDER_STATUS_CHOICES.accepted %}
-                <span class="tag is-info">{{ order.get_order_status_display }}</span>
-                {% elif order.order_status == order.ORDER_STATUS_CHOICES.confirmed %}
-                <span class="tag is-success">{{ order.get_order_status_display }}</span>
-                {% elif order.order_status == order.ORDER_STATUS_CHOICES.closed %}
-                <span class="tag is-warning">{{ order.get_order_status_display }}</span>
-                {% endif %}
-            </div>
-        </div>
-        <div class="columns is-mobile">
-            <div class="column is-5 has-text-right-tablet">
-                {% trans 'Payment Status' %}
-            </div>
-            <div class="column is-7">
-                {% if order.payment_status == order.PAYMENT_STATUS_CHOICES.unpaid %}
-                <span class="tag is-info">{{ order.get_payment_status_display }}</span>
-                {% elif order.payment_status == order.PAYMENT_STATUS_CHOICES.paid %}
-                <span class="tag is-success">{{ order.get_payment_status_display }}</span>
-                {% elif order.payment_status == order.PAYMENT_STATUS_CHOICES.refunded %}
-                <span class="tag is-danger">{{ order.get_payment_status_display }}</span>
-                {% endif %}
+<div class="card">
+    <header class="card-header">
+        <p class="card-header-title">
+            {% trans 'Golf Booking Order Detail' %}
+        </p>
+    </header>
+    <div class="card-content">
+        <div class="content">
+            <div class="order-detail">
+                <div class="columns is-mobile">
+                    <div class="column is-1-tablet is-5-mobile has-text-right-tablet">
+                        {% trans 'Order No' %}
+                    </div>
+                    <div class="column is-11-tablet is-7-mobile">
+                        {{ order.order_no|truncatechars:9 }}
+                    </div>
+                </div>
+                <div class="columns is-mobile">
+                    <div class="column is-1-tablet is-5-mobile has-text-right-tablet">
+                        {% trans 'Customer Name' %}
+                    </div>
+                    <div class="column is-11-tablet is-7-mobile has-text-weight-bold">
+                        {{ order.fullname }}
+                    </div>
+                </div>
+                <div class="columns is-mobile">
+                    <div class="column is-1-tablet is-5-mobile has-text-right-tablet">
+                        {% trans 'Customer Group' %}
+                    </div>
+                    <div class="column is-11-tablet is-7-mobile has-text-weight-bold">
+                        {{ order.customer_group.title_english }}
+                    </div>
+                </div>
+                <div class="columns is-mobile">
+                    <div class="column is-1-tablet is-5-mobile has-text-right-tablet">
+                        {% trans 'Tee-off Date/Time' %}
+                    </div>
+                    <div class="column is-11-tablet is-7-mobile has-text-weight-bold">
+                        <i class="fas fa-golf-ball fa-fw"></i>
+                        {{ order.round_date|date:'Y-m-d' }} {{ order.round_time|date:'H:i' }}
+                    </div>
+                </div>
+                <div class="columns is-mobile">
+                    <div class="column is-1-tablet is-5-mobile has-text-right-tablet">
+                        {% trans 'PAX' %}
+                    </div>
+                    <div class="column is-11-tablet is-7-mobile has-text-weight-bold">
+                        <i class="fas fa-users fa-fw"></i> {{ order.pax }}
+                    </div>
+                </div>
+                <div class="columns is-mobile">
+                    <div class="column is-1-tablet is-5-mobile has-text-right-tablet">
+                        {% trans 'Cart' %}
+                    </div>
+                    <div class="column is-11-tablet is-7-mobile has-text-weight-bold">
+                        <i class="fas fa-truck-pickup fa-fw"></i>
+                        {{ order.cart }}
+                    </div>
+                </div>
+                <div class="columns is-mobile">
+                    <div class="column is-1-tablet is-5-mobile has-text-right-tablet">
+                        {% trans 'Total' %}
+                    </div>
+                    <div class="column is-11-tablet is-7-mobile has-text-weight-bold">
+                        <i class="fas fa-coins fa-fw"></i>
+                        {{ order.total_selling_price|floatformat:0|intcomma }} THB
+                    </div>
+                </div>
+                <div class="columns is-mobile">
+                    <div class="column is-1-tablet is-5-mobile has-text-right-tablet">
+                        {% trans 'Order Status' %}
+                    </div>
+                    <div class="column is-11-tablet is-7-mobile">
+                        {% if order.order_status == order.ORDER_STATUS_CHOICES.open %}
+                        <span class="tag is-info">{{ order.get_order_status_display }}</span>
+                        {% elif order.order_status == order.ORDER_STATUS_CHOICES.offered %}
+                        <span class="tag is-info">{{ order.get_order_status_display }}</span>
+                        {% elif order.order_status == order.ORDER_STATUS_CHOICES.accepted %}
+                        <span class="tag is-info">{{ order.get_order_status_display }}</span>
+                        {% elif order.order_status == order.ORDER_STATUS_CHOICES.confirmed %}
+                        <span class="tag is-success">{{ order.get_order_status_display }}</span>
+                        {% elif order.order_status == order.ORDER_STATUS_CHOICES.closed %}
+                        <span class="tag is-warning">{{ order.get_order_status_display }}</span>
+                        {% endif %}
+                    </div>
+                </div>
+                <div class="columns is-mobile">
+                    <div class="column is-1-tablet is-5-mobile has-text-right-tablet">
+                        {% trans 'Payment Status' %}
+                    </div>
+                    <div class="column is-11-tablet is-7-mobile">
+                        {% if order.payment_status == order.PAYMENT_STATUS_CHOICES.unpaid %}
+                        <span class="tag is-info">{{ order.get_payment_status_display }}</span>
+                        {% elif order.payment_status == order.PAYMENT_STATUS_CHOICES.paid %}
+                        <span class="tag is-success">{{ order.get_payment_status_display }}</span>
+                        {% elif order.payment_status == order.PAYMENT_STATUS_CHOICES.refunded %}
+                        <span class="tag is-danger">{{ order.get_payment_status_display }}</span>
+                        {% endif %}
+                    </div>
+                </div>
             </div>
         </div>
     </div>
+    <footer class="card-footer">
+        <a href="#" class="card-footer-item">Confirm</a>
+        <a href="#" class="card-footer-item">Offer</a>
+        <a href="#" class="card-footer-item">N/A</a>
+    </footer>
 </div>
+
 {% endblock %}

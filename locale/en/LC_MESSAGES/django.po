@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-09-03 13:09+0700\n"
+"POT-Creation-Date: 2020-09-04 15:59+0700\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -53,126 +53,128 @@ msgstr ""
 msgid "console"
 msgstr ""
 
-#: console/templates/console/base.html:33
+#: console/templates/console/base.html:48
 msgid "Booking"
 msgstr ""
 
-#: console/templates/console/base.html:37
-msgid "Customers"
-msgstr ""
-
-#: console/templates/console/base.html:42
-msgid "LINE Users"
-msgstr ""
-
-#: console/templates/console/base.html:48
-msgid "Marketing"
-msgstr ""
-
 #: console/templates/console/base.html:53
-msgid "Promotions"
-msgstr ""
+#: console/templates/console/golf_booking_order_list.html:9
+msgid "All Booking List"
+msgstr "All"
 
-#: console/templates/console/base.html:56
-msgid "Coupons"
+#: console/templates/console/base.html:58
+msgid "Open / Accepted"
 msgstr ""
 
 #: console/templates/console/base.html:59
-msgid "Hot Deals"
+msgid "Refund Requests"
+msgstr "Refund Requests"
+
+#: console/templates/console/base.html:64
+msgid "Customers"
 msgstr ""
 
-#: console/templates/console/base.html:65
-msgid "Report"
+#: console/templates/console/base.html:69
+msgid "LINE Users"
 msgstr ""
 
-#: console/templates/console/base.html:70
-msgid "Daily Sales"
-msgstr ""
-
-#: console/templates/console/base.html:73
-msgid "Monthly Sales"
-msgstr ""
-
-#: console/templates/console/base.html:76
-msgid "Best Promotions"
+#: console/templates/console/base.html:74
+msgid "Facebook Users"
 msgstr ""
 
 #: console/templates/console/base.html:79
-msgid "Best Customers"
+msgid "Marketing"
 msgstr ""
 
 #: console/templates/console/base.html:82
+msgid "Promotions"
+msgstr ""
+
+#: console/templates/console/base.html:83
+msgid "Coupons"
+msgstr ""
+
+#: console/templates/console/base.html:84
+msgid "Hot Deals"
+msgstr ""
+
+#: console/templates/console/base.html:87
+msgid "Report"
+msgstr ""
+
+#: console/templates/console/base.html:92
+msgid "Daily Sales"
+msgstr ""
+
+#: console/templates/console/base.html:97
+msgid "Monthly Sales"
+msgstr ""
+
+#: console/templates/console/base.html:102
+msgid "Best Promotions"
+msgstr ""
+
+#: console/templates/console/base.html:107
+msgid "Best Customers"
+msgstr ""
+
+#: console/templates/console/base.html:112
 msgid "Sales by Customer Groups"
 msgstr ""
 
-#: console/templates/console/base.html:85
+#: console/templates/console/base.html:117
 msgid "Sales by Payment"
 msgstr ""
 
-#: console/templates/console/base.html:91
-msgid "Settings"
+#: console/templates/console/golf_booking_order_detail.html:9
+msgid "Golf Booking Order Detail"
 msgstr ""
 
-#: console/templates/console/base.html:96
-msgid "Golf Club"
-msgstr ""
-
-#: console/templates/console/base.html:99 golf/models.py:587
-msgid "Seasons"
-msgstr ""
-
-#: console/templates/console/base.html:102 golf/models.py:628
-msgid "Timeslots"
-msgstr ""
-
-#: console/templates/console/base.html:105
-msgid "Customer Groups"
-msgstr ""
-
-#: console/templates/console/base.html:108 liff/views.py:138
-msgid "Price Table"
-msgstr ""
-
-#: console/templates/console/golf_booking_order_list.html:12
+#: console/templates/console/golf_booking_order_detail.html:17
 msgid "Order No"
 msgstr ""
 
-#: console/templates/console/golf_booking_order_list.html:13
-#: liff/templates/liff/booking_create_form.html:22
-#: liff/templates/liff/golf_booking_create_form.html:23
-msgid "Tee-off Date/Time"
-msgstr ""
-
-#: console/templates/console/golf_booking_order_list.html:14 golf/models.py:741
-#: liff/templates/liff/booking_create_form.html:135
-#: liff/templates/liff/golf_booking_create_form.html:152
-msgid "PAX"
-msgstr ""
-
-#: console/templates/console/golf_booking_order_list.html:15 golf/models.py:746
-msgid "Cart"
-msgstr ""
-
-#: console/templates/console/golf_booking_order_list.html:16
+#: console/templates/console/golf_booking_order_detail.html:25
 #: liff/templates/liff/booking_create_form.html:108
 #: liff/templates/liff/golf_booking_create_form.html:119
 msgid "Customer Name"
 msgstr ""
 
-#: console/templates/console/golf_booking_order_list.html:17
+#: console/templates/console/golf_booking_order_detail.html:33
+msgid "Customer Group"
+msgstr ""
+
+#: console/templates/console/golf_booking_order_detail.html:41
+#: liff/templates/liff/booking_create_form.html:22
+#: liff/templates/liff/golf_booking_create_form.html:23
+msgid "Tee-off Date/Time"
+msgstr ""
+
+#: console/templates/console/golf_booking_order_detail.html:50
+#: golf/models.py:751 liff/templates/liff/booking_create_form.html:135
+#: liff/templates/liff/golf_booking_create_form.html:152
+msgid "PAX"
+msgstr ""
+
+#: console/templates/console/golf_booking_order_detail.html:58
+#: golf/models.py:756
+msgid "Cart"
+msgstr ""
+
+#: console/templates/console/golf_booking_order_detail.html:67
 msgid "Total"
 msgstr ""
 
-#: console/templates/console/golf_booking_order_list.html:18
+#: console/templates/console/golf_booking_order_detail.html:76
 msgid "Order Status"
 msgstr ""
 
-#: console/templates/console/golf_booking_order_list.html:19
+#: console/templates/console/golf_booking_order_detail.html:94
 msgid "Payment Status"
 msgstr ""
 
 #: golf/admin.py:66 golf/models.py:399 golf/models.py:498 golf/models.py:539
-#: golf/models.py:596 golf/models.py:699 golf/models.py:891
+#: golf/models.py:596 golf/models.py:700 golf/models.py:901
 msgid "Golf club"
 msgstr ""
 
@@ -486,11 +488,11 @@ msgstr ""
 msgid "Follow status"
 msgstr ""
 
-#: golf/models.py:456 golf/models.py:725
+#: golf/models.py:456 golf/models.py:726
 msgid "Fullname"
 msgstr ""
 
-#: golf/models.py:462 golf/models.py:472 golf/models.py:716
+#: golf/models.py:462 golf/models.py:472 golf/models.py:717
 msgid "LINE user"
 msgstr ""
 
@@ -498,7 +500,8 @@ msgstr ""
 msgid "LINE users"
 msgstr ""
 
-#: golf/models.py:479 golf/models.py:529 golf/models.py:637 golf/models.py:827
+#: golf/models.py:479 golf/models.py:529 golf/models.py:637 golf/models.py:733
+#: golf/models.py:837
 msgid "Customer group"
 msgstr ""
 
@@ -567,6 +570,10 @@ msgstr ""
 msgid "Season"
 msgstr ""
 
+#: golf/models.py:587
+msgid "Seasons"
+msgstr ""
+
 #: golf/models.py:602
 msgid "Weekday"
 msgstr ""
@@ -595,15 +602,19 @@ msgstr ""
 msgid "Timeslot"
 msgstr ""
 
-#: golf/models.py:657 golf/models.py:841
+#: golf/models.py:628
+msgid "Timeslots"
+msgstr ""
+
+#: golf/models.py:657 golf/models.py:851
 msgid "List price"
 msgstr ""
 
-#: golf/models.py:664 golf/models.py:848
+#: golf/models.py:664 golf/models.py:858
 msgid "Selling price"
 msgstr ""
 
-#: golf/models.py:671 golf/models.py:672 golf/models.py:813 golf/models.py:877
+#: golf/models.py:671 golf/models.py:672 golf/models.py:823 golf/models.py:887
 msgid "Green fee"
 msgstr ""
 
@@ -636,190 +647,194 @@ msgid "Paid"
 msgstr "Paid"
 
 #: golf/models.py:687
+msgid "Refund requests"
+msgstr "Refund requests"
+
+#: golf/models.py:688
 msgid "Refunded"
 msgstr "Refunded"
 
-#: golf/models.py:691
+#: golf/models.py:692
 msgid "Order no"
 msgstr ""
 
-#: golf/models.py:706
+#: golf/models.py:707
 msgid "User"
 msgstr ""
 
-#: golf/models.py:731
+#: golf/models.py:741
 msgid "Round date"
 msgstr ""
 
-#: golf/models.py:736
+#: golf/models.py:746
 msgid "Round time"
 msgstr ""
 
-#: golf/models.py:751
+#: golf/models.py:761
 msgid "User-agent"
 msgstr ""
 
-#: golf/models.py:756
+#: golf/models.py:766
 msgid "Accept-language"
 msgstr ""
 
-#: golf/models.py:761
+#: golf/models.py:771
 msgid "IP address"
 msgstr ""
 
-#: golf/models.py:768
+#: golf/models.py:778
 msgid "Total list price"
 msgstr ""
 
-#: golf/models.py:775
+#: golf/models.py:785
 msgid "Total selling price"
 msgstr ""
 
-#: golf/models.py:783
+#: golf/models.py:793
 msgid "Parent"
 msgstr ""
 
-#: golf/models.py:790
+#: golf/models.py:800
 msgid "Order status"
 msgstr ""
 
-#: golf/models.py:797
+#: golf/models.py:807
 msgid "Payment status"
 msgstr ""
 
-#: golf/models.py:804 golf/models.py:820
+#: golf/models.py:814 golf/models.py:830
 msgid "Golf booking order"
 msgstr ""
 
-#: golf/models.py:805
+#: golf/models.py:815
 msgid "Golf booking orders"
 msgstr ""
 
-#: golf/models.py:814 golf/models.py:878
+#: golf/models.py:824 golf/models.py:888
 msgid "Caddie fee"
 msgstr ""
 
-#: golf/models.py:815 golf/models.py:879
+#: golf/models.py:825 golf/models.py:889
 msgid "Cart fee"
 msgstr ""
 
-#: golf/models.py:833
+#: golf/models.py:843
 msgid "Product"
 msgstr ""
 
-#: golf/models.py:855
+#: golf/models.py:865
 msgid "Quantity"
 msgstr ""
 
-#: golf/models.py:868
+#: golf/models.py:878
 msgid "Golf booking order product"
 msgstr ""
 
-#: golf/models.py:869
+#: golf/models.py:879
 msgid "Golf booking order products"
 msgstr ""
 
-#: golf/models.py:880
+#: golf/models.py:890
 msgid "Total amount"
 msgstr ""
 
-#: golf/models.py:884
+#: golf/models.py:894
 msgid "Percent"
 msgstr ""
 
-#: golf/models.py:885
+#: golf/models.py:895
 msgid "Minus"
 msgstr ""
 
-#: golf/models.py:886
+#: golf/models.py:896
 msgid "Assign"
 msgstr ""
 
-#: golf/models.py:897
+#: golf/models.py:907
 msgid "Promotion title"
 msgstr ""
 
-#: golf/models.py:902
+#: golf/models.py:912
 msgid "Promotion start date"
 msgstr ""
 
-#: golf/models.py:906
+#: golf/models.py:916
 msgid "Promotion end date"
 msgstr ""
 
-#: golf/models.py:910
+#: golf/models.py:920
 msgid "Promotion active"
 msgstr ""
 
-#: golf/models.py:915
+#: golf/models.py:925
 msgid "Monday condition"
 msgstr ""
 
-#: golf/models.py:921
+#: golf/models.py:931
 msgid "Tuesday condition"
 msgstr ""
 
-#: golf/models.py:927
+#: golf/models.py:937
 msgid "Wednesday condition"
 msgstr ""
 
-#: golf/models.py:933
+#: golf/models.py:943
 msgid "Thursday condition"
 msgstr ""
 
-#: golf/models.py:939
+#: golf/models.py:949
 msgid "Friday condition"
 msgstr ""
 
-#: golf/models.py:945
+#: golf/models.py:955
 msgid "Saturday condition"
 msgstr ""
 
-#: golf/models.py:951
+#: golf/models.py:961
 msgid "Sunday condition"
 msgstr ""
 
-#: golf/models.py:957
+#: golf/models.py:967
 msgid "Holiday condition"
 msgstr ""
 
-#: golf/models.py:963
+#: golf/models.py:973
 msgid "Time start condition"
 msgstr ""
 
-#: golf/models.py:969
+#: golf/models.py:979
 msgid "Time end condition"
 msgstr ""
 
-#: golf/models.py:975
+#: golf/models.py:985
 msgid "PAX condition"
 msgstr ""
 
-#: golf/models.py:981
+#: golf/models.py:991
 msgid "Cart condition"
 msgstr ""
 
-#: golf/models.py:988
+#: golf/models.py:998
 msgid "Customer group condition"
 msgstr ""
 
-#: golf/models.py:996
+#: golf/models.py:1006
 msgid "Discount fee"
 msgstr ""
 
-#: golf/models.py:1003
+#: golf/models.py:1013
 msgid "Discount method"
 msgstr ""
 
-#: golf/models.py:1010
+#: golf/models.py:1020
 msgid "Discount amount"
 msgstr ""
 
-#: golf/models.py:1017
+#: golf/models.py:1027
 msgid "Golf booking promotion"
 msgstr ""
 
-#: golf/models.py:1018
+#: golf/models.py:1028
 msgid "Golf booking promotions"
 msgstr ""
 
@@ -904,6 +919,10 @@ msgstr ""
 
 #: liff/views.py:19
 msgid "Sample"
+msgstr ""
+
+#: liff/views.py:138
+msgid "Price Table"
 msgstr ""
 
 #: shop/apps.py:7

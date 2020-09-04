@@ -7,6 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/bulma@0.9.0/css/bulma.min.css">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css">
     <link rel="stylesheet" href="{% static 'css/console/prompt.css' %}">
     <link rel="stylesheet" href="{% static 'css/console/main.css' %}">
 </head>
@@ -27,95 +28,9 @@
         </div>
 
         <div id="navbarBasicExample" class="navbar-menu">
-            <div class="navbar-start">
-                <a class="navbar-item" href="{% url 'console:golf-booking-order-list' slug %}">
-                    {% trans 'Booking' %}
-                </a>
-                <div class="navbar-item has-dropdown is-hoverable">
-                    <a class="navbar-link">
-                        {% trans 'Customers' %}
-                    </a>
-
-                    <div class="navbar-dropdown">
-                        <a class="navbar-item">
-                            {% trans 'LINE Users' %}
-                        </a>
-                    </div>
-                </div>
-                <div class="navbar-item has-dropdown is-hoverable">
-                    <a class="navbar-link">
-                        {% trans 'Marketing' %}
-                    </a>
-
-                    <div class="navbar-dropdown">
-                        <a class="navbar-item">
-                            {% trans 'Promotions' %}
-                        </a>
-                        <a class="navbar-item">
-                            {% trans 'Coupons' %}
-                        </a>
-                        <a class="navbar-item">
-                            {% trans 'Hot Deals' %}
-                        </a>
-                    </div>
-                </div>
-                <div class="navbar-item has-dropdown is-hoverable">
-                    <a class="navbar-link">
-                        {% trans 'Report' %}
-                    </a>
-
-                    <div class="navbar-dropdown">
-                        <a class="navbar-item">
-                            {% trans 'Daily Sales' %}
-                        </a>
-                        <a class="navbar-item">
-                            {% trans 'Monthly Sales' %}
-                        </a>
-                        <a class="navbar-item">
-                            {% trans 'Best Promotions' %}
-                        </a>
-                        <a class="navbar-item">
-                            {% trans 'Best Customers' %}
-                        </a>
-                        <a class="navbar-item">
-                            {% trans 'Sales by Customer Groups' %}
-                        </a>
-                        <a class="navbar-item">
-                            {% trans 'Sales by Payment' %}
-                        </a>
-                    </div>
-                </div>
-                <div class="navbar-item has-dropdown is-hoverable">
-                    <a class="navbar-link">
-                        {% trans 'Settings' %}
-                    </a>
-
-                    <div class="navbar-dropdown">
-                        <a class="navbar-item">
-                            {% trans 'Golf Club' %}
-                        </a>
-                        <a class="navbar-item">
-                            {% trans 'Seasons' %}
-                        </a>
-                        <a class="navbar-item">
-                            {% trans 'Timeslots' %}
-                        </a>
-                        <a class="navbar-item">
-                            {% trans 'Customer Groups' %}
-                        </a>
-                        <a class="navbar-item">
-                            {% trans 'Price Table' %}
-                        </a>
-                    </div>
-                </div>
-            </div>
-
             <div class="navbar-end">
                 <div class="navbar-item">
                     <div class="buttons">
-                        <a class="button is-small is-info">
-                            <strong>Sign up</strong>
-                        </a>
                         <a class="button is-small is-light">
                             Log in
                         </a>
@@ -125,8 +40,92 @@
         </div>
     </div>
 </nav>
-{% block content %}
-{% endblock %}
-<script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
+
+<div class="columns is-gapless is-marginless">
+    <div class="column is-2">
+        <aside class="menu">
+            <p class="menu-label">
+                {% trans 'Booking' %}
+            </p>
+            <ul class="menu-list">
+                <li>
+                    <a href="{% url 'console:golf-booking-order-list' slug %}">
+                        {% trans 'All Booking List' %}
+                    </a>
+                </li>
+                <li>
+                    <ul>
+                        <li><a>{% trans 'Open / Accepted' %}</a></li>
+                        <li><a>{% trans 'Unpaid' %}</a></li>
+                        <li><a>{% trans 'Refund Requests' %}</a></li>
+                    </ul>
+                </li>
+            </ul>
+            <p class="menu-label">
+                {% trans 'Customers' %}
+            </p>
+            <ul class="menu-list">
+                <li>
+                    <a>
+                        {% trans 'LINE Users' %}
+                    </a>
+                </li>
+                <li>
+                    <a>
+                        {% trans 'Facebook Users' %}
+                    </a>
+                </li>
+            </ul>
+            <p class="menu-label">
+                {% trans 'Marketing' %}
+            </p>
+            <ul class="menu-list">
+                <li><a>{% trans 'Promotions' %}</a></li>
+                <li><a>{% trans 'Coupons' %}</a></li>
+                <li><a>{% trans 'Hot Deals' %}</a></li>
+            </ul>
+            <p class="menu-label">
+                {% trans 'Report' %}
+            </p>
+            <ul class="menu-list">
+                <li>
+                    <a>
+                        {% trans 'Daily Sales' %}
+                    </a>
+                </li>
+                <li>
+                    <a>
+                        {% trans 'Monthly Sales' %}
+                    </a>
+                </li>
+                <li>
+                    <a>
+                        {% trans 'Best Promotions' %}
+                    </a>
+                </li>
+                <li>
+                    <a>
+                        {% trans 'Best Customers' %}
+                    </a>
+                </li>
+                <li>
+                    <a>
+                        {% trans 'Sales by Customer Groups' %}
+                    </a>
+                </li>
+                <li>
+                    <a>
+                        {% trans 'Sales by Payment' %}
+                    </a>
+                </li>
+            </ul>
+        </aside>
+    </div>
+    <div class="column is-11">
+        <div class="section">
+            {% block content %}{% endblock %}
+        </div>
+    </div>
+</div>
 </body>
 </html>

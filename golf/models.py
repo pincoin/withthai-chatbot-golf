@@ -684,7 +684,8 @@ class GolfBookingOrder(model_utils_models.TimeStampedModel):
     PAYMENT_STATUS_CHOICES = Choices(
         (0, 'unpaid', _('Unpaid')),
         (1, 'paid', _('Paid')),
-        (2, 'refunded', _('Refunded')),
+        (2, 'refund_requests', _('Refund requests')),
+        (3, 'refunded', _('Refunded')),
     )
 
     order_no = models.UUIDField(
