@@ -169,7 +169,7 @@ def command_new(event, line_bot_api, **kwargs):
     url = reverse('console:golf-booking-order-detail', args=(golf_club.slug, order.order_no))
     notification = (
         f'New\n"{customer_name}"\n{round_date}\n{round_time}\n{pax} GOLFER\n{cart} CART\n'
-        f'https://www.withthai.com/{url}'
+        f'https://www.withthai.com{url}'
     )
     tasks.send_notification_line.delay(golf_club.line_notify_access_token, notification)
 
