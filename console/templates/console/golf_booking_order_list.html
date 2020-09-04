@@ -153,3 +153,8 @@
     </nav>
 </div>
 {% endblock %}
+
+{% block javascript %}
+<script src="{% static 'js/console/order-list.js' %}"></script>
+{{ block.super }}
+{% endblock %}

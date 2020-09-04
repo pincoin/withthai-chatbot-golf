@@ -193,3 +193,8 @@
     </div>
 </div>
 {% endblock %}
+
+{% block javascript %}
+<script src="{% static 'js/console/order-detail.js' %}"></script>
+{{ block.super }}
+{% endblock %}
