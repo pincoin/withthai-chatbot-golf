@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-09-04 15:59+0700\n"
+"POT-Creation-Date: 2020-09-04 21:51+0700\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -53,17 +53,21 @@ msgstr ""
 msgid "console"
 msgstr ""
 
-#: console/templates/console/base.html:48
+#: console/templates/console/base.html:47
 msgid "Booking"
 msgstr ""
 
-#: console/templates/console/base.html:53
+#: console/templates/console/base.html:52
 #: console/templates/console/golf_booking_order_list.html:9
 msgid "All Booking List"
 msgstr ""
 
-#: console/templates/console/base.html:58
+#: console/templates/console/base.html:57
 msgid "Open / Accepted"
+msgstr ""
+
+#: console/templates/console/base.html:58 golf/models.py:685
+msgid "Unpaid"
 msgstr ""
 
 #: console/templates/console/base.html:59
@@ -171,6 +175,28 @@ msgstr ""
 
 #: console/templates/console/golf_booking_order_detail.html:94
 msgid "Payment Status"
+msgstr ""
+
+#: console/templates/console/golf_booking_order_detail.html:108
+msgid "Actions"
+msgstr ""
+
+#: console/templates/console/golf_booking_order_detail.html:114
+#: console/templates/console/golf_booking_order_detail.html:132
+msgid "CONFIRM"
+msgstr ""
+
+#: console/templates/console/golf_booking_order_detail.html:118
+#: console/templates/console/golf_booking_order_detail.html:171
+msgid "OFFER"
+msgstr ""
+
+#: console/templates/console/golf_booking_order_detail.html:122
+msgid "N/A"
+msgstr ""
+
+#: console/templates/console/golf_booking_order_detail.html:180
+msgid "NOT AVAILABLE"
 msgstr ""
 
 #: golf/admin.py:66 golf/models.py:399 golf/models.py:498 golf/models.py:539
@@ -636,10 +662,6 @@ msgstr ""
 
 #: golf/models.py:681
 msgid "Booking closed"
-msgstr ""
-
-#: golf/models.py:685
-msgid "Unpaid"
 msgstr ""
 
 #: golf/models.py:686

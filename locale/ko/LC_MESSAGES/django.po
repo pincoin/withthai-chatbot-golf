@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-09-04 15:59+0700\n"
+"POT-Creation-Date: 2020-09-04 21:51+0700\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -53,18 +53,22 @@ msgstr "영어"
 msgid "console"
 msgstr "콘솔"
 
-#: console/templates/console/base.html:48
+#: console/templates/console/base.html:47
 msgid "Booking"
 msgstr "예약관리"
 
-#: console/templates/console/base.html:53
+#: console/templates/console/base.html:52
 #: console/templates/console/golf_booking_order_list.html:9
 msgid "All Booking List"
 msgstr "전체예약"
 
-#: console/templates/console/base.html:58
+#: console/templates/console/base.html:57
 msgid "Open / Accepted"
 msgstr "답변대기"
+
+#: console/templates/console/base.html:58 golf/models.py:685
+msgid "Unpaid"
+msgstr "미결제"
 
 #: console/templates/console/base.html:59
 msgid "Refund Requests"
@@ -172,6 +176,28 @@ msgstr "예약상태"
 #: console/templates/console/golf_booking_order_detail.html:94
 msgid "Payment Status"
 msgstr "결제상태"
+
+#: console/templates/console/golf_booking_order_detail.html:108
+msgid "Actions"
+msgstr "응답"
+
+#: console/templates/console/golf_booking_order_detail.html:114
+#: console/templates/console/golf_booking_order_detail.html:132
+msgid "CONFIRM"
+msgstr "확정"
+
+#: console/templates/console/golf_booking_order_detail.html:118
+#: console/templates/console/golf_booking_order_detail.html:171
+msgid "OFFER"
+msgstr "제안"
+
+#: console/templates/console/golf_booking_order_detail.html:122
+msgid "N/A"
+msgstr "불가"
+
+#: console/templates/console/golf_booking_order_detail.html:180
+msgid "NOT AVAILABLE"
+msgstr "불가"
 
 #: golf/admin.py:66 golf/models.py:399 golf/models.py:498 golf/models.py:539
 #: golf/models.py:596 golf/models.py:700 golf/models.py:901
@@ -638,10 +664,6 @@ msgstr "예약수락"
 msgid "Booking closed"
 msgstr "예약무효"
 
-#: golf/models.py:685
-msgid "Unpaid"
-msgstr "미결제"
-
 #: golf/models.py:686
 msgid "Paid"
 msgstr "결제완료"
@@ -928,9 +950,3 @@ msgstr "요금표"
 #: shop/apps.py:7
 msgid "shop"
 msgstr "쇼핑"
-
-#~ msgid "Settings"
-#~ msgstr "설정"
-
-#~ msgid "Golf Club"
-#~ msgstr "골프장"
