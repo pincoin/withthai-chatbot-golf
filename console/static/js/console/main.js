@@ -15,7 +15,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const offer_form = document.getElementById('offer-form');
     const reject_form = document.getElementById('reject-form');
 
-
     document
         .getElementById('confirm-radio')
         .addEventListener('click', function (e) {

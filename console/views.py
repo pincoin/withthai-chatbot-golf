@@ -44,8 +44,20 @@ class GolfBookingOrderListView(EnglishContextMixin, generic.ListView):
 
     def get_context_data(self, **kwargs):
         context = super(GolfBookingOrderListView, self).get_context_data(**kwargs)
+
+        block_size = 20
+        start_index = int((context['page_obj'].number - 1) / block_size) * block_size
+        end_index = min(start_index + block_size, len(context['paginator'].page_range))
+
         context['slug'] = self.kwargs['slug']
+
+        context['page_range'] = context['paginator'].page_range[start_index:end_index]
+
         return context
+
+    def get_paginate_by(self, queryset):
+        # items per page
+        return 5
 
 
 class GolfBookingOrderDetailView(EnglishContextMixin, generic.DetailView):
