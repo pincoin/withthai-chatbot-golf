@@ -34,6 +34,51 @@ body {
     margin: 0 .75rem;
 }
 
+.status-open {
+    background-color: #036000 !important;
+    color: #fff !important;
+}
+
+.status-accepted {
+    background-color: #66ff80 !important;
+    color: #fff !important;
+}
+
+.status-offered {
+    background-color: #06b200 !important;
+    color: #fff !important;
+}
+
+.status-confirmed {
+    background-color: #009420 !important;
+    color: #fff !important;
+}
+
+.status-closed {
+    background-color: #f7ca89 !important;
+    color: #000 !important;
+}
+
+.status-unpaid {
+    background-color: #3892c6 !important;
+    color: #fff !important;
+}
+
+.status-paid {
+    background-color: #b6d5eb !important;
+    color: #000 !important;
+}
+
+.status-refund-requests {
+    background-color: #ff0a2b !important;
+    color: #fff !important;
+}
+
+.status-refunded {
+    background-color: #921616 !important;
+    color: #fff !important;
+}
+
 /* Desktop */
 @media (min-width: 1024px) {
     .logo {
