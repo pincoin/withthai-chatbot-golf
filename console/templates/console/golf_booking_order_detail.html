@@ -103,6 +103,72 @@
                         {% endif %}
                     </div>
                 </div>
+                <div class="columns is-mobile">
+                    <div class="column is-1-tablet is-hidden-mobile has-text-right-tablet">
+                        {% trans 'Actions' %}
+                    </div>
+                    <div class="column is-11-tablet is-12-mobile has-text-centered-mobile">
+                        <div class="control">
+                            <label class="radio">
+                                <input type="radio" name="action" id="confirm-radio" checked>
+                                {% trans 'CONFIRM' %}
+                            </label>
+                            <label class="radio">
+                                <input type="radio" name="action" id="offer-radio">
+                                {% trans 'OFFER' %}
+                            </label>
+                            <label class="radio">
+                                <input type="radio" name="action" id="reject-radio">
+                                {% trans 'N/A' %}
+                            </label>
+                        </div>
+                        <form class="mt-4" id="confirm-form">
+                            <div class="field has-addons action-field-centered">
+                                <p class="control">
+                                    <input class="input" type="time" placeholder="">
+                                </p>
+                                <p class="control">
+                                    <a class="button is-primary">
+                                        {% trans 'CONFIRM' %}
+                                    </a>
+                                </p>
+                            </div>
+                        </form>
+                        <form class="mt-4 is-hidden" id="offer-form">
+                            <div class="field has-addons action-field-centered">
+                                <p class="control">
+                                    <a class="button is-danger">
+                                        <i class="fas fa-minus fa-fw"></i>
+                                    </a>
+                                </p>
+                                <p class="control">
+                                    <input class="input" type="time" placeholder="">
+                                </p>
+                                <p class="control">
+                                    <a class="button is-link">
+                                        <i class="fas fa-plus fa-fw"></i>
+                                    </a>
+                                </p>
+                            </div>
+                            <div class="field action-field-centered">
+                                <p class="control">
+                                    <a class="button is-primary">
+                                        {% trans 'OFFER' %}
+                                    </a>
+                                </p>
+                            </div>
+                        </form>
+                        <form class="mt-4 is-hidden" id="reject-form">
+                            <div class="field action-field-centered">
+                                <p class="control">
+                                    <a class="button is-danger">
+                                        {% trans 'Not Available' %}
+                                    </a>
+                                </p>
+                            </div>
+                        </form>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
