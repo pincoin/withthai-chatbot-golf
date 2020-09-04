@@ -128,7 +128,9 @@
                             <form class="mt-4 mb-2" id="confirm-form">
                                 <div class="field has-addons action-field-centered">
                                     <p class="control">
-                                        <input class="input" type="time" placeholder="">
+                                        <input class="input" type="time"
+                                               placeholder="{{ order.round_time|date:'H:i' }}"
+                                               value="{{ order.round_time|date:'H:i' }}">
                                     </p>
                                     <p class="control">
                                         <a class="button is-primary">
@@ -138,35 +140,24 @@
                                 </div>
                             </form>
                             <form class="mt-4 mb-2 is-hidden" id="offer-form">
-                                <div class="field has-addons action-field-centered">
-                                    <p class="control">
-                                        <a class="button is-danger">
-                                            <i class="fas fa-minus fa-fw"></i>
-                                        </a>
-                                    </p>
-                                    <p class="control">
-                                        <input class="input" type="time" placeholder="">
-                                    </p>
-                                    <p class="control">
-                                        <a class="button is-link">
-                                            <i class="fas fa-plus fa-fw"></i>
-                                        </a>
-                                    </p>
-                                </div>
-                                <div class="field has-addons action-field-centered">
-                                    <p class="control">
-                                        <a class="button is-danger">
-                                            <i class="fas fa-minus fa-fw"></i>
-                                        </a>
-                                    </p>
-                                    <p class="control">
-                                        <input class="input" type="time" placeholder="">
-                                    </p>
-                                    <p class="control">
-                                        <a class="button is-link">
-                                            <i class="fas fa-plus fa-fw"></i>
-                                        </a>
-                                    </p>
+                                <div id="offer-list">
+                                    <div class="field has-addons action-field-centered">
+                                        <p class="control">
+                                            <a class="button is-danger">
+                                                <i class="fas fa-minus fa-fw"></i>
+                                            </a>
+                                        </p>
+                                        <p class="control">
+                                            <input class="input" type="time"
+                                                   placeholder="{{ order.round_time|date:'H:i' }}"
+                                                   value="{{ order.round_time|date:'H:i' }}">
+                                        </p>
+                                        <p class="control">
+                                            <a class="button is-link">
+                                                <i class="fas fa-plus fa-fw"></i>
+                                            </a>
+                                        </p>
+                                    </div>
                                 </div>
                                 <div class="field action-field-centered">
                                     <p class="control">
