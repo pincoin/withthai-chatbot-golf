@@ -13,6 +13,15 @@ body {
     padding-bottom: 2rem;
 }
 
+.card-header {
+    box-shadow: none;
+    background-color: #c1ffc8;
+}
+
+.navbar-top {
+    background-color: #ebfcd8;
+}
+
 /* Desktop */
 @media (min-width: 1024px) {
     .logo {
@@ -48,6 +57,14 @@ body {
         padding: .5rem 0 0 .5rem;
     }
 
+    .menu-label {
+        margin-bottom: .2rem !important;
+    }
+
+    .menu-list li ul {
+        margin: 0 .75rem;
+    }
+
     .mobile-navbar-container {
         padding: 0 !important;
     }
@@ -58,7 +75,11 @@ body {
     }
 
     .section {
-        padding: .1rem 0;
+        padding: 0;
+    }
+
+    .card-content {
+        padding: 0 .5rem;
     }
 
     .order-list {
