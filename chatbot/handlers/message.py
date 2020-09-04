@@ -1,5 +1,6 @@
 import datetime
 
+from django.urls import reverse
 from django.utils import timezone
 from linebot import models
 
@@ -165,7 +166,11 @@ def command_new(event, line_bot_api, **kwargs):
         .bulk_create([green_fee, caddie_fee, cart_fee] if cart_fee else [green_fee, caddie_fee])
 
     # 5. Notification to golf club
-    notification = f'{match[1]} {match[2]} {match[3]} {match[4]} {match[5]}'
+    url = reverse('console:golf-booking-order-detail', args=(golf_club.slug, order.order_no))
+    notification = (
+        f'New\n"{customer_name}"\n{round_date}\n{round_time}\n{pax} GOLFER\n{cart} CART\n'
+        f'https://www.withthai.com/{url}'
+    )
     tasks.send_notification_line.delay(golf_club.line_notify_access_token, notification)
 
     # 6. Notification to customer
