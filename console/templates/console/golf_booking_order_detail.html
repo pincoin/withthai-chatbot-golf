@@ -122,7 +122,7 @@
                                 {% trans 'N/A' %}
                             </label>
                         </div>
-                        <form class="mt-4" id="confirm-form">
+                        <form class="mt-4 mb-2" id="confirm-form">
                             <div class="field has-addons action-field-centered">
                                 <p class="control">
                                     <input class="input" type="time" placeholder="">
@@ -134,7 +134,22 @@
                                 </p>
                             </div>
                         </form>
-                        <form class="mt-4 is-hidden" id="offer-form">
+                        <form class="mt-4 mb-2 is-hidden" id="offer-form">
+                            <div class="field has-addons action-field-centered">
+                                <p class="control">
+                                    <a class="button is-danger">
+                                        <i class="fas fa-minus fa-fw"></i>
+                                    </a>
+                                </p>
+                                <p class="control">
+                                    <input class="input" type="time" placeholder="">
+                                </p>
+                                <p class="control">
+                                    <a class="button is-link">
+                                        <i class="fas fa-plus fa-fw"></i>
+                                    </a>
+                                </p>
+                            </div>
                             <div class="field has-addons action-field-centered">
                                 <p class="control">
                                     <a class="button is-danger">
@@ -158,7 +173,7 @@
                                 </p>
                             </div>
                         </form>
-                        <form class="mt-4 is-hidden" id="reject-form">
+                        <form class="mt-4 mb-2 is-hidden" id="reject-form">
                             <div class="field action-field-centered">
                                 <p class="control">
                                     <a class="button is-danger">

@@ -123,4 +123,8 @@ body {
     .action-field-centered {
         justify-content: center !important;
     }
+
+    #offer-form .field {
+        margin-bottom: 0;
+    }
 }
