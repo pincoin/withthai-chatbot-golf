@@ -21,8 +21,7 @@
                      alt="with thai logo">
             </a>
 
-            <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false"
-               data-target="navbarBasicExample">
+            <a role="button" class="navbar-burger burger" id="burger-icon">
                 <i class="fas fa-bars fa-fw burger-icon"></i>
             </a>
         </div>
@@ -43,7 +42,7 @@
 
 <div class="columns is-gapless is-marginless">
     <div class="column is-2">
-        <aside class="menu">
+        <aside class="menu is-hidden-mobile" id="left-sidebar">
             <p class="menu-label">
                 {% trans 'Booking' %}
             </p>
@@ -127,5 +126,8 @@
         </div>
     </div>
 </div>
+{% block javascript %}
+<script charset="utf-8" src="{% static 'js/console/main.js' %}"></script>
+{% endblock %}
 </body>
 </html>
