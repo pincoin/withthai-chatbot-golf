@@ -1,12 +1,10 @@
-from django.http import HttpResponseRedirect
 from django.shortcuts import get_object_or_404
-from django.urls import reverse
 from django.utils import timezone
 from django.views import generic
 
 from golf import models as golf_models
 from . import forms
-from .viewmixins import EnglishContextMixin
+from . import viewmixins
 
 
 class HomeView(generic.TemplateView):
@@ -18,7 +16,7 @@ class HomeView(generic.TemplateView):
         return context
 
 
-class GolfBookingOrderListView(EnglishContextMixin, generic.ListView):
+class GolfBookingOrderListView(viewmixins.EnglishContextMixin, generic.ListView):
     template_name = 'console/golf_booking_order_list.html'
 
     context_object_name = 'orders'
@@ -72,7 +70,7 @@ class GolfBookingOrderListView(EnglishContextMixin, generic.ListView):
         return 5
 
 
-class GolfBookingOrderDetailView(EnglishContextMixin, generic.DetailView):
+class GolfBookingOrderDetailView(viewmixins.EnglishContextMixin, generic.DetailView):
     template_name = 'console/golf_booking_order_detail.html'
 
     context_object_name = 'order'
@@ -99,24 +97,12 @@ class GolfBookingOrderDetailView(EnglishContextMixin, generic.DetailView):
         return context
 
 
-class GolfBookingOrderConfirmView(generic.FormView):
+class GolfBookingOrderConfirmView(viewmixins.OrderChangeContextMixin, generic.FormView):
     form_class = forms.ConfirmForm
 
     def __init__(self):
         super(GolfBookingOrderConfirmView, self).__init__()
         self.object = None
-
-    def post(self, request, *args, **kwargs):
-        self.object = golf_models.GolfBookingOrder.objects \
-            .select_related('customer_group', 'golf_club', 'user', 'line_user') \
-            .get(order_no=self.kwargs['uuid'])
-
-        form = self.get_form()
-
-        if form.is_valid():
-            return self.form_valid(form)
-        else:
-            return self.form_invalid(form)
 
     def form_valid(self, form):
         if self.object.order_status in [golf_models.GolfBookingOrder.ORDER_STATUS_CHOICES.open,
@@ -127,16 +113,8 @@ class GolfBookingOrderConfirmView(generic.FormView):
 
         return super(GolfBookingOrderConfirmView, self).form_valid(form)
 
-    def form_invalid(self, form):
-        return HttpResponseRedirect(reverse('console:golf-booking-order-detail',
-                                            args=(self.object.golf_club.slug, self.object.order_no)))
 
-    def get_success_url(self):
-        return reverse('console:golf-booking-order-detail',
-                       args=(self.object.golf_club.slug, self.object.order_no))
-
-
-class GolfBookingOrderOfferView(generic.FormView):
+class GolfBookingOrderOfferView(viewmixins.OrderChangeContextMixin, generic.FormView):
     form_class = forms.OfferForm
 
     def __init__(self):
@@ -154,32 +132,13 @@ class GolfBookingOrderOfferView(generic.FormView):
 
         return super(GolfBookingOrderOfferView, self).form_valid(form)
 
-    def form_invalid(self, form):
-        pass
 
-    def get_success_url(self):
-        return reverse('console:golf-booking-order-detail',
-                       args=(self.object.golf_club.slug, self.object.order_no))
-
-
-class GolfBookingOrderRejectView(generic.FormView):
+class GolfBookingOrderRejectView(viewmixins.OrderChangeContextMixin, generic.FormView):
     form_class = forms.RejectForm
 
     def __init__(self):
         super(GolfBookingOrderRejectView, self).__init__()
         self.object = None
-
-    def post(self, request, *args, **kwargs):
-        self.object = golf_models.GolfBookingOrder.objects \
-            .select_related('customer_group', 'golf_club', 'user', 'line_user') \
-            .get(order_no=self.kwargs['uuid'])
-
-        form = self.get_form()
-
-        if form.is_valid():
-            return self.form_valid(form)
-        else:
-            return self.form_invalid(form)
 
     def form_valid(self, form):
         if self.object.order_status in [golf_models.GolfBookingOrder.ORDER_STATUS_CHOICES.open, ]:
@@ -187,7 +146,3 @@ class GolfBookingOrderRejectView(generic.FormView):
             self.object.save()
 
         return super(GolfBookingOrderRejectView, self).form_valid(form)
-
-    def get_success_url(self):
-        return reverse('console:golf-booking-order-detail',
-                       args=(self.object.golf_club.slug, self.object.order_no))
