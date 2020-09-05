@@ -33,6 +33,12 @@ class GolfBookingOrderProductInline(admin.TabularInline):
     extra = 1
 
 
+class GolfBookingOrderStatusLogtInline(admin.TabularInline):
+    model = models.GolfBookingOrderStatusLog
+    ordering = ['-created', ]
+    extra = 1
+
+
 class HolidayAdmin(admin.ModelAdmin):
     list_display = ('title', 'holiday')
     date_hierarchy = 'holiday'
@@ -127,7 +133,7 @@ class GolfBookingOrderAdmin(admin.ModelAdmin):
     list_display_links = ('golf_club', 'fullname')
     readonly_fields = ('user_agent', 'accept_language', 'ip_address', 'parent')
     list_filter = ('golf_club__title_english',)
-    inlines = [GolfBookingOrderProductInline, ]
+    inlines = [GolfBookingOrderProductInline, GolfBookingOrderStatusLogtInline]
     date_hierarchy = 'round_date'
     ordering = ['-round_date', 'round_time']
 
