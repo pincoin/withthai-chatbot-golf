@@ -2,8 +2,6 @@ from django import forms
 from django.utils import timezone
 from django.utils.translation import gettext_lazy as _
 
-from golf import models as golf_models
-
 
 class ConfirmForm(forms.Form):
     round_time = forms.TimeField(required=True)
@@ -18,10 +16,16 @@ class ConfirmForm(forms.Form):
         return data
 
 
-class OfferForm(forms.ModelForm):
-    class Meta:
-        model = golf_models.GolfBookingOrder
-        fields = ()
+class OfferForm(forms.Form):
+    tee_off_times = forms.TimeField(widget=forms.HiddenInput(), required=False)
+
+    def clean_tee_off_times(self):
+        tee_off_times = list(filter(None, self.data.getlist('tee_off_times')))
+
+        if len(tee_off_times) == 0:
+            raise forms.ValidationError(_('No round time is offered.'))
+
+        return tee_off_times
 
 
 class RejectForm(forms.Form):

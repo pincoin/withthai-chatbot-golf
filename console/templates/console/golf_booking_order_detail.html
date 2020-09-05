@@ -154,33 +154,54 @@
                                     </ul>
                                 </div>
                             </form>
-                            <form class="mt-4 mb-2 is-hidden" id="offer-form"
+                            <form class="mt-4 mb-2 is-hidden" id="offer-form" method="post"
                                   action="{% url 'console:golf-booking-order-offer' slug  order.order_no %}">
                                 {% csrf_token %}
                                 <div id="offer-list">
                                     <div class="field has-addons action-field-centered">
                                         <p class="control">
-                                            <a class="button is-danger">
+                                            <button class="button is-danger offer-minus">
                                                 <i class="fas fa-minus fa-fw"></i>
-                                            </a>
+                                            </button>
                                         </p>
                                         <p class="control">
-                                            <input class="input" type="time"
-                                                   placeholder="{{ order.round_time|date:'H:i' }}"
-                                                   value="{{ order.round_time|date:'H:i' }}">
+                                            <input class="input"
+                                                   type="time"
+                                                   name="tee_off_times"
+                                                   value="{{ order.round_time|date:'H:i' }}"
+                                                   placeholder="HH:MM" step="60">
                                         </p>
                                         <p class="control">
-                                            <a class="button is-link">
+                                            <button class="button is-link offer-plus">
                                                 <i class="fas fa-plus fa-fw"></i>
-                                            </a>
+                                            </button>
+                                        </p>
+                                    </div>
+                                    <div class="field has-addons action-field-centered">
+                                        <p class="control">
+                                            <button class="button is-danger offer-minus">
+                                                <i class="fas fa-minus fa-fw"></i>
+                                            </button>
+                                        </p>
+                                        <p class="control">
+                                            <input class="input"
+                                                   type="time"
+                                                   name="tee_off_times"
+                                                   value="{{ order.round_time|date:'H:i' }}"
+                                                   placeholder="HH:MM" step="60">
+                                        </p>
+                                        <p class="control">
+                                            <button class="button is-link offer-plus">
+                                                <i class="fas fa-plus fa-fw"></i>
+                                            </button>
                                         </p>
                                     </div>
                                 </div>
                                 <div class="field action-field-centered">
                                     <p class="control">
-                                        <a class="button is-primary">
+                                        <button type="submit" class="button is-primary">
                                             {% trans 'OFFER' %}
-                                        </a>
+                                        </button>
                                     </p>
                                 </div>
                             </form>

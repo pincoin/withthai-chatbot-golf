@@ -26,4 +26,19 @@ function runApp() {
             offer_form.classList.add('is-hidden');
             reject_form.classList.remove('is-hidden');
         });
+
+    const offer_plus = document.getElementsByClassName('offer-plus');
+    const offer_minus = document.getElementsByClassName('offer-minus');
+
+    for (let i = 0; i < offer_plus.length; i++) {
+        offer_plus[i].addEventListener("click", function () {
+            console.log("Clicked index: " + i);
+        })
+    }
+
+    for (let i = 0; i < offer_minus.length; i++) {
+        offer_minus[i].addEventListener("click", function () {
+            console.log("Clicked index: " + i);
+        })
+    }
 }

@@ -122,9 +122,8 @@ class GolfBookingOrderOfferView(viewmixins.OrderChangeContextMixin, generic.Form
         self.object = None
 
     def form_valid(self, form):
-        self.object = golf_models.GolfBookingOrder.objects \
-            .select_related('customer_group', 'golf_club', 'user', 'line_user') \
-            .get(order_no=self.kwargs['uuid'])
+        print(form.cleaned_data)
+        print(form.cleaned_data['tee_off_times'])
 
         if self.object.order_status in [golf_models.GolfBookingOrder.ORDER_STATUS_CHOICES.open, ]:
             self.object.order_status = golf_models.GolfBookingOrder.ORDER_STATUS_CHOICES.offered
