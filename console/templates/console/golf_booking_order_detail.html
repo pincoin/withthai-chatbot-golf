@@ -125,20 +125,33 @@
                                     {% trans 'CLOSE' %}
                                 </label>
                             </div>
-                            <form class="mt-4 mb-2" id="confirm-form"
+                            <form class="mt-4 mb-2" id="confirm-form" method="post"
                                   action="{% url 'console:golf-booking-order-confirm' slug  order.order_no %}">
                                 {% csrf_token %}
                                 <div class="field has-addons action-field-centered">
                                     <p class="control">
-                                        <input class="input" type="time"
-                                               placeholder="{{ order.round_time|date:'H:i' }}"
-                                               value="{{ order.round_time|date:'H:i' }}">
+                                        <label class="is-hidden" for="{{ confirm_form.round_time.id_for_label }}">
+                                        </label>
+                                        <input class="input"
+                                               type="time"
+                                               id="{{ confirm_form.round_time.id_for_label }}"
+                                               name="{{ confirm_form.round_time.name }}"
+                                               value="{{ order.round_time|date:'H:i' }}"
+                                               placeholder="HH:MM" step="60">
                                     </p>
                                     <p class="control">
-                                        <a class="button is-primary">
+                                        <button type="submit" class="button is-primary">
                                             {% trans 'CONFIRM' %}
-                                        </a>
+                                        </button>
                                     </p>
+                                    <ul>
+                                        {% for error in confirm_form.non_field_errors %}
+                                        <li class="has-text-danger">{{ error }}</li>
+                                        {% endfor %}
+                                        {% for error in confirm_form.round_time.errors %}
+                                        <li class="has-text-danger">{{ error }}</li>
+                                        {% endfor %}
+                                    </ul>
                                 </div>
                             </form>
                             <form class="mt-4 mb-2 is-hidden" id="offer-form"
@@ -183,9 +196,7 @@
                                 </div>
                                 <ul>
                                     {% for error in reject_form.non_field_errors %}
-                                    <li class="has-text-danger">
-                                        {{ error }}
-                                    </li>
+                                    <li class="has-text-danger">{{ error }}</li>
                                     {% endfor %}
                                 </ul>
                             </form>
