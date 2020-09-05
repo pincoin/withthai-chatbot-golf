@@ -3,6 +3,8 @@ function runApp() {
     const offer_form = document.getElementById('offer-form');
     const reject_form = document.getElementById('reject-form');
 
+    const offer_list = document.getElementById('offer-list');
+
     document
         .getElementById('confirm-radio')
         .addEventListener('click', function (e) {
@@ -27,18 +29,29 @@ function runApp() {
             reject_form.classList.remove('is-hidden');
         });
 
-    const offer_plus = document.getElementsByClassName('offer-plus');
-    const offer_minus = document.getElementsByClassName('offer-minus');
+    document
+        .getElementById('offer-plus')
+        .addEventListener('click', function (e) {
+            const div = document.createElement('div');
+            div.innerHTML = '<div class="field has-addons action-field-centered">\n' +
+                '<p class="control">\n' +
+                '    <input class="input"\n' +
+                '        type="time"\n' +
+                '        name="tee_off_times"\n' +
+                '        placeholder="HH:MM" step="60">\n' +
+                '</p>\n' +
+                '<p class="control">\n' +
+                '    <a class="button is-danger offer-minus">\n' +
+                '        <i class="fas fa-minus fa-fw"></i>\n' +
+                '    </a>\n' +
+                '</p>\n' +
+                '</div>';
+            while (div.children.length > 0) {
+                div.children[0].children[1].children[0].addEventListener('click', function () {
+                    this.parentElement.parentElement.remove();
+                });
 
-    for (let i = 0; i < offer_plus.length; i++) {
-        offer_plus[i].addEventListener("click", function () {
-            console.log("Clicked index: " + i);
-        })
-    }
-
-    for (let i = 0; i < offer_minus.length; i++) {
-        offer_minus[i].addEventListener("click", function () {
-            console.log("Clicked index: " + i);
-        })
-    }
+                offer_list.appendChild(div.children[0]);
+            }
+        });
 }
