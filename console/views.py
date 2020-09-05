@@ -1,8 +1,10 @@
 from django.shortcuts import get_object_or_404
+from django.urls import reverse
 from django.utils import timezone
 from django.views import generic
 
 from golf import models as golf_models
+from . import forms
 from .viewmixins import EnglishContextMixin
 
 
@@ -74,6 +76,10 @@ class GolfBookingOrderDetailView(EnglishContextMixin, generic.DetailView):
 
     context_object_name = 'order'
 
+    confirm_form_class = forms.ConfirmForm
+    offer_form_class = forms.OfferForm
+    reject_form_class = forms.RejectForm
+
     def get_object(self, queryset=None):
         # NOTE: This method is overridden because DetailView must be called with either an object pk or a slug.
         queryset = golf_models.GolfBookingOrder.objects \
@@ -85,4 +91,74 @@ class GolfBookingOrderDetailView(EnglishContextMixin, generic.DetailView):
     def get_context_data(self, **kwargs):
         context = super(GolfBookingOrderDetailView, self).get_context_data(**kwargs)
         context['slug'] = self.kwargs['slug']
+
+        context['reject_form'] = self.reject_form_class()
         return context
+
+
+class GolfBookingOrderConfirmView(generic.UpdateView):
+    context_object_name = 'order'
+
+    model = golf_models.GolfBookingOrder
+
+    form_class = forms.ConfirmForm
+
+    def get_object(self, queryset=None):
+        # NOTE: This method is overridden because DetailView must be called with either an object pk or a slug.
+        queryset = golf_models.GolfBookingOrder.objects \
+            .select_related('customer_group', 'golf_club') \
+            .filter(order_no=self.kwargs['uuid'])
+
+        return get_object_or_404(queryset, order_no=self.kwargs['uuid'])
+
+    def form_valid(self, form):
+        form.instance.order_status = golf_models.GolfBookingOrder.ORDER_STATUS_CHOICES.confirmed
+        return super(GolfBookingOrderConfirmView, self).form_valid(form)
+
+    def get_success_url(self):
+        return reverse('console:golf-booking-order-detail', args=(self.object.golf_club.slug, self.object.order_no))
+
+
+class GolfBookingOrderOfferView(generic.UpdateView):
+    context_object_name = 'order'
+
+    model = golf_models.GolfBookingOrder
+
+    form_class = forms.ConfirmForm
+
+    def get_object(self, queryset=None):
+        # NOTE: This method is overridden because DetailView must be called with either an object pk or a slug.
+        queryset = golf_models.GolfBookingOrder.objects \
+            .select_related('customer_group', 'golf_club') \
+            .filter(order_no=self.kwargs['uuid'])
+
+        return get_object_or_404(queryset, order_no=self.kwargs['uuid'])
+
+    def form_valid(self, form):
+        form.instance.order_status = golf_models.GolfBookingOrder.ORDER_STATUS_CHOICES.confirmed
+        return super(GolfBookingOrderOfferView, self).form_valid(form)
+
+    def get_success_url(self):
+        return reverse('console:golf-booking-order-detail', args=(self.object.golf_club.slug, self.object.order_no))
+
+
+class GolfBookingOrderRejectView(generic.FormView):
+    form_class = forms.RejectForm
+
+    def __init__(self):
+        super(GolfBookingOrderRejectView, self).__init__()
+        self.object = None
+
+    def form_valid(self, form):
+        self.object = golf_models.GolfBookingOrder.objects \
+            .select_related('customer_group', 'golf_club', 'user', 'line_user') \
+            .get(order_no=self.kwargs['uuid'])
+
+        if self.object.order_status in [golf_models.GolfBookingOrder.ORDER_STATUS_CHOICES.open, ]:
+            self.object.order_status = golf_models.GolfBookingOrder.ORDER_STATUS_CHOICES.closed
+            self.object.save()
+
+        return super(GolfBookingOrderRejectView, self).form_valid(form)
+
+    def get_success_url(self):
+        return reverse('console:golf-booking-order-detail', args=(self.object.golf_club.slug, self.object.order_no))

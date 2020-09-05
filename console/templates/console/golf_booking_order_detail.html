@@ -122,10 +122,12 @@
                                 </label>
                                 <label class="radio">
                                     <input type="radio" name="action" id="reject-radio">
-                                    {% trans 'N/A' %}
+                                    {% trans 'CLOSE' %}
                                 </label>
                             </div>
-                            <form class="mt-4 mb-2" id="confirm-form">
+                            <form class="mt-4 mb-2" id="confirm-form"
+                                  action="{% url 'console:golf-booking-order-confirm' slug  order.order_no %}">
+                                {% csrf_token %}
                                 <div class="field has-addons action-field-centered">
                                     <p class="control">
                                         <input class="input" type="time"
@@ -139,7 +141,9 @@
                                     </p>
                                 </div>
                             </form>
-                            <form class="mt-4 mb-2 is-hidden" id="offer-form">
+                            <form class="mt-4 mb-2 is-hidden" id="offer-form"
+                                  action="{% url 'console:golf-booking-order-offer' slug  order.order_no %}">
+                                {% csrf_token %}
                                 <div id="offer-list">
                                     <div class="field has-addons action-field-centered">
                                         <p class="control">
@@ -167,14 +171,23 @@
                                     </p>
                                 </div>
                             </form>
-                            <form class="mt-4 mb-2 is-hidden" id="reject-form">
+                            <form class="mt-4 mb-2 is-hidden" id="reject-form" method="post"
+                                  action="{% url 'console:golf-booking-order-reject' slug  order.order_no %}">
+                                {% csrf_token %}
                                 <div class="field action-field-centered">
                                     <p class="control">
-                                        <a class="button is-danger">
-                                            {% trans 'NOT AVAILABLE' %}
-                                        </a>
+                                        <button type="submit" class="button is-danger">
+                                            {% trans 'CLOSE' %}
+                                        </button>
                                     </p>
                                 </div>
+                                <ul>
+                                    {% for error in reject_form.non_field_errors %}
+                                    <li class="has-text-danger">
+                                        {{ error }}
+                                    </li>
+                                    {% endfor %}
+                                </ul>
                             </form>
                         </div>
                     </div>
