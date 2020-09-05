@@ -144,15 +144,15 @@
                                             {% trans 'CONFIRM' %}
                                         </button>
                                     </p>
-                                    <ul>
-                                        {% for error in confirm_form.non_field_errors %}
-                                        <li class="has-text-danger">{{ error }}</li>
-                                        {% endfor %}
-                                        {% for error in confirm_form.round_time.errors %}
-                                        <li class="has-text-danger">{{ error }}</li>
-                                        {% endfor %}
-                                    </ul>
                                 </div>
+                                <ul>
+                                    {% for error in confirm_form.non_field_errors %}
+                                    <li class="has-text-danger">{{ error }}</li>
+                                    {% endfor %}
+                                    {% for error in confirm_form.round_time.errors %}
+                                    <li class="has-text-danger">{{ error }}</li>
+                                    {% endfor %}
+                                </ul>
                             </form>
                             <form class="mt-4 mb-2 is-hidden" id="offer-form" method="post"
                                   action="{% url 'console:golf-booking-order-offer' slug  order.order_no %}">
