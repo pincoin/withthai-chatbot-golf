@@ -174,7 +174,7 @@ class GolfBookingOrderRejectView(generic.FormView):
             .select_related('customer_group', 'golf_club', 'user', 'line_user') \
             .get(order_no=self.kwargs['uuid'])
 
-        form = self.get_form(**self.get_form_kwargs())
+        form = self.get_form()
 
         if form.is_valid():
             return self.form_valid(form)
