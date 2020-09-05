@@ -106,7 +106,7 @@
                             {% endif %}
                         </div>
                     </div>
-                    <div class="columns is-mobile">
+                    <div class="columns is-mobile{% if order.order_status == order.ORDER_STATUS_CHOICES.confirmed or order.order_status == order.ORDER_STATUS_CHOICES.closed %} is-hidden{% endif %}">
                         <div class="column is-1-tablet is-hidden-mobile has-text-right-tablet">
                             {% trans 'Actions' %}
                         </div>

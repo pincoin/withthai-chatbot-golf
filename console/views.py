@@ -127,7 +127,7 @@ class GolfBookingOrderOfferView(viewmixins.OrderChangeContextMixin, generic.Form
             .get(order_no=self.kwargs['uuid'])
 
         if self.object.order_status in [golf_models.GolfBookingOrder.ORDER_STATUS_CHOICES.open, ]:
-            self.object.order_status = golf_models.GolfBookingOrder.ORDER_STATUS_CHOICES.closed
+            self.object.order_status = golf_models.GolfBookingOrder.ORDER_STATUS_CHOICES.offered
             self.object.save()
 
         return super(GolfBookingOrderOfferView, self).form_valid(form)
