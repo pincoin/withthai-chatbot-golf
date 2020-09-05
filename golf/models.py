@@ -882,6 +882,52 @@ class GolfBookingOrderProduct(model_utils_models.TimeStampedModel):
         return f'order - {self.order.order_no} / product - {self.get_product_display()}'
 
 
+class GolfBookingOrderStatusLog(model_utils_models.TimeStampedModel):
+    order = models.ForeignKey(
+        'golf.GolfBookingOrder',
+        verbose_name=_('Golf booking order'),
+        db_index=True,
+        on_delete=models.CASCADE,
+    )
+
+    user = models.ForeignKey(
+        settings.AUTH_USER_MODEL,
+        verbose_name=_('User'),
+        db_index=True,
+        null=True,
+        blank=True,
+        editable=True,
+        on_delete=models.SET_NULL,
+    )
+
+    order_status = models.IntegerField(
+        verbose_name=_('Order status'),
+        choices=GolfBookingOrder.ORDER_STATUS_CHOICES,
+        default=GolfBookingOrder.ORDER_STATUS_CHOICES.open,
+        db_index=True,
+    )
+
+    payment_status = models.IntegerField(
+        verbose_name=_('Payment status'),
+        choices=GolfBookingOrder.PAYMENT_STATUS_CHOICES,
+        default=GolfBookingOrder.PAYMENT_STATUS_CHOICES.unpaid,
+        db_index=True,
+    )
+
+    message = models.TextField(
+        verbose_name=_('Message'),
+        blank=True,
+        null=True,
+    )
+
+    class Meta:
+        verbose_name = _('Golf booking order status log')
+        verbose_name_plural = _('Golf booking order status logs')
+
+    def __str__(self):
+        return f'{self.message} at {self.created}'
+
+
 class GolfBookingPromotion(model_utils_models.TimeStampedModel):
     DISCOUNT_FEE_CHOICES = Choices(
         (0, 'green_fee', _('Green fee')),
