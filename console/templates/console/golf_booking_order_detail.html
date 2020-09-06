@@ -1,6 +1,7 @@
 {% extends './base.html' %}
 
 {% load i18n static humanize %}
+{% load console_filters %}
 
 {% block title %}
 with-thai::{% trans 'Golf Booking Order Detail' %}
@@ -37,8 +38,12 @@ with-thai::{% trans 'Golf Booking Order Detail' %}
                         <div class="column is-2-tablet is-5-mobile has-text-right-tablet">
                             {% trans 'Customer Group' %}
                         </div>
-                        <div class="column is-10-tablet is-7-mobile has-text-weight-bold">
-                            {{ order.customer_group.title_english }}
+                        <div class="column is-10-tablet is-7-mobile">
+                            {% if order.customer_group.title_english %}
+                            <span class="tag status-customer-{{ order.customer_group.id|modulo:5 }}">
+                                {{ order.customer_group.title_english }}
+                            </span>
+                            {% endif %}
                         </div>
                     </div>
                     <div class="columns is-mobile">
@@ -224,9 +229,14 @@ with-thai::{% trans 'Golf Booking Order Detail' %}
             <div class="content">
                 <div class="order-detail">
                     {% for fee in products %}
-                    <div class="columns is-mobile">
+                    <div class="columns is-mobile is-vcentered">
                         <div class="column is-2-tablet is-5-mobile has-text-right-tablet">
-                            {{ fee.get_product_display }}<br> [{{ fee.customer_group.title_english }}]
+                            {{ fee.get_product_display }}<br>
+                            {% if fee.customer_group.title_english %}
+                            <span class="tag status-customer-{{ fee.customer_group.id|modulo:5 }}">
+                                {{ fee.customer_group.title_english }}
+                            </span>
+                            {% endif %}
                         </div>
                         <div class="column is-10-tablet is-7-mobile">
                             <strong>{{ fee.selling_price|floatformat:0|intcomma }}</strong>
@@ -252,13 +262,15 @@ with-thai::{% trans 'Golf Booking Order Detail' %}
             <div class="content">
                 <div class="order-detail">
                     {% for log in logs %}
-                    <div class="columns is-mobile is-multiline">
+                    <div class="columns is-mobile is-multiline is-vcentered">
                         <div class="column is-2-tablet is-5-mobile has-text-right-tablet">
                             {% if log.user %}
                             {{ log.user.first_name }} {{ log.user.last_name }}
+                            {% else %}
+                            <i class="fas fa-minus fa-fw"></i>
                             {% endif %}
                         </div>
-                        <div class="column is-1-tablet is-7-mobile">
+                        <div class="column is-2-tablet is-7-mobile">
                             {% if log.order_status == order.ORDER_STATUS_CHOICES.open %}
                             <span class="tag status-open">{{ log.get_order_status_display }}</span>
                             {% elif log.order_status == order.ORDER_STATUS_CHOICES.offered %}
