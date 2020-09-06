@@ -205,7 +205,7 @@ class GolfBookingOrderRejectView(viewmixins.OrderChangeContextMixin, generic.For
             message = linebot_models.TextSendMessage(text='Booking closed.\n\n'
                                                           'We apologize for the inconvenience '
                                                           'because your tee time is not available.\n\n'
-                                                          'Please, make a new booking with another round date/time. '
+                                                          'Please, make a new booking with another round date/time.\n\n'
                                                           'Thank you.')
             line_bot_api.push_message(to, message)
 
