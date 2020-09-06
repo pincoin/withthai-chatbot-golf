@@ -1,6 +1,8 @@
+import linebot
 import requests
 from celery import shared_task
 from django.core.mail import send_mail
+from linebot import models
 
 
 @shared_task
@@ -28,5 +30,6 @@ def send_notification_line(line_notify_access_token, message):
 
 
 @shared_task
-def send_push_message_line(line_bot_api, to, message):
-    line_bot_api.push_message(to, message)
+def send_push_text_message_line(line_bot_channel_access_token, to, message):
+    line_bot_api = linebot.LineBotApi(line_bot_channel_access_token)
+    line_bot_api.push_message(to, models.TextSendMessage(text=message))
