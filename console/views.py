@@ -5,7 +5,6 @@ from django.utils import timezone
 from django.views import generic
 from linebot import models as linebot_models
 
-from conf import tasks
 from golf import models as golf_models
 from . import forms
 from . import viewmixins
@@ -136,10 +135,15 @@ class GolfBookingOrderConfirmView(viewmixins.OrderChangeContextMixin, generic.Fo
             log.message = f'{round_date_formatted} {round_time_formatted}\n{self.object.pax} PAX {self.object.cart} CART\n'
             log.save()
 
-            line_bot_api = linebot.LineBotApi(self.object.order.golf_club.line_bot_channel_access_token)
+            line_bot_api = linebot.LineBotApi(self.object.golf_club.line_bot_channel_access_token)
             to = self.object.line_user.line_user_id
-            message = linebot_models.TextMessage('Confirmed')
-            tasks.send_push_message_line.delay(line_bot_api, to, message)
+            message = linebot_models.TextSendMessage(text='Booking confirmed.\n\n'
+                                                          f'Tee-off Date/Time: {round_date_formatted} {round_time_formatted}\n'
+                                                          f'Golfer #: {self.object.pax}\n'
+                                                          f'Cart #: {self.object.cart}\n'
+                                                          f'Total: {self.object.total_selling_price:,.0f} THB\n\n'
+                                                          'Thank you.')
+            line_bot_api.push_message(to, message)
 
         return super(GolfBookingOrderConfirmView, self).form_valid(form)
 
@@ -166,6 +170,11 @@ class GolfBookingOrderOfferView(viewmixins.OrderChangeContextMixin, generic.Form
             log.message = f'{round_date_formatted} [{round_time_formatted}]\n{self.object.pax} PAX {self.object.cart} CART\n'
             log.save()
 
+            line_bot_api = linebot.LineBotApi(self.object.golf_club.line_bot_channel_access_token)
+            to = self.object.line_user.line_user_id
+            message = linebot_models.TextSendMessage(text='Offered')
+            line_bot_api.push_message(to, message)
+
         return super(GolfBookingOrderOfferView, self).form_valid(form)
 
 
@@ -190,5 +199,14 @@ class GolfBookingOrderRejectView(viewmixins.OrderChangeContextMixin, generic.For
             log.payment_status = self.object.payment_status
             log.message = f'{round_date_formatted} {round_time_formatted}\n{self.object.pax} PAX {self.object.cart} CART\n'
             log.save()
+
+            line_bot_api = linebot.LineBotApi(self.object.golf_club.line_bot_channel_access_token)
+            to = self.object.line_user.line_user_id
+            message = linebot_models.TextSendMessage(text='Booking closed.\n\n'
+                                                          'We apologize for the inconvenience '
+                                                          'because your tee time is not available.\n\n'
+                                                          'Please, make a new booking with another round date/time. '
+                                                          'Thank you.')
+            line_bot_api.push_message(to, message)
 
         return super(GolfBookingOrderRejectView, self).form_valid(form)
