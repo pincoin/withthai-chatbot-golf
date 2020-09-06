@@ -9,7 +9,7 @@ with-thai::{% trans 'Golf Booking Order List' %}
 
 {% block content %}
 <div class="section pb-0">
-    <div class="card">
+    <div class="card pb-0">
         <header class="card-header">
             <p class="card-header-title">
                 {% trans 'All Booking List' %}
@@ -17,6 +17,97 @@ with-thai::{% trans 'Golf Booking Order List' %}
         </header>
         <div class="card-content">
             <div class="content">
+                <div class="columns search-section">
+                    <div class="column is-3">
+                        <div class="field is-horizontal">
+                            <div class="field-label is-normal">
+                                <label class="label">Search</label>
+                            </div>
+                            <div class="field-body">
+                                <div class="field has-addons">
+                                    <div class="control">
+                                        <span class="select">
+                                          <select>
+                                              <option value="1">{% trans 'Tee-off Date' %}</option>
+                                              <option value="2">{% trans 'Customer' %}</option>
+                                          </select>
+                                        </span>
+                                    </div>
+
+                                    <div class="control is-expanded">
+                                        <input class="input is-fullwidth"
+                                               type="time"
+                                               name="keyword"
+                                               placeholder="HH:MM" step="60">
+                                    </div>
+                                    <div class="control">
+                                        <a class="button is-success">
+                                            <i class="fas fa-search fa-fw"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="field is-horizontal">
+                            <div class="field-label is-normal">
+                                <label class="label">Status</label>
+                            </div>
+                            <div class="field-body">
+                                <div class="field has-addons">
+                                    <div class="control is-expanded">
+                                        <span class="select is-fullwidth">
+                                          <select>
+                                              <option>{% trans 'Order Status' %}</option>
+                                              <option value="1">{% trans 'Open' %}</option>
+                                              <option value="2">{% trans 'Offered' %}</option>
+                                              <option value="2">{% trans 'Accepted' %}</option>
+                                              <option value="2">{% trans 'Confirmed' %}</option>
+                                              <option value="2">{% trans 'Closed' %}</option>
+                                          </select>
+                                        </span>
+                                    </div>
+
+                                    <div class="control is-expanded">
+                                        <span class="select is-fullwidth">
+                                          <select>
+                                              <option>{% trans 'Payment Status' %}</option>
+                                              <option value="1">{% trans 'Unpaid' %}</option>
+                                              <option value="2">{% trans 'Paid' %}</option>
+                                              <option value="2">{% trans 'Refund Requests' %}</option>
+                                              <option value="2">{% trans 'Refunded' %}</option>
+                                          </select>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="field is-horizontal">
+                            <div class="field-label is-normal">
+                                <label class="label">Sort</label>
+                            </div>
+                            <div class="field-body">
+                                <div class="field has-addons">
+                                    <p class="control is-expanded mb-0">
+                                        <span class="select is-fullwidth">
+                                          <select>
+                                              <option>{% trans 'Booking Date' %}</option>
+                                              <option value="1">{% trans 'Tee-off Date' %}</option>
+                                          </select>
+                                        </span>
+                                    </p>
+                                    <p class="control mb-0">
+                                        <a class="button is-success">
+                                            <i class="fas fa-sort fa-fw"></i>
+                                        </a>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
                 {% for order in orders %}
                 <div class="columns is-multiline is-mobile is-vcentered order-list">
                     <div class="column is-1-tablet is-4-mobile is-family-monospace">

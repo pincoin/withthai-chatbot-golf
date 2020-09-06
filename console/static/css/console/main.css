@@ -38,6 +38,7 @@ body {
     margin: .5rem;
 }
 
+
 .status-open {
     background-color: #036000 !important;
     color: #fff !important;
@@ -122,9 +123,17 @@ body {
         padding: 1.5rem 1rem;
     }
 
+    .card-content {}
+
+    .search-section {
+        margin: 0 0 1.5rem 0 !important;
+        box-shadow: 1px 1px 8px 2px rgba(0, 0, 0, 0.2);
+        border-radius: 8px;
+    }
+
     .order-list {
         border-bottom: 1px solid #000000;
-        margin-bottom: .5rem !important
+        margin: 0 .1rem .5rem .1rem !important
     }
 
     .order-list .column {
@@ -139,7 +148,6 @@ body {
     .card-content {
         padding: .5rem;
     }
-
 
     .mobile-navbar-container {
         padding: 0 !important;
@@ -156,6 +164,12 @@ body {
 
     .card-content {
         padding: 0 .5rem;
+    }
+
+    .search-section {
+        margin: 1.2rem 0 !important;
+        box-shadow: 1px 1px 8px 2px rgba(0, 0, 0, 0.2);
+        border-radius: 8px;
     }
 
     .order-list {
