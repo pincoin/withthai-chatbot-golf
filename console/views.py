@@ -171,7 +171,7 @@ class GolfBookingOrderOfferView(viewmixins.OrderChangeContextMixin, generic.Form
 
             to = self.object.line_user.line_user_id
             message = 'Tee-off time offer.\n\n' \
-                      'Please, choose your appropriate tee time. You can also close your booking.\n\n' \
+                      'Please, choose your appropriate tee time. Otherwise, you may close the booking.\n\n' \
                       'Thank you.'
 
             tasks.send_push_text_message_line.delay(self.object.golf_club.line_bot_channel_access_token, to, message)
