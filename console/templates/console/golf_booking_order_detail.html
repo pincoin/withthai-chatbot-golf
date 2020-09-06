@@ -18,69 +18,69 @@ with-thai::{% trans 'Golf Booking Order Detail' %}
             <div class="content">
                 <div class="order-detail">
                     <div class="columns is-mobile">
-                        <div class="column is-1-tablet is-5-mobile has-text-right-tablet">
+                        <div class="column is-2-tablet is-5-mobile has-text-right-tablet">
                             {% trans 'Order No' %}
                         </div>
-                        <div class="column is-11-tablet is-7-mobile">
+                        <div class="column is-10-tablet is-7-mobile">
                             {{ order.order_no|truncatechars:9 }}
                         </div>
                     </div>
                     <div class="columns is-mobile">
-                        <div class="column is-1-tablet is-5-mobile has-text-right-tablet">
+                        <div class="column is-2-tablet is-5-mobile has-text-right-tablet">
                             {% trans 'Customer Name' %}
                         </div>
-                        <div class="column is-11-tablet is-7-mobile has-text-weight-bold">
+                        <div class="column is-10-tablet is-7-mobile has-text-weight-bold">
                             {{ order.fullname }}
                         </div>
                     </div>
                     <div class="columns is-mobile">
-                        <div class="column is-1-tablet is-5-mobile has-text-right-tablet">
+                        <div class="column is-2-tablet is-5-mobile has-text-right-tablet">
                             {% trans 'Customer Group' %}
                         </div>
-                        <div class="column is-11-tablet is-7-mobile has-text-weight-bold">
+                        <div class="column is-10-tablet is-7-mobile has-text-weight-bold">
                             {{ order.customer_group.title_english }}
                         </div>
                     </div>
                     <div class="columns is-mobile">
-                        <div class="column is-1-tablet is-5-mobile has-text-right-tablet">
+                        <div class="column is-2-tablet is-5-mobile has-text-right-tablet">
                             {% trans 'Tee-off Date/Time' %}
                         </div>
-                        <div class="column is-11-tablet is-7-mobile has-text-weight-bold">
+                        <div class="column is-10-tablet is-7-mobile has-text-weight-bold">
                             <i class="fas fa-golf-ball fa-fw"></i>
                             {{ order.round_date|date:'Y-m-d' }} {{ order.round_time|date:'H:i' }}
                         </div>
                     </div>
                     <div class="columns is-mobile">
-                        <div class="column is-1-tablet is-5-mobile has-text-right-tablet">
+                        <div class="column is-2-tablet is-5-mobile has-text-right-tablet">
                             {% trans 'PAX' %}
                         </div>
-                        <div class="column is-11-tablet is-7-mobile has-text-weight-bold">
+                        <div class="column is-10-tablet is-7-mobile has-text-weight-bold">
                             <i class="fas fa-users fa-fw"></i> {{ order.pax }}
                         </div>
                     </div>
                     <div class="columns is-mobile">
-                        <div class="column is-1-tablet is-5-mobile has-text-right-tablet">
+                        <div class="column is-2-tablet is-5-mobile has-text-right-tablet">
                             {% trans 'Cart' %}
                         </div>
-                        <div class="column is-11-tablet is-7-mobile has-text-weight-bold">
+                        <div class="column is-10-tablet is-7-mobile has-text-weight-bold">
                             <i class="fas fa-truck-pickup fa-fw"></i>
                             {{ order.cart }}
                         </div>
                     </div>
                     <div class="columns is-mobile">
-                        <div class="column is-1-tablet is-5-mobile has-text-right-tablet">
+                        <div class="column is-2-tablet is-5-mobile has-text-right-tablet">
                             {% trans 'Total' %}
                         </div>
-                        <div class="column is-11-tablet is-7-mobile has-text-weight-bold">
+                        <div class="column is-10-tablet is-7-mobile has-text-weight-bold">
                             <i class="fas fa-coins fa-fw"></i>
                             {{ order.total_selling_price|floatformat:0|intcomma }} THB
                         </div>
                     </div>
                     <div class="columns is-mobile">
-                        <div class="column is-1-tablet is-5-mobile has-text-right-tablet">
+                        <div class="column is-2-tablet is-5-mobile has-text-right-tablet">
                             {% trans 'Order Status' %}
                         </div>
-                        <div class="column is-11-tablet is-7-mobile">
+                        <div class="column is-10-tablet is-7-mobile">
                             {% if order.order_status == order.ORDER_STATUS_CHOICES.open %}
                             <span class="tag status-open">{{ order.get_order_status_display }}</span>
                             {% elif order.order_status == order.ORDER_STATUS_CHOICES.offered %}
@@ -95,10 +95,10 @@ with-thai::{% trans 'Golf Booking Order Detail' %}
                         </div>
                     </div>
                     <div class="columns is-mobile">
-                        <div class="column is-1-tablet is-5-mobile has-text-right-tablet">
+                        <div class="column is-2-tablet is-5-mobile has-text-right-tablet">
                             {% trans 'Payment Status' %}
                         </div>
-                        <div class="column is-11-tablet is-7-mobile">
+                        <div class="column is-10-tablet is-7-mobile">
                             {% if order.payment_status == order.PAYMENT_STATUS_CHOICES.unpaid %}
                             <span class="tag status-unpaid">{{ order.get_payment_status_display }}</span>
                             {% elif order.payment_status == order.PAYMENT_STATUS_CHOICES.paid %}
@@ -111,10 +111,10 @@ with-thai::{% trans 'Golf Booking Order Detail' %}
                         </div>
                     </div>
                     <div class="columns is-mobile{% if order.order_status == order.ORDER_STATUS_CHOICES.confirmed or order.order_status == order.ORDER_STATUS_CHOICES.closed %} is-hidden{% endif %}">
-                        <div class="column is-1-tablet is-hidden-mobile has-text-right-tablet">
+                        <div class="column is-2-tablet is-hidden-mobile has-text-right-tablet">
                             {% trans 'Actions' %}
                         </div>
-                        <div class="column is-11-tablet is-12-mobile has-text-centered-mobile">
+                        <div class="column is-10-tablet is-12-mobile has-text-centered-mobile">
                             <div class="control">
                                 <label class="radio">
                                     <input type="radio" name="action" id="confirm-radio" checked>
