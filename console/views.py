@@ -1,4 +1,5 @@
 from django.shortcuts import get_object_or_404
+from django.template.defaultfilters import date
 from django.utils import timezone
 from django.views import generic
 
@@ -112,6 +113,16 @@ class GolfBookingOrderConfirmView(viewmixins.OrderChangeContextMixin, generic.Fo
             self.object.order_status = golf_models.GolfBookingOrder.ORDER_STATUS_CHOICES.confirmed
             self.object.save()
 
+            round_date_formatted = date(self.object.round_date, 'Y-m-d')
+            round_time_formatted = date(self.object.round_time, 'H:i')
+
+            log = golf_models.GolfBookingOrderStatusLog()
+            log.order = self.object
+            log.order_status = golf_models.GolfBookingOrder.ORDER_STATUS_CHOICES.confirmed
+            log.payment_status = self.object.payment_status
+            log.message = f'{round_date_formatted} {round_time_formatted} {self.object.pax} PAX {self.object.cart} CART\n'
+            log.save()
+
         return super(GolfBookingOrderConfirmView, self).form_valid(form)
 
 
@@ -123,12 +134,19 @@ class GolfBookingOrderOfferView(viewmixins.OrderChangeContextMixin, generic.Form
         self.object = None
 
     def form_valid(self, form):
-        print(form.cleaned_data)
-        print(form.cleaned_data['tee_off_times'])
-
         if self.object.order_status in [golf_models.GolfBookingOrder.ORDER_STATUS_CHOICES.open, ]:
             self.object.order_status = golf_models.GolfBookingOrder.ORDER_STATUS_CHOICES.offered
             self.object.save()
+
+            round_date_formatted = date(self.object.round_date, 'Y-m-d')
+            round_time_formatted = ', '.join(form.cleaned_data['tee_off_times'])
+
+            log = golf_models.GolfBookingOrderStatusLog()
+            log.order = self.object
+            log.order_status = golf_models.GolfBookingOrder.ORDER_STATUS_CHOICES.offered
+            log.payment_status = self.object.payment_status
+            log.message = f'{round_date_formatted} [{round_time_formatted}] {self.object.pax} PAX {self.object.cart} CART\n'
+            log.save()
 
         return super(GolfBookingOrderOfferView, self).form_valid(form)
 
@@ -144,5 +162,15 @@ class GolfBookingOrderRejectView(viewmixins.OrderChangeContextMixin, generic.For
         if self.object.order_status in [golf_models.GolfBookingOrder.ORDER_STATUS_CHOICES.open, ]:
             self.object.order_status = golf_models.GolfBookingOrder.ORDER_STATUS_CHOICES.closed
             self.object.save()
+
+            round_date_formatted = date(self.object.round_date, 'Y-m-d')
+            round_time_formatted = date(self.object.round_time, 'H:i')
+
+            log = golf_models.GolfBookingOrderStatusLog()
+            log.order = self.object
+            log.order_status = golf_models.GolfBookingOrder.ORDER_STATUS_CHOICES.closed
+            log.payment_status = self.object.payment_status
+            log.message = f'{round_date_formatted} {round_time_formatted} {self.object.pax} PAX {self.object.cart} CART\n'
+            log.save()
 
         return super(GolfBookingOrderRejectView, self).form_valid(form)
