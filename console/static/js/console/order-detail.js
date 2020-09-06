@@ -33,18 +33,18 @@ function runApp() {
         .getElementById('offer-plus')
         .addEventListener('click', function (e) {
             const div = document.createElement('div');
-            div.innerHTML = '<div class="field has-addons action-field-centered">\n' +
-                '<p class="control">\n' +
+            div.innerHTML = '<div class="field has-addons action-field-centered mb-2">\n' +
+                '<div class="control">\n' +
                 '    <input class="input"\n' +
                 '        type="time"\n' +
                 '        name="tee_off_times"\n' +
                 '        placeholder="HH:MM" step="60">\n' +
-                '</p>\n' +
-                '<p class="control">\n' +
+                '</div>\n' +
+                '<div class="control">\n' +
                 '    <a class="button is-danger offer-minus">\n' +
                 '        <i class="fas fa-minus fa-fw"></i>\n' +
                 '    </a>\n' +
-                '</p>\n' +
+                '</div>\n' +
                 '</div>';
             while (div.children.length > 0) {
                 div.children[0].children[1].children[0].addEventListener('click', function () {
