@@ -116,7 +116,7 @@
                                     <input type="radio" name="action" id="confirm-radio" checked>
                                     {% trans 'CONFIRM' %}
                                 </label>
-                                <label class="radio">
+                                <label class="radio{% if order.order_status == order.ORDER_STATUS_CHOICES.offered %} is-hidden{% endif %}">
                                     <input type="radio" name="action" id="offer-radio">
                                     {% trans 'OFFER' %}
                                 </label>
