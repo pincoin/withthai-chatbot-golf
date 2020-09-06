@@ -124,6 +124,7 @@ body {
 
     .order-list {
         border-bottom: 1px solid #000000;
+        margin-bottom: .5rem !important
     }
 
     .order-list .column {
