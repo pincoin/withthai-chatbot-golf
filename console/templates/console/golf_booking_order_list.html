@@ -67,7 +67,6 @@ with-thai::{% trans 'Golf Booking Order List' %}
                                           </select>
                                         </span>
                                     </div>
-
                                     <div class="control is-expanded">
                                         <span class="select is-fullwidth">
                                           <select id="payment-status">
@@ -79,6 +78,11 @@ with-thai::{% trans 'Golf Booking Order List' %}
                                           </select>
                                         </span>
                                     </div>
+                                    <div class="control">
+                                        <a class="button is-success">
+                                            <i class="fas fa-filter fa-fw"></i>
+                                        </a>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -89,19 +93,19 @@ with-thai::{% trans 'Golf Booking Order List' %}
                             </div>
                             <div class="field-body">
                                 <div class="field has-addons">
-                                    <p class="control is-expanded mb-0">
+                                    <div class="control is-expanded">
                                         <span class="select is-fullwidth">
                                           <select id="sort">
                                               <option>{% trans 'Booking Date' %}</option>
                                               <option value="1">{% trans 'Tee-off Date' %}</option>
                                           </select>
                                         </span>
-                                    </p>
-                                    <p class="control mb-0">
+                                    </div>
+                                    <div class="control">
                                         <a class="button is-success">
                                             <i class="fas fa-sort fa-fw"></i>
                                         </a>
-                                    </p>
+                                    </div>
                                 </div>
                             </div>
                         </div>
