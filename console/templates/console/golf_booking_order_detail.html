@@ -226,12 +226,12 @@ with-thai::{% trans 'Golf Booking Order Detail' %}
                     {% for fee in products %}
                     <div class="columns is-mobile">
                         <div class="column is-2-tablet is-5-mobile has-text-right-tablet">
-                            {{ fee.get_product_display }} [{{ fee.customer_group.title_english }}]
+                            {{ fee.get_product_display }}<br> [{{ fee.customer_group.title_english }}]
                         </div>
                         <div class="column is-10-tablet is-7-mobile">
-                            {{ fee.selling_price|floatformat:0|intcomma }}
+                            <strong>{{ fee.selling_price|floatformat:0|intcomma }}</strong>
                             * {{ fee.quantity }}
-                            = {{ fee.subtotal|floatformat:0|intcomma }}
+                            = {{ fee.subtotal|floatformat:0|intcomma }} THB
                         </div>
                     </div>
                     {% endfor %}
