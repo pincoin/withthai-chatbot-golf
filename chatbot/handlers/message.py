@@ -166,23 +166,27 @@ def command_new(event, line_bot_api, **kwargs):
     golf_models.GolfBookingOrderProduct.objects \
         .bulk_create([green_fee, caddie_fee, cart_fee] if cart_fee else [green_fee, caddie_fee])
 
+    # 5.1 Logging
+    round_date_formatted = date(round_date, 'Y-m-d')
+    round_time_formatted = date(round_time, 'H:i')
+
     log = golf_models.GolfBookingOrderStatusLog()
     log.order = order
     log.order_status = golf_models.GolfBookingOrder.ORDER_STATUS_CHOICES.open
     log.payment_status = golf_models.GolfBookingOrder.PAYMENT_STATUS_CHOICES.unpaid
-    log.message = f'{round_date} {round_time} {pax} PAX {cart} CART\n'
+    log.message = f'{round_date_formatted} {round_time_formatted} {pax} PAX {cart} CART\n'
     log.save()
 
-    # 5. Notification to golf club
+    # 6. Notification to golf club
     url = reverse('console:golf-booking-order-detail', args=(golf_club.slug, order.order_no))
-    round_date_formatted = date(round_date, 'Y-m-d')
+
     notification = (
-        f'New\n"{customer_name}"\n{round_date_formatted}\n{round_time}\n{pax} GOLFER\n{cart} CART\n'
+        f'New\n"{customer_name}"\n{round_date_formatted}\n{round_time_formatted}\n{pax} GOLFER\n{cart} CART\n'
         f'https://www.withthai.com{url}'
     )
     tasks.send_notification_line.delay(golf_club.line_notify_access_token, notification)
 
-    # 6. Notification to customer
+    # 7. Notification to customer
     now = timezone.localtime().time()
 
     if golf_club.business_hour_start <= now <= golf_club.business_hour_end:
@@ -192,6 +196,7 @@ def command_new(event, line_bot_api, **kwargs):
     else:  # datetime.time(0, 0, 0) <= now < golf_club.business_hour_start
         message = 'We will notify you of the available tee-off date/time after 8 am this morning.'
 
+    # 8. Reply message
     line_bot_api.reply_message(
         event.reply_token,
         models.TextSendMessage(text=message))
