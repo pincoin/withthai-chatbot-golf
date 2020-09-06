@@ -18,7 +18,7 @@ with-thai::{% trans 'Golf Booking Order List' %}
         <div class="card-content">
             <div class="content">
                 <div class="columns search-section">
-                    <div class="column is-3">
+                    <form class="column is-3">
                         <div class="field is-horizontal">
                             <div class="field-label is-normal">
                                 <label class="label">Search</label>
@@ -38,7 +38,7 @@ with-thai::{% trans 'Golf Booking Order List' %}
                                         <input class="input is-fullwidth"
                                                type="time"
                                                name="keyword"
-                                               placeholder="HH:MM" step="60">
+                                               placeholder="HH:MM">
                                     </div>
                                     <div class="control">
                                         <a class="button is-success">
@@ -57,25 +57,25 @@ with-thai::{% trans 'Golf Booking Order List' %}
                                 <div class="field has-addons">
                                     <div class="control is-expanded">
                                         <span class="select is-fullwidth">
-                                          <select>
+                                          <select id="order-status">
                                               <option>{% trans 'Order Status' %}</option>
-                                              <option value="1">{% trans 'Open' %}</option>
-                                              <option value="2">{% trans 'Offered' %}</option>
-                                              <option value="2">{% trans 'Accepted' %}</option>
-                                              <option value="2">{% trans 'Confirmed' %}</option>
-                                              <option value="2">{% trans 'Closed' %}</option>
+                                              <option value="open">{% trans 'Open' %}</option>
+                                              <option value="offered">{% trans 'Offered' %}</option>
+                                              <option value="accepted">{% trans 'Accepted' %}</option>
+                                              <option value="confirmed">{% trans 'Confirmed' %}</option>
+                                              <option value="closed">{% trans 'Closed' %}</option>
                                           </select>
                                         </span>
                                     </div>
 
                                     <div class="control is-expanded">
                                         <span class="select is-fullwidth">
-                                          <select>
+                                          <select id="payment-status">
                                               <option>{% trans 'Payment Status' %}</option>
-                                              <option value="1">{% trans 'Unpaid' %}</option>
-                                              <option value="2">{% trans 'Paid' %}</option>
-                                              <option value="2">{% trans 'Refund Requests' %}</option>
-                                              <option value="2">{% trans 'Refunded' %}</option>
+                                              <option value="unpaid">{% trans 'Unpaid' %}</option>
+                                              <option value="paid">{% trans 'Paid' %}</option>
+                                              <option value="refund_requests">{% trans 'Refund Requests' %}</option>
+                                              <option value="refunded">{% trans 'Refunded' %}</option>
                                           </select>
                                         </span>
                                     </div>
@@ -91,7 +91,7 @@ with-thai::{% trans 'Golf Booking Order List' %}
                                 <div class="field has-addons">
                                     <p class="control is-expanded mb-0">
                                         <span class="select is-fullwidth">
-                                          <select>
+                                          <select id="sort">
                                               <option>{% trans 'Booking Date' %}</option>
                                               <option value="1">{% trans 'Tee-off Date' %}</option>
                                           </select>
@@ -105,7 +105,7 @@ with-thai::{% trans 'Golf Booking Order List' %}
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </form>
                 </div>
 
                 {% for order in orders %}
