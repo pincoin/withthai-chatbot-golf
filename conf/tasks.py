@@ -25,3 +25,8 @@ def send_notification_line(line_notify_access_token, message):
         'Authorization': f'Bearer {line_notify_access_token}',
     }
     requests.post(url, data=payload, headers=headers)
+
+
+@shared_task
+def send_push_message_line(line_bot_api, to, message):
+    line_bot_api.push_message(to, message)

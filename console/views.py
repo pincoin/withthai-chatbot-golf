@@ -1,8 +1,11 @@
+import linebot
 from django.shortcuts import get_object_or_404
 from django.template.defaultfilters import date
 from django.utils import timezone
 from django.views import generic
+from linebot import models as linebot_models
 
+from conf import tasks
 from golf import models as golf_models
 from . import forms
 from . import viewmixins
@@ -132,6 +135,11 @@ class GolfBookingOrderConfirmView(viewmixins.OrderChangeContextMixin, generic.Fo
             log.payment_status = self.object.payment_status
             log.message = f'{round_date_formatted} {round_time_formatted}\n{self.object.pax} PAX {self.object.cart} CART\n'
             log.save()
+
+            line_bot_api = linebot.LineBotApi(self.object.order.golf_club.line_bot_channel_access_token)
+            to = self.object.line_user.line_user_id
+            message = linebot_models.TextMessage('Confirmed')
+            tasks.send_push_message_line.delay(line_bot_api, to, message)
 
         return super(GolfBookingOrderConfirmView, self).form_valid(form)
 
