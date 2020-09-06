@@ -166,6 +166,13 @@ def command_new(event, line_bot_api, **kwargs):
     golf_models.GolfBookingOrderProduct.objects \
         .bulk_create([green_fee, caddie_fee, cart_fee] if cart_fee else [green_fee, caddie_fee])
 
+    log = golf_models.GolfBookingOrderStatusLog()
+    log.order = order
+    log.order_status = golf_models.GolfBookingOrder.ORDER_STATUS_CHOICES.open
+    log.payment_status = golf_models.GolfBookingOrder.PAYMENT_STATUS_CHOICES.unpaid
+    log.message = f'{round_date} {round_time} {pax} PAX {cart} CART\n'
+    log.save()
+
     # 5. Notification to golf club
     url = reverse('console:golf-booking-order-detail', args=(golf_club.slug, order.order_no))
     round_date_formatted = date(round_date, 'Y-m-d')
