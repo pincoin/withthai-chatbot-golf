@@ -223,13 +223,15 @@ with-thai::{% trans 'Golf Booking Order Detail' %}
         <div class="card-content">
             <div class="content">
                 <div class="order-detail">
-                    {% for fee in order.golfbookingorderproduct_set.all %}
+                    {% for fee in products %}
                     <div class="columns is-mobile">
                         <div class="column is-2-tablet is-5-mobile has-text-right-tablet">
-                            {% trans 'Green Fee' %}
+                            {{ fee.get_product_display }} [{{ fee.customer_group.title_english }}]
                         </div>
                         <div class="column is-10-tablet is-7-mobile">
-                            {{ order.order_no|truncatechars:9 }}
+                            {{ fee.selling_price|floatformat:0|intcomma }}
+                            * {{ fee.quantity }}
+                            = {{ fee.subtotal|floatformat:0|intcomma }}
                         </div>
                     </div>
                     {% endfor %}
@@ -249,7 +251,7 @@ with-thai::{% trans 'Golf Booking Order Detail' %}
         <div class="card-content">
             <div class="content">
                 <div class="order-detail">
-                    {% for log in order.golfbookingorderstatuslog_set.all %}
+                    {% for log in logs %}
                     <div class="columns is-mobile is-multiline">
                         <div class="column is-2-tablet is-5-mobile has-text-right-tablet">
                             {% if log.user %}

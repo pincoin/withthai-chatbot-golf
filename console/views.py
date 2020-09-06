@@ -84,7 +84,6 @@ class GolfBookingOrderDetailView(viewmixins.EnglishContextMixin, generic.DetailV
         # NOTE: This method is overridden because DetailView must be called with either an object pk or a slug.
         queryset = golf_models.GolfBookingOrder.objects \
             .select_related('customer_group', 'golf_club') \
-            .prefetch_related('golfbookingorderstatuslog_set', 'golfbookingorderproduct_set') \
             .filter(order_no=self.kwargs['uuid'])
 
         return get_object_or_404(queryset, order_no=self.kwargs['uuid'])
@@ -96,6 +95,17 @@ class GolfBookingOrderDetailView(viewmixins.EnglishContextMixin, generic.DetailV
         context['confirm_form'] = self.confirm_form_class()
         context['offer_form'] = self.offer_form_class()
         context['reject_form'] = self.reject_form_class()
+
+        context['products'] = golf_models.GolfBookingOrderProduct.objects \
+            .select_related('customer_group') \
+            .filter(order__order_no=self.kwargs['uuid']) \
+            .order_by('product')
+
+        context['logs'] = golf_models.GolfBookingOrderStatusLog.objects \
+            .select_related('user') \
+            .filter(order__order_no=self.kwargs['uuid']) \
+            .order_by('-created')
+
         return context
 
 
