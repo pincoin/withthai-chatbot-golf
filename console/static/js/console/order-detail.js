@@ -33,7 +33,7 @@ function runApp() {
         .getElementById('offer-plus')
         .addEventListener('click', function (e) {
             const div = document.createElement('div');
-            div.innerHTML = '<div class="field has-addons action-field-centered mb-2">\n' +
+            div.innerHTML = '<div class="field has-addons action-field-centered mb-3">\n' +
                 '<div class="control">\n' +
                 '    <input class="input"\n' +
                 '        type="time"\n' +
