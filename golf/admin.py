@@ -35,6 +35,7 @@ class GolfBookingOrderProductInline(admin.TabularInline):
 
 class GolfBookingOrderStatusLogtInline(admin.TabularInline):
     model = models.GolfBookingOrderStatusLog
+    readonly_fields = ('order_status', 'payment_status', 'message',)
     ordering = ['-created', ]
     extra = 1
 
