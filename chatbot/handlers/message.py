@@ -174,7 +174,7 @@ def command_new(event, line_bot_api, **kwargs):
     log.order = order
     log.order_status = golf_models.GolfBookingOrder.ORDER_STATUS_CHOICES.open
     log.payment_status = golf_models.GolfBookingOrder.PAYMENT_STATUS_CHOICES.unpaid
-    log.message = f'{round_date_formatted} {round_time_formatted} {pax} PAX {cart} CART\n'
+    log.message = f'{round_date_formatted} {round_time_formatted}\n{pax} PAX {cart} CART\n'
     log.save()
 
     # 6. Notification to golf club

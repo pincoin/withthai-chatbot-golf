@@ -283,7 +283,7 @@ with-thai::{% trans 'Golf Booking Order Detail' %}
                             {{ log.created|date:'Y-m-d H:i' }}
                         </div>
                         <div class="column is-3-tablet is-7-mobile">
-                            {{ log.message }}
+                            {{ log.message|linebreaks }}
                         </div>
                         <div class="column is-2-tablet is-hidden-mobile">
                             {{ log.created|date:'Y-m-d H:i' }}

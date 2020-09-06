@@ -120,7 +120,7 @@ class GolfBookingOrderConfirmView(viewmixins.OrderChangeContextMixin, generic.Fo
             log.order = self.object
             log.order_status = golf_models.GolfBookingOrder.ORDER_STATUS_CHOICES.confirmed
             log.payment_status = self.object.payment_status
-            log.message = f'{round_date_formatted} {round_time_formatted} {self.object.pax} PAX {self.object.cart} CART\n'
+            log.message = f'{round_date_formatted} {round_time_formatted}\n{self.object.pax} PAX {self.object.cart} CART\n'
             log.save()
 
         return super(GolfBookingOrderConfirmView, self).form_valid(form)
@@ -145,7 +145,7 @@ class GolfBookingOrderOfferView(viewmixins.OrderChangeContextMixin, generic.Form
             log.order = self.object
             log.order_status = golf_models.GolfBookingOrder.ORDER_STATUS_CHOICES.offered
             log.payment_status = self.object.payment_status
-            log.message = f'{round_date_formatted} [{round_time_formatted}] {self.object.pax} PAX {self.object.cart} CART\n'
+            log.message = f'{round_date_formatted} [{round_time_formatted}]\n{self.object.pax} PAX {self.object.cart} CART\n'
             log.save()
 
         return super(GolfBookingOrderOfferView, self).form_valid(form)
@@ -170,7 +170,7 @@ class GolfBookingOrderRejectView(viewmixins.OrderChangeContextMixin, generic.For
             log.order = self.object
             log.order_status = golf_models.GolfBookingOrder.ORDER_STATUS_CHOICES.closed
             log.payment_status = self.object.payment_status
-            log.message = f'{round_date_formatted} {round_time_formatted} {self.object.pax} PAX {self.object.cart} CART\n'
+            log.message = f'{round_date_formatted} {round_time_formatted}\n{self.object.pax} PAX {self.object.cart} CART\n'
             log.save()
 
         return super(GolfBookingOrderRejectView, self).form_valid(form)
