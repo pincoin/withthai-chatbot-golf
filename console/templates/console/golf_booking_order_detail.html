@@ -258,25 +258,25 @@ with-thai::{% trans 'Golf Booking Order Detail' %}
                         </div>
                         <div class="column is-1-tablet is-7-mobile">
                             {% if log.order_status == order.ORDER_STATUS_CHOICES.open %}
-                            <span class="tag status-open">{{ order.get_order_status_display }}</span>
+                            <span class="tag status-open">{{ log.get_order_status_display }}</span>
                             {% elif log.order_status == order.ORDER_STATUS_CHOICES.offered %}
-                            <span class="tag status-offered">{{ order.get_order_status_display }}</span>
+                            <span class="tag status-offered">{{ log.get_order_status_display }}</span>
                             {% elif log.order_status == order.ORDER_STATUS_CHOICES.accepted %}
-                            <span class="tag status-accepted">{{ order.get_order_status_display }}</span>
+                            <span class="tag status-accepted">{{ log.get_order_status_display }}</span>
                             {% elif log.order_status == order.ORDER_STATUS_CHOICES.confirmed %}
-                            <span class="tag status-confirmed">{{ order.get_order_status_display }}</span>
+                            <span class="tag status-confirmed">{{ log.get_order_status_display }}</span>
                             {% elif log.order_status == order.ORDER_STATUS_CHOICES.closed %}
-                            <span class="tag status-closed">{{ order.get_order_status_display }}</span>
+                            <span class="tag status-closed">{{ log.get_order_status_display }}</span>
                             {% endif %}
 
                             {% if log.payment_status == order.PAYMENT_STATUS_CHOICES.unpaid %}
-                            <span class="tag status-unpaid">{{ order.get_payment_status_display }}</span>
+                            <span class="tag status-unpaid">{{ log.get_payment_status_display }}</span>
                             {% elif log.payment_status == order.PAYMENT_STATUS_CHOICES.paid %}
-                            <span class="tag status-paid">{{ order.get_payment_status_display }}</span>
+                            <span class="tag status-paid">{{ log.get_payment_status_display }}</span>
                             {% elif log.payment_status == order.PAYMENT_STATUS_CHOICES.refund_requests %}
-                            <span class="tag status-refund-requests">{{ order.get_payment_status_display }}</span>
+                            <span class="tag status-refund-requests">{{ log.get_payment_status_display }}</span>
                             {% elif log.payment_status == order.PAYMENT_STATUS_CHOICES.refunded %}
-                            <span class="tag status-refunded">{{ order.get_payment_status_display }}</span>
+                            <span class="tag status-refunded">{{ log.get_payment_status_display }}</span>
                             {% endif %}
                         </div>
                         <div class="column is-hidden-tablet is-5-mobile">
