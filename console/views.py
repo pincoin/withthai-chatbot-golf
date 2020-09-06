@@ -84,7 +84,7 @@ class GolfBookingOrderDetailView(viewmixins.EnglishContextMixin, generic.DetailV
         # NOTE: This method is overridden because DetailView must be called with either an object pk or a slug.
         queryset = golf_models.GolfBookingOrder.objects \
             .select_related('customer_group', 'golf_club') \
-            .prefetch_related('golfbookingorderstatuslog_set') \
+            .prefetch_related('golfbookingorderstatuslog_set', 'golfbookingorderproduct_set') \
             .filter(order_no=self.kwargs['uuid'])
 
         return get_object_or_404(queryset, order_no=self.kwargs['uuid'])

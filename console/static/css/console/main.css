@@ -120,10 +120,20 @@ body {
     }
 
     .section {
-        padding: 1.5rem 1rem;
+        padding: 0 1rem;
     }
 
-    .card-content {}
+    .section:first-child {
+        padding-top: 1.5rem;
+    }
+
+    .card {
+        padding-bottom: .5rem;
+    }
+
+    .card-content {
+        padding: .5rem 0;
+    }
 
     .search-section {
         margin: 0 0 1.5rem 0 !important;
@@ -160,6 +170,10 @@ body {
 
     .section {
         padding: 0;
+    }
+
+    .card {
+        padding-bottom: 0;
     }
 
     .card-content {
