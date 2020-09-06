@@ -250,7 +250,7 @@ with-thai::{% trans 'Golf Booking Order Detail' %}
             <div class="content">
                 <div class="order-detail">
                     {% for log in order.golfbookingorderstatuslog_set.all %}
-                    <div class="columns is-mobile">
+                    <div class="columns is-mobile is-multiline">
                         <div class="column is-2-tablet is-5-mobile has-text-right-tablet">
                             {% if log.user %}
                             {{ log.user.first_name }} {{ log.user.last_name }}
@@ -279,10 +279,13 @@ with-thai::{% trans 'Golf Booking Order Detail' %}
                             <span class="tag status-refunded">{{ order.get_payment_status_display }}</span>
                             {% endif %}
                         </div>
-                        <div class="column is-3-tablet is-5-mobile">
+                        <div class="column is-hidden-tablet is-5-mobile">
+                            {{ log.created|date:'Y-m-d H:i' }}
+                        </div>
+                        <div class="column is-3-tablet is-7-mobile">
                             {{ log.message }}
                         </div>
-                        <div class="column is-2-tablet is-5-mobile">
+                        <div class="column is-2-tablet is-hidden-mobile">
                             {{ log.created|date:'Y-m-d H:i' }}
                         </div>
                     </div>
