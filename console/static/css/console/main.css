@@ -66,13 +66,13 @@ body {
 }
 
 .status-unpaid {
-    background-color: #3892c6 !important;
+    background-color: #3282b8 !important;
     color: #fff !important;
 }
 
 .status-paid {
-    background-color: #b6d5eb !important;
-    color: #000 !important;
+    background-color: #69cbd6 !important;
+    color: #fff !important;
 }
 
 .status-refund-requests {
