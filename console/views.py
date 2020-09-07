@@ -87,7 +87,7 @@ class GolfBookingOrderDetailView(viewmixins.EnglishContextMixin, generic.DetailV
             .select_related('customer_group', 'golf_club') \
             .filter(order_no=self.kwargs['uuid'])
 
-        return get_object_or_404(queryset, order_no=self.kwargs['uuid'])
+        return get_object_or_404(queryset)
 
     def get_context_data(self, **kwargs):
         context = super(GolfBookingOrderDetailView, self).get_context_data(**kwargs)
