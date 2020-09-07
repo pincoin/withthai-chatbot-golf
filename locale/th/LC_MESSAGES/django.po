@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-09-06 01:33+0700\n"
+"POT-Creation-Date: 2020-09-07 22:46+0700\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -66,23 +66,27 @@ msgid "Booking"
 msgstr ""
 
 #: console/templates/console/base.html:52
-#: console/templates/console/golf_booking_order_list.html:11
+#: console/templates/console/golf_booking_order_list.html:15
 msgid "All Booking List"
 msgstr ""
 
 #: console/templates/console/base.html:59
+#: console/templates/console/golf_booking_order_list.html:62
 msgid "Open"
 msgstr ""
 
 #: console/templates/console/base.html:64
+#: console/templates/console/golf_booking_order_list.html:64
 msgid "Accepted"
 msgstr ""
 
-#: console/templates/console/base.html:69 golf/models.py:685
+#: console/templates/console/base.html:69
+#: console/templates/console/golf_booking_order_list.html:74 golf/models.py:685
 msgid "Unpaid"
 msgstr ""
 
 #: console/templates/console/base.html:74
+#: console/templates/console/golf_booking_order_list.html:76
 msgid "Refund Requests"
 msgstr ""
 
@@ -98,138 +102,197 @@ msgstr ""
 msgid "Customers"
 msgstr ""
 
-#: console/templates/console/base.html:96
+#: console/templates/console/base.html:95
+msgid "Social Accounts"
+msgstr ""
+
+#: console/templates/console/base.html:99
 msgid "LINE Users"
 msgstr ""
 
-#: console/templates/console/base.html:101
+#: console/templates/console/base.html:104
 msgid "Facebook Users"
 msgstr ""
 
-#: console/templates/console/base.html:106
+#: console/templates/console/base.html:111
+msgid "Customer Groups"
+msgstr ""
+
+#: console/templates/console/base.html:116
 msgid "Marketing"
 msgstr ""
 
-#: console/templates/console/base.html:109
+#: console/templates/console/base.html:119
 msgid "Promotions"
 msgstr ""
 
-#: console/templates/console/base.html:110
+#: console/templates/console/base.html:120
 msgid "Coupons"
 msgstr ""
 
-#: console/templates/console/base.html:111
+#: console/templates/console/base.html:121
 msgid "Hot Deals"
 msgstr ""
 
-#: console/templates/console/base.html:114
+#: console/templates/console/base.html:124
 msgid "Report"
 msgstr ""
 
-#: console/templates/console/base.html:119
+#: console/templates/console/base.html:129
 msgid "Daily Sales"
 msgstr ""
 
-#: console/templates/console/base.html:124
+#: console/templates/console/base.html:134
 msgid "Monthly Sales"
 msgstr ""
 
-#: console/templates/console/base.html:129
+#: console/templates/console/base.html:139
 msgid "Best Promotions"
 msgstr ""
 
-#: console/templates/console/base.html:134
+#: console/templates/console/base.html:144
 msgid "Best Customers"
 msgstr ""
 
-#: console/templates/console/base.html:139
+#: console/templates/console/base.html:149
 msgid "Sales by Customer Groups"
 msgstr ""
 
-#: console/templates/console/base.html:144
+#: console/templates/console/base.html:154
 msgid "Sales by Payment"
 msgstr ""
 
-#: console/templates/console/golf_booking_order_detail.html:10
+#: console/templates/console/golf_booking_order_detail.html:7
+#: console/templates/console/golf_booking_order_detail.html:15
 msgid "Golf Booking Order Detail"
 msgstr ""
 
-#: console/templates/console/golf_booking_order_detail.html:18
+#: console/templates/console/golf_booking_order_detail.html:23
 msgid "Order No"
 msgstr ""
 
-#: console/templates/console/golf_booking_order_detail.html:26
+#: console/templates/console/golf_booking_order_detail.html:31
 #: liff/templates/liff/booking_create_form.html:108
 #: liff/templates/liff/golf_booking_create_form.html:119
 msgid "Customer Name"
 msgstr ""
 
-#: console/templates/console/golf_booking_order_detail.html:34
+#: console/templates/console/golf_booking_order_detail.html:39
 msgid "Customer Group"
 msgstr ""
 
-#: console/templates/console/golf_booking_order_detail.html:42
+#: console/templates/console/golf_booking_order_detail.html:51
 #: liff/templates/liff/booking_create_form.html:22
 #: liff/templates/liff/golf_booking_create_form.html:23
 msgid "Tee-off Date/Time"
 msgstr ""
 
-#: console/templates/console/golf_booking_order_detail.html:51
+#: console/templates/console/golf_booking_order_detail.html:60
 #: golf/models.py:751 liff/templates/liff/booking_create_form.html:135
 #: liff/templates/liff/golf_booking_create_form.html:152
 msgid "PAX"
 msgstr ""
 
-#: console/templates/console/golf_booking_order_detail.html:59
+#: console/templates/console/golf_booking_order_detail.html:68
 #: golf/models.py:756
 msgid "Cart"
 msgstr ""
 
-#: console/templates/console/golf_booking_order_detail.html:68
+#: console/templates/console/golf_booking_order_detail.html:77
 msgid "Total"
 msgstr ""
 
-#: console/templates/console/golf_booking_order_detail.html:77
+#: console/templates/console/golf_booking_order_detail.html:86
+#: console/templates/console/golf_booking_order_list.html:61
 msgid "Order Status"
 msgstr ""
 
-#: console/templates/console/golf_booking_order_detail.html:95
+#: console/templates/console/golf_booking_order_detail.html:104
+#: console/templates/console/golf_booking_order_list.html:73
 msgid "Payment Status"
 msgstr ""
 
-#: console/templates/console/golf_booking_order_detail.html:111
+#: console/templates/console/golf_booking_order_detail.html:120
 msgid "Actions"
 msgstr ""
 
-#: console/templates/console/golf_booking_order_detail.html:117
-#: console/templates/console/golf_booking_order_detail.html:144
+#: console/templates/console/golf_booking_order_detail.html:126
+#: console/templates/console/golf_booking_order_detail.html:153
 msgid "CONFIRM"
 msgstr ""
 
-#: console/templates/console/golf_booking_order_detail.html:121
-#: console/templates/console/golf_booking_order_detail.html:179
+#: console/templates/console/golf_booking_order_detail.html:130
+#: console/templates/console/golf_booking_order_detail.html:188
 msgid "OFFER"
 msgstr ""
 
-#: console/templates/console/golf_booking_order_detail.html:125
-#: console/templates/console/golf_booking_order_detail.html:195
+#: console/templates/console/golf_booking_order_detail.html:134
+#: console/templates/console/golf_booking_order_detail.html:204
 msgid "CLOSE"
 msgstr ""
 
-#: golf/admin.py:66 golf/models.py:399 golf/models.py:498 golf/models.py:539
+#: console/templates/console/golf_booking_order_detail.html:225
+msgid "Fees"
+msgstr ""
+
+#: console/templates/console/golf_booking_order_detail.html:258
+msgid "Status History"
+msgstr ""
+
+#: console/templates/console/golf_booking_order_list.html:7
+msgid "Golf Booking Order List"
+msgstr ""
+
+#: console/templates/console/golf_booking_order_list.html:31
+msgid "Date"
+msgstr ""
+
+#: console/templates/console/golf_booking_order_list.html:32
+msgid "Customer"
+msgstr ""
+
+#: console/templates/console/golf_booking_order_list.html:63
+msgid "Offered"
+msgstr ""
+
+#: console/templates/console/golf_booking_order_list.html:65
+msgid "Confirmed"
+msgstr ""
+
+#: console/templates/console/golf_booking_order_list.html:66
+msgid "Closed"
+msgstr ""
+
+#: console/templates/console/golf_booking_order_list.html:75 golf/models.py:686
+msgid "Paid"
+msgstr ""
+
+#: console/templates/console/golf_booking_order_list.html:77 golf/models.py:688
+msgid "Refunded"
+msgstr ""
+
+#: console/templates/console/golf_booking_order_list.html:99
+msgid "Booking Date"
+msgstr ""
+
+#: console/templates/console/golf_booking_order_list.html:100
+msgid "Tee-off Date"
+msgstr ""
+
+#: golf/admin.py:73 golf/models.py:399 golf/models.py:498 golf/models.py:539
 #: golf/models.py:596 golf/models.py:700 golf/models.py:947
 msgid "Golf club"
 msgstr ""
 
-#: golf/admin.py:139
+#: golf/admin.py:146
 msgid "Promotion"
 msgstr ""
 
-#: golf/admin.py:142
+#: golf/admin.py:149
 msgid "Promotion Conditions"
 msgstr ""
 
-#: golf/admin.py:148
+#: golf/admin.py:155
 msgid "Discount"
 msgstr ""
 
@@ -681,16 +744,8 @@ msgstr ""
 msgid "Booking closed"
 msgstr ""
 
-#: golf/models.py:686
-msgid "Paid"
-msgstr ""
-
 #: golf/models.py:687
 msgid "Refund requests"
-msgstr ""
-
-#: golf/models.py:688
-msgid "Refunded"
 msgstr ""
 
 #: golf/models.py:692
