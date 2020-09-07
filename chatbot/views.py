@@ -70,7 +70,7 @@ class CallbackView(generic.View):
                 self.line_bot_api.reply_message(
                     event.reply_token,
                     models.TextSendMessage(
-                        text='Touch the button to send a message.',
+                        text='What do you want to do?',
                         quick_reply=models.QuickReply(
                             items=[
                                 models.QuickReplyButton(action=models.MessageAction(label='My Booking',
