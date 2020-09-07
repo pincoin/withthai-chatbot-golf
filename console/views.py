@@ -179,9 +179,15 @@ class GolfBookingOrderOfferView(viewmixins.OrderChangeContextMixin, generic.Form
             for tee_time in form.cleaned_data['tee_off_times']:
                 postback_actions.append({
                     'label': tee_time,
-                    'data': f'action=offer&golf_club={self.object.golf_club.slug}&order_no={self.object.order_no}&tee_time={tee_time}',
+                    'data': f'action=accept&golf_club={self.object.golf_club.slug}&order_no={self.object.order_no}&tee_time={tee_time}',
                     'display_text': tee_time,
                 })
+
+            postback_actions.append({
+                'label': 'Close',
+                'data': f'action=close&golf_club={self.object.golf_club.slug}&order_no={self.object.order_no}',
+                'display_text': 'Close',
+            })
 
             tasks.send_push_text_message_line.delay(self.object.golf_club.line_bot_channel_access_token,
                                                     to, message, postback_actions=postback_actions)

@@ -39,7 +39,7 @@ def send_push_text_message_line(line_bot_channel_access_token, to, message, **kw
             items.append(models.QuickReplyButton(
                 action=models.PostbackAction(label=action['label'],
                                              data=action['data'],
-                                             display_text=action['displayText'])))
+                                             display_text=action['display_text'])))
 
         quick_reply = models.QuickReply(items=items)
 
