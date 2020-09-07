@@ -61,8 +61,8 @@ body {
 }
 
 .status-closed {
-    background-color: #f7ca89 !important;
-    color: #000 !important;
+    background-color: #e89f71 !important;
+    color: #fff !important;
 }
 
 .status-unpaid {
@@ -76,12 +76,12 @@ body {
 }
 
 .status-refund-requests {
-    background-color: #ff0a2b !important;
+    background-color: #cd0a0a !important;
     color: #fff !important;
 }
 
 .status-refunded {
-    background-color: #921616 !important;
+    background-color: #eb8f8f !important;
     color: #fff !important;
 }
 
