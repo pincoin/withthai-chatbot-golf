@@ -1,4 +1,5 @@
 from django.template.defaultfilters import date
+from django.utils import timezone
 from linebot import models
 
 from golf import models as golf_models
@@ -7,12 +8,15 @@ from golf import models as golf_models
 def command_accept(event, line_bot_api, **kwargs):
     qs = kwargs['qs']
 
+    tee_time = timezone.datetime.strptime(qs['tee_time'], '%H:%M').time()
+
     order = golf_models.GolfBookingOrder.objects.get(order_no=qs['order_no'])
     order.order_status = golf_models.GolfBookingOrder.ORDER_STATUS_CHOICES.accepted
+    order.round_time = tee_time
     order.save()
 
     round_date_formatted = date(order.round_date, 'Y-m-d')
-    round_time_formatted = date(order.round_time, 'H:i')
+    round_time_formatted = date(tee_time, 'H:i')
 
     log = golf_models.GolfBookingOrderStatusLog()
     log.order = order
