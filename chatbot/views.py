@@ -1,7 +1,9 @@
 import logging
 import re
+from urllib.parse import parse_qs
 
 import linebot
+from django.conf import settings
 from django.http import (
     HttpResponse, HttpResponseForbidden
 )
@@ -14,7 +16,7 @@ from linebot.exceptions import InvalidSignatureError
 from chatbot.models import WebhookRequestLog
 from golf import models as golf_models
 from .handlers import (
-    message, follow, unfollow
+    message, follow, unfollow, post_back
 )
 
 
@@ -87,9 +89,12 @@ class CallbackView(generic.View):
 
         @self.handler.add(models.PostbackEvent)
         def handle_post_back(event):
-            self.line_bot_api.reply_message(
-                event.reply_token,
-                models.TextSendMessage(text=f'{event.postback.data} {event.postback.params}'))
+            qs = parse_qs(event.postback.data)
+
+            if qs['action'] == 'accept':
+                post_back.command_accept(event, self.line_bot_api, qs=qs)
+            elif qs['action'] == 'close':
+                post_back.command_close(event, self.line_bot_api, qs=qs)
 
         @self.handler.add(models.FollowEvent)
         def handle_follow(event):
@@ -128,10 +133,11 @@ class CallbackView(generic.View):
             signature = request.headers['X-Line-Signature']
             body = request.body.decode('utf-8')
 
-            log = WebhookRequestLog()
-            log.request_header = request.headers
-            log.request_body = body
-            log.save()
+            if settings.DEBUG:
+                log = WebhookRequestLog()
+                log.request_header = request.headers
+                log.request_body = body
+                log.save()
 
             try:
                 self.handler.handle(body, signature)
