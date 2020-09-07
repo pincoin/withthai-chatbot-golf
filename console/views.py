@@ -186,7 +186,7 @@ class GolfBookingOrderOfferView(viewmixins.OrderChangeContextMixin, generic.Form
             postback_actions.append({
                 'label': 'Close',
                 'data': f'action=close&golf_club={self.object.golf_club.slug}&order_no={self.object.order_no}',
-                'display_text': 'Close my booking',
+                'display_text': 'Close',
             })
 
             tasks.send_push_text_message_line.delay(self.object.golf_club.line_bot_channel_access_token,
