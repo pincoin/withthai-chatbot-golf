@@ -40,12 +40,13 @@ body {
 
 
 .status-open {
-    background-color: #036000 !important;
-    color: #fff !important;
+    background-color: #66ff80 !important;
+    color: #000 !important;
+
 }
 
 .status-accepted {
-    background-color: #66ff80 !important;
+    background-color: #06b200 !important;
     color: #fff !important;
 }
 
