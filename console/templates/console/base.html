@@ -56,22 +56,22 @@
                     <ul>
                         <li>
                             <a href="{% url 'console:golf-booking-order-list' slug %}?order_status=open">
-                                {% trans 'Open' %}
+                                <span class="tag status-open">{% trans 'Open' %}</span>
                             </a>
                         </li>
                         <li>
                             <a href="{% url 'console:golf-booking-order-list' slug %}?order_status=accepted">
-                                {% trans 'Accepted' %}
+                                <span class="tag status-accepted">{% trans 'Accepted' %}</span>
                             </a>
                         </li>
                         <li>
                             <a href="{% url 'console:golf-booking-order-list' slug %}?payment_status=unpaid">
-                                {% trans 'Unpaid' %}
+                                <span class="tag status-unpaid">{% trans 'Unpaid' %}</span>
                             </a>
                         </li>
                         <li>
                             <a href="{% url 'console:golf-booking-order-list' slug %}?payment_status=refund_requests">
-                                {% trans 'Refund Requests' %}
+                                <span class="tag status-refund-requests">{% trans 'Refund Requests' %}</span>
                             </a>
                         </li>
                         <li>
