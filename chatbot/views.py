@@ -1,6 +1,6 @@
 import logging
 import re
-from urllib.parse import parse_qs
+from urllib.parse import parse_qsl
 
 import linebot
 from django.conf import settings
@@ -89,14 +89,11 @@ class CallbackView(generic.View):
 
         @self.handler.add(models.PostbackEvent)
         def handle_post_back(event):
-            qs = parse_qs(event.postback.data)
+            qs = dict(parse_qsl(event.postback.data))
 
             if qs['action'] == 'accept':
                 post_back.command_accept(event, self.line_bot_api, qs=qs)
             elif qs['action'] == 'close':
-                self.line_bot_api.reply_message(
-                    event.reply_token,
-                    models.TextSendMessage(text=f'{event.postback.data} {event.postback.params}'))
                 post_back.command_close(event, self.line_bot_api, qs=qs)
 
         @self.handler.add(models.FollowEvent)
