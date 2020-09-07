@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-09-07 22:46+0700\n"
+"POT-Creation-Date: 2020-09-07 23:01+0700\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -243,12 +243,20 @@ msgstr ""
 msgid "Golf Booking Order List"
 msgstr ""
 
+#: console/templates/console/golf_booking_order_list.html:24
+msgid "Search"
+msgstr ""
+
 #: console/templates/console/golf_booking_order_list.html:31
 msgid "Date"
 msgstr ""
 
 #: console/templates/console/golf_booking_order_list.html:32
 msgid "Customer"
+msgstr ""
+
+#: console/templates/console/golf_booking_order_list.html:54
+msgid "Status"
 msgstr ""
 
 #: console/templates/console/golf_booking_order_list.html:63
@@ -269,6 +277,10 @@ msgstr ""
 
 #: console/templates/console/golf_booking_order_list.html:77 golf/models.py:688
 msgid "Refunded"
+msgstr ""
+
+#: console/templates/console/golf_booking_order_list.html:92
+msgid "Sort"
 msgstr ""
 
 #: console/templates/console/golf_booking_order_list.html:99

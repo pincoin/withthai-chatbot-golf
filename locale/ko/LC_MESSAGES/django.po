@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-09-07 22:46+0700\n"
+"POT-Creation-Date: 2020-09-07 23:01+0700\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -243,6 +243,10 @@ msgstr "상태 이력"
 msgid "Golf Booking Order List"
 msgstr "골프 예약 주문"
 
+#: console/templates/console/golf_booking_order_list.html:24
+msgid "Search"
+msgstr "검색"
+
 #: console/templates/console/golf_booking_order_list.html:31
 msgid "Date"
 msgstr "일자"
@@ -250,6 +254,10 @@ msgstr "일자"
 #: console/templates/console/golf_booking_order_list.html:32
 msgid "Customer"
 msgstr "고객관리"
+
+#: console/templates/console/golf_booking_order_list.html:54
+msgid "Status"
+msgstr "상태"
 
 #: console/templates/console/golf_booking_order_list.html:63
 msgid "Offered"
@@ -270,6 +278,10 @@ msgstr "결제완료"
 #: console/templates/console/golf_booking_order_list.html:77 golf/models.py:688
 msgid "Refunded"
 msgstr "환불완료"
+
+#: console/templates/console/golf_booking_order_list.html:92
+msgid "Sort"
+msgstr "정렬"
 
 #: console/templates/console/golf_booking_order_list.html:99
 msgid "Booking Date"
