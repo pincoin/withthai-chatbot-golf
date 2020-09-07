@@ -91,6 +91,10 @@ class CallbackView(generic.View):
         def handle_post_back(event):
             qs = parse_qs(event.postback.data)
 
+            self.line_bot_api.reply_message(
+                event.reply_token,
+                models.TextSendMessage(text=f'{event.postback.data} {event.postback.params}'))
+
             if qs['action'] == 'accept':
                 post_back.command_accept(event, self.line_bot_api, qs=qs)
             elif qs['action'] == 'close':
