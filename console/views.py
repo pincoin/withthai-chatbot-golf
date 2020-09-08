@@ -10,8 +10,6 @@ from golf import models as golf_models
 from . import forms
 from . import viewmixins
 
-from urllib.parse import parse_qsl
-
 
 class HomeView(generic.TemplateView):
     template_name = 'console/home.html'
