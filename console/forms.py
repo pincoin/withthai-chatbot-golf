@@ -35,7 +35,7 @@ class RejectForm(forms.Form):
 class SearchForm(forms.Form):
     search = forms.ChoiceField(
         choices=(
-            ('round_date', _('Date'),),
+            ('round_date', _('Round Date'),),
             ('customer', _('Customer'),),
         ),
         required=False,
