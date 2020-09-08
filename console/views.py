@@ -28,49 +28,68 @@ class GolfBookingOrderListView(viewmixins.EnglishContextMixin, generic.ListView)
             .select_related('customer_group') \
             .filter(golf_club__slug=self.kwargs['slug'])
 
+        if 'search' in self.request.GET and self.request.GET['search'] \
+                and 'keyword' in self.request.GET and self.request.GET['keyword']:
+            search = self.request.GET['search'].strip()
+
+            if search == 'round_date':
+                queryset = queryset \
+                    .filter(round_date=self.request.GET['keyword'].strip())
+            if search == 'customer_name':
+                queryset = queryset \
+                    .filter(fullname__icontains=self.request.GET['keyword'].strip())
+
         if 'order_status' in self.request.GET and self.request.GET['order_status']:
-            if self.request.GET['order_status'].strip() == 'open':
+            order_status = self.request.GET['order_status'].strip()
+
+            if order_status == 'open':
                 queryset = queryset \
                     .filter(order_status=golf_models.GolfBookingOrder.ORDER_STATUS_CHOICES.open)
-            elif self.request.GET['order_status'].strip() == 'offered':
+            elif order_status == 'offered':
                 queryset = queryset \
                     .filter(order_status=golf_models.GolfBookingOrder.ORDER_STATUS_CHOICES.offered)
-            elif self.request.GET['order_status'].strip() == 'accepted':
+            elif order_status == 'accepted':
                 queryset = queryset \
                     .filter(order_status=golf_models.GolfBookingOrder.ORDER_STATUS_CHOICES.accepted)
-            elif self.request.GET['order_status'].strip() == 'confirmed':
+            elif order_status == 'confirmed':
                 queryset = queryset \
                     .filter(order_status=golf_models.GolfBookingOrder.ORDER_STATUS_CHOICES.confirmed)
-            elif self.request.GET['order_status'].strip() == 'closed':
+            elif order_status == 'closed':
                 queryset = queryset \
                     .filter(order_status=golf_models.GolfBookingOrder.ORDER_STATUS_CHOICES.closed)
 
         if 'payment_status' in self.request.GET and self.request.GET['payment_status']:
-            if self.request.GET['payment_status'].strip() == 'unpaid':
+            payment_status = self.request.GET['payment_status']
+
+            if payment_status == 'unpaid':
                 queryset = queryset \
                     .filter(payment_status=golf_models.GolfBookingOrder.PAYMENT_STATUS_CHOICES.unpaid)
-            elif self.request.GET['payment_status'].strip() == 'paid':
+            elif payment_status == 'paid':
                 queryset = queryset \
                     .filter(payment_status=golf_models.GolfBookingOrder.PAYMENT_STATUS_CHOICES.paid)
-            elif self.request.GET['payment_status'].strip() == 'refund_requests':
+            elif payment_status == 'refund_requests':
                 queryset = queryset \
                     .filter(payment_status=golf_models.GolfBookingOrder.PAYMENT_STATUS_CHOICES.refund_requests)
-            elif self.request.GET['payment_status'].strip() == 'refunded':
+            elif payment_status == 'refunded':
                 queryset = queryset \
                     .filter(payment_status=golf_models.GolfBookingOrder.PAYMENT_STATUS_CHOICES.refunded)
 
         if 'day' in self.request.GET and self.request.GET['day']:
-            if self.request.GET['day'].strip() == 'today':
+            day = self.request.GET['day']
+
+            if day == 'today':
                 queryset = queryset \
                     .filter(round_date=timezone.datetime.today())
-            elif self.request.GET['day'].strip() == 'tomorrow':
+            elif day == 'tomorrow':
                 queryset = queryset \
                     .filter(round_date=timezone.datetime.today() + timezone.timedelta(days=1))
 
         if 'sort' in self.request.GET and self.request.GET['sort']:
-            if self.request.GET['payment_status'].strip() == 'round_date':
+            sort = self.request.GET['sort']
+
+            if sort == 'round_date':
                 queryset.order_by('-round_date', 'round_time')
-            elif self.request.GET['payment_status'].strip() == 'booking_date':
+            elif sort == 'booking_date':
                 queryset.order_by('-created', )
 
         return queryset.order_by('-created', )
