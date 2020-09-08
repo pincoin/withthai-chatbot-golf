@@ -1,4 +1,5 @@
 import datetime
+import logging
 
 from django.template.defaultfilters import date
 from django.urls import reverse
@@ -12,6 +13,8 @@ from .. import validators
 
 
 def command_new(event, line_bot_api, **kwargs):
+    logger = logging.getLogger(__name__)
+
     golf_club = kwargs['golf_club']
     match = kwargs['match']
 
@@ -157,7 +160,7 @@ def command_new(event, line_bot_api, **kwargs):
     order.payment_status = order.PAYMENT_STATUS_CHOICES.unpaid
     order.save()
 
-    tasks.send_notification_line.delay(golf_club.line_notify_access_token, f'{green_fee.subtotal} {caddie_fee.subtotal} {cart_fee.subtotal}')
+    logger.debug(f'green fee {green_fee.subtotal} caddie fee {caddie_fee.subtotal} cart fee {cart_fee.subtotal}')
 
     green_fee.order = order
     caddie_fee.order = order
