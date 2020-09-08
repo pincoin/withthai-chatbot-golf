@@ -33,7 +33,7 @@ with-thai::{% trans 'Golf Booking Order Detail' %}
                         <div class="column is-2-tablet is-5-mobile has-text-right-tablet">
                             {% trans 'Customer Group' %}
                         </div>
-                        <div class="column is-10-tablet is-7-mobile has-text-weight-bold">
+                        <div class="column is-10-tablet is-7-mobile">
                             <span class="tag status-customer-{{ user.customer_group.id|modulo:5 }}">
                                 {{ user.customer_group.title_english }}
                             </span>
