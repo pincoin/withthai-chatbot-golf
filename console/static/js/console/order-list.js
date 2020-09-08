@@ -3,7 +3,7 @@ function setSearchKeyword(search, keyword) {
         keyword.type = 'date';
         keyword.value = '';
         keyword.placeholder = 'HH:MM';
-    } else if (search.value === 'customer') {
+    } else if (search.value === 'customer_name') {
         keyword.type = 'text';
         keyword.value = '';
         keyword.placeholder = 'Customer name';
@@ -17,7 +17,7 @@ function runApp() {
     if (search.value === 'round_date') {
         keyword.type = 'date';
         keyword.placeholder = 'HH:MM';
-    } else if (search.value === 'customer') {
+    } else if (search.value === 'customer_name') {
         keyword.type = 'text';
         keyword.placeholder = 'Customer name';
     }

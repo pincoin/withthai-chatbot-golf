@@ -36,7 +36,7 @@ class SearchForm(forms.Form):
     search = forms.ChoiceField(
         choices=(
             ('round_date', _('Round Date'),),
-            ('customer', _('Customer'),),
+            ('customer_name', _('Customer'),),
         ),
         required=False,
     )
