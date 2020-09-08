@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-09-07 23:01+0700\n"
+"POT-Creation-Date: 2020-09-08 13:52+0700\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -61,6 +61,83 @@ msgstr ""
 msgid "No round time is offered."
 msgstr ""
 
+#: console/forms.py:38
+msgid "Date"
+msgstr ""
+
+#: console/forms.py:39
+msgid "Customer"
+msgstr ""
+
+#: console/forms.py:45
+msgid "Keyword"
+msgstr ""
+
+#: console/forms.py:50
+msgid "HH:MM"
+msgstr ""
+
+#: console/forms.py:57
+#: console/templates/console/golf_booking_order_detail.html:86
+msgid "Order Status"
+msgstr ""
+
+#: console/forms.py:58 console/templates/console/base.html:59
+msgid "Open"
+msgstr ""
+
+#: console/forms.py:59
+msgid "Offered"
+msgstr ""
+
+#: console/forms.py:60 console/templates/console/base.html:64
+msgid "Accepted"
+msgstr ""
+
+#: console/forms.py:61
+#, fuzzy
+#| msgid "Booking confirmed"
+msgid "Confirmed"
+msgstr "Confirmed"
+
+#: console/forms.py:62
+msgid "Closed"
+msgstr ""
+
+#: console/forms.py:69
+#: console/templates/console/golf_booking_order_detail.html:104
+msgid "Payment Status"
+msgstr ""
+
+#: console/forms.py:70 console/templates/console/base.html:69
+#: golf/models.py:685
+msgid "Unpaid"
+msgstr "Unpaid"
+
+#: console/forms.py:71 golf/models.py:686
+msgid "Paid"
+msgstr "Paid"
+
+#: console/forms.py:72 console/templates/console/base.html:74
+msgid "Refund Requests"
+msgstr "Refund Requests"
+
+#: console/forms.py:73 golf/models.py:688
+msgid "Refunded"
+msgstr "Refunded"
+
+#: console/forms.py:80
+#, fuzzy
+#| msgid "Booking accepted"
+msgid "Booking Date"
+msgstr "Accepted"
+
+#: console/forms.py:81
+#, fuzzy
+#| msgid "Booking accepted"
+msgid "Round Date"
+msgstr "Accepted"
+
 #: console/templates/console/base.html:47
 msgid "Booking"
 msgstr ""
@@ -69,26 +146,6 @@ msgstr ""
 #: console/templates/console/golf_booking_order_list.html:15
 msgid "All Booking List"
 msgstr "All"
-
-#: console/templates/console/base.html:59
-#: console/templates/console/golf_booking_order_list.html:62
-msgid "Open"
-msgstr ""
-
-#: console/templates/console/base.html:64
-#: console/templates/console/golf_booking_order_list.html:64
-msgid "Accepted"
-msgstr ""
-
-#: console/templates/console/base.html:69
-#: console/templates/console/golf_booking_order_list.html:74 golf/models.py:685
-msgid "Unpaid"
-msgstr "Unpaid"
-
-#: console/templates/console/base.html:74
-#: console/templates/console/golf_booking_order_list.html:76
-msgid "Refund Requests"
-msgstr "Refund Requests"
 
 #: console/templates/console/base.html:79
 msgid "Today"
@@ -182,9 +239,7 @@ msgid "Customer Group"
 msgstr ""
 
 #: console/templates/console/golf_booking_order_detail.html:51
-#: liff/templates/liff/booking_create_form.html:22
-#: liff/templates/liff/golf_booking_create_form.html:23
-msgid "Tee-off Date/Time"
+msgid "Round Date/Time"
 msgstr ""
 
 #: console/templates/console/golf_booking_order_detail.html:60
@@ -200,16 +255,6 @@ msgstr ""
 
 #: console/templates/console/golf_booking_order_detail.html:77
 msgid "Total"
-msgstr ""
-
-#: console/templates/console/golf_booking_order_detail.html:86
-#: console/templates/console/golf_booking_order_list.html:61
-msgid "Order Status"
-msgstr ""
-
-#: console/templates/console/golf_booking_order_detail.html:104
-#: console/templates/console/golf_booking_order_list.html:73
-msgid "Payment Status"
 msgstr ""
 
 #: console/templates/console/golf_booking_order_detail.html:120
@@ -249,52 +294,12 @@ msgstr "All"
 msgid "Search"
 msgstr ""
 
-#: console/templates/console/golf_booking_order_list.html:31
-msgid "Date"
-msgstr ""
-
-#: console/templates/console/golf_booking_order_list.html:32
-msgid "Customer"
-msgstr ""
-
-#: console/templates/console/golf_booking_order_list.html:54
+#: console/templates/console/golf_booking_order_list.html:48
 msgid "Status"
 msgstr ""
 
-#: console/templates/console/golf_booking_order_list.html:63
-msgid "Offered"
-msgstr ""
-
-#: console/templates/console/golf_booking_order_list.html:65
-#, fuzzy
-#| msgid "Booking confirmed"
-msgid "Confirmed"
-msgstr "Confirmed"
-
-#: console/templates/console/golf_booking_order_list.html:66
-msgid "Closed"
-msgstr ""
-
-#: console/templates/console/golf_booking_order_list.html:75 golf/models.py:686
-msgid "Paid"
-msgstr "Paid"
-
-#: console/templates/console/golf_booking_order_list.html:77 golf/models.py:688
-msgid "Refunded"
-msgstr "Refunded"
-
-#: console/templates/console/golf_booking_order_list.html:92
+#: console/templates/console/golf_booking_order_list.html:73
 msgid "Sort"
-msgstr ""
-
-#: console/templates/console/golf_booking_order_list.html:99
-#, fuzzy
-#| msgid "Booking accepted"
-msgid "Booking Date"
-msgstr "Accepted"
-
-#: console/templates/console/golf_booking_order_list.html:100
-msgid "Tee-off Date"
 msgstr ""
 
 #: golf/admin.py:73 golf/models.py:399 golf/models.py:498 golf/models.py:539
@@ -964,6 +969,11 @@ msgstr ""
 
 #: hotel/apps.py:7
 msgid "hotel"
+msgstr ""
+
+#: liff/templates/liff/booking_create_form.html:22
+#: liff/templates/liff/golf_booking_create_form.html:23
+msgid "Tee-off Date/Time"
 msgstr ""
 
 #: liff/templates/liff/booking_create_form.html:42

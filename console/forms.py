@@ -30,3 +30,70 @@ class OfferForm(forms.Form):
 
 class RejectForm(forms.Form):
     pass
+
+
+class SearchForm(forms.Form):
+    search = forms.ChoiceField(
+        choices=(
+            ('round_date', _('Date'),),
+            ('customer', _('Customer'),),
+        ),
+        required=False,
+    )
+
+    keyword = forms.TimeField(
+        label=_('Keyword'),
+        required=False,
+        widget=forms.TimeInput(
+            attrs={
+                'class': 'input is-fullwidth',
+                'placeholder': _('HH:MM'),
+            }
+        ),
+    )
+
+    order_status = forms.ChoiceField(
+        choices=(
+            ('', _('Order Status'),),
+            ('open', _('Open'),),
+            ('offered', _('Offered'),),
+            ('accepted', _('Accepted'),),
+            ('confirmed', _('Confirmed'),),
+            ('closed', _('Closed'),),
+        ),
+        required=False,
+    )
+
+    payment_status = forms.ChoiceField(
+        choices=(
+            ('', _('Payment Status'),),
+            ('unpaid', _('Unpaid'),),
+            ('paid', _('Paid'),),
+            ('refund_requests', _('Refund Requests'),),
+            ('refunded', _('Refunded'),),
+        ),
+        required=False,
+    )
+
+    sort = forms.ChoiceField(
+        choices=(
+            ('booking_date', _('Booking Date'),),
+            ('round_date', _('Round Date'),),
+        ),
+        required=False,
+    )
+
+    def __init__(self, *args, **kwargs):
+        search = kwargs.pop('search', 'round_date')
+        keyword = kwargs.pop('keyword', '')
+        order_status = kwargs.pop('order_status', '')
+        payment_status = kwargs.pop('payment_status', '')
+        sort = kwargs.pop('sort', 'booking_date')
+
+        super(SearchForm, self).__init__(*args, **kwargs)
+
+        self.fields['search'].initial = search
+        self.fields['keyword'].initial = keyword
+        self.fields['order_status'].initial = order_status
+        self.fields['payment_status'].initial = payment_status
+        self.fields['sort'].initial = sort

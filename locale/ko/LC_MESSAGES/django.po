@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-09-07 23:01+0700\n"
+"POT-Creation-Date: 2020-09-08 13:52+0700\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -61,6 +61,77 @@ msgstr "잘못된 라운드 시각"
 msgid "No round time is offered."
 msgstr "제안 라운드 시각이 없습니다."
 
+#: console/forms.py:38
+msgid "Date"
+msgstr "일자"
+
+#: console/forms.py:39
+msgid "Customer"
+msgstr "고객관리"
+
+#: console/forms.py:45
+msgid "Keyword"
+msgstr "키워드"
+
+#: console/forms.py:50
+msgid "HH:MM"
+msgstr "HH:MM"
+
+#: console/forms.py:57
+#: console/templates/console/golf_booking_order_detail.html:86
+msgid "Order Status"
+msgstr "예약상태"
+
+#: console/forms.py:58 console/templates/console/base.html:59
+msgid "Open"
+msgstr "예약접수"
+
+#: console/forms.py:59
+msgid "Offered"
+msgstr "예약제안"
+
+#: console/forms.py:60 console/templates/console/base.html:64
+msgid "Accepted"
+msgstr "예약수락"
+
+#: console/forms.py:61
+msgid "Confirmed"
+msgstr "예약확정"
+
+#: console/forms.py:62
+msgid "Closed"
+msgstr "예약종료"
+
+#: console/forms.py:69
+#: console/templates/console/golf_booking_order_detail.html:104
+msgid "Payment Status"
+msgstr "결제상태"
+
+#: console/forms.py:70 console/templates/console/base.html:69
+#: golf/models.py:685
+msgid "Unpaid"
+msgstr "미결제"
+
+#: console/forms.py:71 golf/models.py:686
+msgid "Paid"
+msgstr "결제완료"
+
+#: console/forms.py:72 console/templates/console/base.html:74
+msgid "Refund Requests"
+msgstr "환불요청"
+
+#: console/forms.py:73 golf/models.py:688
+msgid "Refunded"
+msgstr "환불완료"
+
+#: console/forms.py:80
+msgid "Booking Date"
+msgstr "예약일자"
+
+#: console/forms.py:81
+msgid "Round Date"
+msgstr "라운드 일자"
+
 #: console/templates/console/base.html:47
 msgid "Booking"
 msgstr "예약관리"
@@ -69,26 +140,6 @@ msgstr "예약관리"
 #: console/templates/console/golf_booking_order_list.html:15
 msgid "All Booking List"
 msgstr "전체예약"
-
-#: console/templates/console/base.html:59
-#: console/templates/console/golf_booking_order_list.html:62
-msgid "Open"
-msgstr "예약접수"
-
-#: console/templates/console/base.html:64
-#: console/templates/console/golf_booking_order_list.html:64
-msgid "Accepted"
-msgstr "예약수락"
-
-#: console/templates/console/base.html:69
-#: console/templates/console/golf_booking_order_list.html:74 golf/models.py:685
-msgid "Unpaid"
-msgstr "미결제"
-
-#: console/templates/console/base.html:74
-#: console/templates/console/golf_booking_order_list.html:76
-msgid "Refund Requests"
-msgstr "환불요청"
 
 #: console/templates/console/base.html:79
 msgid "Today"
@@ -182,10 +233,8 @@ msgid "Customer Group"
 msgstr "고객 그룹"
 
 #: console/templates/console/golf_booking_order_detail.html:51
-#: liff/templates/liff/booking_create_form.html:22
-#: liff/templates/liff/golf_booking_create_form.html:23
-msgid "Tee-off Date/Time"
-msgstr "티오프 일자/시각"
+msgid "Round Date/Time"
+msgstr "라운드 일시"
 
 #: console/templates/console/golf_booking_order_detail.html:60
 #: golf/models.py:751 liff/templates/liff/booking_create_form.html:135
@@ -201,16 +250,6 @@ msgstr "카트"
 #: console/templates/console/golf_booking_order_detail.html:77
 msgid "Total"
 msgstr "합계"
-
-#: console/templates/console/golf_booking_order_detail.html:86
-#: console/templates/console/golf_booking_order_list.html:61
-msgid "Order Status"
-msgstr "예약상태"
-
-#: console/templates/console/golf_booking_order_detail.html:104
-#: console/templates/console/golf_booking_order_list.html:73
-msgid "Payment Status"
-msgstr "결제상태"
 
 #: console/templates/console/golf_booking_order_detail.html:120
 msgid "Actions"
@@ -247,49 +286,13 @@ msgstr "골프 예약 주문"
 msgid "Search"
 msgstr "검색"
 
-#: console/templates/console/golf_booking_order_list.html:31
-msgid "Date"
-msgstr "일자"
-
-#: console/templates/console/golf_booking_order_list.html:32
-msgid "Customer"
-msgstr "고객관리"
-
-#: console/templates/console/golf_booking_order_list.html:54
+#: console/templates/console/golf_booking_order_list.html:48
 msgid "Status"
 msgstr "상태"
 
-#: console/templates/console/golf_booking_order_list.html:63
-msgid "Offered"
-msgstr "예약제안"
-
-#: console/templates/console/golf_booking_order_list.html:65
-msgid "Confirmed"
-msgstr "예약확정"
-
-#: console/templates/console/golf_booking_order_list.html:66
-msgid "Closed"
-msgstr "예약종료"
-
-#: console/templates/console/golf_booking_order_list.html:75 golf/models.py:686
-msgid "Paid"
-msgstr "결제완료"
-
-#: console/templates/console/golf_booking_order_list.html:77 golf/models.py:688
-msgid "Refunded"
-msgstr "환불완료"
-
-#: console/templates/console/golf_booking_order_list.html:92
+#: console/templates/console/golf_booking_order_list.html:73
 msgid "Sort"
 msgstr "정렬"
-
-#: console/templates/console/golf_booking_order_list.html:99
-msgid "Booking Date"
-msgstr "예약일자"
-
-#: console/templates/console/golf_booking_order_list.html:100
-msgid "Tee-off Date"
-msgstr "티오프 일자"
 
 #: golf/admin.py:73 golf/models.py:399 golf/models.py:498 golf/models.py:539
 #: golf/models.py:596 golf/models.py:700 golf/models.py:947
@@ -959,6 +962,11 @@ msgstr "골프 예약 프로모션"
 #: hotel/apps.py:7
 msgid "hotel"
 msgstr "호텔"
+
+#: liff/templates/liff/booking_create_form.html:22
+#: liff/templates/liff/golf_booking_create_form.html:23
+msgid "Tee-off Date/Time"
+msgstr "티오프 일자/시각"
 
 #: liff/templates/liff/booking_create_form.html:42
 #: liff/templates/liff/golf_booking_create_form.html:54

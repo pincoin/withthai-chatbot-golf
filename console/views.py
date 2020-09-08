@@ -10,6 +10,8 @@ from golf import models as golf_models
 from . import forms
 from . import viewmixins
 
+from urllib.parse import parse_qsl
+
 
 class HomeView(generic.TemplateView):
     template_name = 'console/home.html'
@@ -24,6 +26,8 @@ class GolfBookingOrderListView(viewmixins.EnglishContextMixin, generic.ListView)
     template_name = 'console/golf_booking_order_list.html'
 
     context_object_name = 'orders'
+
+    form_clas = forms.SearchForm
 
     def get_queryset(self):
         queryset = golf_models.GolfBookingOrder.objects \
@@ -92,9 +96,9 @@ class GolfBookingOrderListView(viewmixins.EnglishContextMixin, generic.ListView)
             sort = self.request.GET['sort']
 
             if sort == 'round_date':
-                queryset.order_by('-round_date', 'round_time')
+                return queryset.order_by('-round_date', 'round_time')
             elif sort == 'booking_date':
-                queryset.order_by('-created', )
+                return queryset.order_by('-created', )
 
         return queryset.order_by('-created', )
 
@@ -108,6 +112,14 @@ class GolfBookingOrderListView(viewmixins.EnglishContextMixin, generic.ListView)
         context['slug'] = self.kwargs['slug']
 
         context['page_range'] = context['paginator'].page_range[start_index:end_index]
+
+        context['form'] = self.form_clas(
+            search=self.request.GET.get('search') if self.request.GET.get('search') else 'round_date',
+            keyword=self.request.GET.get('keyword') if self.request.GET.get('keyword') else '',
+            order_status=self.request.GET.get('order_status') if self.request.GET.get('order_status') else '',
+            payment_status=self.request.GET.get('payment_status') if self.request.GET.get('payment_status') else '',
+            sort=self.request.GET.get('sort') if self.request.GET.get('sort') else '',
+        )
 
         return context
 
@@ -180,7 +192,7 @@ class GolfBookingOrderConfirmView(viewmixins.OrderChangeContextMixin, generic.Fo
 
             to = self.object.line_user.line_user_id
             message = 'Booking confirmed.\n\n' \
-                      f'Tee-off Date/Time: {round_date_formatted} {round_time_formatted}\n' \
+                      f'Round Date/Time: {round_date_formatted} {round_time_formatted}\n' \
                       f'Golfer #: {self.object.pax}\n' \
                       f'Cart #: {self.object.cart}\n' \
                       f'Total: {self.object.total_selling_price:,.0f} THB\n\n' \

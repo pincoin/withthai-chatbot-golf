@@ -18,7 +18,7 @@ with-thai::{% trans 'Golf Booking Order List' %}
         <div class="card-content">
             <div class="content">
                 <div class="columns search-section">
-                    <form class="column is-4">
+                    <form class="column is-4" method="get">
                         <div class="field is-horizontal">
                             <div class="field-label is-normal">
                                 <label class="label">{% trans 'Search' %}</label>
@@ -27,23 +27,17 @@ with-thai::{% trans 'Golf Booking Order List' %}
                                 <div class="field has-addons">
                                     <div class="control">
                                         <span class="select">
-                                          <select>
-                                              <option value="1">{% trans 'Date' %}</option>
-                                              <option value="2">{% trans 'Customer' %}</option>
-                                          </select>
+                                            {{ form.search }}
                                         </span>
                                     </div>
 
                                     <div class="control is-expanded">
-                                        <input class="input is-fullwidth"
-                                               type="date"
-                                               name="keyword"
-                                               placeholder="HH:MM">
+                                        {{ form.keyword }}
                                     </div>
                                     <div class="control">
-                                        <a class="button is-success">
+                                        <button type="submit" class="button is-success">
                                             <i class="fas fa-search fa-fw"></i>
-                                        </a>
+                                        </button>
                                     </div>
                                 </div>
                             </div>
@@ -57,31 +51,18 @@ with-thai::{% trans 'Golf Booking Order List' %}
                                 <div class="field has-addons">
                                     <div class="control is-expanded">
                                         <span class="select is-fullwidth">
-                                          <select id="order-status">
-                                              <option>{% trans 'Order Status' %}</option>
-                                              <option value="open">{% trans 'Open' %}</option>
-                                              <option value="offered">{% trans 'Offered' %}</option>
-                                              <option value="accepted">{% trans 'Accepted' %}</option>
-                                              <option value="confirmed">{% trans 'Confirmed' %}</option>
-                                              <option value="closed">{% trans 'Closed' %}</option>
-                                          </select>
+                                          {{ form.order_status }}
                                         </span>
                                     </div>
                                     <div class="control is-expanded">
                                         <span class="select is-fullwidth">
-                                          <select id="payment-status">
-                                              <option>{% trans 'Payment Status' %}</option>
-                                              <option value="unpaid">{% trans 'Unpaid' %}</option>
-                                              <option value="paid">{% trans 'Paid' %}</option>
-                                              <option value="refund_requests">{% trans 'Refund Requests' %}</option>
-                                              <option value="refunded">{% trans 'Refunded' %}</option>
-                                          </select>
+                                          {{ form.payment_status }}
                                         </span>
                                     </div>
                                     <div class="control">
-                                        <a class="button is-success">
+                                        <button type="submit" class="button is-success">
                                             <i class="fas fa-filter fa-fw"></i>
-                                        </a>
+                                        </button>
                                     </div>
                                 </div>
                             </div>
@@ -95,16 +76,13 @@ with-thai::{% trans 'Golf Booking Order List' %}
                                 <div class="field has-addons">
                                     <div class="control is-expanded">
                                         <span class="select is-fullwidth">
-                                          <select id="sort">
-                                              <option>{% trans 'Booking Date' %}</option>
-                                              <option value="1">{% trans 'Tee-off Date' %}</option>
-                                          </select>
+                                          {{ form.sort }}
                                         </span>
                                     </div>
                                     <div class="control">
-                                        <a class="button is-success">
+                                        <button type="submit" class="button is-success">
                                             <i class="fas fa-sort fa-fw"></i>
-                                        </a>
+                                        </button>
                                     </div>
                                 </div>
                             </div>
@@ -145,7 +123,7 @@ with-thai::{% trans 'Golf Booking Order List' %}
                                 {% endif %}
                             </div>
                             <div class="is-hidden-mobile">
-                                <p class="field">
+                                <div class="field">
                                     {% if order.order_status == order.ORDER_STATUS_CHOICES.open %}
                                     <span class="tag status-open">{{ order.get_order_status_display }}</span>
                                     {% elif order.order_status == order.ORDER_STATUS_CHOICES.offered %}
@@ -157,9 +135,9 @@ with-thai::{% trans 'Golf Booking Order List' %}
                                     {% elif order.order_status == order.ORDER_STATUS_CHOICES.closed %}
                                     <span class="tag status-closed">{{ order.get_order_status_display }}</span>
                                     {% endif %}
-                                </p>
+                                </div>
 
-                                <p class="field">
+                                <div class="field">
                                     {% if order.payment_status == order.PAYMENT_STATUS_CHOICES.unpaid %}
                                     <span class="tag status-unpaid">{{ order.get_payment_status_display }}</span>
                                     {% elif order.payment_status == order.PAYMENT_STATUS_CHOICES.paid %}
@@ -169,12 +147,13 @@ with-thai::{% trans 'Golf Booking Order List' %}
                                     {% elif order.payment_status == order.PAYMENT_STATUS_CHOICES.refunded %}
                                     <span class="tag status-refunded">{{ order.get_payment_status_display }}</span>
                                     {% endif %}
-                                </p>
+                                </div>
                             </div>
                         </a>
                     </div>
-                    <div class="column is-1-tablet is-12-mobile is-family-monospace has-text-right">
-                        {{ order.round_date|date:'Y-m-d' }} {{ order.round_time|date:'H:i' }}
+                    <div class="column is-1-tablet is-12-mobile is-family-monospace has-text-weight-bold has-text-right">
+                        {{ order.round_date|date:'Y-m-d' }}<br class="is-hidden-mobile">
+                        {{ order.round_time|date:'H:i' }}
                     </div>
                     <div class="column is-1-tablet is-hidden-mobile is-family-monospace has-text-right">
                         <i class="fas fa-users fa-fw"></i>
