@@ -32,17 +32,32 @@ class GolfBookingOrderListView(viewmixins.EnglishContextMixin, generic.ListView)
             if self.request.GET['order_status'].strip() == 'open':
                 queryset = queryset \
                     .filter(order_status=golf_models.GolfBookingOrder.ORDER_STATUS_CHOICES.open)
+            elif self.request.GET['order_status'].strip() == 'offered':
+                queryset = queryset \
+                    .filter(order_status=golf_models.GolfBookingOrder.ORDER_STATUS_CHOICES.offered)
             elif self.request.GET['order_status'].strip() == 'accepted':
                 queryset = queryset \
                     .filter(order_status=golf_models.GolfBookingOrder.ORDER_STATUS_CHOICES.accepted)
+            elif self.request.GET['order_status'].strip() == 'confirmed':
+                queryset = queryset \
+                    .filter(order_status=golf_models.GolfBookingOrder.ORDER_STATUS_CHOICES.confirmed)
+            elif self.request.GET['order_status'].strip() == 'closed':
+                queryset = queryset \
+                    .filter(order_status=golf_models.GolfBookingOrder.ORDER_STATUS_CHOICES.closed)
 
         if 'payment_status' in self.request.GET and self.request.GET['payment_status']:
             if self.request.GET['payment_status'].strip() == 'unpaid':
                 queryset = queryset \
                     .filter(payment_status=golf_models.GolfBookingOrder.PAYMENT_STATUS_CHOICES.unpaid)
+            elif self.request.GET['payment_status'].strip() == 'paid':
+                queryset = queryset \
+                    .filter(payment_status=golf_models.GolfBookingOrder.PAYMENT_STATUS_CHOICES.paid)
             elif self.request.GET['payment_status'].strip() == 'refund_requests':
                 queryset = queryset \
                     .filter(payment_status=golf_models.GolfBookingOrder.PAYMENT_STATUS_CHOICES.refund_requests)
+            elif self.request.GET['payment_status'].strip() == 'refunded':
+                queryset = queryset \
+                    .filter(payment_status=golf_models.GolfBookingOrder.PAYMENT_STATUS_CHOICES.refunded)
 
         if 'day' in self.request.GET and self.request.GET['day']:
             if self.request.GET['day'].strip() == 'today':
