@@ -1,3 +1,5 @@
+import re
+
 from django.shortcuts import get_object_or_404
 from django.template.defaultfilters import date
 from django.utils import timezone
@@ -32,12 +34,14 @@ class GolfBookingOrderListView(viewmixins.EnglishContextMixin, generic.ListView)
                 and 'keyword' in self.request.GET and self.request.GET['keyword']:
             search = self.request.GET['search'].strip()
 
-            if search == 'round_date':
+            if search == 'round_date' \
+                    and re.compile('\d{4}-\d{2}-\d{2}').match(keyword := self.request.GET['keyword'].strip()):
                 queryset = queryset \
-                    .filter(round_date=self.request.GET['keyword'].strip())
-            if search == 'customer_name':
+                    .filter(round_date=keyword)
+            if search == 'customer_name' \
+                    and len(keyword := self.request.GET['keyword'].strip()) > 2:
                 queryset = queryset \
-                    .filter(fullname__icontains=self.request.GET['keyword'].strip())
+                    .filter(fullname__icontains=keyword)
 
         if 'order_status' in self.request.GET and self.request.GET['order_status']:
             order_status = self.request.GET['order_status'].strip()
