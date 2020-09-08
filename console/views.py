@@ -306,7 +306,7 @@ class GolfBookingOrderRejectView(viewmixins.OrderChangeContextMixin, generic.For
         return super(GolfBookingOrderRejectView, self).form_valid(form)
 
 
-class LineUserListView(viewmixins.EnglishContextMixin, generic.ListView):
+class LineUserListView(generic.ListView):
     template_name = 'console/line_user_list.html'
 
     context_object_name = 'users'
@@ -336,7 +336,7 @@ class LineUserListView(viewmixins.EnglishContextMixin, generic.ListView):
         return 10
 
 
-class LineUserDetailView(viewmixins.EnglishContextMixin, generic.DetailView):
+class LineUserDetailView(generic.DetailView):
     template_name = 'console/line_user_detail.html'
 
     context_object_name = 'user'
@@ -351,16 +351,16 @@ class LineUserDetailView(viewmixins.EnglishContextMixin, generic.DetailView):
 
     def get_context_data(self, **kwargs):
         context = super(LineUserDetailView, self).get_context_data(**kwargs)
-        
+
         context['slug'] = self.kwargs['slug']
         context['q'] = self.request.GET.urlencode()
 
         return context
 
 
-class FacebookUserListView(viewmixins.EnglishContextMixin, generic.ListView):
+class FacebookUserListView(generic.ListView):
     pass
 
 
-class FacebookUserDetailView(viewmixins.EnglishContextMixin, generic.DetailView):
+class FacebookUserDetailView(generic.DetailView):
     pass
