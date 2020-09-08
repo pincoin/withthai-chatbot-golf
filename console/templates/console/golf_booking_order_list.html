@@ -194,41 +194,7 @@ with-thai::{% trans 'Golf Booking Order List' %}
     </div>
 </div>
 <div class="section pt-0">
-    <nav class="pagination" role="navigation" aria-label="pagination">
-        <ul class="pagination-list">
-            {% if page_obj.has_previous %}
-            <li>
-                <a class="pagination-link" href="?page={{ page_obj.previous_page_number }}">&laquo;</a>
-            </li>
-            {% else %}
-            <li>
-                <a class="pagination-link" href="#" disabled>&laquo;</a>
-            </li>
-            {% endif %}
-
-            {% for i in page_range %}
-            {% if page_obj.number == i %}
-            <li>
-                <a class="pagination-link is-current" href="#">{{ i }}</a>
-            </li>
-            {% else %}
-            <li>
-                <a class="pagination-link" href="?page={{ i }}">{{ i }}</a>
-            </li>
-            {% endif %}
-            {% endfor %}
-
-            {% if page_obj.has_next %}
-            <li>
-                <a class="pagination-link" href="?page={{ page_obj.next_page_number }}">&raquo;</a>
-            </li>
-            {% else %}
-            <li>
-                <a class="pagination-link" href="#" disabled>&raquo;</a>
-            </li>
-            {% endif %}
-        </ul>
-    </nav>
+    {% include './_pagination.html' with page_obj=page_obj page_range=page_range %}
 </div>
 {% endblock %}
 
