@@ -120,9 +120,21 @@ class GolfBookingOrderListView(viewmixins.EnglishContextMixin, generic.ListView)
         else:
             context['q_popped'] = context['q']
 
+        keyword = None
+
+        if 'day' in self.request.GET and self.request.GET['day']:
+            day = self.request.GET['day']
+
+            if day == 'today':
+                keyword = date(timezone.datetime.today(), 'Y-m-d')
+            elif day == 'tomorrow':
+                keyword = date(timezone.datetime.today() + timezone.timedelta(days=1), 'Y-m-d')
+        else:
+            keyword = self.request.GET.get('keyword') if self.request.GET.get('keyword') else ''
+
         context['form'] = self.form_clas(
             search=self.request.GET.get('search') if self.request.GET.get('search') else 'round_date',
-            keyword=self.request.GET.get('keyword') if self.request.GET.get('keyword') else '',
+            keyword=keyword,
             order_status=self.request.GET.get('order_status') if self.request.GET.get('order_status') else '',
             payment_status=self.request.GET.get('payment_status') if self.request.GET.get('payment_status') else '',
             sort=self.request.GET.get('sort') if self.request.GET.get('sort') else '',
