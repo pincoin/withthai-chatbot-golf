@@ -17,78 +17,7 @@ with-thai::{% trans 'Golf Booking Order List' %}
         </header>
         <div class="card-content">
             <div class="content">
-                <div class="columns search-section">
-                    <form class="column is-4" method="get">
-                        <div class="field is-horizontal">
-                            <div class="field-label is-normal">
-                                <label class="label">{% trans 'Search' %}</label>
-                            </div>
-                            <div class="field-body">
-                                <div class="field has-addons">
-                                    <div class="control">
-                                        <span class="select">
-                                            {{ form.search }}
-                                        </span>
-                                    </div>
-
-                                    <div class="control is-expanded">
-                                        {{ form.keyword }}
-                                    </div>
-                                    <div class="control">
-                                        <button type="submit" class="button is-success">
-                                            <i class="fas fa-search fa-fw"></i>
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="field is-horizontal">
-                            <div class="field-label is-normal">
-                                <label class="label">{% trans 'Status' %}</label>
-                            </div>
-                            <div class="field-body">
-                                <div class="field has-addons">
-                                    <div class="control is-expanded">
-                                        <span class="select is-fullwidth">
-                                          {{ form.order_status }}
-                                        </span>
-                                    </div>
-                                    <div class="control is-expanded">
-                                        <span class="select is-fullwidth">
-                                          {{ form.payment_status }}
-                                        </span>
-                                    </div>
-                                    <div class="control">
-                                        <button type="submit" class="button is-success">
-                                            <i class="fas fa-filter fa-fw"></i>
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="field is-horizontal">
-                            <div class="field-label is-normal">
-                                <label class="label">{% trans 'Sort' %}</label>
-                            </div>
-                            <div class="field-body">
-                                <div class="field has-addons">
-                                    <div class="control is-expanded">
-                                        <span class="select is-fullwidth">
-                                          {{ form.sort }}
-                                        </span>
-                                    </div>
-                                    <div class="control">
-                                        <button type="submit" class="button is-success">
-                                            <i class="fas fa-sort fa-fw"></i>
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </form>
-                </div>
+                {% include './_search_box.html' with form=form %}
 
                 {% for order in orders %}
                 <div class="columns is-multiline is-mobile is-vcentered order-list">
