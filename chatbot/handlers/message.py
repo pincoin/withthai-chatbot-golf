@@ -153,14 +153,12 @@ def command_new(event, line_bot_api, **kwargs):
     order.pax = pax
     order.cart = cart
     order.total_list_price = green_fee.list_price_subtotal + caddie_fee.list_price_subtotal \
-                             + cart_fee.list_price_subtotal if cart_fee else 0
+                             + (cart_fee.list_price_subtotal if cart_fee else 0)
     order.total_selling_price = green_fee.subtotal + caddie_fee.subtotal \
-                                + cart_fee.subtotal if cart_fee else 0
+                                + (cart_fee.subtotal if cart_fee else 0)
     order.order_status = order.ORDER_STATUS_CHOICES.open
     order.payment_status = order.PAYMENT_STATUS_CHOICES.unpaid
     order.save()
-
-    logger.debug(f'green fee {green_fee.subtotal} caddie fee {caddie_fee.subtotal} cart fee {cart_fee.subtotal}')
 
     green_fee.order = order
     caddie_fee.order = order
