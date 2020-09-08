@@ -52,7 +52,13 @@ class GolfBookingOrderListView(viewmixins.EnglishContextMixin, generic.ListView)
                 queryset = queryset \
                     .filter(round_date=timezone.datetime.today() + timezone.timedelta(days=1))
 
-        return queryset.order_by('-round_date', 'round_time')
+        if 'sort' in self.request.GET and self.request.GET['sort']:
+            if self.request.GET['payment_status'].strip() == 'round_date':
+                queryset.order_by('-round_date', 'round_time')
+            elif self.request.GET['payment_status'].strip() == 'booking_date':
+                queryset.order_by('-created', )
+
+        return queryset.order_by('-created', )
 
     def get_context_data(self, **kwargs):
         context = super(GolfBookingOrderListView, self).get_context_data(**kwargs)
