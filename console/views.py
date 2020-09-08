@@ -170,6 +170,8 @@ class GolfBookingOrderDetailView(viewmixins.EnglishContextMixin, generic.DetailV
             .filter(order__order_no=self.kwargs['uuid']) \
             .order_by('-created')
 
+        context['q'] = self.request.GET.urlencode()
+
         return context
 
 

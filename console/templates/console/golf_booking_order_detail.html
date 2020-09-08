@@ -14,6 +14,8 @@ with-thai::{% trans 'Golf Booking Order Detail' %}
             <p class="card-header-title">
                 {% trans 'Golf Booking Order Detail' %}
             </p>
+            <a href="{% url 'console:golf-booking-order-list' slug %}?{{ q }}"
+               class="button is-info mt-1 mr-1">{% trans 'Back to List' %}</a>
         </header>
         <div class="card-content">
             <div class="content">
