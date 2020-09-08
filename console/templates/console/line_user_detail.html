@@ -1,0 +1,81 @@
+{% extends './base.html' %}
+
+{% load i18n static humanize %}
+{% load console_filters %}
+
+{% block title %}
+with-thai::{% trans 'Golf Booking Order Detail' %}
+{% endblock %}
+
+{% block content %}
+<div class="section">
+    <div class="card">
+        <header class="card-header">
+            <p class="card-header-title">
+                {% trans 'Golf Booking Order Detail' %}
+            </p>
+            <a href="{% url 'console:line-user-list' slug %}?{{ q }}"
+               class="button is-info mt-1 mr-1">{% trans 'Back to List' %}
+            </a>
+        </header>
+        <div class="card-content">
+            <div class="content">
+                <div class="order-detail">
+                    <div class="columns is-mobile">
+                        <div class="column is-2-tablet is-5-mobile has-text-right-tablet">
+                            {% trans 'LINE User ID' %}
+                        </div>
+                        <div class="column is-10-tablet is-7-mobile">
+                            {{ user.line_user.line_user_id|truncatechars:9 }}
+                        </div>
+                    </div>
+                    <div class="columns is-mobile">
+                        <div class="column is-2-tablet is-5-mobile has-text-right-tablet">
+                            {% trans 'Customer Group' %}
+                        </div>
+                        <div class="column is-10-tablet is-7-mobile has-text-weight-bold">
+                            <span class="tag status-customer-{{ user.customer_group.id|modulo:5 }}">
+                                {{ user.customer_group.title_english }}
+                            </span>
+                        </div>
+                    </div>
+                    <div class="columns is-mobile">
+                        <div class="column is-2-tablet is-5-mobile has-text-right-tablet">
+                            {% trans 'LINE Display Name' %}
+                        </div>
+                        <div class="column is-10-tablet is-7-mobile has-text-weight-bold">
+                            {{ user.line_user.line_display_name }}
+                        </div>
+                    </div>
+                    <div class="columns is-mobile">
+                        <div class="column is-2-tablet is-5-mobile has-text-right-tablet">
+                            {% trans 'Customer Name' %}
+                        </div>
+                        <div class="column is-10-tablet is-7-mobile">
+                            {{ user.line_user.fullname|default:'-' }}
+                        </div>
+                    </div>
+                    <div class="columns is-mobile">
+                        <div class="column is-2-tablet is-5-mobile has-text-right-tablet">
+                            {% trans 'Follow Status' %}
+                        </div>
+                        <div class="column is-10-tablet is-7-mobile">
+                            {% if user.line_user.follow_status == user.line_user.FOLLOW_CHOICES.follow %}
+                            <span class="has-text-success-dark">
+                                <i class="fas fa-check fa-fw"></i>
+                                {% trans 'Following' %}
+                            </span>
+                            {% elif user.line_user.follow_status == user.line_user.FOLLOW_CHOICES.unfollow %}
+                            <span class="has-text-danger-dark">
+                                 <i class="fas fa-times fa-fw"></i>
+                                {% trans 'Unfollowed' %}
+                            </span>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -337,7 +337,25 @@ class LineUserListView(viewmixins.EnglishContextMixin, generic.ListView):
 
 
 class LineUserDetailView(viewmixins.EnglishContextMixin, generic.DetailView):
-    pass
+    template_name = 'console/line_user_detail.html'
+
+    context_object_name = 'user'
+
+    def get_object(self, queryset=None):
+        # NOTE: This method is overridden because DetailView must be called with either an object pk or a slug.
+        queryset = golf_models.LineUserMembership.objects \
+            .select_related('line_user', 'customer_group', 'customer_group__golf_club') \
+            .filter(line_user__line_user_id=self.kwargs['line_user_id'])
+
+        return get_object_or_404(queryset)
+
+    def get_context_data(self, **kwargs):
+        context = super(LineUserDetailView, self).get_context_data(**kwargs)
+        
+        context['slug'] = self.kwargs['slug']
+        context['q'] = self.request.GET.urlencode()
+
+        return context
 
 
 class FacebookUserListView(viewmixins.EnglishContextMixin, generic.ListView):
