@@ -17,9 +17,6 @@ function runApp() {
     setSearchKeyword(search, keyword);
 
     search.addEventListener('change', function (e) {
-        console.log('changed');
-        console.log(this.value);
-
         setSearchKeyword(search, keyword);
     });
 }
