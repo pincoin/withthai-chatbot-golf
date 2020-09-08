@@ -22,12 +22,12 @@ with-thai::{% trans 'Golf Booking Order List' %}
                 {% for order in orders %}
                 <div class="columns is-multiline is-mobile is-vcentered order-list">
                     <div class="column is-1-tablet is-4-mobile is-family-monospace">
-                        <a href="{% url 'console:golf-booking-order-detail' slug order.order_no %}">
+                        <a href="{% url 'console:golf-booking-order-detail' slug order.order_no %}?{{ q }}">
                             {{ order.order_no|truncatechars:9 }}
                         </a>
                     </div>
                     <div class="column is-1-tablet is-8-mobile">
-                        <a href="{% url 'console:golf-booking-order-detail' slug order.order_no %}">
+                        <a href="{% url 'console:golf-booking-order-detail' slug order.order_no %}?{{ q }}">
                             <div class="tags has-addons is-hidden-tablet status-tags">
                                 {% if order.order_status == order.ORDER_STATUS_CHOICES.open %}
                                 <span class="tag status-open">{{ order.get_order_status_display }}</span>
@@ -107,7 +107,7 @@ with-thai::{% trans 'Golf Booking Order List' %}
                             {{ order.customer_group.title_english }}
                         </span>
                         {% endif %}
-                        <a href="{% url 'console:golf-booking-order-detail' slug order.order_no %}">
+                        <a href="{% url 'console:golf-booking-order-detail' slug order.order_no %}?{{ q }}">
                             {{ order.fullname }}
                         </a>
                         {% if order.customer_group.title_english %}
@@ -123,7 +123,7 @@ with-thai::{% trans 'Golf Booking Order List' %}
     </div>
 </div>
 <div class="section pt-0">
-    {% include './_pagination.html' with page_obj=page_obj page_range=page_range %}
+    {% include './_pagination.html' with page_obj=page_obj page_range=page_range q=q_popped %}
 </div>
 {% endblock %}
 
