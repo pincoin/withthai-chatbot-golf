@@ -20,12 +20,12 @@ class HomeView(generic.TemplateView):
         return context
 
 
-class GolfBookingOrderListView(viewmixins.EnglishContextMixin, generic.ListView):
+class GolfBookingOrderListView(generic.ListView):
     template_name = 'console/golf_booking_order_list.html'
 
     context_object_name = 'orders'
 
-    form_clas = forms.SearchForm
+    form_class = forms.SearchForm
 
     def get_queryset(self):
         queryset = golf_models.GolfBookingOrder.objects \
@@ -132,7 +132,7 @@ class GolfBookingOrderListView(viewmixins.EnglishContextMixin, generic.ListView)
         else:
             keyword = self.request.GET.get('keyword') if self.request.GET.get('keyword') else ''
 
-        context['form'] = self.form_clas(
+        context['form'] = self.form_class(
             search=self.request.GET.get('search') if self.request.GET.get('search') else 'round_date',
             keyword=keyword,
             order_status=self.request.GET.get('order_status') if self.request.GET.get('order_status') else '',
@@ -147,7 +147,7 @@ class GolfBookingOrderListView(viewmixins.EnglishContextMixin, generic.ListView)
         return 10
 
 
-class GolfBookingOrderDetailView(viewmixins.EnglishContextMixin, generic.DetailView):
+class GolfBookingOrderDetailView(generic.DetailView):
     template_name = 'console/golf_booking_order_detail.html'
 
     context_object_name = 'order'
@@ -304,3 +304,45 @@ class GolfBookingOrderRejectView(viewmixins.OrderChangeContextMixin, generic.For
             tasks.send_push_text_message_line.delay(self.object.golf_club.line_bot_channel_access_token, to, message)
 
         return super(GolfBookingOrderRejectView, self).form_valid(form)
+
+
+class LineUserListView(viewmixins.EnglishContextMixin, generic.ListView):
+    template_name = 'console/line_user_list.html'
+
+    context_object_name = 'users'
+
+    def get_queryset(self):
+        queryset = golf_models.LineUserMembership.objects \
+            .select_related('line_user', 'customer_group', 'customer_group__golf_club') \
+            .filter(customer_group__golf_club__slug=self.kwargs['slug'])
+
+        return queryset.order_by('-line_user__created', )
+
+    def get_context_data(self, **kwargs):
+        context = super(LineUserListView, self).get_context_data(**kwargs)
+
+        block_size = 5
+        start_index = int((context['page_obj'].number - 1) / block_size) * block_size
+        end_index = min(start_index + block_size, len(context['paginator'].page_range))
+
+        context['slug'] = self.kwargs['slug']
+
+        context['page_range'] = context['paginator'].page_range[start_index:end_index]
+
+        return context
+
+    def get_paginate_by(self, queryset):
+        # items per page
+        return 10
+
+
+class LineUserDetailView(viewmixins.EnglishContextMixin, generic.DetailView):
+    pass
+
+
+class FacebookUserListView(viewmixins.EnglishContextMixin, generic.ListView):
+    pass
+
+
+class FacebookUserDetailView(viewmixins.EnglishContextMixin, generic.DetailView):
+    pass

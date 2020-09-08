@@ -95,12 +95,12 @@
                     <a>{% trans 'Social Accounts' %}</a>
                     <ul>
                         <li>
-                            <a>
+                            <a href="{% url 'console:line-user-list' slug %}">
                                 {% trans 'LINE Users' %}
                             </a>
                         </li>
-                        <li>
-                            <a>
+                        <li class="is-hidden">
+                            <a href="#">
                                 {% trans 'Facebook Users' %}
                             </a>
                         </li>
