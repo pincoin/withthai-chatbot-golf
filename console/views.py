@@ -94,7 +94,7 @@ class GolfBookingOrderListView(viewmixins.EnglishContextMixin, generic.ListView)
             sort = self.request.GET['sort']
 
             if sort == 'round_date':
-                return queryset.order_by('-round_date', 'round_time')
+                return queryset.order_by('-round_date', '-round_time')
             elif sort == 'booking_date':
                 return queryset.order_by('-created', )
 
