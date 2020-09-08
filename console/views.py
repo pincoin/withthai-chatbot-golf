@@ -40,7 +40,7 @@ class GolfBookingOrderListView(viewmixins.EnglishContextMixin, generic.ListView)
                     and re.compile('\d{4}-\d{2}-\d{2}').match(keyword := self.request.GET['keyword'].strip()):
                 queryset = queryset \
                     .filter(round_date=keyword)
-            if search == 'customer_name' \
+            elif search == 'customer_name' \
                     and len(keyword := self.request.GET['keyword'].strip()) > 2:
                 queryset = queryset \
                     .filter(fullname__icontains=keyword)
