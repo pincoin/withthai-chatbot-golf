@@ -62,10 +62,8 @@ msgid "No round time is offered."
 msgstr ""
 
 #: console/forms.py:38 console/forms.py:81
-#, fuzzy
-#| msgid "Booking accepted"
 msgid "Round Date"
-msgstr "Accepted"
+msgstr "Round Date"
 
 #: console/forms.py:39
 msgid "Customer"
@@ -97,8 +95,6 @@ msgid "Accepted"
 msgstr ""
 
 #: console/forms.py:61
-#, fuzzy
-#| msgid "Booking confirmed"
 msgid "Confirmed"
 msgstr "Confirmed"
 
@@ -129,10 +125,8 @@ msgid "Refunded"
 msgstr "Refunded"
 
 #: console/forms.py:80
-#, fuzzy
-#| msgid "Booking accepted"
 msgid "Booking Date"
-msgstr "Accepted"
+msgstr "Booking Date"
 
 #: console/templates/console/_search_box.html:6
 msgid "Search"
@@ -321,8 +315,6 @@ msgid "Status History"
 msgstr ""
 
 #: console/templates/console/golf_booking_order_list.html:7
-#, fuzzy
-#| msgid "All Booking List"
 msgid "Golf Booking Order List"
 msgstr "All"
 

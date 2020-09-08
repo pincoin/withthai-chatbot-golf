@@ -1066,6 +1066,3 @@ msgstr "요금표"
 #: shop/apps.py:7
 msgid "shop"
 msgstr "쇼핑"
-
-#~ msgid "Date"
-#~ msgstr "일자"
