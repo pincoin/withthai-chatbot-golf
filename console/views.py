@@ -389,12 +389,47 @@ class RateListView(generic.ListView):
 
 
 class HolidayListView(generic.ListView):
-    pass
+    template_name = 'console/holiday_list.html'
+
+    context_object_name = 'holidays'
+
+    def get_queryset(self):
+        return golf_models.Holiday.objects \
+            .order_by('-holiday')
+
+    def get_context_data(self, **kwargs):
+        context = super(HolidayListView, self).get_context_data(**kwargs)
+        context['slug'] = self.kwargs['slug']
+        return context
 
 
 class SeasonListView(generic.ListView):
-    pass
+    template_name = 'console/season_list.html'
+
+    context_object_name = 'seasons'
+
+    def get_queryset(self):
+        return golf_models.Season.objects \
+            .filter(golf_club__slug=self.kwargs['slug']) \
+            .order_by('-season_end')
+
+    def get_context_data(self, **kwargs):
+        context = super(SeasonListView, self).get_context_data(**kwargs)
+        context['slug'] = self.kwargs['slug']
+        return context
 
 
 class TimeslotListView(generic.ListView):
-    pass
+    template_name = 'console/timeslot_list.html'
+
+    context_object_name = 'timeslots'
+
+    def get_queryset(self):
+        return golf_models.Timeslot.objects \
+            .filter(golf_club__slug=self.kwargs['slug']) \
+            .order_by('slot_start')
+
+    def get_context_data(self, **kwargs):
+        context = super(TimeslotListView, self).get_context_data(**kwargs)
+        context['slug'] = self.kwargs['slug']
+        return context

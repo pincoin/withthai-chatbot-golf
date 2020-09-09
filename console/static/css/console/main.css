@@ -142,12 +142,12 @@ body {
         border-radius: 8px;
     }
 
-    .order-list {
+    .page-list {
         border-bottom: 1px solid #000000;
         margin: 0 .1rem .5rem .1rem !important
     }
 
-    .order-list .column {
+    .page-list .column {
         padding-top: .5rem;
         padding-bottom: .5rem;
     }
@@ -188,7 +188,7 @@ body {
         border-radius: 8px;
     }
 
-    .order-list {
+    .page-list {
         margin: 1rem 0;
         padding: .5rem;
 
@@ -196,7 +196,7 @@ body {
         border-radius: 8px;
     }
 
-    .order-list .column {
+    .page-list .column {
         padding: .03rem 0;
     }
 
@@ -209,7 +209,7 @@ body {
         margin-bottom: 0;
     }
 
-    .order-detail {
+    .page-detail {
         margin: 1rem 0;
         padding: .5rem;
 
@@ -217,11 +217,11 @@ body {
         border-radius: 8px;
     }
 
-    .order-detail .columns {
+    .page-detail .columns {
         padding: .75rem .25rem;
     }
 
-    .order-detail .columns .column {
+    .page-detail .columns .column {
         padding: 0 .5rem;
     }
 

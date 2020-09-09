@@ -18,7 +18,7 @@ with-thai::{% trans 'LINE User List' %}
         <div class="card-content">
             <div class="content">
                 {% for user in users %}
-                <div class="columns is-multiline is-mobile is-vcentered order-list">
+                <div class="columns is-multiline is-mobile is-vcentered page-list">
                     <div class="column is-1-tablet is-8-mobile">
                         {{ user.line_user.line_user_id|truncatechars:9 }}
                         <span class="is-hidden-tablet">

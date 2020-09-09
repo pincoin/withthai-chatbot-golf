@@ -20,7 +20,7 @@ with-thai::{% trans 'Golf Booking Order List' %}
                 {% include './_search_box.html' with form=form %}
 
                 {% for order in orders %}
-                <div class="columns is-multiline is-mobile is-vcentered order-list">
+                <div class="columns is-multiline is-mobile is-vcentered page-list">
                     <div class="column is-1-tablet is-4-mobile is-family-monospace">
                         <a href="{% url 'console:golf-booking-order-detail' slug order.order_no %}?{{ q }}">
                             {{ order.order_no|truncatechars:9 }}
