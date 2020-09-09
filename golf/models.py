@@ -243,8 +243,11 @@ class GolfClub(model_utils_models.TimeStampedModel):
     customer_group = models.ForeignKey(
         'golf.CustomerGroup',
         verbose_name=_('Default customer group'),
+        null=True,
+        blank=True,
+        editable=True,
         db_index=True,
-        on_delete=models.CASCADE,
+        on_delete=models.SET_NULL,
     )
 
     business_hour_start = models.TimeField(
