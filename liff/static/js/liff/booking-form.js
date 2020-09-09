@@ -382,26 +382,27 @@ function runApp() {
 
     const access_token = liff.getAccessToken();
 
-    fetch('/golf/' + golf_club['slug'] + '/customer-group.json?access_token=' + access_token)
-        .then(function (response) {
-            return response.json();
-        })
-        .then(function (myJson) {
-            if (JSON.stringify(a) !== JSON.stringify({})) {
-                customerGroup = myJson['customer_group_id'];
+    if (access_token !== null) {
+        fetch('/golf/' + golf_club['slug'] + '/customer-group.json?access_token=' + access_token)
+            .then(function (response) {
+                return response.json();
+            })
+            .then(function (myJson) {
+                if (JSON.stringify(a) !== JSON.stringify({})) {
+                    customerGroup = myJson['customer_group_id'];
 
-                if (roundDate.value && roundTime.value && pax.value && cart.value) {
-                    const fee = calculateFees(roundDate, roundTime, pax, cart, customerGroup);
+                    if (roundDate.value && roundTime.value && pax.value && cart.value) {
+                        const fee = calculateFees(roundDate, roundTime, pax, cart, customerGroup);
 
-                    displayQuotation(greenFeeUnitPrice, greenFeePax, greenFeeAmount,
-                        caddieFeeUnitPrice, caddieFeePax, caddieFeeAmount,
-                        cartFeeUnitPrice, cartFeePax, cartFeeAmount, feeTotalAmount, fee, pax, cart);
+                        displayQuotation(greenFeeUnitPrice, greenFeePax, greenFeeAmount,
+                            caddieFeeUnitPrice, caddieFeePax, caddieFeeAmount,
+                            cartFeeUnitPrice, cartFeePax, cartFeeAmount, feeTotalAmount, fee, pax, cart);
+                    }
+                } else {
+                    window.alert('Failed to get your profile.');
                 }
-            } else {
-                window.alert('Failed to get your profile.');
-            }
-
-        });
+            });
+    }
 
     // 3. Add event handlers
     document
