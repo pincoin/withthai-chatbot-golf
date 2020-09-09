@@ -417,6 +417,15 @@ class GreenFeeListView(viewmixins.PageableMixin, generic.ListView):
             customer_groups=self.request.GET.get('customer_groups') if self.request.GET.get('customer_groups') else '',
         )
 
+        querystring = self.request.GET.copy()
+        context['q'] = querystring.urlencode()
+
+        if 'page' in querystring:
+            querystring.pop('page')
+            context['q_popped'] = querystring.urlencode()
+        else:
+            context['q_popped'] = context['q']
+
         return context
 
 
