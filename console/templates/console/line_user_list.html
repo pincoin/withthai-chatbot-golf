@@ -67,3 +67,11 @@ with-thai::{% trans 'Golf Booking Order List' %}
     {% include './_pagination.html' with page_obj=page_obj page_range=page_range q=q_popped %}
 </div>
 {% endblock %}
+
+{% block javascript %}
+{{ block.super }}
+<script>
+    function runApp() {
+    }
+</script>
+{% endblock %}
