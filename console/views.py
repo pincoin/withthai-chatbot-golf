@@ -364,3 +364,37 @@ class FacebookUserListView(generic.ListView):
 
 class FacebookUserDetailView(generic.DetailView):
     pass
+
+
+class GolfClubUpdateView(generic.UpdateView):
+    template_name = 'console/golf_club_update.html'
+
+    context_object_name = 'golf_club'
+
+    form_class = forms.GolfClubForm
+
+    def get_queryset(self):
+        return golf_models.GolfClub.objects \
+            .select_related('district', 'customer_group') \
+            .filter(slug=self.kwargs['slug'])
+
+    def get_context_data(self, **kwargs):
+        context = super(GolfClubUpdateView, self).get_context_data(**kwargs)
+        context['slug'] = self.kwargs['slug']
+        return context
+
+
+class RateListView(generic.ListView):
+    pass
+
+
+class HolidayListView(generic.ListView):
+    pass
+
+
+class SeasonListView(generic.ListView):
+    pass
+
+
+class TimeslotListView(generic.ListView):
+    pass

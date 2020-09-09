@@ -2,6 +2,8 @@ from django import forms
 from django.utils import timezone
 from django.utils.translation import gettext_lazy as _
 
+from golf import models as golf_models
+
 
 class ConfirmForm(forms.Form):
     round_time = forms.TimeField(required=True)
@@ -97,3 +99,9 @@ class SearchForm(forms.Form):
         self.fields['order_status'].initial = order_status
         self.fields['payment_status'].initial = payment_status
         self.fields['sort'].initial = sort
+
+
+class GolfClubForm(forms.ModelForm):
+    class Meta:
+        model = golf_models.GolfClub
+        fields = ('slug',)

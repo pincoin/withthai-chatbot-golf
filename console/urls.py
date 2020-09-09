@@ -34,4 +34,19 @@ urlpatterns = [
 
     path('<slug:slug>/facebook-users/<str:facebook_user_id>/',
          views.FacebookUserDetailView.as_view(), name='facebook-user-detail'),
+
+    path('<slug:slug>/settings/golf-club/',
+         views.GolfClubUpdateView.as_view(), name='golf-club-update'),
+
+    path('<slug:slug>/settings/rates/',
+         views.RateListView.as_view(), name='rate-list'),
+
+    path('<slug:slug>/settings/holidays/',
+         views.HolidayListView.as_view(), name='holiday-list'),
+
+    path('<slug:slug>/settings/seasons/',
+         views.SeasonListView.as_view(), name='season-list'),
+
+    path('<slug:slug>/settings/timeslots/',
+         views.TimeslotListView.as_view(), name='timeslot-list'),
 ]
