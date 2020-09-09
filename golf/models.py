@@ -403,6 +403,13 @@ class GolfClub(model_utils_models.TimeStampedModel):
         db_index=True,
     )
 
+    thumbnail = models.ImageField(
+        verbose_name=_('Thumbnail image'),
+        upload_to=upload_directory_path,
+        storage=default_storage,
+        blank=True,
+    )
+
     layout = models.ImageField(
         verbose_name=_('Layout image'),
         upload_to=upload_directory_path,
