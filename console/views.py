@@ -20,7 +20,7 @@ class HomeView(generic.TemplateView):
         return context
 
 
-class GolfBookingOrderListView(generic.ListView):
+class GolfBookingOrderListView(viewmixins.PageableMixin, generic.ListView):
     template_name = 'console/golf_booking_order_list.html'
 
     context_object_name = 'orders'
@@ -103,13 +103,7 @@ class GolfBookingOrderListView(generic.ListView):
     def get_context_data(self, **kwargs):
         context = super(GolfBookingOrderListView, self).get_context_data(**kwargs)
 
-        block_size = 5
-        start_index = int((context['page_obj'].number - 1) / block_size) * block_size
-        end_index = min(start_index + block_size, len(context['paginator'].page_range))
-
         context['slug'] = self.kwargs['slug']
-
-        context['page_range'] = context['paginator'].page_range[start_index:end_index]
 
         querystring = self.request.GET.copy()
         context['q'] = querystring.urlencode()
@@ -141,10 +135,6 @@ class GolfBookingOrderListView(generic.ListView):
         )
 
         return context
-
-    def get_paginate_by(self, queryset):
-        # items per page
-        return 10
 
 
 class GolfBookingOrderDetailView(generic.DetailView):
@@ -306,7 +296,7 @@ class GolfBookingOrderRejectView(viewmixins.OrderChangeContextMixin, generic.For
         return super(GolfBookingOrderRejectView, self).form_valid(form)
 
 
-class LineUserListView(generic.ListView):
+class LineUserListView(viewmixins.PageableMixin, generic.ListView):
     template_name = 'console/line_user_list.html'
 
     context_object_name = 'users'
@@ -320,15 +310,7 @@ class LineUserListView(generic.ListView):
 
     def get_context_data(self, **kwargs):
         context = super(LineUserListView, self).get_context_data(**kwargs)
-
-        block_size = 5
-        start_index = int((context['page_obj'].number - 1) / block_size) * block_size
-        end_index = min(start_index + block_size, len(context['paginator'].page_range))
-
         context['slug'] = self.kwargs['slug']
-
-        context['page_range'] = context['paginator'].page_range[start_index:end_index]
-
         return context
 
     def get_paginate_by(self, queryset):
@@ -358,7 +340,7 @@ class LineUserDetailView(generic.DetailView):
         return context
 
 
-class FacebookUserListView(generic.ListView):
+class FacebookUserListView(viewmixins.PageableMixin, generic.ListView):
     pass
 
 
@@ -388,7 +370,7 @@ class RateListView(generic.ListView):
     pass
 
 
-class HolidayListView(generic.ListView):
+class HolidayListView(viewmixins.PageableMixin, generic.ListView):
     template_name = 'console/holiday_list.html'
 
     context_object_name = 'holidays'
@@ -399,23 +381,11 @@ class HolidayListView(generic.ListView):
 
     def get_context_data(self, **kwargs):
         context = super(HolidayListView, self).get_context_data(**kwargs)
-
-        block_size = 5
-        start_index = int((context['page_obj'].number - 1) / block_size) * block_size
-        end_index = min(start_index + block_size, len(context['paginator'].page_range))
-
         context['slug'] = self.kwargs['slug']
-
-        context['page_range'] = context['paginator'].page_range[start_index:end_index]
-
         return context
 
-    def get_paginate_by(self, queryset):
-        # items per page
-        return 10
 
-
-class SeasonListView(generic.ListView):
+class SeasonListView(viewmixins.PageableMixin, generic.ListView):
     template_name = 'console/season_list.html'
 
     context_object_name = 'seasons'
@@ -431,7 +401,7 @@ class SeasonListView(generic.ListView):
         return context
 
 
-class TimeslotListView(generic.ListView):
+class TimeslotListView(viewmixins.PageableMixin, generic.ListView):
     template_name = 'console/timeslot_list.html'
 
     context_object_name = 'timeslots'
