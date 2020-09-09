@@ -39,7 +39,7 @@ urlpatterns = [
          views.GolfClubUpdateView.as_view(), name='golf-club-update'),
 
     path('<slug:slug>/settings/rates/',
-         views.RateListView.as_view(), name='rate-list'),
+         views.GreenFeeListView.as_view(), name='green-fee-list'),
 
     path('<slug:slug>/settings/holidays/',
          views.HolidayListView.as_view(), name='holiday-list'),

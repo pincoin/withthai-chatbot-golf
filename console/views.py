@@ -366,8 +366,26 @@ class GolfClubUpdateView(generic.UpdateView):
         return context
 
 
-class RateListView(generic.ListView):
-    pass
+class GreenFeeListView(viewmixins.PageableMixin, generic.ListView):
+    template_name = 'console/green_fee_list.html'
+
+    context_object_name = 'green_fees'
+
+    def get_queryset(self):
+        return golf_models.GreenFee.objects \
+            .select_related('season', 'timeslot', 'customer_group') \
+            .filter(season__golf_club__slug=self.kwargs['slug'],
+                    timeslot__golf_club__slug=self.kwargs['slug'],
+                    customer_group__golf_club__slug=self.kwargs['slug']) \
+            .order_by('season__season_start',
+                      'timeslot__day_of_week',
+                      'timeslot__slot_start',
+                      'customer_group__position')
+
+    def get_context_data(self, **kwargs):
+        context = super(GreenFeeListView, self).get_context_data(**kwargs)
+        context['slug'] = self.kwargs['slug']
+        return context
 
 
 class HolidayListView(viewmixins.PageableMixin, generic.ListView):
