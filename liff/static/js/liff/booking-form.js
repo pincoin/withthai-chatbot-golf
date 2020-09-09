@@ -402,6 +402,8 @@ function runApp() {
                     window.alert('Failed to get your profile.');
                 }
             });
+    } else {
+        window.alert('Failed to get your profile.');
     }
 
     // 3. Add event handlers
