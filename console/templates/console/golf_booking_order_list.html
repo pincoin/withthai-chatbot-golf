@@ -17,7 +17,7 @@ with-thai::{% trans 'Golf Booking Order List' %}
         </header>
         <div class="card-content">
             <div class="content">
-                {% include './_search_box.html' with form=form %}
+                {% include './_order_search_box.html' with form=form %}
 
                 {% for order in orders %}
                 <div class="columns is-multiline is-mobile is-vcentered page-list">

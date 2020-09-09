@@ -25,7 +25,7 @@ class GolfBookingOrderListView(viewmixins.PageableMixin, generic.ListView):
 
     context_object_name = 'orders'
 
-    form_class = forms.SearchForm
+    form_class = forms.OrderSearchForm
 
     def get_queryset(self):
         queryset = golf_models.GolfBookingOrder.objects \
@@ -371,20 +371,52 @@ class GreenFeeListView(viewmixins.PageableMixin, generic.ListView):
 
     context_object_name = 'green_fees'
 
+    form_class = forms.GreenFeeSearchForm
+
     def get_queryset(self):
-        return golf_models.GreenFee.objects \
+        queryset = golf_models.GreenFee.objects \
             .select_related('season', 'timeslot', 'customer_group') \
             .filter(season__golf_club__slug=self.kwargs['slug'],
                     timeslot__golf_club__slug=self.kwargs['slug'],
-                    customer_group__golf_club__slug=self.kwargs['slug']) \
-            .order_by('season__season_start',
-                      'timeslot__day_of_week',
-                      'timeslot__slot_start',
-                      'customer_group__position')
+                    customer_group__golf_club__slug=self.kwargs['slug'])
+
+        if 'seasons' in self.request.GET and self.request.GET['seasons'] \
+                and self.request.GET['seasons'].isdigit():
+            queryset = queryset \
+                .filter(season__id=self.request.GET['seasons'])
+
+        if 'day_of_week' in self.request.GET and self.request.GET['day_of_week'] \
+                and self.request.GET['day_of_week'].isdigit():
+            queryset = queryset \
+                .filter(timeslot__day_of_week=self.request.GET['day_of_week'])
+
+        if 'timeslots' in self.request.GET and self.request.GET['timeslots'] \
+                and self.request.GET['timeslots'].isdigit():
+            queryset = queryset \
+                .filter(timeslot__id=self.request.GET['timeslots'])
+
+        if 'customer_groups' in self.request.GET and self.request.GET['customer_groups'] \
+                and self.request.GET['customer_groups'].isdigit():
+            queryset = queryset \
+                .filter(customer_group__id=self.request.GET['customer_groups'])
+
+        return queryset.order_by('season__season_start',
+                                 'timeslot__day_of_week',
+                                 'timeslot__slot_start',
+                                 'customer_group__position')
 
     def get_context_data(self, **kwargs):
         context = super(GreenFeeListView, self).get_context_data(**kwargs)
         context['slug'] = self.kwargs['slug']
+
+        context['form'] = self.form_class(
+            slug=self.kwargs['slug'],
+            seasons=self.request.GET.get('seasons') if self.request.GET.get('seasons') else '',
+            day_of_week=self.request.GET.get('day_of_week') if self.request.GET.get('day_of_week') else '',
+            timeslots=self.request.GET.get('timeslots') if self.request.GET.get('timeslots') else '',
+            customer_groups=self.request.GET.get('customer_groups') if self.request.GET.get('customer_groups') else '',
+        )
+
         return context
 
 

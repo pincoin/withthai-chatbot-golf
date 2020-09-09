@@ -1,0 +1,37 @@
+{% load i18n %}
+<div class="columns search-section">
+    <form class="column is-6" method="get">
+        <div class="field is-horizontal">
+            <div class="field-label is-normal is-hidden"></div>
+            <div class="field-body">
+                <div class="field">
+                    <div class="control">
+                        <span class="select is-fullwidth">{{ form.seasons }}</span>
+                    </div>
+                </div>
+                <div class="field">
+                    <div class="control">
+                        <span class="select is-fullwidth">{{ form.day_of_week }}</span>
+                    </div>
+                </div>
+                <div class="field">
+                    <div class="control">
+                        <span class="select is-fullwidth">{{ form.timeslots }}</span>
+                    </div>
+                </div>
+                <div class="field">
+                    <div class="control">
+                        <span class="select is-fullwidth">{{ form.customer_groups }}</span>
+                    </div>
+                </div>
+                <div class="field">
+                    <div class="control">
+                        <button type="submit" class="button is-success is-fullwidth">
+                            <i class="fas fa-filter fa-fw"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>

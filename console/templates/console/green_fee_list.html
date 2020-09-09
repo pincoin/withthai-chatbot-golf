@@ -17,6 +17,8 @@ with-thai::{% trans 'Green Fee List' %}
         </header>
         <div class="card-content">
             <div class="content">
+                {% include './_green_fee_search_box.html' with form=form %}
+
                 {% for green_fee in green_fees %}
                 <div class="columns is-multiline is-mobile is-vcentered page-list">
                     <div class="column is-2-tablet is-9-mobile">

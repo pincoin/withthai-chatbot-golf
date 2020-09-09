@@ -34,7 +34,7 @@ class RejectForm(forms.Form):
     pass
 
 
-class SearchForm(forms.Form):
+class OrderSearchForm(forms.Form):
     search = forms.ChoiceField(
         choices=(
             ('round_date', _('Round Date'),),
@@ -92,7 +92,7 @@ class SearchForm(forms.Form):
         payment_status = kwargs.pop('payment_status', '')
         sort = kwargs.pop('sort', 'booking_date')
 
-        super(SearchForm, self).__init__(*args, **kwargs)
+        super(OrderSearchForm, self).__init__(*args, **kwargs)
 
         self.fields['search'].initial = search
         self.fields['keyword'].initial = keyword
@@ -105,3 +105,62 @@ class GolfClubForm(forms.ModelForm):
     class Meta:
         model = golf_models.GolfClub
         fields = ('slug',)
+
+
+class GreenFeeSearchForm(forms.Form):
+    seasons = forms.ModelChoiceField(
+        queryset=None,
+        empty_label=_('Seasons'),
+        required=False,
+    )
+
+    day_of_week = forms.ChoiceField(
+        choices=[('', _('Day of Week'))] + golf_models.Timeslot.DAY_CHOICES,
+        required=False,
+    )
+
+    timeslots = forms.ModelChoiceField(
+        queryset=None,
+        empty_label=_('Timeslots'),
+        required=False,
+    )
+
+    customer_groups = forms.ModelChoiceField(
+        queryset=None,
+        empty_label=_('Customer Groups'),
+        required=False,
+    )
+
+    def __init__(self, *args, **kwargs):
+        slug = kwargs.pop('slug', '')
+        seasons = kwargs.pop('seasons', '')
+        day_of_week = kwargs.pop('day_of_week', '')
+        timeslots = kwargs.pop('timeslots', '')
+        customer_groups = kwargs.pop('customer_groups', '')
+
+        super(GreenFeeSearchForm, self).__init__(*args, **kwargs)
+
+        if slug:
+            self.fields['seasons'].queryset = golf_models.Season.objects \
+                .filter(golf_club__slug=slug) \
+                .order_by('-season_end')
+
+            self.fields['seasons'].label_from_instance = lambda obj: f'{obj.season_start} {obj.season_end}'
+
+            self.fields['timeslots'].queryset = golf_models.Timeslot.objects \
+                .filter(golf_club__slug=slug) \
+                .order_by('day_of_week', 'slot_start')
+
+            self.fields['timeslots'].label_from_instance = lambda \
+                obj: f'{obj.slot_start:%H:%M} {obj.slot_end:%H:%M} ({obj.title_english})'
+
+            self.fields['customer_groups'].queryset = golf_models.CustomerGroup.objects \
+                .filter(golf_club__slug=slug) \
+                .order_by('position')
+
+            self.fields['customer_groups'].label_from_instance = lambda obj: f'{obj.title_english}'
+
+        self.fields['seasons'].initial = seasons
+        self.fields['day_of_week'].initial = day_of_week
+        self.fields['timeslots'].initial = timeslots
+        self.fields['customer_groups'].initial = customer_groups
