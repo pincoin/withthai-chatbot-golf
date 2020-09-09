@@ -78,7 +78,7 @@ class GolfClubAdmin(admin.ModelAdmin):
                        'weekdays_min_in_advance', 'weekdays_max_in_advance',
                        'weekend_min_in_advance', 'weekend_max_in_advance',
                        'weekend_booking_on_monday', 'multiple_booking_orders',
-                       'layout',)
+                       'thumbnail', 'layout',)
         }),
         ('LINE', {
             'fields': ('line_bot_channel_access_token', 'line_bot_channel_secret', 'line_notify_access_token',
