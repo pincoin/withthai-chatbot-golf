@@ -431,6 +431,7 @@ class GolfClub(model_utils_models.TimeStampedModel):
 
                 self.info['header']['contents'][0]['text'] = self.title_english
                 self.info['hero']['action']['uri'] = self.website
+                self.info['hero']['url'] = f'https://www.withthai.com{self.thumbnail.url}'
                 self.info['body']['contents'][0]['contents'][1]['text'] = self.get_hole_display()
                 self.info['body']['contents'][1]['contents'][1]['text'] = self.phone
                 self.info['body']['contents'][2]['contents'][1]['text'] = self.fax
