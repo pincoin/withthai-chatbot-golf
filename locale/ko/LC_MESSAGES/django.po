@@ -411,7 +411,7 @@ msgstr "카트 필수"
 
 #: console/templates/console/golf_club_update.html:196
 msgid "Multiple Booking Orders"
-msgstr "동시 예약주문 갯수"
+msgstr "동시 예약가능 주문수"
 
 #: console/templates/console/golf_club_update.html:204
 msgid "Minimum PAX"
