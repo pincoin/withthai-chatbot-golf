@@ -409,7 +409,7 @@ class TimeslotListView(viewmixins.PageableMixin, generic.ListView):
     def get_queryset(self):
         return golf_models.Timeslot.objects \
             .filter(golf_club__slug=self.kwargs['slug']) \
-            .order_by('slot_start')
+            .order_by('day_of_week', 'slot_start')
 
     def get_context_data(self, **kwargs):
         context = super(TimeslotListView, self).get_context_data(**kwargs)

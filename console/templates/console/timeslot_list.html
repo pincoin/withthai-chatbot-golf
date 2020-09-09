@@ -1,1 +1,52 @@
-timeslot list
+{% extends './base.html' %}
+
+{% load static i18n humanize %}
+{% load console_filters %}
+
+{% block title %}
+with-thai::{% trans 'Season List' %}
+{% endblock %}
+
+{% block content %}
+<div class="section pb-0">
+    <div class="card pb-0">
+        <header class="card-header">
+            <p class="card-header-title">
+                {% trans 'Timeslot List' %}
+            </p>
+        </header>
+        <div class="card-content">
+            <div class="content">
+                {% for timeslot in timeslots %}
+                <div class="columns is-multiline is-mobile is-vcentered page-list">
+                    <div class="column is-1-tablet is-3-mobile">
+                        {% if timeslot.day_of_week == timeslot.DAY_CHOICES.weekday %}
+                        <span class="tag is-info">{{ timeslot.get_day_of_week_display }}</span>
+                        {% elif timeslot.day_of_week == timeslot.DAY_CHOICES.weekend %}
+                        <span class="tag is-danger">{{ timeslot.get_day_of_week_display }}</span>
+                        {% endif %}
+                    </div>
+                    <div class="column is-1-tablet is-5-mobile has-text-weight-bold">
+                        {{ timeslot.slot_start|date:'H:i' }} ~ {{ timeslot.slot_end|date:'H:i' }}
+                    </div>
+                    <div class="column is-2-tablet is-4-mobile">
+                        {{ timeslot.title_english }}
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>
+<div class="section pt-0">
+    {% include './_pagination.html' with page_obj=page_obj page_range=page_range q=q_popped %}
+</div>
+{% endblock %}
+
+{% block javascript %}
+{{ block.super }}
+<script>
+    function runApp() {
+    }
+</script>
+{% endblock %}
