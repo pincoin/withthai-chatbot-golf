@@ -275,11 +275,13 @@ def command_caddies(event, line_bot_api, **kwargs):
 
 
 def command_layout(event, line_bot_api, **kwargs):
+    layout = kwargs['layout']
+
     line_bot_api.reply_message(
         event.reply_token,
         models.ImageSendMessage(
-            original_content_url='https://loremflickr.com/cache/resized/3553_3806423994_1c05ef2e12_z_640_360_nofilter.jpg',
-            preview_image_url='https://loremflickr.com/cache/resized/3553_3806423994_1c05ef2e12_z_640_360_nofilter.jpg'))
+            original_content_url=layout,
+            preview_image_url=layout))
 
 
 def command_hotels(event, line_bot_api, **kwargs):

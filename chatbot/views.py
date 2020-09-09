@@ -61,7 +61,8 @@ class CallbackView(generic.View):
             elif text_lowercase in ['caddies', 'caddie']:
                 message.command_caddies(event, self.line_bot_api)
             elif text_lowercase == 'layout':
-                message.command_layout(event, self.line_bot_api)
+                layout = self.request.build_absolute_uri(f'/media/{self.object.layout}')
+                message.command_layout(event, self.line_bot_api, layout=layout)
             elif text_lowercase in ['hotels', 'hotel', 'accommodation', 'accommodations']:
                 message.command_hotels(event, self.line_bot_api)
             elif text_lowercase in ['restaurants', 'restaurant', 'food']:
