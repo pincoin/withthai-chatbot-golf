@@ -4,12 +4,17 @@ from decimal import Decimal
 from pathlib import Path
 
 from django.conf import settings
+from django.core.files.storage import default_storage
 from django.db import models
 from django.template.defaultfilters import time
 from django.utils import translation
 from django.utils.translation import gettext_lazy as _
 from model_utils import Choices
 from model_utils import models as model_utils_models
+
+
+def upload_directory_path(instance, filename):
+    return f"golf/{instance.slug}/{uuid.uuid4()}.{filename.split('.')[-1]}"
 
 
 class Holiday(model_utils_models.TimeStampedModel):
@@ -396,6 +401,13 @@ class GolfClub(model_utils_models.TimeStampedModel):
         choices=WORKING_CHOICES,
         default=WORKING_CHOICES.open,
         db_index=True,
+    )
+
+    layout = models.ImageField(
+        verbose_name=_('Layout image'),
+        upload_to=upload_directory_path,
+        storage=default_storage,
+        blank=True,
     )
 
     class Meta:
