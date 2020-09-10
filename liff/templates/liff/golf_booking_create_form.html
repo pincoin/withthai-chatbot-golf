@@ -144,7 +144,7 @@
                 </p>
             </header>
             <div class="card-content">
-                <table class="table is-fullwidth is-narrow quotation-table">
+                <table class="table is-fullwidth is-narrow quotation-table" id="quotation-table">
                     <thead>
                     <tr>
                         <th class="has-text-centered">{% trans 'Item' %}</th>
@@ -194,6 +194,22 @@
         </div>
     </div>
 </section>
+<div class="modal" id="booking-confirm-modal">
+    <div class="modal-background"></div>
+    <div class="modal-card">
+        <header class="modal-card-head">
+            <p class="modal-card-title is-capitalized">{% trans 'New booking' %}</p>
+            <button class="delete" id="modal-close"></button>
+        </header>
+        <section class="modal-card-body" id="modal-body">
+            <!-- Content ... -->
+        </section>
+        <footer class="modal-card-foot">
+            <button class="button is-success is-capitalized" id="modal-save">{% trans 'New booking' %}</button>
+            <button class="button" id="modal-cancel">{% trans 'Cancel' %}</button>
+        </footer>
+    </div>
+</div>
 {% endblock %}
 
 {% block javascript %}

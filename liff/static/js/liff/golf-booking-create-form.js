@@ -348,6 +348,10 @@ function runApp() {
 
     const errorNotification = document.getElementById('error-notification');
 
+    const bookingConfirmModal = document.getElementById('booking-confirm-modal');
+    const modalBody = document.getElementById('modal-body');
+    const quotationTable = document.getElementById('quotation-table');
+
     let customerGroup = 0;
 
     const now = getCurrentTime();
@@ -472,6 +476,30 @@ function runApp() {
 
     document
         .getElementById('new-booking-button')
+        .addEventListener('click', function (e) {
+            if (!bookingConfirmModal.classList.contains('is-active')) {
+                bookingConfirmModal.classList.add('is-active');
+            }
+
+            console.log(quotationTable.innerHTML);
+            console.log(modalBody);
+            modalBody.innerHTML = '<table class="table is-fullwidth is-narrow quotation-table">'
+                + quotationTable.innerHTML
+                + '</table>';
+
+        });
+
+    [document.getElementById('modal-close'),
+        document.getElementById('modal-cancel')].forEach(function (element) {
+        element.addEventListener('click', function (e) {
+            if (bookingConfirmModal.classList.contains('is-active')) {
+                bookingConfirmModal.classList.remove('is-active');
+            }
+        });
+    });
+
+    document
+        .getElementById('modal-save')
         .addEventListener('click', function (e) {
             if (validateForm(roundDate, roundTime, pax, cart, customerName, errorNotification)) {
                 if (!liff.isInClient()) {
