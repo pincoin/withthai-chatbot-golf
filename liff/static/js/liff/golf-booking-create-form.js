@@ -478,16 +478,16 @@ function runApp() {
     document
         .getElementById('new-booking-button')
         .addEventListener('click', function (e) {
-            if (!bookingConfirmModal.classList.contains('is-active')) {
-                bookingConfirmModal.classList.add('is-active');
+            if (validateForm(roundDate, roundTime, pax, cart, customerName, errorNotification)) {
+                if (!bookingConfirmModal.classList.contains('is-active')) {
+                    bookingConfirmModal.classList.add('is-active');
+                }
+                modalTitle.innerText = roundDate.value + ' ' + roundTime.value;
+
+                modalBody.innerHTML = '<table class="table is-fullwidth is-narrow quotation-table">'
+                    + quotationTable.innerHTML
+                    + '</table>';
             }
-
-            modalTitle.innerText = roundDate.value + ' ' + roundTime.value;
-
-            modalBody.innerHTML = '<table class="table is-fullwidth is-narrow quotation-table">'
-                + quotationTable.innerHTML
-                + '</table>';
-
         });
 
     [document.getElementById('modal-close'),
