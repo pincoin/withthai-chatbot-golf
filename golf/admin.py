@@ -145,7 +145,7 @@ class GolfBookingPromotionAdmin(admin.ModelAdmin):
     list_filter = ('golf_club__title_english',)
     fieldsets = (
         (_('Promotion'), {
-            'fields': ('golf_club', 'title', 'promotion_start', 'promotion_end', 'active')
+            'fields': ('golf_club', 'title', 'banner', 'promotion_start', 'promotion_end', 'active')
         }),
         (_('Promotion Conditions'), {
             'fields': ('condition_monday', 'condition_tuesday', 'condition_wednesday', 'condition_thursday',
