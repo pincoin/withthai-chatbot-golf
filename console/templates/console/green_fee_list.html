@@ -51,6 +51,12 @@ with-thai::{% trans 'Green Fee List' %}
                         THB
                     </div>
                 </div>
+                {% empty %}
+                <div class="columns">
+                    <div class="column has-text-centered-mobile has-text-weight-bold has-text-danger-dark">
+                        {% trans 'No Green fee settings' %}
+                    </div>
+                </div>
                 {% endfor %}
             </div>
         </div>

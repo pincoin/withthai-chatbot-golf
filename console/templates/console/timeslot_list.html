@@ -33,6 +33,12 @@ with-thai::{% trans 'Timeslot List' %}
                         {{ timeslot.title_english }}
                     </div>
                 </div>
+                {% empty %}
+                <div class="columns">
+                    <div class="column has-text-centered-mobile has-text-weight-bold has-text-danger-dark">
+                        {% trans 'No Timeslot' %}
+                    </div>
+                </div>
                 {% endfor %}
             </div>
         </div>

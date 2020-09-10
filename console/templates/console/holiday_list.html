@@ -26,6 +26,12 @@ with-thai::{% trans 'Holiday List' %}
                         {{ holiday.title }}
                     </div>
                 </div>
+                {% empty %}
+                <div class="columns">
+                    <div class="column has-text-centered-mobile has-text-weight-bold has-text-danger-dark">
+                        {% trans 'No holiday' %}
+                    </div>
+                </div>
                 {% endfor %}
             </div>
         </div>

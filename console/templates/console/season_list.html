@@ -38,6 +38,12 @@ with-thai::{% trans 'Season List' %}
                         THB
                     </div>
                 </div>
+                {% empty %}
+                <div class="columns">
+                    <div class="column has-text-centered-mobile has-text-weight-bold has-text-danger-dark">
+                        {% trans 'No Season' %}
+                    </div>
+                </div>
                 {% endfor %}
             </div>
         </div>
