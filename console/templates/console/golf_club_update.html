@@ -11,16 +11,16 @@ with-thai::{% trans 'Golf Club Update' %}
 <div class="section">
     <div class="card">
         <header class="card-header">
-            <p class="card-header-title">
-                {% trans 'Course Information' %}
+            <p class="card-header-title is-capitalized">
+                {% trans 'Course information' %}
             </p>
         </header>
         <div class="card-content">
             <div class="content">
                 <div class="page-detail">
                     <div class="columns is-mobile">
-                        <div class="column is-2-tablet is-6-mobile has-text-right-tablet">
-                            {% trans 'Golf Course Title' %}<br class="is-hidden-tablet">
+                        <div class="column is-2-tablet is-6-mobile has-text-right-tablet is-capitalized">
+                            {% trans 'Golf course title' %}<br class="is-hidden-tablet">
                             [English]
                         </div>
                         <div class="column is-10-tablet is-6-mobile">
@@ -28,8 +28,8 @@ with-thai::{% trans 'Golf Club Update' %}
                         </div>
                     </div>
                     <div class="columns is-mobile">
-                        <div class="column is-2-tablet is-6-mobile has-text-right-tablet">
-                            {% trans 'Golf Course Title' %}<br class="is-hidden-tablet">
+                        <div class="column is-2-tablet is-6-mobile has-text-right-tablet is-capitalized">
+                            {% trans 'Golf course title' %}<br class="is-hidden-tablet">
                             [Thai]
                         </div>
                         <div class="column is-10-tablet is-6-mobile">
@@ -45,8 +45,8 @@ with-thai::{% trans 'Golf Club Update' %}
                         </div>
                     </div>
                     <div class="columns is-mobile">
-                        <div class="column is-2-tablet is-6-mobile has-text-right-tablet">
-                            {% trans 'No. of Holes' %}
+                        <div class="column is-2-tablet is-6-mobile has-text-right-tablet is-capitalized">
+                            {% trans 'No. of holes' %}
                         </div>
                         <div class="column is-10-tablet is-6-mobile">
                             {{ golf_club.get_hole_display }}
@@ -77,7 +77,7 @@ with-thai::{% trans 'Golf Club Update' %}
                         </div>
                     </div>
                     <div class="columns is-mobile">
-                        <div class="column is-2-tablet is-6-mobile has-text-right-tablet">
+                        <div class="column is-2-tablet is-6-mobile has-text-right-tablet is-capitalized">
                             {% trans 'Working Status' %}
                         </div>
                         <div class="column is-10-tablet is-6-mobile">
@@ -90,8 +90,8 @@ with-thai::{% trans 'Golf Club Update' %}
     </div>
     <div class="card">
         <header class="card-header">
-            <p class="card-header-title">
-                {% trans 'Contact Information' %}
+            <p class="card-header-title is-capitalized">
+                {% trans 'Contact information' %}
             </p>
         </header>
         <div class="card-content">
@@ -106,24 +106,24 @@ with-thai::{% trans 'Golf Club Update' %}
                         </div>
                     </div>
                     <div class="columns is-mobile">
-                        <div class="column is-2-tablet is-6-mobile has-text-right-tablet">
-                            {% trans 'Phone Number' %}
+                        <div class="column is-2-tablet is-6-mobile has-text-right-tablet is-capitalized">
+                            {% trans 'Phone number' %}
                         </div>
                         <div class="column is-10-tablet is-6-mobile">
                             {{ golf_club.phone }}
                         </div>
                     </div>
                     <div class="columns is-mobile">
-                        <div class="column is-2-tablet is-6-mobile has-text-right-tablet">
-                            {% trans 'Fax Number' %}
+                        <div class="column is-2-tablet is-6-mobile has-text-right-tablet is-capitalized">
+                            {% trans 'Fax number' %}
                         </div>
                         <div class="column is-10-tablet is-6-mobile">
                             {{ golf_club.fax }}
                         </div>
                     </div>
                     <div class="columns is-mobile">
-                        <div class="column is-2-tablet is-6-mobile has-text-right-tablet">
-                            {% trans 'Email Address' %}
+                        <div class="column is-2-tablet is-6-mobile has-text-right-tablet is-capitalized">
+                            {% trans 'Email address' %}
                         </div>
                         <div class="column is-10-tablet is-6-mobile">
                             {{ golf_club.email }}
@@ -143,56 +143,56 @@ with-thai::{% trans 'Golf Club Update' %}
     </div>
     <div class="card">
         <header class="card-header">
-            <p class="card-header-title">
-                {% trans 'Booking Management' %}
+            <p class="card-header-title is-capitalized">
+                {% trans 'Booking management' %}
             </p>
         </header>
         <div class="card-content">
             <div class="content">
                 <div class="page-detail">
                     <div class="columns is-mobile">
-                        <div class="column is-2-tablet is-6-mobile has-text-right-tablet">
-                            {% trans 'Business Hour Start' %}
+                        <div class="column is-2-tablet is-6-mobile has-text-right-tablet is-capitalized">
+                            {% trans 'Business hour start' %}
                         </div>
                         <div class="column is-10-tablet is-6-mobile">
                             {{ golf_club.business_hour_start|date:'H:i' }}
                         </div>
                     </div>
                     <div class="columns is-mobile">
-                        <div class="column is-2-tablet is-6-mobile has-text-right-tablet">
-                            {% trans 'Business Hour Start' %}
+                        <div class="column is-2-tablet is-6-mobile has-text-right-tablet is-capitalized">
+                            {% trans 'Business hour end' %}
                         </div>
                         <div class="column is-10-tablet is-6-mobile">
                             {{ golf_club.business_hour_end|date:'H:i' }}
                         </div>
                     </div>
                     <div class="columns is-mobile">
-                        <div class="column is-2-tablet is-6-mobile has-text-right-tablet">
-                            {% trans 'Default Customer Group' %}
+                        <div class="column is-2-tablet is-6-mobile has-text-right-tablet is-capitalized">
+                            {% trans 'Default customer group' %}
                         </div>
                         <div class="column is-10-tablet is-6-mobile">
                             {{ golf_club.customer_group }}
                         </div>
                     </div>
                     <div class="columns is-mobile">
-                        <div class="column is-2-tablet is-6-mobile has-text-right-tablet">
-                            {% trans 'Caddie Compulsory' %}
+                        <div class="column is-2-tablet is-6-mobile has-text-right-tablet is-capitalized">
+                            {% trans 'Caddie compulsory' %}
                         </div>
                         <div class="column is-10-tablet is-6-mobile">
                             {{ golf_club.get_caddie_compulsory_display }}
                         </div>
                     </div>
                     <div class="columns is-mobile">
-                        <div class="column is-2-tablet is-6-mobile has-text-right-tablet">
-                            {% trans 'Cart Compulsory' %}
+                        <div class="column is-2-tablet is-6-mobile has-text-right-tablet is-capitalized">
+                            {% trans 'Cart compulsory' %}
                         </div>
                         <div class="column is-10-tablet is-6-mobile">
                             {{ golf_club.get_cart_compulsory_display }}
                         </div>
                     </div>
                     <div class="columns is-mobile">
-                        <div class="column is-2-tablet is-6-mobile has-text-right-tablet">
-                            {% trans 'Multiple Booking Orders' %}
+                        <div class="column is-2-tablet is-6-mobile has-text-right-tablet is-capitalized">
+                            {% trans 'Multiple booking orders' %}
                         </div>
                         <div class="column is-10-tablet is-6-mobile">
                             {{ golf_club.multiple_booking_orders }}

@@ -30,8 +30,8 @@ with-thai::{% trans 'LINE User Detail' %}
                         </div>
                     </div>
                     <div class="columns is-mobile">
-                        <div class="column is-2-tablet is-5-mobile has-text-right-tablet">
-                            {% trans 'Customer Group' %}
+                        <div class="column is-2-tablet is-5-mobile has-text-right-tablet is-capitalized">
+                            {% trans 'Customer group' %}
                         </div>
                         <div class="column is-10-tablet is-7-mobile">
                             <span class="tag status-customer-{{ user.customer_group.id|modulo:5 }}">
@@ -48,16 +48,16 @@ with-thai::{% trans 'LINE User Detail' %}
                         </div>
                     </div>
                     <div class="columns is-mobile">
-                        <div class="column is-2-tablet is-5-mobile has-text-right-tablet">
-                            {% trans 'Customer Name' %}
+                        <div class="column is-2-tablet is-5-mobile has-text-right-tablet is-capitalized">
+                            {% trans 'Customer name' %}
                         </div>
                         <div class="column is-10-tablet is-7-mobile">
                             {{ user.line_user.fullname|default:'-' }}
                         </div>
                     </div>
                     <div class="columns is-mobile">
-                        <div class="column is-2-tablet is-5-mobile has-text-right-tablet">
-                            {% trans 'Follow Status' %}
+                        <div class="column is-2-tablet is-5-mobile has-text-right-tablet is-capitalized">
+                            {% trans 'Follow status' %}
                         </div>
                         <div class="column is-10-tablet is-7-mobile">
                             {% if user.line_user.follow_status == user.line_user.FOLLOW_CHOICES.follow %}

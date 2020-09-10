@@ -25,14 +25,14 @@ with-thai::{% trans 'Season List' %}
                     <div class="column is-1-tablet is-12-mobile">
                         {{ season.title_english }}
                     </div>
-                    <div class="column is-2-tablet is-12-mobile">
-                        {% trans 'Caddie Fee' %}
+                    <div class="column is-2-tablet is-12-mobile is-capitalized">
+                        {% trans 'Caddie fee' %}
                         <strike>{{ season.caddie_fee_list_price|floatformat:0|intcomma }}</strike>
                         <strong>{{ season.caddie_fee_selling_price|floatformat:0|intcomma }}</strong>
                         THB
                     </div>
-                    <div class="column is-2-tablet is-12-mobile">
-                        {% trans 'Cart Fee' %}
+                    <div class="column is-2-tablet is-12-mobile is-capitalized">
+                        {% trans 'Cart fee' %}
                         <strike>{{ season.cart_fee_list_price|floatformat:0|intcomma }}</strike>
                         <strong>{{ season.cart_fee_selling_price|floatformat:0|intcomma }}</strong>
                         THB

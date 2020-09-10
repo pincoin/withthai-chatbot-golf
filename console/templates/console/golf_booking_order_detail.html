@@ -21,24 +21,24 @@ with-thai::{% trans 'Golf Booking Order Detail' %}
             <div class="content">
                 <div class="page-detail">
                     <div class="columns is-mobile">
-                        <div class="column is-2-tablet is-5-mobile has-text-right-tablet">
-                            {% trans 'Order No' %}
+                        <div class="column is-2-tablet is-5-mobile has-text-right-tablet is-capitalized">
+                            {% trans 'Order no' %}
                         </div>
                         <div class="column is-10-tablet is-7-mobile">
                             {{ order.order_no|truncatechars:9 }}
                         </div>
                     </div>
                     <div class="columns is-mobile">
-                        <div class="column is-2-tablet is-5-mobile has-text-right-tablet">
-                            {% trans 'Customer Name' %}
+                        <div class="column is-2-tablet is-5-mobile has-text-right-tablet is-capitalized">
+                            {% trans 'Customer name' %}
                         </div>
                         <div class="column is-10-tablet is-7-mobile has-text-weight-bold">
                             {{ order.fullname }}
                         </div>
                     </div>
                     <div class="columns is-mobile">
-                        <div class="column is-2-tablet is-5-mobile has-text-right-tablet">
-                            {% trans 'Customer Group' %}
+                        <div class="column is-2-tablet is-5-mobile has-text-right-tablet is-capitalized">
+                            {% trans 'Customer group' %}
                         </div>
                         <div class="column is-10-tablet is-7-mobile">
                             {% if order.customer_group.title_english %}
@@ -84,8 +84,8 @@ with-thai::{% trans 'Golf Booking Order Detail' %}
                         </div>
                     </div>
                     <div class="columns is-mobile">
-                        <div class="column is-2-tablet is-5-mobile has-text-right-tablet">
-                            {% trans 'Order Status' %}
+                        <div class="column is-2-tablet is-5-mobile has-text-right-tablet is-capitalized">
+                            {% trans 'Order status' %}
                         </div>
                         <div class="column is-10-tablet is-7-mobile">
                             {% if order.order_status == order.ORDER_STATUS_CHOICES.open %}
@@ -102,8 +102,8 @@ with-thai::{% trans 'Golf Booking Order Detail' %}
                         </div>
                     </div>
                     <div class="columns is-mobile">
-                        <div class="column is-2-tablet is-5-mobile has-text-right-tablet">
-                            {% trans 'Payment Status' %}
+                        <div class="column is-2-tablet is-5-mobile has-text-right-tablet is-capitalized">
+                            {% trans 'Payment status' %}
                         </div>
                         <div class="column is-10-tablet is-7-mobile">
                             {% if order.payment_status == order.PAYMENT_STATUS_CHOICES.unpaid %}
@@ -232,7 +232,7 @@ with-thai::{% trans 'Golf Booking Order Detail' %}
                 <div class="page-detail">
                     {% for fee in products %}
                     <div class="columns is-mobile is-vcentered">
-                        <div class="column is-2-tablet is-5-mobile has-text-right-tablet">
+                        <div class="column is-2-tablet is-5-mobile has-text-right-tablet is-capitalized">
                             {{ fee.get_product_display }}<br>
                             {% if fee.customer_group.title_english %}
                             <span class="tag status-customer-{{ fee.customer_group.id|modulo:5 }}">
@@ -256,8 +256,8 @@ with-thai::{% trans 'Golf Booking Order Detail' %}
 <div class="section">
     <div class="card">
         <header class="card-header">
-            <p class="card-header-title">
-                {% trans 'Status History' %}
+            <p class="card-header-title is-capitalized">
+                {% trans 'Status history' %}
             </p>
         </header>
         <div class="card-content">
