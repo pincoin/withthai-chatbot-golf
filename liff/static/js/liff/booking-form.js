@@ -387,9 +387,9 @@ function runApp() {
             .then(function (response) {
                 return response.json();
             })
-            .then(function (myJson) {
-                if (JSON.stringify(myJson) !== JSON.stringify({})) {
-                    customerGroup = myJson['customer_group_id'];
+            .then(function (result) {
+                if (JSON.stringify(result) !== JSON.stringify({})) {
+                    customerGroup = result['customer_group_id'];
 
                     if (roundDate.value && roundTime.value && pax.value && cart.value) {
                         const fee = calculateFees(roundDate, roundTime, pax, cart, customerGroup);
