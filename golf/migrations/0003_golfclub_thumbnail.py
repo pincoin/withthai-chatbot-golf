@@ -14,6 +14,6 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='golfclub',
             name='thumbnail',
-            field=models.ImageField(blank=True, upload_to=golf.models.upload_directory_path, verbose_name='Thumbnail image'),
+            field=models.ImageField(blank=True, upload_to=golf.models.golf_club_upload_directory_path, verbose_name='Thumbnail image'),
         ),
     ]

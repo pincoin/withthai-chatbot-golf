@@ -13,8 +13,20 @@ from model_utils import Choices
 from model_utils import models as model_utils_models
 
 
-def upload_directory_path(instance, filename):
+def golf_club_upload_directory_path(instance, filename):
     return f"golf/{instance.slug}/{uuid.uuid4()}.{filename.split('.')[-1]}"
+
+
+def promotion_upload_directory_path(instance, filename):
+    return f"golf/{instance.slug}/promotion/{uuid.uuid4()}.{filename.split('.')[-1]}"
+
+
+def coupon_upload_directory_path(instance, filename):
+    return f"golf/{instance.slug}/coupon/{uuid.uuid4()}.{filename.split('.')[-1]}"
+
+
+def caddie_upload_directory_path(instance, filename):
+    return f"golf/{instance.slug}/caddie/{uuid.uuid4()}.{filename.split('.')[-1]}"
 
 
 class Holiday(model_utils_models.TimeStampedModel):
@@ -405,14 +417,14 @@ class GolfClub(model_utils_models.TimeStampedModel):
 
     thumbnail = models.ImageField(
         verbose_name=_('Thumbnail image'),
-        upload_to=upload_directory_path,
+        upload_to=golf_club_upload_directory_path,
         storage=default_storage,
         blank=True,
     )
 
     layout = models.ImageField(
         verbose_name=_('Layout image'),
-        upload_to=upload_directory_path,
+        upload_to=golf_club_upload_directory_path,
         storage=default_storage,
         blank=True,
     )
@@ -1090,6 +1102,13 @@ class GolfBookingPromotion(model_utils_models.TimeStampedModel):
         max_digits=10,
         decimal_places=7,
         default=0,
+    )
+
+    banner = models.ImageField(
+        verbose_name=_('Promotion banner image'),
+        upload_to=promotion_upload_directory_path,
+        storage=default_storage,
+        blank=True,
     )
 
     class Meta:
