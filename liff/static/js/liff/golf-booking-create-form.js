@@ -349,6 +349,7 @@ function runApp() {
     const errorNotification = document.getElementById('error-notification');
 
     const bookingConfirmModal = document.getElementById('booking-confirm-modal');
+    const modalTitle = document.getElementById('modal-title');
     const modalBody = document.getElementById('modal-body');
     const quotationTable = document.getElementById('quotation-table');
 
@@ -481,8 +482,8 @@ function runApp() {
                 bookingConfirmModal.classList.add('is-active');
             }
 
-            console.log(quotationTable.innerHTML);
-            console.log(modalBody);
+            modalTitle.innerText = roundDate.value + ' ' + roundTime.value;
+
             modalBody.innerHTML = '<table class="table is-fullwidth is-narrow quotation-table">'
                 + quotationTable.innerHTML
                 + '</table>';
