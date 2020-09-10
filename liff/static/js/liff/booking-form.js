@@ -388,7 +388,7 @@ function runApp() {
                 return response.json();
             })
             .then(function (myJson) {
-                if (JSON.stringify(a) !== JSON.stringify({})) {
+                if (JSON.stringify(myJson) !== JSON.stringify({})) {
                     customerGroup = myJson['customer_group_id'];
 
                     if (roundDate.value && roundTime.value && pax.value && cart.value) {
