@@ -201,8 +201,14 @@ def command_new(event, line_bot_api, **kwargs):
 
     # 8. Reply message
     line_bot_api.reply_message(
-        event.reply_token,
-        models.TextSendMessage(text=message))
+        event.reply_token, [
+            models.TextSendMessage(text='New Booking.\n\n'
+                                        f'Round Date/Time: {round_date_formatted} {round_time_formatted}\n'
+                                        f'Golfer #: {pax}\n'
+                                        f'Cart #: {cart}\n'
+                                        f'Total: {order.total_selling_price:,.0f} THB\n\n'
+                                        'Thank you.'),
+            models.TextSendMessage(text=message)])
 
 
 def command_booking(event, line_bot_api, **kwargs):
