@@ -38,6 +38,10 @@ HTMLElement.prototype.clear_error_field = function () {
     }
 }
 
+const errorModal = document.getElementById('error-modal');
+const errorModalTitle = document.getElementById('error-modal-title');
+const errorModalBody = document.getElementById('error-modal-body');
+
 function getCurrentTime() {
     const now = new Date();
 
@@ -130,7 +134,11 @@ function calculateFees(roundDate, roundTime, pax, cart, customerGroup) {
         }
     }
 
-    window.alert('Invalid round date or time');
+    if (!errorModal.classList.contains('is-active')) {
+        errorModal.classList.add('is-active');
+    }
+    errorModalTitle.innerText = 'Invalid round date/time';
+    errorModalBody.innerHTML = 'Please, choose appropriate round date and time.';
     return false;
 }
 
@@ -404,11 +412,19 @@ function runApp() {
                             cartFeeUnitPrice, cartFeePax, cartFeeAmount, feeTotalAmount, fee, pax, cart);
                     }
                 } else {
-                    window.alert('Failed to get your profile.');
+                    if (!errorModal.classList.contains('is-active')) {
+                        errorModal.classList.add('is-active');
+                    }
+                    errorModalTitle.innerText = 'Failed to get your LINE profile';
+                    errorModalBody.innerHTML = 'Please, agree to the terms and conditions and privacy policy.';
                 }
             });
     } else {
-        window.alert('Failed to get your profile.');
+        if (!errorModal.classList.contains('is-active')) {
+            errorModal.classList.add('is-active');
+        }
+        errorModalTitle.innerText = 'Failed to get your LINE profile';
+        errorModalBody.innerHTML = 'Please, agree to the terms and conditions and privacy policy.';
     }
 
     // 3. Add event handlers
@@ -517,9 +533,22 @@ function runApp() {
                     }]).then(function () {
                         liff.closeWindow();
                     }).catch(function (error) {
-                        window.alert('Error sending message: ' + error);
+                        if (!errorModal.classList.contains('is-active')) {
+                            errorModal.classList.add('is-active');
+                        }
+                        errorModalTitle.innerText = 'Failed to send message to LINE';
+                        errorModalBody.innerHTML = error;
                     });
                 }
             }
         });
+
+    [document.getElementById('error-modal-close'),
+        document.getElementById('error-modal-ok')].forEach(function (element) {
+        element.addEventListener('click', function (e) {
+            if (errorModal.classList.contains('is-active')) {
+                errorModal.classList.remove('is-active');
+            }
+        });
+    });
 }
