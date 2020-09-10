@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-09-10 11:46+0700\n"
+"POT-Creation-Date: 2020-09-10 16:12+0700\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -1197,7 +1197,9 @@ msgid "Total Amount"
 msgstr ""
 
 #: liff/templates/liff/booking_create_form.html:171
-#: liff/templates/liff/golf_booking_create_form.html:191 liff/views.py:40
+#: liff/templates/liff/golf_booking_create_form.html:191
+#: liff/templates/liff/golf_booking_create_form.html:201
+#: liff/templates/liff/golf_booking_create_form.html:208 liff/views.py:40
 msgid "New Booking"
 msgstr ""
 
@@ -1208,6 +1210,10 @@ msgstr ""
 #: liff/templates/liff/price_table.html:70
 #: liff/templates/liff/scorecard.html:55
 msgid "Close"
+msgstr ""
+
+#: liff/templates/liff/golf_booking_create_form.html:209
+msgid "Cancel"
 msgstr ""
 
 #: liff/views.py:19
