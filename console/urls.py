@@ -14,15 +14,6 @@ urlpatterns = [
     path('<slug:slug>/orders/<uuid:uuid>/',
          views.GolfBookingOrderDetailView.as_view(), name='golf-booking-order-detail'),
 
-    path('<slug:slug>/orders/<uuid:uuid>/confirm/',
-         views.GolfBookingOrderConfirmView.as_view(), name='golf-booking-order-confirm'),
-
-    path('<slug:slug>/orders/<uuid:uuid>/offer/',
-         views.GolfBookingOrderOfferView.as_view(), name='golf-booking-order-offer'),
-
-    path('<slug:slug>/orders/<uuid:uuid>/reject/',
-         views.GolfBookingOrderRejectView.as_view(), name='golf-booking-order-reject'),
-
     path('<slug:slug>/line-users/',
          views.LineUserListView.as_view(), name='line-user-list'),
 

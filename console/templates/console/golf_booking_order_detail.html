@@ -137,7 +137,7 @@ with-thai::{% trans 'Golf Booking Order Detail' %}
                                 </label>
                             </div>
                             <form class="mt-4 mb-2" id="confirm-form" method="post"
-                                  action="{% url 'console:golf-booking-order-confirm' slug  order.order_no %}">
+                                  action="{% url 'console:golf-booking-order-detail' slug  order.order_no %}">
                                 {% csrf_token %}
                                 <div class="field has-addons action-field-centered">
                                     <div class="control">
@@ -151,22 +151,15 @@ with-thai::{% trans 'Golf Booking Order Detail' %}
                                                placeholder="HH:MM" step="60">
                                     </div>
                                     <div class="control">
+                                        <input type="hidden" name="form" value="confirm-form">
                                         <button type="submit" class="button is-primary">
                                             {% trans 'CONFIRM' %}
                                         </button>
                                     </div>
                                 </div>
-                                <ul>
-                                    {% for error in confirm_form.non_field_errors %}
-                                    <li class="has-text-danger">{{ error }}</li>
-                                    {% endfor %}
-                                    {% for error in confirm_form.round_time.errors %}
-                                    <li class="has-text-danger">{{ error }}</li>
-                                    {% endfor %}
-                                </ul>
                             </form>
                             <form class="mt-4 mb-2 is-hidden" id="offer-form" method="post"
-                                  action="{% url 'console:golf-booking-order-offer' slug  order.order_no %}">
+                                  action="{% url 'console:golf-booking-order-detail' slug  order.order_no %}">
                                 {% csrf_token %}
                                 <div id="offer-list">
                                     <div class="field has-addons action-field-centered mb-3">
@@ -186,6 +179,7 @@ with-thai::{% trans 'Golf Booking Order Detail' %}
                                 </div>
                                 <div class="field has-addons action-field-centered">
                                     <div class="control">
+                                        <input type="hidden" name="form" value="offer-form">
                                         <button type="submit" class="button is-primary">
                                             {% trans 'OFFER' %}
                                         </button>
@@ -198,21 +192,34 @@ with-thai::{% trans 'Golf Booking Order Detail' %}
                                 </div>
                             </form>
                             <form class="mt-4 mb-2 is-hidden" id="reject-form" method="post"
-                                  action="{% url 'console:golf-booking-order-reject' slug  order.order_no %}">
+                                  action="{% url 'console:golf-booking-order-detail' slug  order.order_no %}">
                                 {% csrf_token %}
                                 <div class="field action-field-centered">
                                     <div class="control">
+                                        <input type="hidden" name="form" value="reject-form">
                                         <button type="submit" class="button is-danger">
                                             {% trans 'CLOSE' %}
                                         </button>
                                     </div>
                                 </div>
-                                <ul>
-                                    {% for error in reject_form.non_field_errors %}
-                                    <li class="has-text-danger">{{ error }}</li>
-                                    {% endfor %}
-                                </ul>
                             </form>
+                            <ul>
+                                {% for error in confirm_form.non_field_errors %}
+                                <li class="has-text-danger">{{ error }}</li>
+                                {% endfor %}
+                                {% for error in confirm_form.round_time.errors %}
+                                <li class="has-text-danger">{{ error }}</li>
+                                {% endfor %}
+                                {% for error in offer_form.non_field_errors %}
+                                <li class="has-text-danger">{{ error }}</li>
+                                {% endfor %}
+                                {% for error in offer_form.tee_off_times.errors %}
+                                <li class="has-text-danger">{{ error }}</li>
+                                {% endfor %}
+                                {% for error in reject_form.non_field_errors %}
+                                <li class="has-text-danger">{{ error }}</li>
+                                {% endfor %}
+                            </ul>
                         </div>
                     </div>
                 </div>

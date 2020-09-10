@@ -2,8 +2,10 @@ import re
 
 from django.shortcuts import get_object_or_404
 from django.template.defaultfilters import date
+from django.urls import reverse
 from django.utils import timezone
 from django.views import generic
+from django.views.generic.edit import FormMixin
 
 from conf import tasks
 from golf import models as golf_models
@@ -137,14 +139,38 @@ class GolfBookingOrderListView(viewmixins.PageableMixin, generic.ListView):
         return context
 
 
-class GolfBookingOrderDetailView(generic.DetailView):
+class GolfBookingOrderDetailView(FormMixin, generic.DetailView):
     template_name = 'console/golf_booking_order_detail.html'
 
     context_object_name = 'order'
 
-    confirm_form_class = forms.ConfirmForm
+    form_class = forms.ConfirmForm
     offer_form_class = forms.OfferForm
     reject_form_class = forms.RejectForm
+
+    def post(self, request, *args, **kwargs):
+        self.object = self.get_object()
+
+        form_class = None
+        form_name = ''
+
+        if 'form' in request.POST:
+            if request.POST['form'] == 'confirm-form':
+                form_class = self.get_form_class()
+                form_name = 'confirm_form'
+            elif request.POST['form'] == 'offer-form':
+                form_class = self.offer_form_class
+                form_name = 'offer_form'
+            elif request.POST['form'] == 'reject-form':
+                form_class = self.reject_form_class
+                form_name = 'reject_form'
+
+        form = self.get_form(form_class)
+
+        if form.is_valid():
+            return self.form_valid(**{form_name: form})
+        else:
+            return self.form_invalid(**{form_name: form})
 
     def get_object(self, queryset=None):
         # NOTE: This method is overridden because DetailView must be called with either an object pk or a slug.
@@ -154,13 +180,121 @@ class GolfBookingOrderDetailView(generic.DetailView):
 
         return get_object_or_404(queryset)
 
+    def form_valid(self, **kwargs):
+        form_name = None
+
+        if 'confirm_form' in kwargs:
+            form_name = 'confirm_form'
+
+            if self.object.order_status in [golf_models.GolfBookingOrder.ORDER_STATUS_CHOICES.open,
+                                            golf_models.GolfBookingOrder.ORDER_STATUS_CHOICES.accepted]:
+                self.object.round_time = kwargs[form_name].cleaned_data['round_time']
+                self.object.order_status = golf_models.GolfBookingOrder.ORDER_STATUS_CHOICES.confirmed
+                self.object.save()
+
+                round_date_formatted = date(self.object.round_date, 'Y-m-d')
+                round_time_formatted = date(self.object.round_time, 'H:i')
+
+                log = golf_models.GolfBookingOrderStatusLog()
+                log.order = self.object
+                log.order_status = golf_models.GolfBookingOrder.ORDER_STATUS_CHOICES.confirmed
+                log.payment_status = self.object.payment_status
+                log.message = f'{round_date_formatted} {round_time_formatted}\n{self.object.pax} PAX {self.object.cart} CART\n'
+                log.save()
+
+                to = self.object.line_user.line_user_id
+                message = 'Booking confirmed.\n\n' \
+                          f'Round Date/Time: {round_date_formatted} {round_time_formatted}\n' \
+                          f'Golfer #: {self.object.pax}\n' \
+                          f'Cart #: {self.object.cart}\n' \
+                          f'Total: {self.object.total_selling_price:,.0f} THB\n\n' \
+                          'Thank you.'
+
+                tasks.send_push_text_message_line.delay(self.object.golf_club.line_bot_channel_access_token, to,
+                                                        message)
+        elif 'offer_form' in kwargs:
+            form_name = 'offer_form'
+
+            if self.object.order_status in [golf_models.GolfBookingOrder.ORDER_STATUS_CHOICES.open, ]:
+                self.object.order_status = golf_models.GolfBookingOrder.ORDER_STATUS_CHOICES.offered
+                self.object.save()
+
+                round_date_formatted = date(self.object.round_date, 'Y-m-d')
+                round_time_formatted = ', '.join(kwargs[form_name].cleaned_data['tee_off_times'])
+
+                log = golf_models.GolfBookingOrderStatusLog()
+                log.order = self.object
+                log.order_status = golf_models.GolfBookingOrder.ORDER_STATUS_CHOICES.offered
+                log.payment_status = self.object.payment_status
+                log.message = f'{round_date_formatted} [{round_time_formatted}]\n{self.object.pax} PAX {self.object.cart} CART\n'
+                log.save()
+
+                to = self.object.line_user.line_user_id
+                message = 'Tee-off time offer.\n\n' \
+                          'Please, choose your appropriate tee time. Otherwise, you may close the booking.\n\n' \
+                          'Thank you.'
+
+                postback_actions = []
+
+                for tee_time in kwargs[form_name].cleaned_data['tee_off_times']:
+                    postback_actions.append({
+                        'label': f'{round_date_formatted} {tee_time}',
+                        'data': f'action=accept&golf_club={self.object.golf_club.slug}&order_no={self.object.order_no}&tee_time={tee_time}',
+                        'display_text': f'Accept {round_date_formatted} {tee_time}',
+                    })
+
+                postback_actions.append({
+                    'label': 'Close',
+                    'data': f'action=close&golf_club={self.object.golf_club.slug}&order_no={self.object.order_no}',
+                    'display_text': 'Close',
+                })
+
+                tasks.send_push_text_message_line.delay(self.object.golf_club.line_bot_channel_access_token,
+                                                        to, message, postback_actions=postback_actions)
+        elif 'reject_form' in kwargs:
+            form_name = 'reject_form'
+
+            if self.object.order_status in [golf_models.GolfBookingOrder.ORDER_STATUS_CHOICES.open, ]:
+                self.object.order_status = golf_models.GolfBookingOrder.ORDER_STATUS_CHOICES.closed
+                self.object.save()
+
+                round_date_formatted = date(self.object.round_date, 'Y-m-d')
+                round_time_formatted = date(self.object.round_time, 'H:i')
+
+                log = golf_models.GolfBookingOrderStatusLog()
+                log.order = self.object
+                log.order_status = golf_models.GolfBookingOrder.ORDER_STATUS_CHOICES.closed
+                log.payment_status = self.object.payment_status
+                log.message = f'{round_date_formatted} {round_time_formatted}\n{self.object.pax} PAX {self.object.cart} CART\n'
+                log.save()
+
+                to = self.object.line_user.line_user_id
+                message = 'Booking closed.\n\n' \
+                          'We apologize for the inconvenience ' \
+                          'because your tee time is not available.\n\n' \
+                          'Please, make a new booking with another round date/time.\n\n' \
+                          'Thank you.'
+
+                tasks.send_push_text_message_line.delay(self.object.golf_club.line_bot_channel_access_token, to,
+                                                        message)
+
+        return super(GolfBookingOrderDetailView, self).form_valid(kwargs[form_name])
+
+    def form_invalid(self, **kwargs):
+        return self.render_to_response(self.get_context_data(**kwargs))
+
     def get_context_data(self, **kwargs):
         context = super(GolfBookingOrderDetailView, self).get_context_data(**kwargs)
         context['slug'] = self.kwargs['slug']
 
-        context['confirm_form'] = self.confirm_form_class()
-        context['offer_form'] = self.offer_form_class()
-        context['reject_form'] = self.reject_form_class()
+        if 'confirm_form' not in context:
+            context['confirm_form'] = self.form_class(initial={'round_time': self.object.round_time})
+
+        if 'offer_form' not in context:
+            context['offer_form'] = self.offer_form_class()
+
+        if 'reject_form' not in context:
+            context['reject_form'] = self.reject_form_class()
 
         context['products'] = golf_models.GolfBookingOrderProduct.objects \
             .select_related('customer_group') \
@@ -176,124 +310,8 @@ class GolfBookingOrderDetailView(generic.DetailView):
 
         return context
 
-
-class GolfBookingOrderConfirmView(viewmixins.OrderChangeContextMixin, generic.FormView):
-    form_class = forms.ConfirmForm
-
-    def __init__(self):
-        super(GolfBookingOrderConfirmView, self).__init__()
-        self.object = None
-
-    def form_valid(self, form):
-        if self.object.order_status in [golf_models.GolfBookingOrder.ORDER_STATUS_CHOICES.open,
-                                        golf_models.GolfBookingOrder.ORDER_STATUS_CHOICES.accepted]:
-            self.object.round_time = form.cleaned_data['round_time']
-            self.object.order_status = golf_models.GolfBookingOrder.ORDER_STATUS_CHOICES.confirmed
-            self.object.save()
-
-            round_date_formatted = date(self.object.round_date, 'Y-m-d')
-            round_time_formatted = date(self.object.round_time, 'H:i')
-
-            log = golf_models.GolfBookingOrderStatusLog()
-            log.order = self.object
-            log.order_status = golf_models.GolfBookingOrder.ORDER_STATUS_CHOICES.confirmed
-            log.payment_status = self.object.payment_status
-            log.message = f'{round_date_formatted} {round_time_formatted}\n{self.object.pax} PAX {self.object.cart} CART\n'
-            log.save()
-
-            to = self.object.line_user.line_user_id
-            message = 'Booking confirmed.\n\n' \
-                      f'Round Date/Time: {round_date_formatted} {round_time_formatted}\n' \
-                      f'Golfer #: {self.object.pax}\n' \
-                      f'Cart #: {self.object.cart}\n' \
-                      f'Total: {self.object.total_selling_price:,.0f} THB\n\n' \
-                      'Thank you.'
-
-            tasks.send_push_text_message_line.delay(self.object.golf_club.line_bot_channel_access_token, to, message)
-
-        return super(GolfBookingOrderConfirmView, self).form_valid(form)
-
-
-class GolfBookingOrderOfferView(viewmixins.OrderChangeContextMixin, generic.FormView):
-    form_class = forms.OfferForm
-
-    def __init__(self):
-        super(GolfBookingOrderOfferView, self).__init__()
-        self.object = None
-
-    def form_valid(self, form):
-        if self.object.order_status in [golf_models.GolfBookingOrder.ORDER_STATUS_CHOICES.open, ]:
-            self.object.order_status = golf_models.GolfBookingOrder.ORDER_STATUS_CHOICES.offered
-            self.object.save()
-
-            round_date_formatted = date(self.object.round_date, 'Y-m-d')
-            round_time_formatted = ', '.join(form.cleaned_data['tee_off_times'])
-
-            log = golf_models.GolfBookingOrderStatusLog()
-            log.order = self.object
-            log.order_status = golf_models.GolfBookingOrder.ORDER_STATUS_CHOICES.offered
-            log.payment_status = self.object.payment_status
-            log.message = f'{round_date_formatted} [{round_time_formatted}]\n{self.object.pax} PAX {self.object.cart} CART\n'
-            log.save()
-
-            to = self.object.line_user.line_user_id
-            message = 'Tee-off time offer.\n\n' \
-                      'Please, choose your appropriate tee time. Otherwise, you may close the booking.\n\n' \
-                      'Thank you.'
-
-            postback_actions = []
-
-            for tee_time in form.cleaned_data['tee_off_times']:
-                postback_actions.append({
-                    'label': f'{round_date_formatted} {tee_time}',
-                    'data': f'action=accept&golf_club={self.object.golf_club.slug}&order_no={self.object.order_no}&tee_time={tee_time}',
-                    'display_text': f'Accept {round_date_formatted} {tee_time}',
-                })
-
-            postback_actions.append({
-                'label': 'Close',
-                'data': f'action=close&golf_club={self.object.golf_club.slug}&order_no={self.object.order_no}',
-                'display_text': 'Close',
-            })
-
-            tasks.send_push_text_message_line.delay(self.object.golf_club.line_bot_channel_access_token,
-                                                    to, message, postback_actions=postback_actions)
-
-        return super(GolfBookingOrderOfferView, self).form_valid(form)
-
-
-class GolfBookingOrderRejectView(viewmixins.OrderChangeContextMixin, generic.FormView):
-    form_class = forms.RejectForm
-
-    def __init__(self):
-        super(GolfBookingOrderRejectView, self).__init__()
-        self.object = None
-
-    def form_valid(self, form):
-        if self.object.order_status in [golf_models.GolfBookingOrder.ORDER_STATUS_CHOICES.open, ]:
-            self.object.order_status = golf_models.GolfBookingOrder.ORDER_STATUS_CHOICES.closed
-            self.object.save()
-
-            round_date_formatted = date(self.object.round_date, 'Y-m-d')
-            round_time_formatted = date(self.object.round_time, 'H:i')
-
-            log = golf_models.GolfBookingOrderStatusLog()
-            log.order = self.object
-            log.order_status = golf_models.GolfBookingOrder.ORDER_STATUS_CHOICES.closed
-            log.payment_status = self.object.payment_status
-            log.message = f'{round_date_formatted} {round_time_formatted}\n{self.object.pax} PAX {self.object.cart} CART\n'
-            log.save()
-
-            to = self.object.line_user.line_user_id
-            message = 'Booking closed.\n\n' \
-                      'We apologize for the inconvenience ' \
-                      'because your tee time is not available.\n\n' \
-                      'Please, make a new booking with another round date/time.\n\n' \
-                      'Thank you.'
-
-            tasks.send_push_text_message_line.delay(self.object.golf_club.line_bot_channel_access_token, to, message)
-
-        return super(GolfBookingOrderRejectView, self).form_valid(form)
+    def get_success_url(self):
+        return reverse('console:golf-booking-order-detail', args=(self.kwargs['slug'], self.object.order_no))
 
 
 class LineUserListView(viewmixins.PageableMixin, generic.ListView):
