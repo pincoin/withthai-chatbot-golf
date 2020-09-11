@@ -229,7 +229,7 @@ def command_booking(event, line_bot_api, **kwargs):
 
     for order in orders:
         order_flex_message = copy.deepcopy(golf_club.order_flex_message)
-        order_flex_message['body']['contents'][0]['text'] = f'{order.round_date} {order.round_time}' \
+        order_flex_message['body']['contents'][0]['text'] = f'{order.round_date} {order.round_time} ' \
                                                             f'{order.pax} PAX {order.cart} CART'
         order_flex_message['body']['contents'][1]['text'] = f'{order.fullname}'
         order_flex_message['body']['contents'][2]['contents'][0]['text'] = order.get_order_status_display()
