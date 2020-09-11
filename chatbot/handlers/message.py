@@ -1,5 +1,4 @@
 import datetime
-import json
 import logging
 
 from django.template.defaultfilters import date
@@ -226,6 +225,13 @@ def command_booking(event, line_bot_api, **kwargs):
     for order in orders:
         order_flex_message = golf_club.order_flex_message
         order_flex_message['body']['contents'][0]['text'] = f'{order.round_date} {order.round_time}'
+        order_flex_message['body']['contents'][1]['text'] = f'{order.fullname}'
+        order_flex_message['body']['contents'][2]['contents'][0]['text'] = f'{order.get_order_status_display}'
+        order_flex_message['body']['contents'][2]['contents'][1]['text'] = f'{order.get_payment_status_display}'
+        order_flex_message['body']['contents'][4]['contents'][1]['text'] = f'100 x 200 = 300 THB'
+        order_flex_message['body']['contents'][5]['contents'][1]['text'] = f'100 x 200 = 300 THB'
+        order_flex_message['body']['contents'][6]['contents'][1]['text'] = f'100 x 200 = 300 THB'
+        order_flex_message['body']['contents'][8]['contents'][1]['text'] = f'12,999 THB'
 
         order_list.append(order_flex_message)
 
