@@ -69,9 +69,9 @@ class OrderSearchForm(forms.Form):
     payment_status = forms.ChoiceField(
         choices=(
             ('', _('Payment Status'),),
-            ('unpaid', _('Not Paid'),),
+            ('unpaid', _('Not paid'),),
             ('paid', _('Paid'),),
-            ('refund_requests', _('Refund Requests'),),
+            ('refund_requests', _('Refund requests'),),
             ('refunded', _('Refunded'),),
         ),
         required=False,

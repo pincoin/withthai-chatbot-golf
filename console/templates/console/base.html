@@ -66,12 +66,12 @@
                         </li>
                         <li>
                             <a href="{% url 'console:golf-booking-order-list' slug %}?payment_status=unpaid">
-                                <span class="tag status-unpaid">{% trans 'Unpaid' %}</span>
+                                <span class="tag status-unpaid is-capitalized">{% trans 'Not paid' %}</span>
                             </a>
                         </li>
                         <li>
                             <a href="{% url 'console:golf-booking-order-list' slug %}?payment_status=refund_requests">
-                                <span class="tag status-refund-requests">{% trans 'Refund Requests' %}</span>
+                                <span class="tag status-refund-requests is-capitalized">{% trans 'Refund requests' %}</span>
                             </a>
                         </li>
                         <li>
