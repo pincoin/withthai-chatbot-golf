@@ -33,14 +33,4 @@ def command_follow(event, line_bot_api, **kwargs):
                 items=[
                     models.QuickReplyButton(action=models.MessageAction(label='My Booking',
                                                                         text='Booking')),
-                    models.QuickReplyButton(action=models.MessageAction(label='Price Table',
-                                                                        text='Price')),
-                    models.QuickReplyButton(action=models.MessageAction(label='Course',
-                                                                        text='Course')),
-                    models.QuickReplyButton(action=models.MessageAction(label='Promotions',
-                                                                        text='Promotions')),
-                    models.QuickReplyButton(action=models.MessageAction(label='Coupons',
-                                                                        text='Coupons')),
-                    models.QuickReplyButton(action=models.MessageAction(label='Hot Deals',
-                                                                        text='Deals')),
                 ])))
