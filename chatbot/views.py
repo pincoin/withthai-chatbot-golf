@@ -43,7 +43,7 @@ class CallbackView(generic.View):
                     .match(text):
                 message.command_new(event, self.line_bot_api, match=match, golf_club=golf_club)
             elif text_lowercase == 'booking':
-                message.command_booking(event, self.line_bot_api)
+                message.command_booking(event, self.line_bot_api, golf_club=golf_club)
             elif text_lowercase in ['course', 'club']:
                 message.command_course(event, self.line_bot_api, golf_club=golf_club)
             elif text_lowercase in ['promotions', 'promotion']:

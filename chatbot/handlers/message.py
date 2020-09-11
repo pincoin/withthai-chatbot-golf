@@ -212,15 +212,13 @@ def command_new(event, line_bot_api, **kwargs):
 
 
 def command_booking(event, line_bot_api, **kwargs):
+    golf_club = kwargs['golf_club']
+
     line_bot_api.reply_message(
-        event.reply_token,
-        models.TextSendMessage(text='booking list - carousel message',
-                               quick_reply=models.QuickReply(
-                                   items=[
-                                       models.QuickReplyButton(
-                                           action=models.MessageAction(label='My Profile',
-                                                                       text='Profile')),
-                                   ])))
+        event.reply_token, [
+            models.FlexSendMessage(
+                alt_text=golf_club.title_english,
+                contents=golf_club.info)])
 
 
 def command_course(event, line_bot_api, **kwargs):

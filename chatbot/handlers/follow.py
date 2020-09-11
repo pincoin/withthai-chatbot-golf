@@ -25,6 +25,7 @@ def command_follow(event, line_bot_api, **kwargs):
     membership.customer_group = golf_club.customer_group
     membership.save()
 
+    '''    
     line_bot_api.reply_message(
         event.reply_token,
         models.TextSendMessage(
@@ -34,3 +35,4 @@ def command_follow(event, line_bot_api, **kwargs):
                     models.QuickReplyButton(action=models.MessageAction(label='My Booking',
                                                                         text='Booking')),
                 ])))
+    '''
