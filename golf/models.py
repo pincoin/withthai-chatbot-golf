@@ -723,7 +723,7 @@ class GolfBookingOrder(model_utils_models.TimeStampedModel):
     )
 
     PAYMENT_STATUS_CHOICES = Choices(
-        (0, 'unpaid', _('Unpaid')),
+        (0, 'unpaid', _('Not Paid')),
         (1, 'paid', _('Paid')),
         (2, 'refund_requests', _('Refund requests')),
         (3, 'refunded', _('Refunded')),
