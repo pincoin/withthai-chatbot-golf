@@ -231,8 +231,13 @@ def command_booking(event, line_bot_api, **kwargs):
         order_flex_message['body']['contents'][2]['contents'][1]['text'] = f'{order.get_payment_status_display}'
         order_flex_message['body']['contents'][4]['contents'][1]['text'] = f'100 x 200 = 300 THB'
         order_flex_message['body']['contents'][5]['contents'][1]['text'] = f'100 x 200 = 300 THB'
-        order_flex_message['body']['contents'][6]['contents'][1]['text'] = f'100 x 200 = 300 THB'
+
         order_flex_message['body']['contents'][8]['contents'][1]['text'] = f'{order.total_selling_price:,.0f} THB'
+
+        if order.cart > 0:
+            order_flex_message['body']['contents'][6]['contents'][1]['text'] = f'100 x 200 = 300 THB'
+        else:
+            del order_flex_message['body']['contents'][6]
 
         order_list.append(order_flex_message)
 
