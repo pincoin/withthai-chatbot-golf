@@ -232,14 +232,14 @@ def command_booking(event, line_bot_api, **kwargs):
             "layout": "vertical",
             "contents": [{
                     "type": "text",
-                    "text": "2020-10-11 07:35",
+                    "text": "",
                     "weight": "bold",
                     "size": "md",
                     "margin": "lg"
                 },
                 {
                     "type": "text",
-                    "text": "John Doe",
+                    "text": "",
                     "margin": "lg",
                     "weight": "bold"
                 },
@@ -248,13 +248,13 @@ def command_booking(event, line_bot_api, **kwargs):
                     "layout": "horizontal",
                     "contents": [{
                             "type": "text",
-                            "text": "Confirmed",
+                            "text": "",
                             "flex": 4,
                             "color": "#145374"
                         },
                         {
                             "type": "text",
-                            "text": "Refund Request",
+                            "text": "",
                             "flex": 0,
                             "color": "#7d0633"
                         }
@@ -276,7 +276,7 @@ def command_booking(event, line_bot_api, **kwargs):
                         },
                         {
                             "type": "text",
-                            "text": "4,000 x 3 = 12,000 THB",
+                            "text": "",
                             "flex": 0,
                             "size": "sm"
                         }
@@ -294,7 +294,7 @@ def command_booking(event, line_bot_api, **kwargs):
                         },
                         {
                             "type": "text",
-                            "text": "1,400 x 3 = 10,200 THB",
+                            "text": "",
                             "flex": 0,
                             "size": "sm"
                         }
@@ -312,7 +312,7 @@ def command_booking(event, line_bot_api, **kwargs):
                         },
                         {
                             "type": "text",
-                            "text": "900 x 3 = 2,700 THB",
+                            "text": "",
                             "flex": 0,
                             "size": "sm"
                         }
@@ -334,7 +334,7 @@ def command_booking(event, line_bot_api, **kwargs):
                         },
                         {
                             "type": "text",
-                            "text": "12,999 THB",
+                            "text": "",
                             "flex": 0,
                             "weight": "bold"
                         }
@@ -360,7 +360,7 @@ def command_course(event, line_bot_api, **kwargs):
         event.reply_token, [
             models.FlexSendMessage(
                 alt_text=golf_club.title_english,
-                contents=golf_club.info)])
+                contents=golf_club.info_flex_message)])
 
 
 def command_promotions(event, line_bot_api, **kwargs):

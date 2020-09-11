@@ -251,8 +251,14 @@ class GolfClub(model_utils_models.TimeStampedModel):
         null=True,
     )
 
-    info = models.JSONField(
-        verbose_name=_('Course info'),
+    info_flex_message = models.JSONField(
+        verbose_name=_('Course info flex message'),
+        blank=True,
+        null=True,
+    )
+
+    order_flex_message = models.JSONField(
+        verbose_name=_('Order flex message'),
         blank=True,
         null=True,
     )
@@ -437,20 +443,20 @@ class GolfClub(model_utils_models.TimeStampedModel):
         if self.liff:
             with open(Path(settings.BASE_DIR) / 'liff' / 'static' / 'js' / 'liff' / 'json' / 'course.json') \
                     as json_file:
-                self.info = json.load(json_file)
+                self.info_flex_message = json.load(json_file)
 
                 translation.activate('en')
 
-                self.info['header']['contents'][0]['text'] = self.title_english
-                self.info['hero']['action']['uri'] = self.website
-                self.info['hero']['url'] = f'https://www.withthai.com{self.thumbnail.url}'
-                self.info['body']['contents'][0]['contents'][1]['text'] = self.get_hole_display()
-                self.info['body']['contents'][1]['contents'][1]['text'] = self.phone
-                self.info['body']['contents'][2]['contents'][1]['text'] = self.fax
-                self.info['body']['contents'][3]['contents'][1]['text'] = self.email
-                self.info['body']['contents'][4]['contents'][1]['text'] \
+                self.info_flex_message['header']['contents'][0]['text'] = self.title_english
+                self.info_flex_message['hero']['action']['uri'] = self.website
+                self.info_flex_message['hero']['url'] = f'https://www.withthai.com{self.thumbnail.url}'
+                self.info_flex_message['body']['contents'][0]['contents'][1]['text'] = self.get_hole_display()
+                self.info_flex_message['body']['contents'][1]['contents'][1]['text'] = self.phone
+                self.info_flex_message['body']['contents'][2]['contents'][1]['text'] = self.fax
+                self.info_flex_message['body']['contents'][3]['contents'][1]['text'] = self.email
+                self.info_flex_message['body']['contents'][4]['contents'][1]['text'] \
                     = '{} - {}'.format(time(self.business_hour_start, 'H:i'), time(self.business_hour_end, 'H:i'))
-                self.info['body']['contents'][5]['contents'][4]['action']['uri'] \
+                self.info_flex_message['body']['contents'][5]['contents'][4]['action']['uri'] \
                     = f"https://liff.line.me/{self.liff['scorecard']['id']}"
 
                 translation.deactivate()

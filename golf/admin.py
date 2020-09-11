@@ -68,7 +68,7 @@ class GolfClubAdmin(admin.ModelAdmin):
     list_display = ('title_english', 'slug', 'phone', 'email', 'working_status')
     list_filter = ('district__province__title_english', 'working_status')
     prepopulated_fields = {'slug': ('title_english',)}
-    readonly_fields = ('info',)
+    readonly_fields = ('info_flex_message',)
     fieldsets = (
         (_('Golf club'), {
             'fields': ('title_english', 'title_thai', 'slug',
@@ -82,7 +82,7 @@ class GolfClubAdmin(admin.ModelAdmin):
         }),
         ('LINE', {
             'fields': ('line_bot_channel_access_token', 'line_bot_channel_secret', 'line_notify_access_token',
-                       'info', 'liff', 'scorecard')
+                       'info_flex_message', 'order_flex_message', 'liff', 'scorecard')
         })
     )
     inlines = [CustomerGroupInline, SeasonInline, TimeslotInline]
