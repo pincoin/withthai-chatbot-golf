@@ -220,6 +220,7 @@ def command_booking(event, line_bot_api, **kwargs):
                  .select_related('golf_club', 'user', 'line_user', 'customer_group') \
                  .prefetch_related('golfbookingorderproduct_set') \
                  .filter(line_user__line_user_id=event.source.user_id) \
+                 .exclude(order_status=golf_models.GolfBookingOrder.ORDER_STATUS_CHOICES.closed) \
                  .order_by('-created')[:5]
 
     order_list = []
