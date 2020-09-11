@@ -1,4 +1,5 @@
 import datetime
+import json
 import logging
 
 from django.template.defaultfilters import date
@@ -214,11 +215,137 @@ def command_new(event, line_bot_api, **kwargs):
 def command_booking(event, line_bot_api, **kwargs):
     golf_club = kwargs['golf_club']
 
+    bubble_string = """
+    {
+      "type": "bubble",
+      "body": {
+        "type": "box",
+        "layout": "vertical",
+        "contents": [
+          {
+            "type": "image",
+            "url": "https://scdn.line-apps.com/n/channel_devcenter/img/flexsnapshot/clip/clip3.jpg",
+            "position": "relative",
+            "size": "full",
+            "aspectMode": "cover",
+            "aspectRatio": "1:1",
+            "gravity": "center"
+          },
+          {
+            "type": "box",
+            "layout": "horizontal",
+            "contents": [
+              {
+                "type": "box",
+                "layout": "vertical",
+                "contents": [
+                  {
+                    "type": "text",
+                    "text": "Brown Hotel",
+                    "weight": "bold",
+                    "size": "xl",
+                    "color": "#ffffff"
+                  },
+                  {
+                    "type": "box",
+                    "layout": "baseline",
+                    "margin": "md",
+                    "contents": [
+                      {
+                        "type": "icon",
+                        "size": "sm",
+                        "url": "https://scdn.line-apps.com/n/channel_devcenter/img/fx/review_gold_star_28.png"
+                      },
+                      {
+                        "type": "icon",
+                        "size": "sm",
+                        "url": "https://scdn.line-apps.com/n/channel_devcenter/img/fx/review_gold_star_28.png"
+                      },
+                      {
+                        "type": "icon",
+                        "size": "sm",
+                        "url": "https://scdn.line-apps.com/n/channel_devcenter/img/fx/review_gold_star_28.png"
+                      },
+                      {
+                        "type": "icon",
+                        "size": "sm",
+                        "url": "https://scdn.line-apps.com/n/channel_devcenter/img/fx/review_gold_star_28.png"
+                      },
+                      {
+                        "type": "icon",
+                        "size": "sm",
+                        "url": "https://scdn.line-apps.com/n/channel_devcenter/img/fx/review_gray_star_28.png"
+                      },
+                      {
+                        "type": "text",
+                        "text": "4.0",
+                        "size": "sm",
+                        "color": "#d6d6d6",
+                        "margin": "md",
+                        "flex": 0
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "box",
+                "layout": "vertical",
+                "contents": [
+                  {
+                    "type": "text",
+                    "text": "¥62,000",
+                    "color": "#a9a9a9",
+                    "decoration": "line-through",
+                    "align": "end"
+                  },
+                  {
+                    "type": "text",
+                    "text": "¥42,000",
+                    "color": "#ebebeb",
+                    "size": "xl",
+                    "align": "end"
+                  }
+                ]
+              }
+            ],
+            "position": "absolute",
+            "offsetBottom": "0px",
+            "offsetStart": "0px",
+            "offsetEnd": "0px",
+            "backgroundColor": "#00000099",
+            "paddingAll": "20px"
+          },
+          {
+            "type": "box",
+            "layout": "vertical",
+            "contents": [
+              {
+                "type": "text",
+                "text": "SALE",
+                "color": "#ffffff"
+              }
+            ],
+            "position": "absolute",
+            "backgroundColor": "#ff2600",
+            "cornerRadius": "20px",
+            "paddingAll": "5px",
+            "offsetTop": "10px",
+            "offsetEnd": "10px",
+            "paddingStart": "10px",
+            "paddingEnd": "10px"
+          }
+        ],
+        "paddingAll": "0px"
+      }
+    }
+    """
+
     line_bot_api.reply_message(
         event.reply_token, [
             models.FlexSendMessage(
                 alt_text=golf_club.title_english,
-                contents=golf_club.info)])
+                contents=json.loads(bubble_string))])
 
 
 def command_course(event, line_bot_api, **kwargs):
