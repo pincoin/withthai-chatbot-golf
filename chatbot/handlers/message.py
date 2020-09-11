@@ -1,5 +1,4 @@
 import datetime
-import json
 import logging
 
 from django.template.defaultfilters import date
@@ -222,45 +221,6 @@ def command_booking(event, line_bot_api, **kwargs):
                                            action=models.MessageAction(label='My Profile',
                                                                        text='Profile')),
                                    ])))
-
-
-def command_price(event, line_bot_api, **kwargs):
-    s = '''{
-  "type": "carousel",
-  "contents": [
-    {
-      "type": "bubble",
-      "body": {
-        "type": "box",
-        "layout": "vertical",
-        "contents": [
-          {
-            "type": "text",
-            "text": "First bubble"
-          }
-        ]
-      }
-    },
-    {
-      "type": "bubble",
-      "body": {
-        "type": "box",
-        "layout": "vertical",
-        "contents": [
-          {
-            "type": "text",
-            "text": "Second bubble"
-          }
-        ]
-      }
-    }
-  ]
-}'''
-
-    line_bot_api.reply_message(
-        event.reply_token, [
-            models.FlexSendMessage(alt_text='Price Table - flex or template message',
-                                   content=json.loads(s))])
 
 
 def command_course(event, line_bot_api, **kwargs):
