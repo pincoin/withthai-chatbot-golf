@@ -28,7 +28,7 @@ with-thai::{% trans 'Golf Booking Order List' %}
                     </div>
                     <div class="column is-1-tablet is-8-mobile">
                         <a href="{% url 'console:golf-booking-order-detail' slug order.order_no %}?{{ q }}">
-                            <div class="tags has-addons is-hidden-tablet status-tags">
+                            <div class="tags has-addons is-hidden-tablet status-tags is-capitalized">
                                 {% if order.order_status == order.ORDER_STATUS_CHOICES.open %}
                                 <span class="tag status-open">{{ order.get_order_status_display }}</span>
                                 {% elif order.order_status == order.ORDER_STATUS_CHOICES.offered %}
@@ -51,7 +51,7 @@ with-thai::{% trans 'Golf Booking Order List' %}
                                 <span class="tag status-refunded">{{ order.get_payment_status_display }}</span>
                                 {% endif %}
                             </div>
-                            <div class="is-hidden-mobile">
+                            <div class="is-hidden-mobile is-capitalized">
                                 <div class="field">
                                     {% if order.order_status == order.ORDER_STATUS_CHOICES.open %}
                                     <span class="tag status-open">{{ order.get_order_status_display }}</span>
