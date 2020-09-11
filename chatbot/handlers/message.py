@@ -238,8 +238,10 @@ def command_booking(event, line_bot_api, **kwargs):
 
         idx = 4
         for fee in order.golfbookingorderproduct_set.all():
-            order_flex_message['body']['contents'][idx]['contents'][1]['text'] \
-                = f'{fee.selling_price:,.0f} x {fee.quantity} = {fee.subtotal:,.0f} THB'
+            order_flex_message['body']['contents'][idx]['contents'][0]['text'] = fee.get_product_display()
+            order_flex_message['body']['contents'][idx]['contents'][1]['text'] = f'{fee.selling_price:,.0f}' \
+                                                                                 f' x {fee.quantity}' \
+                                                                                 f' = {fee.subtotal:,.0f} THB'
             idx += 1
 
         if order.cart == 0:
