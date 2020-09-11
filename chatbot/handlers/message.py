@@ -1,3 +1,4 @@
+import copy
 import datetime
 import logging
 
@@ -223,7 +224,7 @@ def command_booking(event, line_bot_api, **kwargs):
     order_list = []
 
     for order in orders:
-        order_flex_message = golf_club.order_flex_message
+        order_flex_message = copy.deepcopy(golf_club.order_flex_message)
         order_flex_message['body']['contents'][0]['text'] = f'{order.round_date} {order.round_time}'
         order_flex_message['body']['contents'][1]['text'] = f'{order.fullname}'
         order_flex_message['body']['contents'][2]['contents'][0]['text'] = f'{order.get_order_status_display}'
@@ -240,7 +241,7 @@ def command_booking(event, line_bot_api, **kwargs):
     line_bot_api.reply_message(
         event.reply_token, [
             models.FlexSendMessage(
-                alt_text=golf_club.title_english,
+                alt_text='My Booking List',
                 contents=models.CarouselContainer(contents=order_list))])
 
 
