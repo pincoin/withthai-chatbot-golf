@@ -5,6 +5,7 @@ import logging
 from django.template.defaultfilters import date
 from django.urls import reverse
 from django.utils import timezone
+from django.utils import translation
 from linebot import models
 
 from conf import tasks
@@ -223,19 +224,22 @@ def command_booking(event, line_bot_api, **kwargs):
 
     order_list = []
 
+    translation.activate('en')
+
     for order in orders:
         order_flex_message = copy.deepcopy(golf_club.order_flex_message)
         order_flex_message['body']['contents'][0]['text'] = f'{order.round_date} {order.round_time}'
         order_flex_message['body']['contents'][1]['text'] = f'{order.fullname}'
-        order_flex_message['body']['contents'][2]['contents'][0]['text'] = f'{order.get_order_status_display}'
-        order_flex_message['body']['contents'][2]['contents'][1]['text'] = f'{order.get_payment_status_display}'
-        order_flex_message['body']['contents'][4]['contents'][1]['text'] = f'100 x 200 = 300 THB'
-        order_flex_message['body']['contents'][5]['contents'][1]['text'] = f'100 x 200 = 300 THB'
+        order_flex_message['body']['contents'][2]['contents'][0]['text'] = order.get_order_status_display()
+        order_flex_message['body']['contents'][2]['contents'][1]['text'] = order.get_payment_status_display()
 
         order_flex_message['body']['contents'][8]['contents'][1]['text'] = f'{order.total_selling_price:,.0f} THB'
 
+        order_flex_message['body']['contents'][4]['contents'][1]['text'] = f'100 x {order.pax} = 300 THB'
+        order_flex_message['body']['contents'][5]['contents'][1]['text'] = f'100 x {order.pax} = 300 THB'
+
         if order.cart > 0:
-            order_flex_message['body']['contents'][6]['contents'][1]['text'] = f'100 x 200 = 300 THB'
+            order_flex_message['body']['contents'][6]['contents'][1]['text'] = f'100 x {order.cart} = 300 THB'
         else:
             del order_flex_message['body']['contents'][6]
 
@@ -246,6 +250,8 @@ def command_booking(event, line_bot_api, **kwargs):
             models.FlexSendMessage(
                 alt_text='My Booking List',
                 contents=models.CarouselContainer(contents=order_list))])
+
+    translation.deactivate()
 
 
 def command_course(event, line_bot_api, **kwargs):
