@@ -369,9 +369,9 @@ def command_price(event, line_bot_api, **kwargs):
 }'''
 
     line_bot_api.reply_message(
-        event.reply_token,
-        models.FlexSendMessage(alt_text='Price Table - flex or template message',
-                               content=json.loads(s)))
+        event.reply_token, [
+            models.FlexSendMessage(alt_text='Price Table - flex or template message',
+                                   content=json.loads(s))])
 
 
 def command_course(event, line_bot_api, **kwargs):
