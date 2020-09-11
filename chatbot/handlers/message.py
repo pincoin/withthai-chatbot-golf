@@ -215,273 +215,142 @@ def command_new(event, line_bot_api, **kwargs):
 def command_booking(event, line_bot_api, **kwargs):
     golf_club = kwargs['golf_club']
 
-    carousel_string = """
-{
-	"type": "carousel",
-	"contents": [{
-			"type": "bubble",
-			"body": {
-				"type": "box",
-				"layout": "vertical",
-				"contents": [{
-						"type": "text",
-						"text": "2020-10-11 07:35",
-						"weight": "bold",
-						"size": "md",
-						"margin": "lg"
-					},
-					{
-						"type": "text",
-						"text": "John Doe",
-						"margin": "lg",
-						"weight": "bold"
-					},
-					{
-						"type": "box",
-						"layout": "horizontal",
-						"contents": [{
-								"type": "text",
-								"text": "Confirmed",
-								"flex": 4,
-								"color": "#145374"
-							},
-							{
-								"type": "text",
-								"text": "Refund Request",
-								"flex": 0,
-								"color": "#7d0633"
-							}
-						],
-						"margin": "lg"
-					},
-					{
-						"type": "separator",
-						"margin": "xl"
-					},
-					{
-						"type": "box",
-						"layout": "horizontal",
-						"contents": [{
-								"type": "text",
-								"text": "Green Fee",
-								"flex": 2,
-								"size": "sm"
-							},
-							{
-								"type": "text",
-								"text": "4,000 x 3 = 12,000 THB",
-								"flex": 0,
-								"size": "sm"
-							}
-						],
-						"margin": "md"
-					},
-					{
-						"type": "box",
-						"layout": "horizontal",
-						"contents": [{
-								"type": "text",
-								"text": "Caddie Fee",
-								"flex": 2,
-								"size": "sm"
-							},
-							{
-								"type": "text",
-								"text": "1,400 x 3 = 10,200 THB",
-								"flex": 0,
-								"size": "sm"
-							}
-						],
-						"margin": "md"
-					},
-					{
-						"type": "box",
-						"layout": "horizontal",
-						"contents": [{
-								"type": "text",
-								"text": "Cart Fee",
-								"flex": 2,
-								"size": "sm"
-							},
-							{
-								"type": "text",
-								"text": "900 x 3 = 2,700 THB",
-								"flex": 0,
-								"size": "sm"
-							}
-						],
-						"margin": "md"
-					},
-					{
-						"type": "separator",
-						"margin": "xl"
-					},
-					{
-						"type": "box",
-						"layout": "horizontal",
-						"contents": [{
-								"type": "text",
-								"text": "Total",
-								"flex": 2,
-								"weight": "bold"
-							},
-							{
-								"type": "text",
-								"text": "12,999 THB",
-								"flex": 0,
-								"weight": "bold"
-							}
-						]
-					}
-				]
-			}
-		},
-		{
-			"type": "bubble",
-			"body": {
-				"type": "box",
-				"layout": "vertical",
-				"contents": [{
-					"type": "text",
-					"text": "hello, world"
-				}]
-			}
-		}
-	]
-}
-"""
+    orders = golf_models.GolfBookingOrder.objects \
+                 .select_related('golf_club', 'user', 'line_user', 'customer_group') \
+                 .prefetch_related('golfbookingorderproduct_set') \
+                 .filter(line_user__line_user_id=event.source.user_id) \
+                 .order_by('-created')[:2]
 
-    bubble_string = """
+    order_list = []
+
+    for order in orders:
+        order_string = """
     {
-      "type": "bubble",
-      "body": {
-        "type": "box",
-        "layout": "vertical",
-        "contents": [
-          {
-            "type": "image",
-            "url": "https://scdn.line-apps.com/n/channel_devcenter/img/flexsnapshot/clip/clip3.jpg",
-            "position": "relative",
-            "size": "full",
-            "aspectMode": "cover",
-            "aspectRatio": "1:1",
-            "gravity": "center"
-          },
-          {
-            "type": "box",
-            "layout": "horizontal",
-            "contents": [
-              {
-                "type": "box",
-                "layout": "vertical",
-                "contents": [
-                  {
-                    "type": "text",
-                    "text": "Brown Hotel",
-                    "weight": "bold",
-                    "size": "xl",
-                    "color": "#ffffff"
-                  },
-                  {
-                    "type": "box",
-                    "layout": "baseline",
-                    "margin": "md",
-                    "contents": [
-                      {
-                        "type": "icon",
-                        "size": "sm",
-                        "url": "https://scdn.line-apps.com/n/channel_devcenter/img/fx/review_gold_star_28.png"
-                      },
-                      {
-                        "type": "icon",
-                        "size": "sm",
-                        "url": "https://scdn.line-apps.com/n/channel_devcenter/img/fx/review_gold_star_28.png"
-                      },
-                      {
-                        "type": "icon",
-                        "size": "sm",
-                        "url": "https://scdn.line-apps.com/n/channel_devcenter/img/fx/review_gold_star_28.png"
-                      },
-                      {
-                        "type": "icon",
-                        "size": "sm",
-                        "url": "https://scdn.line-apps.com/n/channel_devcenter/img/fx/review_gold_star_28.png"
-                      },
-                      {
-                        "type": "icon",
-                        "size": "sm",
-                        "url": "https://scdn.line-apps.com/n/channel_devcenter/img/fx/review_gray_star_28.png"
-                      },
-                      {
-                        "type": "text",
-                        "text": "4.0",
-                        "size": "sm",
-                        "color": "#d6d6d6",
-                        "margin": "md",
-                        "flex": 0
-                      }
-                    ]
-                  }
-                ]
-              },
-              {
-                "type": "box",
-                "layout": "vertical",
-                "contents": [
-                  {
-                    "type": "text",
-                    "text": "¥62,000",
-                    "color": "#a9a9a9",
-                    "decoration": "line-through",
-                    "align": "end"
-                  },
-                  {
-                    "type": "text",
-                    "text": "¥42,000",
-                    "color": "#ebebeb",
-                    "size": "xl",
-                    "align": "end"
-                  }
-                ]
-              }
-            ],
-            "position": "absolute",
-            "offsetBottom": "0px",
-            "offsetStart": "0px",
-            "offsetEnd": "0px",
-            "backgroundColor": "#00000099",
-            "paddingAll": "20px"
-          },
-          {
+        "type": "bubble",
+        "body": {
             "type": "box",
             "layout": "vertical",
-            "contents": [
-              {
-                "type": "text",
-                "text": "SALE",
-                "color": "#ffffff"
-              }
-            ],
-            "position": "absolute",
-            "backgroundColor": "#ff2600",
-            "cornerRadius": "20px",
-            "paddingAll": "5px",
-            "offsetTop": "10px",
-            "offsetEnd": "10px",
-            "paddingStart": "10px",
-            "paddingEnd": "10px"
-          }
-        ],
-        "paddingAll": "0px"
-      }
+            "contents": [{
+                    "type": "text",
+                    "text": "2020-10-11 07:35",
+                    "weight": "bold",
+                    "size": "md",
+                    "margin": "lg"
+                },
+                {
+                    "type": "text",
+                    "text": "John Doe",
+                    "margin": "lg",
+                    "weight": "bold"
+                },
+                {
+                    "type": "box",
+                    "layout": "horizontal",
+                    "contents": [{
+                            "type": "text",
+                            "text": "Confirmed",
+                            "flex": 4,
+                            "color": "#145374"
+                        },
+                        {
+                            "type": "text",
+                            "text": "Refund Request",
+                            "flex": 0,
+                            "color": "#7d0633"
+                        }
+                    ],
+                    "margin": "lg"
+                },
+                {
+                    "type": "separator",
+                    "margin": "xl"
+                },
+                {
+                    "type": "box",
+                    "layout": "horizontal",
+                    "contents": [{
+                            "type": "text",
+                            "text": "Green Fee",
+                            "flex": 2,
+                            "size": "sm"
+                        },
+                        {
+                            "type": "text",
+                            "text": "4,000 x 3 = 12,000 THB",
+                            "flex": 0,
+                            "size": "sm"
+                        }
+                    ],
+                    "margin": "md"
+                },
+                {
+                    "type": "box",
+                    "layout": "horizontal",
+                    "contents": [{
+                            "type": "text",
+                            "text": "Caddie Fee",
+                            "flex": 2,
+                            "size": "sm"
+                        },
+                        {
+                            "type": "text",
+                            "text": "1,400 x 3 = 10,200 THB",
+                            "flex": 0,
+                            "size": "sm"
+                        }
+                    ],
+                    "margin": "md"
+                },
+                {
+                    "type": "box",
+                    "layout": "horizontal",
+                    "contents": [{
+                            "type": "text",
+                            "text": "Cart Fee",
+                            "flex": 2,
+                            "size": "sm"
+                        },
+                        {
+                            "type": "text",
+                            "text": "900 x 3 = 2,700 THB",
+                            "flex": 0,
+                            "size": "sm"
+                        }
+                    ],
+                    "margin": "md"
+                },
+                {
+                    "type": "separator",
+                    "margin": "xl"
+                },
+                {
+                    "type": "box",
+                    "layout": "horizontal",
+                    "contents": [{
+                            "type": "text",
+                            "text": "Total",
+                            "flex": 2,
+                            "weight": "bold"
+                        },
+                        {
+                            "type": "text",
+                            "text": "12,999 THB",
+                            "flex": 0,
+                            "weight": "bold"
+                        }
+                    ]
+                }
+            ]
+        }
     }
-    """
+        """
+        order_list.append(json.loads(order_string))
 
     line_bot_api.reply_message(
         event.reply_token, [
             models.FlexSendMessage(
                 alt_text=golf_club.title_english,
-                contents=json.loads(carousel_string))])
+                contents=models.CarouselContainer(contents=order_list))])
 
 
 def command_course(event, line_bot_api, **kwargs):
