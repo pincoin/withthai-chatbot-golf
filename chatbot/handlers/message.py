@@ -236,12 +236,13 @@ def command_booking(event, line_bot_api, **kwargs):
 
         order_flex_message['body']['contents'][8]['contents'][1]['text'] = f'{order.total_selling_price:,.0f} THB'
 
-        order_flex_message['body']['contents'][4]['contents'][1]['text'] = f'100 x {order.pax} = 300 THB'
-        order_flex_message['body']['contents'][5]['contents'][1]['text'] = f'100 x {order.pax} = 300 THB'
+        idx = 4
+        for fee in order.golfbookingorderproduct_set.all():
+            order_flex_message['body']['contents'][idx]['contents'][1]['text'] \
+                = f'{fee.selling_price:,.0f} x {fee.quantity} = {fee.subtotal:,.0f} THB'
+            idx += 1
 
-        if order.cart > 0:
-            order_flex_message['body']['contents'][6]['contents'][1]['text'] = f'100 x {order.cart} = 300 THB'
-        else:
+        if order.cart == 0:
             del order_flex_message['body']['contents'][6]
 
         order_list.append(order_flex_message)
