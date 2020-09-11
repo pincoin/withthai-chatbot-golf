@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-09-10 16:12+0700\n"
+"POT-Creation-Date: 2020-09-12 01:58+0700\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -106,19 +106,20 @@ msgid "Payment Status"
 msgstr "결제상태"
 
 #: console/forms.py:72 console/templates/console/base.html:69
-#: golf/models.py:720
-msgid "Unpaid"
-msgstr "미결제"
+#: golf/models.py:726
+msgid "Not paid"
+msgstr ""
 
-#: console/forms.py:73 golf/models.py:721
+#: console/forms.py:73 golf/models.py:727
 msgid "Paid"
 msgstr "결제완료"
 
 #: console/forms.py:74 console/templates/console/base.html:74
-msgid "Refund Requests"
+#: golf/models.py:728
+msgid "Refund requests"
 msgstr "환불요청"
 
-#: console/forms.py:75 golf/models.py:723
+#: console/forms.py:75 golf/models.py:729
 msgid "Refunded"
 msgstr "환불완료"
 
@@ -127,7 +128,7 @@ msgid "Booking Date"
 msgstr "예약일자"
 
 #: console/forms.py:113 console/templates/console/base.html:179
-#: golf/models.py:622
+#: golf/models.py:628
 msgid "Seasons"
 msgstr "기간"
 
@@ -136,7 +137,7 @@ msgid "Day of Week"
 msgstr "평일휴일 구분"
 
 #: console/forms.py:124 console/templates/console/base.html:184
-#: golf/models.py:663
+#: golf/models.py:669
 msgid "Timeslots"
 msgstr "시간대"
 
@@ -267,33 +268,37 @@ msgid "Back to List"
 msgstr "뒤로가기"
 
 #: console/templates/console/golf_booking_order_detail.html:25
-#: golf/models.py:727
+#: golf/models.py:733
 msgid "Order no"
 msgstr "주문번호"
 
 #: console/templates/console/golf_booking_order_detail.html:33
+#: console/templates/console/golf_booking_order_detail.html:330
 #: console/templates/console/line_user_detail.html:52
 msgid "Customer name"
 msgstr "예약자 이름"
 
 #: console/templates/console/golf_booking_order_detail.html:41
-#: console/templates/console/line_user_detail.html:34 golf/models.py:514
-#: golf/models.py:564 golf/models.py:672 golf/models.py:768 golf/models.py:872
+#: console/templates/console/line_user_detail.html:34 golf/models.py:520
+#: golf/models.py:570 golf/models.py:678 golf/models.py:774 golf/models.py:878
 msgid "Customer group"
 msgstr "고객 그룹"
 
 #: console/templates/console/golf_booking_order_detail.html:53
+#: console/templates/console/golf_booking_order_detail.html:334
 msgid "Round Date/Time"
 msgstr "라운드 일시"
 
 #: console/templates/console/golf_booking_order_detail.html:62
-#: golf/models.py:786 liff/templates/liff/booking_create_form.html:135
+#: console/templates/console/golf_booking_order_detail.html:338
+#: golf/models.py:792 liff/templates/liff/booking_create_form.html:135
 #: liff/templates/liff/golf_booking_create_form.html:152
 msgid "PAX"
 msgstr "인원"
 
 #: console/templates/console/golf_booking_order_detail.html:70
-#: golf/models.py:791
+#: console/templates/console/golf_booking_order_detail.html:342
+#: golf/models.py:797
 msgid "Cart"
 msgstr "카트"
 
@@ -302,12 +307,12 @@ msgid "Total"
 msgstr "합계"
 
 #: console/templates/console/golf_booking_order_detail.html:88
-#: golf/models.py:835 golf/models.py:939
+#: golf/models.py:841 golf/models.py:945
 msgid "Order status"
 msgstr "예약상태"
 
 #: console/templates/console/golf_booking_order_detail.html:106
-#: golf/models.py:842 golf/models.py:946
+#: golf/models.py:848 golf/models.py:952
 msgid "Payment status"
 msgstr "결제상태"
 
@@ -316,27 +321,38 @@ msgid "Actions"
 msgstr "응답"
 
 #: console/templates/console/golf_booking_order_detail.html:128
-#: console/templates/console/golf_booking_order_detail.html:155
+#: console/templates/console/golf_booking_order_detail.html:156
 msgid "CONFIRM"
 msgstr "확정"
 
 #: console/templates/console/golf_booking_order_detail.html:132
-#: console/templates/console/golf_booking_order_detail.html:190
+#: console/templates/console/golf_booking_order_detail.html:184
 msgid "OFFER"
 msgstr "제안"
 
 #: console/templates/console/golf_booking_order_detail.html:136
-#: console/templates/console/golf_booking_order_detail.html:206
+#: console/templates/console/golf_booking_order_detail.html:201
 msgid "CLOSE"
 msgstr "닫기"
 
-#: console/templates/console/golf_booking_order_detail.html:227
+#: console/templates/console/golf_booking_order_detail.html:234
 msgid "Fees"
 msgstr "요금"
 
-#: console/templates/console/golf_booking_order_detail.html:260
+#: console/templates/console/golf_booking_order_detail.html:267
 msgid "Status history"
 msgstr "상태 이력"
+
+#: console/templates/console/golf_booking_order_detail.html:349
+#: console/templates/console/golf_booking_order_detail.html:372
+#: liff/templates/liff/golf_booking_create_form.html:234
+msgid "OK"
+msgstr ""
+
+#: console/templates/console/golf_booking_order_detail.html:354
+#: liff/templates/liff/golf_booking_create_form.html:215
+msgid "Cancel"
+msgstr "취소"
 
 #: console/templates/console/golf_booking_order_list.html:7
 msgid "Golf Booking Order List"
@@ -364,20 +380,20 @@ msgstr "골프장 이름"
 msgid "Slug"
 msgstr "슬러그"
 
-#: console/templates/console/golf_club_update.html:49 golf/models.py:335
+#: console/templates/console/golf_club_update.html:49 golf/models.py:341
 msgid "No. of holes"
 msgstr "홀수"
 
 #: console/templates/console/golf_club_update.html:57 golf/models.py:176
-#: golf/models.py:308
+#: golf/models.py:314
 msgid "District"
 msgstr "군"
 
-#: console/templates/console/golf_club_update.html:65 golf/models.py:321
+#: console/templates/console/golf_club_update.html:65 golf/models.py:327
 msgid "Latitude"
 msgstr "위도"
 
-#: console/templates/console/golf_club_update.html:73 golf/models.py:328
+#: console/templates/console/golf_club_update.html:73 golf/models.py:334
 msgid "Longitude"
 msgstr "경도"
 
@@ -393,19 +409,19 @@ msgstr "연락처 정보"
 msgid "Address"
 msgstr "주소"
 
-#: console/templates/console/golf_club_update.html:110 golf/models.py:279
+#: console/templates/console/golf_club_update.html:110 golf/models.py:285
 msgid "Phone number"
 msgstr "전화번호"
 
-#: console/templates/console/golf_club_update.html:118 golf/models.py:293
+#: console/templates/console/golf_club_update.html:118 golf/models.py:299
 msgid "Fax number"
 msgstr "팩스번호"
 
-#: console/templates/console/golf_club_update.html:126 golf/models.py:286
+#: console/templates/console/golf_club_update.html:126 golf/models.py:292
 msgid "Email address"
 msgstr "이메일 주소"
 
-#: console/templates/console/golf_club_update.html:134 golf/models.py:300
+#: console/templates/console/golf_club_update.html:134 golf/models.py:306
 msgid "Website"
 msgstr "웹사이트"
 
@@ -413,27 +429,27 @@ msgstr "웹사이트"
 msgid "Booking management"
 msgstr "예약 관리 정보"
 
-#: console/templates/console/golf_club_update.html:155 golf/models.py:271
+#: console/templates/console/golf_club_update.html:155 golf/models.py:277
 msgid "Business hour start"
 msgstr "업무시간 시작"
 
-#: console/templates/console/golf_club_update.html:163 golf/models.py:275
+#: console/templates/console/golf_club_update.html:163 golf/models.py:281
 msgid "Business hour end"
 msgstr "업무시간 종료"
 
-#: console/templates/console/golf_club_update.html:171 golf/models.py:262
+#: console/templates/console/golf_club_update.html:171 golf/models.py:268
 msgid "Default customer group"
 msgstr "기본 고객 그룹"
 
-#: console/templates/console/golf_club_update.html:179 golf/models.py:386
+#: console/templates/console/golf_club_update.html:179 golf/models.py:392
 msgid "Caddie compulsory"
 msgstr "캐디 필수"
 
-#: console/templates/console/golf_club_update.html:187 golf/models.py:393
+#: console/templates/console/golf_club_update.html:187 golf/models.py:399
 msgid "Cart compulsory"
 msgstr "카트 필수"
 
-#: console/templates/console/golf_club_update.html:195 golf/models.py:381
+#: console/templates/console/golf_club_update.html:195 golf/models.py:387
 msgid "Multiple booking orders"
 msgstr "동시 예약주문 갯수"
 
@@ -498,7 +514,7 @@ msgstr "라인 아이디"
 msgid "LINE Display Name"
 msgstr "라인 표시 이름"
 
-#: console/templates/console/line_user_detail.html:60 golf/models.py:484
+#: console/templates/console/line_user_detail.html:60 golf/models.py:490
 msgid "Follow status"
 msgstr "팔로우"
 
@@ -529,13 +545,13 @@ msgstr "라인 사용자가 없습니다."
 msgid "Season List"
 msgstr "기간"
 
-#: console/templates/console/season_list.html:29 golf/models.py:859
-#: golf/models.py:969
+#: console/templates/console/season_list.html:29 golf/models.py:865
+#: golf/models.py:975
 msgid "Caddie fee"
 msgstr "캐디피"
 
-#: console/templates/console/season_list.html:35 golf/models.py:860
-#: golf/models.py:970
+#: console/templates/console/season_list.html:35 golf/models.py:866
+#: golf/models.py:976
 msgid "Cart fee"
 msgstr "카트피"
 
@@ -552,8 +568,8 @@ msgstr "시간대 목록"
 msgid "No Timeslot"
 msgstr "시간대 설정이 없습니다."
 
-#: golf/admin.py:73 golf/models.py:433 golf/models.py:533 golf/models.py:574
-#: golf/models.py:631 golf/models.py:735 golf/models.py:982
+#: golf/admin.py:73 golf/models.py:439 golf/models.py:539 golf/models.py:580
+#: golf/models.py:637 golf/models.py:741 golf/models.py:988
 msgid "Golf club"
 msgstr "골프장"
 
@@ -603,7 +619,7 @@ msgid ""
 "URL"
 msgstr "짧은 URL 주소(알파벳, 숫자, 하이픈, 밑줄)"
 
-#: golf/models.py:78 golf/models.py:124 golf/models.py:170 golf/models.py:558
+#: golf/models.py:78 golf/models.py:124 golf/models.py:170 golf/models.py:564
 msgid "Position"
 msgstr "순서"
 
@@ -732,399 +748,399 @@ msgid "LINE notify access token"
 msgstr "라인 알리미 액세스 토큰"
 
 #: golf/models.py:255
-msgid "Course info"
-msgstr "골프장 개요"
+msgid "Course info flex message"
+msgstr "골프장 개요 FLEX 메시지"
 
-#: golf/models.py:314
+#: golf/models.py:261
+msgid "Order flex message"
+msgstr "주문 FLEX 메시지"
+
+#: golf/models.py:320
 msgid "Golf club address"
 msgstr "골프장 주소"
 
-#: golf/models.py:342
+#: golf/models.py:348
 msgid "Min PAX"
 msgstr "라운드 최소인원"
 
-#: golf/models.py:347
+#: golf/models.py:353
 msgid "Max PAX"
 msgstr "라운드 최대인원"
 
-#: golf/models.py:352
+#: golf/models.py:358
 msgid "Weekdays minimum in advance"
 msgstr "평일예약 최소일수"
 
-#: golf/models.py:358
+#: golf/models.py:364
 msgid "Weekdays maximum in advance"
 msgstr "평일예약 최대일수"
 
-#: golf/models.py:364
+#: golf/models.py:370
 msgid "Weekend minimum in advance"
 msgstr "휴일예약 최소일수"
 
-#: golf/models.py:370
+#: golf/models.py:376
 msgid "Weekend maximum in advance"
 msgstr "휴일예약 최대일수"
 
-#: golf/models.py:376
+#: golf/models.py:382
 msgid "Weekend booking on Monday"
 msgstr "휴일예약 월요일 이후"
 
-#: golf/models.py:400 liff/apps.py:7
+#: golf/models.py:406 liff/apps.py:7
 msgid "LIFF"
 msgstr "LIFF"
 
-#: golf/models.py:406 liff/views.py:157
+#: golf/models.py:412 liff/views.py:157
 msgid "Scorecard"
 msgstr "스코어카드"
 
-#: golf/models.py:412
+#: golf/models.py:418
 msgid "Working status"
 msgstr "영업상태"
 
-#: golf/models.py:419
+#: golf/models.py:425
 msgid "Thumbnail image"
 msgstr "썸네일 이미지"
 
-#: golf/models.py:426
+#: golf/models.py:432
 msgid "Layout image"
 msgstr "레이아웃 이미지"
 
-#: golf/models.py:434
+#: golf/models.py:440
 msgid "Golf clubs"
 msgstr "골프장"
 
-#: golf/models.py:466
+#: golf/models.py:472
 msgid "Unfollow"
 msgstr "언팔로우"
 
-#: golf/models.py:467
+#: golf/models.py:473
 msgid "Follow"
 msgstr "팔로우"
 
-#: golf/models.py:471
+#: golf/models.py:477
 msgid "LINE user ID"
 msgstr "라인 아이디"
 
-#: golf/models.py:478
+#: golf/models.py:484
 msgid "LINE display name"
 msgstr "라인 표시 이름"
 
-#: golf/models.py:491 golf/models.py:761
+#: golf/models.py:497 golf/models.py:767
 msgid "Fullname"
 msgstr "이름"
 
-#: golf/models.py:497 golf/models.py:507 golf/models.py:752
+#: golf/models.py:503 golf/models.py:513 golf/models.py:758
 msgid "LINE user"
 msgstr "라인 사용자"
 
-#: golf/models.py:498 golf/models.py:540
+#: golf/models.py:504 golf/models.py:546
 msgid "LINE users"
 msgstr "라인 사용자"
 
-#: golf/models.py:520 golf/models.py:521
+#: golf/models.py:526 golf/models.py:527
 msgid "LINE user membership"
 msgstr "라인 사용자 멤버십"
 
-#: golf/models.py:526
+#: golf/models.py:532
 msgid "Member"
 msgstr "Member"
 
-#: golf/models.py:527
+#: golf/models.py:533
 msgid "Member guest"
 msgstr "Member's Guest"
 
-#: golf/models.py:528
+#: golf/models.py:534
 msgid "Visitor"
 msgstr "Visitor"
 
-#: golf/models.py:546
+#: golf/models.py:552
 msgid "Customer group name"
 msgstr "고객 그룹 이름"
 
-#: golf/models.py:551
+#: golf/models.py:557
 msgid "Member categories"
 msgstr "회원 유형"
 
-#: golf/models.py:565
+#: golf/models.py:571
 msgid "Customer groups"
 msgstr "고객 그룹"
 
-#: golf/models.py:580
+#: golf/models.py:586
 msgid "Season name"
 msgstr "기간 이름"
 
-#: golf/models.py:585
+#: golf/models.py:591
 msgid "Season start date"
 msgstr "기간 시작일"
 
-#: golf/models.py:589
+#: golf/models.py:595
 msgid "Season end date"
 msgstr "기간 종료일"
 
-#: golf/models.py:593
+#: golf/models.py:599
 msgid "Caddie fee list price"
 msgstr "캐디피 정가"
 
-#: golf/models.py:596 golf/models.py:603 golf/models.py:610 golf/models.py:617
-#: golf/models.py:695 golf/models.py:702
+#: golf/models.py:602 golf/models.py:609 golf/models.py:616 golf/models.py:623
+#: golf/models.py:701 golf/models.py:708
 msgid "THB"
 msgstr "바트"
 
-#: golf/models.py:600
+#: golf/models.py:606
 msgid "Caddie fee selling price"
 msgstr "캐디피 판매가"
 
-#: golf/models.py:607
+#: golf/models.py:613
 msgid "Cart fee list price"
 msgstr "카트피 정가"
 
-#: golf/models.py:614
+#: golf/models.py:620
 msgid "Cart fee selling price"
 msgstr "카트피 판매가"
 
-#: golf/models.py:621 golf/models.py:679
+#: golf/models.py:627 golf/models.py:685
 msgid "Season"
 msgstr "기간"
 
-#: golf/models.py:637
+#: golf/models.py:643
 msgid "Weekday"
 msgstr "평일"
 
-#: golf/models.py:638
+#: golf/models.py:644
 msgid "Weekend"
 msgstr "휴일"
 
-#: golf/models.py:642
+#: golf/models.py:648
 msgid "Timeslot name"
 msgstr "시간대 이름"
 
-#: golf/models.py:647
+#: golf/models.py:653
 msgid "Day of week"
 msgstr "평일휴일 구분"
 
-#: golf/models.py:654
+#: golf/models.py:660
 msgid "Timeslot start time"
 msgstr "시간대 시작시간"
 
-#: golf/models.py:658
+#: golf/models.py:664
 msgid "Timeslot end time"
 msgstr "시간대 종료시간"
 
-#: golf/models.py:662 golf/models.py:686
+#: golf/models.py:668 golf/models.py:692
 msgid "Timeslot"
 msgstr "시간대"
 
-#: golf/models.py:692 golf/models.py:886
+#: golf/models.py:698 golf/models.py:892
 msgid "List price"
 msgstr "정가"
 
-#: golf/models.py:699 golf/models.py:893
+#: golf/models.py:705 golf/models.py:899
 msgid "Selling price"
 msgstr "판매가"
 
-#: golf/models.py:706 golf/models.py:707 golf/models.py:858 golf/models.py:968
+#: golf/models.py:712 golf/models.py:713 golf/models.py:864 golf/models.py:974
 msgid "Green fee"
 msgstr "그린피"
 
-#: golf/models.py:712
+#: golf/models.py:718
 msgid "Booking open"
 msgstr "예약문의"
 
-#: golf/models.py:713
+#: golf/models.py:719
 msgid "Booking confirmed"
 msgstr "예약확정"
 
-#: golf/models.py:714
+#: golf/models.py:720
 msgid "Booking offered"
 msgstr "예약제안"
 
-#: golf/models.py:715
+#: golf/models.py:721
 msgid "Booking accepted"
 msgstr "예약수락"
 
-#: golf/models.py:716
+#: golf/models.py:722
 msgid "Booking closed"
 msgstr "예약무효"
 
-#: golf/models.py:722
-msgid "Refund requests"
-msgstr "환불요청"
-
-#: golf/models.py:742 golf/models.py:930
+#: golf/models.py:748 golf/models.py:936
 msgid "User"
 msgstr "사용자"
 
-#: golf/models.py:776
+#: golf/models.py:782
 msgid "Round date"
 msgstr "라운드 일자"
 
-#: golf/models.py:781
+#: golf/models.py:787
 msgid "Round time"
 msgstr "라운드 시각"
 
-#: golf/models.py:796
+#: golf/models.py:802
 msgid "User-agent"
 msgstr "User-agent"
 
-#: golf/models.py:801
+#: golf/models.py:807
 msgid "Accept-language"
 msgstr "Accept-language"
 
-#: golf/models.py:806
+#: golf/models.py:812
 msgid "IP address"
 msgstr "IP 주소"
 
-#: golf/models.py:813
+#: golf/models.py:819
 msgid "Total list price"
 msgstr "정가 합계"
 
-#: golf/models.py:820
+#: golf/models.py:826
 msgid "Total selling price"
 msgstr "판매가 합계"
 
-#: golf/models.py:828
+#: golf/models.py:834
 msgid "Parent"
 msgstr "부모"
 
-#: golf/models.py:849 golf/models.py:865 golf/models.py:923
+#: golf/models.py:855 golf/models.py:871 golf/models.py:929
 msgid "Golf booking order"
 msgstr "골프 예약 주문"
 
-#: golf/models.py:850
+#: golf/models.py:856
 msgid "Golf booking orders"
 msgstr "골프 예약 주문"
 
-#: golf/models.py:878
+#: golf/models.py:884
 msgid "Product"
 msgstr "상품"
 
-#: golf/models.py:900
+#: golf/models.py:906
 msgid "Quantity"
 msgstr "수량"
 
-#: golf/models.py:913
+#: golf/models.py:919
 msgid "Golf booking order product"
 msgstr "골프 예약 주문 상품"
 
-#: golf/models.py:914
+#: golf/models.py:920
 msgid "Golf booking order products"
 msgstr "골프 예약 주문 상품"
 
-#: golf/models.py:953
+#: golf/models.py:959
 msgid "Message"
 msgstr "메시지"
 
-#: golf/models.py:959
+#: golf/models.py:965
 msgid "Golf booking order status log"
 msgstr "골프 예약 상태 변경이력"
 
-#: golf/models.py:960
+#: golf/models.py:966
 msgid "Golf booking order status logs"
 msgstr "골프 예약 상태 변경이력"
 
-#: golf/models.py:971
+#: golf/models.py:977
 msgid "Total amount"
 msgstr "합계금액"
 
-#: golf/models.py:975
+#: golf/models.py:981
 msgid "Percent"
 msgstr "비율"
 
-#: golf/models.py:976
+#: golf/models.py:982
 msgid "Minus"
 msgstr "차감"
 
-#: golf/models.py:977
+#: golf/models.py:983
 msgid "Assign"
 msgstr "할당"
 
-#: golf/models.py:988
+#: golf/models.py:994
 msgid "Promotion title"
 msgstr "프로모션 이름"
 
-#: golf/models.py:993
+#: golf/models.py:999
 msgid "Promotion start date"
 msgstr "프로모션 시작일"
 
-#: golf/models.py:997
+#: golf/models.py:1003
 msgid "Promotion end date"
 msgstr "프로모션 종료일"
 
-#: golf/models.py:1001
+#: golf/models.py:1007
 msgid "Promotion active"
 msgstr "프로모션 활성"
 
-#: golf/models.py:1006
+#: golf/models.py:1012
 msgid "Monday condition"
 msgstr "월요일 조건"
 
-#: golf/models.py:1012
+#: golf/models.py:1018
 msgid "Tuesday condition"
 msgstr "화요일 조건"
 
-#: golf/models.py:1018
+#: golf/models.py:1024
 msgid "Wednesday condition"
 msgstr "수요일 조건"
 
-#: golf/models.py:1024
+#: golf/models.py:1030
 msgid "Thursday condition"
 msgstr "목요일 조건"
 
-#: golf/models.py:1030
+#: golf/models.py:1036
 msgid "Friday condition"
 msgstr "금요일 조건"
 
-#: golf/models.py:1036
+#: golf/models.py:1042
 msgid "Saturday condition"
 msgstr "토요일 조건"
 
-#: golf/models.py:1042
+#: golf/models.py:1048
 msgid "Sunday condition"
 msgstr "일요일 조건"
 
-#: golf/models.py:1048
+#: golf/models.py:1054
 msgid "Holiday condition"
 msgstr "공휴일 조건"
 
-#: golf/models.py:1054
+#: golf/models.py:1060
 msgid "Time start condition"
 msgstr "시작 시간 조건"
 
-#: golf/models.py:1060
+#: golf/models.py:1066
 msgid "Time end condition"
 msgstr "시간 종료 조건"
 
-#: golf/models.py:1066
+#: golf/models.py:1072
 msgid "PAX condition"
 msgstr "인원수 조건"
 
-#: golf/models.py:1072
+#: golf/models.py:1078
 msgid "Cart condition"
 msgstr "카트수량 조건"
 
-#: golf/models.py:1079
+#: golf/models.py:1085
 msgid "Customer group condition"
 msgstr "고객 그룹 조건"
 
-#: golf/models.py:1087
+#: golf/models.py:1093
 msgid "Discount fee"
 msgstr "할인대상"
 
-#: golf/models.py:1094
+#: golf/models.py:1100
 msgid "Discount method"
 msgstr "할인방법"
 
-#: golf/models.py:1101
+#: golf/models.py:1107
 msgid "Discount amount"
 msgstr "할인액"
 
-#: golf/models.py:1108
+#: golf/models.py:1114
 msgid "Promotion banner image"
 msgstr "프로모션 배너 이미지"
 
-#: golf/models.py:1115
+#: golf/models.py:1121
 msgid "Golf booking promotion"
 msgstr "골프 예약 프로모션"
 
-#: golf/models.py:1116
+#: golf/models.py:1122
 msgid "Golf booking promotions"
 msgstr "골프 예약 프로모션"
 
@@ -1198,8 +1214,9 @@ msgstr "합계금액"
 
 #: liff/templates/liff/booking_create_form.html:171
 #: liff/templates/liff/golf_booking_create_form.html:191
-#: liff/templates/liff/golf_booking_create_form.html:201
-#: liff/templates/liff/golf_booking_create_form.html:208 liff/views.py:40
+#: liff/templates/liff/golf_booking_create_form.html:202
+#: liff/templates/liff/golf_booking_create_form.html:210
+#: liff/templates/liff/golf_booking_create_form.html:226 liff/views.py:40
 msgid "New Booking"
 msgstr "예약 문의"
 
@@ -1211,10 +1228,6 @@ msgstr "예약 문의"
 #: liff/templates/liff/scorecard.html:55
 msgid "Close"
 msgstr "닫기"
-
-#: liff/templates/liff/golf_booking_create_form.html:209
-msgid "Cancel"
-msgstr "취소"
 
 #: liff/views.py:19
 msgid "Sample"
