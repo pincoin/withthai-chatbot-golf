@@ -215,6 +215,40 @@ def command_new(event, line_bot_api, **kwargs):
 def command_booking(event, line_bot_api, **kwargs):
     golf_club = kwargs['golf_club']
 
+    carousel_string = """
+    {
+  "type": "carousel",
+  "contents": [
+    {
+      "type": "bubble",
+      "body": {
+        "type": "box",
+        "layout": "vertical",
+        "contents": [
+          {
+            "type": "text",
+            "text": "First bubble"
+          }
+        ]
+      }
+    },
+    {
+      "type": "bubble",
+      "body": {
+        "type": "box",
+        "layout": "vertical",
+        "contents": [
+          {
+            "type": "text",
+            "text": "Second bubble"
+          }
+        ]
+      }
+    }
+  ]
+}
+"""
+
     bubble_string = """
     {
       "type": "bubble",
@@ -345,7 +379,7 @@ def command_booking(event, line_bot_api, **kwargs):
         event.reply_token, [
             models.FlexSendMessage(
                 alt_text=golf_club.title_english,
-                contents=json.loads(bubble_string))])
+                contents=json.loads(carousel_string))])
 
 
 def command_course(event, line_bot_api, **kwargs):
