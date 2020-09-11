@@ -216,36 +216,138 @@ def command_booking(event, line_bot_api, **kwargs):
     golf_club = kwargs['golf_club']
 
     carousel_string = """
-    {
-  "type": "carousel",
-  "contents": [
-    {
-      "type": "bubble",
-      "body": {
-        "type": "box",
-        "layout": "vertical",
-        "contents": [
-          {
-            "type": "text",
-            "text": "First bubble"
-          }
-        ]
-      }
-    },
-    {
-      "type": "bubble",
-      "body": {
-        "type": "box",
-        "layout": "vertical",
-        "contents": [
-          {
-            "type": "text",
-            "text": "Second bubble"
-          }
-        ]
-      }
-    }
-  ]
+{
+	"type": "carousel",
+	"contents": [{
+			"type": "bubble",
+			"body": {
+				"type": "box",
+				"layout": "vertical",
+				"contents": [{
+						"type": "text",
+						"text": "2020-10-11 07:35",
+						"weight": "bold",
+						"size": "md",
+						"margin": "lg"
+					},
+					{
+						"type": "text",
+						"text": "John Doe",
+						"margin": "lg",
+						"weight": "bold"
+					},
+					{
+						"type": "box",
+						"layout": "horizontal",
+						"contents": [{
+								"type": "text",
+								"text": "Confirmed",
+								"flex": 4,
+								"color": "#145374"
+							},
+							{
+								"type": "text",
+								"text": "Refund Request",
+								"flex": 0,
+								"color": "#7d0633"
+							}
+						],
+						"margin": "lg"
+					},
+					{
+						"type": "separator",
+						"margin": "xl"
+					},
+					{
+						"type": "box",
+						"layout": "horizontal",
+						"contents": [{
+								"type": "text",
+								"text": "Green Fee",
+								"flex": 2,
+								"size": "sm"
+							},
+							{
+								"type": "text",
+								"text": "4,000 x 3 = 12,000 THB",
+								"flex": 0,
+								"size": "sm"
+							}
+						],
+						"margin": "md"
+					},
+					{
+						"type": "box",
+						"layout": "horizontal",
+						"contents": [{
+								"type": "text",
+								"text": "Caddie Fee",
+								"flex": 2,
+								"size": "sm"
+							},
+							{
+								"type": "text",
+								"text": "1,400 x 3 = 10,200 THB",
+								"flex": 0,
+								"size": "sm"
+							}
+						],
+						"margin": "md"
+					},
+					{
+						"type": "box",
+						"layout": "horizontal",
+						"contents": [{
+								"type": "text",
+								"text": "Cart Fee",
+								"flex": 2,
+								"size": "sm"
+							},
+							{
+								"type": "text",
+								"text": "900 x 3 = 2,700 THB",
+								"flex": 0,
+								"size": "sm"
+							}
+						],
+						"margin": "md"
+					},
+					{
+						"type": "separator",
+						"margin": "xl"
+					},
+					{
+						"type": "box",
+						"layout": "horizontal",
+						"contents": [{
+								"type": "text",
+								"text": "Total",
+								"flex": 2,
+								"weight": "bold"
+							},
+							{
+								"type": "text",
+								"text": "12,999 THB",
+								"flex": 0,
+								"weight": "bold"
+							}
+						]
+					}
+				]
+			}
+		},
+		{
+			"type": "bubble",
+			"body": {
+				"type": "box",
+				"layout": "vertical",
+				"contents": [{
+					"type": "text",
+					"text": "hello, world"
+				}]
+			}
+		}
+	]
 }
 """
 
