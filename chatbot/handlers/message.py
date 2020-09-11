@@ -8,6 +8,7 @@ from linebot import models
 
 from conf import tasks
 from golf import models as golf_models
+from golf import utils as golf_utils
 from .. import utils
 from .. import validators
 
@@ -173,12 +174,11 @@ def command_new(event, line_bot_api, **kwargs):
     round_date_formatted = date(round_date, 'Y-m-d')
     round_time_formatted = date(round_time, 'H:i')
 
-    log = golf_models.GolfBookingOrderStatusLog()
-    log.order = order
-    log.order_status = golf_models.GolfBookingOrder.ORDER_STATUS_CHOICES.open
-    log.payment_status = golf_models.GolfBookingOrder.PAYMENT_STATUS_CHOICES.unpaid
-    log.message = f'{round_date_formatted} {round_time_formatted}\n{pax} PAX {cart} CART\n'
-    log.save()
+    golf_utils.log_order_status(order,
+                                golf_models.GolfBookingOrder.ORDER_STATUS_CHOICES.open,
+                                golf_models.GolfBookingOrder.PAYMENT_STATUS_CHOICES.unpaid,
+                                f'{round_date_formatted} {round_time_formatted}\n'
+                                f'{pax} PAX {cart} CART\n')
 
     # 6. Notification to golf club
     url = reverse('console:golf-booking-order-detail', args=(golf_club.slug, order.order_no))

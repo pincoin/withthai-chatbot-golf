@@ -3,6 +3,7 @@ from django.utils import timezone
 from linebot import models
 
 from golf import models as golf_models
+from golf import utils as golf_utils
 
 
 def command_accept(event, line_bot_api, **kwargs):
@@ -18,12 +19,11 @@ def command_accept(event, line_bot_api, **kwargs):
     round_date_formatted = date(order.round_date, 'Y-m-d')
     round_time_formatted = date(tee_time, 'H:i')
 
-    log = golf_models.GolfBookingOrderStatusLog()
-    log.order = order
-    log.order_status = golf_models.GolfBookingOrder.ORDER_STATUS_CHOICES.accepted
-    log.payment_status = order.payment_status
-    log.message = f'{round_date_formatted} [{round_time_formatted}]\n{order.pax} PAX {order.cart} CART\n'
-    log.save()
+    golf_utils.log_order_status(order,
+                                golf_models.GolfBookingOrder.ORDER_STATUS_CHOICES.accepted,
+                                order.payment_status,
+                                f'{round_date_formatted} [{round_time_formatted}]\n'
+                                f'{order.pax} PAX {order.cart} CART\n')
 
     line_bot_api.reply_message(
         event.reply_token,
@@ -42,12 +42,11 @@ def command_close(event, line_bot_api, **kwargs):
     round_date_formatted = date(order.round_date, 'Y-m-d')
     round_time_formatted = date(order.round_time, 'H:i')
 
-    log = golf_models.GolfBookingOrderStatusLog()
-    log.order = order
-    log.order_status = golf_models.GolfBookingOrder.ORDER_STATUS_CHOICES.closed
-    log.payment_status = order.payment_status
-    log.message = f'{round_date_formatted} [{round_time_formatted}]\n{order.pax} PAX {order.cart} CART\n'
-    log.save()
+    golf_utils.log_order_status(order,
+                                golf_models.GolfBookingOrder.ORDER_STATUS_CHOICES.closed,
+                                order.payment_status,
+                                f'{round_date_formatted} [{round_time_formatted}]\n'
+                                f'{order.pax} PAX {order.cart} CART\n')
 
     line_bot_api.reply_message(
         event.reply_token,

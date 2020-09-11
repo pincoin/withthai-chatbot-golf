@@ -9,6 +9,7 @@ from django.views.generic.edit import FormMixin
 
 from conf import tasks
 from golf import models as golf_models
+from golf import utils as golf_utils
 from . import forms
 from . import viewmixins
 
@@ -195,12 +196,11 @@ class GolfBookingOrderDetailView(FormMixin, generic.DetailView):
                 round_date_formatted = date(self.object.round_date, 'Y-m-d')
                 round_time_formatted = date(self.object.round_time, 'H:i')
 
-                log = golf_models.GolfBookingOrderStatusLog()
-                log.order = self.object
-                log.order_status = golf_models.GolfBookingOrder.ORDER_STATUS_CHOICES.confirmed
-                log.payment_status = self.object.payment_status
-                log.message = f'{round_date_formatted} {round_time_formatted}\n{self.object.pax} PAX {self.object.cart} CART\n'
-                log.save()
+                golf_utils.log_order_status(self.object,
+                                            golf_models.GolfBookingOrder.ORDER_STATUS_CHOICES.confirmed,
+                                            self.object.payment_status,
+                                            f'{round_date_formatted} {round_time_formatted}\n'
+                                            f'{self.object.pax} PAX {self.object.cart} CART\n')
 
                 to = self.object.line_user.line_user_id
                 message = 'Booking confirmed.\n\n' \
@@ -222,12 +222,11 @@ class GolfBookingOrderDetailView(FormMixin, generic.DetailView):
                 round_date_formatted = date(self.object.round_date, 'Y-m-d')
                 round_time_formatted = ', '.join(kwargs[form_name].cleaned_data['tee_off_times'])
 
-                log = golf_models.GolfBookingOrderStatusLog()
-                log.order = self.object
-                log.order_status = golf_models.GolfBookingOrder.ORDER_STATUS_CHOICES.offered
-                log.payment_status = self.object.payment_status
-                log.message = f'{round_date_formatted} [{round_time_formatted}]\n{self.object.pax} PAX {self.object.cart} CART\n'
-                log.save()
+                golf_utils.log_order_status(self.object,
+                                            golf_models.GolfBookingOrder.ORDER_STATUS_CHOICES.offered,
+                                            self.object.payment_status,
+                                            f'{round_date_formatted} [{round_time_formatted}]\n'
+                                            f'{self.object.pax} PAX {self.object.cart} CART\n')
 
                 to = self.object.line_user.line_user_id
                 message = 'Tee-off time offer.\n\n' \
@@ -239,7 +238,8 @@ class GolfBookingOrderDetailView(FormMixin, generic.DetailView):
                 for tee_time in kwargs[form_name].cleaned_data['tee_off_times']:
                     postback_actions.append({
                         'label': f'{round_date_formatted} {tee_time}',
-                        'data': f'action=accept&golf_club={self.object.golf_club.slug}&order_no={self.object.order_no}&tee_time={tee_time}',
+                        'data': f'action=accept&golf_club={self.object.golf_club.slug}'
+                                f'&order_no={self.object.order_no}&tee_time={tee_time}',
                         'display_text': f'Accept {round_date_formatted} {tee_time}',
                     })
 
@@ -261,12 +261,11 @@ class GolfBookingOrderDetailView(FormMixin, generic.DetailView):
                 round_date_formatted = date(self.object.round_date, 'Y-m-d')
                 round_time_formatted = date(self.object.round_time, 'H:i')
 
-                log = golf_models.GolfBookingOrderStatusLog()
-                log.order = self.object
-                log.order_status = golf_models.GolfBookingOrder.ORDER_STATUS_CHOICES.closed
-                log.payment_status = self.object.payment_status
-                log.message = f'{round_date_formatted} {round_time_formatted}\n{self.object.pax} PAX {self.object.cart} CART\n'
-                log.save()
+                golf_utils.log_order_status(self.object,
+                                            golf_models.GolfBookingOrder.ORDER_STATUS_CHOICES.closed,
+                                            self.object.payment_status,
+                                            f'{round_date_formatted} {round_time_formatted}\n'
+                                            f'{self.object.pax} PAX {self.object.cart} CART\n')
 
                 to = self.object.line_user.line_user_id
                 message = 'Booking closed.\n\n' \
