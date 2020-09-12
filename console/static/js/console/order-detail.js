@@ -59,7 +59,6 @@ function runApp() {
 
     // Confirm Modal
     const confirmModal = document.getElementById('confirm-modal');
-    const confirmModalBody = document.getElementById('confirm-modal-body');
     const confirmModalCancel = document.getElementById('confirm-modal-cancel');
     const confirmModalClose = document.getElementById('confirm-modal-close');
     const confirmModalRoundTime = document.getElementById('confirm-modal-round-time');
@@ -84,6 +83,34 @@ function runApp() {
 
     document.getElementById('confirm-modal-ok').addEventListener('click', function (e) {
         document.getElementById('confirm-form').submit();
+    });
+
+    // Offer Modal
+    const offerModal = document.getElementById('offer-modal');
+    const offerModalCancel = document.getElementById('offer-modal-cancel');
+    const offerModalClose = document.getElementById('offer-modal-close');
+    const offerModalRoundTime = document.getElementById('offer-modal-round-time');
+
+    document.getElementById('offer-button').addEventListener('click', function (e) {
+        if (!offerModal.classList.contains('is-active')) {
+            offerModal.classList.add('is-active');
+        }
+
+        offerModalRoundTime.textContent = '['
+            + Array.from(document.getElementsByName('tee_off_times')).map(e => e.value).join(', ')
+            + ']';
+    });
+
+    [offerModalCancel, offerModalClose].forEach(function (element) {
+        element.addEventListener('click', function (e) {
+            if (offerModal.classList.contains('is-active')) {
+                offerModal.classList.remove('is-active');
+            }
+        });
+    });
+
+    document.getElementById('offer-modal-ok').addEventListener('click', function (e) {
+        document.getElementById('offer-form').submit();
     });
 
     // Close Modal
