@@ -238,6 +238,8 @@ def command_booking(event, line_bot_api, **kwargs):
         order_flex_message['body']['contents'][1]['text'] = f'{order.fullname}'
         order_flex_message['body']['contents'][2]['contents'][0]['text'] = order.get_order_status_display()
         order_flex_message['body']['contents'][2]['contents'][1]['text'] = order.get_payment_status_display()
+        order_flex_message['footer']['contents'][0]['action']['uri'] \
+            = f"https://liff.line.me/{golf_club.liff['request']['id']}"
 
         order_flex_message['body']['contents'][8]['contents'][1]['text'] = f'{order.total_selling_price:,.0f} THB'
 
@@ -255,42 +257,11 @@ def command_booking(event, line_bot_api, **kwargs):
         order_list.append(order_flex_message)
 
     if orders:
-        new_booking = """
-        {
-          "type": "bubble",
-          "body": {
-            "type": "box",
-            "layout": "vertical",
-            "contents": [
-              {
-                "type": "button",
-                "action": {
-                  "type": "uri",
-                  "label": "New Booking",
-                  "uri": ""
-                },
-                "style": "primary",
-                "height": "sm",
-                "color": "#056676",
-                "margin": "md"
-              }
-            ]
-          }
-        }
-        """
-
-        contents = json.loads(new_booking)
-        contents['body']['contents'][0]['action']['uri'] = f"https://liff.line.me/{golf_club.liff['request']['id']}"
-
         line_bot_api.reply_message(
             event.reply_token, [
                 models.FlexSendMessage(
                     alt_text='My Booking List',
-                    contents=models.CarouselContainer(contents=order_list)),
-                models.FlexSendMessage(
-                    alt_text='New Booking',
-                    contents=contents)
-            ])
+                    contents=models.CarouselContainer(contents=order_list))])
 
     else:
         no_booking_yet = """
