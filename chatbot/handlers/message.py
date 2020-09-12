@@ -263,11 +263,6 @@ def command_booking(event, line_bot_api, **kwargs):
             "layout": "vertical",
             "contents": [
               {
-                "type": "text",
-                "text": "Please, make a new tee time booking.",
-                "margin": "lg"
-              },
-              {
                 "type": "button",
                 "action": {
                   "type": "uri",
@@ -285,7 +280,7 @@ def command_booking(event, line_bot_api, **kwargs):
         """
 
         contents = json.loads(new_booking)
-        contents['body']['contents'][1]['action']['uri'] = f"https://liff.line.me/{golf_club.liff['request']['id']}"
+        contents['body']['contents'][0]['action']['uri'] = f"https://liff.line.me/{golf_club.liff['request']['id']}"
 
         line_bot_api.reply_message(
             event.reply_token, [
