@@ -266,7 +266,7 @@ def command_booking(event, line_bot_api, **kwargs):
                     alt_text='Make a New Booking',
                     template=models.ButtonsTemplate(
                         title='No Booking Yet',
-                        text='Please, make a new booking.',
+                        text='Please, make a new tee-off booking.',
                         actions=[
                             models.URIAction(label='New Booking',
                                              uri=f"https://liff.line.me/{golf_club.liff['request']['id']}")
