@@ -145,20 +145,22 @@ class GreenFeeSearchForm(forms.Form):
                 .filter(golf_club__slug=slug) \
                 .order_by('-season_end')
 
-            self.fields['seasons'].label_from_instance = lambda obj: f'{obj.season_start} {obj.season_end}'
+            self.fields['seasons'].label_from_instance = lambda obj: \
+                f'{obj.season_start} {obj.season_end}'
 
             self.fields['timeslots'].queryset = golf_models.Timeslot.objects \
                 .filter(golf_club__slug=slug) \
                 .order_by('day_of_week', 'slot_start')
 
-            self.fields['timeslots'].label_from_instance = lambda \
-                obj: f'{obj.slot_start:%H:%M} {obj.slot_end:%H:%M} ({obj.title_english})'
+            self.fields['timeslots'].label_from_instance = lambda obj: \
+                f'{obj.slot_start:%H:%M} {obj.slot_end:%H:%M} ({obj.title_english})'
 
             self.fields['customer_groups'].queryset = golf_models.CustomerGroup.objects \
                 .filter(golf_club__slug=slug) \
                 .order_by('position')
 
-            self.fields['customer_groups'].label_from_instance = lambda obj: f'{obj.title_english}'
+            self.fields['customer_groups'].label_from_instance = lambda obj: \
+                f'{obj.title_english}'
 
         self.fields['seasons'].initial = seasons
         self.fields['day_of_week'].initial = day_of_week
