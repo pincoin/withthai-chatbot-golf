@@ -135,4 +135,22 @@ function runApp() {
     document.getElementById('close-modal-ok').addEventListener('click', function (e) {
         document.getElementById('reject-form').submit();
     });
+
+    document.addEventListener('keyup', function (e) {
+        let key = e.key || e.keyCode;
+
+        if (key === 'Escape' || key === 'Esc' || key === 27) {
+            if (confirmModal.classList.contains('is-active')) {
+                confirmModal.classList.remove('is-active');
+            }
+
+            if (offerModal.classList.contains('is-active')) {
+                offerModal.classList.remove('is-active');
+            }
+
+            if (closeModal.classList.contains('is-active')) {
+                closeModal.classList.remove('is-active');
+            }
+        }
+    });
 }
