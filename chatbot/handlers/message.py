@@ -256,7 +256,7 @@ def command_booking(event, line_bot_api, **kwargs):
 
         order_list.append(order_flex_message)
 
-    if orders:
+    if not orders:
         line_bot_api.reply_message(
             event.reply_token, [
                 models.FlexSendMessage(
