@@ -264,7 +264,7 @@ def command_booking(event, line_bot_api, **kwargs):
             "contents": [
               {
                 "type": "text",
-                "text": "Please, make a tee time booking.",
+                "text": "Please, make a new tee time booking.",
                 "margin": "lg"
               },
               {
@@ -313,7 +313,7 @@ def command_booking(event, line_bot_api, **kwargs):
       },
       {
         "type": "text",
-        "text": "Please, make a tee time booking.",
+        "text": "Please, make a new tee time booking.",
         "margin": "lg"
       },
       {
