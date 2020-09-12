@@ -197,9 +197,9 @@ with-thai::{% trans 'Golf Booking Order Detail' %}
                                 <div class="field action-field-centered">
                                     <div class="control">
                                         <input type="hidden" name="form" value="reject-form">
-                                        <button type="submit" class="button is-danger">
+                                        <a class="button is-danger" id="close-button">
                                             {% trans 'CLOSE' %}
-                                        </button>
+                                        </a>
                                     </div>
                                 </div>
                             </form>
@@ -316,6 +316,62 @@ with-thai::{% trans 'Golf Booking Order Detail' %}
                 </div>
             </div>
         </div>
+    </div>
+</div>
+
+<div class="modal" id="close-modal">
+    <div class="modal-background"></div>
+    <div class="modal-card">
+        <header class="modal-card-head">
+            <p class="modal-card-title is-capitalized has-text-centered has-text-weight-bold is-capitalized">
+                {% trans 'Close booking' %}
+            </p>
+            <button class="delete" id="close-modal-close"></button>
+        </header>
+        <section class="modal-card-body" id="close-modal-body">
+            <div class="columns">
+                <div class="column is-capitalized is-4">{% trans 'Customer name' %}</div>
+                <div class="column has-text-weight-bold is-8">
+                    {{ order.fullname }}
+                </div>
+            </div>
+            <div class="columns">
+                <div class="column is-capitalized is-4">{% trans 'Round Date/Time' %}</div>
+                <div class="column has-text-weight-bold is-8">
+                    {{ order.round_date|date:'Y-m-d' }} {{ order.round_time|date:'H:i' }}
+                </div>
+            </div>
+            <div class="columns">
+                <div class="column is-capitalized is-4">{% trans 'PAX' %}</div>
+                <div class="column has-text-weight-bold is-8">
+                    {{ order.pax }}
+                </div>
+            </div>
+            <div class="columns">
+                <div class="column is-capitalized is-4">{% trans 'Cart' %}</div>
+                <div class="column has-text-weight-bold is-8">
+                    {{ order.cart }}
+                </div>
+            </div>
+            <div class="columns">
+                <div class="column is-capitalized is-4">{% trans 'Total' %}</div>
+                <div class="column has-text-weight-bold is-8">
+                    {{ order.total_selling_price|floatformat:0|intcomma }} THB
+                </div>
+            </div>
+        </section>
+        <footer class="modal-card-foot">
+            <div class="card-footer-item">
+                <button class="button is-success is-capitalized is-fullwidth" id="close-modal-ok">
+                    {% trans 'OK' %}
+                </button>
+            </div>
+            <div class="card-footer-item">
+                <button class="button is-fullwidth" id="close-modal-cancel">
+                    {% trans 'Cancel' %}
+                </button>
+            </div>
+        </footer>
     </div>
 </div>
 
