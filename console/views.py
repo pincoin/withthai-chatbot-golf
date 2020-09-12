@@ -254,7 +254,8 @@ class GolfBookingOrderDetailView(FormMixin, generic.DetailView):
         elif 'reject_form' in kwargs:
             form_name = 'reject_form'
 
-            if self.object.order_status in [golf_models.GolfBookingOrder.ORDER_STATUS_CHOICES.open, ]:
+            if self.object.order_status in [golf_models.GolfBookingOrder.ORDER_STATUS_CHOICES.open,
+                                            golf_models.GolfBookingOrder.ORDER_STATUS_CHOICES.accepted]:
                 self.object.order_status = golf_models.GolfBookingOrder.ORDER_STATUS_CHOICES.closed
                 self.object.save()
 
