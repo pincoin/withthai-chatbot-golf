@@ -254,12 +254,50 @@ def command_booking(event, line_bot_api, **kwargs):
 
         order_list.append(order_flex_message)
 
-    if not orders:
+    if orders:
         line_bot_api.reply_message(
             event.reply_token, [
                 models.FlexSendMessage(
                     alt_text='My Booking List',
                     contents=models.CarouselContainer(contents=order_list))])
+        new_booking = """
+{
+  "type": "bubble",
+  "body": {
+    "type": "box",
+    "layout": "vertical",
+    "contents": [
+      {
+        "type": "text",
+        "text": "Please, make a tee time booking.",
+        "margin": "lg"
+      },
+      {
+        "type": "button",
+        "action": {
+          "type": "uri",
+          "label": "New Booking",
+          "uri": ""
+        },
+        "style": "primary",
+        "height": "sm",
+        "color": "#056676",
+        "margin": "md"
+      }
+    ]
+  }
+}
+"""
+        contents = json.loads(new_booking)
+        contents['body']['contents'][1]['action']['uri'] = f"https://liff.line.me/{golf_club.liff['request']['id']}"
+
+        line_bot_api.reply_message(
+            event.reply_token, [
+                models.FlexSendMessage(
+                    alt_text='New Booking',
+                    contents=contents)
+            ])
+
     else:
         no_booking_yet = """
 {
