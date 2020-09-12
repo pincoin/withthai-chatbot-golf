@@ -253,11 +253,23 @@ def command_booking(event, line_bot_api, **kwargs):
 
         order_list.append(order_flex_message)
 
-    line_bot_api.reply_message(
-        event.reply_token, [
-            models.FlexSendMessage(
-                alt_text='My Booking List',
-                contents=models.CarouselContainer(contents=order_list))])
+    if not orders:
+        line_bot_api.reply_message(
+            event.reply_token, [
+                models.FlexSendMessage(
+                    alt_text='My Booking List',
+                    contents=models.CarouselContainer(contents=order_list))])
+    else:
+        line_bot_api.reply_message(
+            event.reply_token, [
+                models.TemplateSendMessage(
+                    alt_text='Make a New Booking',
+                    template=models.ButtonsTemplate(
+                        text='New Booking',
+                        actions=[
+                            models.URIAction(label='New Booking',
+                                             uri=f"https://liff.line.me/{golf_club.liff['request']['id']}")
+                        ]))])
 
     translation.deactivate()
 
