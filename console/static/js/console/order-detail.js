@@ -57,9 +57,37 @@ function runApp() {
             }
         });
 
+    // Confirm Modal
+    const confirmModal = document.getElementById('confirm-modal');
+    const confirmModalBody = document.getElementById('confirm-modal-body');
+    const confirmModalCancel = document.getElementById('confirm-modal-cancel');
+    const confirmModalClose = document.getElementById('confirm-modal-close');
+    const confirmModalRoundTime = document.getElementById('confirm-modal-round-time');
+
+    const roundTime = document.getElementById('id_round_time');
+
+    document.getElementById('confirm-button').addEventListener('click', function (e) {
+        if (!confirmModal.classList.contains('is-active')) {
+            confirmModal.classList.add('is-active');
+        }
+
+        confirmModalRoundTime.textContent = roundTime.value;
+    });
+
+    [confirmModalCancel, confirmModalClose].forEach(function (element) {
+        element.addEventListener('click', function (e) {
+            if (confirmModal.classList.contains('is-active')) {
+                confirmModal.classList.remove('is-active');
+            }
+        });
+    });
+
+    document.getElementById('confirm-modal-ok').addEventListener('click', function (e) {
+        document.getElementById('confirm-form').submit();
+    });
+
     // Close Modal
     const closeModal = document.getElementById('close-modal');
-    const closeModalBody = document.getElementById('close-modal-body');
     const closeModalCancel = document.getElementById('close-modal-cancel');
     const closeModalClose = document.getElementById('close-modal-close');
 
