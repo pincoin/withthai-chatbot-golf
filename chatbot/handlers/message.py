@@ -279,7 +279,7 @@ def command_booking(event, line_bot_api, **kwargs):
       },
       {
         "type": "text",
-        "text": "Please, Book a golf tee time.",
+        "text": "Please, book a golf tee time.",
         "margin": "lg"
       },
       {
