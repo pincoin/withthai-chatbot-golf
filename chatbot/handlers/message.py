@@ -291,7 +291,7 @@ def command_booking(event, line_bot_api, **kwargs):
         },
         "style": "primary",
         "height": "sm",
-        "color": "#056676",
+        "color": "#11cbd7",
         "margin": "md"
       }
     ]
