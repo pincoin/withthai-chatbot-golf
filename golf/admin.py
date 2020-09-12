@@ -82,7 +82,8 @@ class GolfClubAdmin(admin.ModelAdmin):
         }),
         ('LINE', {
             'fields': ('line_bot_channel_access_token', 'line_bot_channel_secret', 'line_notify_access_token',
-                       'info_flex_message', 'order_flex_message', 'liff', 'scorecard')
+                       'info_flex_message', 'order_flex_message', 'no_order_flex_message',
+                       'liff', 'scorecard')
         })
     )
     inlines = [CustomerGroupInline, SeasonInline, TimeslotInline]

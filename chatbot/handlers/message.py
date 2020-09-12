@@ -1,6 +1,5 @@
 import copy
 import datetime
-import json
 import logging
 
 from django.template.defaultfilters import date
@@ -256,7 +255,7 @@ def command_booking(event, line_bot_api, **kwargs):
 
         order_list.append(order_flex_message)
 
-    if orders:
+    if not orders:
         line_bot_api.reply_message(
             event.reply_token, [
                 models.FlexSendMessage(
@@ -264,49 +263,15 @@ def command_booking(event, line_bot_api, **kwargs):
                     contents=models.CarouselContainer(contents=order_list))])
 
     else:
-        no_booking_yet = """
-{
-  "type": "bubble",
-  "size": "giga",
-  "body": {
-    "type": "box",
-    "layout": "vertical",
-    "contents": [
-      {
-        "type": "text",
-        "text": "No Tee Time Booking Yet",
-        "weight": "bold",
-        "align": "center"
-      },
-      {
-        "type": "text",
-        "text": "Please, book a new golf tee time.",
-        "margin": "lg"
-      },
-      {
-        "type": "button",
-        "action": {
-          "type": "uri",
-          "label": "New Booking",
-          "uri": ""
-        },
-        "style": "primary",
-        "height": "sm",
-        "color": "#11cbd7",
-        "margin": "md"
-      }
-    ]
-  }
-}
-"""
-        contents = json.loads(no_booking_yet)
-        contents['body']['contents'][2]['action']['uri'] = f"https://liff.line.me/{golf_club.liff['request']['id']}"
+        no_order_flex_message = copy.deepcopy(golf_club.no_order_flex_message)
+        no_order_flex_message['body']['contents'][2]['action']['uri'] \
+            = f"https://liff.line.me/{golf_club.liff['request']['id']}"
 
         line_bot_api.reply_message(
             event.reply_token, [
                 models.FlexSendMessage(
                     alt_text='No Booking Yet',
-                    contents=contents)
+                    contents=no_order_flex_message)
             ])
 
     translation.deactivate()

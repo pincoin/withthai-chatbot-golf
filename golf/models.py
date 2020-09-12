@@ -263,6 +263,12 @@ class GolfClub(model_utils_models.TimeStampedModel):
         null=True,
     )
 
+    no_order_flex_message = models.JSONField(
+        verbose_name=_('No order flex message'),
+        blank=True,
+        null=True,
+    )
+
     customer_group = models.ForeignKey(
         'golf.CustomerGroup',
         verbose_name=_('Default customer group'),
