@@ -1,5 +1,6 @@
 import copy
 import datetime
+import json
 import logging
 
 from django.template.defaultfilters import date
@@ -260,17 +261,49 @@ def command_booking(event, line_bot_api, **kwargs):
                     alt_text='My Booking List',
                     contents=models.CarouselContainer(contents=order_list))])
     else:
+        no_booking_yet = """
+{
+  "type": "bubble",
+  "body": {
+    "type": "box",
+    "layout": "vertical",
+    "contents": [
+      {
+        "type": "text",
+        "text": "No Booking Yet",
+        "weight": "bold",
+        "align": "center"
+      },
+      {
+        "type": "text",
+        "text": "Please, make a tee time booking.",
+        "margin": "lg"
+      },
+      {
+        "type": "button",
+        "action": {
+          "type": "uri",
+          "label": "New Booking",
+          "uri": ""
+        },
+        "style": "primary",
+        "height": "sm",
+        "color": "#056676",
+        "margin": "md"
+      }
+    ]
+  }
+}
+"""
+        contents = json.loads(no_booking_yet)
+        contents['body']['contents'][2]['action']['uri'] = f"https://liff.line.me/{golf_club.liff['request']['id']}"
+
         line_bot_api.reply_message(
             event.reply_token, [
-                models.TemplateSendMessage(
-                    alt_text='Make a New Booking',
-                    template=models.ButtonsTemplate(
-                        title='No Booking Yet',
-                        text='Please, make a new tee-off booking.',
-                        actions=[
-                            models.URIAction(label='New Booking',
-                                             uri=f"https://liff.line.me/{golf_club.liff['request']['id']}")
-                        ]))])
+                models.FlexSendMessage(
+                    alt_text='No Booking Yet',
+                    contents=contents)
+            ])
 
     translation.deactivate()
 
