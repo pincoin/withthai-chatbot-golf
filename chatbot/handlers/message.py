@@ -274,7 +274,7 @@ def command_booking(event, line_bot_api, **kwargs):
     "contents": [
       {
         "type": "text",
-        "text": "No Booking Yet",
+        "text": "No Tee Time Booking Yet",
         "weight": "bold",
         "align": "center"
       },
