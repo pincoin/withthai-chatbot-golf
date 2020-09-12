@@ -117,7 +117,7 @@ with-thai::{% trans 'Golf Booking Order Detail' %}
                             {% endif %}
                         </div>
                     </div>
-                    <div class="columns is-mobile{% if order.order_status == order.ORDER_STATUS_CHOICES.confirmed or order.order_status == order.ORDER_STATUS_CHOICES.closed %} is-hidden{% endif %}">
+                    <div class="columns is-mobile{% if order.order_status == order.ORDER_STATUS_CHOICES.offered or order.order_status == order.ORDER_STATUS_CHOICES.confirmed or order.order_status == order.ORDER_STATUS_CHOICES.closed %} is-hidden{% endif %}">
                         <div class="column is-2-tablet is-hidden-mobile has-text-right-tablet">
                             {% trans 'Actions' %}
                         </div>
@@ -127,7 +127,7 @@ with-thai::{% trans 'Golf Booking Order Detail' %}
                                     <input type="radio" name="action" id="confirm-radio" checked>
                                     {% trans 'CONFIRM' %}
                                 </label>
-                                <label class="radio{% if order.order_status == order.ORDER_STATUS_CHOICES.offered %} is-hidden{% endif %}">
+                                <label class="radio {% if order.order_status == order.ORDER_STATUS_CHOICES.accepted %} is-hidden{% endif %}">
                                     <input type="radio" name="action" id="offer-radio">
                                     {% trans 'OFFER' %}
                                 </label>
