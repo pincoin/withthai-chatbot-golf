@@ -1,13 +1,9 @@
-import json
 import uuid
 from decimal import Decimal
-from pathlib import Path
 
 from django.conf import settings
 from django.core.files.storage import default_storage
 from django.db import models
-from django.template.defaultfilters import time
-from django.utils import translation
 from django.utils.translation import gettext_lazy as _
 from model_utils import Choices
 from model_utils import models as model_utils_models
@@ -444,30 +440,6 @@ class GolfClub(model_utils_models.TimeStampedModel):
     class Meta:
         verbose_name = _('Golf club')
         verbose_name_plural = _('Golf clubs')
-
-    def save(self, *args, **kwargs):
-        if self.liff:
-            with open(Path(settings.BASE_DIR) / 'liff' / 'static' / 'js' / 'liff' / 'json' / 'course.json') \
-                    as json_file:
-                self.info_flex_message = json.load(json_file)
-
-                translation.activate('en')
-
-                self.info_flex_message['header']['contents'][0]['text'] = self.title_english
-                self.info_flex_message['hero']['action']['uri'] = self.website
-                self.info_flex_message['hero']['url'] = f'https://www.withthai.com{self.thumbnail.url}'
-                self.info_flex_message['body']['contents'][0]['contents'][1]['text'] = self.get_hole_display()
-                self.info_flex_message['body']['contents'][1]['contents'][1]['text'] = self.phone
-                self.info_flex_message['body']['contents'][2]['contents'][1]['text'] = self.fax
-                self.info_flex_message['body']['contents'][3]['contents'][1]['text'] = self.email
-                self.info_flex_message['body']['contents'][4]['contents'][1]['text'] \
-                    = '{} - {}'.format(time(self.business_hour_start, 'H:i'), time(self.business_hour_end, 'H:i'))
-                self.info_flex_message['body']['contents'][5]['contents'][4]['action']['uri'] \
-                    = f"https://liff.line.me/{self.liff['scorecard']['id']}"
-
-                translation.deactivate()
-
-        super(GolfClub, self).save(*args, **kwargs)
 
     def __str__(self):
         return f'{self.title_english}'
