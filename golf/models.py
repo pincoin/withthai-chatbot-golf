@@ -479,6 +479,12 @@ class LineUser(model_utils_models.TimeStampedModel):
         (1, 'follow', _('Follow')),
     )
 
+    LANG_CHOICES = Choices(
+        ('en', _('English')),
+        ('th', _('Thai')),
+        ('ko', _('Korean')),
+    )
+
     line_user_id = models.CharField(
         verbose_name=_('LINE user ID'),
         max_length=48,
@@ -503,6 +509,27 @@ class LineUser(model_utils_models.TimeStampedModel):
         verbose_name=_('Fullname'),
         max_length=32,
         blank=True,
+    )
+
+    phone = models.CharField(
+        verbose_name=_('Phone number'),
+        max_length=32,
+        blank=True,
+        null=True,
+    )
+
+    email = models.EmailField(
+        verbose_name=_('Email address'),
+        max_length=255,
+        blank=True,
+        null=True,
+    )
+
+    lang = models.CharField(
+        verbose_name=_('Language'),
+        choices=LANG_CHOICES,
+        default=LANG_CHOICES.en,
+        max_length=16,
     )
 
     class Meta:
