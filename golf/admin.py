@@ -91,8 +91,7 @@ class GolfClubAdmin(admin.ModelAdmin):
 
 
 class LineUserAdmin(admin.ModelAdmin):
-    list_display = ('line_user_id', 'fullname', 'email', 'phone', 'lang', 'membership_id',
-                    'line_display_name', 'follow_status')
+    list_display = ('line_user_id', 'fullname', 'email', 'phone', 'lang', 'line_display_name', 'follow_status')
     list_filter = ('follow_status',)
     # readonly_fields = ('line_user_id', 'line_display_name', 'golf_club', 'follow_status')
     ordering = ['-created']

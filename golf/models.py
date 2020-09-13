@@ -532,13 +532,6 @@ class LineUser(model_utils_models.TimeStampedModel):
         max_length=16,
     )
 
-    membership_id = models.CharField(
-        verbose_name=_('Membership ID'),
-        max_length=32,
-        blank=True,
-        null=True,
-    )
-
     class Meta:
         verbose_name = _('LINE user')
         verbose_name_plural = _('LINE users')
@@ -560,6 +553,13 @@ class LineUserMembership(models.Model):
         verbose_name=_('Customer group'),
         db_index=True,
         on_delete=models.CASCADE,
+    )
+
+    membership_id = models.CharField(
+        verbose_name=_('Membership ID'),
+        max_length=32,
+        blank=True,
+        null=True,
     )
 
     class Meta:

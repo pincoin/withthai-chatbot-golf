@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-09-13 13:16+0700\n"
+"POT-Creation-Date: 2020-09-13 14:06+0700\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -281,7 +281,7 @@ msgid "Customer name"
 msgstr "예약자 이름"
 
 #: console/templates/console/golf_booking_order_detail.html:41
-#: console/templates/console/line_user_detail.html:34 golf/models.py:560
+#: console/templates/console/line_user_detail.html:34 golf/models.py:553
 #: golf/models.py:610 golf/models.py:718 golf/models.py:814 golf/models.py:918
 msgid "Customer group"
 msgstr "고객 그룹"
@@ -867,17 +867,17 @@ msgstr "이름"
 msgid "Language"
 msgstr "언어"
 
-#: golf/models.py:536
-msgid "Membership ID"
-msgstr "멤버십 아이디"
-
-#: golf/models.py:543 golf/models.py:553 golf/models.py:798
+#: golf/models.py:536 golf/models.py:546 golf/models.py:798
 msgid "LINE user"
 msgstr "라인 사용자"
 
-#: golf/models.py:544 golf/models.py:586
+#: golf/models.py:537 golf/models.py:586
 msgid "LINE users"
 msgstr "라인 사용자"
+
+#: golf/models.py:559
+msgid "Membership ID"
+msgstr "멤버십 아이디"
 
 #: golf/models.py:566 golf/models.py:567
 msgid "LINE user membership"
