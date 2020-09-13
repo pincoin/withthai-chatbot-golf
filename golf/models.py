@@ -451,10 +451,14 @@ class GolfClub(model_utils_models.TimeStampedModel):
     def save(self, *args, **kwargs):
         translation.activate('en')
 
+        old_thumbnail_url = None
+
         if self.liff:
             with open(Path(settings.BASE_DIR) / 'liff' / 'static' / 'js' / 'liff' / 'json' / 'course.json') \
                     as json_file:
                 self.info_flex_message = json.load(json_file)
+
+                old_thumbnail_url = self.thumbnail.url
 
                 self.info_flex_message['header']['contents'][0]['text'] = self.title_english
                 self.info_flex_message['hero']['action']['uri'] = self.website
@@ -484,7 +488,13 @@ class GolfClub(model_utils_models.TimeStampedModel):
 
         translation.deactivate()
 
-        return super(GolfClub, self).save(*args, **kwargs)
+        state = super(GolfClub, self).save(*args, **kwargs)
+
+        if old_thumbnail_url and old_thumbnail_url != self.thumbnail.url:
+            self.info_flex_message['hero']['url'] = f'https://www.withthai.com{self.thumbnail.url}'
+            return super(GolfClub, self).save(*args, **kwargs)
+
+        return state
 
 
 class LiffApp(model_utils_models.TimeStampedModel):
