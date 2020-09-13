@@ -445,6 +445,43 @@ class GolfClub(model_utils_models.TimeStampedModel):
         return f'{self.title_english}'
 
 
+class LiffApp(model_utils_models.TimeStampedModel):
+    golf_club = models.ForeignKey(
+        'golf.GolfClub',
+        verbose_name=_('Golf club'),
+        db_index=True,
+        on_delete=models.CASCADE,
+    )
+
+    app_id = models.CharField(
+        verbose_name=_('LIFF ID'),
+        max_length=48,
+        db_index=True,
+        unique=True,
+    )
+
+    title = models.CharField(
+        verbose_name=_('LIFF title'),
+        max_length=255,
+    )
+
+    end_point_url = models.URLField(
+        verbose_name=_('Endpoint URL'),
+        max_length=255,
+        blank=True,
+        null=True,
+    )
+
+    class Meta:
+        verbose_name = _('LIFF app')
+        verbose_name_plural = _('LIFF apps')
+
+        unique_together = ['golf_club', 'title']
+
+    def __str__(self):
+        return f'{self.app_id} {self.title} {self.end_point_url}'
+
+
 class LineUser(model_utils_models.TimeStampedModel):
     FOLLOW_CHOICES = Choices(
         (0, 'unfollow', _('Unfollow')),

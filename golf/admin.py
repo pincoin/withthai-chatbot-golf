@@ -4,6 +4,11 @@ from django.utils.translation import gettext_lazy as _
 from . import models
 
 
+class LiffAppInline(admin.TabularInline):
+    model = models.LiffApp
+    extra = 1
+
+
 class CustomerGroupInline(admin.TabularInline):
     model = models.CustomerGroup
     ordering = ['position', ]
@@ -86,7 +91,7 @@ class GolfClubAdmin(admin.ModelAdmin):
                        'liff', 'scorecard')
         })
     )
-    inlines = [CustomerGroupInline, SeasonInline, TimeslotInline]
+    inlines = [LiffAppInline, CustomerGroupInline, SeasonInline, TimeslotInline]
     ordering = ['-created']
 
 

@@ -50,8 +50,13 @@ def golf_club_post_save(sender, instance, **kwargs):
             instance.info_flex_message['body']['contents'][3]['contents'][1]['text'] = instance.email
             instance.info_flex_message['body']['contents'][4]['contents'][1]['text'] \
                 = '{} - {}'.format(time(instance.business_hour_start, 'H:i'), time(instance.business_hour_end, 'H:i'))
-            instance.info_flex_message['body']['contents'][5]['contents'][4]['action']['uri'] \
-                = f"https://liff.line.me/{instance.liff['scorecard']['id']}"
+
+            if 'scorecard' in instance.liff:
+                instance.info_flex_message['body']['contents'][5]['contents'][4]['action']['uri'] \
+                    = f"https://liff.line.me/{instance.liff['scorecard']['id']}"
+            else:
+                instance.info_flex_message['body']['contents'][5]['contents'][4]['action']['uri'] \
+                    = f"https://liff.line.me/"
 
     with open(Path(settings.BASE_DIR) / 'liff' / 'static' / 'js' / 'liff' / 'json' / 'order.json') \
             as json_file:
@@ -62,3 +67,17 @@ def golf_club_post_save(sender, instance, **kwargs):
         instance.no_order_flex_message = json.load(json_file)
 
     translation.deactivate()
+
+
+@receiver(post_save, sender=models.LiffApp)
+def liff_app_post_save(sender, instance, **kwargs):
+    apps = models.LiffApp.objects.filter(golf_club=instance.golf_club)
+
+    app_dict = {}
+    for app in apps:
+        app_dict[app.title] = {
+            'id': app.app_id,
+            'endpoint_url': app.end_point_url,
+        }
+
+    models.GolfClub.objects.filter(slug=instance.golf_club.slug).update(liff=app_dict)
