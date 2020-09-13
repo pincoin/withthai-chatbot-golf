@@ -1,0 +1,33 @@
+{
+  "type": "bubble",
+  "size": "giga",
+  "body": {
+    "type": "box",
+    "layout": "vertical",
+    "contents": [
+      {
+        "type": "text",
+        "text": "No Tee Time Booking Yet",
+        "weight": "bold",
+        "align": "center"
+      },
+      {
+        "type": "text",
+        "text": "Please, book a new golf tee time.",
+        "margin": "lg"
+      },
+      {
+        "type": "button",
+        "action": {
+          "type": "uri",
+          "label": "New Booking",
+          "uri": ""
+        },
+        "style": "primary",
+        "height": "sm",
+        "color": "#11cbd7",
+        "margin": "md"
+      }
+    ]
+  }
+}

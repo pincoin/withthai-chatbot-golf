@@ -53,4 +53,12 @@ def golf_club_post_save(sender, instance, **kwargs):
             instance.info_flex_message['body']['contents'][5]['contents'][4]['action']['uri'] \
                 = f"https://liff.line.me/{instance.liff['scorecard']['id']}"
 
+    with open(Path(settings.BASE_DIR) / 'liff' / 'static' / 'js' / 'liff' / 'json' / 'order.json') \
+            as json_file:
+        instance.order_flex_message = json.load(json_file)
+
+    with open(Path(settings.BASE_DIR) / 'liff' / 'static' / 'js' / 'liff' / 'json' / 'no-order.json') \
+            as json_file:
+        instance.no_order_flex_message = json.load(json_file)
+
     translation.deactivate()

@@ -68,7 +68,7 @@ class GolfClubAdmin(admin.ModelAdmin):
     list_display = ('title_english', 'slug', 'phone', 'email', 'working_status')
     list_filter = ('district__province__title_english', 'working_status')
     prepopulated_fields = {'slug': ('title_english',)}
-    readonly_fields = ('info_flex_message',)
+    readonly_fields = ('info_flex_message', 'order_flex_message', 'no_order_flex_message')
     fieldsets = (
         (_('Golf club'), {
             'fields': ('title_english', 'title_thai', 'slug',

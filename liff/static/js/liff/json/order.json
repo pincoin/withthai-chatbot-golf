@@ -1,0 +1,155 @@
+{
+  "type": "bubble",
+  "body": {
+    "type": "box",
+    "layout": "vertical",
+    "contents": [
+      {
+        "type": "box",
+        "layout": "horizontal",
+        "contents": [
+          {
+            "type": "text",
+            "text": "",
+            "size": "md",
+            "weight": "bold",
+            "flex": 1
+          },
+          {
+            "type": "text",
+            "text": "",
+            "flex": 0,
+            "size": "md",
+            "weight": "bold"
+          }
+        ]
+      },
+      {
+        "type": "text",
+        "text": "",
+        "margin": "lg",
+        "weight": "bold"
+      },
+      {
+        "type": "box",
+        "layout": "horizontal",
+        "contents": [
+          {
+            "type": "text",
+            "text": "",
+            "flex": 4,
+            "color": "#145374"
+          },
+          {
+            "type": "text",
+            "text": "",
+            "flex": 0,
+            "color": "#7d0633"
+          }
+        ],
+        "margin": "lg"
+      },
+      {
+        "type": "separator",
+        "margin": "xl"
+      },
+      {
+        "type": "box",
+        "layout": "horizontal",
+        "contents": [
+          {
+            "type": "text",
+            "text": "Green Fee",
+            "flex": 2,
+            "size": "sm"
+          },
+          {
+            "type": "text",
+            "text": "",
+            "flex": 0,
+            "size": "sm"
+          }
+        ],
+        "margin": "md"
+      },
+      {
+        "type": "box",
+        "layout": "horizontal",
+        "contents": [
+          {
+            "type": "text",
+            "text": "Caddie Fee",
+            "flex": 2,
+            "size": "sm"
+          },
+          {
+            "type": "text",
+            "text": "",
+            "flex": 0,
+            "size": "sm"
+          }
+        ],
+        "margin": "md"
+      },
+      {
+        "type": "box",
+        "layout": "horizontal",
+        "contents": [
+          {
+            "type": "text",
+            "text": "Cart Fee",
+            "flex": 2,
+            "size": "sm"
+          },
+          {
+            "type": "text",
+            "text": "",
+            "flex": 0,
+            "size": "sm"
+          }
+        ],
+        "margin": "md"
+      },
+      {
+        "type": "separator",
+        "margin": "xl"
+      },
+      {
+        "type": "box",
+        "layout": "horizontal",
+        "contents": [
+          {
+            "type": "text",
+            "text": "Total",
+            "flex": 2,
+            "weight": "bold"
+          },
+          {
+            "type": "text",
+            "text": "",
+            "flex": 0,
+            "weight": "bold"
+          }
+        ],
+        "margin": "md"
+      }
+    ]
+  },
+  "footer": {
+    "type": "box",
+    "layout": "horizontal",
+    "contents": [
+      {
+        "type": "button",
+        "action": {
+          "type": "uri",
+          "label": "New",
+          "uri": ""
+        },
+        "height": "sm",
+        "color": "#11cbd7",
+        "style": "primary"
+      }
+    ]
+  }
+}
