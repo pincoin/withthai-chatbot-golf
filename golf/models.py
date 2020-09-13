@@ -532,6 +532,13 @@ class LineUser(model_utils_models.TimeStampedModel):
         max_length=16,
     )
 
+    membership_id = models.CharField(
+        verbose_name=_('Membership ID'),
+        max_length=32,
+        blank=True,
+        null=True,
+    )
+
     class Meta:
         verbose_name = _('LINE user')
         verbose_name_plural = _('LINE users')
