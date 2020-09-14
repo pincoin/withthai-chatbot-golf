@@ -1,0 +1,11 @@
+/* Desktop */
+@media (min-width: 1024px) {
+    .pagination, .pagination-list {
+        justify-content: center;
+    }
+}
+
+/* Mobile */
+@media (max-width: 1023px) {
+
+}

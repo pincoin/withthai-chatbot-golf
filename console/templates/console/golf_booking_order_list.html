@@ -1,4 +1,4 @@
-{% extends './base.html' %}
+{% extends './base1.html' %}
 
 {% load static i18n humanize %}
 {% load console_filters %}
@@ -8,8 +8,8 @@ with-thai::{% trans 'Golf Booking Order List' %}
 {% endblock %}
 
 {% block content %}
-<div class="section pb-0">
-    <div class="card pb-0">
+<div>
+    <div class="card">
         <header class="card-header">
             <p class="card-header-title">
                 {% trans 'All Booking List' %}
@@ -20,13 +20,13 @@ with-thai::{% trans 'Golf Booking Order List' %}
                 {% include './_order_search_box.html' with form=form %}
 
                 {% for order in orders %}
-                <div class="columns is-multiline is-mobile is-vcentered page-list">
-                    <div class="column is-1-tablet is-4-mobile is-family-monospace">
+                <div class="columns is-multiline is-mobile is-vcentered">
+                    <div class="column is-hidden-tablet is-4-mobile">
                         <a href="{% url 'console:golf-booking-order-detail' slug order.order_no %}?{{ q }}">
                             {{ order.order_no|truncatechars:9 }}
                         </a>
                     </div>
-                    <div class="column is-1-tablet is-8-mobile">
+                    <div class="column is-2-tablet is-8-mobile">
                         <a href="{% url 'console:golf-booking-order-detail' slug order.order_no %}?{{ q }}">
                             <div class="tags has-addons is-hidden-tablet status-tags is-capitalized">
                                 {% if order.order_status == order.ORDER_STATUS_CHOICES.open %}
@@ -52,47 +52,46 @@ with-thai::{% trans 'Golf Booking Order List' %}
                                 {% endif %}
                             </div>
                             <div class="is-hidden-mobile is-capitalized">
-                                <div class="field">
-                                    {% if order.order_status == order.ORDER_STATUS_CHOICES.open %}
-                                    <span class="tag status-open">{{ order.get_order_status_display }}</span>
-                                    {% elif order.order_status == order.ORDER_STATUS_CHOICES.offered %}
-                                    <span class="tag status-offered">{{ order.get_order_status_display }}</span>
-                                    {% elif order.order_status == order.ORDER_STATUS_CHOICES.accepted %}
-                                    <span class="tag status-accepted">{{ order.get_order_status_display }}</span>
-                                    {% elif order.order_status == order.ORDER_STATUS_CHOICES.confirmed %}
-                                    <span class="tag status-confirmed">{{ order.get_order_status_display }}</span>
-                                    {% elif order.order_status == order.ORDER_STATUS_CHOICES.closed %}
-                                    <span class="tag status-closed">{{ order.get_order_status_display }}</span>
-                                    {% endif %}
-                                </div>
-
-                                <div class="field">
-                                    {% if order.payment_status == order.PAYMENT_STATUS_CHOICES.unpaid %}
-                                    <span class="tag status-unpaid">{{ order.get_payment_status_display }}</span>
-                                    {% elif order.payment_status == order.PAYMENT_STATUS_CHOICES.paid %}
-                                    <span class="tag status-paid">{{ order.get_payment_status_display }}</span>
-                                    {% elif order.payment_status == order.PAYMENT_STATUS_CHOICES.refund_requests %}
-                                    <span class="tag status-refund-requests">{{ order.get_payment_status_display }}</span>
-                                    {% elif order.payment_status == order.PAYMENT_STATUS_CHOICES.refunded %}
-                                    <span class="tag status-refunded">{{ order.get_payment_status_display }}</span>
-                                    {% endif %}
+                                <div class="field is-grouped">
+                                    <div class="control">
+                                        {% if order.order_status == order.ORDER_STATUS_CHOICES.open %}
+                                        <span class="tag status-open">{{ order.get_order_status_display }}</span>
+                                        {% elif order.order_status == order.ORDER_STATUS_CHOICES.offered %}
+                                        <span class="tag status-offered">{{ order.get_order_status_display }}</span>
+                                        {% elif order.order_status == order.ORDER_STATUS_CHOICES.accepted %}
+                                        <span class="tag status-accepted">{{ order.get_order_status_display }}</span>
+                                        {% elif order.order_status == order.ORDER_STATUS_CHOICES.confirmed %}
+                                        <span class="tag status-confirmed">{{ order.get_order_status_display }}</span>
+                                        {% elif order.order_status == order.ORDER_STATUS_CHOICES.closed %}
+                                        <span class="tag status-closed">{{ order.get_order_status_display }}</span>
+                                        {% endif %}
+                                    </div>
+                                    <div class="control">
+                                        {% if order.payment_status == order.PAYMENT_STATUS_CHOICES.unpaid %}
+                                        <span class="tag status-unpaid">{{ order.get_payment_status_display }}</span>
+                                        {% elif order.payment_status == order.PAYMENT_STATUS_CHOICES.paid %}
+                                        <span class="tag status-paid">{{ order.get_payment_status_display }}</span>
+                                        {% elif order.payment_status == order.PAYMENT_STATUS_CHOICES.refund_requests %}
+                                        <span class="tag status-refund-requests">{{ order.get_payment_status_display }}</span>
+                                        {% elif order.payment_status == order.PAYMENT_STATUS_CHOICES.refunded %}
+                                        <span class="tag status-refunded">{{ order.get_payment_status_display }}</span>
+                                        {% endif %}
+                                    </div>
                                 </div>
                             </div>
                         </a>
                     </div>
-                    <div class="column is-1-tablet is-12-mobile is-family-monospace has-text-weight-bold has-text-right">
-                        {{ order.round_date|date:'Y-m-d' }}<br class="is-hidden-mobile">
+                    <div class="column is-2-tablet is-12-mobile has-text-weight-bold has-text-right is-family-monospace">
+                        {{ order.round_date|date:'Y-m-d' }}
                         {{ order.round_time|date:'H:i' }}
                     </div>
-                    <div class="column is-1-tablet is-hidden-mobile is-family-monospace has-text-right">
-                        <i class="fas fa-users fa-fw"></i>
+                    <div class="column is-1-tablet is-hidden-mobile has-text-right is-family-monospace">
                         {{ order.pax }} PAX
                     </div>
-                    <div class="column is-1-tablet is-hidden-mobile is-family-monospace has-text-right">
-                        <i class="fas fa-truck-pickup fa-fw"></i>
+                    <div class="column is-1-tablet is-hidden-mobile has-text-right is-family-monospace">
                         {{ order.cart }} CART
                     </div>
-                    <div class="column is-1-tablet is-12-mobile is-family-monospace has-text-right">
+                    <div class="column is-2-tablet is-12-mobile has-text-right has-text-weight-bold is-family-monospace">
                         {{ order.total_selling_price|floatformat:0|intcomma }} THB
                         <span class="is-hidden-tablet">
                             / <i class="fas fa-users fa-fw"></i>
@@ -103,7 +102,7 @@ with-thai::{% trans 'Golf Booking Order List' %}
                     </div>
                     <div class="column is-4-tablet is-12-mobile has-text-right-mobile">
                         {% if order.customer_group.title_english %}
-                        <span class="tag status-customer-{{ order.customer_group.id|modulo:5 }} is-hidden-mobile mr-3">
+                        <span class="tag status-customer-{{ order.customer_group.id|modulo:5 }} is-hidden-mobile">
                             {{ order.customer_group.title_english }}
                         </span>
                         {% endif %}
@@ -111,7 +110,7 @@ with-thai::{% trans 'Golf Booking Order List' %}
                             {{ order.fullname }}
                         </a>
                         {% if order.customer_group.title_english %}
-                        <span class="tag status-customer-{{ order.customer_group.id|modulo:5 }} is-hidden-tablet ml-2">
+                        <span class="tag status-customer-{{ order.customer_group.id|modulo:5 }} is-hidden-tablet">
                             {{ order.customer_group.title_english }}
                         </span>
                         {% endif %}
@@ -128,7 +127,7 @@ with-thai::{% trans 'Golf Booking Order List' %}
         </div>
     </div>
 </div>
-<div class="section pt-0">
+<div class="page-pagination">
     {% include './_pagination.html' with page_obj=page_obj page_range=page_range q=q_popped %}
 </div>
 {% endblock %}

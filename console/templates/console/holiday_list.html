@@ -1,4 +1,4 @@
-{% extends './base.html' %}
+{% extends './base1.html' %}
 
 {% load static i18n humanize %}
 {% load console_filters %}
@@ -8,8 +8,8 @@ with-thai::{% trans 'Holiday List' %}
 {% endblock %}
 
 {% block content %}
-<div class="section pb-0">
-    <div class="card pb-0">
+<div>
+    <div class="card">
         <header class="card-header">
             <p class="card-header-title">
                 {% trans 'Holiday List' %}
@@ -18,11 +18,11 @@ with-thai::{% trans 'Holiday List' %}
         <div class="card-content">
             <div class="content">
                 {% for holiday in holidays %}
-                <div class="columns is-multiline is-mobile is-vcentered page-list">
-                    <div class="column is-1-tablet is-12-mobile">
+                <div class="columns is-multiline is-mobile is-vcentered">
+                    <div class="column is-2-tablet is-12-mobile">
                         {{ holiday.holiday|date:'Y-m-d' }}
                     </div>
-                    <div class="column is-2-tablet is-12-mobile">
+                    <div class="column is-10-tablet is-12-mobile">
                         {{ holiday.title }}
                     </div>
                 </div>
@@ -37,7 +37,7 @@ with-thai::{% trans 'Holiday List' %}
         </div>
     </div>
 </div>
-<div class="section pt-0">
+<div class="page-pagination">
     {% include './_pagination.html' with page_obj=page_obj page_range=page_range q=q_popped %}
 </div>
 {% endblock %}

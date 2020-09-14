@@ -1,0 +1,83 @@
+.back-to-list-button {
+    font-size: .8rem;
+    font-weight: bold;
+    color: #04515e;
+    background-color: #abfdca;
+    margin: .5rem .5rem 0 0;
+    border: none;
+}
+
+.no-break-word {
+    white-space: nowrap;
+    word-break: keep-all;
+}
+
+.status-open {
+    background-color: #66ff80 !important;
+    color: #000 !important;
+}
+
+.status-accepted {
+    background-color: #06b200 !important;
+    color: #fff !important;
+}
+
+.status-offered {
+    background-color: #06b200 !important;
+    color: #fff !important;
+}
+
+.status-confirmed {
+    background-color: #009420 !important;
+    color: #fff !important;
+}
+
+.status-closed {
+    background-color: #e89f71 !important;
+    color: #fff !important;
+}
+
+.status-unpaid {
+    background-color: #3282b8 !important;
+    color: #fff !important;
+}
+
+.status-paid {
+    background-color: #69cbd6 !important;
+    color: #fff !important;
+}
+
+.status-refund-requests {
+    background-color: #cd0a0a !important;
+    color: #fff !important;
+}
+
+.status-refunded {
+    background-color: #eb8f8f !important;
+    color: #fff !important;
+}
+
+.status-customer-0 {
+    background-color: #8900ff !important;
+    color: #fff !important;
+}
+
+.status-customer-1 {
+    background-color: #943cdf !important;
+    color: #fff !important;
+}
+
+.status-customer-2 {
+    background-color: #b000ff !important;
+    color: #fff !important;
+}
+
+.status-customer-3 {
+    background-color: #b93dff !important;
+    color: #fff !important;
+}
+
+.status-customer-4 {
+    background-color: #cc7aea !important;
+    color: #fff !important;
+}

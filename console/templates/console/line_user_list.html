@@ -1,4 +1,4 @@
-{% extends './base.html' %}
+{% extends './base1.html' %}
 
 {% load static i18n humanize %}
 {% load console_filters %}
@@ -8,8 +8,8 @@ with-thai::{% trans 'LINE User List' %}
 {% endblock %}
 
 {% block content %}
-<div class="section pb-0">
-    <div class="card pb-0">
+<div>
+    <div class="card">
         <header class="card-header">
             <p class="card-header-title">
                 {% trans 'All LINE User List' %}
@@ -18,7 +18,7 @@ with-thai::{% trans 'LINE User List' %}
         <div class="card-content">
             <div class="content">
                 {% for user in users %}
-                <div class="columns is-multiline is-mobile is-vcentered page-list">
+                <div class="columns is-multiline is-mobile is-vcentered">
                     <div class="column is-1-tablet is-8-mobile">
                         {{ user.line_user.line_user_id|truncatechars:9 }}
                         <span class="is-hidden-tablet">
@@ -29,22 +29,22 @@ with-thai::{% trans 'LINE User List' %}
                             {% endif %}
                         </span>
                     </div>
-                    <div class="column is-1-tablet is-4-mobile has-text-right">
+                    <div class="column is-2-tablet is-4-mobile has-text-right">
                         <span class="tag status-customer-{{ user.customer_group.id|modulo:5 }}">
                             {{ user.customer_group.title_english }}
                         </span>
                     </div>
-                    <div class="column is-2-tablet is-12-mobile">
+                    <div class="column is-3-tablet is-12-mobile">
                         <a href="{% url 'console:line-user-detail' slug user.line_user.line_user_id %}?{{ q }}">
                             {{ user.line_user.line_display_name }}
                         </a>
                     </div>
-                    <div class="column is-2-tablet is-12-mobile">
+                    <div class="column is-3-tablet is-12-mobile">
                         <a href="{% url 'console:line-user-detail' slug user.line_user.line_user_id %}?{{ q }}">
                             {{ user.line_user.fullname|default:'-' }}
                         </a>
                     </div>
-                    <div class="column is-1-tablet is-hidden-mobile">
+                    <div class="column is-3-tablet is-hidden-mobile">
                         {% if user.line_user.follow_status == user.line_user.FOLLOW_CHOICES.follow %}
                         <span class="has-text-success-dark">
                             <i class="fas fa-check fa-fw"></i>
@@ -69,7 +69,7 @@ with-thai::{% trans 'LINE User List' %}
         </div>
     </div>
 </div>
-<div class="section pt-0">
+<div class="page-pagination">
     {% include './_pagination.html' with page_obj=page_obj page_range=page_range q=q_popped %}
 </div>
 {% endblock %}

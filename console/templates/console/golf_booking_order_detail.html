@@ -1,4 +1,4 @@
-{% extends './base.html' %}
+{% extends './base1.html' %}
 
 {% load i18n static humanize %}
 {% load console_filters %}
@@ -8,39 +8,39 @@ with-thai::{% trans 'Golf Booking Order Detail' %}
 {% endblock %}
 
 {% block content %}
-<div class="section">
+<div>
     <div class="card">
         <header class="card-header">
             <p class="card-header-title">
                 {% trans 'Golf Booking Order Detail' %}
             </p>
             <a href="{% url 'console:golf-booking-order-list' slug %}?{{ q }}"
-               class="button is-info mt-1 mr-1">{% trans 'Back to List' %}</a>
+               class="button back-to-list-button">{% trans 'Back to List' %}</a>
         </header>
         <div class="card-content">
             <div class="content">
-                <div class="page-detail">
+                <div class="">
                     <div class="columns is-mobile">
-                        <div class="column is-2-tablet is-5-mobile has-text-right-tablet is-capitalized">
+                        <div class="column is-3-tablet is-5-mobile has-text-right-tablet is-capitalized">
                             {% trans 'Order no' %}
                         </div>
-                        <div class="column is-10-tablet is-7-mobile">
+                        <div class="column is-9-tablet is-7-mobile is-family-monospace">
                             {{ order.order_no|truncatechars:9 }}
                         </div>
                     </div>
                     <div class="columns is-mobile">
-                        <div class="column is-2-tablet is-5-mobile has-text-right-tablet is-capitalized">
+                        <div class="column is-3-tablet is-5-mobile has-text-right-tablet is-capitalized">
                             {% trans 'Customer name' %}
                         </div>
-                        <div class="column is-10-tablet is-7-mobile has-text-weight-bold">
+                        <div class="column is-9-tablet is-7-mobile has-text-weight-bold">
                             {{ order.fullname }}
                         </div>
                     </div>
                     <div class="columns is-mobile">
-                        <div class="column is-2-tablet is-5-mobile has-text-right-tablet is-capitalized">
+                        <div class="column is-3-tablet is-5-mobile has-text-right-tablet is-capitalized">
                             {% trans 'Customer group' %}
                         </div>
-                        <div class="column is-10-tablet is-7-mobile">
+                        <div class="column is-9-tablet is-7-mobile">
                             {% if order.customer_group.title_english %}
                             <span class="tag status-customer-{{ order.customer_group.id|modulo:5 }}">
                                 {{ order.customer_group.title_english }}
@@ -49,45 +49,45 @@ with-thai::{% trans 'Golf Booking Order Detail' %}
                         </div>
                     </div>
                     <div class="columns is-mobile">
-                        <div class="column is-2-tablet is-5-mobile has-text-right-tablet">
+                        <div class="column is-3-tablet is-5-mobile has-text-right-tablet">
                             {% trans 'Round Date/Time' %}
                         </div>
-                        <div class="column is-10-tablet is-7-mobile has-text-weight-bold">
+                        <div class="column is-9-tablet is-7-mobile has-text-weight-bold is-family-monospace">
                             <i class="fas fa-golf-ball fa-fw"></i>
                             {{ order.round_date|date:'Y-m-d' }} {{ order.round_time|date:'H:i' }}
                         </div>
                     </div>
                     <div class="columns is-mobile">
-                        <div class="column is-2-tablet is-5-mobile has-text-right-tablet">
+                        <div class="column is-3-tablet is-5-mobile has-text-right-tablet">
                             {% trans 'PAX' %}
                         </div>
-                        <div class="column is-10-tablet is-7-mobile has-text-weight-bold">
+                        <div class="column is-9-tablet is-7-mobile has-text-weight-bold is-family-monospace">
                             <i class="fas fa-users fa-fw"></i> {{ order.pax }}
                         </div>
                     </div>
                     <div class="columns is-mobile">
-                        <div class="column is-2-tablet is-5-mobile has-text-right-tablet">
+                        <div class="column is-3-tablet is-5-mobile has-text-right-tablet">
                             {% trans 'Cart' %}
                         </div>
-                        <div class="column is-10-tablet is-7-mobile has-text-weight-bold">
+                        <div class="column is-9-tablet is-7-mobile has-text-weight-bold is-family-monospace">
                             <i class="fas fa-truck-pickup fa-fw"></i>
                             {{ order.cart }}
                         </div>
                     </div>
                     <div class="columns is-mobile">
-                        <div class="column is-2-tablet is-5-mobile has-text-right-tablet">
+                        <div class="column is-3-tablet is-5-mobile has-text-right-tablet">
                             {% trans 'Total' %}
                         </div>
-                        <div class="column is-10-tablet is-7-mobile has-text-weight-bold">
+                        <div class="column is-9-tablet is-7-mobile has-text-weight-bold is-family-monospace">
                             <i class="fas fa-coins fa-fw"></i>
                             {{ order.total_selling_price|floatformat:0|intcomma }} THB
                         </div>
                     </div>
                     <div class="columns is-mobile">
-                        <div class="column is-2-tablet is-5-mobile has-text-right-tablet is-capitalized">
+                        <div class="column is-3-tablet is-5-mobile has-text-right-tablet is-capitalized">
                             {% trans 'Order status' %}
                         </div>
-                        <div class="column is-10-tablet is-7-mobile">
+                        <div class="column is-9-tablet is-7-mobile">
                             {% if order.order_status == order.ORDER_STATUS_CHOICES.open %}
                             <span class="tag status-open">{{ order.get_order_status_display }}</span>
                             {% elif order.order_status == order.ORDER_STATUS_CHOICES.offered %}
@@ -102,10 +102,10 @@ with-thai::{% trans 'Golf Booking Order Detail' %}
                         </div>
                     </div>
                     <div class="columns is-mobile">
-                        <div class="column is-2-tablet is-5-mobile has-text-right-tablet is-capitalized">
+                        <div class="column is-3-tablet is-5-mobile has-text-right-tablet is-capitalized">
                             {% trans 'Payment status' %}
                         </div>
-                        <div class="column is-10-tablet is-7-mobile">
+                        <div class="column is-9-tablet is-7-mobile">
                             {% if order.payment_status == order.PAYMENT_STATUS_CHOICES.unpaid %}
                             <span class="tag status-unpaid">{{ order.get_payment_status_display }}</span>
                             {% elif order.payment_status == order.PAYMENT_STATUS_CHOICES.paid %}
@@ -118,10 +118,10 @@ with-thai::{% trans 'Golf Booking Order Detail' %}
                         </div>
                     </div>
                     <div class="columns is-mobile{% if order.order_status == order.ORDER_STATUS_CHOICES.offered or order.order_status == order.ORDER_STATUS_CHOICES.confirmed or order.order_status == order.ORDER_STATUS_CHOICES.closed %} is-hidden{% endif %}">
-                        <div class="column is-2-tablet is-hidden-mobile has-text-right-tablet">
+                        <div class="column is-3-tablet is-hidden-mobile has-text-right-tablet">
                             {% trans 'Actions' %}
                         </div>
-                        <div class="column is-10-tablet is-12-mobile has-text-centered-mobile">
+                        <div class="column is-9-tablet is-12-mobile has-text-centered-mobile">
                             <div class="control">
                                 <label class="radio">
                                     <input type="radio" name="action" id="confirm-radio" checked>
@@ -136,7 +136,7 @@ with-thai::{% trans 'Golf Booking Order Detail' %}
                                     {% trans 'CLOSE' %}
                                 </label>
                             </div>
-                            <form class="mt-4 mb-2" id="confirm-form" method="post"
+                            <form class="" id="confirm-form" method="post"
                                   action="{% url 'console:golf-booking-order-detail' slug  order.order_no %}">
                                 {% csrf_token %}
                                 <div class="field has-addons action-field-centered">
@@ -158,11 +158,11 @@ with-thai::{% trans 'Golf Booking Order Detail' %}
                                     </div>
                                 </div>
                             </form>
-                            <form class="mt-4 mb-2 is-hidden" id="offer-form" method="post"
+                            <form class=" is-hidden" id="offer-form" method="post"
                                   action="{% url 'console:golf-booking-order-detail' slug  order.order_no %}">
                                 {% csrf_token %}
                                 <div id="offer-list">
-                                    <div class="field has-addons action-field-centered mb-3">
+                                    <div class="field has-addons action-field-centered">
                                         <div class="control">
                                             <input class="input"
                                                    type="time"
@@ -191,7 +191,7 @@ with-thai::{% trans 'Golf Booking Order Detail' %}
                                     </div>
                                 </div>
                             </form>
-                            <form class="mt-4 mb-2 is-hidden" id="reject-form" method="post"
+                            <form class=" is-hidden" id="reject-form" method="post"
                                   action="{% url 'console:golf-booking-order-detail' slug  order.order_no %}">
                                 {% csrf_token %}
                                 <div class="field action-field-centered">
@@ -227,7 +227,7 @@ with-thai::{% trans 'Golf Booking Order Detail' %}
         </div>
     </div>
 </div>
-<div class="section">
+<div>
     <div class="card">
         <header class="card-header">
             <p class="card-header-title">
@@ -236,10 +236,10 @@ with-thai::{% trans 'Golf Booking Order Detail' %}
         </header>
         <div class="card-content">
             <div class="content">
-                <div class="page-detail">
+                <div class="">
                     {% for fee in products %}
                     <div class="columns is-mobile is-vcentered">
-                        <div class="column is-2-tablet is-5-mobile has-text-right-tablet is-capitalized">
+                        <div class="column is-3-tablet is-5-mobile has-text-right-tablet is-capitalized">
                             {{ fee.get_product_display }}<br>
                             {% if fee.customer_group.title_english %}
                             <span class="tag status-customer-{{ fee.customer_group.id|modulo:5 }}">
@@ -247,7 +247,7 @@ with-thai::{% trans 'Golf Booking Order Detail' %}
                             </span>
                             {% endif %}
                         </div>
-                        <div class="column is-10-tablet is-7-mobile">
+                        <div class="column is-9-tablet is-7-mobile is-family-monospace">
                             <strong>{{ fee.selling_price|floatformat:0|intcomma }}</strong>
                             * {{ fee.quantity }}
                             = {{ fee.subtotal|floatformat:0|intcomma }} THB
@@ -260,7 +260,7 @@ with-thai::{% trans 'Golf Booking Order Detail' %}
     </div>
 </div>
 
-<div class="section">
+<div>
     <div class="card">
         <header class="card-header">
             <p class="card-header-title is-capitalized">
@@ -269,17 +269,17 @@ with-thai::{% trans 'Golf Booking Order Detail' %}
         </header>
         <div class="card-content">
             <div class="content">
-                <div class="page-detail">
+                <div class="">
                     {% for log in logs %}
                     <div class="columns is-mobile is-multiline is-vcentered">
-                        <div class="column is-2-tablet is-5-mobile has-text-right-tablet">
+                        <div class="column is-3-tablet is-5-mobile has-text-right-tablet">
                             {% if log.user %}
                             {{ log.user.first_name }} {{ log.user.last_name }}
                             {% else %}
                             <i class="fas fa-minus fa-fw"></i>
                             {% endif %}
                         </div>
-                        <div class="column is-2-tablet is-7-mobile">
+                        <div class="column is-3-tablet is-7-mobile">
                             {% if log.order_status == order.ORDER_STATUS_CHOICES.open %}
                             <span class="tag status-open">{{ log.get_order_status_display }}</span>
                             {% elif log.order_status == order.ORDER_STATUS_CHOICES.offered %}
@@ -302,13 +302,13 @@ with-thai::{% trans 'Golf Booking Order Detail' %}
                             <span class="tag status-refunded">{{ log.get_payment_status_display }}</span>
                             {% endif %}
                         </div>
-                        <div class="column is-hidden-tablet is-5-mobile">
+                        <div class="column is-hidden-tablet is-5-mobile is-family-monospace">
                             {{ log.created|date:'Y-m-d H:i' }}
                         </div>
-                        <div class="column is-3-tablet is-7-mobile">
+                        <div class="column is-3-tablet is-7-mobile is-family-monospace">
                             {{ log.message|linebreaks }}
                         </div>
-                        <div class="column is-2-tablet is-hidden-mobile">
+                        <div class="column is-3-tablet is-hidden-mobile is-family-monospace">
                             {{ log.created|date:'Y-m-d H:i' }}
                         </div>
                     </div>

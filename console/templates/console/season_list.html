@@ -1,4 +1,4 @@
-{% extends './base.html' %}
+{% extends './base1.html' %}
 
 {% load static i18n humanize %}
 {% load console_filters %}
@@ -8,8 +8,8 @@ with-thai::{% trans 'Season List' %}
 {% endblock %}
 
 {% block content %}
-<div class="section pb-0">
-    <div class="card pb-0">
+<div>
+    <div class="card">
         <header class="card-header">
             <p class="card-header-title">
                 {% trans 'Season List' %}
@@ -18,20 +18,20 @@ with-thai::{% trans 'Season List' %}
         <div class="card-content">
             <div class="content">
                 {% for season in seasons %}
-                <div class="columns is-multiline is-mobile is-vcentered page-list">
-                    <div class="column is-2-tablet is-12-mobile has-text-weight-bold">
+                <div class="columns is-multiline is-mobile is-vcentered">
+                    <div class="column is-3-tablet is-12-mobile has-text-weight-bold is-family-monospace">
                         {{ season.season_start|date:'Y-m-d' }} ~ {{ season.season_end|date:'Y-m-d' }}
                     </div>
-                    <div class="column is-1-tablet is-12-mobile">
+                    <div class="column is-3-tablet is-12-mobile">
                         {{ season.title_english }}
                     </div>
-                    <div class="column is-2-tablet is-12-mobile is-capitalized">
+                    <div class="column is-3-tablet is-12-mobile is-capitalized is-family-monospace">
                         {% trans 'Caddie fee' %}
                         <strike>{{ season.caddie_fee_list_price|floatformat:0|intcomma }}</strike>
                         <strong>{{ season.caddie_fee_selling_price|floatformat:0|intcomma }}</strong>
                         THB
                     </div>
-                    <div class="column is-2-tablet is-12-mobile is-capitalized">
+                    <div class="column is-3-tablet is-12-mobile is-capitalized is-family-monospace">
                         {% trans 'Cart fee' %}
                         <strike>{{ season.cart_fee_list_price|floatformat:0|intcomma }}</strike>
                         <strong>{{ season.cart_fee_selling_price|floatformat:0|intcomma }}</strong>
@@ -49,7 +49,7 @@ with-thai::{% trans 'Season List' %}
         </div>
     </div>
 </div>
-<div class="section pt-0">
+<div class="page-pagination">
     {% include './_pagination.html' with page_obj=page_obj page_range=page_range q=q_popped %}
 </div>
 {% endblock %}

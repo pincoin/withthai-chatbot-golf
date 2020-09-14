@@ -1,0 +1,42 @@
+/* Sticky footer */
+body {
+    display: flex;
+    min-height: calc(100vh - 52px);
+    flex-direction: column;
+}
+
+main {
+    flex: 1 0 auto;
+}
+
+aside {
+    padding: 2rem 1rem !important;
+}
+
+.menu-list li ul {
+    margin: 0 0.75em;
+}
+
+.page-pagination {
+    border-top: 1px dashed #123542;
+    padding-top: 1rem;
+    margin: .25rem 0 1rem 0;
+}
+
+/* Desktop */
+@media (min-width: 1024px) {
+    main {
+        padding: 1rem 0;
+    }
+}
+
+/* Mobile */
+@media (max-width: 1023px) {
+    .navbar-brand {
+        justify-content: space-between; /* 3 div left center right for mobile */
+    }
+
+    .card-content {
+        padding: .75rem 1rem;
+    }
+}

@@ -34,7 +34,7 @@ function runApp() {
         .addEventListener('click', function (e) {
             const time = this.parentNode.parentNode.parentNode.children[1].children[0].children[0].children[0].value
             const div = document.createElement('div');
-            div.innerHTML = '<div class="field has-addons action-field-centered mb-3">\n' +
+            div.innerHTML = '<div class="field has-addons action-field-centered">\n' +
                 '<div class="control">\n' +
                 '    <input class="input"\n' +
                 '        type="time"\n' +
