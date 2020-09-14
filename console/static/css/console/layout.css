@@ -16,7 +16,8 @@ aside {
 }
 
 .menu-list li ul {
-    margin: 0 0.75em;
+    margin: 0 .75em;
+    padding-left: .15rem;
 }
 
 .page-pagination {
