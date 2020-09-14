@@ -67,8 +67,13 @@ aside {
 
     .mobile-list-item {
         margin: 0 -.2rem 1.2rem -.2rem !important;
+        padding: .5rem;
         box-shadow: 1px 1px 8px 2px rgba(0, 0, 0, 0.2);
         border-radius: 8px;
+    }
+
+    .mobile-list-item .column {
+        padding: .1rem .25rem;
     }
 
     .mobile-detail-item {

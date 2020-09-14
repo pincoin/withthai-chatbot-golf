@@ -81,3 +81,19 @@
     background-color: #cc7aea !important;
     color: #fff !important;
 }
+
+/* Desktop */
+@media (min-width: 1024px) {
+}
+
+/* Mobile */
+@media (max-width: 1023px) {
+    .status-tags {
+        float: right;
+        margin-bottom: 0 !important;
+    }
+
+    .status-tags .tag {
+        margin-bottom: 0;
+    }
+}
