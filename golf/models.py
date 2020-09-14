@@ -1224,3 +1224,19 @@ class GolfBookingPromotion(model_utils_models.TimeStampedModel):
 
     def __str__(self):
         return f'{self.title}'
+
+
+class StaffRight(models.Model):
+    class Meta:
+        managed = False  # No database table creation or deletion operations will be performed for this model.
+
+        default_permissions = ()  # disable "add", "change", "delete" and "view" default permissions
+
+        permissions = (
+            ('manage_booking', 'Can manage booking'),
+            ('view_sales', 'Can view sales'),
+            ('change_settings', 'Can change settings'),
+        )
+
+        verbose_name = _('Staff right')
+        verbose_name_plural = _('Staff rights')
