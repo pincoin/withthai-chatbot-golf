@@ -1,3 +1,5 @@
+/* Overall layout and bulma overriding */
+
 /* Sticky footer */
 body {
     display: flex;
@@ -28,6 +30,17 @@ aside {
     main {
         padding: 1rem 0;
     }
+
+    .pagination, .pagination-list {
+        justify-content: center;
+    }
+
+    .search-section {
+        margin: 0 0 1.2rem 0 !important;
+        box-shadow: 1px 1px 8px 2px rgba(0, 0, 0, 0.2);
+        border-radius: 8px;
+    }
+
 }
 
 /* Mobile */
@@ -38,5 +51,11 @@ aside {
 
     .card-content {
         padding: .75rem 1rem;
+    }
+
+    .search-section {
+        margin: 0 0 1.2rem 0 !important;
+        box-shadow: 1px 1px 8px 2px rgba(0, 0, 0, 0.2);
+        border-radius: 8px;
     }
 }
