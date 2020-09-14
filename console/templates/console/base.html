@@ -1,197 +1,191 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="has-navbar-fixed-top">
 {% load i18n static %}
 <head>
     <title>{% block title %}{% endblock %}</title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/bulma@0.9.0/css/bulma.min.css">
-    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css">
     <link rel="stylesheet" href="{% static 'css/console/prompt.css' %}">
-    <link rel="stylesheet" href="{% static 'css/console/main.css' %}">
+    <link rel="stylesheet" href="{% static 'css/console/nanum-gothic-coding.css' %}">
+
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css">
+
+    <link rel="stylesheet" href="{% static 'css/console/bulma.css' %}">
+    <link rel="stylesheet" href="{% static 'css/console/layout.css' %}">
+    <link rel="stylesheet" href="{% static 'css/console/bulma-custom.css' %}">
+    <link rel="stylesheet" href="{% static 'css/console/page.css' %}">
 </head>
 <body>
-<nav class="navbar navbar-top">
-    <div class="container is-fluid mobile-navbar-container">
-        <div class="navbar-brand">
-            <a class="navbar-item" href="{% url 'console:home' slug %}">
-                <img src="{% static 'images/console/logo-260x50.png' %}" class="logo"
-                     width="98" height="30"
-                     alt="with thai logo">
-            </a>
+<header>
+    <nav class="navbar is-fixed-top">
+        <div class="container">
+            <div class="navbar-brand">
+                <a class="navbar-item is-hidden-tablet">
+                    <span class="fas fa-bars fa-fw"></span>
+                </a>
+                <a class="navbar-item" style="" href="{% url 'console:home' slug %}">
+                    <img src="{% static 'images/console/withthai_logo_en.png' %}"
+                         width="168" height="30" alt="with thai logo">
+                </a>
+                <a class="navbar-item is-hidden-tablet">
+                    <span class="fas fa-bars fa-fw"></span>
+                </a>
+            </div>
 
-            <a class="navbar-burger burger" id="burger-icon">
-                <i class="fas fa-bars fa-fw burger-icon"></i>
-            </a>
-        </div>
-
-        <div id="navbarBasicExample" class="navbar-menu">
-            <div class="navbar-end">
-                <div class="navbar-item">
-                    <div class="buttons">
-                        <a class="button is-small is-light">
-                            Log in
-                        </a>
+            <div class="navbar-menu">
+                <div class="navbar-end">
+                    <div class="navbar-item">
+                        <div class="buttons">
+                            <a class="button is-primary">
+                                Sign up
+                            </a>
+                            <a class="button is-light">
+                                Log in
+                            </a>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
+    </nav>
+</header>
+<main>
+    <div class="container">
+        <div class="columns is-gapless is-marginless">
+            <aside class="column is-3 menu is-hidden-mobile" id="left-sidebar">
+                <div class="menu-label">{% trans 'Booking' %}</div>
+                <ul class="menu-list">
+                    <li>
+                        <a href="{% url 'console:golf-booking-order-list' slug %}">
+                            {% trans 'All Booking List' %}
+                        </a>
+                    </li>
+                    <li>
+                        <ul>
+                            <li>
+                                <a href="{% url 'console:golf-booking-order-list' slug %}?order_status=open">
+                                    <span class="tag status-open">{% trans 'Open' %}</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="{% url 'console:golf-booking-order-list' slug %}?order_status=accepted">
+                                    <span class="tag status-accepted">{% trans 'Accepted' %}</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="{% url 'console:golf-booking-order-list' slug %}?payment_status=unpaid">
+                                    <span class="tag status-unpaid is-capitalized">{% trans 'Not paid' %}</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="{% url 'console:golf-booking-order-list' slug %}?payment_status=refund_requests">
+                                    <span class="tag status-refund-requests is-capitalized">{% trans 'Refund requests' %}</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="{% url 'console:golf-booking-order-list' slug %}?day=today">
+                                    {% trans 'Today' %}
+                                </a>
+                            </li>
+                            <li>
+                                <a href="{% url 'console:golf-booking-order-list' slug %}?day=tomorrow">
+                                    {% trans 'Tomorrow' %}
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+                <div class="menu-label">{% trans 'Customers' %}</div>
+                <ul class="menu-list">
+                    <li>
+                        <a>{% trans 'Social Accounts' %}</a>
+                        <ul>
+                            <li>
+                                <a href="{% url 'console:line-user-list' slug %}">
+                                    {% trans 'LINE Users' %}
+                                </a>
+                            </li>
+                            <li class="is-hidden">
+                                <a href="#">
+                                    {% trans 'Facebook Users' %}
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a>{% trans 'Customer Groups' %}</a>
+                    </li>
+                </ul>
+                <div class="menu-label">
+                    {% trans 'Marketing' %}
+                </div>
+                <ul class="menu-list">
+                    <li><a>{% trans 'Promotions' %}</a></li>
+                    <li><a>{% trans 'Coupons' %}</a></li>
+                    <li><a>{% trans 'Hot Deals' %}</a></li>
+                </ul>
+                <div class="menu-label">{% trans 'Report' %}</div>
+                <ul class="menu-list">
+                    <li>
+                        <a>{% trans 'Daily Sales' %}</a>
+                    </li>
+                    <li>
+                        <a>{% trans 'Monthly Sales' %}</a>
+                    </li>
+                    <li>
+                        <a>{% trans 'Best Promotions' %}</a>
+                    </li>
+                    <li>
+                        <a> {% trans 'Best Customers' %} </a>
+                    </li>
+                    <li>
+                        <a>{% trans 'Sales by Customer Groups' %}</a>
+                    </li>
+                    <li>
+                        <a>{% trans 'Sales by Payment' %}</a>
+                    </li>
+                </ul>
+                <div class="menu-label">{% trans 'Settings' %}</div>
+                <ul class="menu-list">
+                    <li>
+                        <a href="{% url 'console:golf-club-update' slug %}">
+                            {% trans 'Golf Club' %}
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{% url 'console:green-fee-list' slug %}">
+                            {% trans 'Green Fee' %}
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{% url 'console:holiday-list' slug %}">
+                            {% trans 'Holidays' %}
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{% url 'console:season-list' slug %}">
+                            {% trans 'Seasons' %}
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{% url 'console:timeslot-list' slug %}">
+                            {% trans 'Timeslots' %}
+                        </a>
+                    </li>
+                </ul>
+            </aside>
+            <div class="column is-9">
+                {% block content %}{% endblock %}
+            </div>
+        </div>
     </div>
-</nav>
-
-<div class="columns is-gapless is-marginless">
-    <div class="column is-2">
-        <aside class="menu is-hidden-mobile" id="left-sidebar">
-            <p class="menu-label">
-                {% trans 'Booking' %}
-            </p>
-            <ul class="menu-list">
-                <li>
-                    <a href="{% url 'console:golf-booking-order-list' slug %}">
-                        {% trans 'All Booking List' %}
-                    </a>
-                </li>
-                <li>
-                    <ul>
-                        <li>
-                            <a href="{% url 'console:golf-booking-order-list' slug %}?order_status=open">
-                                <span class="tag status-open">{% trans 'Open' %}</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="{% url 'console:golf-booking-order-list' slug %}?order_status=accepted">
-                                <span class="tag status-accepted">{% trans 'Accepted' %}</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="{% url 'console:golf-booking-order-list' slug %}?payment_status=unpaid">
-                                <span class="tag status-unpaid is-capitalized">{% trans 'Not paid' %}</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="{% url 'console:golf-booking-order-list' slug %}?payment_status=refund_requests">
-                                <span class="tag status-refund-requests is-capitalized">{% trans 'Refund requests' %}</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="{% url 'console:golf-booking-order-list' slug %}?day=today">
-                                {% trans 'Today' %}
-                            </a>
-                        </li>
-                        <li>
-                            <a href="{% url 'console:golf-booking-order-list' slug %}?day=tomorrow">
-                                {% trans 'Tomorrow' %}
-                            </a>
-                        </li>
-                    </ul>
-                </li>
-            </ul>
-            <p class="menu-label">
-                {% trans 'Customers' %}
-            </p>
-            <ul class="menu-list">
-                <li>
-                    <a>{% trans 'Social Accounts' %}</a>
-                    <ul>
-                        <li>
-                            <a href="{% url 'console:line-user-list' slug %}">
-                                {% trans 'LINE Users' %}
-                            </a>
-                        </li>
-                        <li class="is-hidden">
-                            <a href="#">
-                                {% trans 'Facebook Users' %}
-                            </a>
-                        </li>
-                    </ul>
-                </li>
-                <li>
-                    <a>
-                        {% trans 'Customer Groups' %}
-                    </a>
-                </li>
-            </ul>
-            <p class="menu-label">
-                {% trans 'Marketing' %}
-            </p>
-            <ul class="menu-list">
-                <li><a>{% trans 'Promotions' %}</a></li>
-                <li><a>{% trans 'Coupons' %}</a></li>
-                <li><a>{% trans 'Hot Deals' %}</a></li>
-            </ul>
-            <p class="menu-label">
-                {% trans 'Report' %}
-            </p>
-            <ul class="menu-list">
-                <li>
-                    <a>
-                        {% trans 'Daily Sales' %}
-                    </a>
-                </li>
-                <li>
-                    <a>
-                        {% trans 'Monthly Sales' %}
-                    </a>
-                </li>
-                <li>
-                    <a>
-                        {% trans 'Best Promotions' %}
-                    </a>
-                </li>
-                <li>
-                    <a>
-                        {% trans 'Best Customers' %}
-                    </a>
-                </li>
-                <li>
-                    <a>
-                        {% trans 'Sales by Customer Groups' %}
-                    </a>
-                </li>
-                <li>
-                    <a>
-                        {% trans 'Sales by Payment' %}
-                    </a>
-                </li>
-            </ul>
-            <p class="menu-label">
-                {% trans 'Settings' %}
-            </p>
-            <ul class="menu-list">
-                <li>
-                    <a href="{% url 'console:golf-club-update' slug %}">
-                        {% trans 'Golf Club' %}
-                    </a>
-                </li>
-                <li>
-                    <a href="{% url 'console:green-fee-list' slug %}">
-                        {% trans 'Green Fee' %}
-                    </a>
-                </li>
-                <li>
-                    <a href="{% url 'console:holiday-list' slug %}">
-                        {% trans 'Holidays' %}
-                    </a>
-                </li>
-                <li>
-                    <a href="{% url 'console:season-list' slug %}">
-                        {% trans 'Seasons' %}
-                    </a>
-                </li>
-                <li>
-                    <a href="{% url 'console:timeslot-list' slug %}">
-                        {% trans 'Timeslots' %}
-                    </a>
-                </li>
-            </ul>
-        </aside>
+</main>
+<footer class="footer">
+    <div class="content has-text-centered">
+        {% now 'Y' %} &copy; <a href="//www.withthai.com">withthai.com</a> All rights reserved.
     </div>
-    <div class="column is-9">
-        {% block content %}{% endblock %}
-    </div>
-    <div class="column is-1 is-hidden-mobile"></div>
-</div>
+</footer>
 {% block javascript %}
 <script charset="utf-8" src="{% static 'js/console/main.js' %}"></script>
 {% endblock %}
