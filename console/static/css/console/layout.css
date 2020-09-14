@@ -22,7 +22,6 @@ aside {
 .page-pagination {
     border-top: 1px dashed #123542;
     padding-top: 1rem;
-    margin: .25rem 0 1rem 0;
 }
 
 /* Desktop */
@@ -35,18 +34,25 @@ aside {
         justify-content: center;
     }
 
+    .page-pagination {
+        margin: .25rem 0 1rem 0;
+    }
+
     .search-section {
         margin: 0 0 1.2rem 0 !important;
         box-shadow: 1px 1px 8px 2px rgba(0, 0, 0, 0.2);
         border-radius: 8px;
     }
-
 }
 
 /* Mobile */
 @media (max-width: 1023px) {
     .navbar-brand {
         justify-content: space-between; /* 3 div left center right for mobile */
+    }
+
+    .page-pagination {
+        margin: .25rem .75rem 1rem .75rem;
     }
 
     .card-content {
