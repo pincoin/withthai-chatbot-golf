@@ -37,6 +37,8 @@ aside {
     box-shadow: 5px 10px 30px rgba(0, 0, 0, 0.5);
     background-color: #e4ebe3;
     overflow-y: scroll;
+
+    transition: all .3s;
 }
 
 .right-sidebar-content {
@@ -50,6 +52,8 @@ aside {
     box-shadow: 5px 10px 30px rgba(0, 0, 0, 0.5);
     background-color: #e4ebe3;
     overflow-y: scroll;
+
+    transition: all .3s;
 }
 
 #left-sidebar-close:link, #left-sidebar-close:visited, #right-sidebar-close:link, #right-sidebar-close:visited {
