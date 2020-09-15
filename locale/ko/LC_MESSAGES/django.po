@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-09-15 23:14+0700\n"
+"POT-Creation-Date: 2020-09-15 23:18+0700\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -61,9 +61,9 @@ msgstr "잘못된 라운드 시각"
 msgid "No round time is offered."
 msgstr "제안 라운드 시각이 없습니다."
 
-#: console/forms.py:40
-msgid "Date"
-msgstr "일자"
+#: console/forms.py:40 console/forms.py:83
+msgid "Round Date"
+msgstr "라운드 일자"
 
 #: console/forms.py:41
 msgid "Customer"
@@ -136,10 +136,6 @@ msgstr "환불완료"
 #: console/forms.py:82
 msgid "Booking Date"
 msgstr "예약일자"
-
-#: console/forms.py:83
-msgid "Round Date"
-msgstr "라운드 일자"
 
 #: console/forms.py:113 console/templates/console/base.html:195
 #: console/templates/console/base.html:324

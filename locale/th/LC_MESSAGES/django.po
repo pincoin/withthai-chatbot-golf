@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-09-15 23:14+0700\n"
+"POT-Creation-Date: 2020-09-15 23:18+0700\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -61,8 +61,8 @@ msgstr ""
 msgid "No round time is offered."
 msgstr ""
 
-#: console/forms.py:40
-msgid "Date"
+#: console/forms.py:40 console/forms.py:83
+msgid "Round Date"
 msgstr ""
 
 #: console/forms.py:41
@@ -135,10 +135,6 @@ msgstr ""
 
 #: console/forms.py:82
 msgid "Booking Date"
-msgstr ""
-
-#: console/forms.py:83
-msgid "Round Date"
 msgstr ""
 
 #: console/forms.py:113 console/templates/console/base.html:195
