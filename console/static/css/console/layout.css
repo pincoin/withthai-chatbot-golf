@@ -114,4 +114,9 @@ aside {
         box-shadow: 1px 1px 8px 2px rgba(0, 0, 0, 0.2);
         border-radius: 8px;
     }
+
+    .mobile-detail-item .columns .column {
+        padding-top: .3rem;
+        padding-bottom: .3rem;
+    }
 }
