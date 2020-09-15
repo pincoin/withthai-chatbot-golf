@@ -82,6 +82,16 @@
     color: #fff !important;
 }
 
+.tag-weekday {
+    background-color: #1e88e5 !important;
+    color: #fff !important;
+}
+
+.tag-holiday {
+    background-color: #ef5350 !important;
+    color: #fff !important;
+}
+
 /* Desktop */
 @media (min-width: 1024px) {
 }
