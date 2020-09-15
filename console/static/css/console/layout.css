@@ -25,6 +25,37 @@ aside {
     padding-top: 1rem;
 }
 
+/* Mobile Sidebar */
+.left-sidebar {
+    position: absolute;
+    left: 0;
+    top: 0;
+
+    margin: 0;
+    min-height: 100vh;
+    width: 76%;
+    box-shadow: 5px 10px 30px rgba(0, 0, 0, 0.5);
+    background-color: #e4ebe3;
+    overflow-y: scroll;
+}
+
+.right-sidebar {
+    position: absolute;
+    right: 0;
+    top: 0;
+
+    margin: 0;
+    min-height: 100vh;
+    width: 80%;
+    box-shadow: 5px 10px 30px rgba(0, 0, 0, 0.5);
+    background-color: #e4ebe3;
+    overflow-y: scroll;
+}
+
+#left-sidebar-close:link, #left-sidebar-close:visited, #right-sidebar-close:link, #right-sidebar-close:visited {
+    color: #03353e;
+}
+
 /* Desktop */
 @media (min-width: 1024px) {
     main {
