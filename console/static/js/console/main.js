@@ -2,7 +2,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const navbarTop = document.getElementById('navbar-top');
 
     const leftSidebar = document.getElementById('left-sidebar');
-    const leftSidebarClose = document.getElementById('left-sidebar-close');
     const leftSidebarModalBackground = document.querySelector('#left-sidebar .modal-background');
 
     const rightSidebar = document.getElementById('right-sidebar');
@@ -37,7 +36,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
 
     // Close left sidebar
-    [leftSidebarClose, leftSidebarModalBackground].forEach(element => {
+    [leftSidebarModalBackground, ].forEach(element => {
         element
             .addEventListener('click', function (e) {
                 leftSidebar.classList.remove('is-active');

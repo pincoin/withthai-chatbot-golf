@@ -33,7 +33,7 @@ aside {
 
     margin: 0;
     min-height: 100vh;
-    width: 76%;
+    width: 60%;
     box-shadow: 5px 10px 30px rgba(0, 0, 0, 0.5);
     background-color: #e4ebe3;
     overflow-y: scroll;
@@ -46,7 +46,7 @@ aside {
 
     margin: 0;
     min-height: 100vh;
-    width: 80%;
+    width: 60%;
     box-shadow: 5px 10px 30px rgba(0, 0, 0, 0.5);
     background-color: #e4ebe3;
     overflow-y: scroll;
