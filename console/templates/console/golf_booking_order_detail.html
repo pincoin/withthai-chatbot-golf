@@ -101,7 +101,7 @@ with-thai::{% trans 'Golf Booking Order Detail' %}
                             {% endif %}
                         </div>
                     </div>
-                    <div class="columns is-mobile">
+                    <div class="columns is-mobile{% if order.order_status == order.ORDER_STATUS_CHOICES.offered or order.order_status == order.ORDER_STATUS_CHOICES.confirmed or order.order_status == order.ORDER_STATUS_CHOICES.closed %} has-next-columns{% endif %}">
                         <div class="column is-3-tablet is-5-mobile has-text-right-tablet is-capitalized">
                             {% trans 'Payment status' %}
                         </div>

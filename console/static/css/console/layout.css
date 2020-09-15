@@ -120,6 +120,10 @@ aside {
         padding-bottom: .3rem;
     }
 
+    .has-next-columns {
+        margin-bottom: -1rem !important;
+    }
+
     .submenu-heading {
         padding: .25rem .5rem;
         background-color: #ebf2ea;
