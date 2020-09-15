@@ -3,7 +3,7 @@ from django.utils.translation import ugettext_lazy as _
 from .base import *
 
 # Internationalization
-LANGUAGE_CODE = 'ko-KR'
+LANGUAGE_CODE = 'en-US'
 LANGUAGES = [
     ('ko', _('Korean')),
     ('th', _('Thai')),
