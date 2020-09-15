@@ -18,7 +18,7 @@ with-thai::{% trans 'Holiday List' %}
         <div class="card-content">
             <div class="content">
                 {% for holiday in holidays %}
-                <div class="columns is-multiline is-mobile is-vcentered">
+                <div class="columns is-multiline is-mobile is-vcentered mobile-list-item">
                     <div class="column is-2-tablet is-12-mobile">
                         {{ holiday.holiday|date:'Y-m-d' }}
                     </div>

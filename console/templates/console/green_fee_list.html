@@ -20,7 +20,7 @@ with-thai::{% trans 'Green Fee List' %}
                 {% include './_green_fee_search_box.html' with form=form %}
 
                 {% for green_fee in green_fees %}
-                <div class="columns is-multiline is-mobile is-vcentered">
+                <div class="columns is-multiline is-mobile is-vcentered mobile-list-item">
                     <div class="column is-3-tablet is-9-mobile is-family-monospace">
                         {{ green_fee.season.season_start|date:'Y-m-d' }} ~
                         {{ green_fee.season.season_end|date:'Y-m-d' }}

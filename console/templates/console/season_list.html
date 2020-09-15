@@ -18,7 +18,7 @@ with-thai::{% trans 'Season List' %}
         <div class="card-content">
             <div class="content">
                 {% for season in seasons %}
-                <div class="columns is-multiline is-mobile is-vcentered">
+                <div class="columns is-multiline is-mobile is-vcentered mobile-list-item">
                     <div class="column is-3-tablet is-12-mobile has-text-weight-bold is-family-monospace">
                         {{ season.season_start|date:'Y-m-d' }} ~ {{ season.season_end|date:'Y-m-d' }}
                     </div>

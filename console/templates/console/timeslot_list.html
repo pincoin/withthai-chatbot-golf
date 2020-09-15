@@ -18,7 +18,7 @@ with-thai::{% trans 'Timeslot List' %}
         <div class="card-content">
             <div class="content">
                 {% for timeslot in timeslots %}
-                <div class="columns is-multiline is-mobile is-vcentered">
+                <div class="columns is-multiline is-mobile is-vcentered mobile-list-item">
                     <div class="column is-1-tablet is-3-mobile">
                         {% if timeslot.day_of_week == timeslot.DAY_CHOICES.weekday %}
                         <span class="tag is-info">{{ timeslot.get_day_of_week_display }}</span>
