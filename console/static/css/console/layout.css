@@ -25,41 +25,6 @@ aside {
     padding-top: 1rem;
 }
 
-/* Mobile Sidebar */
-.left-sidebar-content {
-    position: absolute;
-    left: 0;
-    top: 0;
-
-    margin: 0;
-    min-height: 100vh;
-    width: 60%;
-    box-shadow: 5px 10px 30px rgba(0, 0, 0, 0.5);
-    background-color: #e4ebe3;
-    overflow-y: scroll;
-
-    transition: all .3s;
-}
-
-.right-sidebar-content {
-    position: absolute;
-    right: 0;
-    top: 0;
-
-    margin: 0;
-    min-height: 100vh;
-    width: 60%;
-    box-shadow: 5px 10px 30px rgba(0, 0, 0, 0.5);
-    background-color: #e4ebe3;
-    overflow-y: scroll;
-
-    transition: all .3s;
-}
-
-#left-sidebar-close:link, #left-sidebar-close:visited, #right-sidebar-close:link, #right-sidebar-close:visited {
-    color: #03353e;
-}
-
 /* Desktop */
 @media (min-width: 1024px) {
     main {
@@ -126,6 +91,62 @@ aside {
 
     .has-next-columns {
         margin-bottom: -1rem !important;
+    }
+
+
+    /* Mobile Sidebar */
+    .left-sidebar-content {
+        position: absolute;
+        left: 0;
+        top: 0;
+
+        margin: 0;
+        min-height: 100vh;
+        width: 60%;
+        box-shadow: 5px 10px 30px rgba(0, 0, 0, 0.5);
+        background-color: #e4ebe3;
+        overflow-y: scroll;
+    }
+
+    .right-sidebar-content {
+        position: absolute;
+        right: 0;
+        top: 0;
+
+        margin: 0;
+        min-height: 100vh;
+        width: 60%;
+        box-shadow: 5px 10px 30px rgba(0, 0, 0, 0.5);
+        background-color: #e4ebe3;
+        overflow-y: scroll;
+    }
+
+    #left-sidebar.modal {
+        display: flex;
+        left: -1000%;
+        transition: all .3s;
+        z-index: 0;
+    }
+
+    #left-sidebar.modal.is-active {
+        left: 0;
+        z-index: 40;
+    }
+
+    #right-sidebar.modal {
+        display: flex;
+        right: -1000%;
+        transition: all .3s;
+        z-index: 0;
+    }
+
+    #right-sidebar.modal.is-active {
+        right: 0;
+        z-index: 40;
+    }
+
+    #left-sidebar-close:link, #left-sidebar-close:visited, #right-sidebar-close:link, #right-sidebar-close:visited {
+        color: #03353e;
     }
 
     .submenu-heading {
