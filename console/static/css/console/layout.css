@@ -119,4 +119,23 @@ aside {
         padding-top: .3rem;
         padding-bottom: .3rem;
     }
+
+    .submenu-heading {
+        padding: .25rem .5rem;
+        background-color: #ebf2ea;
+    }
+
+    .submenu-heading, .submenu-heading a {
+        color: #87b842;
+        font-weight: bold;
+    }
+
+    .submenu-item {
+        padding: .25rem 1rem;
+        background: #ffffff;
+    }
+
+    .submenu-item a {
+        color: #03353e;
+    }
 }

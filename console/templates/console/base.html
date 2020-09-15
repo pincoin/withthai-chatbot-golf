@@ -61,93 +61,96 @@
         <div class="modal-background"></div>
         <div class="modal-content left-sidebar">
             <ul>
-                <li>
-                    {% trans 'Booking' %}
-                </li>
+                <li class="submenu-heading">{% trans 'Booking' %}</li>
                 <li>
                     <ul>
-                        <li>
+                        <li class="submenu-item">
                             <a href="{% url 'console:golf-booking-order-list' slug %}">
                                 {% trans 'All Booking List' %}
                             </a>
                         </li>
-                        <li>
+                        <li class="submenu-item">
                             <a href="{% url 'console:golf-booking-order-list' slug %}?order_status=open">
                                 <span class="tag status-open">{% trans 'Open' %}</span>
                             </a>
                         </li>
-                        <li>
+                        <li class="submenu-item">
                             <a href="{% url 'console:golf-booking-order-list' slug %}?order_status=accepted">
                                 <span class="tag status-accepted">{% trans 'Accepted' %}</span>
                             </a>
                         </li>
-                        <li>
+                        <li class="submenu-item">
                             <a href="{% url 'console:golf-booking-order-list' slug %}?payment_status=unpaid">
                                 <span class="tag status-unpaid is-capitalized">{% trans 'Not paid' %}</span>
                             </a>
                         </li>
-                        <li>
+                        <li class="submenu-item">
                             <a href="{% url 'console:golf-booking-order-list' slug %}?payment_status=refund_requests">
                                 <span class="tag status-refund-requests is-capitalized">{% trans 'Refund requests' %}</span>
                             </a>
                         </li>
-                        <li>
+                        <li class="submenu-item">
                             <a href="{% url 'console:golf-booking-order-list' slug %}?day=today">
                                 {% trans 'Today' %}
                             </a>
                         </li>
-                        <li>
+                        <li class="submenu-item">
                             <a href="{% url 'console:golf-booking-order-list' slug %}?day=tomorrow">
                                 {% trans 'Tomorrow' %}
                             </a>
                         </li>
                     </ul>
                 </li>
-                <li>{% trans 'Customers' %}</li>
+                <li class="submenu-heading">{% trans 'Customers' %}</li>
                 <li>
                     <ul>
-                        <li>
+                        <li class="submenu-item">
                             <a href="{% url 'console:line-user-list' slug %}">
                                 {% trans 'LINE Users' %}
                             </a>
-                        </li>
                         <li class="is-hidden">
                             <a href="#">
                                 {% trans 'Facebook Users' %}
                             </a>
                         </li>
-                        <li>
+                        <li class="submenu-item">
                             <a>{% trans 'Customer Groups' %}</a>
                         </li>
                     </ul>
                 </li>
-                <li>{% trans 'Marketing' %}</li>
+                <li class="submenu-heading">{% trans 'Marketing' %}</li>
                 <li>
                     <ul>
-                        <li><a>{% trans 'Promotions' %}</a></li>
-                        <li><a>{% trans 'Coupons' %}</a></li>
-                        <li><a>{% trans 'Hot Deals' %}</a></li>
+                        <li class="submenu-item">
+                            <a>{% trans 'Promotions' %}</a>
+                        </li>
+                        <li class="submenu-item">
+                            <a>{% trans 'Coupons' %}</a>
+                        </li>
+                        <li class="submenu-item">
+                            <a>{% trans 'Hot Deals' %}</a>
+                        </li>
                     </ul>
                 </li>
-                <li>{% trans 'Report' %}</li>
+                <li class="submenu-heading">{% trans 'Report' %}</li>
                 <li>
                     <ul>
-                        <li>
+                        <li class="submenu-item">
                             <a>{% trans 'Daily Sales' %}</a>
                         </li>
-                        <li>
+                        <li class="submenu-item">
                             <a>{% trans 'Monthly Sales' %}</a>
                         </li>
-                        <li>
+                        <li class="submenu-item">
                             <a>{% trans 'Best Promotions' %}</a>
                         </li>
-                        <li>
+                        <li class="submenu-item">
                             <a> {% trans 'Best Customers' %} </a>
                         </li>
-                        <li>
+                        <li class="submenu-item">
                             <a>{% trans 'Sales by Customer Groups' %}</a>
                         </li>
-                        <li>
+                        <li class="submenu-item">
                             <a>{% trans 'Sales by Payment' %}</a>
                         </li>
                     </ul>
@@ -159,32 +162,30 @@
         <div class="modal-background"></div>
         <div class="modal-content right-sidebar">
             <ul>
-                <li>
-                    {% trans 'Settings' %}
-                </li>
+                <li class="submenu-heading">{% trans 'Settings' %}</li>
                 <li>
                     <ul>
-                        <li>
+                        <li class="submenu-item">
                             <a href="{% url 'console:golf-club-update' slug %}">
                                 {% trans 'Golf Club' %}
                             </a>
                         </li>
-                        <li>
+                        <li class="submenu-item">
                             <a href="{% url 'console:green-fee-list' slug %}">
                                 {% trans 'Green Fee' %}
                             </a>
                         </li>
-                        <li>
+                        <li class="submenu-item">
                             <a href="{% url 'console:holiday-list' slug %}">
                                 {% trans 'Holidays' %}
                             </a>
                         </li>
-                        <li>
+                        <li class="submenu-item">
                             <a href="{% url 'console:season-list' slug %}">
                                 {% trans 'Seasons' %}
                             </a>
                         </li>
-                        <li>
+                        <li class="submenu-item">
                             <a href="{% url 'console:timeslot-list' slug %}">
                                 {% trans 'Timeslots' %}
                             </a>
