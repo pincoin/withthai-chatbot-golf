@@ -27,13 +27,6 @@ document.addEventListener('DOMContentLoaded', () => {
         .addEventListener('click', function (e) {
             document.documentElement.classList.add('is-clipped');
             leftSidebar.classList.add('is-active');
-            /*
-            leftSidebar.animate([
-                {left: '0%'},
-            ], {
-                duration: 150,
-            });
-             */
         });
 
     // Close left sidebar
@@ -41,13 +34,6 @@ document.addEventListener('DOMContentLoaded', () => {
         element
             .addEventListener('click', function (e) {
                 leftSidebar.classList.remove('is-active');
-                /*
-                leftSidebar.animate([
-                    {left: '-1000%'},
-                ], {
-                    duration: 150,
-                });
-                 */
                 document.documentElement.classList.remove('is-clipped');
             });
     });
@@ -58,13 +44,6 @@ document.addEventListener('DOMContentLoaded', () => {
         .addEventListener('click', function (e) {
             document.documentElement.classList.add('is-clipped');
             rightSidebar.classList.add('is-active');
-            /*
-            rightSidebar.animate([
-                {right: '0%'},
-            ], {
-                duration: 150,
-            });
-             */
         });
 
     // Close right sidebar
@@ -72,13 +51,6 @@ document.addEventListener('DOMContentLoaded', () => {
         element
             .addEventListener('click', function (e) {
                 rightSidebar.classList.remove('is-active');
-                /*
-                rightSidebar.animate([
-                    {right: '-1000%'},
-                ], {
-                    duration: 150,
-                });
-                 */
                 document.documentElement.classList.remove('is-clipped');
             });
     });
