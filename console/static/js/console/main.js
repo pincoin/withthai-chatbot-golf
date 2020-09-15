@@ -5,7 +5,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const leftSidebarModalBackground = document.querySelector('#left-sidebar .modal-background');
 
     const rightSidebar = document.getElementById('right-sidebar');
-    const rightSidebarClose = document.getElementById('right-sidebar-close');
     const rightSidebarModalBackground = document.querySelector('#right-sidebar .modal-background');
 
     // Top navbar box shadow when scrolled down
@@ -36,7 +35,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
 
     // Close left sidebar
-    [leftSidebarModalBackground, ].forEach(element => {
+    [leftSidebarModalBackground,].forEach(element => {
         element
             .addEventListener('click', function (e) {
                 leftSidebar.classList.remove('is-active');
@@ -67,7 +66,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
 
     // Close right sidebar
-    [rightSidebarClose, rightSidebarModalBackground].forEach(element => {
+    [rightSidebarModalBackground,].forEach(element => {
         element
             .addEventListener('click', function (e) {
                 rightSidebar.classList.remove('is-active');

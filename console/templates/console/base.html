@@ -37,7 +37,7 @@
                          width="168" height="30" alt="with thai logo">
                 </a>
                 <a class="navbar-item is-hidden-tablet" id="right-sidebar-open">
-                    <span class="far fa-user-circle fa-fw"></span>
+                    <span class="fas fa-user-cog fa-fw"></span>
                 </a>
             </div>
 
@@ -60,15 +60,17 @@
     <div class="modal" id="left-sidebar">
         <div class="modal-background"></div>
         <div class="modal-content left-sidebar">
-            <div class="menu-label">{% trans 'Booking' %}</div>
-            <ul class="menu-list">
+            <ul>
                 <li>
-                    <a href="{% url 'console:golf-booking-order-list' slug %}">
-                        {% trans 'All Booking List' %}
-                    </a>
+                    {% trans 'Booking' %}
                 </li>
                 <li>
                     <ul>
+                        <li>
+                            <a href="{% url 'console:golf-booking-order-list' slug %}">
+                                {% trans 'All Booking List' %}
+                            </a>
+                        </li>
                         <li>
                             <a href="{% url 'console:golf-booking-order-list' slug %}?order_status=open">
                                 <span class="tag status-open">{% trans 'Open' %}</span>
@@ -101,11 +103,8 @@
                         </li>
                     </ul>
                 </li>
-            </ul>
-            <div class="menu-label">{% trans 'Customers' %}</div>
-            <ul class="menu-list">
+                <li>{% trans 'Customers' %}</li>
                 <li>
-                    <a>{% trans 'Social Accounts' %}</a>
                     <ul>
                         <li>
                             <a href="{% url 'console:line-user-list' slug %}">
@@ -117,67 +116,41 @@
                                 {% trans 'Facebook Users' %}
                             </a>
                         </li>
+                        <li>
+                            <a>{% trans 'Customer Groups' %}</a>
+                        </li>
                     </ul>
                 </li>
+                <li>{% trans 'Marketing' %}</li>
                 <li>
-                    <a>{% trans 'Customer Groups' %}</a>
+                    <ul>
+                        <li><a>{% trans 'Promotions' %}</a></li>
+                        <li><a>{% trans 'Coupons' %}</a></li>
+                        <li><a>{% trans 'Hot Deals' %}</a></li>
+                    </ul>
                 </li>
-            </ul>
-            <div class="menu-label">
-                {% trans 'Marketing' %}
-            </div>
-            <ul class="menu-list">
-                <li><a>{% trans 'Promotions' %}</a></li>
-                <li><a>{% trans 'Coupons' %}</a></li>
-                <li><a>{% trans 'Hot Deals' %}</a></li>
-            </ul>
-            <div class="menu-label">{% trans 'Report' %}</div>
-            <ul class="menu-list">
+                <li>{% trans 'Report' %}</li>
                 <li>
-                    <a>{% trans 'Daily Sales' %}</a>
-                </li>
-                <li>
-                    <a>{% trans 'Monthly Sales' %}</a>
-                </li>
-                <li>
-                    <a>{% trans 'Best Promotions' %}</a>
-                </li>
-                <li>
-                    <a> {% trans 'Best Customers' %} </a>
-                </li>
-                <li>
-                    <a>{% trans 'Sales by Customer Groups' %}</a>
-                </li>
-                <li>
-                    <a>{% trans 'Sales by Payment' %}</a>
-                </li>
-            </ul>
-            <div class="menu-label">{% trans 'Settings' %}</div>
-            <ul class="menu-list">
-                <li>
-                    <a href="{% url 'console:golf-club-update' slug %}">
-                        {% trans 'Golf Club' %}
-                    </a>
-                </li>
-                <li>
-                    <a href="{% url 'console:green-fee-list' slug %}">
-                        {% trans 'Green Fee' %}
-                    </a>
-                </li>
-                <li>
-                    <a href="{% url 'console:holiday-list' slug %}">
-                        {% trans 'Holidays' %}
-                    </a>
-                </li>
-                <li>
-                    <a href="{% url 'console:season-list' slug %}">
-                        {% trans 'Seasons' %}
-                    </a>
-                </li>
-                <li>
-                    <a href="{% url 'console:timeslot-list' slug %}">
-                        {% trans 'Timeslots' %}
-                    </a>
+                    <ul>
+                        <li>
+                            <a>{% trans 'Daily Sales' %}</a>
+                        </li>
+                        <li>
+                            <a>{% trans 'Monthly Sales' %}</a>
+                        </li>
+                        <li>
+                            <a>{% trans 'Best Promotions' %}</a>
+                        </li>
+                        <li>
+                            <a> {% trans 'Best Customers' %} </a>
+                        </li>
+                        <li>
+                            <a>{% trans 'Sales by Customer Groups' %}</a>
+                        </li>
+                        <li>
+                            <a>{% trans 'Sales by Payment' %}</a>
+                        </li>
+                    </ul>
                 </li>
             </ul>
         </div>
@@ -187,13 +160,36 @@
         <div class="modal-content right-sidebar">
             <ul>
                 <li>
-                    <a href="">{% trans 'WITH THAI' %}</a>
-                    <a href="#" class="is-pulled-right" id="right-sidebar-close">
-                        <i class="fas fa-times"></i>
-                    </a>
+                    {% trans 'Settings' %}
                 </li>
                 <li>
-                    메뉴
+                    <ul>
+                        <li>
+                            <a href="{% url 'console:golf-club-update' slug %}">
+                                {% trans 'Golf Club' %}
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{% url 'console:green-fee-list' slug %}">
+                                {% trans 'Green Fee' %}
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{% url 'console:holiday-list' slug %}">
+                                {% trans 'Holidays' %}
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{% url 'console:season-list' slug %}">
+                                {% trans 'Seasons' %}
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{% url 'console:timeslot-list' slug %}">
+                                {% trans 'Timeslots' %}
+                            </a>
+                        </li>
+                    </ul>
                 </li>
             </ul>
         </div>
