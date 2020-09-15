@@ -25,4 +25,14 @@ function runApp() {
     search.addEventListener('change', function (e) {
         setSearchKeyword(search, keyword);
     });
+
+    const order_status = document.getElementById('id_order_status');
+    const payment_status = document.getElementById('id_payment_status');
+    const sort = document.getElementById('id_sort');
+
+    [order_status, payment_status, sort].forEach(function (element) {
+        element.addEventListener('change', function (e) {
+            this.form.submit();
+        });
+    });
 }
