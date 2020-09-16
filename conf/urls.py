@@ -23,10 +23,16 @@ urlpatterns = [
     path('console/',
          include('console.urls', namespace='console')),
 
+    path('member/',
+         include('member.urls', namespace='member')),
+
     path('accounts/',
          include('allauth.urls')),
 
     path('admin/', admin.site.urls),
+
+    path('i18n/',
+         include('django.conf.urls.i18n')),
 ]
 
 if settings.DEBUG:
