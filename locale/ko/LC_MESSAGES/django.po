@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-09-15 23:18+0700\n"
+"POT-Creation-Date: 2020-09-16 09:32+0700\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -1291,11 +1291,11 @@ msgstr "골프 예약 프로모션"
 
 #: golf/models.py:1241
 msgid "Staff right"
-msgstr ""
+msgstr "담당자 권한"
 
 #: golf/models.py:1242
 msgid "Staff rights"
-msgstr ""
+msgstr "담당자 권한"
 
 #: hotel/apps.py:7
 msgid "hotel"
@@ -1389,6 +1389,10 @@ msgstr "예제"
 #: liff/views.py:138
 msgid "Price Table"
 msgstr "요금표"
+
+#: member/apps.py:7
+msgid "member"
+msgstr "회원"
 
 #: shop/apps.py:7
 msgid "shop"
