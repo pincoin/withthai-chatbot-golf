@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-09-16 09:32+0700\n"
+"POT-Creation-Date: 2020-09-17 00:31+0700\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,6 +16,177 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
+
+#: allauth/templates/account/email/email_confirmation_message.txt:5
+msgid "Hello."
+msgstr ""
+
+#: allauth/templates/account/email/email_confirmation_message.txt:7
+msgid ""
+"You have received this e-mail because you connected with this e-mail address."
+msgstr ""
+
+#: allauth/templates/account/email/email_confirmation_message.txt:9
+msgid "Please, click the activation link if correct."
+msgstr ""
+
+#: allauth/templates/account/email/email_confirmation_message.txt:12
+msgid "Thank you."
+msgstr ""
+
+#: allauth/templates/account/email/email_confirmation_message.txt:14
+msgid "WITH THAI"
+msgstr ""
+
+#: allauth/templates/account/email/email_confirmation_subject.txt:3
+msgid "Please Confirm Your E-mail Address"
+msgstr ""
+
+#: allauth/templates/account/email_confirm.html:6
+#: allauth/templates/account/email_confirm.html:15
+msgid "Confirm E-mail Address"
+msgstr ""
+
+#: allauth/templates/account/email_confirm.html:26
+#: allauth/templates/socialaccount/signup.html:76
+msgid "Username"
+msgstr ""
+
+#: allauth/templates/account/email_confirm.html:27
+#: allauth/templates/socialaccount/signup.html:47
+msgid "Email"
+msgstr ""
+
+#: allauth/templates/account/email_confirm.html:33
+msgid "Confirm email address"
+msgstr ""
+
+#: allauth/templates/account/email_confirm.html:42
+msgid "This e-mail confirmation link is expired or invalid."
+msgstr ""
+
+#: allauth/templates/account/email_confirm.html:46
+msgid "Re-send email"
+msgstr ""
+
+#: allauth/templates/account/login.html:6
+#: allauth/templates/account/login.html:15
+#: allauth/templates/account/signup_closed.html:32
+#: allauth/templates/socialaccount/authentication_error.html:32
+#: allauth/templates/socialaccount/login_cancelled.html:32
+#: conf/templates/conf/base.html:57 console/templates/console/base.html:57
+msgid "SIGN IN"
+msgstr ""
+
+#: allauth/templates/account/login.html:35
+msgid "You may login with your social media accounts."
+msgstr ""
+
+#: allauth/templates/account/logout.html:5
+#: allauth/templates/account/logout.html:14
+#: allauth/templates/account/logout.html:34 conf/templates/conf/base.html:52
+#: console/templates/console/base.html:52
+msgid "SIGN OUT"
+msgstr ""
+
+#: allauth/templates/account/logout.html:20
+msgid "Are you sure you want to sign out?"
+msgstr ""
+
+#: allauth/templates/account/signup_closed.html:5
+#: allauth/templates/account/signup_closed.html:15
+msgid "SIGN UP CLOSED"
+msgstr ""
+
+#: allauth/templates/account/signup_closed.html:22
+msgid "We are sorry, but the sign up is currently closed."
+msgstr ""
+
+#: allauth/templates/account/translations.html:3
+msgid "username"
+msgstr ""
+
+#: allauth/templates/account/translations.html:4
+msgid "A user with that username already exists."
+msgstr ""
+
+#: allauth/templates/account/verification_sent.html:5
+#: allauth/templates/account/verification_sent.html:14
+msgid "Verify Your E-mail Address"
+msgstr ""
+
+#: allauth/templates/account/verification_sent.html:21
+msgid "We have sent an e-mail to you for verification."
+msgstr ""
+
+#: allauth/templates/account/verification_sent.html:24
+msgid "Follow the link provided to finalize the signup process."
+msgstr ""
+
+#: allauth/templates/account/verification_sent.html:27
+msgid "Please contact us if you do not receive it within a few minutes."
+msgstr ""
+
+#: allauth/templates/socialaccount/authentication_error.html:5
+#: allauth/templates/socialaccount/authentication_error.html:15
+msgid "SOCIAL MEDIA LOGIN FAILURE"
+msgstr ""
+
+#: allauth/templates/socialaccount/authentication_error.html:22
+msgid ""
+"An error occurred while attempting to login via your social media account."
+msgstr ""
+
+#: allauth/templates/socialaccount/login_cancelled.html:5
+#: allauth/templates/socialaccount/login_cancelled.html:15
+msgid "SOCIAL MEDIA LOGIN CANCELLED"
+msgstr ""
+
+#: allauth/templates/socialaccount/login_cancelled.html:22
+msgid ""
+"You decided to cancel logging in to our site using one of your existing "
+"accounts."
+msgstr ""
+
+#: allauth/templates/socialaccount/signup.html:14
+msgid "SIGN UP"
+msgstr ""
+
+#: allauth/templates/socialaccount/signup.html:20
+msgid "You are about to use your social media account to login to WITH THAI."
+msgstr ""
+
+#: allauth/templates/socialaccount/signup.html:31
+msgid "Account"
+msgstr ""
+
+#: allauth/templates/socialaccount/signup.html:56
+msgid "To get booking receipt"
+msgstr ""
+
+#: allauth/templates/socialaccount/signup.html:85
+msgid "Not your personal name"
+msgstr ""
+
+#: allauth/templates/socialaccount/signup.html:101 member/models.py:71
+msgid "Profile"
+msgstr ""
+
+#: allauth/templates/socialaccount/signup.html:117
+msgid "JOHN"
+msgstr ""
+
+#: allauth/templates/socialaccount/signup.html:143
+msgid "DOE"
+msgstr ""
+
+#: allauth/templates/socialaccount/signup.html:169
+msgid "+66801231234"
+msgstr ""
+
+#: allauth/templates/socialaccount/signup.html:194
+msgid "Sign up"
+msgstr ""
 
 #: chatbot/apps.py:7
 msgid "chatbot"
@@ -37,6 +208,10 @@ msgstr ""
 msgid "Webhook request logs"
 msgstr ""
 
+#: conf/settings/base.py:134
+msgid "[WITH THAI] "
+msgstr ""
+
 #: conf/settings/local.py:8 golf/models.py:546
 msgid "Korean"
 msgstr ""
@@ -49,8 +224,251 @@ msgstr ""
 msgid "English"
 msgstr ""
 
+#: conf/templates/conf/base.html:71 conf/templates/conf/base.html:219
+#: console/templates/console/base.html:71
+#: console/templates/console/base.html:219
+#: console/templates/console/base1.html:57
+#: console/templates/console/base9.html:47
+msgid "Booking"
+msgstr ""
+
+#: conf/templates/conf/base.html:80 conf/templates/conf/base.html:223
+#: console/templates/console/base.html:80
+#: console/templates/console/base.html:223
+#: console/templates/console/base1.html:61
+#: console/templates/console/base9.html:52
+#: console/templates/console/golf_booking_order_list.html:15
+msgid "All Booking List"
+msgstr ""
+
+#: conf/templates/conf/base.html:85 conf/templates/conf/base.html:230
+#: console/forms.py:60 console/templates/console/base.html:85
+#: console/templates/console/base.html:230
+#: console/templates/console/base1.html:68
+#: console/templates/console/base9.html:59
+msgid "Open"
+msgstr ""
+
+#: conf/templates/conf/base.html:90 conf/templates/conf/base.html:235
+#: console/forms.py:62 console/templates/console/base.html:90
+#: console/templates/console/base.html:235
+#: console/templates/console/base1.html:73
+#: console/templates/console/base9.html:64
+msgid "Accepted"
+msgstr ""
+
+#: conf/templates/conf/base.html:95 conf/templates/conf/base.html:240
+#: console/forms.py:72 console/templates/console/base.html:95
+#: console/templates/console/base.html:240
+#: console/templates/console/base1.html:78
+#: console/templates/console/base9.html:69 golf/models.py:827
+msgid "Not paid"
+msgstr ""
+
+#: conf/templates/conf/base.html:100 conf/templates/conf/base.html:245
+#: console/forms.py:74 console/templates/console/base.html:100
+#: console/templates/console/base.html:245
+#: console/templates/console/base1.html:83
+#: console/templates/console/base9.html:74 golf/models.py:829
+msgid "Refund requests"
+msgstr ""
+
+#: conf/templates/conf/base.html:105 conf/templates/conf/base.html:250
+#: console/templates/console/base.html:105
+#: console/templates/console/base.html:250
+#: console/templates/console/base1.html:88
+#: console/templates/console/base9.html:79
+msgid "Today"
+msgstr ""
+
+#: conf/templates/conf/base.html:110 conf/templates/conf/base.html:255
+#: console/templates/console/base.html:110
+#: console/templates/console/base.html:255
+#: console/templates/console/base1.html:93
+#: console/templates/console/base9.html:84
+msgid "Tomorrow"
+msgstr ""
+
+#: conf/templates/conf/base.html:115 conf/templates/conf/base.html:261
+#: console/templates/console/base.html:115
+#: console/templates/console/base.html:261
+#: console/templates/console/base1.html:99
+#: console/templates/console/base9.html:91
+msgid "Customers"
+msgstr ""
+
+#: conf/templates/conf/base.html:120 conf/templates/conf/base.html:268
+#: console/templates/console/base.html:120
+#: console/templates/console/base.html:268
+#: console/templates/console/base1.html:106
+#: console/templates/console/base9.html:99
+msgid "LINE Users"
+msgstr ""
+
+#: conf/templates/conf/base.html:124 conf/templates/conf/base.html:273
+#: console/templates/console/base.html:124
+#: console/templates/console/base.html:273
+#: console/templates/console/base1.html:111
+#: console/templates/console/base9.html:104
+msgid "Facebook Users"
+msgstr ""
+
+#: conf/templates/conf/base.html:128 conf/templates/conf/base.html:279
+#: console/forms.py:130 console/templates/console/base.html:128
+#: console/templates/console/base.html:279
+#: console/templates/console/base1.html:117
+#: console/templates/console/base9.html:111
+msgid "Customer Groups"
+msgstr ""
+
+#: conf/templates/conf/base.html:132 conf/templates/conf/base.html:283
+#: console/templates/console/base.html:132
+#: console/templates/console/base.html:283
+#: console/templates/console/base1.html:121
+#: console/templates/console/base9.html:116
+msgid "Marketing"
+msgstr ""
+
+#: conf/templates/conf/base.html:136 conf/templates/conf/base.html:286
+#: console/templates/console/base.html:136
+#: console/templates/console/base.html:286
+#: console/templates/console/base1.html:124
+#: console/templates/console/base9.html:119
+msgid "Promotions"
+msgstr ""
+
+#: conf/templates/conf/base.html:139 conf/templates/conf/base.html:287
+#: console/templates/console/base.html:139
+#: console/templates/console/base.html:287
+#: console/templates/console/base1.html:125
+#: console/templates/console/base9.html:120
+msgid "Coupons"
+msgstr ""
+
+#: conf/templates/conf/base.html:142 conf/templates/conf/base.html:288
+#: console/templates/console/base.html:142
+#: console/templates/console/base.html:288
+#: console/templates/console/base1.html:126
+#: console/templates/console/base9.html:121
+msgid "Hot Deals"
+msgstr ""
+
+#: conf/templates/conf/base.html:146 conf/templates/conf/base.html:290
+#: console/templates/console/base.html:146
+#: console/templates/console/base.html:290
+#: console/templates/console/base1.html:128
+#: console/templates/console/base9.html:124
+msgid "Report"
+msgstr ""
+
+#: conf/templates/conf/base.html:150 conf/templates/conf/base.html:293
+#: console/templates/console/base.html:150
+#: console/templates/console/base.html:293
+#: console/templates/console/base1.html:131
+#: console/templates/console/base9.html:129
+msgid "Daily Sales"
+msgstr ""
+
+#: conf/templates/conf/base.html:153 conf/templates/conf/base.html:296
+#: console/templates/console/base.html:153
+#: console/templates/console/base.html:296
+#: console/templates/console/base1.html:134
+#: console/templates/console/base9.html:134
+msgid "Monthly Sales"
+msgstr ""
+
+#: conf/templates/conf/base.html:156 conf/templates/conf/base.html:299
+#: console/templates/console/base.html:156
+#: console/templates/console/base.html:299
+#: console/templates/console/base1.html:137
+#: console/templates/console/base9.html:139
+msgid "Best Promotions"
+msgstr ""
+
+#: conf/templates/conf/base.html:159 conf/templates/conf/base.html:302
+#: console/templates/console/base.html:159
+#: console/templates/console/base.html:302
+#: console/templates/console/base1.html:140
+#: console/templates/console/base9.html:144
+msgid "Best Customers"
+msgstr ""
+
+#: conf/templates/conf/base.html:162 conf/templates/conf/base.html:305
+#: console/templates/console/base.html:162
+#: console/templates/console/base.html:305
+#: console/templates/console/base1.html:143
+#: console/templates/console/base9.html:149
+msgid "Sales by Customer Groups"
+msgstr ""
+
+#: conf/templates/conf/base.html:165 conf/templates/conf/base.html:308
+#: console/templates/console/base.html:165
+#: console/templates/console/base.html:308
+#: console/templates/console/base1.html:146
+#: console/templates/console/base9.html:154
+msgid "Sales by Payment"
+msgstr ""
+
+#: conf/templates/conf/base.html:177 conf/templates/conf/base.html:311
+#: console/templates/console/base.html:177
+#: console/templates/console/base.html:311
+#: console/templates/console/base1.html:149
+#: console/templates/console/base9.html:159
+msgid "Settings"
+msgstr ""
+
+#: conf/templates/conf/base.html:186 conf/templates/conf/base.html:315
+#: console/templates/console/base.html:186
+#: console/templates/console/base.html:315
+#: console/templates/console/base1.html:153
+#: console/templates/console/base9.html:164
+msgid "Golf Club"
+msgstr ""
+
+#: conf/templates/conf/base.html:191 conf/templates/conf/base.html:320
+#: console/templates/console/base.html:191
+#: console/templates/console/base.html:320
+#: console/templates/console/base1.html:158
+#: console/templates/console/base9.html:169
+#: liff/templates/liff/booking_create_form.html:141
+#: liff/templates/liff/golf_booking_create_form.html:158
+#: liff/templates/liff/golf_price_table.html:21
+#: liff/templates/liff/price_table.html:21
+msgid "Green Fee"
+msgstr ""
+
+#: conf/templates/conf/base.html:196 conf/templates/conf/base.html:325
+#: console/templates/console/base.html:196
+#: console/templates/console/base.html:325
+#: console/templates/console/base1.html:163
+#: console/templates/console/base9.html:174 golf/models.py:46
+msgid "Holidays"
+msgstr ""
+
+#: conf/templates/conf/base.html:201 conf/templates/conf/base.html:330
+#: console/forms.py:113 console/templates/console/base.html:201
+#: console/templates/console/base.html:330
+#: console/templates/console/base1.html:168
+#: console/templates/console/base9.html:179 golf/models.py:729
+msgid "Seasons"
+msgstr ""
+
+#: conf/templates/conf/base.html:206 conf/templates/conf/base.html:335
+#: console/forms.py:124 console/templates/console/base.html:206
+#: console/templates/console/base.html:335
+#: console/templates/console/base1.html:173
+#: console/templates/console/base9.html:184 golf/models.py:770
+msgid "Timeslots"
+msgstr ""
+
+#: conf/templates/conf/base.html:264 console/templates/console/base.html:264
+#: console/templates/console/base1.html:102
+#: console/templates/console/base9.html:95
+msgid "Social Accounts"
+msgstr ""
+
 #: console/apps.py:7
-msgid "conf"
+msgid "console"
 msgstr ""
 
 #: console/forms.py:16
@@ -81,22 +499,8 @@ msgstr ""
 msgid "Order Status"
 msgstr ""
 
-#: console/forms.py:60 console/templates/console/base.html:79
-#: console/templates/console/base.html:224
-#: console/templates/console/base1.html:68
-#: console/templates/console/base9.html:59
-msgid "Open"
-msgstr ""
-
 #: console/forms.py:61
 msgid "Offered"
-msgstr ""
-
-#: console/forms.py:62 console/templates/console/base.html:84
-#: console/templates/console/base.html:229
-#: console/templates/console/base1.html:73
-#: console/templates/console/base9.html:64
-msgid "Accepted"
 msgstr ""
 
 #: console/forms.py:63
@@ -111,22 +515,8 @@ msgstr ""
 msgid "Payment Status"
 msgstr ""
 
-#: console/forms.py:72 console/templates/console/base.html:89
-#: console/templates/console/base.html:234
-#: console/templates/console/base1.html:78
-#: console/templates/console/base9.html:69 golf/models.py:827
-msgid "Not paid"
-msgstr ""
-
 #: console/forms.py:73 golf/models.py:828
 msgid "Paid"
-msgstr ""
-
-#: console/forms.py:74 console/templates/console/base.html:94
-#: console/templates/console/base.html:239
-#: console/templates/console/base1.html:83
-#: console/templates/console/base9.html:74 golf/models.py:829
-msgid "Refund requests"
 msgstr ""
 
 #: console/forms.py:75 golf/models.py:830
@@ -137,29 +527,8 @@ msgstr ""
 msgid "Booking Date"
 msgstr ""
 
-#: console/forms.py:113 console/templates/console/base.html:195
-#: console/templates/console/base.html:324
-#: console/templates/console/base1.html:168
-#: console/templates/console/base9.html:179 golf/models.py:729
-msgid "Seasons"
-msgstr ""
-
 #: console/forms.py:118
 msgid "Day of Week"
-msgstr ""
-
-#: console/forms.py:124 console/templates/console/base.html:200
-#: console/templates/console/base.html:329
-#: console/templates/console/base1.html:173
-#: console/templates/console/base9.html:184 golf/models.py:770
-msgid "Timeslots"
-msgstr ""
-
-#: console/forms.py:130 console/templates/console/base.html:122
-#: console/templates/console/base.html:273
-#: console/templates/console/base1.html:117
-#: console/templates/console/base9.html:111
-msgid "Customer Groups"
 msgstr ""
 
 #: console/templates/console/_order_search_box.html:6
@@ -175,171 +544,6 @@ msgstr ""
 #: console/templates/console/_order_search_box.html:48
 #: console/templates/console/_search_box.html:48
 msgid "Sort"
-msgstr ""
-
-#: console/templates/console/base.html:65
-#: console/templates/console/base.html:213
-#: console/templates/console/base1.html:57
-#: console/templates/console/base9.html:47
-msgid "Booking"
-msgstr ""
-
-#: console/templates/console/base.html:74
-#: console/templates/console/base.html:217
-#: console/templates/console/base1.html:61
-#: console/templates/console/base9.html:52
-#: console/templates/console/golf_booking_order_list.html:15
-msgid "All Booking List"
-msgstr ""
-
-#: console/templates/console/base.html:99
-#: console/templates/console/base.html:244
-#: console/templates/console/base1.html:88
-#: console/templates/console/base9.html:79
-msgid "Today"
-msgstr ""
-
-#: console/templates/console/base.html:104
-#: console/templates/console/base.html:249
-#: console/templates/console/base1.html:93
-#: console/templates/console/base9.html:84
-msgid "Tomorrow"
-msgstr ""
-
-#: console/templates/console/base.html:109
-#: console/templates/console/base.html:255
-#: console/templates/console/base1.html:99
-#: console/templates/console/base9.html:91
-msgid "Customers"
-msgstr ""
-
-#: console/templates/console/base.html:114
-#: console/templates/console/base.html:262
-#: console/templates/console/base1.html:106
-#: console/templates/console/base9.html:99
-msgid "LINE Users"
-msgstr ""
-
-#: console/templates/console/base.html:118
-#: console/templates/console/base.html:267
-#: console/templates/console/base1.html:111
-#: console/templates/console/base9.html:104
-msgid "Facebook Users"
-msgstr ""
-
-#: console/templates/console/base.html:126
-#: console/templates/console/base.html:277
-#: console/templates/console/base1.html:121
-#: console/templates/console/base9.html:116
-msgid "Marketing"
-msgstr ""
-
-#: console/templates/console/base.html:130
-#: console/templates/console/base.html:280
-#: console/templates/console/base1.html:124
-#: console/templates/console/base9.html:119
-msgid "Promotions"
-msgstr ""
-
-#: console/templates/console/base.html:133
-#: console/templates/console/base.html:281
-#: console/templates/console/base1.html:125
-#: console/templates/console/base9.html:120
-msgid "Coupons"
-msgstr ""
-
-#: console/templates/console/base.html:136
-#: console/templates/console/base.html:282
-#: console/templates/console/base1.html:126
-#: console/templates/console/base9.html:121
-msgid "Hot Deals"
-msgstr ""
-
-#: console/templates/console/base.html:140
-#: console/templates/console/base.html:284
-#: console/templates/console/base1.html:128
-#: console/templates/console/base9.html:124
-msgid "Report"
-msgstr ""
-
-#: console/templates/console/base.html:144
-#: console/templates/console/base.html:287
-#: console/templates/console/base1.html:131
-#: console/templates/console/base9.html:129
-msgid "Daily Sales"
-msgstr ""
-
-#: console/templates/console/base.html:147
-#: console/templates/console/base.html:290
-#: console/templates/console/base1.html:134
-#: console/templates/console/base9.html:134
-msgid "Monthly Sales"
-msgstr ""
-
-#: console/templates/console/base.html:150
-#: console/templates/console/base.html:293
-#: console/templates/console/base1.html:137
-#: console/templates/console/base9.html:139
-msgid "Best Promotions"
-msgstr ""
-
-#: console/templates/console/base.html:153
-#: console/templates/console/base.html:296
-#: console/templates/console/base1.html:140
-#: console/templates/console/base9.html:144
-msgid "Best Customers"
-msgstr ""
-
-#: console/templates/console/base.html:156
-#: console/templates/console/base.html:299
-#: console/templates/console/base1.html:143
-#: console/templates/console/base9.html:149
-msgid "Sales by Customer Groups"
-msgstr ""
-
-#: console/templates/console/base.html:159
-#: console/templates/console/base.html:302
-#: console/templates/console/base1.html:146
-#: console/templates/console/base9.html:154
-msgid "Sales by Payment"
-msgstr ""
-
-#: console/templates/console/base.html:171
-#: console/templates/console/base.html:305
-#: console/templates/console/base1.html:149
-#: console/templates/console/base9.html:159
-msgid "Settings"
-msgstr ""
-
-#: console/templates/console/base.html:180
-#: console/templates/console/base.html:309
-#: console/templates/console/base1.html:153
-#: console/templates/console/base9.html:164
-msgid "Golf Club"
-msgstr ""
-
-#: console/templates/console/base.html:185
-#: console/templates/console/base.html:314
-#: console/templates/console/base1.html:158
-#: console/templates/console/base9.html:169
-#: liff/templates/liff/booking_create_form.html:141
-#: liff/templates/liff/golf_booking_create_form.html:158
-#: liff/templates/liff/golf_price_table.html:21
-#: liff/templates/liff/price_table.html:21
-msgid "Green Fee"
-msgstr ""
-
-#: console/templates/console/base.html:190
-#: console/templates/console/base.html:319
-#: console/templates/console/base1.html:163
-#: console/templates/console/base9.html:174 golf/models.py:46
-msgid "Holidays"
-msgstr ""
-
-#: console/templates/console/base.html:258
-#: console/templates/console/base1.html:102
-#: console/templates/console/base9.html:95
-msgid "Social Accounts"
 msgstr ""
 
 #: console/templates/console/golf_booking_order_detail.html:7
@@ -1109,7 +1313,7 @@ msgstr ""
 msgid "Booking closed"
 msgstr ""
 
-#: golf/models.py:849 golf/models.py:1037
+#: golf/models.py:849 golf/models.py:1037 member/models.py:81
 msgid "User"
 msgstr ""
 
@@ -1129,7 +1333,7 @@ msgstr ""
 msgid "Accept-language"
 msgstr ""
 
-#: golf/models.py:913
+#: golf/models.py:913 member/models.py:89
 msgid "IP address"
 msgstr ""
 
@@ -1137,7 +1341,7 @@ msgstr ""
 msgid "Total list price"
 msgstr ""
 
-#: golf/models.py:927
+#: golf/models.py:927 member/models.py:45
 msgid "Total selling price"
 msgstr ""
 
@@ -1390,8 +1594,100 @@ msgstr ""
 msgid "Price Table"
 msgstr ""
 
+#: member/adapters.py:20
+msgid "You cannot disconnect social media account."
+msgstr ""
+
 #: member/apps.py:7
 msgid "member"
+msgstr ""
+
+#: member/forms.py:13
+msgid "First name"
+msgstr ""
+
+#: member/forms.py:15
+msgid "First name written in English"
+msgstr ""
+
+#: member/forms.py:17 member/forms.py:25
+msgid "Uppercase alphabet only"
+msgstr ""
+
+#: member/forms.py:21
+msgid "Last name"
+msgstr ""
+
+#: member/forms.py:23
+msgid "Last name written in English"
+msgstr ""
+
+#: member/forms.py:29 member/models.py:16
+msgid "Telephone"
+msgstr ""
+
+#: member/forms.py:32
+msgid "Digits or plus sign only"
+msgstr ""
+
+#: member/forms.py:33
+msgid "Invalid phone number format"
+msgstr ""
+
+#: member/forms.py:58
+msgid "You cannot change password."
+msgstr ""
+
+#: member/forms.py:63
+msgid "You cannot set password."
+msgstr ""
+
+#: member/forms.py:68
+msgid "You cannot reset password."
+msgstr ""
+
+#: member/forms.py:73
+msgid "You cannot add an email."
+msgstr ""
+
+#: member/models.py:23
+msgid "Total order count"
+msgstr ""
+
+#: member/models.py:28
+msgid "First purchased date"
+msgstr ""
+
+#: member/models.py:33
+msgid "Last purchased date"
+msgstr ""
+
+#: member/models.py:38
+msgid "Max price"
+msgstr ""
+
+#: member/models.py:52
+msgid "Average price"
+msgstr ""
+
+#: member/models.py:59
+msgid "Mileage"
+msgstr ""
+
+#: member/models.py:66
+msgid "User memo"
+msgstr ""
+
+#: member/models.py:72
+msgid "Profiles"
+msgstr ""
+
+#: member/models.py:93
+msgid "Login log"
+msgstr ""
+
+#: member/models.py:94
+msgid "Login logs"
 msgstr ""
 
 #: shop/apps.py:7
