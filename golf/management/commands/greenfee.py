@@ -10,7 +10,7 @@ class Command(BaseCommand):
     help = 'Create price table'
 
     '''
-    python manage.py greenfee with-thai /home/ubuntu/Projects/withthai/golf/static/js/golf/json/green_fee.json
+    python manage.py greenfee with-thai /home/ubuntu/Projects/withthai/golf/static/golf/json/green_fee.json
     
     green_fee.json format
     Array: Seasons x Timeslots x Customer groups
