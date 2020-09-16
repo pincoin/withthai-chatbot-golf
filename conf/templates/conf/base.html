@@ -8,21 +8,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="theme-color" content="#87b842">
 
-    <meta property="og:image" content="http://www.withthai.com{% static 'images/console/withthai_og_en.png' %}"/>
+    <meta property="og:image" content="http://www.withthai.com{% static 'conf/images/withthai_og_en.png' %}"/>
     <meta property="og:image:width" content="1024"/>
     <meta property="og:image:height" content="1024"/>
 
     <!-- fonts -->
-    <link rel="stylesheet" href="{% static 'css/console/prompt.css' %}">
-    <link rel="stylesheet" href="{% static 'css/console/nanum-gothic-coding.css' %}">
+    <link rel="stylesheet" href="{% static 'conf/css/prompt.css' %}">
+    <link rel="stylesheet" href="{% static 'conf/css/nanum-gothic-coding.css' %}">
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css">
 
     <!-- bulma -->
-    <link rel="stylesheet" href="{% static 'css/console/bulma.css' %}">
-    <link rel="stylesheet" href="{% static 'css/console/layout.css' %}">
-    <link rel="stylesheet" href="{% static 'css/console/page.css' %}">
+    <link rel="stylesheet" href="{% static 'conf/css/bulma.css' %}">
+    <link rel="stylesheet" href="{% static 'conf/css/layout.css' %}">
+    <link rel="stylesheet" href="{% static 'conf/css/page.css' %}">
 
-    <link rel="shortcut icon" href="{% static 'images/console/favicon_16x16.png' %}">
+    <link rel="shortcut icon" href="{% static 'conf/images/favicon_16x16.png' %}">
 </head>
 <body>
 <header>
@@ -33,7 +33,7 @@
                     <span class="fas fa-bars fa-fw"></span>
                 </a>
                 <a class="navbar-item" style="" href="{% url 'console:home' slug %}">
-                    <img src="{% static 'images/console/withthai_logo_en.png' %}"
+                    <img src="{% static 'conf/images/withthai_logo_en.png' %}"
                          width="168" height="30" alt="with thai logo">
                 </a>
                 <a class="navbar-item is-hidden-tablet" id="right-sidebar-open">
@@ -349,7 +349,7 @@
     </div>
 </footer>
 {% block javascript %}
-<script charset="utf-8" src="{% static 'js/console/main.js' %}"></script>
+<script charset="utf-8" src="{% static 'conf/js/main.js' %}"></script>
 {% endblock %}
 </body>
 </html>

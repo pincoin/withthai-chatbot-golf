@@ -50,7 +50,7 @@ msgid "English"
 msgstr "영어"
 
 #: console/apps.py:7
-msgid "console"
+msgid "conf"
 msgstr "콘솔"
 
 #: console/forms.py:16
