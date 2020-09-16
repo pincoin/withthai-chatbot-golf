@@ -140,10 +140,6 @@ SOCIALACCOUNT_FORMS = {
 }
 
 SOCIALACCOUNT_PROVIDERS = {
-    'facebook': {},
-    'google': {},
-    'kakao': {},
-    'naver': {},
     'line': {
         'SCOPE': [
             'profile',
