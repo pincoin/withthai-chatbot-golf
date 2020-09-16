@@ -38,6 +38,7 @@ INSTALLED_APPS = [
 ]
 
 INSTALLED_APPS += [
+    'member',
     'golf',
     'hotel',
     'chatbot',
