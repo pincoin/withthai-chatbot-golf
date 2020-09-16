@@ -17,43 +17,13 @@
 
                     <div class="column is-one-third is-offset-one-third">
                         <div class="columns is-mobile">
-                            <div class="column">
-                                <a title="Naver"
-                                   class="socialaccount_provider naver"
-                                   href="/accounts/naver/login/?process=login{% if request.GET.next %}&next={{ request.GET.next }}{% endif %}">
-                                    <img src="{% static 'conf/images/sns_naver.svg' %}" width="64" height="64">
-                                </a>
-                            </div>
-                            <div class="column">
-                                <a title="Kakao"
-                                   class="socialaccount_provider kakao"
-                                   href="/accounts/kakao/login/?process=login{% if request.GET.next %}&next={{ request.GET.next }}{% endif %}">
-                                    <img src="{% static 'conf/images/sns_kakao.svg' %}" width="64" height="64"
-                                         alt="Kakao">
-                                </a>
-                            </div>
+
                             <div class="column">
                                 <a title="Line"
                                    class="socialaccount_provider line"
                                    href="/accounts/line/login/?process=login{% if request.GET.next %}&next={{ request.GET.next }}{% endif %}">
                                     <img src="{% static 'conf/images/sns_line.svg' %}" width="64" height="64"
                                          alt="Line">
-                                </a>
-                            </div>
-                            <div class="column">
-                                <a title="Facebook"
-                                   class="socialaccount_provider facebook"
-                                   href="/accounts/facebook/login/?process=login{% if request.GET.next %}&next={{ request.GET.next }}{% endif %}">
-                                    <img src="{% static 'conf/images/sns_facebook.svg' %}" width="64" height="64"
-                                         alt="Facebook">
-                                </a>
-                            </div>
-                            <div class="column">
-                                <a title="Google"
-                                   class="socialaccount_provider google"
-                                   href="/accounts/google/login/?process=login">
-                                    <img src="{% static 'conf/images/sns_google.svg' %}" width="64" height="64"
-                                         alt="Google">
                                 </a>
                             </div>
                         </div>
