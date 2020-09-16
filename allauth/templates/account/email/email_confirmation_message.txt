@@ -1,0 +1,15 @@
+{% load i18n %}
+{% load account %}
+{% user_display user as user_display %}
+{% autoescape off %}
+{% trans 'Hello.' %}
+
+{% trans 'You have received this e-mail because you connected with this e-mail address.' %}
+
+{% trans 'Please, click the activation link if correct.' %}
+{{ activate_url }}
+
+{% trans 'Thank you.' %}
+
+{% trans 'WITH THAI' %} www.withthai.com
+{% endautoescape %}

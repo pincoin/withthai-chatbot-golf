@@ -45,12 +45,18 @@
                 <div class="navbar-end">
                     <div class="navbar-item">
                         <div class="buttons">
-                            <a class="button is-primary is-small">
-                                Sign up
+
+                            {% if user.is_authenticated %}
+                            <a href="{% url 'account_logout' %}" class="button is-primary is-small">
+                                <span class="icon"><i class="fas fa-sign-out-alt fa-fw"></i></span>
+                                <span>{% trans 'SIGN OUT' %}</span>
                             </a>
-                            <a class="button is-light is-small">
-                                Log in
+                            {% else %}
+                            <a href="{% url 'account_login' %}" class="button is-light is-small">
+                                <span class="icon"><i class="fas fa-sign-in-alt fa-fw"></i></span>
+                                <span>{% trans 'SIGN IN' %}</span>
                             </a>
+                            {% endif %}
                         </div>
                     </div>
                 </div>

@@ -1,0 +1,58 @@
+{% extends 'conf/base.html' %}
+
+{% load i18n static %}
+{% load account %}
+
+{% block title %}{% trans "Confirm E-mail Address" %}{% endblock %}
+
+{% block main %}
+<main>
+    <div class="hero is-large">
+        <div class="hero-body">
+            <div class="container">
+                <div class="columns is-multiline">
+                    <div class="column is-one-third is-offset-one-third has-text-centered">
+                        <h1 class="is-size-1">{% trans "Confirm E-mail Address" %}</h1>
+                    </div>
+
+                    <div class="column is-one-third is-offset-one-third">
+                        <article class="message is-info">
+                            <div class="message-body">
+                                {% if confirmation %}
+
+                                {% user_display confirmation.email_address.user as user_display %}
+
+                                <ul>
+                                    <li>{% trans 'Username' %}: {{ user_display }}</li>
+                                    <li>{% trans 'Email' %}: {{ confirmation.email_address.email }}</li>
+                                </ul>
+
+                                <form method="post" action="{% url 'account_confirm_email' confirmation.key %}">
+                                    {% csrf_token %}
+                                    <button type="submit" class="button is-fullwidth mt-4">
+                                        {% trans 'Confirm email address' %}
+                                    </button>
+                                </form>
+
+                                {% else %}
+
+                                {% url 'account_email' as email_url %}
+
+                                <p>
+                                    {% trans 'This e-mail confirmation link is expired or invalid.' %}
+                                </p>
+                                <p class="mt-4">
+                                    <a href="{{ email_url}}" class="button is-fullwidth">
+                                        {% trans 'Re-send email' %}
+                                    </a>
+                                </p>
+                                {% endif %}
+                            </div>
+                        </article>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+{% endblock %}

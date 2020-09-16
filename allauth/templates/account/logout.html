@@ -1,0 +1,42 @@
+{% extends 'conf/base.html' %}
+
+{% load i18n static %}
+
+{% block title %}{% trans 'SIGN OUT' %}{% endblock %}
+
+{% block main %}
+    <main>
+        <div class="hero is-large">
+            <div class="hero-body">
+                <div class="container">
+                    <div class="columns is-multiline">
+                        <div class="column is-one-third is-offset-one-third has-text-centered">
+                            <h1 class="is-size-1">{% trans 'SIGN OUT' %}</h1>
+                        </div>
+
+                        <div class="column is-one-third is-offset-one-third">
+                            <article class="message is-danger">
+                                <div class="message-body">
+                                    {% trans 'Are you sure you want to sign out?' %}
+                                </div>
+                            </article>
+                        </div>
+
+                        <hr>
+
+                        <div class="column is-one-third is-offset-one-third">
+                            <form method="post" action="{% url 'account_logout' %}">
+                                {% csrf_token %}
+                                {% if redirect_field_value %}
+                                    <input type="hidden" name="{{ redirect_field_name }}"
+                                           value="{{ redirect_field_value }}"/>
+                                {% endif %}
+                                <button type="submit" class="button is-danger is-fullwidth">{% trans 'SIGN OUT' %}</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+{% endblock %}
