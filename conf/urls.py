@@ -23,6 +23,9 @@ urlpatterns = [
     path('console/',
          include('console.urls', namespace='console')),
 
+    path('accounts/',
+         include('allauth.urls')),
+
     path('admin/', admin.site.urls),
 ]
 

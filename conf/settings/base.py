@@ -1,6 +1,8 @@
 import json
 import os
 
+from django.utils.translation import gettext_lazy as _
+
 from . import BASE_DIR
 
 # Quick-start development settings - unsuitable for production
@@ -35,6 +37,13 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django.contrib.humanize',
+    'django.contrib.sites',
+]
+
+INSTALLED_APPS += [
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
 ]
 
 INSTALLED_APPS += [
@@ -89,3 +98,54 @@ AUTH_PASSWORD_VALIDATORS = [
     {'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator', },
     {'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator', },
 ]
+
+AUTHENTICATION_BACKENDS = [
+    'django.contrib.auth.backends.ModelBackend',
+    'allauth.account.auth_backends.AuthenticationBackend',
+]
+
+SITE_ID = 1
+
+# django.contrib.auth settings for allauth
+PASSWORD_RESET_TIMEOUT_DAYS = 1  # default=3
+LOGIN_URL = '/accounts/login/'  # default=/accounts/login/
+LOGOUT_URL = '/accounts/logout/'  # default=/accounts/logout/
+LOGIN_REDIRECT_URL = '/'  # default=/accounts/profile/
+# LOGOUT_REDIRECT_URL = '/'
+
+# django-allauth
+DEFAULT_FROM_EMAIL = secret['EMAIL_NO_REPLY']
+ACCOUNT_ADAPTER = 'member.adapters.MyAccountAdapter'
+ACCOUNT_AUTHENTICATION_METHOD = 'email'
+ACCOUNT_EMAIL_REQUIRED = True
+ACCOUNT_EMAIL_VERIFICATION = 'mandatory'
+ACCOUNT_LOGIN_ATTEMPTS_LIMIT = 5
+ACCOUNT_LOGIN_ATTEMPTS_TIMEOUT = 300
+ACCOUNT_FORMS = {
+    'add_email': 'member.forms.MemberAddEmailForm',
+    'change_password': 'member.forms.MemberChangePasswordForm',
+    'set_password': 'member.forms.MemberSetPasswordForm',
+    'reset_password': 'member.forms.MemberResetPasswordForm',
+}
+ACCOUNT_LOGOUT_ON_PASSWORD_CHANGE = True  # default=False
+ACCOUNT_EMAIL_SUBJECT_PREFIX = _('[WITH THAI] ')
+ACCOUNT_AUTHENTICATED_LOGIN_REDIRECTS = False
+SOCIALACCOUNT_AUTO_SIGNUP = False
+SOCIALACCOUNT_ADAPTER = 'member.adapters.MySocialAccountAdapter'
+SOCIALACCOUNT_FORMS = {
+    'signup': 'member.forms.MemberSignupForm',
+}
+
+SOCIALACCOUNT_PROVIDERS = {
+    'facebook': {},
+    'google': {},
+    'kakao': {},
+    'naver': {},
+    'line': {
+        'SCOPE': [
+            'profile',
+            'openid',
+            'email',
+        ],
+    },
+}
