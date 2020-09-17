@@ -1,4 +1,4 @@
-{% extends "conf/base.html" %}
+{% extends "./account_base.html" %}
 
 {% load i18n static %}
 {% load account socialaccount %}
@@ -6,39 +6,36 @@
 {% block title %}{% trans "SIGN IN" %}{% endblock %}
 
 {% block main %}
-<main>
-    <div class="hero is-large">
-        <div class="hero-body">
-            <div class="container">
-                <div class="columns is-multiline">
-                    <div class="column is-one-third is-offset-one-third has-text-centered">
-                        <h1 class="is-size-1">{% trans 'SIGN IN' %}</h1>
-                    </div>
+<div class="hero is-large">
+    <div class="hero-body">
+        <div class="container">
+            <div class="columns is-multiline">
+                <div class="column is-one-third is-offset-one-third has-text-centered">
+                    <h1 class="is-size-1">{% trans 'SIGN IN' %}</h1>
+                </div>
 
-                    <div class="column is-one-third is-offset-one-third">
-                        <div class="columns is-mobile">
-
-                            <div class="column">
-                                <a title="Line"
-                                   class="socialaccount_provider line"
-                                   href="/accounts/line/login/?process=login{% if request.GET.next %}&next={{ request.GET.next }}{% endif %}">
-                                    <img src="{% static 'conf/images/sns_line.svg' %}" width="64" height="64"
-                                         alt="Line">
-                                </a>
-                            </div>
+                <div class="column is-one-third is-offset-one-third">
+                    <div class="columns is-mobile is-centered">
+                        <div class="column is-half has-text-centered">
+                            <a title="Line"
+                               class="socialaccount_provider line"
+                               href="/accounts/line/login/?process=login{% if request.GET.next %}&next={{ request.GET.next }}{% endif %}">
+                                <img src="{% static 'conf/images/sns_line.svg' %}" width="64" height="64"
+                                     alt="Line">
+                            </a>
                         </div>
                     </div>
-                    <hr>
-                    <div class="column is-one-third is-offset-one-third login-message">
-                        <article class="message is-info">
-                            <div class="message-body">
-                                {% trans 'You may login with your social media accounts.' %}
-                            </div>
-                        </article>
-                    </div>
+                </div>
+                <hr>
+                <div class="column is-one-third is-offset-one-third login-message">
+                    <article class="message is-info">
+                        <div class="message-body">
+                            {% trans 'You may login with your social media accounts.' %}
+                        </div>
+                    </article>
                 </div>
             </div>
         </div>
     </div>
-</main>
+</div>
 {% endblock %}
