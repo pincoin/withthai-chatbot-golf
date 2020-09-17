@@ -454,7 +454,7 @@ class GolfClub(model_utils_models.TimeStampedModel):
         old_thumbnail_url = None
 
         if self.liff:
-            with open(Path(settings.BASE_DIR) / 'liff' / 'static' / 'js' / 'liff' / 'json' / 'course.json') \
+            with open(Path(settings.BASE_DIR) / 'liff' / 'static' / 'liff' / 'js' / 'json' / 'course.json') \
                     as json_file:
                 self.info_flex_message = json.load(json_file)
 
@@ -478,11 +478,11 @@ class GolfClub(model_utils_models.TimeStampedModel):
                     self.info_flex_message['body']['contents'][5]['contents'][4]['action']['uri'] \
                         = f"https://liff.line.me/"
 
-        with open(Path(settings.BASE_DIR) / 'liff' / 'static' / 'js' / 'liff' / 'json' / 'order.json') \
+        with open(Path(settings.BASE_DIR) / 'liff' / 'static' / 'liff' / 'js' / 'json' / 'order.json') \
                 as json_file:
             self.order_flex_message = json.load(json_file)
 
-        with open(Path(settings.BASE_DIR) / 'liff' / 'static' / 'js' / 'liff' / 'json' / 'no-order.json') \
+        with open(Path(settings.BASE_DIR) / 'liff' / 'static' / 'liff' / 'js' / 'json' / 'no-order.json') \
                 as json_file:
             self.no_order_flex_message = json.load(json_file)
 

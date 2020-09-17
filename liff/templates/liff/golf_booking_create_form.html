@@ -4,7 +4,7 @@
 
 {% block stylesheet %}
 {{ block.super }}
-<link href="{% static 'css/liff/style.css' %}" rel="stylesheet">
+<link href="{% static 'liff/css/style.css' %}" rel="stylesheet">
 {% endblock %}}
 
 {% block content %}
@@ -248,5 +248,5 @@
     let fees = data['fees'];
     let holidays = data['holidays'];
 </script>
-<script src="{% static 'js/liff/golf-booking-create-form.js' %}"></script>
+<script src="{% static 'liff/js/golf-booking-create-form.js' %}"></script>
 {% endblock %}
