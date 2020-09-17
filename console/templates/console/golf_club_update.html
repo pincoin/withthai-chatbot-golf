@@ -1,4 +1,4 @@
-{% extends 'conf/base.html' %}
+{% extends './console_base.html' %}
 
 {% load i18n static humanize %}
 {% load console_filters %}
@@ -259,12 +259,4 @@ with-thai::{% trans 'Golf Club Update' %}
         </div>
     </div>
 </div>
-{% endblock %}
-
-{% block javascript %}
-{{ block.super }}
-<script>
-    function runApp() {
-    }
-</script>
 {% endblock %}
