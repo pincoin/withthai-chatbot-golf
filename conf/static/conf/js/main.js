@@ -55,7 +55,7 @@ document.addEventListener('DOMContentLoaded', () => {
             });
     });
 
-    if (typeof runApp === "function") {
+    if (typeof runApp === 'function') {
         runApp();
     }
 });
