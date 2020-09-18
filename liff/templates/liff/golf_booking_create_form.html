@@ -11,9 +11,7 @@
 <div class="container">
     <div class="card">
         <header class="card-header">
-            <p class="card-header-title">
-                WITH THAI
-            </p>
+            <div class="card-header-title is-uppercase">{{ golf_club.title_english }}</div>
         </header>
         <div class="card-content shadow-box">
             <div class="field is-horizontal">
@@ -147,9 +145,7 @@
     </div>
     <div class="card">
         <header class="card-header">
-            <p class="card-header-title">
-                {% trans 'ORDER DETAILS' %}
-            </p>
+            <div class="card-header-title">{% trans 'ORDER DETAILS' %}</div>
         </header>
         <div class="card-content shadow-box">
             <table class="table is-fullwidth is-narrow quotation-table" id="quotation-table">
