@@ -8,192 +8,190 @@
 {% endblock %}}
 
 {% block content %}
-<section class="section px-2 py-2">
-    <div class="container">
-        <div class="card quotation-card">
-            <header class="card-header quotation-card-header">
-                <p class="card-header-title">
-                    WITH THAI
-                </p>
-            </header>
-            <div class="card-content">
-                <div class="field is-horizontal">
-                    <div class="field-label is-normal">
-                        <label class="label" for="{{ form.round_date.id_for_label }}">
-                            {% trans 'Tee-off Date/Time' %}
-                        </label>
-                        <label class="label is-hidden" for="{{ form.round_time.id_for_label }}"></label>
+<div class="container">
+    <div class="card">
+        <header class="card-header">
+            <p class="card-header-title">
+                WITH THAI
+            </p>
+        </header>
+        <div class="card-content shadow-box">
+            <div class="field is-horizontal">
+                <div class="field-label is-normal">
+                    <label class="label" for="{{ form.round_date.id_for_label }}">
+                        {% trans 'Tee-off Date/Time' %}
+                    </label>
+                    <label class="label is-hidden" for="{{ form.round_time.id_for_label }}"></label>
+                </div>
+                <div class="field-body">
+                    <div class="field">
+                        <p class="control is-expanded has-icons-left">
+                            <input class="input"
+                                   id="{{ form.round_date.id_for_label }}"
+                                   name="{{ form.round_date.name }}"
+                                   placeholder="YYYY-MM-DD"
+                                   type="date"
+                                   value="{{ form.round_date.value|default_if_none:'' }}">
+                            <span class="icon is-small is-left"><i class="fas fa-calendar"></i></span>
+                        </p>
                     </div>
-                    <div class="field-body">
-                        <div class="field">
-                            <p class="control is-expanded has-icons-left">
-                                <input class="input"
-                                       id="{{ form.round_date.id_for_label }}"
-                                       name="{{ form.round_date.name }}"
-                                       placeholder="YYYY-MM-DD"
-                                       type="date"
-                                       value="{{ form.round_date.value|default_if_none:'' }}">
-                                <span class="icon is-small is-left"><i class="fas fa-calendar"></i></span>
-                            </p>
-                        </div>
-                        <div class="field">
-                            <p class="control is-expanded has-icons-left">
-                                <input class="input"
-                                       id="{{ form.round_time.id_for_label }}"
-                                       name="{{ form.round_time.name }}"
-                                       placeholder="HH:MM"
-                                       step="60"
-                                       type="time" value="{{ form.round_time.value|default_if_none:'' }}">
-                                <span class="icon is-small is-left"><i class="fas fa-clock"></i></span>
-                            </p>
-                        </div>
+                    <div class="field">
+                        <p class="control is-expanded has-icons-left">
+                            <input class="input"
+                                   id="{{ form.round_time.id_for_label }}"
+                                   name="{{ form.round_time.name }}"
+                                   placeholder="HH:MM"
+                                   step="60"
+                                   type="time" value="{{ form.round_time.value|default_if_none:'' }}">
+                            <span class="icon is-small is-left"><i class="fas fa-clock"></i></span>
+                        </p>
                     </div>
                 </div>
-                <div class="field is-horizontal">
-                    <div class="field-label is-normal">
-                        <label class="label" for="{{ form.pax.id_for_label }}">{% trans 'Golfer #' %}</label>
-                    </div>
-                    <div class="field-body">
-                        <div class="field has-addons">
-                            <div class="control">
-                                <a class="button button-close" id="pax-minus-button">
-                                    <i class="fas fa-minus fa-fw"></i>
-                                </a>
-                            </div>
-                            <div class="control is-expanded has-icons-left">
-                                <div class="select is-fullwidth select-has-text-centered">
-                                    <select id="{{ form.pax.id_for_label }}"
-                                            name="{{ form.pax.name }}" disabled class="select-disabled">
-                                        {% for choice in form.pax.field.choices %}
-                                        <option value="{{ choice.0 }}">
-                                            {{ choice.1 }}
-                                        </option>
-                                        {% endfor %}
-                                    </select>
-                                </div>
-                                <span class="icon is-small is-left"><i class="fas fa-user-friends"></i></span>
-                            </div>
-                            <div class="control">
-                                <a class="button button-save" id="pax-plus-button">
-                                    <i class="fas fa-plus fa-fw"></i>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
+            </div>
+            <div class="field is-horizontal">
+                <div class="field-label is-normal">
+                    <label class="label" for="{{ form.pax.id_for_label }}">{% trans 'Golfer #' %}</label>
                 </div>
-                <div class="field is-horizontal">
-                    <div class="field-label is-normal">
-                        <label class="label" for="{{ form.cart.id_for_label }}">{% trans 'Cart #' %}</label>
-                    </div>
-                    <div class="field-body">
-                        <div class="field has-addons">
-                            <div class="control">
-                                <a class="button button-close" id="cart-minus-button">
-                                    <i class="fas fa-minus fa-fw"></i>
-                                </a>
-                            </div>
-                            <div class="control is-expanded has-icons-left">
-                                <div class="select is-fullwidth select-has-text-centered">
-                                    <select id="{{ form.cart.id_for_label }}"
-                                            name="{{ form.cart.name }}" disabled class="select-disabled">
-                                        {% for choice in form.cart.field.choices %}
-                                        <option value="{{ choice.0 }}">
-                                            {{ choice.1 }}
-                                        </option>
-                                        {% endfor %}
-                                    </select>
-                                </div>
-                                <span class="icon is-small is-left"><i class="fas fa-truck-pickup"></i></span>
-                            </div>
-                            <div class="control">
-                                <a class="button button-save" id="cart-plus-button">
-                                    <i class="fas fa-plus fa-fw"></i>
-                                </a>
-                            </div>
+                <div class="field-body">
+                    <div class="field has-addons">
+                        <div class="control">
+                            <a class="button button-minus" id="pax-minus-button">
+                                <i class="fas fa-minus fa-fw"></i>
+                            </a>
                         </div>
-                    </div>
-                </div>
-                <div class="field is-horizontal">
-                    <div class="field-label is-normal">
-                        <label class="label" for="{{ form.customer_name.id_for_label }}">
-                            {% trans 'Customer Name' %}
-                        </label>
-                    </div>
-                    <div class="field-body">
-                        <div class="field">
-                            <p class="control has-icons-left">
-                                <input class="input"
-                                       id="{{ form.customer_name.id_for_label }}"
-                                       name="{{ form.customer_name.name }}"
-                                       placeholder="{% trans 'Type in English or Thai' %}"
-                                       type="text"
-                                       value="{{ form.customer_name.value|default_if_none:'' }}">
-                                <span class="icon is-small is-left"><i class="far fa-address-card"></i></span>
-                            </p>
+                        <div class="control is-expanded has-icons-left">
+                            <div class="select is-fullwidth select-has-text-centered">
+                                <select id="{{ form.pax.id_for_label }}"
+                                        name="{{ form.pax.name }}" disabled class="select-disabled">
+                                    {% for choice in form.pax.field.choices %}
+                                    <option value="{{ choice.0 }}">
+                                        {{ choice.1 }}
+                                    </option>
+                                    {% endfor %}
+                                </select>
+                            </div>
+                            <span class="icon is-small is-left"><i class="fas fa-user-friends"></i></span>
+                        </div>
+                        <div class="control">
+                            <a class="button button-plus" id="pax-plus-button">
+                                <i class="fas fa-plus fa-fw"></i>
+                            </a>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="notification is-danger mx-2 px-3 py-1 is-hidden" id="error-notification">
-        </div>
-        <div class="card quotation-card">
-            <header class="card-header quotation-card-header">
-                <p class="card-header-title">
-                    {% trans 'ORDER DETAILS' %}
-                </p>
-            </header>
-            <div class="card-content">
-                <table class="table is-fullwidth is-narrow quotation-table" id="quotation-table">
-                    <thead>
-                    <tr>
-                        <th class="has-text-centered">{% trans 'Item' %}</th>
-                        <th class="has-text-centered">{% trans 'Price' %}</th>
-                        <th class="has-text-centered">{% trans 'PAX' %}</th>
-                        <th class="has-text-centered">{% trans 'Amount' %}</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <tr>
-                        <td class="has-text-weight-bold">{% trans 'Green Fee' %}</td>
-                        <td class="has-text-right" id="green-fee-unit-price"></td>
-                        <td class="has-text-centered" id="green-fee-pax"></td>
-                        <td class="has-text-right" id="green-fee-amount"></td>
-                    </tr>
-                    <tr>
-                        <td class="has-text-weight-bold">{% trans 'Caddie Fee' %}</td>
-                        <td class="has-text-right" id="caddie-fee-unit-price"></td>
-                        <td class="has-text-centered" id="caddie-fee-pax"></td>
-                        <td class="has-text-right" id="caddie-fee-amount"></td>
-                    </tr>
-                    <tr>
-                        <td class="has-text-weight-bold">{% trans 'Cart Fee' %}</td>
-                        <td class="has-text-right" id="cart-fee-unit-price"></td>
-                        <td class="has-text-centered" id="cart-fee-pax"></td>
-                        <td class="has-text-right" id="cart-fee-amount"></td>
-                    </tr>
-                    </tbody>
-                    <tfoot>
-                    <tr>
-                        <td class="has-text-weight-bold">{% trans 'Total Amount' %}</td>
-                        <td class="has-text-weight-bold has-text-right" colspan="3">
-                            <span class="total-amount" id="fee-total-amount"></span>
-                        </td>
-                    </tr>
-                    </tfoot>
-                </table>
+            <div class="field is-horizontal">
+                <div class="field-label is-normal">
+                    <label class="label" for="{{ form.cart.id_for_label }}">{% trans 'Cart #' %}</label>
+                </div>
+                <div class="field-body">
+                    <div class="field has-addons">
+                        <div class="control">
+                            <a class="button button-minus" id="cart-minus-button">
+                                <i class="fas fa-minus fa-fw"></i>
+                            </a>
+                        </div>
+                        <div class="control is-expanded has-icons-left">
+                            <div class="select is-fullwidth select-has-text-centered">
+                                <select id="{{ form.cart.id_for_label }}"
+                                        name="{{ form.cart.name }}" disabled class="select-disabled">
+                                    {% for choice in form.cart.field.choices %}
+                                    <option value="{{ choice.0 }}">
+                                        {{ choice.1 }}
+                                    </option>
+                                    {% endfor %}
+                                </select>
+                            </div>
+                            <span class="icon is-small is-left"><i class="fas fa-truck-pickup"></i></span>
+                        </div>
+                        <div class="control">
+                            <a class="button button-plus" id="cart-plus-button">
+                                <i class="fas fa-plus fa-fw"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <footer class="card-footer buttons">
-                <button class="card-footer-item button button-close" id="closeWindowButton">
-                    {% trans 'Close' %}
-                </button>
-                <button class="card-footer-item button button-save" id="new-booking-button">
-                    {% trans 'New Booking' %}
-                </button>
-            </footer>
+            <div class="field is-horizontal">
+                <div class="field-label is-normal">
+                    <label class="label" for="{{ form.customer_name.id_for_label }}">
+                        {% trans 'Customer Name' %}
+                    </label>
+                </div>
+                <div class="field-body">
+                    <div class="field">
+                        <p class="control has-icons-left">
+                            <input class="input"
+                                   id="{{ form.customer_name.id_for_label }}"
+                                   name="{{ form.customer_name.name }}"
+                                   placeholder="{% trans 'Type in English or Thai' %}"
+                                   type="text"
+                                   value="{{ form.customer_name.value|default_if_none:'' }}">
+                            <span class="icon is-small is-left"><i class="far fa-address-card"></i></span>
+                        </p>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
-</section>
+    <div class="notification is-danger mx-2 px-3 py-1 is-hidden" id="error-notification">
+    </div>
+    <div class="card">
+        <header class="card-header">
+            <p class="card-header-title">
+                {% trans 'ORDER DETAILS' %}
+            </p>
+        </header>
+        <div class="card-content shadow-box">
+            <table class="table is-fullwidth is-narrow quotation-table" id="quotation-table">
+                <thead>
+                <tr>
+                    <th class="has-text-centered">{% trans 'Item' %}</th>
+                    <th class="has-text-centered">{% trans 'Price' %}</th>
+                    <th class="has-text-centered">{% trans 'PAX' %}</th>
+                    <th class="has-text-centered">{% trans 'Amount' %}</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td class="has-text-weight-bold">{% trans 'Green Fee' %}</td>
+                    <td class="has-text-right" id="green-fee-unit-price"></td>
+                    <td class="has-text-centered" id="green-fee-pax"></td>
+                    <td class="has-text-right" id="green-fee-amount"></td>
+                </tr>
+                <tr>
+                    <td class="has-text-weight-bold">{% trans 'Caddie Fee' %}</td>
+                    <td class="has-text-right" id="caddie-fee-unit-price"></td>
+                    <td class="has-text-centered" id="caddie-fee-pax"></td>
+                    <td class="has-text-right" id="caddie-fee-amount"></td>
+                </tr>
+                <tr>
+                    <td class="has-text-weight-bold">{% trans 'Cart Fee' %}</td>
+                    <td class="has-text-right" id="cart-fee-unit-price"></td>
+                    <td class="has-text-centered" id="cart-fee-pax"></td>
+                    <td class="has-text-right" id="cart-fee-amount"></td>
+                </tr>
+                </tbody>
+                <tfoot>
+                <tr>
+                    <td class="has-text-weight-bold">{% trans 'Total Amount' %}</td>
+                    <td class="has-text-weight-bold has-text-right" colspan="3">
+                        <span class="total-amount" id="fee-total-amount"></span>
+                    </td>
+                </tr>
+                </tfoot>
+            </table>
+        </div>
+        <footer class="card-footer buttons no-shadow-box">
+            <button class="card-footer-item button button-close" id="closeWindowButton">
+                {% trans 'Close' %}
+            </button>
+            <button class="card-footer-item button button-save" id="new-booking-button">
+                {% trans 'New Booking' %}
+            </button>
+        </footer>
+    </div>
+</div>
 <div class="modal" id="booking-confirm-modal">
     <div class="modal-background"></div>
     <div class="modal-card">
