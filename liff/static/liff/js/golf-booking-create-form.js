@@ -389,7 +389,6 @@ function runApp() {
     roundTime.setAttribute('max', roundTimeEnd);
 
     // 2. Retrieve customer group from server using access token
-    /*
     if (!liff.isLoggedIn() && !liff.isInClient()) {
         liff.login();
     }
@@ -427,8 +426,6 @@ function runApp() {
         errorModalTitle.innerText = 'Failed to get your LINE profile';
         errorModalBody.innerHTML = 'Please, agree to the terms and conditions and privacy policy.';
     }
-     */
-    customerGroup = 4;
 
     // 3. Add event handlers
     document
