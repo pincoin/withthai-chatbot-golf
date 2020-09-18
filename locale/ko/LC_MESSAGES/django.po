@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-09-17 00:31+0700\n"
+"POT-Creation-Date: 2020-09-18 20:45+0700\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,6 +16,237 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
+
+#: allauth/templates/account/account_base.html:34
+#: allauth/templates/account/logout.html:6
+#: allauth/templates/account/logout.html:14
+#: allauth/templates/account/logout.html:34
+#: console/templates/console/console_base.html:34
+msgid "SIGN OUT"
+msgstr "로그아웃"
+
+#: allauth/templates/account/account_base.html:39
+#: allauth/templates/account/login.html:6
+#: allauth/templates/account/login.html:14
+#: allauth/templates/account/signup_closed.html:32
+#: allauth/templates/socialaccount/authentication_error.html:32
+#: allauth/templates/socialaccount/login_cancelled.html:32
+#: console/templates/console/console_base.html:39
+msgid "SIGN IN"
+msgstr "로그인"
+
+#: allauth/templates/account/account_base.html:53
+#: allauth/templates/account/account_base.html:202
+#: console/templates/console/console_base.html:53
+#: console/templates/console/console_base.html:202
+msgid "Booking"
+msgstr "예약관리"
+
+#: allauth/templates/account/account_base.html:62
+#: allauth/templates/account/account_base.html:206
+#: console/templates/console/console_base.html:62
+#: console/templates/console/console_base.html:206
+#: console/templates/console/golf_booking_order_list.html:15
+msgid "All Booking List"
+msgstr "전체예약"
+
+#: allauth/templates/account/account_base.html:67
+#: allauth/templates/account/account_base.html:213 console/forms.py:60
+#: console/templates/console/console_base.html:67
+#: console/templates/console/console_base.html:213
+msgid "Open"
+msgstr "예약접수"
+
+#: allauth/templates/account/account_base.html:72
+#: allauth/templates/account/account_base.html:218 console/forms.py:62
+#: console/templates/console/console_base.html:72
+#: console/templates/console/console_base.html:218
+msgid "Accepted"
+msgstr "예약수락"
+
+#: allauth/templates/account/account_base.html:77
+#: allauth/templates/account/account_base.html:223 console/forms.py:72
+#: console/templates/console/console_base.html:77
+#: console/templates/console/console_base.html:223 golf/models.py:827
+msgid "Not paid"
+msgstr "결제안함"
+
+#: allauth/templates/account/account_base.html:82
+#: allauth/templates/account/account_base.html:228 console/forms.py:74
+#: console/templates/console/console_base.html:82
+#: console/templates/console/console_base.html:228 golf/models.py:829
+msgid "Refund requests"
+msgstr "환불요청"
+
+#: allauth/templates/account/account_base.html:87
+#: allauth/templates/account/account_base.html:233
+#: console/templates/console/console_base.html:87
+#: console/templates/console/console_base.html:233
+msgid "Today"
+msgstr "오늘"
+
+#: allauth/templates/account/account_base.html:92
+#: allauth/templates/account/account_base.html:238
+#: console/templates/console/console_base.html:92
+#: console/templates/console/console_base.html:238
+msgid "Tomorrow"
+msgstr "내일"
+
+#: allauth/templates/account/account_base.html:97
+#: allauth/templates/account/account_base.html:244
+#: console/templates/console/console_base.html:97
+#: console/templates/console/console_base.html:244
+msgid "Customers"
+msgstr "고객관리"
+
+#: allauth/templates/account/account_base.html:102
+#: allauth/templates/account/account_base.html:251
+#: console/templates/console/console_base.html:102
+#: console/templates/console/console_base.html:251
+msgid "LINE Users"
+msgstr "라인 사용자"
+
+#: allauth/templates/account/account_base.html:106
+#: allauth/templates/account/account_base.html:256
+#: console/templates/console/console_base.html:106
+#: console/templates/console/console_base.html:256
+msgid "Facebook Users"
+msgstr "페이스북 사용자"
+
+#: allauth/templates/account/account_base.html:110
+#: allauth/templates/account/account_base.html:262 console/forms.py:130
+#: console/templates/console/console_base.html:110
+#: console/templates/console/console_base.html:262
+msgid "Customer Groups"
+msgstr "고객 그룹"
+
+#: allauth/templates/account/account_base.html:114
+#: allauth/templates/account/account_base.html:266
+#: console/templates/console/console_base.html:114
+#: console/templates/console/console_base.html:266
+msgid "Marketing"
+msgstr "마케팅"
+
+#: allauth/templates/account/account_base.html:118
+#: allauth/templates/account/account_base.html:269
+#: console/templates/console/console_base.html:118
+#: console/templates/console/console_base.html:269
+msgid "Promotions"
+msgstr "프로모션"
+
+#: allauth/templates/account/account_base.html:121
+#: allauth/templates/account/account_base.html:270
+#: console/templates/console/console_base.html:121
+#: console/templates/console/console_base.html:270
+msgid "Coupons"
+msgstr "쿠폰"
+
+#: allauth/templates/account/account_base.html:124
+#: allauth/templates/account/account_base.html:271
+#: console/templates/console/console_base.html:124
+#: console/templates/console/console_base.html:271
+msgid "Hot Deals"
+msgstr "핫딜"
+
+#: allauth/templates/account/account_base.html:128
+#: allauth/templates/account/account_base.html:273
+#: console/templates/console/console_base.html:128
+#: console/templates/console/console_base.html:273
+msgid "Report"
+msgstr "보고서"
+
+#: allauth/templates/account/account_base.html:132
+#: allauth/templates/account/account_base.html:276
+#: console/templates/console/console_base.html:132
+#: console/templates/console/console_base.html:276
+msgid "Daily Sales"
+msgstr "일간 매출"
+
+#: allauth/templates/account/account_base.html:135
+#: allauth/templates/account/account_base.html:279
+#: console/templates/console/console_base.html:135
+#: console/templates/console/console_base.html:279
+msgid "Monthly Sales"
+msgstr "월간 매출"
+
+#: allauth/templates/account/account_base.html:138
+#: allauth/templates/account/account_base.html:282
+#: console/templates/console/console_base.html:138
+#: console/templates/console/console_base.html:282
+msgid "Best Promotions"
+msgstr "우수 프로모션"
+
+#: allauth/templates/account/account_base.html:141
+#: allauth/templates/account/account_base.html:285
+#: console/templates/console/console_base.html:141
+#: console/templates/console/console_base.html:285
+msgid "Best Customers"
+msgstr "우수 고객"
+
+#: allauth/templates/account/account_base.html:144
+#: allauth/templates/account/account_base.html:288
+#: console/templates/console/console_base.html:144
+#: console/templates/console/console_base.html:288
+msgid "Sales by Customer Groups"
+msgstr "고객 그룹별 매출"
+
+#: allauth/templates/account/account_base.html:147
+#: allauth/templates/account/account_base.html:291
+#: console/templates/console/console_base.html:147
+#: console/templates/console/console_base.html:291
+msgid "Sales by Payment"
+msgstr "결제수단별 매출"
+
+#: allauth/templates/account/account_base.html:159
+#: allauth/templates/account/account_base.html:294
+#: console/templates/console/console_base.html:159
+#: console/templates/console/console_base.html:294
+msgid "Settings"
+msgstr "설정"
+
+#: allauth/templates/account/account_base.html:168
+#: allauth/templates/account/account_base.html:298
+#: console/templates/console/console_base.html:168
+#: console/templates/console/console_base.html:298
+msgid "Golf Club"
+msgstr "골프장"
+
+#: allauth/templates/account/account_base.html:173
+#: allauth/templates/account/account_base.html:303
+#: console/templates/console/console_base.html:173
+#: console/templates/console/console_base.html:303
+#: liff/templates/liff/booking_create_form.html:141
+#: liff/templates/liff/golf_booking_create_form.html:158
+#: liff/templates/liff/golf_price_table.html:21
+#: liff/templates/liff/price_table.html:21
+msgid "Green Fee"
+msgstr "그린피"
+
+#: allauth/templates/account/account_base.html:178
+#: allauth/templates/account/account_base.html:308
+#: console/templates/console/console_base.html:178
+#: console/templates/console/console_base.html:308 golf/models.py:46
+msgid "Holidays"
+msgstr "공휴일"
+
+#: allauth/templates/account/account_base.html:183
+#: allauth/templates/account/account_base.html:313 console/forms.py:113
+#: console/templates/console/console_base.html:183
+#: console/templates/console/console_base.html:313 golf/models.py:729
+msgid "Seasons"
+msgstr "기간"
+
+#: allauth/templates/account/account_base.html:188
+#: allauth/templates/account/account_base.html:318 console/forms.py:124
+#: console/templates/console/console_base.html:188
+#: console/templates/console/console_base.html:318 golf/models.py:770
+msgid "Timeslots"
+msgstr "시간대"
+
+#: allauth/templates/account/account_base.html:247
+#: console/templates/console/console_base.html:247
+msgid "Social Accounts"
+msgstr "소셜 계정"
 
 #: allauth/templates/account/email/email_confirmation_message.txt:5
 msgid "Hello."
@@ -69,24 +300,8 @@ msgstr ""
 msgid "Re-send email"
 msgstr ""
 
-#: allauth/templates/account/login.html:6
-#: allauth/templates/account/login.html:15
-#: allauth/templates/account/signup_closed.html:32
-#: allauth/templates/socialaccount/authentication_error.html:32
-#: allauth/templates/socialaccount/login_cancelled.html:32
-#: conf/templates/conf/base.html:57 console/templates/console/base.html:57
-msgid "SIGN IN"
-msgstr ""
-
-#: allauth/templates/account/login.html:35
+#: allauth/templates/account/login.html:33
 msgid "You may login with your social media accounts."
-msgstr ""
-
-#: allauth/templates/account/logout.html:5
-#: allauth/templates/account/logout.html:14
-#: allauth/templates/account/logout.html:34 conf/templates/conf/base.html:52
-#: console/templates/console/base.html:52
-msgid "SIGN OUT"
 msgstr ""
 
 #: allauth/templates/account/logout.html:20
@@ -224,249 +439,6 @@ msgstr "태국어"
 msgid "English"
 msgstr "영어"
 
-#: conf/templates/conf/base.html:71 conf/templates/conf/base.html:219
-#: console/templates/console/base.html:71
-#: console/templates/console/base.html:219
-#: console/templates/console/base1.html:57
-#: console/templates/console/base9.html:47
-msgid "Booking"
-msgstr "예약관리"
-
-#: conf/templates/conf/base.html:80 conf/templates/conf/base.html:223
-#: console/templates/console/base.html:80
-#: console/templates/console/base.html:223
-#: console/templates/console/base1.html:61
-#: console/templates/console/base9.html:52
-#: console/templates/console/golf_booking_order_list.html:15
-msgid "All Booking List"
-msgstr "전체예약"
-
-#: conf/templates/conf/base.html:85 conf/templates/conf/base.html:230
-#: console/forms.py:60 console/templates/console/base.html:85
-#: console/templates/console/base.html:230
-#: console/templates/console/base1.html:68
-#: console/templates/console/base9.html:59
-msgid "Open"
-msgstr "예약접수"
-
-#: conf/templates/conf/base.html:90 conf/templates/conf/base.html:235
-#: console/forms.py:62 console/templates/console/base.html:90
-#: console/templates/console/base.html:235
-#: console/templates/console/base1.html:73
-#: console/templates/console/base9.html:64
-msgid "Accepted"
-msgstr "예약수락"
-
-#: conf/templates/conf/base.html:95 conf/templates/conf/base.html:240
-#: console/forms.py:72 console/templates/console/base.html:95
-#: console/templates/console/base.html:240
-#: console/templates/console/base1.html:78
-#: console/templates/console/base9.html:69 golf/models.py:827
-msgid "Not paid"
-msgstr "결제안함"
-
-#: conf/templates/conf/base.html:100 conf/templates/conf/base.html:245
-#: console/forms.py:74 console/templates/console/base.html:100
-#: console/templates/console/base.html:245
-#: console/templates/console/base1.html:83
-#: console/templates/console/base9.html:74 golf/models.py:829
-msgid "Refund requests"
-msgstr "환불요청"
-
-#: conf/templates/conf/base.html:105 conf/templates/conf/base.html:250
-#: console/templates/console/base.html:105
-#: console/templates/console/base.html:250
-#: console/templates/console/base1.html:88
-#: console/templates/console/base9.html:79
-msgid "Today"
-msgstr "오늘"
-
-#: conf/templates/conf/base.html:110 conf/templates/conf/base.html:255
-#: console/templates/console/base.html:110
-#: console/templates/console/base.html:255
-#: console/templates/console/base1.html:93
-#: console/templates/console/base9.html:84
-msgid "Tomorrow"
-msgstr "내일"
-
-#: conf/templates/conf/base.html:115 conf/templates/conf/base.html:261
-#: console/templates/console/base.html:115
-#: console/templates/console/base.html:261
-#: console/templates/console/base1.html:99
-#: console/templates/console/base9.html:91
-msgid "Customers"
-msgstr "고객관리"
-
-#: conf/templates/conf/base.html:120 conf/templates/conf/base.html:268
-#: console/templates/console/base.html:120
-#: console/templates/console/base.html:268
-#: console/templates/console/base1.html:106
-#: console/templates/console/base9.html:99
-msgid "LINE Users"
-msgstr "라인 사용자"
-
-#: conf/templates/conf/base.html:124 conf/templates/conf/base.html:273
-#: console/templates/console/base.html:124
-#: console/templates/console/base.html:273
-#: console/templates/console/base1.html:111
-#: console/templates/console/base9.html:104
-msgid "Facebook Users"
-msgstr "페이스북 사용자"
-
-#: conf/templates/conf/base.html:128 conf/templates/conf/base.html:279
-#: console/forms.py:130 console/templates/console/base.html:128
-#: console/templates/console/base.html:279
-#: console/templates/console/base1.html:117
-#: console/templates/console/base9.html:111
-msgid "Customer Groups"
-msgstr "고객 그룹"
-
-#: conf/templates/conf/base.html:132 conf/templates/conf/base.html:283
-#: console/templates/console/base.html:132
-#: console/templates/console/base.html:283
-#: console/templates/console/base1.html:121
-#: console/templates/console/base9.html:116
-msgid "Marketing"
-msgstr "마케팅"
-
-#: conf/templates/conf/base.html:136 conf/templates/conf/base.html:286
-#: console/templates/console/base.html:136
-#: console/templates/console/base.html:286
-#: console/templates/console/base1.html:124
-#: console/templates/console/base9.html:119
-msgid "Promotions"
-msgstr "프로모션"
-
-#: conf/templates/conf/base.html:139 conf/templates/conf/base.html:287
-#: console/templates/console/base.html:139
-#: console/templates/console/base.html:287
-#: console/templates/console/base1.html:125
-#: console/templates/console/base9.html:120
-msgid "Coupons"
-msgstr "쿠폰"
-
-#: conf/templates/conf/base.html:142 conf/templates/conf/base.html:288
-#: console/templates/console/base.html:142
-#: console/templates/console/base.html:288
-#: console/templates/console/base1.html:126
-#: console/templates/console/base9.html:121
-msgid "Hot Deals"
-msgstr "핫딜"
-
-#: conf/templates/conf/base.html:146 conf/templates/conf/base.html:290
-#: console/templates/console/base.html:146
-#: console/templates/console/base.html:290
-#: console/templates/console/base1.html:128
-#: console/templates/console/base9.html:124
-msgid "Report"
-msgstr "보고서"
-
-#: conf/templates/conf/base.html:150 conf/templates/conf/base.html:293
-#: console/templates/console/base.html:150
-#: console/templates/console/base.html:293
-#: console/templates/console/base1.html:131
-#: console/templates/console/base9.html:129
-msgid "Daily Sales"
-msgstr "일간 매출"
-
-#: conf/templates/conf/base.html:153 conf/templates/conf/base.html:296
-#: console/templates/console/base.html:153
-#: console/templates/console/base.html:296
-#: console/templates/console/base1.html:134
-#: console/templates/console/base9.html:134
-msgid "Monthly Sales"
-msgstr "월간 매출"
-
-#: conf/templates/conf/base.html:156 conf/templates/conf/base.html:299
-#: console/templates/console/base.html:156
-#: console/templates/console/base.html:299
-#: console/templates/console/base1.html:137
-#: console/templates/console/base9.html:139
-msgid "Best Promotions"
-msgstr "우수 프로모션"
-
-#: conf/templates/conf/base.html:159 conf/templates/conf/base.html:302
-#: console/templates/console/base.html:159
-#: console/templates/console/base.html:302
-#: console/templates/console/base1.html:140
-#: console/templates/console/base9.html:144
-msgid "Best Customers"
-msgstr "우수 고객"
-
-#: conf/templates/conf/base.html:162 conf/templates/conf/base.html:305
-#: console/templates/console/base.html:162
-#: console/templates/console/base.html:305
-#: console/templates/console/base1.html:143
-#: console/templates/console/base9.html:149
-msgid "Sales by Customer Groups"
-msgstr "고객 그룹별 매출"
-
-#: conf/templates/conf/base.html:165 conf/templates/conf/base.html:308
-#: console/templates/console/base.html:165
-#: console/templates/console/base.html:308
-#: console/templates/console/base1.html:146
-#: console/templates/console/base9.html:154
-msgid "Sales by Payment"
-msgstr "결제수단별 매출"
-
-#: conf/templates/conf/base.html:177 conf/templates/conf/base.html:311
-#: console/templates/console/base.html:177
-#: console/templates/console/base.html:311
-#: console/templates/console/base1.html:149
-#: console/templates/console/base9.html:159
-msgid "Settings"
-msgstr "설정"
-
-#: conf/templates/conf/base.html:186 conf/templates/conf/base.html:315
-#: console/templates/console/base.html:186
-#: console/templates/console/base.html:315
-#: console/templates/console/base1.html:153
-#: console/templates/console/base9.html:164
-msgid "Golf Club"
-msgstr "골프장"
-
-#: conf/templates/conf/base.html:191 conf/templates/conf/base.html:320
-#: console/templates/console/base.html:191
-#: console/templates/console/base.html:320
-#: console/templates/console/base1.html:158
-#: console/templates/console/base9.html:169
-#: liff/templates/liff/booking_create_form.html:141
-#: liff/templates/liff/golf_booking_create_form.html:158
-#: liff/templates/liff/golf_price_table.html:21
-#: liff/templates/liff/price_table.html:21
-msgid "Green Fee"
-msgstr "그린피"
-
-#: conf/templates/conf/base.html:196 conf/templates/conf/base.html:325
-#: console/templates/console/base.html:196
-#: console/templates/console/base.html:325
-#: console/templates/console/base1.html:163
-#: console/templates/console/base9.html:174 golf/models.py:46
-msgid "Holidays"
-msgstr "공휴일"
-
-#: conf/templates/conf/base.html:201 conf/templates/conf/base.html:330
-#: console/forms.py:113 console/templates/console/base.html:201
-#: console/templates/console/base.html:330
-#: console/templates/console/base1.html:168
-#: console/templates/console/base9.html:179 golf/models.py:729
-msgid "Seasons"
-msgstr "기간"
-
-#: conf/templates/conf/base.html:206 conf/templates/conf/base.html:335
-#: console/forms.py:124 console/templates/console/base.html:206
-#: console/templates/console/base.html:335
-#: console/templates/console/base1.html:173
-#: console/templates/console/base9.html:184 golf/models.py:770
-msgid "Timeslots"
-msgstr "시간대"
-
-#: conf/templates/conf/base.html:264 console/templates/console/base.html:264
-#: console/templates/console/base1.html:102
-#: console/templates/console/base9.html:95
-msgid "Social Accounts"
-msgstr "소셜 계정"
-
 #: console/apps.py:7
 msgid "console"
 msgstr ""
@@ -532,17 +504,14 @@ msgid "Day of Week"
 msgstr "평일휴일 구분"
 
 #: console/templates/console/_order_search_box.html:6
-#: console/templates/console/_search_box.html:6
 msgid "Search"
 msgstr "검색"
 
 #: console/templates/console/_order_search_box.html:27
-#: console/templates/console/_search_box.html:27
 msgid "Status"
 msgstr "상태"
 
 #: console/templates/console/_order_search_box.html:48
-#: console/templates/console/_search_box.html:48
 msgid "Sort"
 msgstr "정렬"
 
@@ -800,8 +769,6 @@ msgstr "휴일예약 월요일 이후"
 
 #: console/templates/console/green_fee_list.html:7
 #: console/templates/console/green_fee_list.html:15
-#: console/templates/console/rate_list.html:7
-#: console/templates/console/rate_list.html:15
 msgid "Green Fee List"
 msgstr "그린피 목록"
 
@@ -1656,11 +1623,11 @@ msgstr "합계 구매금액"
 
 #: member/models.py:28
 msgid "First purchased date"
-msgstr ""
+msgstr "첫 구매일자"
 
 #: member/models.py:33
 msgid "Last purchased date"
-msgstr ""
+msgstr "마지막 구매일자"
 
 #: member/models.py:38
 msgid "Max price"
@@ -1680,15 +1647,15 @@ msgstr "사용자 메모"
 
 #: member/models.py:72
 msgid "Profiles"
-msgstr ""
+msgstr "프로필"
 
 #: member/models.py:93
 msgid "Login log"
-msgstr ""
+msgstr "로그인 로그"
 
 #: member/models.py:94
 msgid "Login logs"
-msgstr ""
+msgstr "로그인 로그"
 
 #: shop/apps.py:7
 msgid "shop"
