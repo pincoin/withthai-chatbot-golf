@@ -5,36 +5,34 @@
 {% block title %}{% trans "SOCIAL MEDIA LOGIN FAILURE" %}{% endblock %}
 
 {% block main %}
-<main>
-    <div class="hero is-large">
-        <div class="hero-body">
-            <div class="container">
-                <div class="columns is-multiline">
-                    <div class="column is-one-third is-offset-one-third has-text-centered">
-                        <h1 class="is-size-1">
-                            {% trans "SOCIAL MEDIA LOGIN FAILURE" %}
-                        </h1>
-                    </div>
+<div class="hero is-large">
+    <div class="hero-body">
+        <div class="container">
+            <div class="columns is-multiline">
+                <div class="column is-one-third is-offset-one-third has-text-centered">
+                    <h1 class="is-size-1">
+                        {% trans "SOCIAL MEDIA LOGIN FAILURE" %}
+                    </h1>
+                </div>
 
-                    <div class="column is-one-third is-offset-one-third">
-                        <article class="message is-danger">
-                            <div class="message-body">
-                                {% trans "An error occurred while attempting to login via your social media account." %}
-                            </div>
-                        </article>
-                    </div>
+                <div class="column is-one-third is-offset-one-third">
+                    <article class="message is-danger">
+                        <div class="message-body">
+                            {% trans "An error occurred while attempting to login via your social media account." %}
+                        </div>
+                    </article>
+                </div>
 
-                    <hr>
+                <hr>
 
-                    <div class="column is-one-third is-offset-one-third">
-                        {% url 'account_login' as login_url %}
-                        <a href="{{ login_url }}" class="button is-primary is-fullwidth">
-                            {% trans 'SIGN IN' %}
-                        </a>
-                    </div>
+                <div class="column is-one-third is-offset-one-third">
+                    {% url 'account_login' as login_url %}
+                    <a href="{{ login_url }}" class="button is-primary is-fullwidth">
+                        {% trans 'SIGN IN' %}
+                    </a>
                 </div>
             </div>
         </div>
     </div>
-</main>
+</div>
 {% endblock %}

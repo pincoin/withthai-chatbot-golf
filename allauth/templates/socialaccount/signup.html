@@ -3,184 +3,182 @@
 {% load i18n static %}
 
 {% block main %}
-<main>
-    <div class="section sign-up-margin">
-        <div class="container">
-            <form class="form" method="post">
-                {% csrf_token %}
+<div class="section sign-up-margin">
+    <div class="container">
+        <form class="form" method="post">
+            {% csrf_token %}
 
-                <div class="columns is-multiline">
-                    <div class="column is-full has-text-centered">
-                        <h1 class="is-size-1">{% trans 'SIGN UP' %}</h1>
-                    </div>
+            <div class="columns is-multiline">
+                <div class="column is-full has-text-centered">
+                    <h1 class="is-size-1">{% trans 'SIGN UP' %}</h1>
+                </div>
 
-                    <div class="column is-full sign-up-message">
-                        <article class="message is-info">
-                            <div class="message-body">
-                                {% trans 'You are about to use your social media account to login to WITH THAI.' %}
-                            </div>
-                        </article>
-                    </div>
+                <div class="column is-full sign-up-message">
+                    <article class="message is-info">
+                        <div class="message-body">
+                            {% trans 'You are about to use your social media account to login to WITH THAI.' %}
+                        </div>
+                    </article>
+                </div>
 
-                    <div class="column is-full">
-                        <div class="columns">
-                            <div class="column is-half-desktop is-full-mobile">
-                                <div class="card sign-up-form-card">
-                                    <header class="card-header has-background-grey-lighter">
-                                        <p class="card-header-title is-size-3 is-centered">
-                                            {% trans "Account" %}
-                                        </p>
-                                    </header>
-                                    <div class="card-content">
-                                        <div class="content">
-                                            <div class="field is-horizontal">
-                                                <div class="field-label is-normal">
-                                                    <label for="{{ form.email.id_for_label }}" class="label">
-                                                        {{ form.email.label }}
-                                                    </label>
-                                                </div>
-                                                <div class="field-body">
-                                                    <div class="field">
-                                                        <div class="control is-expanded has-icons-left">
-                                                            <input class="input{% if form.email.errors %} is-danger{% endif %}"
-                                                                   type="email"
-                                                                   placeholder="{% trans 'Email' %}"
-                                                                   id="{{ form.email.id_for_label }}"
-                                                                   name="{{ form.email.name }}"
-                                                                   value="{{ form.email.value }}">
-                                                            <span class="icon is-small is-left">
+                <div class="column is-full">
+                    <div class="columns">
+                        <div class="column is-half-desktop is-full-mobile">
+                            <div class="card sign-up-form-card">
+                                <header class="card-header has-background-grey-lighter">
+                                    <p class="card-header-title is-size-3 is-centered">
+                                        {% trans "Account" %}
+                                    </p>
+                                </header>
+                                <div class="card-content">
+                                    <div class="content">
+                                        <div class="field is-horizontal">
+                                            <div class="field-label is-normal">
+                                                <label for="{{ form.email.id_for_label }}" class="label">
+                                                    {{ form.email.label }}
+                                                </label>
+                                            </div>
+                                            <div class="field-body">
+                                                <div class="field">
+                                                    <div class="control is-expanded has-icons-left">
+                                                        <input class="input{% if form.email.errors %} is-danger{% endif %}"
+                                                               type="email"
+                                                               placeholder="{% trans 'Email' %}"
+                                                               id="{{ form.email.id_for_label }}"
+                                                               name="{{ form.email.name }}"
+                                                               value="{{ form.email.value }}">
+                                                        <span class="icon is-small is-left">
                                                             <i class="fas fa-envelope"></i>
                                                         </span>
-                                                        </div>
-                                                        <ul class="help-text-list">
-                                                            <li>{% trans 'To get booking receipt' %}</li>
-                                                            {% for error in form.email.errors %}
-                                                            <li class="has-text-danger">{{ error|escape }}</li>
-                                                            {% endfor %}
-                                                        </ul>
                                                     </div>
+                                                    <ul class="help-text-list">
+                                                        <li>{% trans 'To get booking receipt' %}</li>
+                                                        {% for error in form.email.errors %}
+                                                        <li class="has-text-danger">{{ error|escape }}</li>
+                                                        {% endfor %}
+                                                    </ul>
                                                 </div>
                                             </div>
+                                        </div>
 
-                                            <div class="field is-horizontal">
-                                                <div class="field-label is-normal">
-                                                    <label for="{{ form.username.id_for_label }}" class="label">
-                                                        {{ form.username.label }}
-                                                    </label>
-                                                </div>
-                                                <div class="field-body">
-                                                    <div class="field">
-                                                        <div class="control is-expanded has-icons-left">
-                                                            <input class="input{% if form.username.errors %} is-danger{% endif %}"
-                                                                   type="text"
-                                                                   placeholder="{% trans 'Username' %}"
-                                                                   id="{{ form.username.id_for_label }}"
-                                                                   name="{{ form.username.name }}"
-                                                                   value="{{ form.username.value }}">
-                                                            <span class="icon is-small is-left">
+                                        <div class="field is-horizontal">
+                                            <div class="field-label is-normal">
+                                                <label for="{{ form.username.id_for_label }}" class="label">
+                                                    {{ form.username.label }}
+                                                </label>
+                                            </div>
+                                            <div class="field-body">
+                                                <div class="field">
+                                                    <div class="control is-expanded has-icons-left">
+                                                        <input class="input{% if form.username.errors %} is-danger{% endif %}"
+                                                               type="text"
+                                                               placeholder="{% trans 'Username' %}"
+                                                               id="{{ form.username.id_for_label }}"
+                                                               name="{{ form.username.name }}"
+                                                               value="{{ form.username.value }}">
+                                                        <span class="icon is-small is-left">
                                                             <i class="fas fa-user"></i>
                                                         </span>
-                                                        </div>
-                                                        <ul class="help-text-list">
-                                                            <li>{% trans 'Not your personal name' %}</li>
-                                                            {% for error in form.username.errors %}
-                                                            <li class="has-text-danger">{{ error|escape }}</li>
-                                                            {% endfor %}
-                                                        </ul>
                                                     </div>
+                                                    <ul class="help-text-list">
+                                                        <li>{% trans 'Not your personal name' %}</li>
+                                                        {% for error in form.username.errors %}
+                                                        <li class="has-text-danger">{{ error|escape }}</li>
+                                                        {% endfor %}
+                                                    </ul>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            <div class="column is-half-desktop is-full-mobile">
-                                <div class="card sign-up-form-card">
-                                    <header class="card-header has-background-grey-lighter">
-                                        <p class="card-header-title is-size-3 is-centered">
-                                            {% trans "Profile" %}
-                                        </p>
-                                    </header>
-                                    <div class="card-content">
-                                        <div class="content">
-                                            <div class="field is-horizontal">
-                                                <div class="field-label is-normal">
-                                                    <label for="{{ form.first_name.id_for_label }}" class="label">
-                                                        {{ form.first_name.label }}
-                                                    </label>
-                                                </div>
-                                                <div class="field-body">
-                                                    <div class="field">
-                                                        <div class="control">
-                                                            <input class="input{% if form.first_name.errors %} is-danger{% endif %}"
-                                                                   type="text"
-                                                                   placeholder="{% trans 'JOHN' %}"
-                                                                   id="{{ form.first_name.id_for_label }}"
-                                                                   name="{{ form.first_name.name }}"
-                                                                   value="{{ form.first_name.value }}">
-                                                        </div>
-                                                        <ul class="help-text-list">
-                                                            <li>{{ form.first_name.help_text }}</li>
-                                                            {% for error in form.first_name.errors %}
-                                                            <li class="has-text-danger">{{ error|escape }}</li>
-                                                            {% endfor %}
-                                                        </ul>
+                        </div>
+                        <div class="column is-half-desktop is-full-mobile">
+                            <div class="card sign-up-form-card">
+                                <header class="card-header has-background-grey-lighter">
+                                    <p class="card-header-title is-size-3 is-centered">
+                                        {% trans "Profile" %}
+                                    </p>
+                                </header>
+                                <div class="card-content">
+                                    <div class="content">
+                                        <div class="field is-horizontal">
+                                            <div class="field-label is-normal">
+                                                <label for="{{ form.first_name.id_for_label }}" class="label">
+                                                    {{ form.first_name.label }}
+                                                </label>
+                                            </div>
+                                            <div class="field-body">
+                                                <div class="field">
+                                                    <div class="control">
+                                                        <input class="input{% if form.first_name.errors %} is-danger{% endif %}"
+                                                               type="text"
+                                                               placeholder="{% trans 'JOHN' %}"
+                                                               id="{{ form.first_name.id_for_label }}"
+                                                               name="{{ form.first_name.name }}"
+                                                               value="{{ form.first_name.value }}">
                                                     </div>
+                                                    <ul class="help-text-list">
+                                                        <li>{{ form.first_name.help_text }}</li>
+                                                        {% for error in form.first_name.errors %}
+                                                        <li class="has-text-danger">{{ error|escape }}</li>
+                                                        {% endfor %}
+                                                    </ul>
                                                 </div>
                                             </div>
+                                        </div>
 
-                                            <div class="field is-horizontal">
-                                                <div class="field-label is-normal">
-                                                    <label for="{{ form.last_name.id_for_label }}" class="label">
-                                                        {{ form.last_name.label }}
-                                                    </label>
-                                                </div>
-                                                <div class="field-body">
-                                                    <div class="field">
-                                                        <div class="control">
-                                                            <input class="input{% if form.last_name.errors %} is-danger{% endif %}"
-                                                                   type="text"
-                                                                   placeholder="{% trans 'DOE' %}"
-                                                                   id="{{ form.last_name.id_for_label }}"
-                                                                   name="{{ form.last_name.name }}"
-                                                                   value="{{ form.last_name.value }}">
-                                                        </div>
-                                                        <ul class="help-text-list">
-                                                            <li>{{ form.last_name.help_text }}</li>
-                                                            {% for error in form.last_name.errors %}
-                                                            <li class="has-text-danger">{{ error|escape }}</li>
-                                                            {% endfor %}
-                                                        </ul>
+                                        <div class="field is-horizontal">
+                                            <div class="field-label is-normal">
+                                                <label for="{{ form.last_name.id_for_label }}" class="label">
+                                                    {{ form.last_name.label }}
+                                                </label>
+                                            </div>
+                                            <div class="field-body">
+                                                <div class="field">
+                                                    <div class="control">
+                                                        <input class="input{% if form.last_name.errors %} is-danger{% endif %}"
+                                                               type="text"
+                                                               placeholder="{% trans 'DOE' %}"
+                                                               id="{{ form.last_name.id_for_label }}"
+                                                               name="{{ form.last_name.name }}"
+                                                               value="{{ form.last_name.value }}">
                                                     </div>
+                                                    <ul class="help-text-list">
+                                                        <li>{{ form.last_name.help_text }}</li>
+                                                        {% for error in form.last_name.errors %}
+                                                        <li class="has-text-danger">{{ error|escape }}</li>
+                                                        {% endfor %}
+                                                    </ul>
                                                 </div>
                                             </div>
+                                        </div>
 
-                                            <div class="field is-horizontal">
-                                                <div class="field-label is-normal">
-                                                    <label for="{{ form.phone.id_for_label }}" class="label">
-                                                        {{ form.phone.label }}
-                                                    </label>
-                                                </div>
-                                                <div class="field-body">
-                                                    <div class="field">
-                                                        <div class="control is-expanded has-icons-left">
-                                                            <input class="input{% if form.phone.errors %} is-danger{% endif %}"
-                                                                   type="text"
-                                                                   placeholder="{% trans '+66801231234' %}"
-                                                                   id="{{ form.phone.id_for_label }}"
-                                                                   name="{{ form.phone.name }}"
-                                                                   value="{{ form.phone.value|default_if_none:"" }}">
-                                                            <span class="icon is-small is-left">
+                                        <div class="field is-horizontal">
+                                            <div class="field-label is-normal">
+                                                <label for="{{ form.phone.id_for_label }}" class="label">
+                                                    {{ form.phone.label }}
+                                                </label>
+                                            </div>
+                                            <div class="field-body">
+                                                <div class="field">
+                                                    <div class="control is-expanded has-icons-left">
+                                                        <input class="input{% if form.phone.errors %} is-danger{% endif %}"
+                                                               type="text"
+                                                               placeholder="{% trans '+66801231234' %}"
+                                                               id="{{ form.phone.id_for_label }}"
+                                                               name="{{ form.phone.name }}"
+                                                               value="{{ form.phone.value|default_if_none:"" }}">
+                                                        <span class="icon is-small is-left">
                                                             <i class="fas fa-mobile-alt"></i>
                                                         </span>
-                                                        </div>
-                                                        <ul class="help-text-list">
-                                                            <li>{{ form.phone.help_text }}</li>
-                                                            {% for error in form.phone.errors %}
-                                                            <li class="has-text-danger">{{ error|escape }}</li>
-                                                            {% endfor %}
-                                                        </ul>
                                                     </div>
+                                                    <ul class="help-text-list">
+                                                        <li>{{ form.phone.help_text }}</li>
+                                                        {% for error in form.phone.errors %}
+                                                        <li class="has-text-danger">{{ error|escape }}</li>
+                                                        {% endfor %}
+                                                    </ul>
                                                 </div>
                                             </div>
                                         </div>
@@ -189,19 +187,19 @@
                             </div>
                         </div>
                     </div>
-                    <div class="column is-full sign-up-button">
-                        <button type="submit" class="button is-fullwidth is-primary" type="submit">
-                            {% trans "Sign up" %}
-                        </button>
-                    </div>
                 </div>
-                {% if redirect_field_value %}
-                <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}"/>
-                {% endif %}
-            </form>
-        </div>
+                <div class="column is-full sign-up-button">
+                    <button type="submit" class="button is-fullwidth is-primary" type="submit">
+                        {% trans "Sign up" %}
+                    </button>
+                </div>
+            </div>
+            {% if redirect_field_value %}
+            <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}"/>
+            {% endif %}
+        </form>
     </div>
-</main>
+</div>
 {% endblock %}
 
 {% block stylesheet %}
