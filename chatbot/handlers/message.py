@@ -5,12 +5,12 @@ import logging
 from django.template.defaultfilters import date
 from django.urls import reverse
 from django.utils import timezone
-from django.utils import translation
 from linebot import models
 
 from conf import tasks
 from golf import models as golf_models
 from golf import utils as golf_utils
+from .. import decorators
 from .. import utils
 from .. import validators
 
@@ -213,6 +213,7 @@ def command_new(event, line_bot_api, **kwargs):
             models.TextSendMessage(text=message)])
 
 
+@decorators.translation_activate
 def command_booking(event, line_bot_api, **kwargs):
     golf_club = kwargs['golf_club']
 
@@ -224,8 +225,6 @@ def command_booking(event, line_bot_api, **kwargs):
                  .order_by('-created')[:5]
 
     order_list = []
-
-    translation.activate('en')
 
     for order in orders:
         order_flex_message = copy.deepcopy(golf_club.order_flex_message)
@@ -273,8 +272,6 @@ def command_booking(event, line_bot_api, **kwargs):
                     alt_text='No Booking Yet',
                     contents=no_order_flex_message)
             ])
-
-    translation.deactivate()
 
 
 def command_course(event, line_bot_api, **kwargs):
