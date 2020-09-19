@@ -1,7 +1,7 @@
 from golf import models as golf_models
 
 
-class LiffContextMixin(object):
+class LiffContextMixin:
     def dispatch(self, *args, **kwargs):
         self.golf_club = golf_models.GolfClub.objects.get(slug=self.kwargs['slug'])
 

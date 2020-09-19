@@ -2888,7 +2888,7 @@ a.tag:hover {
   display: flex;
   flex-grow: 1;
   font-weight: 700;
-  padding: 0.25rem 1rem; }
+  padding: 0.5rem 1rem; }
   .card-header-title.is-centered {
     justify-content: center; }
 
@@ -2897,7 +2897,7 @@ a.tag:hover {
   cursor: pointer;
   display: flex;
   justify-content: center;
-  padding: 0.25rem 1rem; }
+  padding: 0.5rem 1rem; }
 
 .card-image {
   display: block;

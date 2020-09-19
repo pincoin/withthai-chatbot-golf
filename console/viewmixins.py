@@ -5,7 +5,7 @@ from django.utils import translation
 from golf import models as golf_models
 
 
-class EnglishContextMixin(object):
+class EnglishContextMixin:
     def dispatch(self, request, *args, **kwargs):
         print(self.request)
         translation.activate('en')
@@ -13,7 +13,7 @@ class EnglishContextMixin(object):
         return super(EnglishContextMixin, self).dispatch(request, *args, **kwargs)
 
 
-class OrderChangeContextMixin(object):
+class OrderChangeContextMixin:
     def post(self, request, *args, **kwargs):
         self.object = golf_models.GolfBookingOrder.objects \
             .select_related('customer_group', 'golf_club', 'user', 'line_user') \
@@ -35,7 +35,7 @@ class OrderChangeContextMixin(object):
                        args=(self.object.golf_club.slug, self.object.order_no))
 
 
-class PageableMixin(object):
+class PageableMixin:
     def get_context_data(self, **kwargs):
         context = super(PageableMixin, self).get_context_data(**kwargs)
 
