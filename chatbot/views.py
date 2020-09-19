@@ -94,10 +94,22 @@ class CallbackView(generic.View):
         def handle_post_back(event):
             qs = dict(parse_qsl(event.postback.data))
 
+            # Retrieve LINE user
+            try:
+                membership = golf_models.LineUserMembership.objects \
+                    .select_related('line_user', 'customer_group') \
+                    .get(line_user__line_user_id=event.source.user_id,
+                         customer_group__golf_club=golf_club)
+            except golf_models.LineUserMembership.DoesNotExist:
+                self.line_bot_api.reply_message(
+                    event.reply_token,
+                    models.TextSendMessage(text='Invalid Golf Course or LINE ID'))
+                return
+
             if qs['action'] == 'accept':
-                post_back.command_accept(event, self.line_bot_api, qs=qs)
+                post_back.command_accept(event, self.line_bot_api, qs=qs, golf_club=golf_club, membership=membership)
             elif qs['action'] == 'close':
-                post_back.command_close(event, self.line_bot_api, qs=qs)
+                post_back.command_close(event, self.line_bot_api, qs=qs, golf_club=golf_club, membership=membership)
 
         @self.handler.add(models.FollowEvent)
         def handle_follow(event):

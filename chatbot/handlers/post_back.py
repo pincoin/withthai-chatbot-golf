@@ -4,8 +4,10 @@ from linebot import models
 
 from golf import models as golf_models
 from golf import utils as golf_utils
+from .. import decorators
 
 
+@decorators.translation_activate
 def command_accept(event, line_bot_api, **kwargs):
     qs = kwargs['qs']
 
@@ -32,6 +34,7 @@ def command_accept(event, line_bot_api, **kwargs):
                                     'Thank you.'))
 
 
+@decorators.translation_activate
 def command_close(event, line_bot_api, **kwargs):
     qs = kwargs['qs']
 
