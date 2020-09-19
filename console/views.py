@@ -1,5 +1,6 @@
 import re
 
+from django.contrib.auth import mixins as auth_mixins
 from django.shortcuts import get_object_or_404
 from django.template.defaultfilters import date
 from django.urls import reverse
@@ -478,7 +479,7 @@ class SeasonListView(viewmixins.PageableMixin, generic.ListView):
         return context
 
 
-class TimeslotListView(viewmixins.PageableMixin, generic.ListView):
+class TimeslotListView(auth_mixins.LoginRequiredMixin, viewmixins.PageableMixin, generic.ListView):
     template_name = 'console/timeslot_list.html'
 
     context_object_name = 'timeslots'
