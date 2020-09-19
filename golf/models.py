@@ -628,6 +628,49 @@ class LineUserMembership(models.Model):
         verbose_name_plural = _('LINE user membership')
 
 
+class GolfClubStaffMembership(models.Model):
+    user = models.ForeignKey(
+        settings.AUTH_USER_MODEL,
+        verbose_name=_('User'),
+        db_index=True,
+        null=True,
+        blank=True,
+        editable=True,
+        on_delete=models.SET_NULL,
+    )
+
+    golf_club = models.ForeignKey(
+        'golf.GolfClub',
+        verbose_name=_('Golf club'),
+        db_index=True,
+        on_delete=models.CASCADE,
+    )
+
+    primary = models.BooleanField(
+        verbose_name=_('Primary'),
+        default=True,
+    )
+
+    permission_manage_booking = models.BooleanField(
+        verbose_name=_('Can manage booking'),
+        default=True,
+    )
+
+    permission_view_sales = models.BooleanField(
+        verbose_name=_('Can view sales'),
+        default=False,
+    )
+
+    permission_change_settings = models.BooleanField(
+        verbose_name=_('Can change settings'),
+        default=False,
+    )
+
+    class Meta:
+        verbose_name = _('Golf club staff membership')
+        verbose_name_plural = _('Golf club staff membership')
+
+
 class CustomerGroup(model_utils_models.TimeStampedModel):
     MEMBER_CHOICES = Choices(
         (0, 'member', _('Member')),
