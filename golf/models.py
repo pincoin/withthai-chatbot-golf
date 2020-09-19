@@ -441,6 +441,13 @@ class GolfClub(model_utils_models.TimeStampedModel):
         blank=True,
     )
 
+    staffs = models.ManyToManyField(
+        'golf.GolfClub',
+        verbose_name=_('Golf club staffs'),
+        db_index=True,
+        through='golf.GolfClubStaffMembership'
+    )
+
     class Meta:
         verbose_name = _('Golf club')
         verbose_name_plural = _('Golf clubs')

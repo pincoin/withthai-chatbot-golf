@@ -32,6 +32,12 @@ class LineUserListInline(admin.TabularInline):
     extra = 1
 
 
+class GolfClubStaffListInline(admin.TabularInline):
+    model = models.GolfClub.staffs.through
+    raw_id_fields = ('user', 'golf_club')
+    extra = 1
+
+
 class GolfBookingOrderProductInline(admin.TabularInline):
     model = models.GolfBookingOrderProduct
     ordering = ['product', ]
@@ -73,6 +79,7 @@ class GolfClubAdmin(admin.ModelAdmin):
     list_display = ('title_english', 'slug', 'phone', 'email', 'working_status')
     list_filter = ('district__province__title_english', 'working_status')
     prepopulated_fields = {'slug': ('title_english',)}
+    raw_id_fields = ('customer_group',)
     readonly_fields = ('info_flex_message', 'order_flex_message', 'no_order_flex_message', 'liff')
     fieldsets = (
         (_('Golf club'), {
@@ -91,7 +98,7 @@ class GolfClubAdmin(admin.ModelAdmin):
                        'liff', 'scorecard')
         })
     )
-    inlines = [LiffAppInline, CustomerGroupInline, SeasonInline, TimeslotInline]
+    inlines = [LiffAppInline, CustomerGroupInline, SeasonInline, TimeslotInline, GolfClubStaffListInline]
     ordering = ['-created']
 
 
