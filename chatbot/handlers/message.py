@@ -206,7 +206,6 @@ def command_new(event, line_bot_api, **kwargs):
 @decorators.translation_activate
 def command_booking(event, line_bot_api, **kwargs):
     golf_club = kwargs['golf_club']
-    membership = kwargs['membership']
 
     orders = golf_models.GolfBookingOrder.objects \
                  .select_related('golf_club', 'user', 'line_user', 'customer_group') \
@@ -268,7 +267,6 @@ def command_booking(event, line_bot_api, **kwargs):
 @decorators.translation_activate
 def command_course(event, line_bot_api, **kwargs):
     golf_club = kwargs['golf_club']
-    membership = kwargs['membership']
 
     line_bot_api.reply_message(
         event.reply_token, [
@@ -279,9 +277,6 @@ def command_course(event, line_bot_api, **kwargs):
 
 @decorators.translation_activate
 def command_promotions(event, line_bot_api, **kwargs):
-    golf_club = kwargs['golf_club']
-    membership = kwargs['membership']
-
     line_bot_api.reply_message(
         event.reply_token,
         models.TextSendMessage(text='promotions - carousel message'))
@@ -289,9 +284,6 @@ def command_promotions(event, line_bot_api, **kwargs):
 
 @decorators.translation_activate
 def command_deals(event, line_bot_api, **kwargs):
-    golf_club = kwargs['golf_club']
-    membership = kwargs['membership']
-
     line_bot_api.reply_message(
         event.reply_token,
         models.TextSendMessage(text='deals - carousel message'))
@@ -299,9 +291,6 @@ def command_deals(event, line_bot_api, **kwargs):
 
 @decorators.translation_activate
 def command_coupons(event, line_bot_api, **kwargs):
-    golf_club = kwargs['golf_club']
-    membership = kwargs['membership']
-
     line_bot_api.reply_message(
         event.reply_token,
         models.TextSendMessage(text='coupons - carousel message'))
@@ -309,9 +298,6 @@ def command_coupons(event, line_bot_api, **kwargs):
 
 @decorators.translation_activate
 def command_settings(event, line_bot_api, **kwargs):
-    golf_club = kwargs['golf_club']
-    membership = kwargs['membership']
-
     line_bot_api.reply_message(
         event.reply_token,
         models.TextSendMessage(text='settings - carousel message'))
@@ -320,7 +306,6 @@ def command_settings(event, line_bot_api, **kwargs):
 @decorators.translation_activate
 def command_location(event, line_bot_api, **kwargs):
     golf_club = kwargs['golf_club']
-    membership = kwargs['membership']
 
     line_bot_api.reply_message(
         event.reply_token, [
@@ -332,9 +317,6 @@ def command_location(event, line_bot_api, **kwargs):
 
 @decorators.translation_activate
 def command_caddies(event, line_bot_api, **kwargs):
-    golf_club = kwargs['golf_club']
-    membership = kwargs['membership']
-
     line_bot_api.reply_message(
         event.reply_token,
         models.TextSendMessage(text='caddies - carousel message'))
@@ -343,8 +325,6 @@ def command_caddies(event, line_bot_api, **kwargs):
 @decorators.translation_activate
 def command_layout(event, line_bot_api, **kwargs):
     layout = kwargs['layout']
-    golf_club = kwargs['golf_club']
-    membership = kwargs['membership']
 
     line_bot_api.reply_message(
         event.reply_token,
@@ -355,9 +335,6 @@ def command_layout(event, line_bot_api, **kwargs):
 
 @decorators.translation_activate
 def command_hotels(event, line_bot_api, **kwargs):
-    golf_club = kwargs['golf_club']
-    membership = kwargs['membership']
-
     line_bot_api.reply_message(
         event.reply_token,
         models.TextSendMessage(text='hotels - carousel message'))
