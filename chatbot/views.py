@@ -38,33 +38,47 @@ class CallbackView(generic.View):
             text = event.message.text.strip()
             text_lowercase = text.lower()
 
+            # Retrieve LINE user
+            try:
+                membership = golf_models.LineUserMembership.objects \
+                    .select_related('line_user', 'customer_group') \
+                    .get(line_user__line_user_id=event.source.user_id,
+                         customer_group__golf_club=golf_club)
+            except golf_models.LineUserMembership.DoesNotExist:
+                self.line_bot_api.reply_message(
+                    event.reply_token,
+                    models.TextSendMessage(text='Invalid Golf Course or LINE ID'))
+                return
+
             if match := re \
                     .compile('New\s"(.+)"\s(\d\d\d\d-\d\d-\d\d)\s(\d\d:\d\d)\s(\d)\sGOLFER\s(\d)\sCART', re.I) \
                     .match(text):
-                message.command_new(event, self.line_bot_api, match=match, golf_club=golf_club)
+                message.command_new(event, self.line_bot_api, match=match,
+                                    golf_club=golf_club, membership=membership)
             elif text_lowercase == 'booking':
-                message.command_booking(event, self.line_bot_api, golf_club=golf_club)
+                message.command_booking(event, self.line_bot_api, golf_club=golf_club, membership=membership)
             elif text_lowercase in ['course', 'club']:
-                message.command_course(event, self.line_bot_api, golf_club=golf_club)
+                message.command_course(event, self.line_bot_api, golf_club=golf_club, membership=membership)
             elif text_lowercase in ['promotions', 'promotion']:
-                message.command_promotions(event, self.line_bot_api)
+                message.command_promotions(event, self.line_bot_api, golf_club=golf_club, membership=membership)
             elif text_lowercase in ['deals', 'deal', 'hot']:
-                message.command_deals(event, self.line_bot_api)
+                message.command_deals(event, self.line_bot_api, golf_club=golf_club, membership=membership)
             elif text_lowercase in ['coupons', 'coupon']:
-                message.command_coupons(event, self.line_bot_api)
+                message.command_coupons(event, self.line_bot_api, golf_club=golf_club, membership=membership)
             elif text_lowercase in ['settings', 'profile']:
-                message.command_settings(event, self.line_bot_api)
+                message.command_settings(event, self.line_bot_api, golf_club=golf_club, membership=membership)
             elif text_lowercase in ['location', 'map']:
-                message.command_location(event, self.line_bot_api, golf_club=golf_club)
+                message.command_location(event, self.line_bot_api, golf_club=golf_club, membership=membership)
             elif text_lowercase in ['caddies', 'caddie']:
-                message.command_caddies(event, self.line_bot_api)
+                message.command_caddies(event, self.line_bot_api, golf_club=golf_club, membership=membership)
             elif text_lowercase == 'layout':
                 layout = self.request.build_absolute_uri(f'{golf_club.layout.url}')
-                message.command_layout(event, self.line_bot_api, layout=layout)
+                message.command_layout(event, self.line_bot_api, layout=layout,
+                                       golf_club=golf_club, membership=membership)
             elif text_lowercase in ['hotels', 'hotel', 'accommodation', 'accommodations']:
-                message.command_hotels(event, self.line_bot_api)
+                message.command_hotels(event, self.line_bot_api, golf_club=golf_club, membership=membership)
             elif text_lowercase in ['restaurants', 'restaurant', 'food']:
-                message.command_restaurants(event, self.line_bot_api)
+                message.command_restaurants(event, self.line_bot_api, golf_club=golf_club, membership=membership)
             else:
                 self.line_bot_api.reply_message(
                     event.reply_token,

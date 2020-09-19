@@ -15,27 +15,17 @@ from .. import utils
 from .. import validators
 
 
+@decorators.translation_activate
 def command_new(event, line_bot_api, **kwargs):
     logger = logging.getLogger(__name__)
 
-    golf_club = kwargs['golf_club']
     match = kwargs['match']
+    golf_club = kwargs['golf_club']
+    membership = kwargs['membership']
 
     # New "John Doe" 2020-08-10 12:30 3 GOLFER 3 CART
 
-    # 1. Retrieve LINE user
-    try:
-        membership = golf_models.LineUserMembership.objects \
-            .select_related('line_user', 'customer_group') \
-            .get(line_user__line_user_id=event.source.user_id,
-                 customer_group__golf_club=golf_club)
-    except golf_models.LineUserMembership.DoesNotExist:
-        line_bot_api.reply_message(
-            event.reply_token,
-            models.TextSendMessage(text='Invalid Golf Course or LINE ID'))
-        return
-
-    # 2. Check if N unpaid booking exist
+    # 1. Check if N unpaid booking exist
     if (count := golf_models.GolfBookingOrder.objects
             .filter(golf_club=golf_club,
                     line_user=membership.line_user,
@@ -51,15 +41,15 @@ def command_new(event, line_bot_api, **kwargs):
                 text=f'You cannot make a new booking because you already have the unpaid {count} booking orders'))
         return
 
-    # 3. Message data validation
-    # 3.1 match[4] PAX
+    # 2. Message data validation
+    # 2.1 match[4] PAX
     if not validators.validate_pax(pax := int(match[4]), golf_club=golf_club):
         line_bot_api.reply_message(
             event.reply_token,
             models.TextSendMessage(text=f'Invalid Golfer#: {golf_club.min_pax} to {golf_club.max_pax}'))
         return
 
-    # 3.2. match[5] CART
+    # 2.2. match[5] CART
     if not validators.validate_cart(cart := int(match[5]), pax, golf_club=golf_club):
         error_message = 'Invalid Cart#'
 
@@ -76,14 +66,14 @@ def command_new(event, line_bot_api, **kwargs):
             models.TextSendMessage(text=error_message))
         return
 
-    # 3.3. match[1] Customer name
+    # 2.3. match[1] Customer name
     if not validators.validate_customer_name(customer_name := match[1]):
         line_bot_api.reply_message(
             event.reply_token,
             models.TextSendMessage(text='Invalid Customer Name: Your name must be written in Thai or English.'))
         return
 
-    # 3.4. match[2] Round date
+    # 2.4. match[2] Round date
     if not validators.validate_round_date(round_date := timezone.datetime.strptime(match[2], '%Y-%m-%d'),
                                           holiday := utils.is_holiday(round_date),
                                           golf_club=golf_club):
@@ -92,7 +82,7 @@ def command_new(event, line_bot_api, **kwargs):
             models.TextSendMessage(text=f'Invalid Round Date'))
         return
 
-    # 3.5. match[3] Round time
+    # 2.5. match[3] Round time
     if not validators.validate_round_time(round_time := timezone.datetime.strptime(match[3], '%H:%M').time(),
                                           golf_club=golf_club):
         line_bot_api.reply_message(
@@ -117,8 +107,8 @@ def command_new(event, line_bot_api, **kwargs):
             models.TextSendMessage(text='Invalid Booking Data'))
         return
 
-    # 4. Calculate fees
-    # 4.1. Green fee
+    # 3. Calculate fees
+    # 3.1. Green fee
     green_fee = golf_models.GolfBookingOrderProduct()
     green_fee.product = golf_models.GolfBookingOrderProduct.PRODUCT_CHOICES.green_fee
     green_fee.list_price = fees[0].list_price
@@ -126,7 +116,7 @@ def command_new(event, line_bot_api, **kwargs):
     green_fee.quantity = pax
     green_fee.customer_group = membership.customer_group
 
-    # 4.2. Caddie fee
+    # 3.2. Caddie fee
     caddie_fee = golf_models.GolfBookingOrderProduct()
     caddie_fee.product = golf_models.GolfBookingOrderProduct.PRODUCT_CHOICES.caddie_fee
     caddie_fee.list_price = fees[0].season.caddie_fee_list_price
@@ -134,7 +124,7 @@ def command_new(event, line_bot_api, **kwargs):
     caddie_fee.quantity = pax
     caddie_fee.customer_group = membership.customer_group
 
-    # 4.3. Cart fee
+    # 3.3. Cart fee
     cart_fee = None
 
     if cart > 0:
@@ -145,7 +135,7 @@ def command_new(event, line_bot_api, **kwargs):
         cart_fee.quantity = cart
         cart_fee.customer_group = membership.customer_group
 
-    # 5. Save models
+    # 4. Save models
     order = golf_models.GolfBookingOrder()
     order.golf_club = golf_club
     order.line_user = membership.line_user
@@ -172,7 +162,7 @@ def command_new(event, line_bot_api, **kwargs):
     golf_models.GolfBookingOrderProduct.objects \
         .bulk_create([green_fee, caddie_fee, cart_fee] if cart_fee else [green_fee, caddie_fee])
 
-    # 5.1 Logging
+    # 4.1 Logging
     round_date_formatted = date(round_date, 'Y-m-d')
     round_time_formatted = date(round_time, 'H:i')
 
@@ -182,7 +172,7 @@ def command_new(event, line_bot_api, **kwargs):
                                 f'{round_date_formatted} {round_time_formatted}\n'
                                 f'{pax} PAX {cart} CART\n')
 
-    # 6. Notification to golf club
+    # 5. Notification to golf club
     url = reverse('console:golf-booking-order-detail', args=(golf_club.slug, order.order_no))
 
     notification = (
@@ -191,7 +181,7 @@ def command_new(event, line_bot_api, **kwargs):
     )
     tasks.send_notification_line.delay(golf_club.line_notify_access_token, notification)
 
-    # 7. Notification to customer
+    # 6. Notification to customer
     now = timezone.localtime().time()
 
     if golf_club.business_hour_start <= now <= golf_club.business_hour_end:
@@ -201,7 +191,7 @@ def command_new(event, line_bot_api, **kwargs):
     else:  # datetime.time(0, 0, 0) <= now < golf_club.business_hour_start
         message = 'We will notify you of the available tee-off date/time after 8 am this morning.'
 
-    # 8. Reply message
+    # 7. Reply message
     line_bot_api.reply_message(
         event.reply_token, [
             models.TextSendMessage(text='New Booking.\n\n'
@@ -216,6 +206,7 @@ def command_new(event, line_bot_api, **kwargs):
 @decorators.translation_activate
 def command_booking(event, line_bot_api, **kwargs):
     golf_club = kwargs['golf_club']
+    membership = kwargs['membership']
 
     orders = golf_models.GolfBookingOrder.objects \
                  .select_related('golf_club', 'user', 'line_user', 'customer_group') \
@@ -274,8 +265,10 @@ def command_booking(event, line_bot_api, **kwargs):
             ])
 
 
+@decorators.translation_activate
 def command_course(event, line_bot_api, **kwargs):
     golf_club = kwargs['golf_club']
+    membership = kwargs['membership']
 
     line_bot_api.reply_message(
         event.reply_token, [
@@ -284,32 +277,50 @@ def command_course(event, line_bot_api, **kwargs):
                 contents=golf_club.info_flex_message)])
 
 
+@decorators.translation_activate
 def command_promotions(event, line_bot_api, **kwargs):
+    golf_club = kwargs['golf_club']
+    membership = kwargs['membership']
+
     line_bot_api.reply_message(
         event.reply_token,
         models.TextSendMessage(text='promotions - carousel message'))
 
 
+@decorators.translation_activate
 def command_deals(event, line_bot_api, **kwargs):
+    golf_club = kwargs['golf_club']
+    membership = kwargs['membership']
+
     line_bot_api.reply_message(
         event.reply_token,
         models.TextSendMessage(text='deals - carousel message'))
 
 
+@decorators.translation_activate
 def command_coupons(event, line_bot_api, **kwargs):
+    golf_club = kwargs['golf_club']
+    membership = kwargs['membership']
+
     line_bot_api.reply_message(
         event.reply_token,
         models.TextSendMessage(text='coupons - carousel message'))
 
 
+@decorators.translation_activate
 def command_settings(event, line_bot_api, **kwargs):
+    golf_club = kwargs['golf_club']
+    membership = kwargs['membership']
+
     line_bot_api.reply_message(
         event.reply_token,
         models.TextSendMessage(text='settings - carousel message'))
 
 
+@decorators.translation_activate
 def command_location(event, line_bot_api, **kwargs):
     golf_club = kwargs['golf_club']
+    membership = kwargs['membership']
 
     line_bot_api.reply_message(
         event.reply_token, [
@@ -319,14 +330,21 @@ def command_location(event, line_bot_api, **kwargs):
                                        longitude=float(golf_club.longitude))])
 
 
+@decorators.translation_activate
 def command_caddies(event, line_bot_api, **kwargs):
+    golf_club = kwargs['golf_club']
+    membership = kwargs['membership']
+
     line_bot_api.reply_message(
         event.reply_token,
         models.TextSendMessage(text='caddies - carousel message'))
 
 
+@decorators.translation_activate
 def command_layout(event, line_bot_api, **kwargs):
     layout = kwargs['layout']
+    golf_club = kwargs['golf_club']
+    membership = kwargs['membership']
 
     line_bot_api.reply_message(
         event.reply_token,
@@ -335,12 +353,17 @@ def command_layout(event, line_bot_api, **kwargs):
             preview_image_url=layout))
 
 
+@decorators.translation_activate
 def command_hotels(event, line_bot_api, **kwargs):
+    golf_club = kwargs['golf_club']
+    membership = kwargs['membership']
+
     line_bot_api.reply_message(
         event.reply_token,
         models.TextSendMessage(text='hotels - carousel message'))
 
 
+@decorators.translation_activate
 def command_restaurants(event, line_bot_api, **kwargs):
     line_bot_api.reply_message(
         event.reply_token,
