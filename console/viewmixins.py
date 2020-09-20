@@ -63,7 +63,7 @@ class GolfClubStaffRequiredMixin(AccessMixin):
         try:
             membership = golf_models.GolfClubStaffMembership.objects \
                 .select_related('golf_club', 'user') \
-                .get(user=request.user)
+                .get(user=request.user, golf_club__slug=kwargs['slug'])
         except golf_models.GolfClubStaffMembership.DoesNotExist:
             return self.handle_no_permission()
 
