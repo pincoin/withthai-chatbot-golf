@@ -14,8 +14,10 @@ from . import forms
 from . import viewmixins
 
 
-class HomeView(generic.TemplateView):
+class HomeView(viewmixins.GolfClubStaffRequiredMixin, generic.TemplateView):
     template_name = 'console/home.html'
+
+    permission_required = ()
 
     def get_context_data(self, **kwargs):
         context = super(HomeView, self).get_context_data(**kwargs)
@@ -366,12 +368,12 @@ class LineUserDetailView(viewmixins.GolfClubStaffRequiredMixin, generic.DetailVi
         return context
 
 
-class FacebookUserListView(viewmixins.PageableMixin, generic.ListView):
-    pass
+class FacebookUserListView(viewmixins.GolfClubStaffRequiredMixin, viewmixins.PageableMixin, generic.ListView):
+    permission_required = ('permission_manage_booking',)
 
 
-class FacebookUserDetailView(generic.DetailView):
-    pass
+class FacebookUserDetailView(viewmixins.GolfClubStaffRequiredMixin, generic.DetailView):
+    permission_required = ('permission_manage_booking',)
 
 
 class GolfClubUpdateView(viewmixins.GolfClubStaffRequiredMixin, generic.UpdateView):
