@@ -1,0 +1,217 @@
+{% extends 'conf/base.html' %}
+
+{% load static i18n %}
+
+{% block stylesheet %}
+{{ block.super }}
+<link rel="stylesheet" href="{% static 'console/css/page.css' %}">
+{% endblock %}
+
+{% block header %}
+<nav class="navbar is-fixed-top" id="navbar-top">
+    <div class="container">
+        <div class="navbar-brand">
+            <a class="navbar-item is-hidden-tablet" id="left-sidebar-open">
+                <span class="fas fa-bars fa-fw"></span>
+            </a>
+            <a class="navbar-item" style="" href="">
+                <img src="{% static 'conf/images/withthai_logo_en.png' %}"
+                     width="168" height="30" alt="with thai logo">
+            </a>
+            <a class="navbar-item is-hidden-tablet" id="right-sidebar-open">
+                <span class="fas fa-user-cog fa-fw"></span>
+            </a>
+        </div>
+
+        <div class="navbar-menu">
+            <div class="navbar-end">
+                <div class="navbar-item">
+                    <div class="buttons">
+                        {% if user.is_authenticated %}
+                        <a href="{% url 'account_logout' %}" class="button is-danger is-small">
+                            <span class="icon"><i class="fas fa-sign-out-alt fa-fw"></i></span>
+                            <span>{% trans 'SIGN OUT' %}</span>
+                        </a>
+                        {% else %}
+                        <a href="{% url 'account_login' %}" class="button is-primary is-small">
+                            <span class="icon"><i class="fas fa-sign-in-alt fa-fw"></i></span>
+                            <span>{% trans 'SIGN IN' %}</span>
+                        </a>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+<div class="modal" id="left-sidebar">
+    <div class="modal-background"></div>
+    <div class="modal-content left-sidebar-content">
+        <ul>
+            <li class="submenu-heading">
+                {% trans 'Booking' %}
+                <a href="#" class="is-pulled-right" id="left-sidebar-close">
+                    <i class="fas fa-times"></i>
+                </a>
+            </li>
+            <li>
+                <ul>
+                    <li class="submenu-item">
+                        <a>
+                            {% trans 'All Booking List' %}
+                        </a>
+                    </li>
+                    <li class="submenu-item">
+                        <a>
+                            <span class="tag status-open">{% trans 'Open' %}</span>
+                        </a>
+                    </li>
+                    <li class="submenu-item">
+                        <a>
+                            <span class="tag status-accepted">{% trans 'Accepted' %}</span>
+                        </a>
+                    </li>
+                    <li class="submenu-item">
+                        <a>
+                            <span class="tag status-unpaid is-capitalized">{% trans 'Not paid' %}</span>
+                        </a>
+                    </li>
+                    <li class="submenu-item">
+                        <a>
+                            <span class="tag status-refund-requests is-capitalized">{% trans 'Refund requests' %}</span>
+                        </a>
+                    </li>
+                    <li class="submenu-item">
+                        <a>
+                            {% trans 'Today' %}
+                        </a>
+                    </li>
+                    <li class="submenu-item">
+                        <a>
+                            {% trans 'Tomorrow' %}
+                        </a>
+                    </li>
+                </ul>
+            </li>
+            <li class="submenu-heading">{% trans 'Customers' %}</li>
+            <li>
+                <ul>
+                    <li class="submenu-item">
+                        <a>
+                            {% trans 'LINE Users' %}
+                        </a>
+                    <li class="is-hidden">
+                        <a href="#">
+                            {% trans 'Facebook Users' %}
+                        </a>
+                    </li>
+                    <li class="submenu-item">
+                        <a>{% trans 'Customer Groups' %}</a>
+                    </li>
+                </ul>
+            </li>
+            <li class="submenu-heading">{% trans 'Marketing' %}</li>
+            <li>
+                <ul>
+                    <li class="submenu-item">
+                        <a>{% trans 'Promotions' %}</a>
+                    </li>
+                    <li class="submenu-item">
+                        <a>{% trans 'Coupons' %}</a>
+                    </li>
+                    <li class="submenu-item">
+                        <a>{% trans 'Hot Deals' %}</a>
+                    </li>
+                </ul>
+            </li>
+            <li class="submenu-heading">{% trans 'Report' %}</li>
+            <li>
+                <ul>
+                    <li class="submenu-item">
+                        <a>{% trans 'Daily Sales' %}</a>
+                    </li>
+                    <li class="submenu-item">
+                        <a>{% trans 'Monthly Sales' %}</a>
+                    </li>
+                    <li class="submenu-item">
+                        <a>{% trans 'Best Promotions' %}</a>
+                    </li>
+                    <li class="submenu-item">
+                        <a> {% trans 'Best Customers' %} </a>
+                    </li>
+                    <li class="submenu-item">
+                        <a>{% trans 'Sales by Customer Groups' %}</a>
+                    </li>
+                    <li class="submenu-item">
+                        <a>{% trans 'Sales by Payment' %}</a>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+</div>
+<div class="modal" id="right-sidebar">
+    <div class="modal-background"></div>
+    <div class="modal-content right-sidebar-content">
+        <ul>
+            <li class="submenu-heading">
+                {% trans 'Settings' %}
+                <a href="#" class="is-pulled-right" id="right-sidebar-close">
+                    <i class="fas fa-times"></i>
+                </a>
+            </li>
+            <li>
+                <ul>
+                    <li class="submenu-item">
+                        <a>
+                            {% trans 'Golf Club' %}
+                        </a>
+                    </li>
+                    <li class="submenu-item">
+                        <a>
+                            {% trans 'Green Fee' %}
+                        </a>
+                    </li>
+                    <li class="submenu-item">
+                        <a>
+                            {% trans 'Holidays' %}
+                        </a>
+                    </li>
+                    <li class="submenu-item">
+                        <a>
+                            {% trans 'Seasons' %}
+                        </a>
+                    </li>
+                    <li class="submenu-item">
+                        <a>
+                            {% trans 'Timeslots' %}
+                        </a>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+</div>
+{% endblock %}
+
+{% block main %}
+<div class="hero is-large">
+    <div class="hero-body">
+        <div class="container">
+            <div class="columns is-multiline">
+                <div class="column is-one-third is-offset-one-third has-text-centered">
+                    <h1 class="is-size-1">{% trans '403 Forbidden' %}</h1>
+                </div>
+
+                <div class="column is-one-third is-offset-one-third">
+                    <article class="message is-danger">
+                        <div class="message-body">
+                            {% trans 'You do not have permission to access.' %}
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
