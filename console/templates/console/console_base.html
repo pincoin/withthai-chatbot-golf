@@ -187,6 +187,11 @@
                             {% trans 'Timeslots' %}
                         </a>
                     </li>
+                    <li class="submenu-item">
+                        <a href="{% url 'console:staff-list' slug %}">
+                            {% trans 'Staffs' %}
+                        </a>
+                    </li>
                 </ul>
             </li>
         </ul>
@@ -315,6 +320,11 @@
                 <li>
                     <a href="{% url 'console:timeslot-list' slug %}">
                         {% trans 'Timeslots' %}
+                    </a>
+                </li>
+                <li>
+                    <a href="{% url 'console:staff-list' slug %}">
+                        {% trans 'Staffs' %}
                     </a>
                 </li>
             </ul>

@@ -512,3 +512,21 @@ class TimeslotListView(viewmixins.GolfClubStaffRequiredMixin, viewmixins.Pageabl
         context = super(TimeslotListView, self).get_context_data(**kwargs)
         context['slug'] = self.kwargs['slug']
         return context
+
+
+class StaffListView(viewmixins.GolfClubStaffRequiredMixin, viewmixins.PageableMixin, generic.ListView):
+    template_name = 'console/staff_list.html'
+
+    context_object_name = 'staffs'
+
+    permission_required = ('permission_change_settings',)
+
+    def get_queryset(self):
+        return golf_models.GolfClubStaffMembership.objects \
+            .select_related('golf_club', 'user') \
+            .filter(golf_club__slug=self.kwargs['slug'])
+
+    def get_context_data(self, **kwargs):
+        context = super(StaffListView, self).get_context_data(**kwargs)
+        context['slug'] = self.kwargs['slug']
+        return context

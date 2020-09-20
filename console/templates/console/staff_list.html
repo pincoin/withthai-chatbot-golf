@@ -1,0 +1,77 @@
+{% extends './console_base.html' %}
+
+{% load static i18n humanize %}
+{% load console_filters %}
+
+{% block title %}
+with-thai::{% trans 'Timeslot List' %}
+{% endblock %}
+
+{% block content %}
+<div>
+    <div class="card">
+        <header class="card-header">
+            <div class="card-header-title">{% trans 'Staff List' %}</div>
+        </header>
+        <div class="card-content">
+            <div class="content">
+                {% for staff in staffs %}
+                <div class="columns is-multiline is-mobile is-vcentered mobile-list-item">
+                    <div class="column is-3-tablet is-12-mobile">
+                        {{ staff.user.first_name }} {{ staff.user.last_name }}
+                    </div>
+                    <div class="column is-3-tablet is-12-mobile">
+                        {% if staff.permission_manage_booking %}
+                        <span class="has-text-info">
+                            <i class="fas fa-check fa-fw"></i>
+                            {% trans 'Can manage booking' %}
+                        </span>
+                        {% else %}
+                        <span class="has-text-danger">
+                             <i class="fas fa-times fa-fw"></i>
+                            {% trans "Can't manage booking" %}
+                        </span>
+                        {% endif %}
+                    </div>
+                    <div class="column is-3-tablet is-12-mobile">
+                        {% if staff.permission_view_sales %}
+                        <span class="has-text-info">
+                            <i class="fas fa-check fa-fw"></i>
+                            {% trans 'Can view sales' %}
+                        </span>
+                        {% else %}
+                        <span class="has-text-danger">
+                             <i class="fas fa-times fa-fw"></i>
+                            {% trans "Can't view sales" %}
+                        </span>
+                        {% endif %}
+                    </div>
+                    <div class="column is-3-tablet is-12-mobile">
+                        {% if staff.permission_change_settings %}
+                        <span class="has-text-info">
+                            <i class="fas fa-check fa-fw"></i>
+                            {% trans 'Can change settings' %}
+                        </span>
+                        {% else %}
+                        <span class="has-text-danger">
+                             <i class="fas fa-times fa-fw"></i>
+                            {% trans "Can't change settings" %}
+                        </span>
+                        {% endif %}
+                    </div>
+                </div>
+                {% empty %}
+                <div class="columns">
+                    <div class="column has-text-centered has-text-weight-bold has-text-danger-dark">
+                        {% trans 'No Staff' %}
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>
+<div class="page-pagination">
+    {% include './_pagination.html' with page_obj=page_obj page_range=page_range q=q_popped %}
+</div>
+{% endblock %}

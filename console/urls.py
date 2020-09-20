@@ -40,4 +40,7 @@ urlpatterns = [
 
     path('<slug:slug>/settings/timeslots/',
          views.TimeslotListView.as_view(), name='timeslot-list'),
+
+    path('<slug:slug>/settings/staffs/',
+         views.StaffListView.as_view(), name='staff-list'),
 ]
