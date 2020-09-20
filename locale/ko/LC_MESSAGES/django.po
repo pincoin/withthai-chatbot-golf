@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-09-20 23:23+0700\n"
+"POT-Creation-Date: 2020-09-21 00:00+0700\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -20,7 +20,7 @@ msgstr ""
 #: allauth/templates/account/account_base.html:33
 #: allauth/templates/account/logout.html:6
 #: allauth/templates/account/logout.html:14
-#: allauth/templates/account/logout.html:34
+#: allauth/templates/account/logout.html:34 conf/templates/403.html:33
 #: console/templates/console/console_base.html:33
 msgid "SIGN OUT"
 msgstr "로그아웃"
@@ -31,19 +31,19 @@ msgstr "로그아웃"
 #: allauth/templates/account/signup_closed.html:31
 #: allauth/templates/socialaccount/authentication_error.html:31
 #: allauth/templates/socialaccount/login_cancelled.html:32
-#: console/templates/console/console_base.html:38
+#: conf/templates/403.html:38 console/templates/console/console_base.html:38
 msgid "SIGN IN"
 msgstr "로그인"
 
 #: allauth/templates/account/account_base.html:52
-#: allauth/templates/account/account_base.html:201
+#: allauth/templates/account/account_base.html:201 conf/templates/403.html:52
 #: console/templates/console/console_base.html:52
 #: console/templates/console/console_base.html:206
 msgid "Booking"
 msgstr "예약관리"
 
 #: allauth/templates/account/account_base.html:61
-#: allauth/templates/account/account_base.html:205
+#: allauth/templates/account/account_base.html:205 conf/templates/403.html:61
 #: console/templates/console/console_base.html:61
 #: console/templates/console/console_base.html:210
 #: console/templates/console/golf_booking_order_list.html:14
@@ -51,168 +51,168 @@ msgid "All Booking List"
 msgstr "전체예약"
 
 #: allauth/templates/account/account_base.html:66
-#: allauth/templates/account/account_base.html:212 console/forms.py:60
-#: console/templates/console/console_base.html:66
+#: allauth/templates/account/account_base.html:212 conf/templates/403.html:66
+#: console/forms.py:60 console/templates/console/console_base.html:66
 #: console/templates/console/console_base.html:217
 msgid "Open"
 msgstr "예약접수"
 
 #: allauth/templates/account/account_base.html:71
-#: allauth/templates/account/account_base.html:217 console/forms.py:62
-#: console/templates/console/console_base.html:71
+#: allauth/templates/account/account_base.html:217 conf/templates/403.html:71
+#: console/forms.py:62 console/templates/console/console_base.html:71
 #: console/templates/console/console_base.html:222
 msgid "Accepted"
 msgstr "예약수락"
 
 #: allauth/templates/account/account_base.html:76
-#: allauth/templates/account/account_base.html:222 console/forms.py:72
-#: console/templates/console/console_base.html:76
+#: allauth/templates/account/account_base.html:222 conf/templates/403.html:76
+#: console/forms.py:72 console/templates/console/console_base.html:76
 #: console/templates/console/console_base.html:227 golf/models.py:877
 msgid "Not paid"
 msgstr "결제안함"
 
 #: allauth/templates/account/account_base.html:81
-#: allauth/templates/account/account_base.html:227 console/forms.py:74
-#: console/templates/console/console_base.html:81
+#: allauth/templates/account/account_base.html:227 conf/templates/403.html:81
+#: console/forms.py:74 console/templates/console/console_base.html:81
 #: console/templates/console/console_base.html:232 golf/models.py:879
 msgid "Refund requests"
 msgstr "환불요청"
 
 #: allauth/templates/account/account_base.html:86
-#: allauth/templates/account/account_base.html:232
+#: allauth/templates/account/account_base.html:232 conf/templates/403.html:86
 #: console/templates/console/console_base.html:86
 #: console/templates/console/console_base.html:237
 msgid "Today"
 msgstr "오늘"
 
 #: allauth/templates/account/account_base.html:91
-#: allauth/templates/account/account_base.html:237
+#: allauth/templates/account/account_base.html:237 conf/templates/403.html:91
 #: console/templates/console/console_base.html:91
 #: console/templates/console/console_base.html:242
 msgid "Tomorrow"
 msgstr "내일"
 
 #: allauth/templates/account/account_base.html:96
-#: allauth/templates/account/account_base.html:243
+#: allauth/templates/account/account_base.html:243 conf/templates/403.html:96
 #: console/templates/console/console_base.html:96
 #: console/templates/console/console_base.html:248
 msgid "Customers"
 msgstr "고객관리"
 
 #: allauth/templates/account/account_base.html:101
-#: allauth/templates/account/account_base.html:250
+#: allauth/templates/account/account_base.html:250 conf/templates/403.html:101
 #: console/templates/console/console_base.html:101
 #: console/templates/console/console_base.html:255
 msgid "LINE Users"
 msgstr "라인 사용자"
 
 #: allauth/templates/account/account_base.html:105
-#: allauth/templates/account/account_base.html:255
+#: allauth/templates/account/account_base.html:255 conf/templates/403.html:105
 #: console/templates/console/console_base.html:105
 #: console/templates/console/console_base.html:260
 msgid "Facebook Users"
 msgstr "페이스북 사용자"
 
 #: allauth/templates/account/account_base.html:109
-#: allauth/templates/account/account_base.html:261 console/forms.py:130
-#: console/templates/console/console_base.html:109
+#: allauth/templates/account/account_base.html:261 conf/templates/403.html:109
+#: console/forms.py:130 console/templates/console/console_base.html:109
 #: console/templates/console/console_base.html:266
 msgid "Customer Groups"
 msgstr "고객 그룹"
 
 #: allauth/templates/account/account_base.html:113
-#: allauth/templates/account/account_base.html:265
+#: allauth/templates/account/account_base.html:265 conf/templates/403.html:113
 #: console/templates/console/console_base.html:113
 #: console/templates/console/console_base.html:270
 msgid "Marketing"
 msgstr "마케팅"
 
 #: allauth/templates/account/account_base.html:117
-#: allauth/templates/account/account_base.html:268
+#: allauth/templates/account/account_base.html:268 conf/templates/403.html:117
 #: console/templates/console/console_base.html:117
 #: console/templates/console/console_base.html:273
 msgid "Promotions"
 msgstr "프로모션"
 
 #: allauth/templates/account/account_base.html:120
-#: allauth/templates/account/account_base.html:269
+#: allauth/templates/account/account_base.html:269 conf/templates/403.html:120
 #: console/templates/console/console_base.html:120
 #: console/templates/console/console_base.html:274
 msgid "Coupons"
 msgstr "쿠폰"
 
 #: allauth/templates/account/account_base.html:123
-#: allauth/templates/account/account_base.html:270
+#: allauth/templates/account/account_base.html:270 conf/templates/403.html:123
 #: console/templates/console/console_base.html:123
 #: console/templates/console/console_base.html:275
 msgid "Hot Deals"
 msgstr "핫딜"
 
 #: allauth/templates/account/account_base.html:127
-#: allauth/templates/account/account_base.html:272
+#: allauth/templates/account/account_base.html:272 conf/templates/403.html:127
 #: console/templates/console/console_base.html:127
 #: console/templates/console/console_base.html:277
 msgid "Report"
 msgstr "보고서"
 
 #: allauth/templates/account/account_base.html:131
-#: allauth/templates/account/account_base.html:275
+#: allauth/templates/account/account_base.html:275 conf/templates/403.html:131
 #: console/templates/console/console_base.html:131
 #: console/templates/console/console_base.html:280
 msgid "Daily Sales"
 msgstr "일간 매출"
 
 #: allauth/templates/account/account_base.html:134
-#: allauth/templates/account/account_base.html:278
+#: allauth/templates/account/account_base.html:278 conf/templates/403.html:134
 #: console/templates/console/console_base.html:134
 #: console/templates/console/console_base.html:283
 msgid "Monthly Sales"
 msgstr "월간 매출"
 
 #: allauth/templates/account/account_base.html:137
-#: allauth/templates/account/account_base.html:281
+#: allauth/templates/account/account_base.html:281 conf/templates/403.html:137
 #: console/templates/console/console_base.html:137
 #: console/templates/console/console_base.html:286
 msgid "Best Promotions"
 msgstr "우수 프로모션"
 
 #: allauth/templates/account/account_base.html:140
-#: allauth/templates/account/account_base.html:284
+#: allauth/templates/account/account_base.html:284 conf/templates/403.html:140
 #: console/templates/console/console_base.html:140
 #: console/templates/console/console_base.html:289
 msgid "Best Customers"
 msgstr "우수 고객"
 
 #: allauth/templates/account/account_base.html:143
-#: allauth/templates/account/account_base.html:287
+#: allauth/templates/account/account_base.html:287 conf/templates/403.html:143
 #: console/templates/console/console_base.html:143
 #: console/templates/console/console_base.html:292
 msgid "Sales by Customer Groups"
 msgstr "고객 그룹별 매출"
 
 #: allauth/templates/account/account_base.html:146
-#: allauth/templates/account/account_base.html:290
+#: allauth/templates/account/account_base.html:290 conf/templates/403.html:146
 #: console/templates/console/console_base.html:146
 #: console/templates/console/console_base.html:295
 msgid "Sales by Payment"
 msgstr "결제수단별 매출"
 
 #: allauth/templates/account/account_base.html:158
-#: allauth/templates/account/account_base.html:293
+#: allauth/templates/account/account_base.html:293 conf/templates/403.html:158
 #: console/templates/console/console_base.html:158
 #: console/templates/console/console_base.html:298
 msgid "Settings"
 msgstr "설정"
 
 #: allauth/templates/account/account_base.html:167
-#: allauth/templates/account/account_base.html:297
+#: allauth/templates/account/account_base.html:297 conf/templates/403.html:167
 #: console/templates/console/console_base.html:167
 #: console/templates/console/console_base.html:302
 msgid "Golf Club"
 msgstr "골프장"
 
 #: allauth/templates/account/account_base.html:172
-#: allauth/templates/account/account_base.html:302
+#: allauth/templates/account/account_base.html:302 conf/templates/403.html:172
 #: console/templates/console/console_base.html:172
 #: console/templates/console/console_base.html:307
 #: liff/templates/liff/booking_create_form.html:141
@@ -223,22 +223,22 @@ msgid "Green Fee"
 msgstr "그린피"
 
 #: allauth/templates/account/account_base.html:177
-#: allauth/templates/account/account_base.html:307
+#: allauth/templates/account/account_base.html:307 conf/templates/403.html:177
 #: console/templates/console/console_base.html:177
 #: console/templates/console/console_base.html:312 golf/models.py:46
 msgid "Holidays"
 msgstr "공휴일"
 
 #: allauth/templates/account/account_base.html:182
-#: allauth/templates/account/account_base.html:312 console/forms.py:113
-#: console/templates/console/console_base.html:182
+#: allauth/templates/account/account_base.html:312 conf/templates/403.html:182
+#: console/forms.py:113 console/templates/console/console_base.html:182
 #: console/templates/console/console_base.html:317 golf/models.py:779
 msgid "Seasons"
 msgstr "기간"
 
 #: allauth/templates/account/account_base.html:187
-#: allauth/templates/account/account_base.html:317 console/forms.py:124
-#: console/templates/console/console_base.html:187
+#: allauth/templates/account/account_base.html:317 conf/templates/403.html:187
+#: console/forms.py:124 console/templates/console/console_base.html:187
 #: console/templates/console/console_base.html:322 golf/models.py:820
 msgid "Timeslots"
 msgstr "시간대"
@@ -432,6 +432,14 @@ msgstr "태국어"
 #: conf/settings/local.py:10 golf/models.py:551
 msgid "English"
 msgstr "영어"
+
+#: conf/templates/403.html:203
+msgid "403 Forbidden"
+msgstr "403 Forbidden"
+
+#: conf/templates/403.html:209
+msgid "You do not have permission to access."
+msgstr "페이지 접근 권한이 없습니다."
 
 #: console/apps.py:7
 msgid "console"
@@ -1646,23 +1654,23 @@ msgstr "숫자 또는 +기호만 입력 가능"
 
 #: member/forms.py:33
 msgid "Invalid phone number format"
-msgstr ""
+msgstr "잘못된 전화번호 형식"
 
 #: member/forms.py:58
 msgid "You cannot change password."
-msgstr ""
+msgstr "비밀번호를 변경할 수 없습니다."
 
 #: member/forms.py:63
 msgid "You cannot set password."
-msgstr ""
+msgstr "비밀번호를 설정할 수 없습니다."
 
 #: member/forms.py:68
 msgid "You cannot reset password."
-msgstr ""
+msgstr "비밀번호를 초기화할 수 없습니다."
 
 #: member/forms.py:73
 msgid "You cannot add an email."
-msgstr ""
+msgstr "이메일을 추가할 수 없습니다."
 
 #: member/models.py:23
 msgid "Total order count"
