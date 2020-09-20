@@ -1,6 +1,5 @@
 import re
 
-from django.contrib.auth import mixins as auth_mixins
 from django.shortcuts import get_object_or_404
 from django.template.defaultfilters import date
 from django.urls import reverse
@@ -24,12 +23,14 @@ class HomeView(generic.TemplateView):
         return context
 
 
-class GolfBookingOrderListView(viewmixins.PageableMixin, generic.ListView):
+class GolfBookingOrderListView(viewmixins.GolfClubStaffRequiredMixin, viewmixins.PageableMixin, generic.ListView):
     template_name = 'console/golf_booking_order_list.html'
 
     context_object_name = 'orders'
 
     form_class = forms.OrderSearchForm
+
+    permission_required = ('permission_manage_booking',)
 
     def get_queryset(self):
         queryset = golf_models.GolfBookingOrder.objects \
@@ -141,7 +142,7 @@ class GolfBookingOrderListView(viewmixins.PageableMixin, generic.ListView):
         return context
 
 
-class GolfBookingOrderDetailView(FormMixin, generic.DetailView):
+class GolfBookingOrderDetailView(viewmixins.GolfClubStaffRequiredMixin, FormMixin, generic.DetailView):
     template_name = 'console/golf_booking_order_detail.html'
 
     context_object_name = 'order'
@@ -149,6 +150,8 @@ class GolfBookingOrderDetailView(FormMixin, generic.DetailView):
     form_class = forms.ConfirmForm
     offer_form_class = forms.OfferForm
     reject_form_class = forms.RejectForm
+
+    permission_required = ('permission_manage_booking',)
 
     def post(self, request, *args, **kwargs):
         self.object = self.get_object()
@@ -315,10 +318,12 @@ class GolfBookingOrderDetailView(FormMixin, generic.DetailView):
         return reverse('console:golf-booking-order-detail', args=(self.kwargs['slug'], self.object.order_no))
 
 
-class LineUserListView(viewmixins.PageableMixin, generic.ListView):
+class LineUserListView(viewmixins.GolfClubStaffRequiredMixin, viewmixins.PageableMixin, generic.ListView):
     template_name = 'console/line_user_list.html'
 
     context_object_name = 'users'
+
+    permission_required = ('permission_manage_booking',)
 
     def get_queryset(self):
         queryset = golf_models.LineUserMembership.objects \
@@ -337,10 +342,12 @@ class LineUserListView(viewmixins.PageableMixin, generic.ListView):
         return 10
 
 
-class LineUserDetailView(generic.DetailView):
+class LineUserDetailView(viewmixins.GolfClubStaffRequiredMixin, generic.DetailView):
     template_name = 'console/line_user_detail.html'
 
     context_object_name = 'user'
+
+    permission_required = ('permission_manage_booking',)
 
     def get_object(self, queryset=None):
         # NOTE: This method is overridden because DetailView must be called with either an object pk or a slug.
@@ -367,12 +374,14 @@ class FacebookUserDetailView(generic.DetailView):
     pass
 
 
-class GolfClubUpdateView(generic.UpdateView):
+class GolfClubUpdateView(viewmixins.GolfClubStaffRequiredMixin, generic.UpdateView):
     template_name = 'console/golf_club_update.html'
 
     context_object_name = 'golf_club'
 
     form_class = forms.GolfClubForm
+
+    permission_required = ('permission_change_settings',)
 
     def get_queryset(self):
         return golf_models.GolfClub.objects \
@@ -385,12 +394,14 @@ class GolfClubUpdateView(generic.UpdateView):
         return context
 
 
-class GreenFeeListView(viewmixins.PageableMixin, generic.ListView):
+class GreenFeeListView(viewmixins.GolfClubStaffRequiredMixin, viewmixins.PageableMixin, generic.ListView):
     template_name = 'console/green_fee_list.html'
 
     context_object_name = 'green_fees'
 
     form_class = forms.GreenFeeSearchForm
+
+    permission_required = ('permission_change_settings',)
 
     def get_queryset(self):
         queryset = golf_models.GreenFee.objects \
@@ -448,10 +459,12 @@ class GreenFeeListView(viewmixins.PageableMixin, generic.ListView):
         return context
 
 
-class HolidayListView(viewmixins.PageableMixin, generic.ListView):
+class HolidayListView(viewmixins.GolfClubStaffRequiredMixin, viewmixins.PageableMixin, generic.ListView):
     template_name = 'console/holiday_list.html'
 
     context_object_name = 'holidays'
+
+    permission_required = ('permission_change_settings',)
 
     def get_queryset(self):
         return golf_models.Holiday.objects \
@@ -463,10 +476,12 @@ class HolidayListView(viewmixins.PageableMixin, generic.ListView):
         return context
 
 
-class SeasonListView(viewmixins.PageableMixin, generic.ListView):
+class SeasonListView(viewmixins.GolfClubStaffRequiredMixin, viewmixins.PageableMixin, generic.ListView):
     template_name = 'console/season_list.html'
 
     context_object_name = 'seasons'
+
+    permission_required = ('permission_change_settings',)
 
     def get_queryset(self):
         return golf_models.Season.objects \
@@ -479,10 +494,12 @@ class SeasonListView(viewmixins.PageableMixin, generic.ListView):
         return context
 
 
-class TimeslotListView(auth_mixins.LoginRequiredMixin, viewmixins.PageableMixin, generic.ListView):
+class TimeslotListView(viewmixins.GolfClubStaffRequiredMixin, viewmixins.PageableMixin, generic.ListView):
     template_name = 'console/timeslot_list.html'
 
     context_object_name = 'timeslots'
+
+    permission_required = ('permission_change_settings',)
 
     def get_queryset(self):
         return golf_models.Timeslot.objects \

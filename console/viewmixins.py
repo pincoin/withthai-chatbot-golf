@@ -1,3 +1,4 @@
+from django.contrib.auth.mixins import AccessMixin
 from django.http import HttpResponseRedirect
 from django.urls import reverse
 from django.utils import translation
@@ -50,3 +51,28 @@ class PageableMixin:
     def get_paginate_by(self, queryset):
         # items per page
         return 10
+
+
+class GolfClubStaffRequiredMixin(AccessMixin):
+    def dispatch(self, request, *args, **kwargs):
+        # Login required
+        if not request.user.is_authenticated:
+            return self.handle_no_permission()
+
+        # Group required
+        try:
+            membership = golf_models.GolfClubStaffMembership.objects \
+                .select_related('golf_club', 'user') \
+                .get(user=request.user)
+        except golf_models.GolfClubStaffMembership.DoesNotExist:
+            return self.handle_no_permission()
+
+        # Permission required
+        for permission in self.permission_required:
+            if not hasattr(membership, permission):
+                return self.handle_no_permission()
+
+            if not getattr(membership, permission):
+                return self.handle_no_permission()
+
+        return super().dispatch(request, *args, **kwargs)
