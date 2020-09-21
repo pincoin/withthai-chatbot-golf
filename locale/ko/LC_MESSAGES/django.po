@@ -1337,7 +1337,7 @@ msgstr "예약수락"
 
 #: golf/models.py:873
 msgid "Booking closed"
-msgstr "예약무효"
+msgstr "예약종료"
 
 #: golf/models.py:933
 msgid "Round date"
