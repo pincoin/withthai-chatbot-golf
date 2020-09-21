@@ -305,14 +305,14 @@ def command_booking(event, line_bot_api, **kwargs):
                         'type': 'button',
                         'action': {
                             'type': 'postback',
-                            'label': 'CLOSE',
+                            'label': 'Close',
                             'data': f'action=close&golf_club={order.golf_club.slug}&order_no={order.order_no}',
                             'displayText': 'Close'
                         },
                         'margin': 'md',
                         'height': 'sm',
                         'style': 'primary',
-                        'color': '#ff0000'
+                        'color': '#e53935'
                     },
                     {
                         'type': 'separator',
