@@ -243,6 +243,7 @@ def command_booking(event, line_bot_api, **kwargs):
                 {
                     'type': 'text',
                     'text': 'Not Confirmed Yet',
+                    'color': '#b71c1c',
                     'margin': 'md'
                 }
             )
@@ -250,6 +251,36 @@ def command_booking(event, line_bot_api, **kwargs):
                 {
                     'type': 'text',
                     'text': 'Please, wait for the confirmation or tee time offers.',
+                    'wrap': True,
+                    'margin': 'md'
+                }
+            )
+        elif order.order_status == order.ORDER_STATUS_CHOICES.offered:
+            order_flex_message['body']['contents'].append(
+                {
+                    'type': 'separator',
+                    'margin': 'xl',
+                }
+            )
+            order_flex_message['body']['contents'].append(
+                {
+                    'type': 'text',
+                    'text': 'Please, choose tee time as shown below or close your booking.',
+                    'wrap': True,
+                    'margin': 'md'
+                }
+            )
+        elif order.order_status == order.ORDER_STATUS_CHOICES.accepted:
+            order_flex_message['body']['contents'].append(
+                {
+                    'type': 'separator',
+                    'margin': 'xl',
+                }
+            )
+            order_flex_message['body']['contents'].append(
+                {
+                    'type': 'text',
+                    'text': 'Please, wait for the confirmation.',
                     'wrap': True,
                     'margin': 'md'
                 }
