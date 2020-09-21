@@ -227,8 +227,10 @@ def command_booking(event, line_bot_api, **kwargs):
         order_flex_message['body']['contents'][1]['text'] = f'{order.fullname}'
         order_flex_message['body']['contents'][2]['contents'][0]['text'] = order.get_order_status_display()
         order_flex_message['body']['contents'][2]['contents'][1]['text'] = order.get_payment_status_display()
+        '''
         order_flex_message['footer']['contents'][0]['action']['uri'] \
             = f"https://liff.line.me/{golf_club.liff['request']['id']}"
+        '''
 
         order_flex_message['body']['contents'][8]['contents'][1]['text'] = f'{order.total_selling_price:,.0f} THB'
 
