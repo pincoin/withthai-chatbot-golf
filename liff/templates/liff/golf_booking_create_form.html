@@ -209,12 +209,12 @@
         <section class="modal-card-body" id="modal-body"></section>
         <footer class="modal-card-foot">
             <div class="card-footer-item">
-                <button class="button is-success is-capitalized is-fullwidth" id="modal-save">
+                <button class="button button-save is-capitalized is-fullwidth" id="modal-save">
                     {% trans 'New Booking' %}
                 </button>
             </div>
             <div class="card-footer-item">
-                <button class="button is-fullwidth" id="modal-cancel">
+                <button class="button button-close is-capitalized is-fullwidth" id="modal-cancel">
                     {% trans 'Cancel' %}
                 </button>
             </div>
@@ -233,7 +233,7 @@
         <section class="modal-card-body" id="error-modal-body"></section>
         <footer class="modal-card-foot">
             <div class="card-footer-item">
-                <button class="button is-success is-capitalized is-fullwidth" id="error-modal-ok">
+                <button class="button button-close is-capitalized is-fullwidth" id="error-modal-ok">
                     {% trans 'OK' %}
                 </button>
             </div>
@@ -245,7 +245,12 @@
 {% block javascript %}
 {{ block.super }}
 <script>
-    const data = {{ json | safe }};
+    const data = {
+    {
+        json | safe
+    }
+    }
+    ;
 
     let golf_club = data['golf_club'];
     let fees = data['fees'];
