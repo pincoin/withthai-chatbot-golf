@@ -236,7 +236,7 @@ class GolfBookingOrderDetailView(viewmixins.GolfClubStaffRequiredMixin, FormMixi
 
                 to = self.object.line_user.line_user_id
                 message = 'Tee-off time offer.\n\n' \
-                          'Please, choose your appropriate tee time. Otherwise, you may close the booking.\n\n' \
+                          'Please, choose your appropriate tee time or close the booking.\n\n' \
                           'Thank you.'
 
                 postback_actions = []
