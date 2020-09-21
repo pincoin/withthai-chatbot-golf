@@ -270,6 +270,55 @@ def command_booking(event, line_bot_api, **kwargs):
                     'margin': 'md'
                 }
             )
+
+            order_flex_message['footer'] = {
+                'type': 'box',
+                'layout': 'vertical',
+                'contents': [
+                    {
+                        'type': 'button',
+                        'action': {
+                            'type': 'uri',
+                            'label': '08:30',
+                            'uri': 'http://linecorp.com/'
+                        },
+                        'margin': 'md',
+                        'color': '#00acc1',
+                        'style': 'primary',
+                        'height': 'sm'
+                    },
+                    {
+                        'type': 'button',
+                        'action': {
+                            'type': 'uri',
+                            'label': '08:30',
+                            'uri': 'http://linecorp.com/'
+                        },
+                        'margin': 'md',
+                        'color': '#00acc1',
+                        'style': 'primary',
+                        'height': 'sm'
+                    },
+                    {
+                        'type': 'separator',
+                        'margin': 'xl'
+                    },
+                    {
+                        'type': 'button',
+                        'action': {
+                            'type': 'postback',
+                            'label': 'CLOSE',
+                            'data': f'action=close&golf_club={order.golf_club.slug}&order_no={order.order_no}',
+                            'displayText': 'Close'
+                        },
+                        'margin': 'md',
+                        'height': 'sm',
+                        'style': 'primary',
+                        'color': '#ff0000'
+                    }
+                ]
+            }
+
         elif order.order_status == order.ORDER_STATUS_CHOICES.accepted:
             order_flex_message['body']['contents'].append(
                 {
