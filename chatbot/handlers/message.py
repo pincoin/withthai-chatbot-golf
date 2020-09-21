@@ -358,7 +358,33 @@ def command_booking(event, line_bot_api, **kwargs):
             event.reply_token, [
                 models.FlexSendMessage(
                     alt_text='My Booking List',
-                    contents=models.CarouselContainer(contents=order_list))])
+                    contents=models.CarouselContainer(contents=order_list)),
+                models.FlexSendMessage(
+                    alt_text='New booking',
+                    contents={
+                        "type": "bubble",
+                        "size": "giga",
+                        "body": {
+                            "type": "box",
+                            "layout": "vertical",
+                            "contents": [
+                                {
+                                    "type": "button",
+                                    "action": {
+                                        "type": "uri",
+                                        "label": "New Booking",
+                                        "uri": f"https://liff.line.me/{golf_club.liff['request']['id']}"
+                                    },
+                                    "style": "primary",
+                                    "height": "sm",
+                                    "color": "#00acc1",
+                                    "margin": "md"
+                                }
+                            ]
+                        }
+                    }
+                )
+            ])
 
     else:
         no_order_flex_message = copy.deepcopy(golf_club.no_order_flex_message)
