@@ -93,6 +93,22 @@
     color: #fff !important;
 }
 
+.action-radio-buttons {
+    margin-bottom: 1rem;
+}
+
+.offer-button-spacing {
+    margin-top: 1rem;
+}
+
+.action-error-message {
+    margin: 0;
+}
+
+.action-error-message li {
+    margin: 1rem 0 0 0;
+}
+
 /* Desktop */
 @media (min-width: 1024px) {
 }

@@ -120,7 +120,7 @@ with-thai::{% trans 'Golf Booking Order Detail' %}
                             {% trans 'Actions' %}
                         </div>
                         <div class="column is-9-tablet is-12-mobile has-text-centered-mobile">
-                            <div class="control">
+                            <div class="control action-radio-buttons">
                                 <label class="radio">
                                     <input type="radio" name="action" id="confirm-radio" checked>
                                     {% trans 'CONFIRM' %}
@@ -175,7 +175,7 @@ with-thai::{% trans 'Golf Booking Order Detail' %}
                                         </div>
                                     </div>
                                 </div>
-                                <div class="field has-addons action-field-centered">
+                                <div class="field has-addons action-field-centered offer-button-spacing">
                                     <div class="control">
                                         <input type="hidden" name="form" value="offer-form">
                                         <a class="button is-primary" id="offer-button">
@@ -201,7 +201,7 @@ with-thai::{% trans 'Golf Booking Order Detail' %}
                                     </div>
                                 </div>
                             </form>
-                            <ul>
+                            <ul class="action-error-message">
                                 {% for error in confirm_form.non_field_errors %}
                                 <li class="has-text-danger">{{ error }}</li>
                                 {% endfor %}
