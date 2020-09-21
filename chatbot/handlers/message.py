@@ -307,7 +307,7 @@ def command_booking(event, line_bot_api, **kwargs):
                         'type': 'button',
                         'action': {
                             'type': 'postback',
-                            'label': f'{round_date_formatted} {tee}',
+                            'label': f'{tee}',
                             'data': f'action=accept&golf_club={order.golf_club.slug}'
                                     f'&order_no={order.order_no}&tee_time={tee}',
                             'displayText': f'Accept {round_date_formatted} {tee}',
