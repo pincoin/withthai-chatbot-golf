@@ -255,6 +255,28 @@ def command_booking(event, line_bot_api, **kwargs):
                     'margin': 'md'
                 }
             )
+            order_flex_message['footer'] = {
+                'type': 'box',
+                'layout': 'vertical',
+                'contents': [
+                    {
+                        'type': 'separator',
+                        'margin': 'xl'
+                    },
+                    {
+                        'type': 'button',
+                        'action': {
+                            'type': 'uri',
+                            'label': 'New Booking',
+                            'uri': f"https://liff.line.me/{golf_club.liff['request']['id']}"
+                        },
+                        'style': 'primary',
+                        'height': 'sm',
+                        'color': '#00acc1',
+                        'margin': 'md'
+                    }
+                ]
+            }
         elif order.order_status == order.ORDER_STATUS_CHOICES.offered:
             order_flex_message['body']['contents'].append(
                 {
@@ -291,6 +313,22 @@ def command_booking(event, line_bot_api, **kwargs):
                         'height': 'sm',
                         'style': 'primary',
                         'color': '#ff0000'
+                    },
+                    {
+                        'type': 'separator',
+                        'margin': 'xl'
+                    },
+                    {
+                        'type': 'button',
+                        'action': {
+                            'type': 'uri',
+                            'label': 'New Booking',
+                            'uri': f"https://liff.line.me/{golf_club.liff['request']['id']}"
+                        },
+                        'style': 'primary',
+                        'height': 'sm',
+                        'color': '#00acc1',
+                        'margin': 'md'
                     }
                 ]
             }
@@ -337,6 +375,51 @@ def command_booking(event, line_bot_api, **kwargs):
                     'margin': 'md'
                 }
             )
+            order_flex_message['footer'] = {
+                'type': 'box',
+                'layout': 'vertical',
+                'contents': [
+                    {
+                        'type': 'separator',
+                        'margin': 'xl'
+                    },
+                    {
+                        'type': 'button',
+                        'action': {
+                            'type': 'uri',
+                            'label': 'New Booking',
+                            'uri': f"https://liff.line.me/{golf_club.liff['request']['id']}"
+                        },
+                        'style': 'primary',
+                        'height': 'sm',
+                        'color': '#00acc1',
+                        'margin': 'md'
+                    }
+                ]
+            }
+        else:
+            order_flex_message['footer'] = {
+                'type': 'box',
+                'layout': 'vertical',
+                'contents': [
+                    {
+                        'type': 'separator',
+                        'margin': 'xl'
+                    },
+                    {
+                        'type': 'button',
+                        'action': {
+                            'type': 'uri',
+                            'label': 'New Booking',
+                            'uri': f"https://liff.line.me/{golf_club.liff['request']['id']}"
+                        },
+                        'style': 'primary',
+                        'height': 'sm',
+                        'color': '#00acc1',
+                        'margin': 'md'
+                    }
+                ]
+            }
 
         order_flex_message['body']['contents'][8]['contents'][1]['text'] = f'{order.total_selling_price:,.0f} THB'
 
@@ -358,33 +441,7 @@ def command_booking(event, line_bot_api, **kwargs):
             event.reply_token, [
                 models.FlexSendMessage(
                     alt_text='My Booking List',
-                    contents=models.CarouselContainer(contents=order_list)),
-                models.FlexSendMessage(
-                    alt_text='New booking',
-                    contents={
-                        'type': 'bubble',
-                        'size': 'micro',
-                        'body': {
-                            'type': 'box',
-                            'layout': 'vertical',
-                            'contents': [
-                                {
-                                    'type': 'button',
-                                    'action': {
-                                        'type': 'uri',
-                                        'label': 'New Booking',
-                                        'uri': f"https://liff.line.me/{golf_club.liff['request']['id']}"
-                                    },
-                                    'style': 'primary',
-                                    'height': 'sm',
-                                    'color': '#00acc1',
-                                    'margin': 'md'
-                                }
-                            ]
-                        }
-                    }
-                )
-            ])
+                    contents=models.CarouselContainer(contents=order_list))])
 
     else:
         no_order_flex_message = copy.deepcopy(golf_club.no_order_flex_message)
