@@ -295,6 +295,7 @@ def command_booking(event, line_bot_api, **kwargs):
                 ]
             }
 
+            '''
             tee_times = []
 
             for tee_time in order.golfbookingordertimeoffer_set.all():
@@ -315,7 +316,7 @@ def command_booking(event, line_bot_api, **kwargs):
 
             if tee_times:
                 order_flex_message['footer']['contents'].insert(0, tee_times)
-
+            '''
 
         elif order.order_status == order.ORDER_STATUS_CHOICES.accepted:
             order_flex_message['body']['contents'].append(
