@@ -232,6 +232,24 @@ def command_booking(event, line_bot_api, **kwargs):
             = f"https://liff.line.me/{golf_club.liff['request']['id']}"
         '''
 
+        if order.order_status == order.ORDER_STATUS_CHOICES.open:
+            order_flex_message['footer'] = {
+                "type": "box",
+                "layout": "vertical",
+                "contents": [
+                    {
+                        "type": "text",
+                        "text": "Not Confirmed Yet"
+                    },
+                    {
+                        "type": "text",
+                        "text": "Please, wait for the confirmation or tee time offers.",
+                        "wrap": True,
+                        "margin": "md"
+                    }
+                ]
+            }
+
         order_flex_message['body']['contents'][8]['contents'][1]['text'] = f'{order.total_selling_price:,.0f} THB'
 
         idx = 4
