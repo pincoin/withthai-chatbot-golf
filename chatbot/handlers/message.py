@@ -213,7 +213,7 @@ def command_booking(event, line_bot_api, **kwargs):
                  .filter(line_user__line_user_id=event.source.user_id,
                          round_date__gte=timezone.make_aware(timezone.localtime().today())) \
                  .exclude(order_status=golf_models.GolfBookingOrder.ORDER_STATUS_CHOICES.closed) \
-                 .order_by('-created')[:10]
+                 .order_by('order_status', 'round_date')[:10]
 
     order_list = []
 

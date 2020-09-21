@@ -866,17 +866,17 @@ class GreenFee(model_utils_models.TimeStampedModel):
 
 class GolfBookingOrder(model_utils_models.TimeStampedModel):
     ORDER_STATUS_CHOICES = Choices(
-        (0, 'open', _('Booking open')),
-        (1, 'confirmed', _('Booking confirmed')),
-        (2, 'offered', _('Booking offered')),
-        (3, 'accepted', _('Booking accepted')),
+        (0, 'offered', _('Booking offered')),
+        (1, 'accepted', _('Booking accepted')),
+        (2, 'open', _('Booking open')),
+        (3, 'confirmed', _('Booking confirmed')),
         (4, 'closed', _('Booking closed')),
     )
 
     PAYMENT_STATUS_CHOICES = Choices(
         (0, 'unpaid', _('Not paid')),
-        (1, 'paid', _('Paid')),
-        (2, 'refund_requests', _('Refund requests')),
+        (1, 'refund_requests', _('Refund requests')),
+        (2, 'paid', _('Paid')),
         (3, 'refunded', _('Refunded')),
     )
 
