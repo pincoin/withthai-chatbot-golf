@@ -134,22 +134,5 @@
         "margin": "md"
       }
     ]
-  },
-  "footer": {
-    "type": "box",
-    "layout": "horizontal",
-    "contents": [
-      {
-        "type": "button",
-        "action": {
-          "type": "uri",
-          "label": "New",
-          "uri": ""
-        },
-        "height": "sm",
-        "color": "#00acc1",
-        "style": "primary"
-      }
-    ]
   }
 }
