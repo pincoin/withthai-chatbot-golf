@@ -248,12 +248,10 @@ def command_booking(event, line_bot_api, **kwargs):
             )
             order_flex_message['body']['contents'].append(
                 {
-                    {
-                        "type": "text",
-                        "text": "Please, wait for the confirmation or tee time offers.",
-                        "wrap": True,
-                        "margin": "md"
-                    }
+                    "type": "text",
+                    "text": "Please, wait for the confirmation or tee time offers.",
+                    "wrap": True,
+                    "margin": "md"
                 }
             )
             order_flex_message['footer'] = {
