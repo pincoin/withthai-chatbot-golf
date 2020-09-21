@@ -245,12 +245,7 @@
 {% block javascript %}
 {{ block.super }}
 <script>
-    const data = {
-    {
-        json | safe
-    }
-    }
-    ;
+    const data = {{ json | safe }};
 
     let golf_club = data['golf_club'];
     let fees = data['fees'];
