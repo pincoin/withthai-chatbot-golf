@@ -225,6 +225,16 @@ class GolfBookingOrderDetailView(viewmixins.GolfClubStaffRequiredMixin, FormMixi
                 self.object.order_status = golf_models.GolfBookingOrder.ORDER_STATUS_CHOICES.offered
                 self.object.save()
 
+                # Add tee time offers after deletion
+                golf_models.GolfBookingOrderTimeOffer.objects.filter(order=self.object).delete()
+
+                tee_times = []
+
+                for tee_time in kwargs[form_name].cleaned_data['tee_off_times']:
+                    tee_times.append(golf_models.GolfBookingOrderTimeOffer(order=self.object, round_time=tee_time))
+
+                golf_models.GolfBookingOrderTimeOffer.objects.bulk_create(tee_times)
+
                 round_date_formatted = date(self.object.round_date, 'Y-m-d')
                 round_time_formatted = ', '.join(kwargs[form_name].cleaned_data['tee_off_times'])
 

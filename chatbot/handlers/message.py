@@ -209,7 +209,7 @@ def command_booking(event, line_bot_api, **kwargs):
 
     orders = golf_models.GolfBookingOrder.objects \
                  .select_related('golf_club', 'user', 'line_user', 'customer_group') \
-                 .prefetch_related('golfbookingorderproduct_set') \
+                 .prefetch_related('golfbookingorderproduct_set', 'golfbookingordertimeoffer_set') \
                  .filter(line_user__line_user_id=event.source.user_id,
                          round_date__gte=timezone.make_aware(timezone.localtime().today())) \
                  .exclude(order_status=golf_models.GolfBookingOrder.ORDER_STATUS_CHOICES.closed) \
@@ -276,30 +276,6 @@ def command_booking(event, line_bot_api, **kwargs):
                 'layout': 'vertical',
                 'contents': [
                     {
-                        'type': 'button',
-                        'action': {
-                            'type': 'uri',
-                            'label': '08:30',
-                            'uri': 'http://linecorp.com/'
-                        },
-                        'margin': 'md',
-                        'color': '#00acc1',
-                        'style': 'primary',
-                        'height': 'sm'
-                    },
-                    {
-                        'type': 'button',
-                        'action': {
-                            'type': 'uri',
-                            'label': '08:30',
-                            'uri': 'http://linecorp.com/'
-                        },
-                        'margin': 'md',
-                        'color': '#00acc1',
-                        'style': 'primary',
-                        'height': 'sm'
-                    },
-                    {
                         'type': 'separator',
                         'margin': 'xl'
                     },
@@ -318,6 +294,27 @@ def command_booking(event, line_bot_api, **kwargs):
                     }
                 ]
             }
+
+            tee_times = []
+
+            for tee_time in order.golfbookingordertimeoffer_set.all():
+                tee_times.append(
+                    {
+                        'type': 'button',
+                        'action': {
+                            'type': 'uri',
+                            'label': date(tee_time.round_time, 'H:i'),
+                            'uri': 'http://linecorp.com/'
+                        },
+                        'margin': 'md',
+                        'color': '#00acc1',
+                        'style': 'primary',
+                        'height': 'sm'
+                    }
+                )
+
+            order_flex_message['footer']['contents'].insert(0, tee_times)
+
 
         elif order.order_status == order.ORDER_STATUS_CHOICES.accepted:
             order_flex_message['body']['contents'].append(

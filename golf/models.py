@@ -1010,6 +1010,27 @@ class GolfBookingOrder(model_utils_models.TimeStampedModel):
         return f'{self.user} {self.total_selling_price} {self.created}'
 
 
+class GolfBookingOrderTimeOffer(model_utils_models.TimeStampedModel):
+    order = models.ForeignKey(
+        'golf.GolfBookingOrder',
+        verbose_name=_('Golf booking order'),
+        db_index=True,
+        on_delete=models.CASCADE,
+    )
+
+    round_time = models.TimeField(
+        verbose_name=_('Round time'),
+        db_index=True,
+    )
+
+    class Meta:
+        verbose_name = _('Golf booking order tee time offer')
+        verbose_name_plural = _('Golf booking order tee time offers')
+
+    def __str__(self):
+        return f'{self.round_time} at {self.created}'
+
+
 class GolfBookingOrderProduct(model_utils_models.TimeStampedModel):
     PRODUCT_CHOICES = Choices(
         (0, 'green_fee', _('Green fee')),
