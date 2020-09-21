@@ -261,7 +261,7 @@ def command_booking(event, line_bot_api, **kwargs):
                 'contents': [
                     {
                         'type': 'separator',
-                        'margin': 'xl'
+                        'margin': 'md'
                     },
                     {
                         'type': 'button',
