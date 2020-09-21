@@ -233,6 +233,29 @@ def command_booking(event, line_bot_api, **kwargs):
         '''
 
         if order.order_status == order.ORDER_STATUS_CHOICES.open:
+            order_flex_message['body']['contents'].append(
+                {
+                    "type": "separator",
+                    "color": "#0000ff"
+                }
+            )
+            order_flex_message['body']['contents'].append(
+                {
+                    "type": "text",
+                    "text": "Not Confirmed Yet",
+                    "margin": "md"
+                }
+            )
+            order_flex_message['body']['contents'].append(
+                {
+                    {
+                        "type": "text",
+                        "text": "Please, wait for the confirmation or tee time offers.",
+                        "wrap": True,
+                        "margin": "md"
+                    }
+                }
+            )
             order_flex_message['footer'] = {
                 "type": "box",
                 "layout": "vertical",
