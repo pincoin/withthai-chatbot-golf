@@ -351,7 +351,7 @@ def command_booking(event, line_bot_api, **kwargs):
                             'displayText': f'Accept {round_date_formatted} {tee}',
                         },
                         'margin': 'md',
-                        'color': '#00acc1',
+                        'color': '#039be5',
                         'style': 'primary',
                         'height': 'sm'
                     }
