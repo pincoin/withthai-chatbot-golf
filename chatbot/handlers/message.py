@@ -362,23 +362,23 @@ def command_booking(event, line_bot_api, **kwargs):
                 models.FlexSendMessage(
                     alt_text='New booking',
                     contents={
-                        "type": "bubble",
-                        "size": "giga",
-                        "body": {
-                            "type": "box",
-                            "layout": "vertical",
-                            "contents": [
+                        'type': 'bubble',
+                        'size': 'micro',
+                        'body': {
+                            'type': 'box',
+                            'layout': 'vertical',
+                            'contents': [
                                 {
-                                    "type": "button",
-                                    "action": {
-                                        "type": "uri",
-                                        "label": "New Booking",
-                                        "uri": f"https://liff.line.me/{golf_club.liff['request']['id']}"
+                                    'type': 'button',
+                                    'action': {
+                                        'type': 'uri',
+                                        'label': 'New Booking',
+                                        'uri': f"https://liff.line.me/{golf_club.liff['request']['id']}"
                                     },
-                                    "style": "primary",
-                                    "height": "sm",
-                                    "color": "#00acc1",
-                                    "margin": "md"
+                                    'style': 'primary',
+                                    'height': 'sm',
+                                    'color': '#00acc1',
+                                    'margin': 'md'
                                 }
                             ]
                         }
