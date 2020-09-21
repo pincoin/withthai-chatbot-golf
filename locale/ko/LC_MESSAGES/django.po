@@ -55,7 +55,7 @@ msgstr "전체예약"
 #: console/forms.py:60 console/templates/console/console_base.html:66
 #: console/templates/console/console_base.html:217
 msgid "Open"
-msgstr "예약접수"
+msgstr "예약문의"
 
 #: allauth/templates/account/account_base.html:71
 #: allauth/templates/account/account_base.html:217 conf/templates/403.html:71
