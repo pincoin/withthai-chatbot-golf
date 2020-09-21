@@ -210,7 +210,8 @@ def command_booking(event, line_bot_api, **kwargs):
     orders = golf_models.GolfBookingOrder.objects \
                  .select_related('golf_club', 'user', 'line_user', 'customer_group') \
                  .prefetch_related('golfbookingorderproduct_set') \
-                 .filter(line_user__line_user_id=event.source.user_id) \
+                 .filter(line_user__line_user_id=event.source.user_id,
+                         round_date__gte=timezone.make_aware(timezone.localtime().today())) \
                  .exclude(order_status=golf_models.GolfBookingOrder.ORDER_STATUS_CHOICES.closed) \
                  .order_by('-created')[:5]
 
