@@ -297,14 +297,20 @@ def command_booking(event, line_bot_api, **kwargs):
 
             tee_times = []
 
+            round_date_formatted = date(order.round_date, 'Y-m-d')
+
             for tee_time in order.golfbookingordertimeoffer_set.all():
+                tee = date(tee_time.round_time, 'H:i')
+
                 tee_times.append(
                     {
                         'type': 'button',
                         'action': {
-                            'type': 'uri',
-                            'label': date(tee_time.round_time, 'H:i'),
-                            'uri': 'http://linecorp.com/'
+                            'type': 'postback',
+                            'label': f'{round_date_formatted} {tee}',
+                            'data': f'action=accept&golf_club={order.golf_club.slug}'
+                                    f'&order_no={order.order_no}&tee_time={tee}',
+                            'displayText': f'Accept {round_date_formatted} {tee}',
                         },
                         'margin': 'md',
                         'color': '#00acc1',
