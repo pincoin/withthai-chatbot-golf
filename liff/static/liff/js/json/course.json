@@ -142,7 +142,7 @@
               "text": "Location"
             },
             "height": "sm",
-            "color": "#11cbd7",
+            "color": "#0097a7",
             "style": "primary"
           },
           {
@@ -158,7 +158,7 @@
             },
             "height": "sm",
             "style": "primary",
-            "color": "#11cbd7"
+            "color": "#0097a7"
           },
           {
             "type": "separator",
@@ -173,7 +173,7 @@
             },
             "height": "sm",
             "style": "primary",
-            "color": "#11cbd7"
+            "color": "#0097a7"
           }
         ],
         "margin": "xxl"
@@ -191,7 +191,7 @@
             },
             "style": "primary",
             "height": "sm",
-            "color": "#11cbd7"
+            "color": "#0097a7"
           },
           {
             "type": "separator",
@@ -206,7 +206,7 @@
             },
             "height": "sm",
             "style": "primary",
-            "color": "#11cbd7"
+            "color": "#0097a7"
           },
           {
             "type": "separator",
@@ -221,7 +221,7 @@
             },
             "height": "sm",
             "style": "primary",
-            "color": "#11cbd7"
+            "color": "#0097a7"
           }
         ],
         "margin": "md"
