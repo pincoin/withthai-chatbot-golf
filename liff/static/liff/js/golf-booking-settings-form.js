@@ -126,7 +126,7 @@ function runApp() {
                     liff.sendMessages([{
                         'type': 'text',
                         'text': 'Settings\n"'
-                            + '"' + fullname.value + '"\n'
+                            + fullname.value + '"\n'
                             + email.value + '\n'
                             + phone.value + '\n'
                             + lang.value
