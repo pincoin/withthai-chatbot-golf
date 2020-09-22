@@ -10,7 +10,9 @@
             console.log(liff.getOS());
             console.log(liff.getLanguage());
 
-            runApp();
+            if (typeof runApp === 'function') {
+                runApp();
+            }
         }).catch((err) => {
             console.log(err);
             console.log('failed to initialize LIFF');
