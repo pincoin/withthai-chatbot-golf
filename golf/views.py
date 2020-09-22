@@ -32,7 +32,7 @@ class GolfClubScorecardJson(generic.TemplateView):
         )
 
 
-class GolfClubCustomerGroup(generic.TemplateView):
+class GolfClubLineUser(generic.TemplateView):
     def render_to_response(self, context, **response_kwargs):
         profile = get_profile(self.request.GET['access_token'])
 
@@ -46,6 +46,10 @@ class GolfClubCustomerGroup(generic.TemplateView):
                 data = {
                     'customer_group_id': membership.customer_group_id,
                     'customer_group_title_english': membership.customer_group.title_english,
+                    'fullname': membership.line_user.fullname,
+                    'phone': membership.line_user.phone,
+                    'email': membership.line_user.email,
+                    'lang': membership.line_user.lang,
                 }
             except models.LineUserMembership.DoesNotExist:
                 pass

@@ -11,6 +11,6 @@ urlpatterns = [
     path('<slug:slug>/scorecard.json',
          views.GolfClubScorecardJson.as_view(), name='scorecard'),
 
-    path('<slug:slug>/customer-group.json',
-         views.GolfClubCustomerGroup.as_view(), name='customer-group'),
+    path('<slug:slug>/line-user.json',
+         views.GolfClubLineUser.as_view(), name='line-user'),
 ]

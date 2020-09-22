@@ -396,7 +396,7 @@ function runApp() {
     const access_token = liff.getAccessToken();
 
     if (access_token !== null) {
-        fetch('/golf/' + golf_club['slug'] + '/customer-group.json?access_token=' + access_token)
+        fetch('/golf/' + golf_club['slug'] + '/line-user.json?access_token=' + access_token)
             .then(function (response) {
                 return response.json();
             })
