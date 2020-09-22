@@ -1,4 +1,7 @@
 from django import forms
+from django.utils.translation import ugettext_lazy as _
+
+from golf import models as golf_models
 
 
 class GolfBookingForm(forms.Form):
@@ -35,3 +38,25 @@ class GolfBookingForm(forms.Form):
 
         self.fields['cart'].choices \
             = tuple((str(i), str(i)) for i in [x for x in range(min_pax, self.golf_club.max_pax + 1)])
+
+
+class GolfBookingSettingsForm(forms.Form):
+    fullname = forms.CharField(
+        max_length=32,
+        required=False,
+    )
+
+    phone = forms.CharField(
+        max_length=32,
+        required=False,
+    )
+
+    email = forms.EmailField(
+        max_length=255,
+        required=False,
+    )
+
+    lang = forms.ChoiceField(
+        choices=[('', _('Language'))] + golf_models.LineUser.LANG_CHOICES,
+        required=False,
+    )

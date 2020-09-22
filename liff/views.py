@@ -95,6 +95,19 @@ class GolfBookingCreateFormView(viewmixins.LiffContextMixin, generic.FormView):
         return context
 
 
+class GolfBookingSettingsFormView(viewmixins.LiffContextMixin, generic.FormView):
+    app_name = 'settings'
+
+    template_name = 'liff/golf_booking_settings_form.html'
+
+    form_class = forms.GolfBookingSettingsForm
+
+    def get_context_data(self, **kwargs):
+        context = super(GolfBookingSettingsFormView, self).get_context_data(**kwargs)
+        context['title'] = _('Settings')
+        return context
+
+
 class GolfPriceTableTemplateView(viewmixins.LiffContextMixin, generic.TemplateView):
     app_name = 'price'
 

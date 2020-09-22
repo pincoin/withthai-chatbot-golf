@@ -1,0 +1,166 @@
+{% extends 'liff/base.html' %}
+
+{% load static i18n %}
+
+{% block stylesheet %}
+{{ block.super }}
+<link href="{% static 'liff/css/style.css' %}" rel="stylesheet">
+{% endblock %}}
+
+{% block content %}
+<div class="container">
+    <div class="card">
+        <header class="card-header">
+            <div class="card-header-title is-uppercase">{% trans 'Settings' %}</div>
+        </header>
+        <div class="card-content shadow-box">
+            <div class="field is-horizontal">
+                <div class="field-label is-normal">
+                    <label class="label" for="{{ form.lang.id_for_label }}">{% trans 'Language' %}</label>
+                </div>
+                <div class="field-body">
+                    <div class="field">
+                        <div class="control is-expanded has-icons-left">
+                            <div class="select is-fullwidth select-has-text-centered">
+                                <select id="{{ form.lang.id_for_label }}" name="{{ form.lang.name }}">
+                                    {% for choice in form.lang.field.choices %}
+                                    <option value="{{ choice.0 }}">{{ choice.1 }}</option>
+                                    {% endfor %}
+                                </select>
+                            </div>
+                            <span class="icon is-small is-left"><i class="fas fa-globe"></i></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="field is-horizontal">
+                <div class="field-label is-normal">
+                    <label class="label" for="{{ form.fullname.id_for_label }}">
+                        {% trans 'Customer Name' %}
+                    </label>
+                </div>
+                <div class="field-body">
+                    <div class="field">
+                        <p class="control has-icons-left">
+                            <input class="input"
+                                   id="{{ form.fullname.id_for_label }}"
+                                   name="{{ form.fullname.name }}"
+                                   placeholder="{% trans 'Type in English or Thai' %}"
+                                   type="text"
+                                   value="{{ form.fullname.value|default_if_none:'' }}">
+                            <span class="icon is-small is-left"><i class="far fa-address-card"></i></span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="field is-horizontal">
+                <div class="field-label is-normal">
+                    <label class="label" for="{{ form.phone.id_for_label }}">
+                        {% trans 'Telephone' %}
+                    </label>
+                </div>
+                <div class="field-body">
+                    <div class="field">
+                        <p class="control has-icons-left">
+                            <input class="input"
+                                   id="{{ form.phone.id_for_label }}"
+                                   name="{{ form.phone.name }}"
+                                   placeholder="{% trans '+66801231234' %}"
+                                   type="text"
+                                   value="{{ form.phone.value|default_if_none:'' }}">
+                            <span class="icon is-small is-left"><i class="fas fa-mobile-alt"></i></span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="field is-horizontal">
+                <div class="field-label is-normal">
+                    <label class="label" for="{{ form.email.id_for_label }}">
+                        {% trans 'Email' %}
+                    </label>
+                </div>
+                <div class="field-body">
+                    <div class="field">
+                        <p class="control has-icons-left">
+                            <input class="input"
+                                   id="{{ form.email.id_for_label }}"
+                                   name="{{ form.email.name }}"
+                                   placeholder="{% trans 'username@example.com' %}"
+                                   type="text"
+                                   value="{{ form.email.value|default_if_none:'' }}">
+                            <span class="icon is-small is-left"><i class="far fa-envelope"></i></span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="field is-horizontal">
+                <div class="field-label is-normal">
+                </div>
+                <div class="field-body">
+                    <div class="field">
+                        <div class="notification is-danger is-hidden quotation-error-notification"
+                             id="error-notification">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <footer class="card-footer buttons no-shadow-box">
+            <button class="card-footer-item button button-close" id="closeWindowButton">
+                {% trans 'Close' %}
+            </button>
+            <button class="card-footer-item button button-save" id="save-button">
+                {% trans 'Save' %}
+            </button>
+        </footer>
+    </div>
+</div>
+<div class="modal" id="booking-confirm-modal">
+    <div class="modal-background"></div>
+    <div class="modal-card">
+        <header class="modal-card-head">
+            <p class="modal-card-title is-capitalized has-text-centered has-text-weight-bold" id="modal-title">
+                {% trans 'New Booking' %}
+            </p>
+            <button class="delete" id="modal-close"></button>
+        </header>
+        <section class="modal-card-body" id="modal-body"></section>
+        <footer class="modal-card-foot">
+            <div class="card-footer-item">
+                <button class="button button-save is-capitalized is-fullwidth" id="modal-save">
+                    {% trans 'New Booking' %}
+                </button>
+            </div>
+            <div class="card-footer-item">
+                <button class="button button-close is-capitalized is-fullwidth" id="modal-cancel">
+                    {% trans 'Cancel' %}
+                </button>
+            </div>
+        </footer>
+    </div>
+</div>
+<div class="modal" id="error-modal">
+    <div class="modal-background"></div>
+    <div class="modal-card">
+        <header class="modal-card-head">
+            <p class="modal-card-title is-capitalized has-text-centered has-text-weight-bold" id="error-modal-title">
+                {% trans 'New Booking' %}
+            </p>
+            <button class="delete" id="error-modal-close"></button>
+        </header>
+        <section class="modal-card-body" id="error-modal-body"></section>
+        <footer class="modal-card-foot">
+            <div class="card-footer-item">
+                <button class="button button-close is-capitalized is-fullwidth" id="error-modal-ok">
+                    {% trans 'OK' %}
+                </button>
+            </div>
+        </footer>
+    </div>
+</div>
+{% endblock %}
+
+{% block javascript %}
+{{ block.super }}
+<script src="{% static 'liff/js/golf-booking-create-form.js' %}"></script>
+{% endblock %}

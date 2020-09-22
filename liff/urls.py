@@ -11,16 +11,8 @@ urlpatterns = [
     path('<slug:slug>/request/',
          views.GolfBookingCreateFormView.as_view(), name='request'),
 
-    # User
-    # Create - request
-    # Update - accept
-    # Read - list / detail
-    # Delete - drop
-
-    # Golf club manager
-    # Update - confirm / offer
-    # Read - list / detail
-    # Delete - no
+    path('<slug:slug>/settings/',
+         views.GolfBookingSettingsFormView.as_view(), name='settings'),
 
     path('<slug:slug>/price/',
          views.GolfPriceTableTemplateView.as_view(), name='price'),
