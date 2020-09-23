@@ -104,7 +104,10 @@ class GolfBookingSettingsFormView(viewmixins.LiffContextMixin, generic.FormView)
 
     def get_context_data(self, **kwargs):
         context = super(GolfBookingSettingsFormView, self).get_context_data(**kwargs)
+
         context['title'] = _('Settings')
+        context['golf_club'] = self.golf_club
+
         return context
 
 
