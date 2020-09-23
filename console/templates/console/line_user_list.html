@@ -15,40 +15,43 @@ with-thai::{% trans 'LINE User List' %}
         </header>
         <div class="card-content">
             <div class="content">
-                {% for user in users %}
+                {% for membership in memberships %}
                 <div class="columns is-multiline is-mobile is-vcentered mobile-list-item">
-                    <div class="column is-1-tablet is-8-mobile">
-                        {{ user.line_user.line_user_id|truncatechars:9 }}
+                    <div class="column is-1-tablet is-4-mobile">
+                        <span class="tag status-customer-{{ membership.customer_group.id|modulo:5 }}">
+                            {{ membership.customer_group.title_english }}
+                        </span>
                         <span class="is-hidden-tablet">
-                            {% if user.line_user.follow_status == user.line_user.FOLLOW_CHOICES.follow %}
+                            {% if membership.line_user.follow_status == membership.line_user.FOLLOW_CHOICES.follow %}
                             <span class="has-text-success-dark"><i class="fas fa-check fa-fw"></i></span>
-                            {% elif user.line_user.follow_status == user.line_user.FOLLOW_CHOICES.unfollow %}
+                            {% elif membership.line_user.follow_status == membership.line_user.FOLLOW_CHOICES.unfollow %}
                             <span class="has-text-danger-dark"><i class="fas fa-times fa-fw"></i></span>
                             {% endif %}
                         </span>
                     </div>
-                    <div class="column is-2-tablet is-4-mobile has-text-right">
-                        <span class="tag status-customer-{{ user.customer_group.id|modulo:5 }}">
-                            {{ user.customer_group.title_english }}
-                        </span>
+                    <div class="column is-2-tablet is-12-mobile">
+                        <a href="{% url 'console:line-user-detail' slug membership.line_user.line_user_id %}?{{ q }}">
+                            {{ membership.line_user.line_display_name }}
+                        </a>
                     </div>
-                    <div class="column is-3-tablet is-12-mobile">
-                        <a href="{% url 'console:line-user-detail' slug user.line_user.line_user_id %}?{{ q }}">
-                            {{ user.line_user.line_display_name }}
+                    <div class="column is-2-tablet is-12-mobile">
+                        <a href="{% url 'console:line-user-detail' slug membership.line_user.line_user_id %}?{{ q }}">
+                            {{ membership.line_user.fullname|default:'-' }}
                         </a>
                     </div>
                     <div class="column is-3-tablet is-12-mobile">
-                        <a href="{% url 'console:line-user-detail' slug user.line_user.line_user_id %}?{{ q }}">
-                            {{ user.line_user.fullname|default:'-' }}
-                        </a>
+                        {{ membership.line_user.email|default:'-' }}
                     </div>
-                    <div class="column is-3-tablet is-hidden-mobile">
-                        {% if user.line_user.follow_status == user.line_user.FOLLOW_CHOICES.follow %}
+                    <div class="column is-2-tablet is-12-mobile">
+                        {{ membership.line_user.phone|default:'-' }}
+                    </div>
+                    <div class="column is-2-tablet is-hidden-mobile">
+                        {% if membership.line_user.follow_status == membership.line_user.FOLLOW_CHOICES.follow %}
                         <span class="has-text-success-dark">
                             <i class="fas fa-check fa-fw"></i>
                             {% trans 'Following' %}
                         </span>
-                        {% elif user.line_user.follow_status == user.line_user.FOLLOW_CHOICES.unfollow %}
+                        {% elif membership.line_user.follow_status == membership.line_user.FOLLOW_CHOICES.unfollow %}
                         <span class="has-text-danger-dark">
                              <i class="fas fa-times fa-fw"></i>
                             {% trans 'Unfollowed' %}

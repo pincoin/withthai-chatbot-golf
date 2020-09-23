@@ -333,7 +333,7 @@ class GolfBookingOrderDetailView(viewmixins.GolfClubStaffRequiredMixin, FormMixi
 class LineUserListView(viewmixins.GolfClubStaffRequiredMixin, viewmixins.PageableMixin, generic.ListView):
     template_name = 'console/line_user_list.html'
 
-    context_object_name = 'users'
+    context_object_name = 'memberships'
 
     permission_required = ('permission_manage_booking',)
 
@@ -357,7 +357,7 @@ class LineUserListView(viewmixins.GolfClubStaffRequiredMixin, viewmixins.Pageabl
 class LineUserDetailView(viewmixins.GolfClubStaffRequiredMixin, generic.DetailView):
     template_name = 'console/line_user_detail.html'
 
-    context_object_name = 'user'
+    context_object_name = 'membership'
 
     permission_required = ('permission_manage_booking',)
 

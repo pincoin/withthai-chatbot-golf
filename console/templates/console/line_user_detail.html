@@ -24,7 +24,7 @@ with-thai::{% trans 'LINE User Detail' %}
                             {% trans 'LINE User ID' %}
                         </div>
                         <div class="column is-9-tablet is-7-mobile">
-                            {{ user.line_user.line_user_id|truncatechars:9 }}
+                            {{ membership.line_user.line_user_id|truncatechars:9 }}
                         </div>
                     </div>
                     <div class="columns is-mobile">
@@ -32,8 +32,8 @@ with-thai::{% trans 'LINE User Detail' %}
                             {% trans 'Customer group' %}
                         </div>
                         <div class="column is-9-tablet is-7-mobile">
-                            <span class="tag status-customer-{{ user.customer_group.id|modulo:5 }}">
-                                {{ user.customer_group.title_english }}
+                            <span class="tag status-customer-{{ membership.customer_group.id|modulo:5 }}">
+                                {{ membership.customer_group.title_english }}
                             </span>
                         </div>
                     </div>
@@ -42,7 +42,7 @@ with-thai::{% trans 'LINE User Detail' %}
                             {% trans 'LINE Display Name' %}
                         </div>
                         <div class="column is-9-tablet is-7-mobile has-text-weight-bold">
-                            {{ user.line_user.line_display_name }}
+                            {{ membership.line_user.line_display_name }}
                         </div>
                     </div>
                     <div class="columns is-mobile">
@@ -50,7 +50,23 @@ with-thai::{% trans 'LINE User Detail' %}
                             {% trans 'Customer name' %}
                         </div>
                         <div class="column is-9-tablet is-7-mobile">
-                            {{ user.line_user.fullname|default:'-' }}
+                            {{ membership.line_user.fullname|default:'-' }}
+                        </div>
+                    </div>
+                    <div class="columns is-mobile">
+                        <div class="column is-3-tablet is-5-mobile has-text-right-tablet is-capitalized">
+                            {% trans 'Email' %}
+                        </div>
+                        <div class="column is-9-tablet is-7-mobile">
+                            {{ membership.line_user.email|default:'-' }}
+                        </div>
+                    </div>
+                    <div class="columns is-mobile">
+                        <div class="column is-3-tablet is-5-mobile has-text-right-tablet is-capitalized">
+                            {% trans 'Telephone' %}
+                        </div>
+                        <div class="column is-9-tablet is-7-mobile">
+                            {{ membership.line_user.phone|default:'-' }}
                         </div>
                     </div>
                     <div class="columns is-mobile">
@@ -58,12 +74,12 @@ with-thai::{% trans 'LINE User Detail' %}
                             {% trans 'Follow status' %}
                         </div>
                         <div class="column is-9-tablet is-7-mobile">
-                            {% if user.line_user.follow_status == user.line_user.FOLLOW_CHOICES.follow %}
+                            {% if membership.line_user.follow_status == membership.line_user.FOLLOW_CHOICES.follow %}
                             <span class="has-text-success-dark">
                                 <i class="fas fa-check fa-fw"></i>
                                 {% trans 'Following' %}
                             </span>
-                            {% elif user.line_user.follow_status == user.line_user.FOLLOW_CHOICES.unfollow %}
+                            {% elif membership.line_user.follow_status == membership.line_user.FOLLOW_CHOICES.unfollow %}
                             <span class="has-text-danger-dark">
                                  <i class="fas fa-times fa-fw"></i>
                                 {% trans 'Unfollowed' %}
