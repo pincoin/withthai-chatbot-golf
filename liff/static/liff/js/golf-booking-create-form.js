@@ -525,7 +525,8 @@ function runApp() {
                 } else {
                     liff.sendMessages([{
                         'type': 'text',
-                        'text': `New
+                        'text':
+                            `New
 "${customerName.value}"
 ${roundDate.value}
 ${roundTime.value}
