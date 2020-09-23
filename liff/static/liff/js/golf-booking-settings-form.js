@@ -119,10 +119,10 @@ function runApp() {
                     liff.sendMessages([{
                         'type': 'text',
                         'text': `Settings
-"${fullname.value}"
-${email.value}
-${phone.value}
-${lang.value}`
+"${fullname.value.trim()}"
+${email.value.trim()}
+${phone.value.trim()}
+${lang.value.trim()}`
                     }]).then(function () {
                         liff.closeWindow();
                     }).catch(function (error) {
