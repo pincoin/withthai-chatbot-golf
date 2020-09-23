@@ -525,12 +525,13 @@ function runApp() {
                 } else {
                     liff.sendMessages([{
                         'type': 'text',
-                        'text': 'New\n"'
-                            + customerName.value + '"\n'
-                            + roundDate.value + '\n'
-                            + roundTime.value + '\n'
-                            + pax.value + ' GOLFER\n'
-                            + cart.value + ' CART'
+                        'text': `
+                            New\n
+                            "${customerName.value}"\n
+                            ${roundDate.value}\n
+                            ${roundTime.value}\n
+                            ${pax.value} GOLFER\n
+                            ${cart.value} CART`
                     }]).then(function () {
                         liff.closeWindow();
                     }).catch(function (error) {
