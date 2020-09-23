@@ -55,6 +55,9 @@ class CallbackView(generic.View):
                     .match(text):
                 message.command_new(event, self.line_bot_api, match=match,
                                     golf_club=golf_club, membership=membership)
+            elif match := re.compile('Settings\s"(.+)"\s([\w.-]+@[\w.-]+)\s([\d+-]+)\s[a-zA-Z]{2}', re.I).match(text):
+                message.command_settings(event, self.line_bot_api, match=match,
+                                         golf_club=golf_club, membership=membership)
             elif text_lowercase == 'booking':
                 message.command_booking(event, self.line_bot_api, golf_club=golf_club, membership=membership)
             elif text_lowercase in ['course', 'club']:
@@ -65,8 +68,7 @@ class CallbackView(generic.View):
                 message.command_deals(event, self.line_bot_api, golf_club=golf_club, membership=membership)
             elif text_lowercase in ['coupons', 'coupon']:
                 message.command_coupons(event, self.line_bot_api, golf_club=golf_club, membership=membership)
-            elif text_lowercase in ['settings', 'profile']:
-                message.command_settings(event, self.line_bot_api, golf_club=golf_club, membership=membership)
+
             elif text_lowercase in ['location', 'map']:
                 message.command_location(event, self.line_bot_api, golf_club=golf_club, membership=membership)
             elif text_lowercase in ['caddies', 'caddie']:

@@ -490,9 +490,13 @@ def command_coupons(event, line_bot_api, **kwargs):
 
 @decorators.translation_activate
 def command_settings(event, line_bot_api, **kwargs):
+    match = kwargs['match']
+    golf_club = kwargs['golf_club']
+    membership = kwargs['membership']
+
     line_bot_api.reply_message(
-        event.reply_token,
-        models.TextSendMessage(text='settings - carousel message'))
+        event.reply_token, [
+            models.TextSendMessage(text=f'settings {match[1]} {match[2]} {match[3]} {match[4]}')])
 
 
 @decorators.translation_activate
