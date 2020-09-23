@@ -34,20 +34,18 @@ function runApp() {
         .addEventListener('click', function (e) {
             const time = this.parentNode.parentNode.parentNode.children[1].children[0].children[0].children[0].value
             const div = document.createElement('div');
-            div.innerHTML = '<div class="field has-addons action-field-centered offer-button-spacing">\n' +
-                '<div class="control">\n' +
-                '    <input class="input"\n' +
-                '        type="time"\n' +
-                '        value="' + time + '"\n' +
-                '        name="tee_off_times"\n' +
-                '        placeholder="HH:MM" step="60">\n' +
-                '</div>\n' +
-                '<div class="control">\n' +
-                '    <a class="button is-danger offer-minus">\n' +
-                '        <i class="fas fa-minus fa-fw"></i>\n' +
-                '    </a>\n' +
-                '</div>\n' +
-                '</div>';
+            div.innerHTML = `
+                <div class="field has-addons action-field-centered offer-button-spacing">
+                    <div class="control">
+                        <input class="input" type="time" value="${time}" name="tee_off_times"
+                         placeholder="HH:MM" step="60">
+                    </div>
+                    <div class="control">
+                        <a class="button is-danger offer-minus">
+                            <i class="fas fa-minus fa-fw"></i>
+                        </a>
+                    </div>
+                </div>`;
             while (div.children.length > 0) {
                 div.children[0].children[1].children[0].addEventListener('click', function () {
                     this.parentElement.parentElement.remove();
