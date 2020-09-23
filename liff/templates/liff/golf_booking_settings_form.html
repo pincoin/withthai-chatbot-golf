@@ -163,6 +163,8 @@
 {% block javascript %}
 {{ block.super }}
 <script>
+    const data = {{ json | safe }};
+
     let golf_club = data['golf_club'];
 </script>
 <script src="{% static 'liff/js/golf-booking-settings-form.js' %}"></script>

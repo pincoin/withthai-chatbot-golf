@@ -106,14 +106,11 @@ class GolfBookingSettingsFormView(viewmixins.LiffContextMixin, generic.FormView)
         context = super(GolfBookingSettingsFormView, self).get_context_data(**kwargs)
 
         context['title'] = _('Settings')
-
-        data = {
+        context['json'] = json.dumps({
             'golf_club': {
                 'slug': self.golf_club.slug,
             }
-        }
-
-        context['json'] = json.dumps(data)
+        })
 
         return context
 
