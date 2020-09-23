@@ -162,5 +162,8 @@
 
 {% block javascript %}
 {{ block.super }}
+<script>
+    let golf_club = data['golf_club'];
+</script>
 <script src="{% static 'liff/js/golf-booking-settings-form.js' %}"></script>
 {% endblock %}
