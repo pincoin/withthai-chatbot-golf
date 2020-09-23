@@ -53,7 +53,7 @@ function runApp() {
     const access_token = liff.getAccessToken();
 
     if (access_token !== null) {
-        fetch('/golf/' + golf_club['slug'] + '/line-user.json?access_token=' + access_token)
+        fetch(`/golf/${golf_club['slug']}/line-user.json?access_token=${access_token}`)
             .then(function (response) {
                 return response.json();
             })
@@ -125,11 +125,11 @@ function runApp() {
                 } else {
                     liff.sendMessages([{
                         'type': 'text',
-                        'text': 'Settings\n"'
-                            + fullname.value + '"\n'
-                            + email.value + '\n'
-                            + phone.value + '\n'
-                            + lang.value
+                        'text': `Settings
+"${fullname.value}"
+${email.value}
+${phone.value}
+${lang.value}`
                     }]).then(function () {
                         liff.closeWindow();
                     }).catch(function (error) {

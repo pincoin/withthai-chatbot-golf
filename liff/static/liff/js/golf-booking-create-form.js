@@ -498,7 +498,7 @@ function runApp() {
                 if (!bookingConfirmModal.classList.contains('is-active')) {
                     bookingConfirmModal.classList.add('is-active');
                 }
-                modalTitle.innerText = roundDate.value + ' ' + roundTime.value;
+                modalTitle.innerText = `${roundDate.value} ${roundTime.value}`;
 
                 modalBody.innerHTML = `
                     <table class="table is-fullwidth is-narrow quotation-table">'
@@ -525,8 +525,7 @@ function runApp() {
                 } else {
                     liff.sendMessages([{
                         'type': 'text',
-                        'text':
-                            `New
+                        'text': `New
 "${customerName.value}"
 ${roundDate.value}
 ${roundTime.value}
