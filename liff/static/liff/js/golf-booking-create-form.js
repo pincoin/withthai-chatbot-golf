@@ -501,9 +501,9 @@ function runApp() {
                 modalTitle.innerText = `${roundDate.value} ${roundTime.value}`;
 
                 modalBody.innerHTML = `
-                    <table class="table is-fullwidth is-narrow quotation-table">'
+                    <table class="table is-fullwidth is-narrow quotation-table">
                         ${quotationTable.innerHTML}
-                    '</table>`;
+                    </table>`;
             }
         });
 
