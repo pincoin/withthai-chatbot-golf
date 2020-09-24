@@ -13,7 +13,7 @@ from golf import utils as golf_utils
 from .. import decorators
 from .. import utils
 from .. import validators
-from django.utils.translation import gettext_lazy as _
+from django.utils.translation import gettext as _
 
 
 @decorators.translation_activate
