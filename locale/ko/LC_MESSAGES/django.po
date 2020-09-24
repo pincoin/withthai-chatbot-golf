@@ -489,7 +489,7 @@ msgstr "확정안됨"
 
 #: chatbot/handlers/message.py:259
 msgid "Please, wait for the confirmation or tee time offers."
-msgstr "예약확정 또는 티타임 확인을 기다려주세요."
+msgstr "확정 티오프 시간 또는 가능한 티오프 시간을 확인하여 알려드릴 예정입니다."
 
 #: chatbot/handlers/message.py:276 chatbot/handlers/message.py:331
 #: chatbot/handlers/message.py:396 chatbot/handlers/message.py:419
