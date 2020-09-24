@@ -296,11 +296,17 @@ Thank you.''')
                 to = self.object.line_user.line_user_id
                 message = _('''Booking closed.
 
+Round Date/Time: {0} {1}
+Golfer #: {2}
+Cart #: {3}
+Total: {4:,.0f} THB
+
 We apologize for the inconvenience because your tee time is not available.
 
 Please, make a new booking with another round date/time.
 
-Thank you.''')
+Thank you.''').format(round_date_formatted, round_time_formatted,
+                      self.object.pax, self.object.cart, self.object.total_selling_price)
 
                 tasks.send_push_text_message_line.delay(self.object.golf_club.line_bot_channel_access_token, to,
                                                         message)
