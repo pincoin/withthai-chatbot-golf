@@ -196,10 +196,10 @@ def command_new(event, line_bot_api, **kwargs):
     # 7. Reply message
     response = '''New Booking
 
-Round Date/Time: {} {}
-Golfer #: {}
-Cart #: {}
-Total: {0:,.0f} THB
+Round Date/Time: {0} {1}
+Golfer #: {2}
+Cart #: {3}
+Total: {4:,.0f} THB
 
 Thank you.'''.format(round_date_formatted, round_time_formatted, pax, cart, order.total_selling_price)
     
