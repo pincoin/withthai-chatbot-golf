@@ -186,11 +186,11 @@ def command_new(event, line_bot_api, **kwargs):
     now = timezone.localtime().time()
 
     if golf_club.business_hour_start <= now <= golf_club.business_hour_end:
-        message = _('We will notify you of the available tee-off date/time within 15 minutes.')
+        message = 'We will notify you of the available tee-off date/time within 15 minutes.'
     elif golf_club.business_hour_end < now <= datetime.time(23, 59, 59):
-        message = _('We will notify you of the available tee-off date/time after 8 am tomorrow morning.')
+        message = 'We will notify you of the available tee-off date/time after 8 am tomorrow morning.'
     else:  # datetime.time(0, 0, 0) <= now < golf_club.business_hour_start
-        message = _('We will notify you of the available tee-off date/time after 8 am this morning.')
+        message = 'We will notify you of the available tee-off date/time after 8 am this morning.'
 
     # 7. Reply message
     line_bot_api.reply_message(
