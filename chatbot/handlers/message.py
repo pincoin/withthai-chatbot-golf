@@ -5,6 +5,7 @@ import logging
 from django.template.defaultfilters import date
 from django.urls import reverse
 from django.utils import timezone
+from django.utils.translation import gettext as _
 from linebot import models
 
 from conf import tasks
@@ -13,7 +14,6 @@ from golf import utils as golf_utils
 from .. import decorators
 from .. import utils
 from .. import validators
-from django.utils.translation import gettext as _
 
 
 @decorators.translation_activate
@@ -39,7 +39,8 @@ def command_new(event, line_bot_api, **kwargs):
         line_bot_api.reply_message(
             event.reply_token,
             models.TextSendMessage(
-                text=f'You cannot make a new booking because you already have the unpaid {count} booking orders'))
+                text=_('You cannot make a new booking because you already have the unpaid {} booking orders')
+                    .format(count)))
         return
 
     # 2. Message data validation
@@ -47,20 +48,20 @@ def command_new(event, line_bot_api, **kwargs):
     if not validators.validate_pax(pax := int(match[4]), golf_club=golf_club):
         line_bot_api.reply_message(
             event.reply_token,
-            models.TextSendMessage(text=f'Invalid Golfer#: {golf_club.min_pax} to {golf_club.max_pax}'))
+            models.TextSendMessage(text=_('Invalid Golfer#: {} to {}').format(golf_club.min_pax, golf_club.max_pax)))
         return
 
     # 2.2. match[5] CART
     if not validators.validate_cart(cart := int(match[5]), pax, golf_club=golf_club):
-        error_message = 'Invalid Cart#'
+        error_message = _('Invalid Cart#')
 
         if golf_club.cart_compulsory == 1:
-            error_message = 'Invalid Cart#: Cart required'
+            error_message = _('Invalid Cart#: Cart required')
         elif golf_club.cart_compulsory > 1:
             if pax >= golf_club.cart_compulsory:
-                error_message = f'Invalid Cart#: Cart required {golf_club.cart_compulsory}+ Golfer'
+                error_message = _('Invalid Cart#: Cart required {}+ Golfer').format(golf_club.cart_compulsory)
             else:
-                error_message = 'Invalid Cart#'
+                error_message = _('Invalid Cart#')
 
         line_bot_api.reply_message(
             event.reply_token,
@@ -71,7 +72,7 @@ def command_new(event, line_bot_api, **kwargs):
     if not validators.validate_customer_name(customer_name := match[1]):
         line_bot_api.reply_message(
             event.reply_token,
-            models.TextSendMessage(text='Invalid Customer Name: Your name must be written in Thai or English.'))
+            models.TextSendMessage(text=_('Invalid Customer Name: Your name must be written in Thai or English.')))
         return
 
     # 2.4. match[2] Round date
@@ -80,7 +81,7 @@ def command_new(event, line_bot_api, **kwargs):
                                           golf_club=golf_club):
         line_bot_api.reply_message(
             event.reply_token,
-            models.TextSendMessage(text=f'Invalid Round Date'))
+            models.TextSendMessage(text=_('Invalid Round Date')))
         return
 
     # 2.5. match[3] Round time
@@ -88,7 +89,7 @@ def command_new(event, line_bot_api, **kwargs):
                                           golf_club=golf_club):
         line_bot_api.reply_message(
             event.reply_token,
-            models.TextSendMessage(text=f'Invalid Round Time'))
+            models.TextSendMessage(text=_('Invalid Round Time')))
         return
 
     fees = golf_models.GreenFee.objects \
@@ -105,7 +106,7 @@ def command_new(event, line_bot_api, **kwargs):
     if len(fees) != 1:
         line_bot_api.reply_message(
             event.reply_token,
-            models.TextSendMessage(text='Invalid Booking Data'))
+            models.TextSendMessage(text=_('Invalid Booking Data')))
         return
 
     # 3. Calculate fees
@@ -188,9 +189,9 @@ def command_new(event, line_bot_api, **kwargs):
     if golf_club.business_hour_start <= now <= golf_club.business_hour_end:
         message = _('We will notify you of the available tee-off date/time within 15 minutes.')
     elif golf_club.business_hour_end < now <= datetime.time(23, 59, 59):
-        message = 'We will notify you of the available tee-off date/time after 8 am tomorrow morning.'
+        message = _('We will notify you of the available tee-off date/time after 8 am tomorrow morning.')
     else:  # datetime.time(0, 0, 0) <= now < golf_club.business_hour_start
-        message = 'We will notify you of the available tee-off date/time after 8 am this morning.'
+        message = _('We will notify you of the available tee-off date/time after 8 am this morning.')
 
     # 7. Reply message
     line_bot_api.reply_message(

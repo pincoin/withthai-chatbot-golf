@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-09-24 13:19+0700\n"
+"POT-Creation-Date: 2020-09-24 16:11+0700\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -252,16 +252,17 @@ msgstr "소셜 계정"
 
 #: allauth/templates/account/email/email_confirmation_message.txt:5
 msgid "Hello."
-msgstr ""
+msgstr "안녕하세요."
 
 #: allauth/templates/account/email/email_confirmation_message.txt:7
 msgid ""
 "You have received this e-mail because you connected with this e-mail address."
 msgstr ""
+"본 이메일 주소로 회원가입하셔서 발송한 이메일입니다."
 
 #: allauth/templates/account/email/email_confirmation_message.txt:9
 msgid "Please, click the activation link if correct."
-msgstr ""
+msgstr "회원가입하신 것이 맞으면 인증완료 링크를 클릭하세요."
 
 #: allauth/templates/account/email/email_confirmation_message.txt:12
 msgid "Thank you."
@@ -298,19 +299,19 @@ msgstr "이메일 주소 인증"
 
 #: allauth/templates/account/email_confirm.html:41
 msgid "This e-mail confirmation link is expired or invalid."
-msgstr ""
+msgstr "이메일 인증 링크가 만료되었거나 올바르지 않습니다."
 
 #: allauth/templates/account/email_confirm.html:45
 msgid "Re-send email"
-msgstr ""
+msgstr "이메일 재발송"
 
 #: allauth/templates/account/login.html:33
 msgid "You may login with your social media accounts."
-msgstr ""
+msgstr "소셜 미디어 계정으로 로그인할 수 있습니다."
 
 #: allauth/templates/account/logout.html:20
 msgid "Are you sure you want to sign out?"
-msgstr ""
+msgstr "정말로 로그인하시겠습니까?"
 
 #: allauth/templates/account/signup_closed.html:5
 #: allauth/templates/account/signup_closed.html:14
@@ -319,7 +320,7 @@ msgstr "회원가입 불가"
 
 #: allauth/templates/account/signup_closed.html:21
 msgid "We are sorry, but the sign up is currently closed."
-msgstr ""
+msgstr "죄송합니다. 현재 회원가입할 수 없습니다."
 
 #: allauth/templates/account/translations.html:3
 msgid "username"
@@ -383,15 +384,15 @@ msgstr ""
 
 #: allauth/templates/socialaccount/signup.html:97 member/models.py:71
 msgid "Profile"
-msgstr ""
+msgstr "프로필"
 
 #: allauth/templates/socialaccount/signup.html:112
 msgid "JOHN"
-msgstr ""
+msgstr "JOHN"
 
 #: allauth/templates/socialaccount/signup.html:138
 msgid "DOE"
-msgstr ""
+msgstr "DOE"
 
 #: allauth/templates/socialaccount/signup.html:164
 #: liff/templates/liff/golf_booking_settings_form.html:68
@@ -400,26 +401,64 @@ msgstr ""
 
 #: allauth/templates/socialaccount/signup.html:189
 msgid "Sign up"
-msgstr ""
+msgstr "회원가입"
 
 #: chatbot/apps.py:7
 msgid "chatbot"
 msgstr "챗봇"
 
-#: chatbot/handlers/message.py:189
+#: chatbot/handlers/message.py:42
+msgid ""
+"You cannot make a new booking because you already have the unpaid {} booking "
+"orders"
+msgstr ""
+"미결제 {} 예약건이 있어 추가로 신규예약주문을 할 수 없습니다."
+
+#: chatbot/handlers/message.py:51
+msgid "Invalid Golfer#: {} to {}"
+msgstr "인원수는 {} ~ {}명입니다."
+
+#: chatbot/handlers/message.py:56 chatbot/handlers/message.py:64
+msgid "Invalid Cart#"
+msgstr "카트 수량이 올바르지 않습니다."
+
+#: chatbot/handlers/message.py:59
+msgid "Invalid Cart#: Cart required"
+msgstr "카트 이용 필수입니다."
+
+#: chatbot/handlers/message.py:62
+msgid "Invalid Cart#: Cart required {}+ Golfer"
+msgstr "{}명 이상 플레이 시 카트 이용 필수입니다."
+
+#: chatbot/handlers/message.py:75
+msgid "Invalid Customer Name: Your name must be written in Thai or English."
+msgstr "잘못된 예약자 이름: 반드시 영문 알파벳 또는 태국어로 입력하세요."
+
+#: chatbot/handlers/message.py:84
+msgid "Invalid Round Date"
+msgstr "라운드 일자가 올바르지 않습니다."
+
+#: chatbot/handlers/message.py:92
+msgid "Invalid Round Time"
+msgstr "라운드 시각이 올바르지 않습니다."
+
+#: chatbot/handlers/message.py:109
+msgid "Invalid Booking Data"
+msgstr "예약 정보가 올바르지 않습니다."
+
+#: chatbot/handlers/message.py:190
 msgid ""
 "We will notify you of the available tee-off date/time within 15 minutes."
-msgstr ""
-"15분 이내에 가능한 티오프 일자/시간을 알려드리겠습니다."
+msgstr "15분 이내에 가능한 티오프 일자/시간을 알려드리겠습니다."
 
-#: chatbot/handlers/message.py:191
+#: chatbot/handlers/message.py:192
 msgid ""
 "We will notify you of the available tee-off date/time after 8 am tomorrow "
 "morning."
 msgstr ""
 "내일 영업시간 오전 8시 이후에 가능한 티오프 일자/시간을 알려드리겠습니다."
 
-#: chatbot/handlers/message.py:193
+#: chatbot/handlers/message.py:194
 msgid ""
 "We will notify you of the available tee-off date/time after 8 am this "
 "morning."
@@ -1418,16 +1457,12 @@ msgid "Golf booking orders"
 msgstr "골프 예약 주문"
 
 #: golf/models.py:1027
-#, fuzzy
-#| msgid "Golf booking order status log"
 msgid "Golf booking order tee time offer"
-msgstr "골프 예약 상태 변경이력"
+msgstr "골프 예약 티타임 제안"
 
 #: golf/models.py:1028
-#, fuzzy
-#| msgid "Golf booking order status logs"
 msgid "Golf booking order tee time offers"
-msgstr "골프 예약 상태 변경이력"
+msgstr "골프 예약 티타임 제안"
 
 #: golf/models.py:1056
 msgid "Product"
@@ -1682,12 +1717,12 @@ msgstr "닫기"
 
 #: liff/templates/liff/golf_booking_settings_form.html:88
 msgid "username@example.com"
-msgstr ""
+msgstr "username@example.com"
 
 #: liff/templates/liff/golf_booking_settings_form.html:113
 #: liff/templates/liff/golf_booking_settings_form.html:131
 msgid "Save"
-msgstr ""
+msgstr "저장"
 
 #: liff/views.py:19
 msgid "Sample"
@@ -1711,11 +1746,11 @@ msgstr "이름 (GILDONG)"
 
 #: member/forms.py:15
 msgid "First name written in English"
-msgstr ""
+msgstr "이름 (영문 알파벳 입력)"
 
 #: member/forms.py:17 member/forms.py:25
 msgid "Uppercase alphabet only"
-msgstr ""
+msgstr "대문자만 입력 가능"
 
 #: member/forms.py:21
 msgid "Last name"
@@ -1723,7 +1758,7 @@ msgstr "성 (HONG)"
 
 #: member/forms.py:23
 msgid "Last name written in English"
-msgstr ""
+msgstr "성 (영문 알파벳 입력)"
 
 #: member/forms.py:32
 msgid "Digits or plus sign only"

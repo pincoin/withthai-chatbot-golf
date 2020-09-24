@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-09-24 13:19+0700\n"
+"POT-Creation-Date: 2020-09-24 16:11+0700\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -406,18 +406,56 @@ msgstr ""
 msgid "chatbot"
 msgstr ""
 
-#: chatbot/handlers/message.py:189
+#: chatbot/handlers/message.py:42
+msgid ""
+"You cannot make a new booking because you already have the unpaid {} booking "
+"orders"
+msgstr ""
+
+#: chatbot/handlers/message.py:51
+msgid "Invalid Golfer#: {} to {}"
+msgstr ""
+
+#: chatbot/handlers/message.py:56 chatbot/handlers/message.py:64
+msgid "Invalid Cart#"
+msgstr ""
+
+#: chatbot/handlers/message.py:59
+msgid "Invalid Cart#: Cart required"
+msgstr ""
+
+#: chatbot/handlers/message.py:62
+msgid "Invalid Cart#: Cart required {}+ Golfer"
+msgstr ""
+
+#: chatbot/handlers/message.py:75
+msgid "Invalid Customer Name: Your name must be written in Thai or English."
+msgstr ""
+
+#: chatbot/handlers/message.py:84
+msgid "Invalid Round Date"
+msgstr ""
+
+#: chatbot/handlers/message.py:92
+msgid "Invalid Round Time"
+msgstr ""
+
+#: chatbot/handlers/message.py:109
+msgid "Invalid Booking Data"
+msgstr ""
+
+#: chatbot/handlers/message.py:190
 msgid ""
 "We will notify you of the available tee-off date/time within 15 minutes."
 msgstr ""
 
-#: chatbot/handlers/message.py:191
+#: chatbot/handlers/message.py:192
 msgid ""
 "We will notify you of the available tee-off date/time after 8 am tomorrow "
 "morning."
 msgstr ""
 
-#: chatbot/handlers/message.py:193
+#: chatbot/handlers/message.py:194
 msgid ""
 "We will notify you of the available tee-off date/time after 8 am this "
 "morning."
