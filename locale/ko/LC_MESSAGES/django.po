@@ -436,11 +436,11 @@ msgstr "잘못된 예약자 이름: 반드시 영문 알파벳 또는 태국어�
 
 #: chatbot/handlers/message.py:84
 msgid "Invalid Round Date"
-msgstr "예약일자가 올바르지 않습니다."
+msgstr "예약 일자가 올바르지 않습니다."
 
 #: chatbot/handlers/message.py:92
 msgid "Invalid Round Time"
-msgstr "티타임이 올바르지 않습니다."
+msgstr "예약 티타임이 올바르지 않습니다."
 
 #: chatbot/handlers/message.py:109
 msgid "Invalid Booking Data"
