@@ -428,7 +428,7 @@ msgstr "카트 이용 필수입니다."
 
 #: chatbot/handlers/message.py:62
 msgid "Invalid Cart#: Cart required {}+ Golfer"
-msgstr "{}명 이상 플레이 시 카트 이용 필수입니다."
+msgstr "{}명 이상 예약은 카트 이용 필수입니다."
 
 #: chatbot/handlers/message.py:75
 msgid "Invalid Customer Name: Your name must be written in Thai or English."
