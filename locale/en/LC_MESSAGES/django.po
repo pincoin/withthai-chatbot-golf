@@ -410,18 +410,23 @@ msgstr ""
 msgid ""
 "We will notify you of the available tee-off date/time within 15 minutes."
 msgstr ""
+"We will notify you of the available tee-off date/time within 15 minutes."
 
 #: chatbot/handlers/message.py:191
 msgid ""
 "We will notify you of the available tee-off date/time after 8 am tomorrow "
 "morning."
 msgstr ""
+"We will notify you of the available tee-off date/time after 8 am tomorrow "
+"morning."
 
 #: chatbot/handlers/message.py:193
 msgid ""
 "We will notify you of the available tee-off date/time after 8 am this "
 "morning."
 msgstr ""
+"We will notify you of the available tee-off date/time after 8 am this "
+"morning."
 
 #: chatbot/models.py:8
 msgid "Request header"
