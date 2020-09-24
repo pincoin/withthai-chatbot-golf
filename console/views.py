@@ -4,6 +4,8 @@ from django.shortcuts import get_object_or_404
 from django.template.defaultfilters import date
 from django.urls import reverse
 from django.utils import timezone
+from django.utils import translation
+from django.utils.translation import gettext as _
 from django.views import generic
 from django.views.generic.edit import FormMixin
 
@@ -190,6 +192,8 @@ class GolfBookingOrderDetailView(viewmixins.GolfClubStaffRequiredMixin, FormMixi
     def form_valid(self, **kwargs):
         form_name = None
 
+        translation.activate(self.object.line_user.lang)
+
         if 'confirm_form' in kwargs:
             form_name = 'confirm_form'
 
@@ -209,12 +213,15 @@ class GolfBookingOrderDetailView(viewmixins.GolfClubStaffRequiredMixin, FormMixi
                                             f'{self.object.pax} PAX {self.object.cart} CART\n')
 
                 to = self.object.line_user.line_user_id
-                message = 'Booking confirmed.\n\n' \
-                          f'Round Date/Time: {round_date_formatted} {round_time_formatted}\n' \
-                          f'Golfer #: {self.object.pax}\n' \
-                          f'Cart #: {self.object.cart}\n' \
-                          f'Total: {self.object.total_selling_price:,.0f} THB\n\n' \
-                          'Thank you.'
+                message = _('''Booking confirmed.
+
+Round Date/Time: {0} {1}
+Golfer #: {2}
+Cart #: {3}
+Total: {4:,.0f} THB
+
+Thank you.''').format(round_date_formatted, round_time_formatted,
+                      self.object.pax, self.object.cart, self.object.total_selling_price)
 
                 tasks.send_push_text_message_line.delay(self.object.golf_club.line_bot_channel_access_token, to,
                                                         message)
@@ -245,24 +252,26 @@ class GolfBookingOrderDetailView(viewmixins.GolfClubStaffRequiredMixin, FormMixi
                                             f'{self.object.pax} PAX {self.object.cart} CART\n')
 
                 to = self.object.line_user.line_user_id
-                message = 'Tee-off time offer.\n\n' \
-                          'Please, choose your appropriate tee time or close the booking.\n\n' \
-                          'Thank you.'
+                message = _('''Tee-off time offer.
+
+Please, choose your appropriate tee time or close the booking.
+
+Thank you.''')
 
                 postback_actions = []
 
                 for tee_time in kwargs[form_name].cleaned_data['tee_off_times']:
                     postback_actions.append({
-                        'label': f'{round_date_formatted} {tee_time}',
+                        'label': _('{} {}').format(round_date_formatted, tee_time),
                         'data': f'action=accept&golf_club={self.object.golf_club.slug}'
                                 f'&order_no={self.object.order_no}&tee_time={tee_time}',
-                        'display_text': f'Accept {round_date_formatted} {tee_time}',
+                        'display_text': _('Accept {} {}').format(round_date_formatted, tee_time),
                     })
 
                 postback_actions.append({
-                    'label': 'Close',
+                    'label': _('Close Booking'),
                     'data': f'action=close&golf_club={self.object.golf_club.slug}&order_no={self.object.order_no}',
-                    'display_text': 'Close',
+                    'display_text': _('Close Booking'),
                 })
 
                 tasks.send_push_text_message_line.delay(self.object.golf_club.line_bot_channel_access_token,
@@ -285,14 +294,18 @@ class GolfBookingOrderDetailView(viewmixins.GolfClubStaffRequiredMixin, FormMixi
                                             f'{self.object.pax} PAX {self.object.cart} CART\n')
 
                 to = self.object.line_user.line_user_id
-                message = 'Booking closed.\n\n' \
-                          'We apologize for the inconvenience ' \
-                          'because your tee time is not available.\n\n' \
-                          'Please, make a new booking with another round date/time.\n\n' \
-                          'Thank you.'
+                message = _('''Booking closed.
+
+We apologize for the inconvenience because your tee time is not available.
+
+Please, make a new booking with another round date/time.
+
+Thank you.''')
 
                 tasks.send_push_text_message_line.delay(self.object.golf_club.line_bot_channel_access_token, to,
                                                         message)
+
+        translation.deactivate()
 
         return super(GolfBookingOrderDetailView, self).form_valid(kwargs[form_name])
 

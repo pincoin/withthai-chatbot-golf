@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-09-24 22:05+0700\n"
+"POT-Creation-Date: 2020-09-24 23:12+0700\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -497,7 +497,7 @@ msgstr ""
 "확정 티오프 시간 또는 가능한 티오프 시간을 확인하여 알려드릴 예정입니다."
 
 #: chatbot/handlers/message.py:277 chatbot/handlers/message.py:332
-#: chatbot/handlers/message.py:420
+#: chatbot/handlers/message.py:397 chatbot/handlers/message.py:420
 msgid "New Booking Inquiry"
 msgstr "새 예약 문의"
 
@@ -507,22 +507,17 @@ msgstr ""
 "원하시는 티타임을 선택하시거나 원하는 시간이 없을 경우 예약을 종료하세요."
 
 #: chatbot/handlers/message.py:315 chatbot/handlers/message.py:317
+#: console/views.py:272 console/views.py:274
 msgid "Close Booking"
 msgstr "예약종료"
 
-#: chatbot/handlers/message.py:358
+#: chatbot/handlers/message.py:358 console/views.py:268
 msgid "Accept {} {}"
 msgstr "예약수락 {} {}"
 
 #: chatbot/handlers/message.py:380
 msgid "Please, wait for the confirmation."
 msgstr "예약확정까지 기다려주세요."
-
-#: chatbot/handlers/message.py:397
-#, fuzzy
-#| msgid "New Booking"
-msgid "New Booking Inqury"
-msgstr "예약 문의"
 
 #: chatbot/handlers/message.py:431
 msgid "{0:,.0f} THB"
@@ -1033,6 +1028,62 @@ msgstr "담당자 없음"
 #: console/templates/console/timeslot_list.html:37
 msgid "No Timeslot"
 msgstr "시간대 설정이 없습니다."
+
+#: console/views.py:216
+msgid ""
+"Booking confirmed.\n"
+"\n"
+"Round Date/Time: {0} {1}\n"
+"Golfer #: {2}\n"
+"Cart #: {3}\n"
+"Total: {4:,.0f} THB\n"
+"\n"
+"Thank you."
+msgstr ""
+"예약확정\n"
+"\n"
+"일시: {0} {1}\n"
+"인원: {2}명\n"
+"카트: {3}대\n"
+"금액: {4:,.0f} 바트\n"
+"\n"
+"감사합니다."
+
+#: console/views.py:255
+msgid ""
+"Tee-off time offer.\n"
+"\n"
+"Please, choose your appropriate tee time or close the booking.\n"
+"\n"
+"Thank you."
+msgstr ""
+"티오프 제안\n"
+"\n"
+"원하시는 티타임을 선택하시거나 원하는 시간이 없을 경우 예약을 종료하세요.\n"
+"\n"
+"감사합니다."
+
+#: console/views.py:265
+msgid "{} {}"
+msgstr "{} {}"
+
+#: console/views.py:297
+msgid ""
+"Booking closed.\n"
+"\n"
+"We apologize for the inconvenience because your tee time is not available.\n"
+"\n"
+"Please, make a new booking with another round date/time.\n"
+"\n"
+"Thank you."
+msgstr ""
+"예약종료\n"
+"\n"
+"예약가능한 티타임이 없습니다. 불편을 드려 대단히 죄송합니다.\n"
+"\n"
+"다른 날짜와 시간으로 새 예약문의를 부탁드립니다.\n"
+"\n"
+"감사합니다."
 
 #: golf/admin.py:85 golf/models.py:452 golf/models.py:510 golf/models.py:651
 #: golf/models.py:690 golf/models.py:731 golf/models.py:788 golf/models.py:892
@@ -1894,3 +1945,6 @@ msgstr "로그인 로그"
 #: shop/apps.py:7
 msgid "shop"
 msgstr "쇼핑"
+
+#~ msgid "New Booking Inqury"
+#~ msgstr "예약 문의"

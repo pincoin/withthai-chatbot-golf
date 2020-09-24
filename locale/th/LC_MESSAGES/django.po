@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-09-24 22:05+0700\n"
+"POT-Creation-Date: 2020-09-24 23:12+0700\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -486,7 +486,7 @@ msgid "Please, wait for the confirmation or tee time offers."
 msgstr ""
 
 #: chatbot/handlers/message.py:277 chatbot/handlers/message.py:332
-#: chatbot/handlers/message.py:420
+#: chatbot/handlers/message.py:397 chatbot/handlers/message.py:420
 msgid "New Booking Inquiry"
 msgstr ""
 
@@ -495,19 +495,16 @@ msgid "Please, choose tee time as shown below or close your booking."
 msgstr ""
 
 #: chatbot/handlers/message.py:315 chatbot/handlers/message.py:317
+#: console/views.py:272 console/views.py:274
 msgid "Close Booking"
 msgstr ""
 
-#: chatbot/handlers/message.py:358
+#: chatbot/handlers/message.py:358 console/views.py:268
 msgid "Accept {} {}"
 msgstr ""
 
 #: chatbot/handlers/message.py:380
 msgid "Please, wait for the confirmation."
-msgstr ""
-
-#: chatbot/handlers/message.py:397
-msgid "New Booking Inqury"
 msgstr ""
 
 #: chatbot/handlers/message.py:431
@@ -1018,6 +1015,42 @@ msgstr ""
 
 #: console/templates/console/timeslot_list.html:37
 msgid "No Timeslot"
+msgstr ""
+
+#: console/views.py:216
+msgid ""
+"Booking confirmed.\n"
+"\n"
+"Round Date/Time: {0} {1}\n"
+"Golfer #: {2}\n"
+"Cart #: {3}\n"
+"Total: {4:,.0f} THB\n"
+"\n"
+"Thank you."
+msgstr ""
+
+#: console/views.py:255
+msgid ""
+"Tee-off time offer.\n"
+"\n"
+"Please, choose your appropriate tee time or close the booking.\n"
+"\n"
+"Thank you."
+msgstr ""
+
+#: console/views.py:265
+msgid "{} {}"
+msgstr ""
+
+#: console/views.py:297
+msgid ""
+"Booking closed.\n"
+"\n"
+"We apologize for the inconvenience because your tee time is not available.\n"
+"\n"
+"Please, make a new booking with another round date/time.\n"
+"\n"
+"Thank you."
 msgstr ""
 
 #: golf/admin.py:85 golf/models.py:452 golf/models.py:510 golf/models.py:651

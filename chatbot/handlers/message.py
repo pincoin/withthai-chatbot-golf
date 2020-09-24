@@ -394,7 +394,7 @@ def command_booking(event, line_bot_api, **kwargs):
                         'type': 'button',
                         'action': {
                             'type': 'uri',
-                            'label': _('New Booking Inqury'),
+                            'label': _('New Booking Inquiry'),
                             'uri': f"https://liff.line.me/{golf_club.liff['request']['id']}"
                         },
                         'style': 'primary',
