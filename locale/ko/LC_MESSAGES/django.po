@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-09-21 00:00+0700\n"
+"POT-Creation-Date: 2020-09-24 13:19+0700\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -74,7 +74,7 @@ msgstr "결제안함"
 #: allauth/templates/account/account_base.html:81
 #: allauth/templates/account/account_base.html:227 conf/templates/403.html:81
 #: console/forms.py:74 console/templates/console/console_base.html:81
-#: console/templates/console/console_base.html:232 golf/models.py:879
+#: console/templates/console/console_base.html:232 golf/models.py:878
 msgid "Refund requests"
 msgstr "환불요청"
 
@@ -201,6 +201,7 @@ msgstr "결제수단별 매출"
 #: allauth/templates/account/account_base.html:293 conf/templates/403.html:158
 #: console/templates/console/console_base.html:158
 #: console/templates/console/console_base.html:298
+#: liff/templates/liff/golf_booking_settings_form.html:14 liff/views.py:108
 msgid "Settings"
 msgstr "설정"
 
@@ -217,6 +218,7 @@ msgstr "골프장"
 #: console/templates/console/console_base.html:307
 #: liff/templates/liff/booking_create_form.html:141
 #: liff/templates/liff/golf_booking_create_form.html:162
+#: liff/templates/liff/golf_booking_settings.html:162
 #: liff/templates/liff/golf_price_table.html:21
 #: liff/templates/liff/price_table.html:21
 msgid "Green Fee"
@@ -285,6 +287,8 @@ msgstr "아이디"
 
 #: allauth/templates/account/email_confirm.html:26
 #: allauth/templates/socialaccount/signup.html:44
+#: console/templates/console/line_user_detail.html:58
+#: liff/templates/liff/golf_booking_settings_form.html:79
 msgid "Email"
 msgstr "이메일"
 
@@ -390,6 +394,7 @@ msgid "DOE"
 msgstr ""
 
 #: allauth/templates/socialaccount/signup.html:164
+#: liff/templates/liff/golf_booking_settings_form.html:68
 msgid "+66801231234"
 msgstr ""
 
@@ -400,6 +405,26 @@ msgstr ""
 #: chatbot/apps.py:7
 msgid "chatbot"
 msgstr "챗봇"
+
+#: chatbot/handlers/message.py:189
+msgid ""
+"We will notify you of the available tee-off date/time within 15 minutes."
+msgstr ""
+"15분 이내에 가능한 티오프 일자/시간을 알려드리겠습니다."
+
+#: chatbot/handlers/message.py:191
+msgid ""
+"We will notify you of the available tee-off date/time after 8 am tomorrow "
+"morning."
+msgstr ""
+"내일 영업시간 오전 8시 이후에 가능한 티오프 일자/시간을 알려드리겠습니다."
+
+#: chatbot/handlers/message.py:193
+msgid ""
+"We will notify you of the available tee-off date/time after 8 am this "
+"morning."
+msgstr ""
+"금일 영업시간 오전 8시 이후에 가능한 티오프 일자/시간을 알려드리겠습니다."
 
 #: chatbot/models.py:8
 msgid "Request header"
@@ -489,7 +514,7 @@ msgstr "예약종료"
 msgid "Payment Status"
 msgstr "결제상태"
 
-#: console/forms.py:73 golf/models.py:878
+#: console/forms.py:73 golf/models.py:879
 msgid "Paid"
 msgstr "결제완료"
 
@@ -547,7 +572,7 @@ msgstr "예약자 이름"
 
 #: console/templates/console/golf_booking_order_detail.html:39
 #: console/templates/console/line_user_detail.html:32 golf/models.py:621
-#: golf/models.py:721 golf/models.py:829 golf/models.py:925 golf/models.py:1029
+#: golf/models.py:721 golf/models.py:829 golf/models.py:925 golf/models.py:1050
 msgid "Customer group"
 msgstr "고객 그룹"
 
@@ -564,6 +589,7 @@ msgstr "라운드 일시"
 #: console/templates/console/golf_booking_order_detail.html:449
 #: golf/models.py:943 liff/templates/liff/booking_create_form.html:135
 #: liff/templates/liff/golf_booking_create_form.html:156
+#: liff/templates/liff/golf_booking_settings.html:156
 msgid "PAX"
 msgstr "인원"
 
@@ -583,12 +609,12 @@ msgid "Total"
 msgstr "합계"
 
 #: console/templates/console/golf_booking_order_detail.html:86
-#: golf/models.py:992 golf/models.py:1096
+#: golf/models.py:992 golf/models.py:1117
 msgid "Order status"
 msgstr "예약상태"
 
 #: console/templates/console/golf_booking_order_detail.html:104
-#: golf/models.py:999 golf/models.py:1103
+#: golf/models.py:999 golf/models.py:1124
 msgid "Payment status"
 msgstr "결제상태"
 
@@ -627,6 +653,8 @@ msgstr "예약 티오프 확정"
 #: console/templates/console/golf_booking_order_detail.html:415
 #: console/templates/console/golf_booking_order_detail.html:470
 #: liff/templates/liff/golf_booking_create_form.html:237
+#: liff/templates/liff/golf_booking_settings.html:237
+#: liff/templates/liff/golf_booking_settings_form.html:155
 msgid "OK"
 msgstr "OK"
 
@@ -634,6 +662,8 @@ msgstr "OK"
 #: console/templates/console/golf_booking_order_detail.html:420
 #: console/templates/console/golf_booking_order_detail.html:475
 #: liff/templates/liff/golf_booking_create_form.html:218
+#: liff/templates/liff/golf_booking_settings.html:218
+#: liff/templates/liff/golf_booking_settings_form.html:136
 msgid "Cancel"
 msgstr "취소"
 
@@ -805,17 +835,23 @@ msgstr "라인 아이디"
 msgid "LINE Display Name"
 msgstr "라인 표시 이름"
 
-#: console/templates/console/line_user_detail.html:58 golf/models.py:570
+#: console/templates/console/line_user_detail.html:66
+#: liff/templates/liff/golf_booking_settings_form.html:59 member/forms.py:29
+#: member/models.py:16
+msgid "Telephone"
+msgstr "전화번호"
+
+#: console/templates/console/line_user_detail.html:74 golf/models.py:570
 msgid "Follow status"
 msgstr "팔로우"
 
-#: console/templates/console/line_user_detail.html:64
-#: console/templates/console/line_user_list.html:49
+#: console/templates/console/line_user_detail.html:80
+#: console/templates/console/line_user_list.html:52
 msgid "Following"
 msgstr "팔로우"
 
-#: console/templates/console/line_user_detail.html:69
-#: console/templates/console/line_user_list.html:54
+#: console/templates/console/line_user_detail.html:85
+#: console/templates/console/line_user_list.html:57
 msgid "Unfollowed"
 msgstr "언팔로우"
 
@@ -827,7 +863,7 @@ msgstr "라인 사용자 목록"
 msgid "All LINE User List"
 msgstr "라인 사용자"
 
-#: console/templates/console/line_user_list.html:62
+#: console/templates/console/line_user_list.html:65
 msgid "No LINE user"
 msgstr "라인 사용자가 없습니다."
 
@@ -836,13 +872,13 @@ msgstr "라인 사용자가 없습니다."
 msgid "Season List"
 msgstr "기간"
 
-#: console/templates/console/season_list.html:27 golf/models.py:1016
-#: golf/models.py:1126
+#: console/templates/console/season_list.html:27 golf/models.py:1037
+#: golf/models.py:1147
 msgid "Caddie fee"
 msgstr "캐디피"
 
-#: console/templates/console/season_list.html:33 golf/models.py:1017
-#: golf/models.py:1127
+#: console/templates/console/season_list.html:33 golf/models.py:1038
+#: golf/models.py:1148
 msgid "Cart fee"
 msgstr "카트피"
 
@@ -894,7 +930,7 @@ msgstr "시간대 설정이 없습니다."
 
 #: golf/admin.py:85 golf/models.py:452 golf/models.py:510 golf/models.py:651
 #: golf/models.py:690 golf/models.py:731 golf/models.py:788 golf/models.py:892
-#: golf/models.py:1139
+#: golf/models.py:1160
 msgid "Golf club"
 msgstr "골프장"
 
@@ -1120,7 +1156,7 @@ msgstr "휴일예약 월요일 이후"
 msgid "LIFF"
 msgstr "LIFF"
 
-#: golf/models.py:418 liff/views.py:157
+#: golf/models.py:418 liff/views.py:177
 msgid "Scorecard"
 msgstr "스코어카드"
 
@@ -1184,7 +1220,8 @@ msgstr "라인 표시 이름"
 msgid "Fullname"
 msgstr "이름"
 
-#: golf/models.py:597
+#: golf/models.py:597 liff/forms.py:60
+#: liff/templates/liff/golf_booking_settings_form.html:19
 msgid "Language"
 msgstr "언어"
 
@@ -1204,7 +1241,7 @@ msgstr "멤버십 아이디"
 msgid "LINE user membership"
 msgstr "라인 사용자 멤버십"
 
-#: golf/models.py:641 golf/models.py:899 golf/models.py:1087
+#: golf/models.py:641 golf/models.py:899 golf/models.py:1108
 #: member/models.py:81
 msgid "User"
 msgstr "사용자"
@@ -1306,34 +1343,34 @@ msgstr "시간대 종료시간"
 msgid "Timeslot"
 msgstr "시간대"
 
-#: golf/models.py:849 golf/models.py:1043
+#: golf/models.py:849 golf/models.py:1064
 msgid "List price"
 msgstr "정가"
 
-#: golf/models.py:856 golf/models.py:1050
+#: golf/models.py:856 golf/models.py:1071
 msgid "Selling price"
 msgstr "판매가"
 
-#: golf/models.py:863 golf/models.py:864 golf/models.py:1015
-#: golf/models.py:1125
+#: golf/models.py:863 golf/models.py:864 golf/models.py:1036
+#: golf/models.py:1146
 msgid "Green fee"
 msgstr "그린피"
 
 #: golf/models.py:869
-msgid "Booking open"
-msgstr "예약문의"
-
-#: golf/models.py:870
-msgid "Booking confirmed"
-msgstr "예약확정"
-
-#: golf/models.py:871
 msgid "Booking offered"
 msgstr "예약제안"
 
-#: golf/models.py:872
+#: golf/models.py:870
 msgid "Booking accepted"
 msgstr "예약수락"
+
+#: golf/models.py:871
+msgid "Booking open"
+msgstr "예약문의"
+
+#: golf/models.py:872
+msgid "Booking confirmed"
+msgstr "예약확정"
 
 #: golf/models.py:873
 msgid "Booking closed"
@@ -1343,7 +1380,7 @@ msgstr "예약종료"
 msgid "Round date"
 msgstr "라운드 일자"
 
-#: golf/models.py:938
+#: golf/models.py:938 golf/models.py:1022
 msgid "Round time"
 msgstr "라운드 시각"
 
@@ -1371,7 +1408,8 @@ msgstr "판매가 합계"
 msgid "Parent"
 msgstr "부모"
 
-#: golf/models.py:1006 golf/models.py:1022 golf/models.py:1080
+#: golf/models.py:1006 golf/models.py:1016 golf/models.py:1043
+#: golf/models.py:1101
 msgid "Golf booking order"
 msgstr "골프 예약 주문"
 
@@ -1379,147 +1417,159 @@ msgstr "골프 예약 주문"
 msgid "Golf booking orders"
 msgstr "골프 예약 주문"
 
-#: golf/models.py:1035
+#: golf/models.py:1027
+#, fuzzy
+#| msgid "Golf booking order status log"
+msgid "Golf booking order tee time offer"
+msgstr "골프 예약 상태 변경이력"
+
+#: golf/models.py:1028
+#, fuzzy
+#| msgid "Golf booking order status logs"
+msgid "Golf booking order tee time offers"
+msgstr "골프 예약 상태 변경이력"
+
+#: golf/models.py:1056
 msgid "Product"
 msgstr "상품"
 
-#: golf/models.py:1057
+#: golf/models.py:1078
 msgid "Quantity"
 msgstr "수량"
 
-#: golf/models.py:1070
+#: golf/models.py:1091
 msgid "Golf booking order product"
 msgstr "골프 예약 주문 상품"
 
-#: golf/models.py:1071
+#: golf/models.py:1092
 msgid "Golf booking order products"
 msgstr "골프 예약 주문 상품"
 
-#: golf/models.py:1110
+#: golf/models.py:1131
 msgid "Message"
 msgstr "메시지"
 
-#: golf/models.py:1116
+#: golf/models.py:1137
 msgid "Golf booking order status log"
 msgstr "골프 예약 상태 변경이력"
 
-#: golf/models.py:1117
+#: golf/models.py:1138
 msgid "Golf booking order status logs"
 msgstr "골프 예약 상태 변경이력"
 
-#: golf/models.py:1128
+#: golf/models.py:1149
 msgid "Total amount"
 msgstr "합계금액"
 
-#: golf/models.py:1132
+#: golf/models.py:1153
 msgid "Percent"
 msgstr "비율"
 
-#: golf/models.py:1133
+#: golf/models.py:1154
 msgid "Minus"
 msgstr "차감"
 
-#: golf/models.py:1134
+#: golf/models.py:1155
 msgid "Assign"
 msgstr "할당"
 
-#: golf/models.py:1145
+#: golf/models.py:1166
 msgid "Promotion title"
 msgstr "프로모션 이름"
 
-#: golf/models.py:1150
+#: golf/models.py:1171
 msgid "Promotion start date"
 msgstr "프로모션 시작일"
 
-#: golf/models.py:1154
+#: golf/models.py:1175
 msgid "Promotion end date"
 msgstr "프로모션 종료일"
 
-#: golf/models.py:1158
+#: golf/models.py:1179
 msgid "Promotion active"
 msgstr "프로모션 활성"
 
-#: golf/models.py:1163
+#: golf/models.py:1184
 msgid "Monday condition"
 msgstr "월요일 조건"
 
-#: golf/models.py:1169
+#: golf/models.py:1190
 msgid "Tuesday condition"
 msgstr "화요일 조건"
 
-#: golf/models.py:1175
+#: golf/models.py:1196
 msgid "Wednesday condition"
 msgstr "수요일 조건"
 
-#: golf/models.py:1181
+#: golf/models.py:1202
 msgid "Thursday condition"
 msgstr "목요일 조건"
 
-#: golf/models.py:1187
+#: golf/models.py:1208
 msgid "Friday condition"
 msgstr "금요일 조건"
 
-#: golf/models.py:1193
+#: golf/models.py:1214
 msgid "Saturday condition"
 msgstr "토요일 조건"
 
-#: golf/models.py:1199
+#: golf/models.py:1220
 msgid "Sunday condition"
 msgstr "일요일 조건"
 
-#: golf/models.py:1205
+#: golf/models.py:1226
 msgid "Holiday condition"
 msgstr "공휴일 조건"
 
-#: golf/models.py:1211
+#: golf/models.py:1232
 msgid "Time start condition"
 msgstr "시작 시간 조건"
 
-#: golf/models.py:1217
+#: golf/models.py:1238
 msgid "Time end condition"
 msgstr "시간 종료 조건"
 
-#: golf/models.py:1223
+#: golf/models.py:1244
 msgid "PAX condition"
 msgstr "인원수 조건"
 
-#: golf/models.py:1229
+#: golf/models.py:1250
 msgid "Cart condition"
 msgstr "카트수량 조건"
 
-#: golf/models.py:1236
+#: golf/models.py:1257
 msgid "Customer group condition"
 msgstr "고객 그룹 조건"
 
-#: golf/models.py:1244
+#: golf/models.py:1265
 msgid "Discount fee"
 msgstr "할인대상"
 
-#: golf/models.py:1251
+#: golf/models.py:1272
 msgid "Discount method"
 msgstr "할인방법"
 
-#: golf/models.py:1258
+#: golf/models.py:1279
 msgid "Discount amount"
 msgstr "할인액"
 
-#: golf/models.py:1265
+#: golf/models.py:1286
 msgid "Promotion banner image"
 msgstr "프로모션 배너 이미지"
 
-#: golf/models.py:1272
+#: golf/models.py:1293
 msgid "Golf booking promotion"
 msgstr "골프 예약 프로모션"
 
-#: golf/models.py:1273
+#: golf/models.py:1294
 msgid "Golf booking promotions"
 msgstr "골프 예약 프로모션"
 
-#: golf/models.py:1291
+#: golf/models.py:1312
 msgid "Staff right"
 msgstr "담당자 권한"
 
-#: golf/models.py:1292
+#: golf/models.py:1313
 msgid "Staff rights"
 msgstr "담당자 권한"
 
@@ -1529,51 +1579,63 @@ msgstr "호텔"
 
 #: liff/templates/liff/booking_create_form.html:22
 #: liff/templates/liff/golf_booking_create_form.html:20
+#: liff/templates/liff/golf_booking_settings.html:20
 msgid "Tee-off Date/Time"
 msgstr "티오프 일자/시각"
 
 #: liff/templates/liff/booking_create_form.html:42
 #: liff/templates/liff/golf_booking_create_form.html:51
+#: liff/templates/liff/golf_booking_settings.html:51
 msgid "Golfer #"
 msgstr "인원"
 
 #: liff/templates/liff/booking_create_form.html:75
 #: liff/templates/liff/golf_booking_create_form.html:83
+#: liff/templates/liff/golf_booking_settings.html:83
 msgid "Cart #"
 msgstr "카트 수량"
 
 #: liff/templates/liff/booking_create_form.html:108
 #: liff/templates/liff/golf_booking_create_form.html:116
+#: liff/templates/liff/golf_booking_settings.html:116
+#: liff/templates/liff/golf_booking_settings_form.html:39
 msgid "Customer Name"
 msgstr "예약자 이름"
 
 #: liff/templates/liff/booking_create_form.html:115
 #: liff/templates/liff/golf_booking_create_form.html:125
+#: liff/templates/liff/golf_booking_settings.html:125
+#: liff/templates/liff/golf_booking_settings_form.html:48
 msgid "Type in English or Thai"
 msgstr "영문 이름을 입력하세요."
 
 #: liff/templates/liff/booking_create_form.html:126
 #: liff/templates/liff/golf_booking_create_form.html:148
+#: liff/templates/liff/golf_booking_settings.html:148
 msgid "ORDER DETAILS"
 msgstr "예약 상세내역"
 
 #: liff/templates/liff/booking_create_form.html:133
 #: liff/templates/liff/golf_booking_create_form.html:154
+#: liff/templates/liff/golf_booking_settings.html:154
 msgid "Item"
 msgstr "항목"
 
 #: liff/templates/liff/booking_create_form.html:134
 #: liff/templates/liff/golf_booking_create_form.html:155
+#: liff/templates/liff/golf_booking_settings.html:155
 msgid "Price"
 msgstr "가격"
 
 #: liff/templates/liff/booking_create_form.html:136
 #: liff/templates/liff/golf_booking_create_form.html:157
+#: liff/templates/liff/golf_booking_settings.html:157
 msgid "Amount"
 msgstr "금액"
 
 #: liff/templates/liff/booking_create_form.html:147
 #: liff/templates/liff/golf_booking_create_form.html:168
+#: liff/templates/liff/golf_booking_settings.html:168
 #: liff/templates/liff/golf_price_table.html:51
 #: liff/templates/liff/price_table.html:51
 msgid "Caddie Fee"
@@ -1581,6 +1643,7 @@ msgstr "캐디피"
 
 #: liff/templates/liff/booking_create_form.html:153
 #: liff/templates/liff/golf_booking_create_form.html:174
+#: liff/templates/liff/golf_booking_settings.html:174
 #: liff/templates/liff/golf_price_table.html:59
 #: liff/templates/liff/price_table.html:59
 msgid "Cart Fee"
@@ -1588,6 +1651,7 @@ msgstr "카트피"
 
 #: liff/templates/liff/booking_create_form.html:161
 #: liff/templates/liff/golf_booking_create_form.html:182
+#: liff/templates/liff/golf_booking_settings.html:182
 msgid "Total Amount"
 msgstr "합계금액"
 
@@ -1595,12 +1659,20 @@ msgstr "합계금액"
 #: liff/templates/liff/golf_booking_create_form.html:195
 #: liff/templates/liff/golf_booking_create_form.html:205
 #: liff/templates/liff/golf_booking_create_form.html:213
-#: liff/templates/liff/golf_booking_create_form.html:229 liff/views.py:40
+#: liff/templates/liff/golf_booking_create_form.html:229
+#: liff/templates/liff/golf_booking_settings.html:195
+#: liff/templates/liff/golf_booking_settings.html:205
+#: liff/templates/liff/golf_booking_settings.html:213
+#: liff/templates/liff/golf_booking_settings.html:229
+#: liff/templates/liff/golf_booking_settings_form.html:123
+#: liff/templates/liff/golf_booking_settings_form.html:147 liff/views.py:40
 msgid "New Booking"
 msgstr "예약 문의"
 
 #: liff/templates/liff/booking_create_form.html:174
 #: liff/templates/liff/golf_booking_create_form.html:192
+#: liff/templates/liff/golf_booking_settings.html:192
+#: liff/templates/liff/golf_booking_settings_form.html:110
 #: liff/templates/liff/golf_price_table.html:70
 #: liff/templates/liff/golf_scorecard.html:55 liff/templates/liff/price.html:52
 #: liff/templates/liff/price_table.html:70
@@ -1608,11 +1680,20 @@ msgstr "예약 문의"
 msgid "Close"
 msgstr "닫기"
 
+#: liff/templates/liff/golf_booking_settings_form.html:88
+msgid "username@example.com"
+msgstr ""
+
+#: liff/templates/liff/golf_booking_settings_form.html:113
+#: liff/templates/liff/golf_booking_settings_form.html:131
+msgid "Save"
+msgstr ""
+
 #: liff/views.py:19
 msgid "Sample"
 msgstr "예제"
 
-#: liff/views.py:138
+#: liff/views.py:158
 msgid "Price Table"
 msgstr "요금표"
 
@@ -1643,10 +1724,6 @@ msgstr "성 (HONG)"
 #: member/forms.py:23
 msgid "Last name written in English"
 msgstr ""
-
-#: member/forms.py:29 member/models.py:16
-msgid "Telephone"
-msgstr "전화번호"
 
 #: member/forms.py:32
 msgid "Digits or plus sign only"

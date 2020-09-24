@@ -13,6 +13,7 @@ from golf import utils as golf_utils
 from .. import decorators
 from .. import utils
 from .. import validators
+from django.utils.translation import gettext_lazy as _
 
 
 @decorators.translation_activate
@@ -185,11 +186,11 @@ def command_new(event, line_bot_api, **kwargs):
     now = timezone.localtime().time()
 
     if golf_club.business_hour_start <= now <= golf_club.business_hour_end:
-        message = 'We will notify you of the available tee-off date/time within 15 minutes.'
+        message = _('We will notify you of the available tee-off date/time within 15 minutes.')
     elif golf_club.business_hour_end < now <= datetime.time(23, 59, 59):
-        message = 'We will notify you of the available tee-off date/time after 8 am tomorrow morning.'
+        message = _('We will notify you of the available tee-off date/time after 8 am tomorrow morning.')
     else:  # datetime.time(0, 0, 0) <= now < golf_club.business_hour_start
-        message = 'We will notify you of the available tee-off date/time after 8 am this morning.'
+        message = _('We will notify you of the available tee-off date/time after 8 am this morning.')
 
     # 7. Reply message
     line_bot_api.reply_message(
