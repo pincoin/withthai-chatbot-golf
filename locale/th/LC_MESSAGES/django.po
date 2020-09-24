@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-09-24 19:13+0700\n"
+"POT-Creation-Date: 2020-09-24 20:10+0700\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -511,6 +511,14 @@ msgstr ""
 
 #: chatbot/handlers/message.py:379
 msgid "Please, wait for the confirmation."
+msgstr ""
+
+#: chatbot/handlers/message.py:430
+msgid "{0:,.0f} THB"
+msgstr ""
+
+#: chatbot/handlers/message.py:436
+msgid "{0:,.0f} x {1} = {2:,.0f} THB"
 msgstr ""
 
 #: chatbot/models.py:8

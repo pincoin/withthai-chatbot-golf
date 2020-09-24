@@ -202,7 +202,7 @@ Cart #: {3}
 Total: {4:,.0f} THB
 
 Thank you.''').format(round_date_formatted, round_time_formatted, pax, cart, order.total_selling_price)
-    
+
     line_bot_api.reply_message(
         event.reply_token, [
             models.TextSendMessage(text=response),
@@ -427,14 +427,14 @@ def command_booking(event, line_bot_api, **kwargs):
                 ]
             }
 
-        order_flex_message['body']['contents'][8]['contents'][1]['text'] = f'{order.total_selling_price:,.0f} THB'
+        order_flex_message['body']['contents'][8]['contents'][1]['text'] = _('{0:,.0f} THB') \
+            .format(order.total_selling_price)
 
         idx = 4
         for fee in order.golfbookingorderproduct_set.all():
             order_flex_message['body']['contents'][idx]['contents'][0]['text'] = fee.get_product_display()
-            order_flex_message['body']['contents'][idx]['contents'][1]['text'] = f'{fee.selling_price:,.0f}' \
-                                                                                 f' x {fee.quantity}' \
-                                                                                 f' = {fee.subtotal:,.0f} THB'
+            order_flex_message['body']['contents'][idx]['contents'][1]['text'] = _('{0:,.0f} x {1} = {2:,.0f} THB') \
+                .format(fee.selling_price, fee.quantity, fee.subtotal)
             idx += 1
 
         if order.cart == 0:

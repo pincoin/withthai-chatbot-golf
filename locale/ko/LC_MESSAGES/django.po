@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-09-24 19:13+0700\n"
+"POT-Creation-Date: 2020-09-24 20:10+0700\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -354,8 +354,7 @@ msgstr "소셜 미디어 로그인 실패"
 #: allauth/templates/socialaccount/authentication_error.html:21
 msgid ""
 "An error occurred while attempting to login via your social media account."
-msgstr ""
-"소셜 미디어 계정으로 로그인하는 동안 에러가 발생했습니다."
+msgstr "소셜 미디어 계정으로 로그인하는 동안 에러가 발생했습니다."
 
 #: allauth/templates/socialaccount/login_cancelled.html:5
 #: allauth/templates/socialaccount/login_cancelled.html:14
@@ -510,7 +509,8 @@ msgstr "예약 문의"
 
 #: chatbot/handlers/message.py:296
 msgid "Please, choose tee time as shown below or close your booking."
-msgstr "원하시는 티타임을 선택하시거나 원하는 시간이 없을 경우 예약을 종료하세요."
+msgstr ""
+"원하시는 티타임을 선택하시거나 원하는 시간이 없을 경우 예약을 종료하세요."
 
 #: chatbot/handlers/message.py:314 chatbot/handlers/message.py:316
 msgid "Close Booking"
@@ -523,6 +523,14 @@ msgstr "예약수락 {} {}"
 #: chatbot/handlers/message.py:379
 msgid "Please, wait for the confirmation."
 msgstr "예약확정까지 기다려주세요."
+
+#: chatbot/handlers/message.py:430
+msgid "{0:,.0f} THB"
+msgstr "{0:,.0f} 바트"
+
+#: chatbot/handlers/message.py:436
+msgid "{0:,.0f} x {1} = {2:,.0f} THB"
+msgstr "{0:,.0f} x {1} = {2:,.0f} 바트"
 
 #: chatbot/models.py:8
 msgid "Request header"
