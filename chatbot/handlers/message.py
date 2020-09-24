@@ -194,14 +194,18 @@ def command_new(event, line_bot_api, **kwargs):
         message = _('We will notify you of the available tee-off date/time after 8 am this morning.')
 
     # 7. Reply message
+    response = _('''New Booking
+
+Round Date/Time: {} {}
+Golfer #: {}
+Cart #: {}
+Total: {0:,.0f} THB
+
+Thank you.''').format(round_date_formatted, round_time_formatted, pax, cart, order.total_selling_price)
+    
     line_bot_api.reply_message(
         event.reply_token, [
-            models.TextSendMessage(text='New Booking.\n\n'
-                                        f'Round Date/Time: {round_date_formatted} {round_time_formatted}\n'
-                                        f'Golfer #: {pax}\n'
-                                        f'Cart #: {cart}\n'
-                                        f'Total: {order.total_selling_price:,.0f} THB\n\n'
-                                        'Thank you.'),
+            models.TextSendMessage(text=response),
             models.TextSendMessage(text=message)])
 
 
