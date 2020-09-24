@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-09-24 20:10+0700\n"
+"POT-Creation-Date: 2020-09-24 22:01+0700\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -482,18 +482,22 @@ msgid ""
 "Thank you."
 msgstr ""
 
-#: chatbot/handlers/message.py:251
+#: chatbot/handlers/message.py:232
+msgid "{} PAX {} CART"
+msgstr ""
+
+#: chatbot/handlers/message.py:252
 #, fuzzy
 #| msgid "Confirmed"
 msgid "Not Confirmed Yet"
 msgstr "Confirmed"
 
-#: chatbot/handlers/message.py:259
+#: chatbot/handlers/message.py:260
 msgid "Please, wait for the confirmation or tee time offers."
 msgstr ""
 
-#: chatbot/handlers/message.py:276 chatbot/handlers/message.py:331
-#: chatbot/handlers/message.py:396 chatbot/handlers/message.py:419
+#: chatbot/handlers/message.py:277 chatbot/handlers/message.py:332
+#: chatbot/handlers/message.py:397 chatbot/handlers/message.py:420
 #: liff/templates/liff/booking_create_form.html:171
 #: liff/templates/liff/golf_booking_create_form.html:195
 #: liff/templates/liff/golf_booking_create_form.html:205
@@ -508,29 +512,29 @@ msgstr ""
 msgid "New Booking"
 msgstr ""
 
-#: chatbot/handlers/message.py:296
+#: chatbot/handlers/message.py:297
 msgid "Please, choose tee time as shown below or close your booking."
 msgstr ""
 
-#: chatbot/handlers/message.py:314 chatbot/handlers/message.py:316
+#: chatbot/handlers/message.py:315 chatbot/handlers/message.py:317
 #, fuzzy
 #| msgid "All Booking List"
 msgid "Close Booking"
 msgstr "All"
 
-#: chatbot/handlers/message.py:357
+#: chatbot/handlers/message.py:358
 msgid "Accept {} {}"
 msgstr ""
 
-#: chatbot/handlers/message.py:379
+#: chatbot/handlers/message.py:380
 msgid "Please, wait for the confirmation."
 msgstr ""
 
-#: chatbot/handlers/message.py:430
+#: chatbot/handlers/message.py:431
 msgid "{0:,.0f} THB"
 msgstr ""
 
-#: chatbot/handlers/message.py:436
+#: chatbot/handlers/message.py:437
 msgid "{0:,.0f} x {1} = {2:,.0f} THB"
 msgstr ""
 

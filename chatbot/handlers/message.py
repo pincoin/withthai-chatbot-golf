@@ -229,7 +229,8 @@ def command_booking(event, line_bot_api, **kwargs):
         round_time_formatted = date(order.round_time, 'H:i')
 
         order_flex_message['body']['contents'][0]['contents'][0]['text'] = f'{order.round_date} {round_time_formatted}'
-        order_flex_message['body']['contents'][0]['contents'][1]['text'] = f'{order.pax} PAX {order.cart} CART'
+        order_flex_message['body']['contents'][0]['contents'][1]['text'] = _('{} PAX {} CART') \
+            .format(order.pax, order.cart)
         order_flex_message['body']['contents'][1]['text'] = f'{order.fullname}'
         order_flex_message['body']['contents'][2]['contents'][0]['text'] = order.get_order_status_display()
         order_flex_message['body']['contents'][2]['contents'][1]['text'] = order.get_payment_status_display()
