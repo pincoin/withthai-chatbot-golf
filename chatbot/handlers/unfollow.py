@@ -8,6 +8,9 @@ def command_unfollow(event, line_bot_api, **kwargs):
         user = golf_models.LineUser.objects.get(line_user_id=event.source.user_id)
         user.follow_status = golf_models.LineUser.FOLLOW_CHOICES.unfollow
         user.fullname = ''
+        user.email = ''
+        user.phone = ''
+        user.lang = golf_models.LineUser.LANG_CHOICES.en
         user.save()
 
         membership = golf_models.LineUserMembership.objects \
