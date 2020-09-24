@@ -18,6 +18,9 @@ def command_follow(event, line_bot_api, **kwargs):
 
     user.follow_status = golf_models.LineUser.FOLLOW_CHOICES.follow
     user.fullname = ''
+    user.email = ''
+    user.phone = ''
+    user.lang = golf_models.LineUser.LANG_CHOICES.en
     user.save()
 
     membership = golf_models.LineUserMembership()
