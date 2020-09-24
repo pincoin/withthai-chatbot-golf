@@ -248,7 +248,7 @@ def command_booking(event, line_bot_api, **kwargs):
             order_flex_message['body']['contents'].append(
                 {
                     'type': 'text',
-                    'text': 'Not Confirmed Yet',
+                    'text': _('Not Confirmed Yet'),
                     'color': '#b71c1c',
                     'margin': 'md'
                 }
@@ -256,7 +256,7 @@ def command_booking(event, line_bot_api, **kwargs):
             order_flex_message['body']['contents'].append(
                 {
                     'type': 'text',
-                    'text': 'Please, wait for the confirmation or tee time offers.',
+                    'text': _('Please, wait for the confirmation or tee time offers.'),
                     'wrap': True,
                     'margin': 'md'
                 }
@@ -273,7 +273,7 @@ def command_booking(event, line_bot_api, **kwargs):
                         'type': 'button',
                         'action': {
                             'type': 'uri',
-                            'label': 'New Booking',
+                            'label': _('New Booking'),
                             'uri': f"https://liff.line.me/{golf_club.liff['request']['id']}"
                         },
                         'style': 'primary',
@@ -293,7 +293,7 @@ def command_booking(event, line_bot_api, **kwargs):
             order_flex_message['body']['contents'].append(
                 {
                     'type': 'text',
-                    'text': 'Please, choose tee time as shown below or close your booking.',
+                    'text': _('Please, choose tee time as shown below or close your booking.'),
                     'wrap': True,
                     'margin': 'md'
                 }
@@ -311,9 +311,9 @@ def command_booking(event, line_bot_api, **kwargs):
                         'type': 'button',
                         'action': {
                             'type': 'postback',
-                            'label': 'Close',
+                            'label': _('Close Booking'),
                             'data': f'action=close&golf_club={order.golf_club.slug}&order_no={order.order_no}',
-                            'displayText': 'Close'
+                            'displayText': _('Close Booking')
                         },
                         'margin': 'md',
                         'height': 'sm',
@@ -328,7 +328,7 @@ def command_booking(event, line_bot_api, **kwargs):
                         'type': 'button',
                         'action': {
                             'type': 'uri',
-                            'label': 'New Booking',
+                            'label': _('New Booking'),
                             'uri': f"https://liff.line.me/{golf_club.liff['request']['id']}"
                         },
                         'style': 'primary',
@@ -354,7 +354,7 @@ def command_booking(event, line_bot_api, **kwargs):
                             'label': f'{tee}',
                             'data': f'action=accept&golf_club={order.golf_club.slug}'
                                     f'&order_no={order.order_no}&tee_time={tee}',
-                            'displayText': f'Accept {round_date_formatted} {tee}',
+                            'displayText': _('Accept {} {}').format(round_date_formatted, tee),
                         },
                         'margin': 'md',
                         'color': '#039be5',
@@ -376,7 +376,7 @@ def command_booking(event, line_bot_api, **kwargs):
             order_flex_message['body']['contents'].append(
                 {
                     'type': 'text',
-                    'text': 'Please, wait for the confirmation.',
+                    'text': _('Please, wait for the confirmation.'),
                     'wrap': True,
                     'margin': 'md'
                 }
@@ -393,7 +393,7 @@ def command_booking(event, line_bot_api, **kwargs):
                         'type': 'button',
                         'action': {
                             'type': 'uri',
-                            'label': 'New Booking',
+                            'label': _('New Booking'),
                             'uri': f"https://liff.line.me/{golf_club.liff['request']['id']}"
                         },
                         'style': 'primary',
@@ -416,7 +416,7 @@ def command_booking(event, line_bot_api, **kwargs):
                         'type': 'button',
                         'action': {
                             'type': 'uri',
-                            'label': 'New Booking',
+                            'label': _('New Booking'),
                             'uri': f"https://liff.line.me/{golf_club.liff['request']['id']}"
                         },
                         'style': 'primary',
