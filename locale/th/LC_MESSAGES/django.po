@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-09-24 22:01+0700\n"
+"POT-Creation-Date: 2020-09-24 22:05+0700\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -486,19 +486,8 @@ msgid "Please, wait for the confirmation or tee time offers."
 msgstr ""
 
 #: chatbot/handlers/message.py:277 chatbot/handlers/message.py:332
-#: chatbot/handlers/message.py:397 chatbot/handlers/message.py:420
-#: liff/templates/liff/booking_create_form.html:171
-#: liff/templates/liff/golf_booking_create_form.html:195
-#: liff/templates/liff/golf_booking_create_form.html:205
-#: liff/templates/liff/golf_booking_create_form.html:213
-#: liff/templates/liff/golf_booking_create_form.html:229
-#: liff/templates/liff/golf_booking_settings.html:195
-#: liff/templates/liff/golf_booking_settings.html:205
-#: liff/templates/liff/golf_booking_settings.html:213
-#: liff/templates/liff/golf_booking_settings.html:229
-#: liff/templates/liff/golf_booking_settings_form.html:123
-#: liff/templates/liff/golf_booking_settings_form.html:147 liff/views.py:40
-msgid "New Booking"
+#: chatbot/handlers/message.py:420
+msgid "New Booking Inquiry"
 msgstr ""
 
 #: chatbot/handlers/message.py:297
@@ -515,6 +504,10 @@ msgstr ""
 
 #: chatbot/handlers/message.py:380
 msgid "Please, wait for the confirmation."
+msgstr ""
+
+#: chatbot/handlers/message.py:397
+msgid "New Booking Inqury"
 msgstr ""
 
 #: chatbot/handlers/message.py:431
@@ -1748,6 +1741,20 @@ msgstr ""
 #: liff/templates/liff/golf_booking_create_form.html:182
 #: liff/templates/liff/golf_booking_settings.html:182
 msgid "Total Amount"
+msgstr ""
+
+#: liff/templates/liff/booking_create_form.html:171
+#: liff/templates/liff/golf_booking_create_form.html:195
+#: liff/templates/liff/golf_booking_create_form.html:205
+#: liff/templates/liff/golf_booking_create_form.html:213
+#: liff/templates/liff/golf_booking_create_form.html:229
+#: liff/templates/liff/golf_booking_settings.html:195
+#: liff/templates/liff/golf_booking_settings.html:205
+#: liff/templates/liff/golf_booking_settings.html:213
+#: liff/templates/liff/golf_booking_settings.html:229
+#: liff/templates/liff/golf_booking_settings_form.html:123
+#: liff/templates/liff/golf_booking_settings_form.html:147 liff/views.py:40
+msgid "New Booking"
 msgstr ""
 
 #: liff/templates/liff/booking_create_form.html:174

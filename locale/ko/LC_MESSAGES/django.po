@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-09-24 22:01+0700\n"
+"POT-Creation-Date: 2020-09-24 22:05+0700\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -474,7 +474,7 @@ msgid ""
 "\n"
 "Thank you."
 msgstr ""
-"신규예약\n"
+"신규예약문의\n"
 "\n"
 "일시: {0} {1}\n"
 "인원: {2}명\n"
@@ -497,20 +497,9 @@ msgstr ""
 "확정 티오프 시간 또는 가능한 티오프 시간을 확인하여 알려드릴 예정입니다."
 
 #: chatbot/handlers/message.py:277 chatbot/handlers/message.py:332
-#: chatbot/handlers/message.py:397 chatbot/handlers/message.py:420
-#: liff/templates/liff/booking_create_form.html:171
-#: liff/templates/liff/golf_booking_create_form.html:195
-#: liff/templates/liff/golf_booking_create_form.html:205
-#: liff/templates/liff/golf_booking_create_form.html:213
-#: liff/templates/liff/golf_booking_create_form.html:229
-#: liff/templates/liff/golf_booking_settings.html:195
-#: liff/templates/liff/golf_booking_settings.html:205
-#: liff/templates/liff/golf_booking_settings.html:213
-#: liff/templates/liff/golf_booking_settings.html:229
-#: liff/templates/liff/golf_booking_settings_form.html:123
-#: liff/templates/liff/golf_booking_settings_form.html:147 liff/views.py:40
-msgid "New Booking"
-msgstr "예약 문의"
+#: chatbot/handlers/message.py:420
+msgid "New Booking Inquiry"
+msgstr "새 예약 문의"
 
 #: chatbot/handlers/message.py:297
 msgid "Please, choose tee time as shown below or close your booking."
@@ -528,6 +517,12 @@ msgstr "예약수락 {} {}"
 #: chatbot/handlers/message.py:380
 msgid "Please, wait for the confirmation."
 msgstr "예약확정까지 기다려주세요."
+
+#: chatbot/handlers/message.py:397
+#, fuzzy
+#| msgid "New Booking"
+msgid "New Booking Inqury"
+msgstr "예약 문의"
 
 #: chatbot/handlers/message.py:431
 msgid "{0:,.0f} THB"
@@ -1761,6 +1756,20 @@ msgstr "카트피"
 #: liff/templates/liff/golf_booking_settings.html:182
 msgid "Total Amount"
 msgstr "합계금액"
+
+#: liff/templates/liff/booking_create_form.html:171
+#: liff/templates/liff/golf_booking_create_form.html:195
+#: liff/templates/liff/golf_booking_create_form.html:205
+#: liff/templates/liff/golf_booking_create_form.html:213
+#: liff/templates/liff/golf_booking_create_form.html:229
+#: liff/templates/liff/golf_booking_settings.html:195
+#: liff/templates/liff/golf_booking_settings.html:205
+#: liff/templates/liff/golf_booking_settings.html:213
+#: liff/templates/liff/golf_booking_settings.html:229
+#: liff/templates/liff/golf_booking_settings_form.html:123
+#: liff/templates/liff/golf_booking_settings_form.html:147 liff/views.py:40
+msgid "New Booking"
+msgstr "예약 문의"
 
 #: liff/templates/liff/booking_create_form.html:174
 #: liff/templates/liff/golf_booking_create_form.html:192
