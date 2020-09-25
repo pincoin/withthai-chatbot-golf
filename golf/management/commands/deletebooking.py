@@ -14,9 +14,10 @@ class Command(BaseCommand):
     def handle(self, *args, **options):
         models.GolfBookingOrder.objects \
             .select_related('line_user') \
-            .filter(order_status=models.GolfBookingOrder.PAYMENT_STATUS_CHOICES.unpaid,
+            .filter(payment_status=models.GolfBookingOrder.PAYMENT_STATUS_CHOICES.unpaid,
                     line_user__follow_status=models.LineUser.FOLLOW_CHOICES.unfollow,
                     round_date__lt=timezone.make_aware(timezone.localtime().today())) \
+            .exclude(order_status=models.GolfBookingOrder.ORDER_STATUS_CHOICES.confirmed) \
             .delete()
 
         self.stdout.write(self.style.SUCCESS('Delete booking'))
