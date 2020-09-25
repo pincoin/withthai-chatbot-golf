@@ -225,6 +225,24 @@
           }
         ],
         "margin": "md"
+      },
+      {
+        "type": "box",
+        "layout": "horizontal",
+        "contents": [
+          {
+            "type": "button",
+            "action": {
+              "type": "uri",
+              "label": "Settings",
+              "uri": ""
+            },
+            "style": "primary",
+            "height": "sm",
+            "color": "#00acc1"
+          }
+        ],
+        "margin": "md"
       }
     ]
   }

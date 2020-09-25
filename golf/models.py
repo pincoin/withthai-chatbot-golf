@@ -485,6 +485,13 @@ class GolfClub(model_utils_models.TimeStampedModel):
                     self.info_flex_message['body']['contents'][5]['contents'][4]['action']['uri'] \
                         = f"https://liff.line.me/"
 
+                if 'settings' in self.liff:
+                    self.info_flex_message['body']['contents'][7]['contents'][0]['action']['uri'] \
+                        = f"https://liff.line.me/{self.liff['settings']['id']}"
+                else:
+                    self.info_flex_message['body']['contents'][7]['contents'][0]['action']['uri'] \
+                        = f"https://liff.line.me/"
+
         with open(Path(settings.BASE_DIR) / 'liff' / 'static' / 'liff' / 'js' / 'json' / 'order.json') \
                 as json_file:
             self.order_flex_message = json.load(json_file)
