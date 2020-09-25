@@ -34,7 +34,8 @@ def command_new(event, line_bot_api, **kwargs):
                                       golf_models.GolfBookingOrder.ORDER_STATUS_CHOICES.offered,
                                       golf_models.GolfBookingOrder.ORDER_STATUS_CHOICES.accepted,
                                       golf_models.GolfBookingOrder.ORDER_STATUS_CHOICES.confirmed],
-                    payment_status=golf_models.GolfBookingOrder.PAYMENT_STATUS_CHOICES.unpaid)
+                    payment_status=golf_models.GolfBookingOrder.PAYMENT_STATUS_CHOICES.unpaid,
+                    invisible=False)
             .count()) >= golf_club.multiple_booking_orders:
         line_bot_api.reply_message(
             event.reply_token,
@@ -217,7 +218,8 @@ def command_booking(event, line_bot_api, **kwargs):
                  .select_related('golf_club', 'user', 'line_user', 'customer_group') \
                  .prefetch_related('golfbookingorderproduct_set', 'golfbookingordertimeoffer_set') \
                  .filter(line_user__line_user_id=event.source.user_id,
-                         round_date__gte=timezone.make_aware(timezone.localtime().today())) \
+                         round_date__gte=timezone.make_aware(timezone.localtime().today()),
+                         invisible=False) \
                  .exclude(order_status=golf_models.GolfBookingOrder.ORDER_STATUS_CHOICES.closed) \
                  .order_by('order_status', 'round_date')[:10]
 

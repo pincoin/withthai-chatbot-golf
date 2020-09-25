@@ -13,6 +13,11 @@ def command_unfollow(event, line_bot_api, **kwargs):
         user.lang = golf_models.LineUser.LANG_CHOICES.en
         user.save()
 
+        golf_models.GolfBookingOrder.objects \
+            .select_related('line_user') \
+            .filter(line_user__line_user_id=event.source.user_id) \
+            .update(invisible=True)
+
         membership = golf_models.LineUserMembership.objects \
             .select_related('line_user', 'customer_group') \
             .get(line_user__line_user_id=event.source.user_id,

@@ -1002,6 +1002,11 @@ class GolfBookingOrder(model_utils_models.TimeStampedModel):
         db_index=True,
     )
 
+    invisible = models.BooleanField(
+        verbose_name=_('Invisible after unfollow'),
+        default=False,
+    )
+
     class Meta:
         verbose_name = _('Golf booking order')
         verbose_name_plural = _('Golf booking orders')
