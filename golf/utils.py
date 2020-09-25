@@ -19,8 +19,9 @@ def get_profile(access_token):
     return response.json() if response.status_code == 200 else False
 
 
-def log_order_status(order, order_status, payment_status, message):
+def log_order_status(user, order, order_status, payment_status, message):
     log = models.GolfBookingOrderStatusLog()
+    log.user = user
     log.order = order
     log.order_status = order_status
     log.payment_status = payment_status

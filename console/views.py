@@ -206,7 +206,8 @@ class GolfBookingOrderDetailView(viewmixins.GolfClubStaffRequiredMixin, FormMixi
                 round_date_formatted = date(self.object.round_date, 'Y-m-d')
                 round_time_formatted = date(self.object.round_time, 'H:i')
 
-                golf_utils.log_order_status(self.object,
+                golf_utils.log_order_status(self.request.user,
+                                            self.object,
                                             golf_models.GolfBookingOrder.ORDER_STATUS_CHOICES.confirmed,
                                             self.object.payment_status,
                                             f'{round_date_formatted} {round_time_formatted}\n'
@@ -245,7 +246,8 @@ Thank you.''').format(round_date_formatted, round_time_formatted,
                 round_date_formatted = date(self.object.round_date, 'Y-m-d')
                 round_time_formatted = ', '.join(kwargs[form_name].cleaned_data['tee_off_times'])
 
-                golf_utils.log_order_status(self.object,
+                golf_utils.log_order_status(self.request.user,
+                                            self.object,
                                             golf_models.GolfBookingOrder.ORDER_STATUS_CHOICES.offered,
                                             self.object.payment_status,
                                             f'{round_date_formatted} [{round_time_formatted}]\n'
@@ -287,7 +289,8 @@ Thank you.''')
                 round_date_formatted = date(self.object.round_date, 'Y-m-d')
                 round_time_formatted = date(self.object.round_time, 'H:i')
 
-                golf_utils.log_order_status(self.object,
+                golf_utils.log_order_status(self.request.user,
+                                            self.object,
                                             golf_models.GolfBookingOrder.ORDER_STATUS_CHOICES.closed,
                                             self.object.payment_status,
                                             f'{round_date_formatted} {round_time_formatted}\n'
