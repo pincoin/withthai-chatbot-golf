@@ -55,7 +55,7 @@ class CallbackView(generic.View):
                     .match(text):
                 message.command_new(event, self.line_bot_api, match=match,
                                     golf_club=golf_club, membership=membership)
-            elif match := re.compile('Settings\s"(.{2,32})"\s([\w.-]+@[\w.-]+)\s([\d+-]{8,18})\s([a-zA-Z]{2})', re.I) \
+            elif match := re.compile('Settings\s"(.{2,32})"\s([\w.-]+@[\w.-]+)\s([ \d+-]{8,18})\s([a-zA-Z]{2})', re.I) \
                     .match(text):
                 message.command_settings(event, self.line_bot_api, match=match,
                                          golf_club=golf_club, membership=membership)
