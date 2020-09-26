@@ -4,14 +4,14 @@
 {% load console_filters %}
 
 {% block title %}
-with-thai::{% trans 'Timeslot List' %}
+with-thai::{% trans 'Timeslot list' %}
 {% endblock %}
 
 {% block content %}
 <div>
     <div class="card">
         <header class="card-header">
-            <div class="card-header-title">{% trans 'Staff List' %}</div>
+            <div class="card-header-title is-capitalized">{% trans 'Staff list' %}</div>
         </header>
         <div class="card-content">
             <div class="content">
@@ -62,8 +62,8 @@ with-thai::{% trans 'Timeslot List' %}
                 </div>
                 {% empty %}
                 <div class="columns">
-                    <div class="column has-text-centered has-text-weight-bold has-text-danger-dark">
-                        {% trans 'No Staff' %}
+                    <div class="column has-text-centered has-text-weight-bold has-text-danger-dark is-capitalized">
+                        {% trans 'No staff' %}
                     </div>
                 </div>
                 {% endfor %}

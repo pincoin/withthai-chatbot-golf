@@ -3,7 +3,7 @@
 
 {% load i18n static %}
 
-{% block title %}{% trans 'SIGN OUT' %}{% endblock %}
+{% block title %}{% trans 'Sign out' %}{% endblock %}
 
 {% block main %}
 <div class="hero is-large">
@@ -11,7 +11,7 @@
         <div class="container">
             <div class="columns is-multiline">
                 <div class="column is-one-third is-offset-one-third has-text-centered">
-                    <h1 class="is-size-1">{% trans 'SIGN OUT' %}</h1>
+                    <h1 class="is-size-1 is-uppercase">{% trans 'Sign out' %}</h1>
                 </div>
 
                 <div class="column is-one-third is-offset-one-third">
@@ -31,7 +31,7 @@
                         <input type="hidden" name="{{ redirect_field_name }}"
                                value="{{ redirect_field_value }}"/>
                         {% endif %}
-                        <button type="submit" class="button is-danger is-fullwidth">{% trans 'SIGN OUT' %}</button>
+                        <button type="submit" class="button is-danger is-fullwidth is-uppercase">{% trans 'Sign out' %}</button>
                     </form>
                 </div>
             </div>

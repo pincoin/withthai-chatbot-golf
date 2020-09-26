@@ -4,14 +4,14 @@
 {% load console_filters %}
 
 {% block title %}
-with-thai::{% trans 'Green Fee List' %}
+with-thai::{% trans 'Green fee list' %}
 {% endblock %}
 
 {% block content %}
 <div>
     <div class="card">
         <header class="card-header">
-            <div class="card-header-title">{% trans 'Green Fee List' %}</div>
+            <div class="card-header-title is-capitalized">{% trans 'Green fee list' %}</div>
         </header>
         <div class="card-content">
             <div class="content">
@@ -51,7 +51,7 @@ with-thai::{% trans 'Green Fee List' %}
                 </div>
                 {% empty %}
                 <div class="columns">
-                    <div class="column has-text-centered has-text-weight-bold has-text-danger-dark">
+                    <div class="column has-text-centered has-text-weight-bold has-text-danger-dark is-capitalized">
                         {% trans 'No Green fee settings' %}
                     </div>
                 </div>

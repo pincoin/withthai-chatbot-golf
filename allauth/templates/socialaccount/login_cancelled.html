@@ -2,7 +2,7 @@
 
 {% load i18n static %}
 
-{% block title %}{% trans 'SOCIAL MEDIA LOGIN CANCELLED' %}{% endblock %}
+{% block title %}{% trans 'Social media login cancelled' %}{% endblock %}
 
 {% block main %}
 <div class="hero is-large">
@@ -10,8 +10,8 @@
         <div class="container">
             <div class="columns is-multiline">
                 <div class="column is-one-third is-offset-one-third has-text-centered">
-                    <h1 class="is-size-1">
-                        {% trans 'SOCIAL MEDIA LOGIN CANCELLED' %}
+                    <h1 class="is-size-1 is-uppercase">
+                        {% trans 'Social media login cancelled' %}
                     </h1>
                 </div>
 
@@ -28,8 +28,8 @@
 
                 <div class="column is-one-third is-offset-one-third">
                     {% url 'account_login' as login_url %}
-                    <a href="{{ login_url }}" class="button is-primary is-fullwidth">
-                        {% trans 'SIGN IN' %}
+                    <a href="{{ login_url }}" class="button is-primary is-fullwidth is-uppercase">
+                        {% trans 'Sign in' %}
                     </a>
                 </div>
             </div>

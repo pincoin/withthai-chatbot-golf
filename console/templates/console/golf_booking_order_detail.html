@@ -4,14 +4,14 @@
 {% load console_filters %}
 
 {% block title %}
-with-thai::{% trans 'Golf Booking Order Detail' %}
+with-thai::{% trans 'Golf booking order detail' %}
 {% endblock %}
 
 {% block content %}
 <div>
     <div class="card">
         <header class="card-header">
-            <div class="card-header-title">{% trans 'Golf Booking Order Detail' %}</div>
+            <div class="card-header-title is-capitalized">{% trans 'Golf booking order detail' %}</div>
             <a href="{% url 'console:golf-booking-order-list' slug %}?{{ q }}"
                class="button back-to-list-button">{% trans 'Back to List' %}</a>
         </header>
@@ -121,17 +121,17 @@ with-thai::{% trans 'Golf Booking Order Detail' %}
                         </div>
                         <div class="column is-9-tablet is-12-mobile has-text-centered-mobile">
                             <div class="control action-radio-buttons">
-                                <label class="radio">
+                                <label class="radio is-uppercase">
                                     <input type="radio" name="action" id="confirm-radio" checked>
-                                    {% trans 'CONFIRM' %}
+                                    {% trans 'Confirm' %}
                                 </label>
-                                <label class="radio {% if order.order_status == order.ORDER_STATUS_CHOICES.accepted %} is-hidden{% endif %}">
+                                <label class="radio {% if order.order_status == order.ORDER_STATUS_CHOICES.accepted %} is-hidden{% endif %} is-uppercase">
                                     <input type="radio" name="action" id="offer-radio">
-                                    {% trans 'OFFER' %}
+                                    {% trans 'Offer' %}
                                 </label>
-                                <label class="radio">
+                                <label class="radio is-uppercase">
                                     <input type="radio" name="action" id="reject-radio">
-                                    {% trans 'CLOSE' %}
+                                    {% trans 'Close' %}
                                 </label>
                             </div>
                             <form class="" id="confirm-form" method="post"
@@ -150,8 +150,8 @@ with-thai::{% trans 'Golf Booking Order Detail' %}
                                     </div>
                                     <div class="control">
                                         <input type="hidden" name="form" value="confirm-form">
-                                        <a class="button is-primary" id="confirm-button">
-                                            {% trans 'CONFIRM' %}
+                                        <a class="button is-primary is-uppercase" id="confirm-button">
+                                            {% trans 'Confirm' %}
                                         </a>
                                     </div>
                                 </div>
@@ -178,8 +178,8 @@ with-thai::{% trans 'Golf Booking Order Detail' %}
                                 <div class="field has-addons action-field-centered offer-button-spacing">
                                     <div class="control">
                                         <input type="hidden" name="form" value="offer-form">
-                                        <a class="button is-primary" id="offer-button">
-                                            {% trans 'OFFER' %}
+                                        <a class="button is-primary is-uppercase" id="offer-button">
+                                            {% trans 'Offer' %}
                                         </a>
                                     </div>
                                     <div class="control">
@@ -195,8 +195,8 @@ with-thai::{% trans 'Golf Booking Order Detail' %}
                                 <div class="field action-field-centered">
                                     <div class="control">
                                         <input type="hidden" name="form" value="reject-form">
-                                        <a class="button is-danger" id="close-button">
-                                            {% trans 'CLOSE' %}
+                                        <a class="button is-danger is-uppercase" id="close-button">
+                                            {% trans 'Close' %}
                                         </a>
                                     </div>
                                 </div>

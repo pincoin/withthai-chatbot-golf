@@ -112,8 +112,8 @@
             </div>
             <div class="field is-horizontal">
                 <div class="field-label is-normal">
-                    <label class="label" for="{{ form.customer_name.id_for_label }}">
-                        {% trans 'Customer Name' %}
+                    <label class="label is-capitalized" for="{{ form.customer_name.id_for_label }}">
+                        {% trans 'Customer name' %}
                     </label>
                 </div>
                 <div class="field-body">
@@ -145,7 +145,7 @@
     </div>
     <div class="card">
         <header class="card-header">
-            <div class="card-header-title">{% trans 'ORDER DETAILS' %}</div>
+            <div class="card-header-title is-uppercase">{% trans 'Order details' %}</div>
         </header>
         <div class="card-content shadow-box">
             <table class="table is-fullwidth is-narrow quotation-table" id="quotation-table">
@@ -159,7 +159,7 @@
                 </thead>
                 <tbody>
                 <tr>
-                    <td class="has-text-weight-bold">{% trans 'Green Fee' %}</td>
+                    <td class="has-text-weight-bold is-capitalized">{% trans 'Green fee' %}</td>
                     <td class="has-text-right" id="green-fee-unit-price"></td>
                     <td class="has-text-centered" id="green-fee-pax"></td>
                     <td class="has-text-right" id="green-fee-amount"></td>

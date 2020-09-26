@@ -4,14 +4,14 @@
 {% load console_filters %}
 
 {% block title %}
-with-thai::{% trans 'LINE User Detail' %}
+with-thai::{% trans 'LINE user detail' %}
 {% endblock %}
 
 {% block content %}
 <div>
     <div class="card">
         <header class="card-header">
-            <div class="card-header-title">{% trans 'LINE User Detail' %}</div>
+            <div class="card-header-title is-capitalized">{% trans 'LINE user detail' %}</div>
             <a href="{% url 'console:line-user-list' slug %}?{{ q }}"
                class="button back-to-list-button">{% trans 'Back to List' %}
             </a>
