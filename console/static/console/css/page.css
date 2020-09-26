@@ -109,6 +109,45 @@
     margin: 1rem 0 0 0;
 }
 
+#confirm-modal .modal-card .modal-card-head {
+    background-color: #00897b;
+}
+
+#confirm-modal .modal-card-title {
+    color: #ffffff;
+}
+
+.confirm-button {
+    color: #ffffff;
+    background-color: #00897b;
+}
+
+#offer-modal .modal-card .modal-card-head {
+    background-color: #0288d1;
+}
+
+#offer-modal .modal-card-title {
+    color: #ffffff;
+}
+
+.offer-button {
+    color: #ffffff;
+    background-color: #0288d1;
+}
+
+#close-modal .modal-card .modal-card-head {
+    background-color: #e53935;
+}
+
+#close-modal .modal-card-title {
+    color: #ffffff;
+}
+
+.close-booking-button {
+    color: #ffffff;
+    background-color: #e53935;
+}
+
 /* Desktop */
 @media (min-width: 1024px) {
 }

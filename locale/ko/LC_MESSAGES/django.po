@@ -769,7 +769,7 @@ msgstr "예약 티오프 확정"
 #: liff/templates/liff/golf_booking_settings.html:237
 #: liff/templates/liff/golf_booking_settings_form.html:155
 msgid "OK"
-msgstr "OK"
+msgstr "확인"
 
 #: console/templates/console/golf_booking_order_detail.html:365
 #: console/templates/console/golf_booking_order_detail.html:420
@@ -786,7 +786,7 @@ msgstr "티오프 시간 제시"
 
 #: console/templates/console/golf_booking_order_detail.html:431
 msgid "Close booking"
-msgstr "예약 문의"
+msgstr "예약 종료"
 
 #: console/templates/console/golf_booking_order_list.html:7
 msgid "Golf booking order list"
