@@ -32,7 +32,10 @@ STATICFILES_FINDERS = (
     # 'django.contrib.staticfiles.finders.AppDirectoriesFinder',
 )
 
+# Javascript static files for i18n
 STATICI18N_PACKAGES = ('liff', 'chatbot', 'console')
+STATICI18N_ROOT = os.path.join(BASE_DIR, 'assetsi18n/')
+STATICFILES_DIRS += (STATICI18N_ROOT,)
 
 # Media files (Uploaded files)
 MEDIA_URL = '/media/'
