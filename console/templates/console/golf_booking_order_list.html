@@ -131,6 +131,9 @@ with-thai::{% trans 'Golf booking order list' %}
 {% endblock %}
 
 {% block javascript %}
+{% with 'jsi18n/'|add:request.LANGUAGE_CODE|add:'/djangojs.js' as djangojs_static %}
+<script src="{% static djangojs_static %}"></script>
+{% endwith %}
 <script src="{% static 'js/console/order-list.js' %}"></script>
 {{ block.super }}
 {% endblock %}

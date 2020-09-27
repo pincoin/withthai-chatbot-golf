@@ -35,4 +35,6 @@ function runApp() {
             this.form.submit();
         });
     });
+
+    console.log(gettext('translated'));
 }

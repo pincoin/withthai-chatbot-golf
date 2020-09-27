@@ -45,6 +45,7 @@ INSTALLED_APPS += [
     'allauth.account',
     'allauth.socialaccount',
     'member.socialaccount.providers.line',
+    'statici18n',
 ]
 
 INSTALLED_APPS += [
@@ -86,6 +87,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'django.template.context_processors.i18n',
             ],
         },
     },

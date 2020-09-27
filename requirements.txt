@@ -2,6 +2,7 @@ Django==3.1.1
 line-bot-sdk==1.16.0
 django-allauth==0.42.0
 django-model-utils==4.0.0
+django-statici18n==2.0.0
 djangorestframework==3.11.1
 django-ipware==3.0.1
 PyJWT==1.7.1
