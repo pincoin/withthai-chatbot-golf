@@ -41,6 +41,7 @@
 </footer>
 {% block javascript %}
 <script charset="utf-8" src="{% static 'conf/js/main.js' %}"></script>
+<script charset="utf-8" src="{% static 'jsi18n/'|add:request.LANGUAGE_CODE|add:'/djangojs.js' %}"></script>
 {% endblock %}
 </body>
 </html>
