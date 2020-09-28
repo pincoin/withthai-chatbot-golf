@@ -3,19 +3,39 @@ const errorModalTitle = document.getElementById('error-modal-title');
 const errorModalBody = document.getElementById('error-modal-body');
 
 function validateFullname(fullname, errorNotification) {
+    if (fullname.value.trim() === '') // optional
+        return true;
+    // 길이 2~32
+    // 영문 또는 태국어 정규식
     return true;
 }
 
 function validateEmail(email, errorNotification) {
+    if (email.value.trim() === '') // optional
+        return true;
+
+    // 이메일 정규식
     return true;
 }
 
 function validatePhone(phone, errorNotification) {
+    if (phone.value.trim() === '') // optional
+        return true;
+    // + - space 숫자 8~18
     return true;
 }
 
 function validateLang(lang, errorNotification) {
-    return true;
+    switch (lang.value.trim()) {
+        case 'en':
+        case 'th':
+        case 'ko':
+        case 'cn':
+        case 'jp':
+            return true;
+        default:
+            return false;
+    }
 }
 
 function validateForm(fullname, email, phone, lang, errorNotification) {
