@@ -1,3 +1,16 @@
+HTMLElement.prototype.show = function () {
+    if (this.classList.contains('is-hidden')) {
+        this.classList.remove('is-hidden');
+    }
+}
+
+HTMLElement.prototype.hide = function () {
+    if (!this.classList.contains('is-hidden')) {
+        this.textContent = '';
+        this.classList.add('is-hidden');
+    }
+}
+
 const errorModal = document.getElementById('error-modal');
 const errorModalTitle = document.getElementById('error-modal-title');
 const errorModalBody = document.getElementById('error-modal-body');
@@ -34,6 +47,8 @@ function validateLang(lang, errorNotification) {
         case 'jp':
             return true;
         default:
+            errorNotification.textContent = 'Please, choose your language.';
+            errorNotification.show();
             return false;
     }
 }
@@ -101,7 +116,6 @@ function runApp() {
     document
         .getElementById('save-button')
         .addEventListener('click', function (e) {
-
             if (validateForm(fullname, email, phone, lang, errorNotification)) {
                 if (!bookingConfirmModal.classList.contains('is-active')) {
                     bookingConfirmModal.classList.add('is-active');
