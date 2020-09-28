@@ -59,7 +59,6 @@ function runApp() {
     const lang = document.getElementById('id_lang');
 
     const bookingConfirmModal = document.getElementById('booking-confirm-modal');
-    const modalTitle = document.getElementById('modal-title');
     const modalBody = document.getElementById('modal-body');
 
     const errorNotification = document.getElementById('error-notification');
@@ -107,7 +106,6 @@ function runApp() {
                 if (!bookingConfirmModal.classList.contains('is-active')) {
                     bookingConfirmModal.classList.add('is-active');
                 }
-                modalTitle.innerText = gettext('Profile Settings');
                 modalBody.innerHTML =
                     "<ul>" +
                     "<li><strong>Customer name</strong>: " + fullname.value + "</li>" +

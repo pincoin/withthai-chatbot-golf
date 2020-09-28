@@ -120,7 +120,7 @@
     <div class="modal-card">
         <header class="modal-card-head">
             <p class="modal-card-title is-capitalized has-text-centered has-text-weight-bold" id="modal-title">
-                {% trans 'New Booking' %}
+                {% trans 'Profile settings' %}
             </p>
             <button class="delete" id="modal-close"></button>
         </header>
@@ -144,7 +144,7 @@
     <div class="modal-card">
         <header class="modal-card-head">
             <p class="modal-card-title is-capitalized has-text-centered has-text-weight-bold" id="error-modal-title">
-                {% trans 'New Booking' %}
+                {% trans 'Invalid profile data' %}
             </p>
             <button class="delete" id="error-modal-close"></button>
         </header>
@@ -163,7 +163,12 @@
 {% block javascript %}
 {{ block.super }}
 <script>
-    const data = {{ json | safe }};
+    const data = {
+    {
+        json | safe
+    }
+    }
+    ;
 
     let golf_club = data['golf_club'];
 </script>
