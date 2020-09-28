@@ -16,26 +16,31 @@ const errorModalTitle = document.getElementById('error-modal-title');
 const errorModalBody = document.getElementById('error-modal-body');
 
 function validateFullname(fullname, errorNotification) {
-    if (fullname.value.trim() === '') // optional
+    if (fullname.value.trim().match('^[\u0E00-\u0E7F A-Za-z0-9]+$')) {
         return true;
-    // 길이 2~32
-    // 영문 또는 태국어 정규식
-    return true;
+    } else {
+        errorNotification.textContent = 'Please, type your name in English or Thai.';
+        errorNotification.show();
+        return false;
+    }
 }
 
 function validateEmail(email, errorNotification) {
-    if (email.value.trim() === '') // optional
+    if (email.value.trim().match('[\\w.-]+@[\\w.-]+')) {
         return true;
-
-    // 이메일 정규식
-    return true;
+    } else {
+        errorNotification.textContent = 'Please, type your valid email address.';
+        errorNotification.show();
+    }
 }
 
 function validatePhone(phone, errorNotification) {
-    if (phone.value.trim() === '') // optional
+    if (phone.value.trim().match('[ \\d+-]{8,18}')) {
         return true;
-    // + - space 숫자 8~18
-    return true;
+    } else {
+        errorNotification.textContent = 'Please, type your valid phone number.';
+        errorNotification.show();
+    }
 }
 
 function validateLang(lang, errorNotification) {
