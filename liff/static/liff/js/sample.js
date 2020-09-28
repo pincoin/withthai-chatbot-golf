@@ -63,7 +63,7 @@ function registerButtonHandlers() {
             }]).then(function () {
                 window.alert('Message sent');
             }).catch(function (error) {
-                window.alert(`Error sending message: ${error}`);
+                window.alert('Error sending message: ' + error);
             });
         }
     });
@@ -113,7 +113,7 @@ function registerButtonHandlers() {
             document.getElementById('statusMessageField').textContent = profile.statusMessage;
             toggleProfileData();
         }).catch(function (error) {
-            window.alert(`Error getting profile: ${error}`);
+            window.alert('Error getting profile: ' + error);
         });
     });
 

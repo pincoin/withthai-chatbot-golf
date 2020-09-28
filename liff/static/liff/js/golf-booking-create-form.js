@@ -396,7 +396,7 @@ function runApp() {
     const access_token = liff.getAccessToken();
 
     if (access_token !== null) {
-        fetch(`/golf/${golf_club['slug']}/line-user.json?access_token=${access_token}`)
+        fetch('/golf/' + golf_club['slug'] + '/line-user.json?access_token=' + access_token)
             .then(function (response) {
                 return response.json();
             })
@@ -498,12 +498,10 @@ function runApp() {
                 if (!bookingConfirmModal.classList.contains('is-active')) {
                     bookingConfirmModal.classList.add('is-active');
                 }
-                modalTitle.innerText = `${roundDate.value} ${roundTime.value}`;
+                modalTitle.innerText = roundDate.value + ' ' + roundTime.value;
 
-                modalBody.innerHTML = `
-                    <table class="table is-fullwidth is-narrow quotation-table">
-                        ${quotationTable.innerHTML}
-                    </table>`;
+                modalBody.innerHTML =
+                    '<table class="table is-fullwidth is-narrow quotation-table">' + quotationTable.innerHTML + '</table>';
             }
         });
 
@@ -525,12 +523,12 @@ function runApp() {
                 } else {
                     liff.sendMessages([{
                         'type': 'text',
-                        'text': `New
-"${customerName.value}"
-${roundDate.value}
-${roundTime.value}
-${pax.value} GOLFER
-${cart.value} CART`
+                        'text': 'New\n'
+                            + '"' + customerName.value + '"\n'
+                            + roundDate.value + '\n'
+                            + roundTime.value + '\n'
+                            + pax.value + 'GOLFER' + '\n'
+                            + cart.value + 'CART'
                     }]).then(function () {
                         liff.closeWindow();
                     }).catch(function (error) {

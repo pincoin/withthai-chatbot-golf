@@ -72,7 +72,7 @@ function runApp() {
     const access_token = liff.getAccessToken();
 
     if (access_token !== null) {
-        fetch(`/golf/${golf_club['slug']}/line-user.json?access_token=${access_token}`)
+        fetch('/golf/' + golf_club['slug'] + '/line-user.json?access_token=' + access_token)
             .then(function (response) {
                 return response.json();
             })
@@ -107,16 +107,14 @@ function runApp() {
                 if (!bookingConfirmModal.classList.contains('is-active')) {
                     bookingConfirmModal.classList.add('is-active');
                 }
-                modalTitle.innerText = 'Profile Settings'
-
-                modalBody.innerHTML = `
-                    <ul>
-                        <li><strong>Customer name</strong>: ${fullname.value}</li>
-                        <li><strong>Email</strong>: ${email.value}</li>
-                        <li><strong>Telephone</strong>: ${phone.value}</li>
-                        <li><strong>Language</strong>: ${lang.value}</li>
-                    </ul>
-                `;
+                modalTitle.innerText = gettext('Profile Settings');
+                modalBody.innerHTML =
+                    "<ul>" +
+                    "<li><strong>Customer name</strong>: " + fullname.value + "</li>" +
+                    "<li><strong>Email</strong>: " + email.value + "</li>" +
+                    "<li><strong>Telephone</strong>: " + phone.value + "</li>" +
+                    "<li><strong>Language</strong>: " + lang.value + "</li>" +
+                    "</ul>";
             }
         });
 
@@ -138,11 +136,11 @@ function runApp() {
                 } else {
                     liff.sendMessages([{
                         'type': 'text',
-                        'text': `Settings
-"${fullname.value.trim()}"
-${email.value.trim()}
-${phone.value.trim()}
-${lang.value.trim()}`
+                        'text': "Settings\n" +
+                            '"' + fullname.value.trim() + '"\n'
+                            + email.value.trim() + '\n'
+                            + phone.value.trim() + '\n'
+                            + lang.value.trim()
                     }]).then(function () {
                         liff.closeWindow();
                     }).catch(function (error) {
