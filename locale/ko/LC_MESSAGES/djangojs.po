@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-09-28 21:24+0700\n"
+"POT-Creation-Date: 2020-09-29 01:02+0700\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,6 +17,91 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
-#: liff/static/liff/js/golf-booking-settings-form.js:110
-msgid "Profile Settings"
-msgstr "프로필 설정"
+#: console/static/js/console/order-list.js:9
+#: console/static/js/console/order-list.js:22
+#: liff/static/liff/js/golf-booking-settings-form.js:130
+msgid "Customer name"
+msgstr "고객 이름"
+
+#: liff/static/liff/js/golf-booking-create-form.js:140
+msgid "Invalid round date/time"
+msgstr "잘못된 예약 날짜/시각"
+
+#: liff/static/liff/js/golf-booking-create-form.js:141
+msgid "Please, choose appropriate round date and time."
+msgstr "알맞은 예약 날짜와 시간을 선택하세요."
+
+#: liff/static/liff/js/golf-booking-create-form.js:170
+msgid "N/A"
+msgstr "알수없음"
+
+#: liff/static/liff/js/golf-booking-create-form.js:240
+msgid "Round date is not available."
+msgstr "예약 가능한 날짜가 아닙니다."
+
+#: liff/static/liff/js/golf-booking-create-form.js:260
+msgid "Round time is not available."
+msgstr "예약 가능한 시간이 아닙니다."
+
+#: liff/static/liff/js/golf-booking-create-form.js:271
+msgid "PAX is not available."
+msgstr "예약 가능한 인원수가 아닙니다."
+
+#: liff/static/liff/js/golf-booking-create-form.js:295
+msgid "Invalid cart #"
+msgstr "잘못된 카트 수량"
+
+#: liff/static/liff/js/golf-booking-create-form.js:306
+msgid "Please, type your name in Thai or English."
+msgstr "반드시 이름은 태국어 또는 영문 알파벳으로 입력하세요."
+
+#: liff/static/liff/js/golf-booking-create-form.js:313
+msgid "Your name must be written in Thai or English."
+msgstr "이름은 영문 또는 태국어로 입력합니다."
+
+#: liff/static/liff/js/golf-booking-create-form.js:418
+#: liff/static/liff/js/golf-booking-create-form.js:426
+#: liff/static/liff/js/golf-booking-settings-form.js:108
+#: liff/static/liff/js/golf-booking-settings-form.js:116
+msgid "Failed to get your LINE profile"
+msgstr "LINE 프로필을 가져오지 못했습니다."
+
+#: liff/static/liff/js/golf-booking-create-form.js:419
+#: liff/static/liff/js/golf-booking-create-form.js:427
+#: liff/static/liff/js/golf-booking-settings-form.js:109
+#: liff/static/liff/js/golf-booking-settings-form.js:117
+msgid "Please, agree to the terms and conditions and privacy policy."
+msgstr "이용약관과 개인정보보호방침에 동의합니다."
+
+#: liff/static/liff/js/golf-booking-create-form.js:538
+#: liff/static/liff/js/golf-booking-settings-form.js:167
+msgid "Failed to send message to LINE"
+msgstr "LINE에 메시지를 보내지 못했습니다."
+
+#: liff/static/liff/js/golf-booking-settings-form.js:22
+msgid "Please, type your name in English or Thai."
+msgstr "이름을 영문 또는 태국어로 입력하세요."
+
+#: liff/static/liff/js/golf-booking-settings-form.js:32
+msgid "Please, type your valid email address."
+msgstr "올바른 이메일 주소를 입력하세요."
+
+#: liff/static/liff/js/golf-booking-settings-form.js:41
+msgid "Please, type your valid phone number."
+msgstr "올바른 전화번호를 입력하세요."
+
+#: liff/static/liff/js/golf-booking-settings-form.js:55
+msgid "Please, choose your language."
+msgstr "언어를 선택하세요."
+
+#: liff/static/liff/js/golf-booking-settings-form.js:131
+msgid "Email"
+msgstr "이메일"
+
+#: liff/static/liff/js/golf-booking-settings-form.js:132
+msgid "Telephone"
+msgstr "전화번호"
+
+#: liff/static/liff/js/golf-booking-settings-form.js:133
+msgid "Language"
+msgstr "언어"

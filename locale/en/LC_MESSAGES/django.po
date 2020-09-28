@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-09-27 21:23+0700\n"
+"POT-Creation-Date: 2020-09-29 01:06+0700\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -1812,9 +1812,7 @@ msgstr ""
 #: liff/templates/liff/golf_booking_settings.html:195
 #: liff/templates/liff/golf_booking_settings.html:205
 #: liff/templates/liff/golf_booking_settings.html:213
-#: liff/templates/liff/golf_booking_settings.html:229
-#: liff/templates/liff/golf_booking_settings_form.html:123
-#: liff/templates/liff/golf_booking_settings_form.html:147 liff/views.py:40
+#: liff/templates/liff/golf_booking_settings.html:229 liff/views.py:40
 msgid "New Booking"
 msgstr ""
 
@@ -1830,6 +1828,16 @@ msgstr ""
 #: liff/templates/liff/golf_booking_settings_form.html:131
 msgid "Save"
 msgstr ""
+
+#: liff/templates/liff/golf_booking_settings_form.html:123
+msgid "Profile settings"
+msgstr ""
+
+#: liff/templates/liff/golf_booking_settings_form.html:147
+#, fuzzy
+#| msgid "Booking Date"
+msgid "Invalid profile data"
+msgstr "Booking Date"
 
 #: liff/views.py:19
 msgid "Sample"

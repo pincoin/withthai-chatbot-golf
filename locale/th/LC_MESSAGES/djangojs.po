@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-09-28 21:24+0700\n"
+"POT-Creation-Date: 2020-09-29 01:02+0700\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,6 +17,91 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
-#: liff/static/liff/js/golf-booking-settings-form.js:110
-msgid "Profile Settings"
+#: console/static/js/console/order-list.js:9
+#: console/static/js/console/order-list.js:22
+#: liff/static/liff/js/golf-booking-settings-form.js:130
+msgid "Customer name"
+msgstr ""
+
+#: liff/static/liff/js/golf-booking-create-form.js:140
+msgid "Invalid round date/time"
+msgstr ""
+
+#: liff/static/liff/js/golf-booking-create-form.js:141
+msgid "Please, choose appropriate round date and time."
+msgstr ""
+
+#: liff/static/liff/js/golf-booking-create-form.js:170
+msgid "N/A"
+msgstr ""
+
+#: liff/static/liff/js/golf-booking-create-form.js:240
+msgid "Round date is not available."
+msgstr ""
+
+#: liff/static/liff/js/golf-booking-create-form.js:260
+msgid "Round time is not available."
+msgstr ""
+
+#: liff/static/liff/js/golf-booking-create-form.js:271
+msgid "PAX is not available."
+msgstr ""
+
+#: liff/static/liff/js/golf-booking-create-form.js:295
+msgid "Invalid cart #"
+msgstr ""
+
+#: liff/static/liff/js/golf-booking-create-form.js:306
+msgid "Please, type your name in Thai or English."
+msgstr ""
+
+#: liff/static/liff/js/golf-booking-create-form.js:313
+msgid "Your name must be written in Thai or English."
+msgstr ""
+
+#: liff/static/liff/js/golf-booking-create-form.js:418
+#: liff/static/liff/js/golf-booking-create-form.js:426
+#: liff/static/liff/js/golf-booking-settings-form.js:108
+#: liff/static/liff/js/golf-booking-settings-form.js:116
+msgid "Failed to get your LINE profile"
+msgstr ""
+
+#: liff/static/liff/js/golf-booking-create-form.js:419
+#: liff/static/liff/js/golf-booking-create-form.js:427
+#: liff/static/liff/js/golf-booking-settings-form.js:109
+#: liff/static/liff/js/golf-booking-settings-form.js:117
+msgid "Please, agree to the terms and conditions and privacy policy."
+msgstr ""
+
+#: liff/static/liff/js/golf-booking-create-form.js:538
+#: liff/static/liff/js/golf-booking-settings-form.js:167
+msgid "Failed to send message to LINE"
+msgstr ""
+
+#: liff/static/liff/js/golf-booking-settings-form.js:22
+msgid "Please, type your name in English or Thai."
+msgstr ""
+
+#: liff/static/liff/js/golf-booking-settings-form.js:32
+msgid "Please, type your valid email address."
+msgstr ""
+
+#: liff/static/liff/js/golf-booking-settings-form.js:41
+msgid "Please, type your valid phone number."
+msgstr ""
+
+#: liff/static/liff/js/golf-booking-settings-form.js:55
+msgid "Please, choose your language."
+msgstr ""
+
+#: liff/static/liff/js/golf-booking-settings-form.js:131
+msgid "Email"
+msgstr ""
+
+#: liff/static/liff/js/golf-booking-settings-form.js:132
+msgid "Telephone"
+msgstr ""
+
+#: liff/static/liff/js/golf-booking-settings-form.js:133
+msgid "Language"
 msgstr ""

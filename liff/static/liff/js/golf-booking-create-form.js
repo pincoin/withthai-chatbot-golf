@@ -137,8 +137,8 @@ function calculateFees(roundDate, roundTime, pax, cart, customerGroup) {
     if (!errorModal.classList.contains('is-active')) {
         errorModal.classList.add('is-active');
     }
-    errorModalTitle.innerText = 'Invalid round date/time';
-    errorModalBody.innerHTML = 'Please, choose appropriate round date and time.';
+    errorModalTitle.innerText = gettext('Invalid round date/time');
+    errorModalBody.innerHTML = gettext('Please, choose appropriate round date and time.');
     return false;
 }
 
@@ -167,7 +167,7 @@ function displayQuotation(greenFeeUnitPrice, greenFeePax, greenFeeAmount,
             caddieFeeUnitPrice, caddieFeeAmount,
             cartFeeUnitPrice, cartFeeAmount,
             feeTotalAmount].forEach(function (element) {
-            element.textContent = 'N/A';
+            element.textContent = gettext('N/A');
         });
     }
 }
@@ -237,7 +237,7 @@ function validateRoundDate(roundDate, errorNotification) {
     if (error) {
         roundDate.error_field();
 
-        errorNotification.textContent = 'Round date is not available.';
+        errorNotification.textContent = gettext('Round date is not available.');
         errorNotification.show();
         return false;
     } else {
@@ -257,7 +257,7 @@ function validateRoundTime(roundTime, errorNotification) {
         || roundTimeObject.getTime() > new Date(2020, 0, 1, Number(roundTimeEndElements[0]), Number(roundTimeEndElements[1]))) {
         roundTime.error_field();
 
-        errorNotification.textContent = 'Round time is not available.';
+        errorNotification.textContent = gettext('Round time is not available.');
         errorNotification.show();
         return false;
     }
@@ -268,7 +268,7 @@ function validatePax(pax, errorNotification) {
     if (Number(pax.value) < golf_club['min_pax'] || Number(pax.value) > golf_club['max_pax']) {
         pax.error_field();
 
-        errorNotification.textContent = 'PAX is not available.';
+        errorNotification.textContent = gettext('PAX is not available.');
         errorNotification.show();
         return false;
     }
@@ -292,7 +292,7 @@ function validateCart(cart, pax, errorNotification) {
     if (Number(cart.value) > Number(pax.value) || Number(cart.value) < min_pax) {
         cart.error_field();
 
-        errorNotification.textContent = 'Cart is not available.';
+        errorNotification.textContent = gettext('Invalid cart #');
         errorNotification.show();
         return false;
     }
@@ -303,14 +303,14 @@ function validateCustomerName(customerName, errorNotification) {
     if (!customerName.value || 0 === customerName.length) {
         customerName.error_field();
 
-        errorNotification.textContent = 'Please, type your name in Thai or English.';
+        errorNotification.textContent = gettext('Please, type your name in Thai or English.');
         errorNotification.show();
         return false;
     }
     if (customerName.value.match(/^[\u0E00-\u0E7F a-zA-Z0-9.,]+$/g) === null) {
         customerName.error_field();
 
-        errorNotification.textContent = 'Your name must be written in Thai or English.';
+        errorNotification.textContent = gettext('Your name must be written in Thai or English.');
         errorNotification.show();
         return false;
     }
@@ -415,16 +415,16 @@ function runApp() {
                     if (!errorModal.classList.contains('is-active')) {
                         errorModal.classList.add('is-active');
                     }
-                    errorModalTitle.innerText = 'Failed to get your LINE profile';
-                    errorModalBody.innerHTML = 'Please, agree to the terms and conditions and privacy policy.';
+                    errorModalTitle.innerText = gettext('Failed to get your LINE profile');
+                    errorModalBody.innerHTML = gettext('Please, agree to the terms and conditions and privacy policy.');
                 }
             });
     } else {
         if (!errorModal.classList.contains('is-active')) {
             errorModal.classList.add('is-active');
         }
-        errorModalTitle.innerText = 'Failed to get your LINE profile';
-        errorModalBody.innerHTML = 'Please, agree to the terms and conditions and privacy policy.';
+        errorModalTitle.innerText = gettext('Failed to get your LINE profile');
+        errorModalBody.innerHTML = gettext('Please, agree to the terms and conditions and privacy policy.');
     }
 
     // 3. Add event handlers
@@ -535,7 +535,7 @@ function runApp() {
                         if (!errorModal.classList.contains('is-active')) {
                             errorModal.classList.add('is-active');
                         }
-                        errorModalTitle.innerText = 'Failed to send message to LINE';
+                        errorModalTitle.innerText = gettext('Failed to send message to LINE');
                         errorModalBody.innerHTML = error;
                     });
                 }

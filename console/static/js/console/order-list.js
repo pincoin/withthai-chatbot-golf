@@ -6,7 +6,7 @@ function setSearchKeyword(search, keyword) {
     } else if (search.value === 'customer_name') {
         keyword.type = 'text';
         keyword.value = '';
-        keyword.placeholder = 'Customer name';
+        keyword.placeholder = gettext('Customer name');
     }
 }
 
@@ -19,7 +19,7 @@ function runApp() {
         keyword.placeholder = 'HH:MM';
     } else if (search.value === 'customer_name') {
         keyword.type = 'text';
-        keyword.placeholder = 'Customer name';
+        keyword.placeholder = gettext('Customer name');
     }
 
     search.addEventListener('change', function (e) {

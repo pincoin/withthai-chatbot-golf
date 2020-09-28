@@ -19,7 +19,7 @@ function validateFullname(fullname, errorNotification) {
     if (fullname.value.trim().match('^[\u0E00-\u0E7F A-Za-z0-9]+$')) {
         return true;
     } else {
-        errorNotification.textContent = 'Please, type your name in English or Thai.';
+        errorNotification.textContent = gettext('Please, type your name in English or Thai.');
         errorNotification.show();
         return false;
     }
@@ -29,7 +29,7 @@ function validateEmail(email, errorNotification) {
     if (email.value.trim().match('[\\w.-]+@[\\w.-]+')) {
         return true;
     } else {
-        errorNotification.textContent = 'Please, type your valid email address.';
+        errorNotification.textContent = gettext('Please, type your valid email address.');
         errorNotification.show();
     }
 }
@@ -38,7 +38,7 @@ function validatePhone(phone, errorNotification) {
     if (phone.value.trim().match('[ \\d+-]{8,18}')) {
         return true;
     } else {
-        errorNotification.textContent = 'Please, type your valid phone number.';
+        errorNotification.textContent = gettext('Please, type your valid phone number.');
         errorNotification.show();
     }
 }
@@ -52,7 +52,7 @@ function validateLang(lang, errorNotification) {
         case 'jp':
             return true;
         default:
-            errorNotification.textContent = 'Please, choose your language.';
+            errorNotification.textContent = gettext('Please, choose your language.');
             errorNotification.show();
             return false;
     }
@@ -105,16 +105,16 @@ function runApp() {
                     if (!errorModal.classList.contains('is-active')) {
                         errorModal.classList.add('is-active');
                     }
-                    errorModalTitle.innerText = 'Failed to get your LINE profile';
-                    errorModalBody.innerHTML = 'Please, agree to the terms and conditions and privacy policy.';
+                    errorModalTitle.innerText = gettext('Failed to get your LINE profile');
+                    errorModalBody.innerHTML = gettext('Please, agree to the terms and conditions and privacy policy.');
                 }
             });
     } else {
         if (!errorModal.classList.contains('is-active')) {
             errorModal.classList.add('is-active');
         }
-        errorModalTitle.innerText = 'Failed to get your LINE profile';
-        errorModalBody.innerHTML = 'Please, agree to the terms and conditions and privacy policy.';
+        errorModalTitle.innerText = gettext('Failed to get your LINE profile');
+        errorModalBody.innerHTML = gettext('Please, agree to the terms and conditions and privacy policy.');
     }
 
     // 3. Add event handlers
@@ -127,10 +127,10 @@ function runApp() {
                 }
                 modalBody.innerHTML =
                     "<ul>" +
-                    "<li><strong>Customer name</strong>: " + fullname.value + "</li>" +
-                    "<li><strong>Email</strong>: " + email.value + "</li>" +
-                    "<li><strong>Telephone</strong>: " + phone.value + "</li>" +
-                    "<li><strong>Language</strong>: " + lang.value + "</li>" +
+                    "<li><strong>" + gettext('Customer name') + "</strong>: " + fullname.value + "</li>" +
+                    "<li><strong>" + gettext('Email') + "</strong>: " + email.value + "</li>" +
+                    "<li><strong>" + gettext('Telephone') + "</strong>: " + phone.value + "</li>" +
+                    "<li><strong>" + gettext('Language') + "</strong>: " + lang.value + "</li>" +
                     "</ul>";
             }
         });
@@ -164,7 +164,7 @@ function runApp() {
                         if (!errorModal.classList.contains('is-active')) {
                             errorModal.classList.add('is-active');
                         }
-                        errorModalTitle.innerText = 'Failed to send message to LINE';
+                        errorModalTitle.innerText = gettext('Failed to send message to LINE');
                         errorModalBody.innerHTML = error;
                     });
                 }
