@@ -84,7 +84,6 @@ function runApp() {
     const errorNotification = document.getElementById('error-notification');
 
     // 2. Retrieve customer group from server using access token
-    /*
     if (!liff.isLoggedIn() && !liff.isInClient()) {
         liff.login();
     }
@@ -117,8 +116,6 @@ function runApp() {
         errorModalTitle.innerText = gettext('Failed to get your LINE profile');
         errorModalBody.innerHTML = gettext('Please, agree to the terms and conditions and privacy policy.');
     }
-
-     */
 
     // 3. Add event handlers
     document
