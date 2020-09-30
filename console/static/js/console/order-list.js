@@ -10,7 +10,7 @@ function setSearchKeyword(search, keyword) {
     }
 }
 
-function runApp() {
+let runApp = function () {
     const search = document.getElementById('id_search');
     const keyword = document.getElementById('id_keyword');
 

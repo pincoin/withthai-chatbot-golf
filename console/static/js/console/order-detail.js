@@ -1,4 +1,4 @@
-function runApp() {
+let runApp = function () {
     const confirm_form = document.getElementById('confirm-form');
     const offer_form = document.getElementById('offer-form');
     const reject_form = document.getElementById('reject-form');

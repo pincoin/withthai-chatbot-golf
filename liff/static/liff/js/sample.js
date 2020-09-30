@@ -1,7 +1,7 @@
 /**
  * Initialize the app by calling functions handling individual app components
  */
-function runApp() {
+let runApp = function () {
     displayLiffData();
     displayIsInClientInfo();
     registerButtonHandlers();

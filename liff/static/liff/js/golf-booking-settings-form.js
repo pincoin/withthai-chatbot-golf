@@ -2,7 +2,7 @@ const errorModal = document.getElementById('error-modal');
 const errorModalTitle = document.getElementById('error-modal-title');
 const errorModalBody = document.getElementById('error-modal-body');
 
-function validateFullname(fullname, errorNotification) {
+let validateFullname = function (fullname, errorNotification) {
     if (fullname.value.trim().match('^[\u0E00-\u0E7F A-Za-z0-9]+$')) {
         return true;
     } else {
@@ -12,7 +12,7 @@ function validateFullname(fullname, errorNotification) {
     }
 }
 
-function validateEmail(email, errorNotification) {
+let validateEmail = function (email, errorNotification) {
     if (email.value.trim().match('[\\w.-]+@[\\w.-]+')) {
         return true;
     } else {
@@ -21,7 +21,7 @@ function validateEmail(email, errorNotification) {
     }
 }
 
-function validatePhone(phone, errorNotification) {
+let validatePhone = function (phone, errorNotification) {
     if (phone.value.trim().match('[ \\d+-]{8,18}')) {
         return true;
     } else {
@@ -30,7 +30,7 @@ function validatePhone(phone, errorNotification) {
     }
 }
 
-function validateLang(lang, errorNotification) {
+let validateLang = function (lang, errorNotification) {
     switch (lang.value.trim()) {
         case 'en':
         case 'th':
@@ -45,7 +45,7 @@ function validateLang(lang, errorNotification) {
     }
 }
 
-function validateForm(fullname, email, phone, lang, errorNotification) {
+let validateForm = function (fullname, email, phone, lang, errorNotification) {
     if (!validateFullname(fullname, errorNotification)) {
         return false;
     }
@@ -58,7 +58,7 @@ function validateForm(fullname, email, phone, lang, errorNotification) {
     return validateLang(lang, errorNotification);
 }
 
-function runApp() {
+let runApp = function () {
     // 1. Declares variables
     const fullname = document.getElementById('id_fullname');
     const email = document.getElementById('id_email');

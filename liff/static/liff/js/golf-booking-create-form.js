@@ -2,7 +2,7 @@ const errorModal = document.getElementById('error-modal');
 const errorModalTitle = document.getElementById('error-modal-title');
 const errorModalBody = document.getElementById('error-modal-body');
 
-function getCurrentTime() {
+let getCurrentTime = function () {
     const now = new Date();
 
     return {
@@ -19,7 +19,7 @@ function getCurrentTime() {
     }
 }
 
-function isHoliday(roundDate) {
+let isHoliday = function (roundDate) {
     // return 0: Weekday 1: Holiday
 
     // Weekend Saturday and Sunday
@@ -37,7 +37,7 @@ function isHoliday(roundDate) {
     return 0;
 }
 
-function setCartByPax(cart, pax, cartCompulsory, diff) {
+let setCartByPax = function (cart, pax, cartCompulsory, diff) {
     pax.value = Number(pax.value) + diff;
 
     if ((cartCompulsory === 0 && Number(cart.value) > 0)
@@ -48,14 +48,14 @@ function setCartByPax(cart, pax, cartCompulsory, diff) {
     }
 }
 
-function setCart(cart, pax, cartCompulsory, diff) {
+let setCart = function (cart, pax, cartCompulsory, diff) {
     if (cartCompulsory === 0
         || (cartCompulsory > 1 && Number(pax.value) < cartCompulsory)) {
         cart.value = Number(cart.value) + diff;
     }
 }
 
-function calculateFees(roundDate, roundTime, pax, cart, customerGroup) {
+let calculateFees = function (roundDate, roundTime, pax, cart, customerGroup) {
     const roundDateElements = roundDate.value.split('-');
     const roundTimeElements = roundTime.value.split(':');
 
@@ -102,10 +102,10 @@ function calculateFees(roundDate, roundTime, pax, cart, customerGroup) {
     return false;
 }
 
-function displayQuotation(greenFeeUnitPrice, greenFeePax, greenFeeAmount,
-                          caddieFeeUnitPrice, caddieFeePax, caddieFeeAmount,
-                          cartFeeUnitPrice, cartFeePax, cartFeeAmount,
-                          feeTotalAmount, fee, pax, cart) {
+let displayQuotation = function (greenFeeUnitPrice, greenFeePax, greenFeeAmount,
+                                 caddieFeeUnitPrice, caddieFeePax, caddieFeeAmount,
+                                 cartFeeUnitPrice, cartFeePax, cartFeeAmount,
+                                 feeTotalAmount, fee, pax, cart) {
     greenFeePax.textContent = Number(pax.value);
     caddieFeePax.textContent = Number(pax.value);
     cartFeePax.textContent = Number(cart.value);
@@ -132,7 +132,7 @@ function displayQuotation(greenFeeUnitPrice, greenFeePax, greenFeeAmount,
     }
 }
 
-function validateRoundDate(roundDate, errorNotification) {
+let validateRoundDate = function (roundDate, errorNotification) {
     // Tee-off date
     const roundDateElements = roundDate.value.split('-');
     const roundDateObject = new Date(Number(roundDateElements[0]), Number(roundDateElements[1]) - 1, Number(roundDateElements[2]));
@@ -205,7 +205,7 @@ function validateRoundDate(roundDate, errorNotification) {
     }
 }
 
-function validateRoundTime(roundTime, errorNotification) {
+let validateRoundTime = function (roundTime, errorNotification) {
     const roundTimeElements = roundTime.value.split(':');
 
     const roundTimeStartElements = fees[0]['slot_start'].split(':');
@@ -224,7 +224,7 @@ function validateRoundTime(roundTime, errorNotification) {
     return true;
 }
 
-function validatePax(pax, errorNotification) {
+let validatePax = function (pax, errorNotification) {
     if (Number(pax.value) < golf_club['min_pax'] || Number(pax.value) > golf_club['max_pax']) {
         pax.error_field();
 
@@ -235,7 +235,7 @@ function validatePax(pax, errorNotification) {
     return true;
 }
 
-function validateCart(cart, pax, errorNotification) {
+let validateCart = function (cart, pax, errorNotification) {
     let min_pax = 0;
 
     if (golf_club['cart_compulsory'] === 0) {
@@ -259,7 +259,7 @@ function validateCart(cart, pax, errorNotification) {
     return true;
 }
 
-function validateCustomerName(customerName, errorNotification) {
+let validateCustomerName = function (customerName, errorNotification) {
     if (!customerName.value || 0 === customerName.length) {
         customerName.error_field();
 
@@ -277,7 +277,7 @@ function validateCustomerName(customerName, errorNotification) {
     return true;
 }
 
-function validateForm(roundDate, roundTime, pax, cart, customerName, errorNotification) {
+let validateForm = function (roundDate, roundTime, pax, cart, customerName, errorNotification) {
     if (!validateRoundDate(roundDate, errorNotification)) {
         return false;
     }
@@ -293,7 +293,7 @@ function validateForm(roundDate, roundTime, pax, cart, customerName, errorNotifi
     return validateCustomerName(customerName, errorNotification);
 }
 
-function runApp() {
+let runApp = function () {
     const roundDate = document.getElementById('id_round_date');
     const roundTime = document.getElementById('id_round_time');
     const pax = document.getElementById('id_pax');
