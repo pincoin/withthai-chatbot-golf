@@ -237,10 +237,6 @@ def command_booking(event, line_bot_api, **kwargs):
         order_flex_message['body']['contents'][1]['text'] = f'{order.fullname}'
         order_flex_message['body']['contents'][2]['contents'][0]['text'] = order.get_order_status_display()
         order_flex_message['body']['contents'][2]['contents'][1]['text'] = order.get_payment_status_display()
-        '''
-        order_flex_message['footer']['contents'][0]['action']['uri'] \
-            = f"https://liff.line.me/{golf_club.liff['request']['id']}"
-        '''
 
         if order.order_status == order.ORDER_STATUS_CHOICES.open:
             order_flex_message['body']['contents'].append(
@@ -459,8 +455,12 @@ def command_booking(event, line_bot_api, **kwargs):
 
     else:
         no_order_flex_message = copy.deepcopy(golf_club.no_order_flex_message)
+        no_order_flex_message['body']['contents'][0]['text'] = _('No Tee Time Booking Yet')
+        no_order_flex_message['body']['contents'][1]['text'] = _('Please, book a new golf tee time.')
+        no_order_flex_message['body']['contents'][2]['text'] = _('New Booking')
+
         no_order_flex_message['body']['contents'][2]['action']['uri'] \
-            = f"https://liff.line.me/{golf_club.liff['request']['id']}"\
+            = f"https://liff.line.me/{golf_club.liff['request']['id']}" \
               f'?lang={membership.line_user.lang}'
 
         line_bot_api.reply_message(
