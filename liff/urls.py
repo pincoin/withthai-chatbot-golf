@@ -2,7 +2,7 @@ from django.urls import path
 
 from . import views
 
-app_name = 'chatbot'
+app_name = 'liff'
 
 urlpatterns = [
     path('<slug:slug>/sample/',
