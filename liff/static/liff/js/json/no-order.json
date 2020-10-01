@@ -10,7 +10,7 @@
         "text": "No Tee Time Booking Yet",
         "weight": "bold",
         "align": "center",
-        "size": "sm"
+        "size": "md"
       },
       {
         "type": "text",
