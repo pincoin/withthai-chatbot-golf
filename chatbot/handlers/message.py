@@ -460,7 +460,8 @@ def command_booking(event, line_bot_api, **kwargs):
     else:
         no_order_flex_message = copy.deepcopy(golf_club.no_order_flex_message)
         no_order_flex_message['body']['contents'][2]['action']['uri'] \
-            = f"https://liff.line.me/{golf_club.liff['request']['id']}"
+            = f"https://liff.line.me/{golf_club.liff['request']['id']}"\
+              f'?lang={membership.line_user.lang}'
 
         line_bot_api.reply_message(
             event.reply_token, [
