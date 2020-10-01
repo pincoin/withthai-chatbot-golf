@@ -213,6 +213,7 @@ Thank you.''').format(round_date_formatted, round_time_formatted, pax, cart, ord
 @decorators.translation_activate
 def command_booking(event, line_bot_api, **kwargs):
     golf_club = kwargs['golf_club']
+    membership = kwargs['membership']
 
     orders = golf_models.GolfBookingOrder.objects \
                  .select_related('golf_club', 'user', 'line_user', 'customer_group') \
@@ -278,6 +279,7 @@ def command_booking(event, line_bot_api, **kwargs):
                             'type': 'uri',
                             'label': _('New Booking Inquiry'),
                             'uri': f"https://liff.line.me/{golf_club.liff['request']['id']}"
+                                   f'?lang={membership.line_user.lang}'
                         },
                         'style': 'primary',
                         'height': 'sm',
@@ -333,6 +335,7 @@ def command_booking(event, line_bot_api, **kwargs):
                             'type': 'uri',
                             'label': _('New Booking Inquiry'),
                             'uri': f"https://liff.line.me/{golf_club.liff['request']['id']}"
+                                   f'?lang={membership.line_user.lang}'
                         },
                         'style': 'primary',
                         'height': 'sm',
@@ -398,6 +401,7 @@ def command_booking(event, line_bot_api, **kwargs):
                             'type': 'uri',
                             'label': _('New Booking Inquiry'),
                             'uri': f"https://liff.line.me/{golf_club.liff['request']['id']}"
+                                   f'?lang={membership.line_user.lang}'
                         },
                         'style': 'primary',
                         'height': 'sm',
@@ -421,6 +425,7 @@ def command_booking(event, line_bot_api, **kwargs):
                             'type': 'uri',
                             'label': _('New Booking Inquiry'),
                             'uri': f"https://liff.line.me/{golf_club.liff['request']['id']}"
+                                   f'?lang={membership.line_user.lang}'
                         },
                         'style': 'primary',
                         'height': 'sm',
