@@ -468,12 +468,16 @@ def command_booking(event, line_bot_api, **kwargs):
 @decorators.translation_activate
 def command_course(event, line_bot_api, **kwargs):
     golf_club = kwargs['golf_club']
+    membership = kwargs['membership']
+
+    info_flex_message = copy.deepcopy(golf_club.info_flex_message)
+    info_flex_message['body']['contents'][5]['contents'][4]['action']['uri'] += f'?lang={membership.line_user.lang}'
 
     line_bot_api.reply_message(
         event.reply_token, [
             models.FlexSendMessage(
                 alt_text=golf_club.title_english,
-                contents=golf_club.info_flex_message)])
+                contents=info_flex_message)])
 
 
 @decorators.translation_activate
