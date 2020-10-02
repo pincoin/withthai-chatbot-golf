@@ -21,7 +21,8 @@ def command_accept(event, line_bot_api, **kwargs):
     round_date_formatted = date(order.round_date, 'Y-m-d')
     round_time_formatted = date(tee_time, 'H:i')
 
-    golf_utils.log_order_status(order,
+    golf_utils.log_order_status(None,
+                                order,
                                 golf_models.GolfBookingOrder.ORDER_STATUS_CHOICES.accepted,
                                 order.payment_status,
                                 f'{round_date_formatted} [{round_time_formatted}]\n'
@@ -45,7 +46,8 @@ def command_close(event, line_bot_api, **kwargs):
     round_date_formatted = date(order.round_date, 'Y-m-d')
     round_time_formatted = date(order.round_time, 'H:i')
 
-    golf_utils.log_order_status(order,
+    golf_utils.log_order_status(None,
+                                order,
                                 golf_models.GolfBookingOrder.ORDER_STATUS_CHOICES.closed,
                                 order.payment_status,
                                 f'{round_date_formatted} [{round_time_formatted}]\n'
