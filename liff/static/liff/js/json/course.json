@@ -22,11 +22,12 @@
         "text": "",
         "weight": "bold",
         "align": "center",
-        "size": "sm"
+        "size": "md"
       },
       {
         "type": "box",
         "layout": "baseline",
+        "margin": "md",
         "contents": [
           {
             "type": "text",
