@@ -277,7 +277,7 @@ def command_booking(event, line_bot_api, **kwargs):
                     'style': 'primary',
                     'height': 'sm',
                     'color': '#00acc1',
-                    'margin': 'md'
+                    'margin': 'lg'
                 }
             )
         elif order.order_status == order.ORDER_STATUS_CHOICES.offered:
