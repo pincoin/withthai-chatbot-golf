@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-10-02 23:32+0700\n"
+"POT-Creation-Date: 2020-10-03 00:36+0700\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -199,7 +199,8 @@ msgid "Sales by payment"
 msgstr "결제수단별 매출"
 
 #: allauth/templates/account/account_base.html:158
-#: allauth/templates/account/account_base.html:293 conf/templates/403.html:158
+#: allauth/templates/account/account_base.html:293
+#: chatbot/handlers/message.py:437 conf/templates/403.html:158
 #: console/templates/console/console_base.html:158
 #: console/templates/console/console_base.html:298
 #: liff/templates/liff/golf_booking_settings_form.html:14 liff/views.py:108
@@ -288,6 +289,7 @@ msgstr "아이디"
 
 #: allauth/templates/account/email_confirm.html:26
 #: allauth/templates/socialaccount/signup.html:44
+#: chatbot/handlers/message.py:426
 #: console/templates/console/line_user_detail.html:58
 #: liff/templates/liff/golf_booking_settings_form.html:79
 msgid "Email"
@@ -561,7 +563,47 @@ msgstr "예약문의"
 msgid "No Booking Yet"
 msgstr "예약 없음"
 
-#: chatbot/handlers/message.py:464
+#: chatbot/handlers/message.py:423
+msgid "Hole"
+msgstr "홀"
+
+#: chatbot/handlers/message.py:424
+msgid "Phone"
+msgstr "전화번호"
+
+#: chatbot/handlers/message.py:425
+msgid "Fax"
+msgstr "팩스"
+
+#: chatbot/handlers/message.py:427
+msgid "Office Hours"
+msgstr "예약업무시간"
+
+#: chatbot/handlers/message.py:429
+msgid "Location"
+msgstr "지도"
+
+#: chatbot/handlers/message.py:430
+msgid "Layout"
+msgstr "레이아웃"
+
+#: chatbot/handlers/message.py:431 golf/models.py:418 liff/views.py:177
+msgid "Scorecard"
+msgstr "스코어카드"
+
+#: chatbot/handlers/message.py:433
+msgid "Caddies"
+msgstr "캐디"
+
+#: chatbot/handlers/message.py:434
+msgid "Hotels"
+msgstr "호텔"
+
+#: chatbot/handlers/message.py:435
+msgid "Food"
+msgstr "음식점"
+
+#: chatbot/handlers/message.py:480
 msgid ""
 "Your profile has been saved.\n"
 "Customer name: {}\n"
@@ -1371,10 +1413,6 @@ msgstr "휴일예약 월요일 이후"
 #: golf/models.py:412 liff/apps.py:7
 msgid "LIFF"
 msgstr "LIFF"
-
-#: golf/models.py:418 liff/views.py:177
-msgid "Scorecard"
-msgstr "스코어카드"
 
 #: golf/models.py:431
 msgid "Thumbnail image"

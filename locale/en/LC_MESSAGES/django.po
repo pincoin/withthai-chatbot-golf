@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-10-02 23:32+0700\n"
+"POT-Creation-Date: 2020-10-03 00:36+0700\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -201,7 +201,8 @@ msgid "Sales by payment"
 msgstr ""
 
 #: allauth/templates/account/account_base.html:158
-#: allauth/templates/account/account_base.html:293 conf/templates/403.html:158
+#: allauth/templates/account/account_base.html:293
+#: chatbot/handlers/message.py:437 conf/templates/403.html:158
 #: console/templates/console/console_base.html:158
 #: console/templates/console/console_base.html:298
 #: liff/templates/liff/golf_booking_settings_form.html:14 liff/views.py:108
@@ -290,6 +291,7 @@ msgstr ""
 
 #: allauth/templates/account/email_confirm.html:26
 #: allauth/templates/socialaccount/signup.html:44
+#: chatbot/handlers/message.py:426
 #: console/templates/console/line_user_detail.html:58
 #: liff/templates/liff/golf_booking_settings_form.html:79
 msgid "Email"
@@ -571,7 +573,47 @@ msgstr ""
 msgid "No Booking Yet"
 msgstr "Booking Date"
 
-#: chatbot/handlers/message.py:464
+#: chatbot/handlers/message.py:423
+msgid "Hole"
+msgstr ""
+
+#: chatbot/handlers/message.py:424
+msgid "Phone"
+msgstr ""
+
+#: chatbot/handlers/message.py:425
+msgid "Fax"
+msgstr ""
+
+#: chatbot/handlers/message.py:427
+msgid "Office Hours"
+msgstr ""
+
+#: chatbot/handlers/message.py:429
+msgid "Location"
+msgstr ""
+
+#: chatbot/handlers/message.py:430
+msgid "Layout"
+msgstr ""
+
+#: chatbot/handlers/message.py:431 golf/models.py:418 liff/views.py:177
+msgid "Scorecard"
+msgstr ""
+
+#: chatbot/handlers/message.py:433
+msgid "Caddies"
+msgstr ""
+
+#: chatbot/handlers/message.py:434
+msgid "Hotels"
+msgstr ""
+
+#: chatbot/handlers/message.py:435
+msgid "Food"
+msgstr ""
+
+#: chatbot/handlers/message.py:480
 msgid ""
 "Your profile has been saved.\n"
 "Customer name: {}\n"
@@ -1356,10 +1398,6 @@ msgstr ""
 
 #: golf/models.py:412 liff/apps.py:7
 msgid "LIFF"
-msgstr ""
-
-#: golf/models.py:418 liff/views.py:177
-msgid "Scorecard"
 msgstr ""
 
 #: golf/models.py:431

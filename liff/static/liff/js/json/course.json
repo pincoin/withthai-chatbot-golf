@@ -23,7 +23,7 @@
     "action": {
       "type": "uri",
       "label": "action",
-      "uri": "https://www.withthai.com"
+      "uri": ""
     }
   },
   "body": {
@@ -169,7 +169,7 @@
             "action": {
               "type": "uri",
               "label": "Scorecard",
-              "uri": "https://liff.line.me/1654038916-Wb7427dE"
+              "uri": ""
             },
             "height": "sm",
             "style": "primary",
