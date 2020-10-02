@@ -262,7 +262,7 @@ def command_booking(event, line_bot_api, **kwargs):
                     'text': _('Please, wait for the confirmation or tee time offers.'),
                     'wrap': True,
                     'margin': 'none',
-                    'size': 'sm',
+                    'size': 'xs',
                 }
             )
             order_flex_message['body']['contents'].append(
@@ -277,7 +277,7 @@ def command_booking(event, line_bot_api, **kwargs):
                     'style': 'primary',
                     'height': 'sm',
                     'color': '#00acc1',
-                    'margin': 'sm'
+                    'margin': 'md'
                 }
             )
         elif order.order_status == order.ORDER_STATUS_CHOICES.offered:
