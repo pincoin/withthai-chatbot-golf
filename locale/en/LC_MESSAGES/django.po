@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-10-02 23:13+0700\n"
+"POT-Creation-Date: 2020-10-02 23:32+0700\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -572,7 +572,12 @@ msgid "No Booking Yet"
 msgstr "Booking Date"
 
 #: chatbot/handlers/message.py:464
-msgid "Your profile has been saved: {} {} {} {}"
+msgid ""
+"Your profile has been saved.\n"
+"Customer name: {}\n"
+"Email: {}\n"
+"Telephone: {}\n"
+"Language: {}"
 msgstr ""
 
 #: chatbot/models.py:8

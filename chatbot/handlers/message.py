@@ -461,8 +461,11 @@ def command_settings(event, line_bot_api, **kwargs):
 
     line_bot_api.reply_message(
         event.reply_token, [
-            models.TextSendMessage(text=_('Your profile has been saved: {} {} {} {}')
-                                   .format(match[1], match[2], match[3], match[4]))])
+            models.TextSendMessage(text=_('''Your profile has been saved.
+Customer name: {}
+Email: {}
+Telephone: {}
+Language: {}''').format(match[1], match[2], match[3], match[4]))])
 
 
 @decorators.translation_activate
