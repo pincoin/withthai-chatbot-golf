@@ -72,7 +72,7 @@
             "size": "sm"
           }
         ],
-        "margin": "md"
+        "margin": "sm"
       },
       {
         "type": "box",
@@ -91,7 +91,7 @@
             "size": "sm"
           }
         ],
-        "margin": "md"
+        "margin": "sm"
       },
       {
         "type": "box",
@@ -110,11 +110,11 @@
             "size": "sm"
           }
         ],
-        "margin": "md"
+        "margin": "sm"
       },
       {
         "type": "separator",
-        "margin": "xl"
+        "margin": "sm"
       },
       {
         "type": "box",
@@ -124,13 +124,15 @@
             "type": "text",
             "text": "Total",
             "flex": 2,
-            "weight": "bold"
+            "weight": "bold",
+            "size": "sm"
           },
           {
             "type": "text",
             "text": "",
             "flex": 0,
-            "weight": "bold"
+            "weight": "bold",
+            "size": "sm"
           }
         ],
         "margin": "md"
