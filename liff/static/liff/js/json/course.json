@@ -1,19 +1,6 @@
 {
   "type": "bubble",
   "size": "giga",
-  "header": {
-    "type": "box",
-    "layout": "vertical",
-    "contents": [
-      {
-        "type": "text",
-        "text": "WITH THAI",
-        "weight": "bold",
-        "color": "#FFFFFF"
-      }
-    ],
-    "backgroundColor": "#0c7b93"
-  },
   "hero": {
     "type": "image",
     "url": "https://storage.googleapis.com/hotels2thailand-storage/pictures/products/01465701-183899-original.jpg",
@@ -30,6 +17,13 @@
     "type": "box",
     "layout": "vertical",
     "contents": [
+      {
+        "type": "text",
+        "text": "",
+        "weight": "bold",
+        "align": "center",
+        "size": "sm"
+      },
       {
         "type": "box",
         "layout": "baseline",

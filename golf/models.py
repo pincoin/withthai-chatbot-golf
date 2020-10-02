@@ -467,29 +467,31 @@ class GolfClub(model_utils_models.TimeStampedModel):
 
                 old_thumbnail_url = self.thumbnail.url
 
-                self.info_flex_message['header']['contents'][0]['text'] = self.title_english
+
                 self.info_flex_message['hero']['action']['uri'] = self.website
                 self.info_flex_message['hero']['url'] = f'https://www.withthai.com{self.thumbnail.url}'
-                self.info_flex_message['body']['contents'][0]['contents'][1]['text'] = self.get_hole_display()
-                self.info_flex_message['body']['contents'][1]['contents'][1]['text'] = self.phone
-                self.info_flex_message['body']['contents'][2]['contents'][1]['text'] = self.fax
-                self.info_flex_message['body']['contents'][3]['contents'][1]['text'] = self.email
-                self.info_flex_message['body']['contents'][4]['contents'][1]['text'] \
+
+                self.info_flex_message['body']['contents'][0]['text'] = self.title_english
+                self.info_flex_message['body']['contents'][1]['contents'][1]['text'] = self.get_hole_display()
+                self.info_flex_message['body']['contents'][2]['contents'][1]['text'] = self.phone
+                self.info_flex_message['body']['contents'][3]['contents'][1]['text'] = self.fax
+                self.info_flex_message['body']['contents'][4]['contents'][1]['text'] = self.email
+                self.info_flex_message['body']['contents'][5]['contents'][1]['text'] \
                     = '{} - {}'.format(time(self.business_hour_start, 'H:i'),
                                        time(self.business_hour_end, 'H:i'))
 
                 if 'scorecard' in self.liff:
-                    self.info_flex_message['body']['contents'][5]['contents'][4]['action']['uri'] \
+                    self.info_flex_message['body']['contents'][6]['contents'][4]['action']['uri'] \
                         = f"https://liff.line.me/{self.liff['scorecard']['id']}"
                 else:
-                    self.info_flex_message['body']['contents'][5]['contents'][4]['action']['uri'] \
+                    self.info_flex_message['body']['contents'][6]['contents'][4]['action']['uri'] \
                         = f"https://liff.line.me/"
 
                 if 'settings' in self.liff:
-                    self.info_flex_message['body']['contents'][7]['contents'][0]['action']['uri'] \
+                    self.info_flex_message['body']['contents'][8]['contents'][0]['action']['uri'] \
                         = f"https://liff.line.me/{self.liff['settings']['id']}"
                 else:
-                    self.info_flex_message['body']['contents'][7]['contents'][0]['action']['uri'] \
+                    self.info_flex_message['body']['contents'][8]['contents'][0]['action']['uri'] \
                         = f"https://liff.line.me/"
 
         with open(Path(settings.BASE_DIR) / 'liff' / 'static' / 'liff' / 'js' / 'json' / 'order.json') \

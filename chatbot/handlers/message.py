@@ -418,23 +418,23 @@ def command_course(event, line_bot_api, **kwargs):
     membership = kwargs['membership']
 
     info_flex_message = copy.deepcopy(golf_club.info_flex_message)
-    info_flex_message['body']['contents'][5]['contents'][4]['action']['uri'] += f'?lang={membership.line_user.lang}'
 
-    info_flex_message['body']['contents'][0]['contents'][0]['text'] = _('Hole')
-    info_flex_message['body']['contents'][1]['contents'][0]['text'] = _('Phone')
-    info_flex_message['body']['contents'][2]['contents'][0]['text'] = _('Fax')
-    info_flex_message['body']['contents'][3]['contents'][0]['text'] = _('Email')
-    info_flex_message['body']['contents'][4]['contents'][0]['text'] = _('Office Hours')
+    info_flex_message['body']['contents'][1]['contents'][0]['text'] = _('Hole')
+    info_flex_message['body']['contents'][2]['contents'][0]['text'] = _('Phone')
+    info_flex_message['body']['contents'][3]['contents'][0]['text'] = _('Fax')
+    info_flex_message['body']['contents'][4]['contents'][0]['text'] = _('Email')
+    info_flex_message['body']['contents'][5]['contents'][0]['text'] = _('Office Hours')
 
-    info_flex_message['body']['contents'][5]['contents'][0]['action']['label'] = _('Location')
-    info_flex_message['body']['contents'][5]['contents'][2]['action']['label'] = _('Layout')
-    info_flex_message['body']['contents'][5]['contents'][4]['action']['label'] = _('Scorecard')
+    info_flex_message['body']['contents'][6]['contents'][0]['action']['label'] = _('Location')
+    info_flex_message['body']['contents'][6]['contents'][2]['action']['label'] = _('Layout')
+    info_flex_message['body']['contents'][6]['contents'][4]['action']['label'] = _('Scorecard')
+    info_flex_message['body']['contents'][6]['contents'][4]['action']['uri'] += f'?lang={membership.line_user.lang}'
 
-    info_flex_message['body']['contents'][6]['contents'][0]['action']['label'] = _('Caddies')
-    info_flex_message['body']['contents'][6]['contents'][2]['action']['label'] = _('Hotels')
-    info_flex_message['body']['contents'][6]['contents'][4]['action']['label'] = _('Food')
+    info_flex_message['body']['contents'][7]['contents'][0]['action']['label'] = _('Caddies')
+    info_flex_message['body']['contents'][7]['contents'][2]['action']['label'] = _('Hotels')
+    info_flex_message['body']['contents'][7]['contents'][4]['action']['label'] = _('Food')
 
-    info_flex_message['body']['contents'][7]['contents'][0]['action']['label'] = _('Settings')
+    info_flex_message['body']['contents'][8]['contents'][0]['action']['label'] = _('Settings')
 
     line_bot_api.reply_message(
         event.reply_token, [
