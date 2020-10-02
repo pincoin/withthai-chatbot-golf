@@ -468,6 +468,7 @@ def command_coupons(event, line_bot_api, **kwargs):
 @decorators.translation_activate
 def command_settings(event, line_bot_api, **kwargs):
     match = kwargs['match']
+    golf_club = kwargs['golf_club']
     membership = kwargs['membership']
 
     membership.line_user.fullname = match[1]
@@ -475,6 +476,8 @@ def command_settings(event, line_bot_api, **kwargs):
     membership.line_user.phone = match[3]
     membership.line_user.lang = match[4]
     membership.line_user.save()
+
+    line_bot_api.link_rich_menu_to_user(membership.line_user.line_user_id, golf_club.line_rich_menu[match[4]])
 
     line_bot_api.reply_message(
         event.reply_token, [
