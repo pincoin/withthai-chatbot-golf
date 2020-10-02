@@ -11,7 +11,7 @@
           {
             "type": "text",
             "text": "",
-            "size": "md",
+            "size": "sm",
             "weight": "bold",
             "flex": 1
           },
@@ -19,7 +19,7 @@
             "type": "text",
             "text": "",
             "flex": 0,
-            "size": "md",
+            "size": "sm",
             "weight": "bold"
           }
         ]
@@ -28,6 +28,7 @@
         "type": "text",
         "text": "",
         "margin": "none",
+        "size": "sm",
         "weight": "bold"
       },
       {
