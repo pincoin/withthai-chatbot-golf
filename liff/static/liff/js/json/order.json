@@ -27,7 +27,7 @@
       {
         "type": "text",
         "text": "",
-        "margin": "lg",
+        "margin": "none",
         "weight": "bold"
       },
       {
@@ -53,7 +53,7 @@
       },
       {
         "type": "separator",
-        "margin": "xl"
+        "margin": "sm"
       },
       {
         "type": "box",
