@@ -301,12 +301,12 @@ def command_booking(event, line_bot_api, **kwargs):
                         'type': 'button',
                         'action': {
                             'type': 'postback',
-                            'label': f'{tee}',
+                            'label': f'{round_date_formatted} {tee}',
                             'data': f'action=accept&golf_club={order.golf_club.slug}'
                                     f'&order_no={order.order_no}&tee_time={tee}',
                             'displayText': _('Accept {} {}').format(round_date_formatted, tee),
                         },
-                        'margin': 'sm',
+                        'margin': 'md',
                         'color': '#039be5',
                         'style': 'primary',
                         'height': 'sm'
@@ -322,7 +322,7 @@ def command_booking(event, line_bot_api, **kwargs):
                         'data': f'action=close&golf_club={order.golf_club.slug}&order_no={order.order_no}',
                         'displayText': _('Close Booking')
                     },
-                    'margin': 'md',
+                    'margin': 'lg',
                     'height': 'sm',
                     'style': 'primary',
                     'color': '#e53935'
@@ -380,7 +380,7 @@ def command_booking(event, line_bot_api, **kwargs):
                 'style': 'primary',
                 'height': 'sm',
                 'color': '#00acc1',
-                'margin': 'lg'
+                'margin': 'md'
             }
         )
 
