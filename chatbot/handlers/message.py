@@ -291,38 +291,12 @@ def command_booking(event, line_bot_api, **kwargs):
                 }
             )
 
-            order_flex_message['footer'] = {
-                'type': 'box',
-                'layout': 'vertical',
-                'contents': [
-                    {
-                        'type': 'button',
-                        'action': {
-                            'type': 'postback',
-                            'label': _('Close Booking'),
-                            'data': f'action=close&golf_club={order.golf_club.slug}&order_no={order.order_no}',
-                            'displayText': _('Close Booking')
-                        },
-                        'margin': 'md',
-                        'height': 'sm',
-                        'style': 'primary',
-                        'color': '#e53935'
-                    },
-                    {
-                        'type': 'separator',
-                        'margin': 'sm'
-                    },
-                ]
-            }
-
-            tee_times = []
-
             round_date_formatted = date(order.round_date, 'Y-m-d')
 
             for tee_time in order.golfbookingordertimeoffer_set.all():
                 tee = date(tee_time.round_time, 'H:i')
 
-                tee_times.append(
+                order_flex_message['body']['contents'].append(
                     {
                         'type': 'button',
                         'action': {
@@ -339,9 +313,21 @@ def command_booking(event, line_bot_api, **kwargs):
                     }
                 )
 
-            if tee_times:
-                order_flex_message['footer']['contents'] = tee_times + order_flex_message['footer']['contents']
-
+            order_flex_message['body']['contents'].append(
+                {
+                    'type': 'button',
+                    'action': {
+                        'type': 'postback',
+                        'label': _('Close Booking'),
+                        'data': f'action=close&golf_club={order.golf_club.slug}&order_no={order.order_no}',
+                        'displayText': _('Close Booking')
+                    },
+                    'margin': 'md',
+                    'height': 'sm',
+                    'style': 'primary',
+                    'color': '#e53935'
+                }
+            )
         elif order.order_status == order.ORDER_STATUS_CHOICES.accepted:
             order_flex_message['body']['contents'].append(
                 {
@@ -352,10 +338,19 @@ def command_booking(event, line_bot_api, **kwargs):
             order_flex_message['body']['contents'].append(
                 {
                     'type': 'text',
-                    'text': _('Please, wait for the confirmation.'),
-                    'wrap': True,
+                    'text': _('Not Confirmed Yet'),
+                    'color': '#b71c1c',
                     'margin': 'sm',
                     'size': 'sm',
+                }
+            )
+            order_flex_message['body']['contents'].append(
+                {
+                    'type': 'text',
+                    'text': _('Please, wait for the confirmation.'),
+                    'wrap': True,
+                    'margin': 'none',
+                    'size': 'xs',
                 }
             )
 
