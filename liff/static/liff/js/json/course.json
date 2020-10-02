@@ -171,7 +171,7 @@
             "color": "#00acc1"
           }
         ],
-        "margin": "xxl"
+        "margin": "sm"
       },
       {
         "type": "box",
@@ -219,7 +219,7 @@
             "color": "#00acc1"
           }
         ],
-        "margin": "md"
+        "margin": "sm"
       },
       {
         "type": "box",
@@ -237,7 +237,7 @@
             "color": "#00acc1"
           }
         ],
-        "margin": "md"
+        "margin": "sm"
       }
     ]
   }
