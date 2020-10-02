@@ -577,7 +577,7 @@ msgstr "팩스"
 
 #: chatbot/handlers/message.py:426
 msgid "Office Hours"
-msgstr "예약업무시간"
+msgstr "예약 업무 시간"
 
 #: chatbot/handlers/message.py:428
 msgid "Location"
