@@ -439,6 +439,9 @@ def command_booking(event, line_bot_api, **kwargs):
 
         tasks.send_notification_line.delay(golf_club.line_notify_access_token, json.dumps(order_flex_message))
 
+        tasks.send_notification_email('order', json.dumps(order_flex_message), 'test@withthai.com',
+                                      'jonghwa@withthai.com')
+
     if orders:
         line_bot_api.reply_message(
             event.reply_token, [
