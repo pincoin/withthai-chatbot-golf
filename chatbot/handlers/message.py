@@ -243,7 +243,7 @@ def command_booking(event, line_bot_api, **kwargs):
             order_flex_message['body']['contents'].append(
                 {
                     'type': 'separator',
-                    'margin': 'none',
+                    'margin': 'sm',
                 }
             )
             order_flex_message['body']['contents'].append(
@@ -260,7 +260,7 @@ def command_booking(event, line_bot_api, **kwargs):
                     'type': 'text',
                     'text': _('Please, wait for the confirmation or tee time offers.'),
                     'wrap': True,
-                    'margin': 'sm',
+                    'margin': 'none',
                     'size': 'sm',
                 }
             )
