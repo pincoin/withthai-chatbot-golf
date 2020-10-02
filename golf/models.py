@@ -420,6 +420,12 @@ class GolfClub(model_utils_models.TimeStampedModel):
         null=True,
     )
 
+    line_rich_menu = models.JSONField(
+        verbose_name=_('LINE rich menu'),
+        blank=True,
+        null=True,
+    )
+
     working_status = models.IntegerField(
         verbose_name=_('Working status'),
         choices=WORKING_CHOICES,
@@ -466,7 +472,6 @@ class GolfClub(model_utils_models.TimeStampedModel):
                 self.info_flex_message = json.load(json_file)
 
                 old_thumbnail_url = self.thumbnail.url
-
 
                 self.info_flex_message['hero']['action']['uri'] = self.website
                 self.info_flex_message['hero']['url'] = f'https://www.withthai.com{self.thumbnail.url}'

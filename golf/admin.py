@@ -95,7 +95,7 @@ class GolfClubAdmin(admin.ModelAdmin):
         ('LINE', {
             'fields': ('line_bot_channel_access_token', 'line_bot_channel_secret', 'line_notify_access_token',
                        'info_flex_message', 'order_flex_message', 'no_order_flex_message',
-                       'liff', 'scorecard')
+                       'liff', 'scorecard', 'line_rich_menu')
         })
     )
     inlines = [LiffAppInline, CustomerGroupInline, SeasonInline, TimeslotInline, GolfClubStaffListInline]
