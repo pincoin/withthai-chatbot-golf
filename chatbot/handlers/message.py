@@ -332,7 +332,7 @@ def command_booking(event, line_bot_api, **kwargs):
                         'style': 'primary',
                         'height': 'sm',
                         'color': '#00acc1',
-                        'margin': 'none'
+                        'margin': 'sm'
                     }
                 ]
             }
@@ -354,7 +354,7 @@ def command_booking(event, line_bot_api, **kwargs):
                                     f'&order_no={order.order_no}&tee_time={tee}',
                             'displayText': _('Accept {} {}').format(round_date_formatted, tee),
                         },
-                        'margin': 'md',
+                        'margin': 'sm',
                         'color': '#039be5',
                         'style': 'primary',
                         'height': 'sm'
