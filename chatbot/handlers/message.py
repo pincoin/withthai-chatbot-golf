@@ -5,6 +5,7 @@ import logging
 from django.template.defaultfilters import date
 from django.urls import reverse
 from django.utils import timezone
+from django.utils import translation
 from django.utils.translation import gettext as _
 from linebot import models
 
@@ -465,7 +466,6 @@ def command_coupons(event, line_bot_api, **kwargs):
         models.TextSendMessage(text='coupons - carousel message'))
 
 
-@decorators.translation_activate
 def command_settings(event, line_bot_api, **kwargs):
     match = kwargs['match']
     golf_club = kwargs['golf_club']
@@ -479,6 +479,8 @@ def command_settings(event, line_bot_api, **kwargs):
 
     line_bot_api.link_rich_menu_to_user(membership.line_user.line_user_id, golf_club.line_rich_menu[match[4]])
 
+    translation.activate(match[4])
+
     line_bot_api.reply_message(
         event.reply_token, [
             models.TextSendMessage(text=_('''Your profile has been saved.
@@ -486,6 +488,8 @@ Customer name: {}
 Email: {}
 Telephone: {}
 Language: {}''').format(match[1], match[2], match[3], match[4]))])
+    
+    translation.deactivate()
 
 
 @decorators.translation_activate
