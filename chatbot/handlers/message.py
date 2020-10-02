@@ -1,6 +1,5 @@
 import copy
 import datetime
-import json
 import logging
 
 from django.template.defaultfilters import date
@@ -390,7 +389,7 @@ def command_booking(event, line_bot_api, **kwargs):
         line_bot_api.reply_message(
             event.reply_token, [
                 models.FlexSendMessage(
-                    alt_text='My Booking List',
+                    alt_text=_('My Booking List'),
                     contents=models.CarouselContainer(contents=order_list))])
 
 
@@ -408,7 +407,7 @@ def command_booking(event, line_bot_api, **kwargs):
         line_bot_api.reply_message(
             event.reply_token, [
                 models.FlexSendMessage(
-                    alt_text='No Booking Yet',
+                    alt_text=_('No Booking Yet'),
                     contents=no_order_flex_message)
             ])
 
@@ -462,7 +461,8 @@ def command_settings(event, line_bot_api, **kwargs):
 
     line_bot_api.reply_message(
         event.reply_token, [
-            models.TextSendMessage(text=f'Your profile has been saved: {match[1]} {match[2]} {match[3]} {match[4]}')])
+            models.TextSendMessage(text=_('Your profile has been saved: {} {} {} {}')
+                                   .format(match[1], match[2], match[3], match[4]))])
 
 
 @decorators.translation_activate

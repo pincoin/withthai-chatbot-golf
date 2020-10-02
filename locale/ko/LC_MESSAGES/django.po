@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-10-02 17:58+0700\n"
+"POT-Creation-Date: 2020-10-02 23:13+0700\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -485,7 +485,8 @@ msgstr ""
 msgid "{} PAX {} CART"
 msgstr "{}명 {}카트"
 
-#: chatbot/handlers/message.py:252
+#: chatbot/handlers/message.py:252 chatbot/handlers/message.py:277
+#: chatbot/handlers/message.py:340
 msgid "Not Confirmed Yet"
 msgstr "미확정 예약건"
 
@@ -494,30 +495,24 @@ msgid "Please, wait for the confirmation or tee time offers."
 msgstr ""
 "확정 티오프 시간 또는 가능한 티오프 시간을 확인하여 알려드릴 예정입니다."
 
-#: chatbot/handlers/message.py:279 chatbot/handlers/message.py:336
-#: chatbot/handlers/message.py:403 chatbot/handlers/message.py:427
-msgid "New Booking Inquiry"
-msgstr "새 예약문의"
-
-#: chatbot/handlers/message.py:300
+#: chatbot/handlers/message.py:286
 msgid "Please, choose tee time as shown below or close your booking."
-msgstr ""
-"원하는 티타임을 선택하세요. 원하는 시간이 없으면 예약을 종료하세요."
+msgstr "원하는 티타임을 선택하세요. 원하는 시간이 없으면 예약을 종료하세요."
 
-#: chatbot/handlers/message.py:319 chatbot/handlers/message.py:321
+#: chatbot/handlers/message.py:306 console/views.py:270
+msgid "Accept {} {}"
+msgstr "예약수락 {} {}"
+
+#: chatbot/handlers/message.py:320 chatbot/handlers/message.py:322
 #: console/views.py:274 console/views.py:276
 msgid "Close Booking"
 msgstr "예약종료"
 
-#: chatbot/handlers/message.py:363 console/views.py:270
-msgid "Accept {} {}"
-msgstr "예약수락 {} {}"
-
-#: chatbot/handlers/message.py:385
+#: chatbot/handlers/message.py:349
 msgid "Please, wait for the confirmation."
 msgstr "골프장 담당자가 최종 예약확정 후 회신드립니다."
 
-#: chatbot/handlers/message.py:439
+#: chatbot/handlers/message.py:356
 #: console/templates/console/golf_booking_order_detail.html:77
 #: console/templates/console/golf_booking_order_detail.html:351
 #: console/templates/console/golf_booking_order_detail.html:406
@@ -525,23 +520,31 @@ msgstr "골프장 담당자가 최종 예약확정 후 회신드립니다."
 msgid "Total"
 msgstr "합계"
 
-#: chatbot/handlers/message.py:440
+#: chatbot/handlers/message.py:357
 msgid "{0:,.0f} THB"
 msgstr "{0:,.0f} 바트"
 
-#: chatbot/handlers/message.py:446
+#: chatbot/handlers/message.py:363
 msgid "{0:,.0f} x {1} = {2:,.0f} THB"
 msgstr "{0:,.0f} x {1} = {2:,.0f} 바트"
 
-#: chatbot/handlers/message.py:464
+#: chatbot/handlers/message.py:375
+msgid "New Booking Inquiry"
+msgstr "새 예약문의"
+
+#: chatbot/handlers/message.py:392
+msgid "My Booking List"
+msgstr "나의 예약목록"
+
+#: chatbot/handlers/message.py:399
 msgid "No Tee Time Booking Yet"
 msgstr "예약 없음"
 
-#: chatbot/handlers/message.py:465
+#: chatbot/handlers/message.py:400
 msgid "Please, book a new golf tee time."
 msgstr "티타임 예약문의 가능합니다."
 
-#: chatbot/handlers/message.py:466
+#: chatbot/handlers/message.py:401
 #: liff/templates/liff/booking_create_form.html:171
 #: liff/templates/liff/golf_booking_create_form.html:195
 #: liff/templates/liff/golf_booking_create_form.html:205
@@ -553,6 +556,14 @@ msgstr "티타임 예약문의 가능합니다."
 #: liff/templates/liff/golf_booking_settings.html:229 liff/views.py:40
 msgid "New Booking"
 msgstr "예약문의"
+
+#: chatbot/handlers/message.py:410
+msgid "No Booking Yet"
+msgstr "예약 없음"
+
+#: chatbot/handlers/message.py:464
+msgid "Your profile has been saved: {} {} {} {}"
+msgstr "프로필을 저장했습니다: {} {} {} {}"
 
 #: chatbot/models.py:8
 msgid "Request header"
