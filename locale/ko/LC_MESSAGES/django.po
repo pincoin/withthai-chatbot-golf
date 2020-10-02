@@ -515,7 +515,7 @@ msgstr "예약수락 {} {}"
 
 #: chatbot/handlers/message.py:385
 msgid "Please, wait for the confirmation."
-msgstr "골프장 담당자가 예약확정 후 회신드립니다."
+msgstr "골프장 담당자가 최종 예약확정 후 회신드립니다."
 
 #: chatbot/handlers/message.py:439
 #: console/templates/console/golf_booking_order_detail.html:77
