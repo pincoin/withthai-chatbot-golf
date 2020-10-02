@@ -435,6 +435,7 @@ def command_course(event, line_bot_api, **kwargs):
     info_flex_message['body']['contents'][7]['contents'][4]['action']['label'] = _('Food')
 
     info_flex_message['body']['contents'][8]['contents'][0]['action']['label'] = _('Settings')
+    info_flex_message['body']['contents'][8]['contents'][0]['action']['uri'] += f'?lang={membership.line_user.lang}'
 
     line_bot_api.reply_message(
         event.reply_token, [
