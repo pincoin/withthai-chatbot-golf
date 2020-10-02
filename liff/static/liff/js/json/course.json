@@ -1,18 +1,6 @@
 {
   "type": "bubble",
   "size": "giga",
-  "hero": {
-    "type": "image",
-    "url": "https://storage.googleapis.com/hotels2thailand-storage/pictures/products/01465701-183899-original.jpg",
-    "size": "full",
-    "aspectMode": "cover",
-    "aspectRatio": "2:1",
-    "action": {
-      "type": "uri",
-      "label": "action",
-      "uri": ""
-    }
-  },
   "body": {
     "type": "box",
     "layout": "vertical",
