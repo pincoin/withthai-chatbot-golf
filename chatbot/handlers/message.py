@@ -265,25 +265,21 @@ def command_booking(event, line_bot_api, **kwargs):
                     'size': 'sm',
                 }
             )
-            order_flex_message['footer'] = {
-                'type': 'box',
-                'layout': 'vertical',
-                'contents': [
-                    {
-                        'type': 'button',
-                        'action': {
-                            'type': 'uri',
-                            'label': _('New Booking Inquiry'),
-                            'uri': f"https://liff.line.me/{golf_club.liff['request']['id']}"
-                                   f'?lang={membership.line_user.lang}'
-                        },
-                        'style': 'primary',
-                        'height': 'sm',
-                        'color': '#00acc1',
-                        'margin': 'sm'
-                    }
-                ]
-            }
+            order_flex_message['body']['contents'].append(
+                {
+                    'type': 'button',
+                    'action': {
+                        'type': 'uri',
+                        'label': _('New Booking Inquiry'),
+                        'uri': f"https://liff.line.me/{golf_club.liff['request']['id']}"
+                               f'?lang={membership.line_user.lang}'
+                    },
+                    'style': 'primary',
+                    'height': 'sm',
+                    'color': '#00acc1',
+                    'margin': 'sm'
+                }
+            )
         elif order.order_status == order.ORDER_STATUS_CHOICES.offered:
             order_flex_message['body']['contents'].append(
                 {
@@ -436,8 +432,6 @@ def command_booking(event, line_bot_api, **kwargs):
             del order_flex_message['body']['contents'][6]
 
         order_list.append(order_flex_message)
-
-        tasks.send_notification_line.delay(golf_club.line_notify_access_token, json.dumps(order_flex_message))
 
         tasks.send_notification_email('order', json.dumps(order_flex_message), 'test@withthai.com',
                                       'jonghwa@withthai.com')
