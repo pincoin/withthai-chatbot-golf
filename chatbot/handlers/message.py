@@ -283,7 +283,7 @@ def command_booking(event, line_bot_api, **kwargs):
                         'style': 'primary',
                         'height': 'sm',
                         'color': '#00acc1',
-                        'margin': 'sm'
+                        'margin': 'none'
                     }
                 ]
             }
