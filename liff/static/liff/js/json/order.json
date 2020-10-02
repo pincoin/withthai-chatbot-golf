@@ -38,13 +38,15 @@
             "type": "text",
             "text": "",
             "flex": 4,
-            "color": "#145374"
+            "color": "#145374",
+            "size": "sm"
           },
           {
             "type": "text",
             "text": "",
             "flex": 0,
-            "color": "#7d0633"
+            "color": "#7d0633",
+            "size": "sm"
           }
         ],
         "margin": "lg"
