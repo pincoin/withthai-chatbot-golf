@@ -169,7 +169,8 @@ def command_new(event, line_bot_api, **kwargs):
     round_date_formatted = date(round_date, 'Y-m-d')
     round_time_formatted = date(round_time, 'H:i')
 
-    golf_utils.log_order_status(order,
+    golf_utils.log_order_status(None,
+                                order,
                                 golf_models.GolfBookingOrder.ORDER_STATUS_CHOICES.open,
                                 golf_models.GolfBookingOrder.PAYMENT_STATUS_CHOICES.unpaid,
                                 f'{round_date_formatted} {round_time_formatted}\n'
