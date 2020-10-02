@@ -502,7 +502,7 @@ msgstr "새 예약 문의"
 #: chatbot/handlers/message.py:300
 msgid "Please, choose tee time as shown below or close your booking."
 msgstr ""
-"원하시는 티타임을 선택하시거나 원하는 시간이 없을 경우 예약을 종료하세요."
+"원하는 티타임을 선택하세요. 원하는 시간이 없으면 예약을 종료하세요."
 
 #: chatbot/handlers/message.py:319 chatbot/handlers/message.py:321
 #: console/views.py:274 console/views.py:276
@@ -1093,7 +1093,7 @@ msgid ""
 msgstr ""
 "티오프 제안\n"
 "\n"
-"원하시는 티타임을 선택하시거나 원하는 시간이 없을 경우 예약을 종료하세요.\n"
+"원하는 티타임을 선택하세요. 원하는 시간이 없으면 예약을 종료하세요.\n"
 "\n"
 "감사합니다."
 
