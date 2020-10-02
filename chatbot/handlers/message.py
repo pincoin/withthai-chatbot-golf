@@ -1,5 +1,6 @@
 import copy
 import datetime
+import json
 import logging
 
 from django.template.defaultfilters import date
@@ -436,12 +437,16 @@ def command_booking(event, line_bot_api, **kwargs):
 
         order_list.append(order_flex_message)
 
+        tasks.send_notification_line.delay(golf_club.line_notify_access_token, json.dumps(order_flex_message))
+
     if orders:
         line_bot_api.reply_message(
             event.reply_token, [
                 models.FlexSendMessage(
                     alt_text='My Booking List',
                     contents=models.CarouselContainer(contents=order_list))])
+
+
 
     else:
         no_order_flex_message = copy.deepcopy(golf_club.no_order_flex_message)
