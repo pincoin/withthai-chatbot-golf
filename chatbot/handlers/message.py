@@ -265,21 +265,6 @@ def command_booking(event, line_bot_api, **kwargs):
                     'size': 'xs',
                 }
             )
-            order_flex_message['body']['contents'].append(
-                {
-                    'type': 'button',
-                    'action': {
-                        'type': 'uri',
-                        'label': _('New Booking Inquiry'),
-                        'uri': f"https://liff.line.me/{golf_club.liff['request']['id']}"
-                               f'?lang={membership.line_user.lang}'
-                    },
-                    'style': 'primary',
-                    'height': 'sm',
-                    'color': '#00acc1',
-                    'margin': 'lg'
-                }
-            )
         elif order.order_status == order.ORDER_STATUS_CHOICES.offered:
             order_flex_message['body']['contents'].append(
                 {
@@ -290,10 +275,19 @@ def command_booking(event, line_bot_api, **kwargs):
             order_flex_message['body']['contents'].append(
                 {
                     'type': 'text',
-                    'text': _('Please, choose tee time as shown below or close your booking.'),
-                    'wrap': True,
+                    'text': _('Not Confirmed Yet'),
+                    'color': '#b71c1c',
                     'margin': 'sm',
                     'size': 'sm',
+                }
+            )
+            order_flex_message['body']['contents'].append(
+                {
+                    'type': 'text',
+                    'text': _('Please, choose tee time as shown below or close your booking.'),
+                    'wrap': True,
+                    'margin': 'none',
+                    'size': 'xs',
                 }
             )
 
@@ -318,19 +312,6 @@ def command_booking(event, line_bot_api, **kwargs):
                         'type': 'separator',
                         'margin': 'sm'
                     },
-                    {
-                        'type': 'button',
-                        'action': {
-                            'type': 'uri',
-                            'label': _('New Booking Inquiry'),
-                            'uri': f"https://liff.line.me/{golf_club.liff['request']['id']}"
-                                   f'?lang={membership.line_user.lang}'
-                        },
-                        'style': 'primary',
-                        'height': 'sm',
-                        'color': '#00acc1',
-                        'margin': 'sm'
-                    }
                 ]
             }
 
@@ -377,45 +358,6 @@ def command_booking(event, line_bot_api, **kwargs):
                     'size': 'sm',
                 }
             )
-            order_flex_message['footer'] = {
-                'type': 'box',
-                'layout': 'vertical',
-                'contents': [
-                    {
-                        'type': 'button',
-                        'action': {
-                            'type': 'uri',
-                            'label': _('New Booking Inquiry'),
-                            'uri': f"https://liff.line.me/{golf_club.liff['request']['id']}"
-                                   f'?lang={membership.line_user.lang}'
-                        },
-                        'style': 'primary',
-                        'height': 'sm',
-                        'color': '#00acc1',
-                        'margin': 'none'
-                    }
-                ]
-            }
-        else:
-            order_flex_message['footer'] = {
-                'type': 'box',
-                'layout': 'vertical',
-                'contents': [
-                    {
-                        'type': 'button',
-                        'action': {
-                            'type': 'uri',
-                            'label': _('New Booking Inquiry'),
-                            'uri': f"https://liff.line.me/{golf_club.liff['request']['id']}"
-                                   f'?lang={membership.line_user.lang}'
-                        },
-                        'style': 'primary',
-                        'height': 'sm',
-                        'color': '#00acc1',
-                        'margin': 'none'
-                    }
-                ]
-            }
 
         order_flex_message['body']['contents'][8]['contents'][0]['text'] = _('Total')
         order_flex_message['body']['contents'][8]['contents'][1]['text'] = _('{0:,.0f} THB') \
@@ -430,6 +372,22 @@ def command_booking(event, line_bot_api, **kwargs):
 
         if order.cart == 0:
             del order_flex_message['body']['contents'][6]
+
+        order_flex_message['body']['contents'].append(
+            {
+                'type': 'button',
+                'action': {
+                    'type': 'uri',
+                    'label': _('New Booking Inquiry'),
+                    'uri': f"https://liff.line.me/{golf_club.liff['request']['id']}"
+                           f'?lang={membership.line_user.lang}'
+                },
+                'style': 'primary',
+                'height': 'sm',
+                'color': '#00acc1',
+                'margin': 'lg'
+            }
+        )
 
         order_list.append(order_flex_message)
 
