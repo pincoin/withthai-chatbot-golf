@@ -301,7 +301,7 @@ def command_booking(event, line_bot_api, **kwargs):
                         'type': 'button',
                         'action': {
                             'type': 'postback',
-                            'label': f'{round_date_formatted} {tee}',
+                            'label': f'{tee}',
                             'data': f'action=accept&golf_club={order.golf_club.slug}'
                                     f'&order_no={order.order_no}&tee_time={tee}',
                             'displayText': _('Accept {} {}').format(round_date_formatted, tee),
@@ -322,7 +322,7 @@ def command_booking(event, line_bot_api, **kwargs):
                         'data': f'action=close&golf_club={order.golf_club.slug}&order_no={order.order_no}',
                         'displayText': _('Close Booking')
                     },
-                    'margin': 'lg',
+                    'margin': 'md',
                     'height': 'sm',
                     'style': 'primary',
                     'color': '#e53935'
@@ -385,9 +385,6 @@ def command_booking(event, line_bot_api, **kwargs):
         )
 
         order_list.append(order_flex_message)
-
-        tasks.send_notification_email('order', json.dumps(order_flex_message), 'test@withthai.com',
-                                      'jonghwa@withthai.com')
 
     if orders:
         line_bot_api.reply_message(
