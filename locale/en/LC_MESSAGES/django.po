@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-10-01 22:49+0700\n"
+"POT-Creation-Date: 2020-10-02 17:58+0700\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -450,13 +450,13 @@ msgstr ""
 msgid "Invalid Booking Data"
 msgstr "Booking Date"
 
-#: chatbot/handlers/message.py:191
+#: chatbot/handlers/message.py:192
 msgid ""
 "We will notify you of the available tee-off date/time within 15 minutes."
 msgstr ""
 "We will notify you of the available tee-off date/time within 15 minutes."
 
-#: chatbot/handlers/message.py:193
+#: chatbot/handlers/message.py:194
 msgid ""
 "We will notify you of the available tee-off date/time after 8 am tomorrow "
 "morning."
@@ -464,7 +464,7 @@ msgstr ""
 "We will notify you of the available tee-off date/time after 8 am tomorrow "
 "morning."
 
-#: chatbot/handlers/message.py:195
+#: chatbot/handlers/message.py:196
 msgid ""
 "We will notify you of the available tee-off date/time after 8 am this "
 "morning."
@@ -472,7 +472,7 @@ msgstr ""
 "We will notify you of the available tee-off date/time after 8 am this "
 "morning."
 
-#: chatbot/handlers/message.py:198
+#: chatbot/handlers/message.py:199
 msgid ""
 "New Booking\n"
 "\n"
@@ -484,61 +484,69 @@ msgid ""
 "Thank you."
 msgstr ""
 
-#: chatbot/handlers/message.py:235
+#: chatbot/handlers/message.py:236
 msgid "{} PAX {} CART"
 msgstr ""
 
-#: chatbot/handlers/message.py:251
+#: chatbot/handlers/message.py:252
 #, fuzzy
 #| msgid "Confirmed"
 msgid "Not Confirmed Yet"
 msgstr "Confirmed"
 
-#: chatbot/handlers/message.py:259
+#: chatbot/handlers/message.py:261
 msgid "Please, wait for the confirmation or tee time offers."
 msgstr ""
 
-#: chatbot/handlers/message.py:276 chatbot/handlers/message.py:332
-#: chatbot/handlers/message.py:398 chatbot/handlers/message.py:422
+#: chatbot/handlers/message.py:279 chatbot/handlers/message.py:336
+#: chatbot/handlers/message.py:403 chatbot/handlers/message.py:427
 #, fuzzy
 #| msgid "Booking confirmed"
 msgid "New Booking Inquiry"
 msgstr "Confirmed"
 
-#: chatbot/handlers/message.py:297
+#: chatbot/handlers/message.py:300
 msgid "Please, choose tee time as shown below or close your booking."
 msgstr ""
 
-#: chatbot/handlers/message.py:315 chatbot/handlers/message.py:317
+#: chatbot/handlers/message.py:319 chatbot/handlers/message.py:321
 #: console/views.py:274 console/views.py:276
 msgid "Close Booking"
 msgstr "All"
 
-#: chatbot/handlers/message.py:359 console/views.py:270
+#: chatbot/handlers/message.py:363 console/views.py:270
 msgid "Accept {} {}"
 msgstr ""
 
-#: chatbot/handlers/message.py:381
+#: chatbot/handlers/message.py:385
 msgid "Please, wait for the confirmation."
 msgstr ""
 
-#: chatbot/handlers/message.py:434
-msgid "{0:,.0f} THB"
+#: chatbot/handlers/message.py:439
+#: console/templates/console/golf_booking_order_detail.html:77
+#: console/templates/console/golf_booking_order_detail.html:351
+#: console/templates/console/golf_booking_order_detail.html:406
+#: console/templates/console/golf_booking_order_detail.html:461
+msgid "Total"
 msgstr ""
 
 #: chatbot/handlers/message.py:440
+msgid "{0:,.0f} THB"
+msgstr ""
+
+#: chatbot/handlers/message.py:446
 msgid "{0:,.0f} x {1} = {2:,.0f} THB"
 msgstr ""
 
-#: chatbot/handlers/message.py:458
+#: chatbot/handlers/message.py:464
 msgid "No Tee Time Booking Yet"
 msgstr ""
 
-#: chatbot/handlers/message.py:459
+#: chatbot/handlers/message.py:465
 msgid "Please, book a new golf tee time."
 msgstr ""
 
-#: chatbot/handlers/message.py:460
+#: chatbot/handlers/message.py:466
 #: liff/templates/liff/booking_create_form.html:171
 #: liff/templates/liff/golf_booking_create_form.html:195
 #: liff/templates/liff/golf_booking_create_form.html:205
@@ -732,13 +740,6 @@ msgstr ""
 #: console/templates/console/golf_booking_order_detail.html:455
 #: golf/models.py:955
 msgid "Cart"
-msgstr ""
-
-#: console/templates/console/golf_booking_order_detail.html:77
-#: console/templates/console/golf_booking_order_detail.html:351
-#: console/templates/console/golf_booking_order_detail.html:406
-#: console/templates/console/golf_booking_order_detail.html:461
-msgid "Total"
 msgstr ""
 
 #: console/templates/console/golf_booking_order_detail.html:86

@@ -251,7 +251,8 @@ def command_booking(event, line_bot_api, **kwargs):
                     'type': 'text',
                     'text': _('Not Confirmed Yet'),
                     'color': '#b71c1c',
-                    'margin': 'md'
+                    'margin': 'md',
+                    'size': 'sm',
                 }
             )
             order_flex_message['body']['contents'].append(
@@ -259,7 +260,8 @@ def command_booking(event, line_bot_api, **kwargs):
                     'type': 'text',
                     'text': _('Please, wait for the confirmation or tee time offers.'),
                     'wrap': True,
-                    'margin': 'md'
+                    'margin': 'md',
+                    'size': 'sm',
                 }
             )
             order_flex_message['footer'] = {
@@ -297,7 +299,8 @@ def command_booking(event, line_bot_api, **kwargs):
                     'type': 'text',
                     'text': _('Please, choose tee time as shown below or close your booking.'),
                     'wrap': True,
-                    'margin': 'md'
+                    'margin': 'md',
+                    'size': 'sm',
                 }
             )
 
@@ -381,7 +384,8 @@ def command_booking(event, line_bot_api, **kwargs):
                     'type': 'text',
                     'text': _('Please, wait for the confirmation.'),
                     'wrap': True,
-                    'margin': 'md'
+                    'margin': 'md',
+                    'size': 'sm',
                 }
             )
             order_flex_message['footer'] = {
@@ -432,6 +436,7 @@ def command_booking(event, line_bot_api, **kwargs):
                 ]
             }
 
+        order_flex_message['body']['contents'][8]['contents'][0]['text'] = _('Total')
         order_flex_message['body']['contents'][8]['contents'][1]['text'] = _('{0:,.0f} THB') \
             .format(order.total_selling_price)
 
