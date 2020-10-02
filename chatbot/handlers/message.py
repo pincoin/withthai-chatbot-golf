@@ -269,10 +269,6 @@ def command_booking(event, line_bot_api, **kwargs):
                 'layout': 'vertical',
                 'contents': [
                     {
-                        'type': 'separator',
-                        'margin': 'none'
-                    },
-                    {
                         'type': 'button',
                         'action': {
                             'type': 'uri',
@@ -291,7 +287,7 @@ def command_booking(event, line_bot_api, **kwargs):
             order_flex_message['body']['contents'].append(
                 {
                     'type': 'separator',
-                    'margin': 'xl',
+                    'margin': 'sm',
                 }
             )
             order_flex_message['body']['contents'].append(
@@ -299,7 +295,7 @@ def command_booking(event, line_bot_api, **kwargs):
                     'type': 'text',
                     'text': _('Please, choose tee time as shown below or close your booking.'),
                     'wrap': True,
-                    'margin': 'md',
+                    'margin': 'sm',
                     'size': 'sm',
                 }
             )
@@ -308,10 +304,6 @@ def command_booking(event, line_bot_api, **kwargs):
                 'type': 'box',
                 'layout': 'vertical',
                 'contents': [
-                    {
-                        'type': 'separator',
-                        'margin': 'xl'
-                    },
                     {
                         'type': 'button',
                         'action': {
@@ -327,7 +319,7 @@ def command_booking(event, line_bot_api, **kwargs):
                     },
                     {
                         'type': 'separator',
-                        'margin': 'xl'
+                        'margin': 'sm'
                     },
                     {
                         'type': 'button',
@@ -340,7 +332,7 @@ def command_booking(event, line_bot_api, **kwargs):
                         'style': 'primary',
                         'height': 'sm',
                         'color': '#00acc1',
-                        'margin': 'md'
+                        'margin': 'none'
                     }
                 ]
             }
@@ -376,7 +368,7 @@ def command_booking(event, line_bot_api, **kwargs):
             order_flex_message['body']['contents'].append(
                 {
                     'type': 'separator',
-                    'margin': 'xl',
+                    'margin': 'sm',
                 }
             )
             order_flex_message['body']['contents'].append(
@@ -384,7 +376,7 @@ def command_booking(event, line_bot_api, **kwargs):
                     'type': 'text',
                     'text': _('Please, wait for the confirmation.'),
                     'wrap': True,
-                    'margin': 'md',
+                    'margin': 'sm',
                     'size': 'sm',
                 }
             )
@@ -392,10 +384,6 @@ def command_booking(event, line_bot_api, **kwargs):
                 'type': 'box',
                 'layout': 'vertical',
                 'contents': [
-                    {
-                        'type': 'separator',
-                        'margin': 'md'
-                    },
                     {
                         'type': 'button',
                         'action': {
@@ -407,7 +395,7 @@ def command_booking(event, line_bot_api, **kwargs):
                         'style': 'primary',
                         'height': 'sm',
                         'color': '#00acc1',
-                        'margin': 'md'
+                        'margin': 'none'
                     }
                 ]
             }
@@ -417,10 +405,6 @@ def command_booking(event, line_bot_api, **kwargs):
                 'layout': 'vertical',
                 'contents': [
                     {
-                        'type': 'separator',
-                        'margin': 'md'
-                    },
-                    {
                         'type': 'button',
                         'action': {
                             'type': 'uri',
@@ -431,7 +415,7 @@ def command_booking(event, line_bot_api, **kwargs):
                         'style': 'primary',
                         'height': 'sm',
                         'color': '#00acc1',
-                        'margin': 'md'
+                        'margin': 'none'
                     }
                 ]
             }
