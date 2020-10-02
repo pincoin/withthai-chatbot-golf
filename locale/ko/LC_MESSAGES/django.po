@@ -497,7 +497,7 @@ msgstr ""
 #: chatbot/handlers/message.py:279 chatbot/handlers/message.py:336
 #: chatbot/handlers/message.py:403 chatbot/handlers/message.py:427
 msgid "New Booking Inquiry"
-msgstr "새 예약 문의"
+msgstr "새 예약문의"
 
 #: chatbot/handlers/message.py:300
 msgid "Please, choose tee time as shown below or close your booking."
@@ -539,7 +539,7 @@ msgstr "예약 없음"
 
 #: chatbot/handlers/message.py:465
 msgid "Please, book a new golf tee time."
-msgstr "티타임 예약 문의 가능합니다."
+msgstr "티타임 예약문의 가능합니다."
 
 #: chatbot/handlers/message.py:466
 #: liff/templates/liff/booking_create_form.html:171
@@ -552,7 +552,7 @@ msgstr "티타임 예약 문의 가능합니다."
 #: liff/templates/liff/golf_booking_settings.html:213
 #: liff/templates/liff/golf_booking_settings.html:229 liff/views.py:40
 msgid "New Booking"
-msgstr "예약 문의"
+msgstr "예약문의"
 
 #: chatbot/models.py:8
 msgid "Request header"
