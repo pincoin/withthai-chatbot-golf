@@ -7,12 +7,11 @@ class LiffContextMixin:
     def dispatch(self, request, *args, **kwargs):
         self.golf_club = golf_models.GolfClub.objects.get(slug=self.kwargs['slug'])
 
-        self.liff_id = self.golf_club.liff[self.app_name]['id']
-
         request.LANG = 'en'
 
-        if 'lang' in request.GET and request.GET['lang'] in ['en', 'th', 'ko', 'cn', 'jp']:
-            request.LANG = request.GET['lang']
+        if self.kwargs['lang'] in ['en', 'th', 'ko', 'cn', 'jp']:
+            request.LANG = self.kwargs['lang']
+            self.liff_id = self.golf_club.liff[self.app_name][request.LANG]['id']
 
         translation.activate(request.LANG)
         request.LANGUAGE_CODE = request.LANG

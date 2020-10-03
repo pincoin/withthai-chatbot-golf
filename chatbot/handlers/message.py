@@ -374,8 +374,7 @@ def command_booking(event, line_bot_api, **kwargs):
                 'action': {
                     'type': 'uri',
                     'label': _('New Booking Inquiry'),
-                    'uri': f"https://liff.line.me/{golf_club.liff['request']['id']}"
-                           f'?lang={membership.line_user.lang}'
+                    'uri': f"https://liff.line.me/{golf_club.liff['request'][{membership.line_user.lang}]['id']}"
                 },
                 'style': 'primary',
                 'height': 'sm',
@@ -402,8 +401,7 @@ def command_booking(event, line_bot_api, **kwargs):
         no_order_flex_message['body']['contents'][2]['action']['label'] = _('New Booking')
 
         no_order_flex_message['body']['contents'][2]['action']['uri'] \
-            = f"https://liff.line.me/{golf_club.liff['request']['id']}" \
-              f'?lang={membership.line_user.lang}'
+            = f"https://liff.line.me/{golf_club.liff['request'][{membership.line_user.lang}]['id']}"
 
         line_bot_api.reply_message(
             event.reply_token, [
@@ -488,7 +486,7 @@ Customer name: {}
 Email: {}
 Telephone: {}
 Language: {}''').format(match[1], match[2], match[3], match[4]))])
-    
+
     translation.deactivate()
 
 

@@ -32,9 +32,17 @@ def liff_app_post_save(sender, instance, **kwargs):
 
     app_dict = {}
     for app in apps:
-        app_dict[app.title] = {
-            'id': app.app_id,
-            'endpoint_url': app.end_point_url,
-        }
+        if app.title not in app_dict:
+            app_dict[app.title] = {
+                app.lang: {
+                    'id': app.app_id,
+                    'endpoint_url': app.end_point_url,
+                }
+            }
+        else:
+            app_dict[app.title][app.lang] = {
+                'id': app.app_id,
+                'endpoint_url': app.end_point_url,
+            }
 
     models.GolfClub.objects.filter(slug=instance.golf_club.slug).update(liff=app_dict)

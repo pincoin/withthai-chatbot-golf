@@ -6,6 +6,7 @@ from . import models
 
 class LiffAppInline(admin.TabularInline):
     model = models.LiffApp
+    ordering = ['title', 'lang']
     extra = 1
 
 

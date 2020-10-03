@@ -52,7 +52,7 @@ class Command(BaseCommand):
                 models.RichMenuArea(
                     bounds=models.RichMenuBounds(x=833, y=0, width=834, height=843),
                     action=models.URIAction(label='Price Table',
-                                            uri=f"https://liff.line.me/{club.liff['price']['id']}?lang=en"), ),
+                                            uri=f"https://liff.line.me/{club.liff['price']['en']['id']}"), ),
                 models.RichMenuArea(
                     bounds=models.RichMenuBounds(x=1667, y=0, width=833, height=843),
                     action=models.MessageAction(label='Course', text='Course'), ),
@@ -92,7 +92,7 @@ class Command(BaseCommand):
                 models.RichMenuArea(
                     bounds=models.RichMenuBounds(x=833, y=0, width=834, height=843),
                     action=models.URIAction(label='요금표',
-                                            uri=f"https://liff.line.me/{club.liff['price']['id']}?lang=ko"), ),
+                                            uri=f"https://liff.line.me/{club.liff['price']['ko']['id']}"), ),
                 models.RichMenuArea(
                     bounds=models.RichMenuBounds(x=1667, y=0, width=833, height=843),
                     action=models.MessageAction(label='골프장', text='Course'), ),
@@ -128,7 +128,7 @@ class Command(BaseCommand):
                 models.RichMenuArea(
                     bounds=models.RichMenuBounds(x=833, y=0, width=834, height=843),
                     action=models.URIAction(label='Price Table',
-                                            uri=f"https://liff.line.me/{club.liff['price']['id']}?lang=th"), ),
+                                            uri=f"https://liff.line.me/{club.liff['price']['th']['id']}"), ),
                 models.RichMenuArea(
                     bounds=models.RichMenuBounds(x=1667, y=0, width=833, height=843),
                     action=models.MessageAction(label='Course', text='Course'), ),
@@ -150,6 +150,7 @@ class Command(BaseCommand):
         with open(Path(options['rich_menu_image_path'][0]), 'rb') as f:
             line_bot_api.set_rich_menu_image(rich_menu_id, 'image/png', f)
 
+        '''
         # Create rich menu (Japanese)
         rich_menu_id = line_bot_api.create_rich_menu(rich_menu=models.RichMenu(
             size=models.RichMenuSize(width=2500, height=1686),
@@ -164,7 +165,7 @@ class Command(BaseCommand):
                 models.RichMenuArea(
                     bounds=models.RichMenuBounds(x=833, y=0, width=834, height=843),
                     action=models.URIAction(label='Price Table',
-                                            uri=f"https://liff.line.me/{club.liff['price']['id']}?lang=jp"), ),
+                                            uri=f"https://liff.line.me/{club.liff['price']['jp']['id']}"), ),
                 models.RichMenuArea(
                     bounds=models.RichMenuBounds(x=1667, y=0, width=833, height=843),
                     action=models.MessageAction(label='Course', text='Course'), ),
@@ -200,7 +201,7 @@ class Command(BaseCommand):
                 models.RichMenuArea(
                     bounds=models.RichMenuBounds(x=833, y=0, width=834, height=843),
                     action=models.URIAction(label='Price Table',
-                                            uri=f"https://liff.line.me/{club.liff['price']['id']}?lang=cn"), ),
+                                            uri=f"https://liff.line.me/{club.liff['price']['cn']['id']}"), ),
                 models.RichMenuArea(
                     bounds=models.RichMenuBounds(x=1667, y=0, width=833, height=843),
                     action=models.MessageAction(label='Course', text='Course'), ),
@@ -221,6 +222,7 @@ class Command(BaseCommand):
         # Upload image and attach it to rich menu
         with open(Path(options['rich_menu_image_path'][0]), 'rb') as f:
             line_bot_api.set_rich_menu_image(rich_menu_id, 'image/png', f)
+        '''
 
         # Save rich menu json field
         club.line_rich_menu = line_rich_menu

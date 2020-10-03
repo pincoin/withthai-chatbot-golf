@@ -8,15 +8,15 @@ urlpatterns = [
     path('<slug:slug>/sample/',
          views.SampleView.as_view(), name='sample'),
 
-    path('<slug:slug>/request/',
+    path('<slug:slug>/request/<str:lang>/',
          views.GolfBookingCreateFormView.as_view(), name='request'),
 
-    path('<slug:slug>/settings/',
+    path('<slug:slug>/settings/<str:lang>/',
          views.GolfBookingSettingsFormView.as_view(), name='settings'),
 
-    path('<slug:slug>/price/',
+    path('<slug:slug>/price/<str:lang>/',
          views.GolfPriceTableTemplateView.as_view(), name='price'),
 
-    path('<slug:slug>/scorecard/',
+    path('<slug:slug>/scorecard/<str:lang>/',
          views.GolfScorecardTemplateView.as_view(), name='scorecard'),
 ]
