@@ -428,14 +428,16 @@ def command_course(event, line_bot_api, **kwargs):
     info_flex_message['body']['contents'][6]['contents'][0]['action']['label'] = _('Location')
     info_flex_message['body']['contents'][6]['contents'][2]['action']['label'] = _('Layout')
     info_flex_message['body']['contents'][6]['contents'][4]['action']['label'] = _('Scorecard')
-    info_flex_message['body']['contents'][6]['contents'][4]['action']['uri'] += f'?lang={membership.line_user.lang}'
+    info_flex_message['body']['contents'][6]['contents'][4]['action']['uri'] \
+        = 'https://liff.line.me/{}'.format(golf_club.liff['scorecard'][membership.line_user.lang]['id'])
 
     info_flex_message['body']['contents'][7]['contents'][0]['action']['label'] = _('Caddies')
     info_flex_message['body']['contents'][7]['contents'][2]['action']['label'] = _('Hotels')
     info_flex_message['body']['contents'][7]['contents'][4]['action']['label'] = _('Food')
 
     info_flex_message['body']['contents'][8]['contents'][0]['action']['label'] = _('Settings')
-    info_flex_message['body']['contents'][8]['contents'][0]['action']['uri'] += f'?lang={membership.line_user.lang}'
+    info_flex_message['body']['contents'][8]['contents'][0]['action']['uri'] \
+        = 'https://liff.line.me/{}'.format(golf_club.liff['settings'][membership.line_user.lang]['id'])
 
     line_bot_api.reply_message(
         event.reply_token, [

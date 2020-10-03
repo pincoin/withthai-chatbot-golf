@@ -480,14 +480,14 @@ class GolfClub(model_utils_models.TimeStampedModel):
 
                 if 'scorecard' in self.liff:
                     self.info_flex_message['body']['contents'][6]['contents'][4]['action']['uri'] \
-                        = f"https://liff.line.me/{self.liff['scorecard']['en']['id']}/en/"
+                        = f"https://liff.line.me/{self.liff['scorecard']['en']['id']}"
                 else:
                     self.info_flex_message['body']['contents'][6]['contents'][4]['action']['uri'] \
                         = f"https://liff.line.me/"
 
                 if 'settings' in self.liff:
                     self.info_flex_message['body']['contents'][8]['contents'][0]['action']['uri'] \
-                        = f"https://liff.line.me/{self.liff['settings']['en']['id']}/en/"
+                        = f"https://liff.line.me/{self.liff['settings']['en']['id']}"
                 else:
                     self.info_flex_message['body']['contents'][8]['contents'][0]['action']['uri'] \
                         = f"https://liff.line.me/"
