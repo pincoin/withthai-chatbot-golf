@@ -44,6 +44,15 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
 # Email reports
 ADMINS = [('devops', 'dev@withthai.com'), ]
 
+# Cache
+CACHES = {
+    'default': {
+        'BACKEND': 'django.core.cache.backends.dummy.DummyCache',
+        'LOCATION': '127.0.0.1:11211',
+        'TIMEOUT': 300,
+    }
+}
+
 # Logging
 LOGGING = {
     'version': 1,
