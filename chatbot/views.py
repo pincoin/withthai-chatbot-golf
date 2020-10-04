@@ -48,17 +48,24 @@ class CallbackView(generic.View):
             text = event.message.text.strip()
             text_lowercase = text.lower()
 
+            cache_key = f'chatbot.membership({event.source.user_id}, {golf_club.id})'
+            cache_time = settings.CACHES['default']['TIMEOUT86400']
+
+            membership = cache.get(cache_key)
+
             # Retrieve LINE user
-            try:
-                membership = golf_models.LineUserMembership.objects \
-                    .select_related('line_user', 'customer_group') \
-                    .get(line_user__line_user_id=event.source.user_id,
-                         customer_group__golf_club=golf_club)
-            except golf_models.LineUserMembership.DoesNotExist:
-                self.line_bot_api.reply_message(
-                    event.reply_token,
-                    models.TextSendMessage(text='Invalid Golf Course or LINE ID'))
-                return
+            if not membership:
+                try:
+                    membership = golf_models.LineUserMembership.objects \
+                        .select_related('line_user', 'customer_group') \
+                        .get(line_user__line_user_id=event.source.user_id,
+                             customer_group__golf_club=golf_club)
+                    cache.set(cache_key, membership, cache_time)
+                except golf_models.LineUserMembership.DoesNotExist:
+                    self.line_bot_api.reply_message(
+                        event.reply_token,
+                        models.TextSendMessage(text='Invalid Golf Course or LINE ID'))
+                    return
 
             if match := re \
                     .compile('New\s"(.+)"\s(\d\d\d\d-\d\d-\d\d)\s(\d\d:\d\d)\s(\d)\sGOLFER\s(\d)\sCART', re.I) \
@@ -107,17 +114,24 @@ class CallbackView(generic.View):
         def handle_post_back(event):
             qs = dict(parse_qsl(event.postback.data))
 
+            cache_key = f'chatbot.membership({event.source.user_id}, {golf_club.id})'
+            cache_time = settings.CACHES['default']['TIMEOUT86400']
+
+            membership = cache.get(cache_key)
+
             # Retrieve LINE user
-            try:
-                membership = golf_models.LineUserMembership.objects \
-                    .select_related('line_user', 'customer_group') \
-                    .get(line_user__line_user_id=event.source.user_id,
-                         customer_group__golf_club=golf_club)
-            except golf_models.LineUserMembership.DoesNotExist:
-                self.line_bot_api.reply_message(
-                    event.reply_token,
-                    models.TextSendMessage(text='Invalid Golf Course or LINE ID'))
-                return
+            if not membership:
+                try:
+                    membership = golf_models.LineUserMembership.objects \
+                        .select_related('line_user', 'customer_group') \
+                        .get(line_user__line_user_id=event.source.user_id,
+                             customer_group__golf_club=golf_club)
+                    cache.set(cache_key, membership, cache_time)
+                except golf_models.LineUserMembership.DoesNotExist:
+                    self.line_bot_api.reply_message(
+                        event.reply_token,
+                        models.TextSendMessage(text='Invalid Golf Course or LINE ID'))
+                    return
 
             if qs['action'] == 'accept':
                 post_back.command_accept(event, self.line_bot_api, qs=qs, golf_club=golf_club, membership=membership)

@@ -15,7 +15,7 @@ from golf import utils as golf_utils
 from .. import decorators
 from .. import utils
 from .. import validators
-
+from django.core.cache import cache
 
 @decorators.translation_activate
 def command_new(event, line_bot_api, **kwargs):
@@ -477,6 +477,8 @@ def command_settings(event, line_bot_api, **kwargs):
     membership.line_user.phone = match[3]
     membership.line_user.lang = match[4]
     membership.line_user.save()
+
+    cache.delete(f'chatbot.membership({event.source.user_id}, {golf_club.id})')
 
     line_bot_api.link_rich_menu_to_user(membership.line_user.line_user_id, golf_club.line_rich_menu[match[4]])
 
