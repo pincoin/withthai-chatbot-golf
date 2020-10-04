@@ -3,10 +3,9 @@ import re
 from urllib.parse import parse_qsl
 
 import linebot
+from django import http
 from django.conf import settings
-from django.http import (
-    HttpResponse, HttpResponseForbidden
-)
+from django.core.cache import cache
 from django.utils.decorators import method_decorator
 from django.views import generic
 from django.views.decorators.csrf import csrf_exempt
@@ -29,7 +28,18 @@ class CallbackView(generic.View):
         self.handler = None
 
     def post(self, request, *args, **kwargs):
-        golf_club = golf_models.GolfClub.objects.get(slug=self.kwargs['slug'])
+        cache_key = f"chatbot.views.Callbackview.post({self.kwargs['slug']})"
+        cache_time = settings.CACHES['default']['TIMEOUT']
+
+        golf_club = cache.get(cache_key)
+
+        if not golf_club:
+            try:
+                golf_club = golf_models.GolfClub.objects.get(slug=self.kwargs['slug'])
+                cache.set(cache_key, self.category, cache_time)
+            except golf_models.GolfClub.DoesNotExist:
+                raise http.Http404('Invalid golf club')
+
         self.line_bot_api = linebot.LineBotApi(golf_club.line_bot_channel_access_token)
         self.handler = linebot.WebhookHandler(golf_club.line_bot_channel_secret)
 
@@ -160,8 +170,8 @@ class CallbackView(generic.View):
             try:
                 self.handler.handle(body, signature)
             except InvalidSignatureError:
-                return HttpResponseForbidden()
+                return http.HttpResponseForbidden()
 
-            return HttpResponse('OK')
+            return http.HttpResponse('OK')
 
-        return HttpResponseForbidden()
+        return http.HttpResponseForbidden()

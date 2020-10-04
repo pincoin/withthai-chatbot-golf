@@ -50,6 +50,8 @@ CACHES = {
         'BACKEND': 'django.core.cache.backends.dummy.DummyCache',
         'LOCATION': '127.0.0.1:11211',
         'TIMEOUT': 300,
+        'TIMEOUT3600': 3600,
+        'TIMEOUT86400': 86400,
     }
 }
 
