@@ -1,5 +1,7 @@
 import json
 
+from django.conf import settings
+from django.core.cache import cache
 from django.utils import timezone
 from django.utils.translation import ugettext_lazy as _
 from django.views import generic
@@ -40,18 +42,31 @@ class GolfBookingCreateFormView(viewmixins.LiffContextMixin, generic.FormView):
         context['title'] = _('New Booking')
         context['golf_club'] = self.golf_club
 
-        fees = golf_models.GreenFee.objects \
-            .select_related('season', 'timeslot', 'customer_group') \
-            .filter(season__golf_club=self.golf_club,
-                    timeslot__golf_club=self.golf_club,
-                    customer_group__golf_club=self.golf_club) \
-            .order_by('season__season_start',
-                      'timeslot__day_of_week',
-                      'timeslot__slot_start',
-                      'customer_group__position')
+        cache_key = f'liff.views.GolfBookingCreateFormView.fees({self.golf_club.id})'
+        cache_time = settings.CACHES['default']['TIMEOUT86400']
 
-        holidays = golf_models.Holiday.objects \
-            .filter(holiday__gte=timezone.make_aware(timezone.localtime().today()))
+        fees = cache.get(cache_key)
+
+        if not fees:
+            fees = golf_models.GreenFee.objects \
+                .select_related('season', 'timeslot', 'customer_group') \
+                .filter(season__golf_club=self.golf_club,
+                        timeslot__golf_club=self.golf_club,
+                        customer_group__golf_club=self.golf_club) \
+                .order_by('season__season_start',
+                          'timeslot__day_of_week',
+                          'timeslot__slot_start',
+                          'customer_group__position')
+            cache.set(cache_key, fees, cache_time)
+
+        cache_key = f'liff.views.GolfBookingCreateFormView.holidays({self.golf_club.id})'
+
+        holidays = cache.get(cache_key)
+
+        if not holidays:
+            holidays = golf_models.Holiday.objects \
+                .filter(holiday__gte=timezone.make_aware(timezone.localtime().today()))
+            cache.set(cache_key, holidays, cache_time)
 
         # Build JSON data
         data = {
@@ -123,27 +138,52 @@ class GolfPriceTableTemplateView(viewmixins.LiffContextMixin, generic.TemplateVi
     def get_context_data(self, **kwargs):
         context = super(GolfPriceTableTemplateView, self).get_context_data(**kwargs)
 
-        green_fees = golf_models.GreenFee.objects \
-            .select_related('season', 'timeslot', 'customer_group') \
-            .filter(season__golf_club=self.golf_club,
-                    timeslot__golf_club=self.golf_club,
-                    customer_group__golf_club=self.golf_club) \
-            .order_by('season__season_start',
-                      'timeslot__day_of_week',
-                      'timeslot__slot_start',
-                      'customer_group__position')
+        cache_key = f'liff.views.GolfPriceTableTemplateView.green_fees({self.golf_club.id})'
+        cache_time = settings.CACHES['default']['TIMEOUT86400']
 
-        seasons = golf_models.Season.objects \
-            .filter(golf_club=self.golf_club) \
-            .order_by('season_start')
+        green_fees = cache.get(cache_key)
 
-        timeslots = golf_models.Timeslot.objects \
-            .filter(golf_club=self.golf_club) \
-            .order_by('day_of_week', 'slot_start')
+        if not green_fees:
+            green_fees = golf_models.GreenFee.objects \
+                .select_related('season', 'timeslot', 'customer_group') \
+                .filter(season__golf_club=self.golf_club,
+                        timeslot__golf_club=self.golf_club,
+                        customer_group__golf_club=self.golf_club) \
+                .order_by('season__season_start',
+                          'timeslot__day_of_week',
+                          'timeslot__slot_start',
+                          'customer_group__position')
+            cache.set(cache_key, green_fees, cache_time)
 
-        customer_groups = golf_models.CustomerGroup.objects \
-            .filter(golf_club=self.golf_club) \
-            .order_by('position')
+        cache_key = f'liff.views.GolfPriceTableTemplateView.seasons({self.golf_club.id})'
+
+        seasons = cache.get(cache_key)
+
+        if not seasons:
+            seasons = golf_models.Season.objects \
+                .filter(golf_club=self.golf_club) \
+                .order_by('season_start')
+            cache.set(cache_key, seasons, cache_time)
+
+        cache_key = f'liff.views.GolfPriceTableTemplateView.timeslots({self.golf_club.id})'
+
+        timeslots = cache.get(cache_key)
+
+        if not timeslots:
+            timeslots = golf_models.Timeslot.objects \
+                .filter(golf_club=self.golf_club) \
+                .order_by('day_of_week', 'slot_start')
+            cache.set(cache_key, timeslots, cache_time)
+
+        cache_key = f'liff.views.GolfPriceTableTemplateView.customer_groups({self.golf_club.id})'
+
+        customer_groups = cache.get(cache_key)
+
+        if not customer_groups:
+            customer_groups = golf_models.CustomerGroup.objects \
+                .filter(golf_club=self.golf_club) \
+                .order_by('position')
+            cache.set(cache_key, customer_groups, cache_time)
 
         price_table = {}
         for green_fee in green_fees:

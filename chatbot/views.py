@@ -29,7 +29,7 @@ class CallbackView(generic.View):
 
     def post(self, request, *args, **kwargs):
         cache_key = f"chatbot.views.Callbackview.post({self.kwargs['slug']})"
-        cache_time = settings.CACHES['default']['TIMEOUT']
+        cache_time = settings.CACHES['default']['TIMEOUT86400']
 
         golf_club = cache.get(cache_key)
 
@@ -49,7 +49,6 @@ class CallbackView(generic.View):
             text_lowercase = text.lower()
 
             cache_key = f'chatbot.membership({event.source.user_id},{golf_club.id})'
-            cache_time = settings.CACHES['default']['TIMEOUT86400']
 
             membership = cache.get(cache_key)
 
@@ -115,7 +114,6 @@ class CallbackView(generic.View):
             qs = dict(parse_qsl(event.postback.data))
 
             cache_key = f'chatbot.membership({event.source.user_id},{golf_club.id})'
-            cache_time = settings.CACHES['default']['TIMEOUT86400']
 
             membership = cache.get(cache_key)
 
