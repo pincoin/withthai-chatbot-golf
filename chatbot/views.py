@@ -48,7 +48,7 @@ class CallbackView(generic.View):
             text = event.message.text.strip()
             text_lowercase = text.lower()
 
-            cache_key = f'chatbot.membership({event.source.user_id}, {golf_club.id})'
+            cache_key = f'chatbot.membership({event.source.user_id},{golf_club.id})'
             cache_time = settings.CACHES['default']['TIMEOUT86400']
 
             membership = cache.get(cache_key)
@@ -114,7 +114,7 @@ class CallbackView(generic.View):
         def handle_post_back(event):
             qs = dict(parse_qsl(event.postback.data))
 
-            cache_key = f'chatbot.membership({event.source.user_id}, {golf_club.id})'
+            cache_key = f'chatbot.membership({event.source.user_id},{golf_club.id})'
             cache_time = settings.CACHES['default']['TIMEOUT86400']
 
             membership = cache.get(cache_key)

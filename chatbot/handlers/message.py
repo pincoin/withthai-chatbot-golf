@@ -478,7 +478,7 @@ def command_settings(event, line_bot_api, **kwargs):
     membership.line_user.lang = match[4]
     membership.line_user.save()
 
-    cache.delete(f'chatbot.membership({event.source.user_id}, {golf_club.id})')
+    cache.delete(f'chatbot.membership({event.source.user_id},{golf_club.id})')
 
     line_bot_api.link_rich_menu_to_user(membership.line_user.line_user_id, golf_club.line_rich_menu[match[4]])
 
