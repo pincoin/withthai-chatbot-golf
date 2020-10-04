@@ -36,7 +36,7 @@ class CallbackView(generic.View):
         if not golf_club:
             try:
                 golf_club = golf_models.GolfClub.objects.get(slug=self.kwargs['slug'])
-                cache.set(cache_key, self.category, cache_time)
+                cache.set(cache_key, golf_club, cache_time)
             except golf_models.GolfClub.DoesNotExist:
                 raise http.Http404('Invalid golf club')
 
