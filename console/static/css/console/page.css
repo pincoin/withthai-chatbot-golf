@@ -170,4 +170,8 @@
     #offer-form .field {
         margin-bottom: 0;
     }
+
+    #confirm-modal .modal-card, #offer-modal .modal-card, #close-modal .modal-card {
+        padding: 0 .75rem;
+    }
 }
