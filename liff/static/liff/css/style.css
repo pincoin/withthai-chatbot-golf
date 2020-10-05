@@ -153,3 +153,7 @@
     border-radius: 4px;
     color: #000000 !important;
 }
+
+#booking-confirm-modal .modal-card {
+    padding: 0 .75rem;
+}
