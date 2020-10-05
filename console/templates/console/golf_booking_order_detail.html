@@ -440,13 +440,13 @@ with-thai::{% trans 'Golf booking order detail' %}
                 </div>
             </div>
             <div class="columns">
-                <div class="column is-capitalized is-4">{% trans 'Round Date/Time' %}</div>
+                <div class="column is-capitalized is-4 has-text-danger-dark">{% trans 'Round Date/Time' %}</div>
                 <div class="column has-text-weight-bold is-8">
                     {{ order.round_date|date:'Y-m-d' }} {{ order.round_time|date:'H:i' }}
                 </div>
             </div>
             <div class="columns">
-                <div class="column is-capitalized is-4">{% trans 'PAX' %}</div>
+                <div class="column is-capitalized is-4 has-text-danger-dark">{% trans 'PAX' %}</div>
                 <div class="column has-text-weight-bold is-8">
                     {{ order.pax }}
                 </div>
