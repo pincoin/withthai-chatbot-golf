@@ -454,14 +454,16 @@ msgid ""
 "We will notify you of the available tee-off date/time after 8 am tomorrow "
 "morning."
 msgstr ""
-"내일 영업시간 오전 8시 이후에 가능한 티오프 일자/시간을 알려드리겠습니다."
+"현재는 예약업무시간이 종료되었습니다."
+"내일 예약업무시간 오전 8시 이후에 가능한 티오프 일자/시간을 알려드리겠습니다."
 
 #: chatbot/handlers/message.py:197
 msgid ""
 "We will notify you of the available tee-off date/time after 8 am this "
 "morning."
 msgstr ""
-"금일 영업시간 오전 8시 이후에 가능한 티오프 일자/시간을 알려드리겠습니다."
+"현재는 예약업무시간이 종료되었습니다."
+"금일 예약업무시간 오전 8시 이후에 가능한 티오프 일자/시간을 알려드리겠습니다."
 
 #: chatbot/handlers/message.py:200
 msgid ""
