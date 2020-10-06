@@ -16,7 +16,11 @@
     <link rel="shortcut icon" href="{% static 'images/conf/favicon_16x16.png' %}">
 
     <!-- fonts -->
+    {% if LANGUAGE_CODE == 'th' or LANGUAGE_CODE == 'en' %}
     <link rel="stylesheet" href="{% static 'css/conf/prompt.css' %}">
+    {% elif LANGUAGE_CODE == 'ko' %}
+    <link rel="stylesheet" href="{% static 'css/conf/godo.css' %}">
+    {% endif %}
     <link rel="stylesheet" href="{% static 'css/conf/nanum-gothic-coding.css' %}">
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css">
 

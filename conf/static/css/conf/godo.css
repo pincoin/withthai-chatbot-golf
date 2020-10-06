@@ -1,0 +1,17 @@
+@font-face {
+    font-family: 'Godo';
+    src: local('GodoM'),
+    url('../../fonts/conf/GodoM.woff2') format('woff2'),
+    url('../../fonts/conf/GodoM.woff') format('woff');
+    font-weight: 400;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Godo';
+    src: local('GodoB'),
+    url('../../fonts/conf/GodoB.woff2') format('woff2'),
+    url('../../fonts/conf/GodoB.woff') format('woff');
+    font-weight: 700;
+    font-style: normal;
+}
