@@ -35,8 +35,68 @@
     {% endblock %}
 </main>
 <footer class="footer">
-    <div class="content has-text-centered">
-        {% now 'Y' %} &copy; <a href="//www.withthai.com">withthai.com</a> All rights reserved.
+    <div class="footer-info">
+        <div class="container">
+            <div class="columns is-multiline">
+                <div class="column is-full-mobile is-two-thirds-desktop">
+                    <h4 class="footer-info-heading">{% trans 'WITH THAI Co., Ltd.' %}</h4>
+                    <ul class="footer-info-list">
+                        <li>
+                            {% trans 'Ekkamai No. 30 Sukhumvit (settabut) soi. 61 Klongton Nua, Wattana, Bangkok 10110' %}
+                        </li>
+                        <li>
+                            {% trans 'TAX ID: 0105563049000' %}
+                        </li>
+                        <li>
+                            {% trans 'TAT License: 14/03216' %}
+                        </li>
+                        <li>(+66) 080-023-3602</li>
+                        <li>help@withthai.com</li>
+                        <li>LINE: @withthai</li>
+                    </ul>
+                </div>
+                <div class="column is-full-mobile is-one-third-desktop">
+                    <h4 class="footer-info-heading">{% trans "Help" %}</h4>
+                    <ul class="footer-info-list">
+                        <li>
+                            <a href="">
+                                {% trans 'GUIDE' %}
+                            </a>
+                        </li>
+                        <li>
+                            <a href="">
+                                {% trans 'FAQ/HOW-TO' %}
+                            </a>
+                        </li>
+                        <li>
+                            <a href="">
+                                {% trans 'TERMS &amp; CONDITIONS' %}
+                            </a> &middot;
+                            <a href="">
+                                {% trans 'PRIVACY POLICY' %}
+                            </a>
+                        </li>
+                        <li>
+                            <a href="">
+                                {% trans 'ABOUT US' %}
+                            </a>
+                        </li>
+                        <li>
+                            <a href="">
+                                {% trans 'CONTACT US' %}
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="footer-copyright">
+            <div class="columns ">
+                <div class="column has-text-centered">
+                    {% now 'Y' %} &copy; <a href="//www.withthai.com">withthai.com</a> All rights reserved.
+                </div>
+            </div>
+        </div>
     </div>
 </footer>
 {% block javascript %}
