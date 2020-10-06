@@ -1,0 +1,327 @@
+{% extends './base.html' %}
+
+{% load static i18n %}
+
+{% block stylesheet %}
+{{ block.super }}
+<link rel="stylesheet" href="{% static 'css/console/page.css' %}">
+{% endblock %}
+
+{% block header %}
+<nav class="navbar is-fixed-top" id="navbar-top">
+    <div class="container">
+        <div class="navbar-brand">
+            <a class="navbar-item is-hidden-tablet" id="left-sidebar-open">
+                <span class="fas fa-bars fa-fw"></span>
+            </a>
+            <a class="navbar-item" style="" href="">
+                <img src="{% static 'images/conf/withthai_logo_en.png' %}"
+                     width="168" height="30" alt="with thai logo">
+            </a>
+            <a class="navbar-item is-hidden-tablet" id="right-sidebar-open">
+                <span class="fas fa-user-cog fa-fw"></span>
+            </a>
+        </div>
+
+        <div class="navbar-menu">
+            <div class="navbar-end">
+                <div class="navbar-item">
+                    <div class="buttons">
+                        {% if user.is_authenticated %}
+                        <a href="{% url 'account_logout' %}" class="button is-danger is-small">
+                            <span class="icon"><i class="fas fa-sign-out-alt fa-fw"></i></span>
+                            <span class="is-uppercase">{% trans 'Sign out' %}</span>
+                        </a>
+                        {% else %}
+                        <a href="{% url 'account_login' %}" class="button is-primary is-small">
+                            <span class="icon"><i class="fas fa-sign-in-alt fa-fw"></i></span>
+                            <span class="is-uppercase">{% trans 'Sign in' %}</span>
+                        </a>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+<div class="modal" id="left-sidebar">
+    <div class="modal-background"></div>
+    <div class="modal-content left-sidebar-content">
+        <ul>
+            <li class="submenu-heading">
+                {% trans 'Booking' %}
+                <a href="#" class="is-pulled-right" id="left-sidebar-close">
+                    <i class="fas fa-times"></i>
+                </a>
+            </li>
+            <li>
+                <ul>
+                    <li class="submenu-item">
+                        <a class="is-capitalized">
+                            {% trans 'All booking list' %}
+                        </a>
+                    </li>
+                    <li class="submenu-item">
+                        <a>
+                            <span class="tag status-open">{% trans 'Open' %}</span>
+                        </a>
+                    </li>
+                    <li class="submenu-item">
+                        <a>
+                            <span class="tag status-accepted">{% trans 'Accepted' %}</span>
+                        </a>
+                    </li>
+                    <li class="submenu-item">
+                        <a>
+                            <span class="tag status-unpaid is-capitalized">{% trans 'Not paid' %}</span>
+                        </a>
+                    </li>
+                    <li class="submenu-item">
+                        <a>
+                            <span class="tag status-refund-requests is-capitalized">{% trans 'Refund requests' %}</span>
+                        </a>
+                    </li>
+                    <li class="submenu-item">
+                        <a>
+                            {% trans 'Today' %}
+                        </a>
+                    </li>
+                    <li class="submenu-item">
+                        <a>
+                            {% trans 'Tomorrow' %}
+                        </a>
+                    </li>
+                </ul>
+            </li>
+            <li class="submenu-heading">{% trans 'Customers' %}</li>
+            <li>
+                <ul>
+                    <li class="submenu-item">
+                        <a class="is-capitalized">
+                            {% trans 'LINE users' %}
+                        </a>
+                    <li class="is-hidden">
+                        <a href="#" class="is-capitalized">
+                            {% trans 'Facebook users' %}
+                        </a>
+                    </li>
+                    <li class="submenu-item">
+                        <a>{% trans 'Customer groups' %}</a>
+                    </li>
+                </ul>
+            </li>
+            <li class="submenu-heading">{% trans 'Marketing' %}</li>
+            <li>
+                <ul>
+                    <li class="submenu-item">
+                        <a>{% trans 'Promotions' %}</a>
+                    </li>
+                    <li class="submenu-item">
+                        <a>{% trans 'Coupons' %}</a>
+                    </li>
+                    <li class="submenu-item">
+                        <a class="is-capitalized">{% trans 'Hot deals' %}</a>
+                    </li>
+                </ul>
+            </li>
+            <li class="submenu-heading">{% trans 'Report' %}</li>
+            <li>
+                <ul>
+                    <li class="submenu-item">
+                        <a class="is-capitalized">{% trans 'Daily sales' %}</a>
+                    </li>
+                    <li class="submenu-item">
+                        <a class="is-capitalized">{% trans 'Monthly sales' %}</a>
+                    </li>
+                    <li class="submenu-item">
+                        <a class="is-capitalized">{% trans 'Best promotions' %}</a>
+                    </li>
+                    <li class="submenu-item">
+                        <a class="is-capitalized"> {% trans 'Best customers' %} </a>
+                    </li>
+                    <li class="submenu-item">
+                        <a class="is-capitalized">{% trans 'Sales by customer groups' %}</a>
+                    </li>
+                    <li class="submenu-item">
+                        <a class="is-capitalized">{% trans 'Sales by payment' %}</a>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+</div>
+<div class="modal" id="right-sidebar">
+    <div class="modal-background"></div>
+    <div class="modal-content right-sidebar-content">
+        <ul>
+            <li class="submenu-heading">
+                {% trans 'Settings' %}
+                <a href="#" class="is-pulled-right" id="right-sidebar-close">
+                    <i class="fas fa-times"></i>
+                </a>
+            </li>
+            <li>
+                <ul>
+                    <li class="submenu-item">
+                        <a class="is-capitalized">
+                            {% trans 'Golf club' %}
+                        </a>
+                    </li>
+                    <li class="submenu-item">
+                        <a class="is-capitalized">
+                            {% trans 'Green fee' %}
+                        </a>
+                    </li>
+                    <li class="submenu-item">
+                        <a>
+                            {% trans 'Holidays' %}
+                        </a>
+                    </li>
+                    <li class="submenu-item">
+                        <a>
+                            {% trans 'Seasons' %}
+                        </a>
+                    </li>
+                    <li class="submenu-item">
+                        <a>
+                            {% trans 'Timeslots' %}
+                        </a>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+</div>
+{% endblock %}
+
+{% block main %}
+<div class="container">
+    <div class="columns is-gapless is-marginless">
+        <aside class="column is-3 menu is-hidden-mobile">
+            <div class="menu-label">{% trans 'Booking' %}</div>
+            <ul class="menu-list">
+                <li>
+                    <a class="is-capitalized">
+                        {% trans 'All booking list' %}
+                    </a>
+                </li>
+                <li>
+                    <ul>
+                        <li>
+                            <a>
+                                <span class="tag status-open">{% trans 'Open' %}</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a>
+                                <span class="tag status-accepted">{% trans 'Accepted' %}</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a>
+                                <span class="tag status-unpaid is-capitalized">{% trans 'Not paid' %}</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a>
+                                <span class="tag status-refund-requests is-capitalized">{% trans 'Refund requests' %}</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a>
+                                {% trans 'Today' %}
+                            </a>
+                        </li>
+                        <li>
+                            <a>
+                                {% trans 'Tomorrow' %}
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+            <div class="menu-label">{% trans 'Customers' %}</div>
+            <ul class="menu-list">
+                <li>
+                    <a class="is-capitalized">{% trans 'Social accounts' %}</a>
+                    <ul>
+                        <li>
+                            <a class="is-capitalized">
+                                {% trans 'LINE users' %}
+                            </a>
+                        </li>
+                        <li class="is-hidden">
+                            <a href="#" class="is-capitalized">
+                                {% trans 'Facebook users' %}
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a>{% trans 'Customer groups' %}</a>
+                </li>
+            </ul>
+            <div class="menu-label">
+                {% trans 'Marketing' %}
+            </div>
+            <ul class="menu-list">
+                <li><a>{% trans 'Promotions' %}</a></li>
+                <li><a>{% trans 'Coupons' %}</a></li>
+                <li><a class="is-capitalized">{% trans 'Hot deals' %}</a></li>
+            </ul>
+            <div class="menu-label">{% trans 'Report' %}</div>
+            <ul class="menu-list">
+                <li>
+                    <a class="is-capitalized">{% trans 'Daily sales' %}</a>
+                </li>
+                <li>
+                    <a class="is-capitalized">{% trans 'Monthly sales' %}</a>
+                </li>
+                <li>
+                    <a class="is-capitalized">{% trans 'Best promotions' %}</a>
+                </li>
+                <li>
+                    <a class="is-capitalized"> {% trans 'Best customers' %} </a>
+                </li>
+                <li>
+                    <a class="is-capitalized">{% trans 'Sales by customer groups' %}</a>
+                </li>
+                <li>
+                    <a class="is-capitalized">{% trans 'Sales by payment' %}</a>
+                </li>
+            </ul>
+            <div class="menu-label">{% trans 'Settings' %}</div>
+            <ul class="menu-list">
+                <li>
+                    <a class="is-capitalized">
+                        {% trans 'Golf club' %}
+                    </a>
+                </li>
+                <li>
+                    <a class="is-capitalized">
+                        {% trans 'Green fee' %}
+                    </a>
+                </li>
+                <li>
+                    <a>
+                        {% trans 'Holidays' %}
+                    </a>
+                </li>
+                <li>
+                    <a>
+                        {% trans 'Seasons' %}
+                    </a>
+                </li>
+                <li>
+                    <a>
+                        {% trans 'Timeslots' %}
+                    </a>
+                </li>
+            </ul>
+        </aside>
+        <div class="column is-9">
+            {% block content %}{% endblock %}
+        </div>
+    </div>
+</div>
+{% endblock %}
