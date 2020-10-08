@@ -1,5 +1,259 @@
-{% extends './conf_base.html' %}
+{% extends './base.html' %}
 
-{% block content %}
-content
+{% load static i18n %}
+
+{% block stylesheet %}
+{{ block.super }}
+<link rel="stylesheet" href="{% static 'css/console/page.css' %}">
+{% endblock %}
+
+{% block header %}
+<nav class="navbar is-fixed-top" id="navbar-top">
+    <div class="container">
+        <div class="navbar-brand">
+            <a class="navbar-item is-hidden-tablet" id="left-sidebar-open">
+                <span class="fas fa-bars fa-fw"></span>
+            </a>
+            <a class="navbar-item" style="" href="">
+                <img src="{% static 'images/conf/withthai_logo_en.png' %}"
+                     width="168" height="30" alt="with thai logo">
+            </a>
+            <a class="navbar-item is-hidden-tablet" id="right-sidebar-open">
+                <span class="fas fa-user-cog fa-fw"></span>
+            </a>
+        </div>
+
+        <div class="navbar-menu">
+            <div class="navbar-end">
+                <div class="navbar-item">
+                    <div class="buttons">
+                        {% if user.is_authenticated %}
+                        <a href="{% url 'account_logout' %}" class="button is-danger is-small">
+                            <span class="icon"><i class="fas fa-sign-out-alt fa-fw"></i></span>
+                            <span class="is-uppercase">{% trans 'Sign out' %}</span>
+                        </a>
+                        {% else %}
+                        <a href="{% url 'account_login' %}" class="button is-primary is-small">
+                            <span class="icon"><i class="fas fa-sign-in-alt fa-fw"></i></span>
+                            <span class="is-uppercase">{% trans 'Sign in' %}</span>
+                        </a>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+<div class="modal" id="left-sidebar">
+    <div class="modal-background"></div>
+    <div class="modal-content left-sidebar-content">
+        <ul>
+            <li class="submenu-heading">
+                {% trans 'Booking' %}
+                <a href="#" class="is-pulled-right" id="left-sidebar-close">
+                    <i class="fas fa-times"></i>
+                </a>
+            </li>
+            <li>
+                <ul>
+                    <li class="submenu-item">
+                        <a class="is-capitalized">
+                            {% trans 'All booking list' %}
+                        </a>
+                    </li>
+                    <li class="submenu-item">
+                        <a>
+                            <span class="tag status-open">{% trans 'Open' %}</span>
+                        </a>
+                    </li>
+                    <li class="submenu-item">
+                        <a>
+                            <span class="tag status-accepted">{% trans 'Accepted' %}</span>
+                        </a>
+                    </li>
+                    <li class="submenu-item">
+                        <a>
+                            <span class="tag status-unpaid is-capitalized">{% trans 'Not paid' %}</span>
+                        </a>
+                    </li>
+                    <li class="submenu-item">
+                        <a>
+                            <span class="tag status-refund-requests is-capitalized">{% trans 'Refund requests' %}</span>
+                        </a>
+                    </li>
+                    <li class="submenu-item">
+                        <a>
+                            {% trans 'Today' %}
+                        </a>
+                    </li>
+                    <li class="submenu-item">
+                        <a>
+                            {% trans 'Tomorrow' %}
+                        </a>
+                    </li>
+                </ul>
+            </li>
+            <li class="submenu-heading">{% trans 'Customers' %}</li>
+            <li>
+                <ul>
+                    <li class="submenu-item">
+                        <a class="is-capitalized">
+                            {% trans 'LINE users' %}
+                        </a>
+                    <li class="is-hidden">
+                        <a href="#" class="is-capitalized">
+                            {% trans 'Facebook users' %}
+                        </a>
+                    </li>
+                    <li class="submenu-item">
+                        <a>{% trans 'Customer groups' %}</a>
+                    </li>
+                </ul>
+            </li>
+            <li class="submenu-heading">{% trans 'Marketing' %}</li>
+            <li>
+                <ul>
+                    <li class="submenu-item">
+                        <a>{% trans 'Promotions' %}</a>
+                    </li>
+                    <li class="submenu-item">
+                        <a>{% trans 'Coupons' %}</a>
+                    </li>
+                    <li class="submenu-item">
+                        <a class="is-capitalized">{% trans 'Hot deals' %}</a>
+                    </li>
+                </ul>
+            </li>
+            <li class="submenu-heading">{% trans 'Report' %}</li>
+            <li>
+                <ul>
+                    <li class="submenu-item">
+                        <a class="is-capitalized">{% trans 'Daily sales' %}</a>
+                    </li>
+                    <li class="submenu-item">
+                        <a class="is-capitalized">{% trans 'Monthly sales' %}</a>
+                    </li>
+                    <li class="submenu-item">
+                        <a class="is-capitalized">{% trans 'Best promotions' %}</a>
+                    </li>
+                    <li class="submenu-item">
+                        <a class="is-capitalized"> {% trans 'Best customers' %} </a>
+                    </li>
+                    <li class="submenu-item">
+                        <a class="is-capitalized">{% trans 'Sales by customer groups' %}</a>
+                    </li>
+                    <li class="submenu-item">
+                        <a class="is-capitalized">{% trans 'Sales by payment' %}</a>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+</div>
+<div class="modal" id="right-sidebar">
+    <div class="modal-background"></div>
+    <div class="modal-content right-sidebar-content">
+        <ul>
+            <li class="submenu-heading">
+                {% trans 'Settings' %}
+                <a href="#" class="is-pulled-right" id="right-sidebar-close">
+                    <i class="fas fa-times"></i>
+                </a>
+            </li>
+            <li>
+                <ul>
+                    <li class="submenu-item">
+                        <a class="is-capitalized">
+                            {% trans 'Golf club' %}
+                        </a>
+                    </li>
+                    <li class="submenu-item">
+                        <a class="is-capitalized">
+                            {% trans 'Green fee' %}
+                        </a>
+                    </li>
+                    <li class="submenu-item">
+                        <a>
+                            {% trans 'Holidays' %}
+                        </a>
+                    </li>
+                    <li class="submenu-item">
+                        <a>
+                            {% trans 'Seasons' %}
+                        </a>
+                    </li>
+                    <li class="submenu-item">
+                        <a>
+                            {% trans 'Timeslots' %}
+                        </a>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+</div>
+{% endblock %}
+
+{% block main %}
+<section class="hero is-info">
+    <div class="hero-body">
+        <div class="container">
+            <h1 class="title is-uppercase">
+                Services
+            </h1>
+            <h2 class="subtitle">
+                We transform your ideas into successful digital products, building it from scratch and supporting as
+                long as you need.
+            </h2>
+        </div>
+    </div>
+</section>
+<section class="hero">
+    <div class="hero-body">
+        <div class="container">
+            <div class="columns">
+                <div class="column">
+                    <img src="{% static 'images/conf/illustrations/schedule-management-2107800-0.svg">
+                </div>
+                <div class="column">
+                    <ul>
+                        <li>What we do</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<div class="container">
+    <div class="columns is-gapless is-marginless">
+        <div class="column is-12">
+            home
+        </div>
+    </div>
+</div>
+
+<div>
+    vision / mission
+</div>
+
+<div>
+    what to do
+</div>
+
+<div>
+    Hire Django Developer
+    장고/파이썬 백엔드 개발자 채용
+
+    5+ years of experience
+    Highly secure environment
+    Well documented and optimized coding
+    Highly stable and scalable development
+
+    Hire Web publisher
+    프론트엔드 웹 개발자 채용
+
+    웹 디자이너 채용
+
+
+</div>
 {% endblock %}
