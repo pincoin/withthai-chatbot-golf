@@ -7257,13 +7257,13 @@ a.has-text-danger-dark:hover, a.has-text-danger-dark:focus {
         .hero.is-danger.is-bold .navbar-menu {
           background-image: linear-gradient(141deg, #d80f2c 0%, #e53935 71%, #ed6647 100%); } }
   .hero.is-small .hero-body {
-    padding: 1.5rem; }
+    padding: 1rem 0.75rem; }
   @media screen and (min-width: 769px), print {
     .hero.is-medium .hero-body {
-      padding: 9rem 1.5rem; } }
+      padding: 2rem 0.75rem; } }
   @media screen and (min-width: 769px), print {
     .hero.is-large .hero-body {
-      padding: 18rem 1.5rem; } }
+      padding: 2.5rem 0.75rem; } }
   .hero.is-halfheight .hero-body, .hero.is-fullheight .hero-body, .hero.is-fullheight-with-navbar .hero-body {
     align-items: center;
     display: flex; }
@@ -7312,7 +7312,7 @@ a.has-text-danger-dark:hover, a.has-text-danger-dark:focus {
 .hero-body {
   flex-grow: 1;
   flex-shrink: 0;
-  padding: 3rem 1.5rem; }
+  padding: 1.5rem 0.75rem; }
 
 .section {
   padding: 3rem 1.5rem; }

@@ -1,0 +1,33 @@
+.service-banner {
+    color: #0d47a1;
+    background-color: #e3f2fd;
+}
+
+.service-banner h2 {
+    margin-top: .75rem;
+    color: #1565c0;
+}
+
+.section-paragraph h1 {
+    color: #ef6c00 ;
+}
+
+.section-paragraph ul li {
+    color: #283593;
+}
+
+.section-paragraph ul li ul li {
+    color: #455a64 ;
+}
+
+/* Desktop */
+@media (min-width: 1024px) {
+    .service-banner {
+        margin-top: -1rem;
+    }
+}
+
+/* Mobile */
+@media (max-width: 1023px) {
+
+}
