@@ -9,7 +9,7 @@
 }
 
 .section-paragraph h1 {
-    color: #ef6c00 ;
+    color: #ef6c00;
 }
 
 .section-paragraph ul li {
@@ -17,7 +17,19 @@
 }
 
 .section-paragraph ul li ul li {
-    color: #455a64 ;
+    color: #455a64;
+}
+
+.products-title {
+    color: #ef6c00;
+}
+
+.products-detail-title {
+    color: #283593 !important;
+}
+
+.products-detail-content {
+    color: #455a64;
 }
 
 /* Desktop */
