@@ -11,7 +11,7 @@ class Command(BaseCommand):
     help = 'Create rich menu'
 
     '''
-    python manage.py richmenu with-thai /home/ubuntu/Projects/withthai/liff/static/images/liff/with_thai_rich_menu.jpg
+    python manage.py richmenu with-thai /home/ubuntu/Projects/withthai/liff/static/liff/images/withthai_richmenu
     '''
 
     def add_arguments(self, parser):
@@ -69,11 +69,11 @@ class Command(BaseCommand):
         ))
         line_rich_menu['default'] = rich_menu_id
         line_rich_menu['en'] = rich_menu_id
-        print("rich_menu_id", rich_menu_id)
+        print("rich_menu_id(en)", rich_menu_id)
 
         # Upload image and attach it to rich menu
-        with open(Path(options['rich_menu_image_path'][0]), 'rb') as f:
-            line_bot_api.set_rich_menu_image(rich_menu_id, 'image/png', f)
+        with open(Path(f"{options['rich_menu_image_path'][0]}_en.jpg"), 'rb') as f:
+            line_bot_api.set_rich_menu_image(rich_menu_id, 'image/jpeg', f)
 
         # Set rich menu to default
         line_bot_api.set_default_rich_menu(rich_menu_id)
@@ -108,11 +108,11 @@ class Command(BaseCommand):
             ]
         ))
         line_rich_menu['ko'] = rich_menu_id
-        print("rich_menu_id", rich_menu_id)
+        print("rich_menu_id(ko)", rich_menu_id)
 
         # Upload image and attach it to rich menu
-        with open(Path(options['rich_menu_image_path'][0]), 'rb') as f:
-            line_bot_api.set_rich_menu_image(rich_menu_id, 'image/png', f)
+        with open(Path(f"{options['rich_menu_image_path'][0]}_ko.jpg"), 'rb') as f:
+            line_bot_api.set_rich_menu_image(rich_menu_id, 'image/jpeg', f)
 
         # Create rich menu (Thai)
         rich_menu_id = line_bot_api.create_rich_menu(rich_menu=models.RichMenu(
@@ -144,11 +144,11 @@ class Command(BaseCommand):
             ]
         ))
         line_rich_menu['th'] = rich_menu_id
-        print("rich_menu_id", rich_menu_id)
+        print("rich_menu_id(th)", rich_menu_id)
 
         # Upload image and attach it to rich menu
-        with open(Path(options['rich_menu_image_path'][0]), 'rb') as f:
-            line_bot_api.set_rich_menu_image(rich_menu_id, 'image/png', f)
+        with open(Path(f"{options['rich_menu_image_path'][0]}_en.jpg"), 'rb') as f:
+            line_bot_api.set_rich_menu_image(rich_menu_id, 'image/jpeg', f)
 
         '''
         # Create rich menu (Japanese)
@@ -181,11 +181,11 @@ class Command(BaseCommand):
             ]
         ))
         line_rich_menu['jp'] = rich_menu_id
-        print("rich_menu_id", rich_menu_id)
+        print("rich_menu_id(jp)", rich_menu_id)
 
         # Upload image and attach it to rich menu
-        with open(Path(options['rich_menu_image_path'][0]), 'rb') as f:
-            line_bot_api.set_rich_menu_image(rich_menu_id, 'image/png', f)
+        with open(Path(f"{options['rich_menu_image_path'][0]}_jp.jpg"), 'rb') as f:
+            line_bot_api.set_rich_menu_image(rich_menu_id, 'image/jpeg', f)
 
         # Create rich menu (Chinese)
         rich_menu_id = line_bot_api.create_rich_menu(rich_menu=models.RichMenu(
@@ -217,11 +217,11 @@ class Command(BaseCommand):
             ]
         ))
         line_rich_menu['cn'] = rich_menu_id
-        print("rich_menu_id", rich_menu_id)
+        print("rich_menu_id(cn)", rich_menu_id)
 
         # Upload image and attach it to rich menu
-        with open(Path(options['rich_menu_image_path'][0]), 'rb') as f:
-            line_bot_api.set_rich_menu_image(rich_menu_id, 'image/png', f)
+        with open(Path(f"{options['rich_menu_image_path'][0]}_cn.jpg"), 'rb') as f:
+            line_bot_api.set_rich_menu_image(rich_menu_id, 'image/jpeg', f)
         '''
 
         # Save rich menu json field
