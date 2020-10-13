@@ -1,0 +1,10 @@
+{% load static i18n %}
+
+<li class="submenu-heading">
+    {% trans 'No menu' %}
+    {% if left_sidebar_close_button %}
+    <a class="is-pulled-right" id="left-sidebar-close">
+        <i class="fas fa-times"></i>
+    </a>
+    {% endif %}
+</li>
