@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-10-13 10:12+0700\n"
+"POT-Creation-Date: 2020-10-13 13:06+0700\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -23,7 +23,7 @@ msgstr ""
 #: allauth/templates/account/logout.html:34 conf/templates/403.html:33
 #: conf/templates/conf/conf_base.html:33
 #: conf/templates/conf/console_base.html:33 conf/templates/conf/home.html:34
-#: conf/templates/conf/home.html:224
+#: conf/templates/conf/home.html:201
 #: console/templates/console/console_base.html:33
 msgid "Sign out"
 msgstr "로그아웃"
@@ -36,7 +36,7 @@ msgstr "로그아웃"
 #: allauth/templates/socialaccount/login_cancelled.html:32
 #: conf/templates/403.html:38 conf/templates/conf/conf_base.html:38
 #: conf/templates/conf/console_base.html:38 conf/templates/conf/home.html:39
-#: conf/templates/conf/home.html:228
+#: conf/templates/conf/home.html:205
 #: console/templates/console/console_base.html:38
 msgid "Sign in"
 msgstr "로그인"
@@ -216,7 +216,6 @@ msgstr "핫딜"
 #: conf/templates/conf/conf_base.html:272
 #: conf/templates/conf/console_base.html:127
 #: conf/templates/conf/console_base.html:272 conf/templates/conf/home.html:128
-#: conf/templates/conf/home.html:193
 #: console/templates/console/console_base.html:127
 #: console/templates/console/console_base.html:277
 msgid "Report"
@@ -228,7 +227,6 @@ msgstr "보고서"
 #: conf/templates/conf/conf_base.html:275
 #: conf/templates/conf/console_base.html:131
 #: conf/templates/conf/console_base.html:275 conf/templates/conf/home.html:132
-#: conf/templates/conf/home.html:197
 #: console/templates/console/console_base.html:131
 #: console/templates/console/console_base.html:280
 msgid "Daily sales"
@@ -240,7 +238,6 @@ msgstr "일간 매출"
 #: conf/templates/conf/conf_base.html:278
 #: conf/templates/conf/console_base.html:134
 #: conf/templates/conf/console_base.html:278 conf/templates/conf/home.html:135
-#: conf/templates/conf/home.html:200
 #: console/templates/console/console_base.html:134
 #: console/templates/console/console_base.html:283
 msgid "Monthly sales"
@@ -252,7 +249,6 @@ msgstr "월간 매출"
 #: conf/templates/conf/conf_base.html:281
 #: conf/templates/conf/console_base.html:137
 #: conf/templates/conf/console_base.html:281 conf/templates/conf/home.html:138
-#: conf/templates/conf/home.html:203
 #: console/templates/console/console_base.html:137
 #: console/templates/console/console_base.html:286
 msgid "Best promotions"
@@ -264,7 +260,6 @@ msgstr "우수 프로모션"
 #: conf/templates/conf/conf_base.html:284
 #: conf/templates/conf/console_base.html:140
 #: conf/templates/conf/console_base.html:284 conf/templates/conf/home.html:141
-#: conf/templates/conf/home.html:206
 #: console/templates/console/console_base.html:140
 #: console/templates/console/console_base.html:289
 msgid "Best customers"
@@ -276,7 +271,6 @@ msgstr "우수 고객"
 #: conf/templates/conf/conf_base.html:287
 #: conf/templates/conf/console_base.html:143
 #: conf/templates/conf/console_base.html:287 conf/templates/conf/home.html:144
-#: conf/templates/conf/home.html:209
 #: console/templates/console/console_base.html:143
 #: console/templates/console/console_base.html:292
 msgid "Sales by customer groups"
@@ -288,7 +282,6 @@ msgstr "고객 그룹별 매출"
 #: conf/templates/conf/conf_base.html:290
 #: conf/templates/conf/console_base.html:146
 #: conf/templates/conf/console_base.html:290 conf/templates/conf/home.html:147
-#: conf/templates/conf/home.html:212
 #: console/templates/console/console_base.html:146
 #: console/templates/console/console_base.html:295
 msgid "Sales by payment"
@@ -787,47 +780,55 @@ msgstr "페이지 접근 권한이 없습니다."
 msgid "WITH THAI Co., Ltd."
 msgstr "위드타이 주식회사"
 
-#: conf/templates/conf/base.html:53
+#: conf/templates/conf/base.html:49
+msgid ""
+"Ekkamai No. 30 Sukhumvit (settabut) soi. 61 Klongton Nua, Wattana, Bangkok "
+"10110"
+msgstr ""
+"Ekkamai No. 30 Sukhumvit (settabut) soi. 61 Klongton Nua, Wattana, Bangkok "
+"10110"
+
+#: conf/templates/conf/base.html:52
 msgid "TAX ID: 0105563049000"
 msgstr "태국 법인등록번호: 0105563049000"
 
-#: conf/templates/conf/base.html:56
+#: conf/templates/conf/base.html:55
 msgid "TAT License: 14/03216"
 msgstr "태국 여행업등록번호: 14/03216"
 
-#: conf/templates/conf/base.html:62
+#: conf/templates/conf/base.html:61
 msgid "Help"
 msgstr "도움말"
 
-#: conf/templates/conf/base.html:66
+#: conf/templates/conf/base.html:65
 msgid "Guide"
 msgstr "이용가이드"
 
-#: conf/templates/conf/base.html:71
+#: conf/templates/conf/base.html:70
 msgid "FAQ/HOW-TO"
 msgstr "자주묻는질문"
 
-#: conf/templates/conf/base.html:76
+#: conf/templates/conf/base.html:75
 msgid "Terms &amp; Conditions"
 msgstr "이용약관"
 
-#: conf/templates/conf/base.html:79
+#: conf/templates/conf/base.html:78
 msgid "Privacy policy"
 msgstr "개인정보처리방침"
 
-#: conf/templates/conf/base.html:84
+#: conf/templates/conf/base.html:83
 msgid "About us"
 msgstr "위드타이 소개"
 
-#: conf/templates/conf/base.html:89
+#: conf/templates/conf/base.html:88
 msgid "Contact us"
 msgstr "문의하기"
 
-#: conf/templates/conf/home.html:216
+#: conf/templates/conf/home.html:193
 msgid "My account"
 msgstr "나의계정"
 
-#: conf/templates/conf/home.html:221
+#: conf/templates/conf/home.html:198
 msgid "My profile"
 msgstr "개인정보"
 
@@ -2197,4 +2198,3 @@ msgstr "로그인 로그"
 #: shop/apps.py:7
 msgid "shop"
 msgstr "쇼핑"
-
