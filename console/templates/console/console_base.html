@@ -48,105 +48,7 @@
     <div class="modal-background"></div>
     <div class="modal-content left-sidebar-content">
         <ul>
-            <li class="submenu-heading">
-                {% trans 'Booking' %}
-                <a class="is-pulled-right" id="left-sidebar-close">
-                    <i class="fas fa-times"></i>
-                </a>
-            </li>
-            <li>
-                <ul>
-                    <li class="submenu-item">
-                        <a href="{% url 'console:golf-booking-order-list' slug %}" class="is-capitalized">
-                            {% trans 'All booking list' %}
-                        </a>
-                    </li>
-                    <li class="submenu-item">
-                        <a href="{% url 'console:golf-booking-order-list' slug %}?order_status=open">
-                            <span class="tag status-open">{% trans 'Open' %}</span>
-                        </a>
-                    </li>
-                    <li class="submenu-item">
-                        <a href="{% url 'console:golf-booking-order-list' slug %}?order_status=accepted">
-                            <span class="tag status-accepted">{% trans 'Accepted' %}</span>
-                        </a>
-                    </li>
-                    <li class="submenu-item">
-                        <a href="{% url 'console:golf-booking-order-list' slug %}?payment_status=unpaid">
-                            <span class="tag status-unpaid is-capitalized">{% trans 'Not paid' %}</span>
-                        </a>
-                    </li>
-                    <li class="submenu-item">
-                        <a href="{% url 'console:golf-booking-order-list' slug %}?payment_status=refund_requests">
-                            <span class="tag status-refund-requests is-capitalized">{% trans 'Refund requests' %}</span>
-                        </a>
-                    </li>
-                    <li class="submenu-item">
-                        <a href="{% url 'console:golf-booking-order-list' slug %}?day=today">
-                            {% trans 'Today' %}
-                        </a>
-                    </li>
-                    <li class="submenu-item">
-                        <a href="{% url 'console:golf-booking-order-list' slug %}?day=tomorrow">
-                            {% trans 'Tomorrow' %}
-                        </a>
-                    </li>
-                </ul>
-            </li>
-            <li class="submenu-heading">{% trans 'Customers' %}</li>
-            <li>
-                <ul>
-                    <li class="submenu-item">
-                        <a href="{% url 'console:line-user-list' slug %}" class="is-capitalized">
-                            {% trans 'LINE users' %}
-                        </a>
-                    <li class="is-hidden">
-                        <a href="#" class="is-capitalized">
-                            {% trans 'Facebook users' %}
-                        </a>
-                    </li>
-                    <li class="submenu-item">
-                        <a>{% trans 'Customer groups' %}</a>
-                    </li>
-                </ul>
-            </li>
-            <li class="submenu-heading">{% trans 'Marketing' %}</li>
-            <li>
-                <ul>
-                    <li class="submenu-item">
-                        <a>{% trans 'Promotions' %}</a>
-                    </li>
-                    <li class="submenu-item">
-                        <a>{% trans 'Coupons' %}</a>
-                    </li>
-                    <li class="submenu-item">
-                        <a class="is-capitalized">{% trans 'Hot deals' %}</a>
-                    </li>
-                </ul>
-            </li>
-            <li class="submenu-heading">{% trans 'Report' %}</li>
-            <li>
-                <ul>
-                    <li class="submenu-item">
-                        <a class="is-capitalized">{% trans 'Daily sales' %}</a>
-                    </li>
-                    <li class="submenu-item">
-                        <a class="is-capitalized">{% trans 'Monthly sales' %}</a>
-                    </li>
-                    <li class="submenu-item">
-                        <a class="is-capitalized">{% trans 'Best promotions' %}</a>
-                    </li>
-                    <li class="submenu-item">
-                        <a class="is-capitalized"> {% trans 'Best customers' %} </a>
-                    </li>
-                    <li class="submenu-item">
-                        <a class="is-capitalized">{% trans 'Sales by customer groups' %}</a>
-                    </li>
-                    <li class="submenu-item">
-                        <a class="is-capitalized">{% trans 'Sales by payment' %}</a>
-                    </li>
-                </ul>
-            </li>
+            {% include './_left_sidebar_booking.html' with left_sidebar_close_button=True %}
         </ul>
     </div>
 </div>
@@ -154,46 +56,8 @@
     <div class="modal-background"></div>
     <div class="modal-content right-sidebar-content">
         <ul>
-            <li class="submenu-heading">
-                {% trans 'Settings' %}
-                <a class="is-pulled-right" id="right-sidebar-close">
-                    <i class="fas fa-times"></i>
-                </a>
-            </li>
-            <li>
-                <ul>
-                    <li class="submenu-item">
-                        <a href="{% url 'console:golf-club-update' slug %}" class="is-capitalized">
-                            {% trans 'Golf club' %}
-                        </a>
-                    </li>
-                    <li class="submenu-item">
-                        <a href="{% url 'console:green-fee-list' slug %}" class="is-capitalized">
-                            {% trans 'Green fee' %}
-                        </a>
-                    </li>
-                    <li class="submenu-item">
-                        <a href="{% url 'console:holiday-list' slug %}">
-                            {% trans 'Holidays' %}
-                        </a>
-                    </li>
-                    <li class="submenu-item">
-                        <a href="{% url 'console:season-list' slug %}">
-                            {% trans 'Seasons' %}
-                        </a>
-                    </li>
-                    <li class="submenu-item">
-                        <a href="{% url 'console:timeslot-list' slug %}">
-                            {% trans 'Timeslots' %}
-                        </a>
-                    </li>
-                    <li class="submenu-item">
-                        <a href="{% url 'console:staff-list' slug %}">
-                            {% trans 'Staffs' %}
-                        </a>
-                    </li>
-                </ul>
-            </li>
+            {% include './_right_sidebar_club_settings.html' with right_sidebar_close_button=True %}
+            {% include 'conf/_right_sidebar_my_account.html' %}
         </ul>
     </div>
 </div>

@@ -1,0 +1,26 @@
+{% load static i18n %}
+
+<li class="submenu-heading is-capitalized">
+    {% trans 'My account' %}
+    {% if right_sidebar_close_button %}
+    <a class="is-pulled-right" id="right-sidebar-close">
+        <i class="fas fa-times"></i>
+    </a>
+    {% endif %}
+</li>
+<li>
+    <ul>
+        {% if user.is_authenticated %}
+        <li class="submenu-item">
+            <a class="is-capitalized">{% trans 'My profile' %}</a>
+        </li>
+        <li class="submenu-item">
+            <a href="{% url 'account_logout' %}" class="is-capitalized">{% trans 'Sign out' %}</a>
+        </li>
+        {% else %}
+        <li class="submenu-item">
+            <a href="{% url 'account_login' %}" class="is-capitalized">{% trans 'Sign in' %}</a>
+        </li>
+        {% endif %}
+    </ul>
+</li>

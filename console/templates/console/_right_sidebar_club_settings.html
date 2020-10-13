@@ -1,0 +1,44 @@
+{% load static i18n %}
+
+<li class="submenu-heading">
+    {% trans 'Settings' %}
+    {% if right_sidebar_close_button %}
+    <a class="is-pulled-right" id="right-sidebar-close">
+        <i class="fas fa-times"></i>
+    </a>
+    {% endif %}
+</li>
+<li>
+    <ul>
+        <li class="submenu-item">
+            <a href="{% url 'console:golf-club-update' slug %}" class="is-capitalized">
+                {% trans 'Golf club' %}
+            </a>
+        </li>
+        <li class="submenu-item">
+            <a href="{% url 'console:green-fee-list' slug %}" class="is-capitalized">
+                {% trans 'Green fee' %}
+            </a>
+        </li>
+        <li class="submenu-item">
+            <a href="{% url 'console:holiday-list' slug %}">
+                {% trans 'Holidays' %}
+            </a>
+        </li>
+        <li class="submenu-item">
+            <a href="{% url 'console:season-list' slug %}">
+                {% trans 'Seasons' %}
+            </a>
+        </li>
+        <li class="submenu-item">
+            <a href="{% url 'console:timeslot-list' slug %}">
+                {% trans 'Timeslots' %}
+            </a>
+        </li>
+        <li class="submenu-item">
+            <a href="{% url 'console:staff-list' slug %}">
+                {% trans 'Staffs' %}
+            </a>
+        </li>
+    </ul>
+</li>
