@@ -190,6 +190,23 @@
                     </li>
                 </ul>
             </li>
+            <li class="submenu-heading is-capitalized">{% trans 'My account' %}</li>
+            <li>
+                <ul>
+                    {% if user.is_authenticated %}
+                    <li class="submenu-item">
+                        <a class="is-capitalized">{% trans 'My profile' %}</a>
+                    </li>
+                    <li class="submenu-item">
+                        <a href="{% url 'account_logout' %}" class="is-capitalized">{% trans 'Sign out' %}</a>
+                    </li>
+                    {% else %}
+                    <li class="submenu-item">
+                        <a href="{% url 'account_login' %}" class="is-capitalized">{% trans 'Sign in' %}</a>
+                    </li>
+                    {% endif %}
+                </ul>
+            </li>
         </ul>
     </div>
 </div>

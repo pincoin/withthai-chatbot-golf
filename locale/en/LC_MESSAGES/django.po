@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-10-06 21:51+0700\n"
+"POT-Creation-Date: 2020-10-13 10:12+0700\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -22,7 +22,8 @@ msgstr ""
 #: allauth/templates/account/logout.html:14
 #: allauth/templates/account/logout.html:34 conf/templates/403.html:33
 #: conf/templates/conf/conf_base.html:33
-#: conf/templates/conf/console_base.html:33
+#: conf/templates/conf/console_base.html:33 conf/templates/conf/home.html:34
+#: conf/templates/conf/home.html:224
 #: console/templates/console/console_base.html:33
 msgid "Sign out"
 msgstr ""
@@ -34,7 +35,8 @@ msgstr ""
 #: allauth/templates/socialaccount/authentication_error.html:31
 #: allauth/templates/socialaccount/login_cancelled.html:32
 #: conf/templates/403.html:38 conf/templates/conf/conf_base.html:38
-#: conf/templates/conf/console_base.html:38
+#: conf/templates/conf/console_base.html:38 conf/templates/conf/home.html:39
+#: conf/templates/conf/home.html:228
 #: console/templates/console/console_base.html:38
 msgid "Sign in"
 msgstr ""
@@ -43,7 +45,7 @@ msgstr ""
 #: allauth/templates/account/account_base.html:201 conf/templates/403.html:52
 #: conf/templates/conf/conf_base.html:52 conf/templates/conf/conf_base.html:201
 #: conf/templates/conf/console_base.html:52
-#: conf/templates/conf/console_base.html:201
+#: conf/templates/conf/console_base.html:201 conf/templates/conf/home.html:53
 #: console/templates/console/console_base.html:52
 #: console/templates/console/console_base.html:206
 msgid "Booking"
@@ -53,7 +55,7 @@ msgstr ""
 #: allauth/templates/account/account_base.html:205 conf/templates/403.html:61
 #: conf/templates/conf/conf_base.html:61 conf/templates/conf/conf_base.html:205
 #: conf/templates/conf/console_base.html:61
-#: conf/templates/conf/console_base.html:205
+#: conf/templates/conf/console_base.html:205 conf/templates/conf/home.html:62
 #: console/templates/console/console_base.html:61
 #: console/templates/console/console_base.html:210
 #: console/templates/console/golf_booking_order_list.html:14
@@ -66,8 +68,8 @@ msgstr "All"
 #: allauth/templates/account/account_base.html:212 conf/templates/403.html:66
 #: conf/templates/conf/conf_base.html:66 conf/templates/conf/conf_base.html:212
 #: conf/templates/conf/console_base.html:66
-#: conf/templates/conf/console_base.html:212 console/forms.py:60
-#: console/templates/console/console_base.html:66
+#: conf/templates/conf/console_base.html:212 conf/templates/conf/home.html:67
+#: console/forms.py:60 console/templates/console/console_base.html:66
 #: console/templates/console/console_base.html:217
 msgid "Open"
 msgstr ""
@@ -76,8 +78,8 @@ msgstr ""
 #: allauth/templates/account/account_base.html:217 conf/templates/403.html:71
 #: conf/templates/conf/conf_base.html:71 conf/templates/conf/conf_base.html:217
 #: conf/templates/conf/console_base.html:71
-#: conf/templates/conf/console_base.html:217 console/forms.py:62
-#: console/templates/console/console_base.html:71
+#: conf/templates/conf/console_base.html:217 conf/templates/conf/home.html:72
+#: console/forms.py:62 console/templates/console/console_base.html:71
 #: console/templates/console/console_base.html:222
 msgid "Accepted"
 msgstr ""
@@ -86,8 +88,8 @@ msgstr ""
 #: allauth/templates/account/account_base.html:222 conf/templates/403.html:76
 #: conf/templates/conf/conf_base.html:76 conf/templates/conf/conf_base.html:222
 #: conf/templates/conf/console_base.html:76
-#: conf/templates/conf/console_base.html:222 console/forms.py:72
-#: console/templates/console/console_base.html:76
+#: conf/templates/conf/console_base.html:222 conf/templates/conf/home.html:77
+#: console/forms.py:72 console/templates/console/console_base.html:76
 #: console/templates/console/console_base.html:227 golf/models.py:887
 msgid "Not paid"
 msgstr ""
@@ -96,8 +98,8 @@ msgstr ""
 #: allauth/templates/account/account_base.html:227 conf/templates/403.html:81
 #: conf/templates/conf/conf_base.html:81 conf/templates/conf/conf_base.html:227
 #: conf/templates/conf/console_base.html:81
-#: conf/templates/conf/console_base.html:227 console/forms.py:74
-#: console/templates/console/console_base.html:81
+#: conf/templates/conf/console_base.html:227 conf/templates/conf/home.html:82
+#: console/forms.py:74 console/templates/console/console_base.html:81
 #: console/templates/console/console_base.html:232 golf/models.py:888
 msgid "Refund requests"
 msgstr "Refund requests"
@@ -106,7 +108,7 @@ msgstr "Refund requests"
 #: allauth/templates/account/account_base.html:232 conf/templates/403.html:86
 #: conf/templates/conf/conf_base.html:86 conf/templates/conf/conf_base.html:232
 #: conf/templates/conf/console_base.html:86
-#: conf/templates/conf/console_base.html:232
+#: conf/templates/conf/console_base.html:232 conf/templates/conf/home.html:87
 #: console/templates/console/console_base.html:86
 #: console/templates/console/console_base.html:237
 msgid "Today"
@@ -116,7 +118,7 @@ msgstr ""
 #: allauth/templates/account/account_base.html:237 conf/templates/403.html:91
 #: conf/templates/conf/conf_base.html:91 conf/templates/conf/conf_base.html:237
 #: conf/templates/conf/console_base.html:91
-#: conf/templates/conf/console_base.html:237
+#: conf/templates/conf/console_base.html:237 conf/templates/conf/home.html:92
 #: console/templates/console/console_base.html:91
 #: console/templates/console/console_base.html:242
 msgid "Tomorrow"
@@ -126,7 +128,7 @@ msgstr ""
 #: allauth/templates/account/account_base.html:243 conf/templates/403.html:96
 #: conf/templates/conf/conf_base.html:96 conf/templates/conf/conf_base.html:243
 #: conf/templates/conf/console_base.html:96
-#: conf/templates/conf/console_base.html:243
+#: conf/templates/conf/console_base.html:243 conf/templates/conf/home.html:97
 #: console/templates/console/console_base.html:96
 #: console/templates/console/console_base.html:248
 msgid "Customers"
@@ -137,7 +139,7 @@ msgstr ""
 #: conf/templates/conf/conf_base.html:101
 #: conf/templates/conf/conf_base.html:250
 #: conf/templates/conf/console_base.html:101
-#: conf/templates/conf/console_base.html:250
+#: conf/templates/conf/console_base.html:250 conf/templates/conf/home.html:102
 #: console/templates/console/console_base.html:101
 #: console/templates/console/console_base.html:255 golf/models.py:571
 #: golf/models.py:663
@@ -149,7 +151,7 @@ msgstr ""
 #: conf/templates/conf/conf_base.html:105
 #: conf/templates/conf/conf_base.html:255
 #: conf/templates/conf/console_base.html:105
-#: conf/templates/conf/console_base.html:255
+#: conf/templates/conf/console_base.html:255 conf/templates/conf/home.html:106
 #: console/templates/console/console_base.html:105
 #: console/templates/console/console_base.html:260
 msgid "Facebook users"
@@ -160,7 +162,7 @@ msgstr ""
 #: conf/templates/conf/conf_base.html:109
 #: conf/templates/conf/conf_base.html:261
 #: conf/templates/conf/console_base.html:109
-#: conf/templates/conf/console_base.html:261
+#: conf/templates/conf/console_base.html:261 conf/templates/conf/home.html:110
 #: console/templates/console/console_base.html:109
 #: console/templates/console/console_base.html:266 golf/models.py:688
 msgid "Customer groups"
@@ -171,7 +173,7 @@ msgstr ""
 #: conf/templates/conf/conf_base.html:113
 #: conf/templates/conf/conf_base.html:265
 #: conf/templates/conf/console_base.html:113
-#: conf/templates/conf/console_base.html:265
+#: conf/templates/conf/console_base.html:265 conf/templates/conf/home.html:114
 #: console/templates/console/console_base.html:113
 #: console/templates/console/console_base.html:270
 msgid "Marketing"
@@ -182,7 +184,7 @@ msgstr ""
 #: conf/templates/conf/conf_base.html:117
 #: conf/templates/conf/conf_base.html:268
 #: conf/templates/conf/console_base.html:117
-#: conf/templates/conf/console_base.html:268
+#: conf/templates/conf/console_base.html:268 conf/templates/conf/home.html:118
 #: console/templates/console/console_base.html:117
 #: console/templates/console/console_base.html:273
 msgid "Promotions"
@@ -193,7 +195,7 @@ msgstr ""
 #: conf/templates/conf/conf_base.html:120
 #: conf/templates/conf/conf_base.html:269
 #: conf/templates/conf/console_base.html:120
-#: conf/templates/conf/console_base.html:269
+#: conf/templates/conf/console_base.html:269 conf/templates/conf/home.html:121
 #: console/templates/console/console_base.html:120
 #: console/templates/console/console_base.html:274
 msgid "Coupons"
@@ -204,7 +206,7 @@ msgstr ""
 #: conf/templates/conf/conf_base.html:123
 #: conf/templates/conf/conf_base.html:270
 #: conf/templates/conf/console_base.html:123
-#: conf/templates/conf/console_base.html:270
+#: conf/templates/conf/console_base.html:270 conf/templates/conf/home.html:124
 #: console/templates/console/console_base.html:123
 #: console/templates/console/console_base.html:275
 msgid "Hot deals"
@@ -215,7 +217,8 @@ msgstr ""
 #: conf/templates/conf/conf_base.html:127
 #: conf/templates/conf/conf_base.html:272
 #: conf/templates/conf/console_base.html:127
-#: conf/templates/conf/console_base.html:272
+#: conf/templates/conf/console_base.html:272 conf/templates/conf/home.html:128
+#: conf/templates/conf/home.html:193
 #: console/templates/console/console_base.html:127
 #: console/templates/console/console_base.html:277
 msgid "Report"
@@ -226,7 +229,8 @@ msgstr ""
 #: conf/templates/conf/conf_base.html:131
 #: conf/templates/conf/conf_base.html:275
 #: conf/templates/conf/console_base.html:131
-#: conf/templates/conf/console_base.html:275
+#: conf/templates/conf/console_base.html:275 conf/templates/conf/home.html:132
+#: conf/templates/conf/home.html:197
 #: console/templates/console/console_base.html:131
 #: console/templates/console/console_base.html:280
 msgid "Daily sales"
@@ -237,7 +241,8 @@ msgstr ""
 #: conf/templates/conf/conf_base.html:134
 #: conf/templates/conf/conf_base.html:278
 #: conf/templates/conf/console_base.html:134
-#: conf/templates/conf/console_base.html:278
+#: conf/templates/conf/console_base.html:278 conf/templates/conf/home.html:135
+#: conf/templates/conf/home.html:200
 #: console/templates/console/console_base.html:134
 #: console/templates/console/console_base.html:283
 msgid "Monthly sales"
@@ -248,7 +253,8 @@ msgstr ""
 #: conf/templates/conf/conf_base.html:137
 #: conf/templates/conf/conf_base.html:281
 #: conf/templates/conf/console_base.html:137
-#: conf/templates/conf/console_base.html:281
+#: conf/templates/conf/console_base.html:281 conf/templates/conf/home.html:138
+#: conf/templates/conf/home.html:203
 #: console/templates/console/console_base.html:137
 #: console/templates/console/console_base.html:286
 msgid "Best promotions"
@@ -259,7 +265,8 @@ msgstr ""
 #: conf/templates/conf/conf_base.html:140
 #: conf/templates/conf/conf_base.html:284
 #: conf/templates/conf/console_base.html:140
-#: conf/templates/conf/console_base.html:284
+#: conf/templates/conf/console_base.html:284 conf/templates/conf/home.html:141
+#: conf/templates/conf/home.html:206
 #: console/templates/console/console_base.html:140
 #: console/templates/console/console_base.html:289
 msgid "Best customers"
@@ -270,7 +277,8 @@ msgstr ""
 #: conf/templates/conf/conf_base.html:143
 #: conf/templates/conf/conf_base.html:287
 #: conf/templates/conf/console_base.html:143
-#: conf/templates/conf/console_base.html:287
+#: conf/templates/conf/console_base.html:287 conf/templates/conf/home.html:144
+#: conf/templates/conf/home.html:209
 #: console/templates/console/console_base.html:143
 #: console/templates/console/console_base.html:292
 msgid "Sales by customer groups"
@@ -281,7 +289,8 @@ msgstr ""
 #: conf/templates/conf/conf_base.html:146
 #: conf/templates/conf/conf_base.html:290
 #: conf/templates/conf/console_base.html:146
-#: conf/templates/conf/console_base.html:290
+#: conf/templates/conf/console_base.html:290 conf/templates/conf/home.html:147
+#: conf/templates/conf/home.html:212
 #: console/templates/console/console_base.html:146
 #: console/templates/console/console_base.html:295
 msgid "Sales by payment"
@@ -293,7 +302,7 @@ msgstr ""
 #: conf/templates/conf/conf_base.html:158
 #: conf/templates/conf/conf_base.html:293
 #: conf/templates/conf/console_base.html:158
-#: conf/templates/conf/console_base.html:293
+#: conf/templates/conf/console_base.html:293 conf/templates/conf/home.html:159
 #: console/templates/console/console_base.html:158
 #: console/templates/console/console_base.html:298
 #: liff/templates/liff/golf_booking_settings_form.html:14 liff/views.py:123
@@ -305,7 +314,7 @@ msgstr ""
 #: conf/templates/conf/conf_base.html:167
 #: conf/templates/conf/conf_base.html:297
 #: conf/templates/conf/console_base.html:167
-#: conf/templates/conf/console_base.html:297
+#: conf/templates/conf/console_base.html:297 conf/templates/conf/home.html:168
 #: console/templates/console/console_base.html:167
 #: console/templates/console/console_base.html:302 golf/admin.py:86
 #: golf/models.py:458 golf/models.py:617 golf/models.py:656 golf/models.py:697
@@ -318,7 +327,7 @@ msgstr ""
 #: conf/templates/conf/conf_base.html:172
 #: conf/templates/conf/conf_base.html:302
 #: conf/templates/conf/console_base.html:172
-#: conf/templates/conf/console_base.html:302
+#: conf/templates/conf/console_base.html:302 conf/templates/conf/home.html:173
 #: console/templates/console/console_base.html:172
 #: console/templates/console/console_base.html:307 golf/models.py:873
 #: golf/models.py:874 golf/models.py:1051 golf/models.py:1161
@@ -332,7 +341,7 @@ msgstr ""
 #: conf/templates/conf/conf_base.html:177
 #: conf/templates/conf/conf_base.html:307
 #: conf/templates/conf/console_base.html:177
-#: conf/templates/conf/console_base.html:307
+#: conf/templates/conf/console_base.html:307 conf/templates/conf/home.html:178
 #: console/templates/console/console_base.html:177
 #: console/templates/console/console_base.html:312 golf/models.py:46
 msgid "Holidays"
@@ -343,8 +352,8 @@ msgstr ""
 #: conf/templates/conf/conf_base.html:182
 #: conf/templates/conf/conf_base.html:312
 #: conf/templates/conf/console_base.html:182
-#: conf/templates/conf/console_base.html:312 console/forms.py:113
-#: console/templates/console/console_base.html:182
+#: conf/templates/conf/console_base.html:312 conf/templates/conf/home.html:183
+#: console/forms.py:113 console/templates/console/console_base.html:182
 #: console/templates/console/console_base.html:317 golf/models.py:789
 msgid "Seasons"
 msgstr ""
@@ -354,8 +363,8 @@ msgstr ""
 #: conf/templates/conf/conf_base.html:187
 #: conf/templates/conf/conf_base.html:317
 #: conf/templates/conf/console_base.html:187
-#: conf/templates/conf/console_base.html:317 console/forms.py:124
-#: console/templates/console/console_base.html:187
+#: conf/templates/conf/console_base.html:317 conf/templates/conf/home.html:188
+#: console/forms.py:124 console/templates/console/console_base.html:187
 #: console/templates/console/console_base.html:322 golf/models.py:830
 msgid "Timeslots"
 msgstr ""
@@ -775,50 +784,52 @@ msgstr ""
 msgid "You do not have permission to access."
 msgstr ""
 
-#: conf/templates/conf/base.html:42
+#: conf/templates/conf/base.html:46
 msgid "WITH THAI Co., Ltd."
 msgstr ""
 
-#: conf/templates/conf/base.html:45
-msgid ""
-"Ekkamai No. 30 Sukhumvit (settabut) soi. 61 Klongton Nua, Wattana, Bangkok "
-"10110"
-msgstr ""
-
-#: conf/templates/conf/base.html:48
+#: conf/templates/conf/base.html:53
 msgid "TAX ID: 0105563049000"
 msgstr ""
 
-#: conf/templates/conf/base.html:51
+#: conf/templates/conf/base.html:56
 msgid "TAT License: 14/03216"
 msgstr ""
 
-#: conf/templates/conf/base.html:57
+#: conf/templates/conf/base.html:62
 msgid "Help"
 msgstr ""
 
-#: conf/templates/conf/base.html:61
-msgid "GUIDE"
-msgstr ""
-
 #: conf/templates/conf/base.html:66
-msgid "FAQ/HOW-TO"
+msgid "Guide"
 msgstr ""
 
 #: conf/templates/conf/base.html:71
-msgid "TERMS &amp; CONDITIONS"
+msgid "FAQ/HOW-TO"
 msgstr ""
 
-#: conf/templates/conf/base.html:74
-msgid "PRIVACY POLICY"
+#: conf/templates/conf/base.html:76
+msgid "Terms &amp; Conditions"
 msgstr ""
 
 #: conf/templates/conf/base.html:79
-msgid "ABOUT US"
+msgid "Privacy policy"
 msgstr ""
 
 #: conf/templates/conf/base.html:84
-msgid "CONTACT US"
+msgid "About us"
+msgstr ""
+
+#: conf/templates/conf/base.html:89
+msgid "Contact us"
+msgstr ""
+
+#: conf/templates/conf/home.html:216
+msgid "My account"
+msgstr ""
+
+#: conf/templates/conf/home.html:221
+msgid "My profile"
 msgstr ""
 
 #: console/apps.py:7
