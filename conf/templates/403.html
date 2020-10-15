@@ -48,105 +48,7 @@
     <div class="modal-background"></div>
     <div class="modal-content left-sidebar-content">
         <ul>
-            <li class="submenu-heading">
-                {% trans 'Booking' %}
-                <a class="is-pulled-right" id="left-sidebar-close">
-                    <i class="fas fa-times"></i>
-                </a>
-            </li>
-            <li>
-                <ul>
-                    <li class="submenu-item">
-                        <a class="is-capitalized">
-                            {% trans 'All booking list' %}
-                        </a>
-                    </li>
-                    <li class="submenu-item">
-                        <a>
-                            <span class="tag status-open">{% trans 'Open' %}</span>
-                        </a>
-                    </li>
-                    <li class="submenu-item">
-                        <a>
-                            <span class="tag status-accepted">{% trans 'Accepted' %}</span>
-                        </a>
-                    </li>
-                    <li class="submenu-item">
-                        <a>
-                            <span class="tag status-unpaid is-capitalized">{% trans 'Not paid' %}</span>
-                        </a>
-                    </li>
-                    <li class="submenu-item">
-                        <a>
-                            <span class="tag status-refund-requests is-capitalized">{% trans 'Refund requests' %}</span>
-                        </a>
-                    </li>
-                    <li class="submenu-item">
-                        <a>
-                            {% trans 'Today' %}
-                        </a>
-                    </li>
-                    <li class="submenu-item">
-                        <a>
-                            {% trans 'Tomorrow' %}
-                        </a>
-                    </li>
-                </ul>
-            </li>
-            <li class="submenu-heading">{% trans 'Customers' %}</li>
-            <li>
-                <ul>
-                    <li class="submenu-item">
-                        <a class="is-capitalized">
-                            {% trans 'LINE users' %}
-                        </a>
-                    <li class="is-hidden">
-                        <a href="#" class="is-capitalized">
-                            {% trans 'Facebook users' %}
-                        </a>
-                    </li>
-                    <li class="submenu-item">
-                        <a>{% trans 'Customer groups' %}</a>
-                    </li>
-                </ul>
-            </li>
-            <li class="submenu-heading">{% trans 'Marketing' %}</li>
-            <li>
-                <ul>
-                    <li class="submenu-item">
-                        <a>{% trans 'Promotions' %}</a>
-                    </li>
-                    <li class="submenu-item">
-                        <a>{% trans 'Coupons' %}</a>
-                    </li>
-                    <li class="submenu-item">
-                        <a class="is-capitalized">{% trans 'Hot deals' %}</a>
-                    </li>
-                </ul>
-            </li>
-            <li class="submenu-heading">{% trans 'Report' %}</li>
-            <li>
-                <ul>
-                    <li class="submenu-item">
-                        <a class="is-capitalized">{% trans 'Daily sales' %}</a>
-                    </li>
-                    <li class="submenu-item">
-                        <a class="is-capitalized">{% trans 'Monthly sales' %}</a>
-                    </li>
-                    <li class="submenu-item">
-                        <a class="is-capitalized">{% trans 'Best promotions' %}</a>
-                    </li>
-                    <li class="submenu-item">
-                        <a class="is-capitalized"> {% trans 'Best customers' %} </a>
-                    </li>
-                    <li class="submenu-item">
-                        <a class="is-capitalized">{% trans 'Sales by customer groups' %}</a>
-                    </li>
-                    <li class="submenu-item">
-                        <a class="is-capitalized">{% trans 'Sales by payment' %}</a>
-                    </li>
-                </ul>
-            </li>
+            {% include './_left_sidebar_empty.html' with left_sidebar_close_button=True %}
         </ul>
     </div>
 </div>
@@ -154,41 +56,7 @@
     <div class="modal-background"></div>
     <div class="modal-content right-sidebar-content">
         <ul>
-            <li class="submenu-heading">
-                {% trans 'Settings' %}
-                <a class="is-pulled-right" id="right-sidebar-close">
-                    <i class="fas fa-times"></i>
-                </a>
-            </li>
-            <li>
-                <ul>
-                    <li class="submenu-item">
-                        <a class="is-capitalized">
-                            {% trans 'Golf club' %}
-                        </a>
-                    </li>
-                    <li class="submenu-item">
-                        <a class="is-capitalized">
-                            {% trans 'Green fee' %}
-                        </a>
-                    </li>
-                    <li class="submenu-item">
-                        <a>
-                            {% trans 'Holidays' %}
-                        </a>
-                    </li>
-                    <li class="submenu-item">
-                        <a>
-                            {% trans 'Seasons' %}
-                        </a>
-                    </li>
-                    <li class="submenu-item">
-                        <a>
-                            {% trans 'Timeslots' %}
-                        </a>
-                    </li>
-                </ul>
-            </li>
+            {% include './_right_sidebar_my_account.html' with right_sidebar_close_button=True %}
         </ul>
     </div>
 </div>
