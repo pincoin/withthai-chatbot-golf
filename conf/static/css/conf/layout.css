@@ -207,7 +207,7 @@ aside {
     .submenu-heading:not(:first-child) {
         padding: .5rem .5rem;
         background-color: #ebf2ea;
-        border-top: 1px solid #dcedc8;
+        border-top: 1px solid #c5e1a5;
         border-bottom: 1px solid #558b2f;
     }
 
