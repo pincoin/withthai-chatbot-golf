@@ -1,0 +1,23 @@
+{% load static i18n %}
+
+<li class="submenu-heading is-capitalized">
+    {% trans 'My booking' %}
+    {% if right_sidebar_close_button %}
+    <a class="is-pulled-right" id="right-sidebar-close">
+        <i class="fas fa-times"></i>
+    </a>
+    {% endif %}
+</li>
+<li>
+    <ul>
+        <li class="submenu-item">
+            <a href="" class="is-capitalized">{% trans 'Booking list' %}</a>
+        </li>
+        <li class="submenu-item">
+            <a href="" class="is-capitalized">{% trans 'Shopping cart' %}</a>
+        </li>
+        <li class="submenu-item">
+            <a href="" class="is-capitalized">{% trans 'Help desk' %}</a>
+        </li>
+    </ul>
+</li>
