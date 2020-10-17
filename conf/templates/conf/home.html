@@ -1,66 +1,12 @@
-{% extends './base.html' %}
+{% extends "./conf_base.html" %}
 
-{% load static i18n %}
+{% load i18n static %}
+
+{% block title %}{% trans "WITH THAI" %}{% endblock %}
 
 {% block stylesheet %}
 {{ block.super }}
 <link href="{% static 'css/conf/base.css' %}" rel="stylesheet">
-<link href="{% static 'css/console/page.css' %}" rel="stylesheet">
-{% endblock %}
-
-{% block header %}
-<nav class="navbar is-fixed-top" id="navbar-top">
-    <div class="container">
-        <div class="navbar-brand">
-            <a class="navbar-item is-hidden-tablet" id="left-sidebar-open">
-                <span class="fas fa-bars fa-fw"></span>
-            </a>
-            <a class="navbar-item" href="" style="">
-                <img alt="with thai logo"
-                     height="30" src="{% static 'images/conf/withthai_logo_en.png' %}" width="168">
-            </a>
-            <a class="navbar-item is-hidden-tablet" id="right-sidebar-open">
-                <span class="fas fa-user-cog fa-fw"></span>
-            </a>
-        </div>
-
-        <div class="navbar-menu">
-            <div class="navbar-end">
-                <div class="navbar-item">
-                    <div class="buttons">
-                        {% if user.is_authenticated %}
-                        <a class="button is-danger is-small" href="{% url 'account_logout' %}">
-                            <span class="icon"><i class="fas fa-sign-out-alt fa-fw"></i></span>
-                            <span class="is-uppercase">{% trans 'Sign out' %}</span>
-                        </a>
-                        {% else %}
-                        <a class="button is-primary is-small" href="{% url 'account_login' %}">
-                            <span class="icon"><i class="fas fa-sign-in-alt fa-fw"></i></span>
-                            <span class="is-uppercase">{% trans 'Sign in' %}</span>
-                        </a>
-                        {% endif %}
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</nav>
-<div class="modal" id="left-sidebar">
-    <div class="modal-background"></div>
-    <div class="modal-content left-sidebar-content">
-        <ul>
-            {% include './_left_sidebar_empty.html' with left_sidebar_close_button=True %}
-        </ul>
-    </div>
-</div>
-<div class="modal" id="right-sidebar">
-    <div class="modal-background"></div>
-    <div class="modal-content right-sidebar-content">
-        <ul>
-            {% include './_right_sidebar_my_account.html' with right_sidebar_close_button=True %}
-        </ul>
-    </div>
-</div>
 {% endblock %}
 
 {% block main %}
