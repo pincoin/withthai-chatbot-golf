@@ -198,9 +198,16 @@ aside {
         color: #03353e;
     }
 
-    .submenu-heading {
+    .submenu-heading:first-child {
         padding: .25rem .5rem;
         background-color: #ebf2ea;
+        border-bottom: 1px solid #558b2f;
+    }
+
+    .submenu-heading:not(:first-child) {
+        padding: .25rem .5rem;
+        background-color: #ebf2ea;
+        border-top: 1px solid #dcedc8;
         border-bottom: 1px solid #558b2f;
     }
 
