@@ -460,7 +460,7 @@ msgstr "영어"
 
 #: conf/templates/403.html:71 conf/templates/conf/403.html:71
 msgid "403 Forbidden"
-msgstr "403 Forbidden"
+msgstr "403 권한 없음"
 
 #: conf/templates/403.html:77 conf/templates/conf/403.html:77
 msgid "You do not have permission to access."
@@ -468,7 +468,7 @@ msgstr "페이지 접근 권한이 없습니다."
 
 #: conf/templates/404.html:71 conf/templates/conf/404.html:71
 msgid "404 Not found"
-msgstr "404 Not found"
+msgstr "404 페이지를 찾을 수 없음"
 
 #: conf/templates/404.html:77 conf/templates/conf/404.html:77
 msgid "Page not found."
@@ -476,7 +476,7 @@ msgstr "페이지를 찾을 수 없습니다."
 
 #: conf/templates/500.html:71
 msgid "500 Internal server error"
-msgstr "500 Internal server error"
+msgstr "500 내부 서버 오류"
 
 #: conf/templates/500.html:77
 msgid "Oops, something went wrong on our servers."
