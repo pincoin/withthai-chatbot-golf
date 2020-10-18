@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-10-18 16:20+0700\n"
+"POT-Creation-Date: 2020-10-19 05:27+0700\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -21,7 +21,8 @@ msgstr ""
 #: allauth/templates/account/logout.html:5
 #: allauth/templates/account/logout.html:13
 #: allauth/templates/account/logout.html:33 conf/templates/403.html:33
-#: conf/templates/404.html:33
+#: conf/templates/404.html:33 conf/templates/500.html:33
+#: conf/templates/conf/403.html:33 conf/templates/conf/404.html:33
 #: conf/templates/conf/_right_sidebar_my_account.html:18
 #: conf/templates/conf/_right_sidebar_my_account_close.html:11
 #: conf/templates/conf/conf_base.html:33
@@ -37,6 +38,8 @@ msgstr "로그아웃"
 #: allauth/templates/socialaccount/authentication_error.html:31
 #: allauth/templates/socialaccount/login_cancelled.html:32
 #: conf/templates/403.html:38 conf/templates/404.html:38
+#: conf/templates/500.html:38 conf/templates/conf/403.html:38
+#: conf/templates/conf/404.html:38
 #: conf/templates/conf/_right_sidebar_my_account.html:22
 #: conf/templates/conf/_right_sidebar_my_account_close.html:15
 #: conf/templates/conf/conf_base.html:38
@@ -455,21 +458,29 @@ msgstr "태국어"
 msgid "English"
 msgstr "영어"
 
-#: conf/templates/403.html:71
+#: conf/templates/403.html:71 conf/templates/conf/403.html:71
 msgid "403 Forbidden"
 msgstr "403 Forbidden"
 
-#: conf/templates/403.html:77
+#: conf/templates/403.html:77 conf/templates/conf/403.html:77
 msgid "You do not have permission to access."
 msgstr "페이지 접근 권한이 없습니다."
 
-#: conf/templates/404.html:71
+#: conf/templates/404.html:71 conf/templates/conf/404.html:71
 msgid "404 Not found"
 msgstr "404 Not found"
 
-#: conf/templates/404.html:77
+#: conf/templates/404.html:77 conf/templates/conf/404.html:77
 msgid "Page not found."
 msgstr "페이지를 찾을 수 없습니다."
+
+#: conf/templates/500.html:71
+msgid "500 Internal server error"
+msgstr "500 Internal server error"
+
+#: conf/templates/500.html:77
+msgid "Oops, something went wrong on our servers."
+msgstr "앗! 서버 오류가 발생했습니다. 잠시 후 다시 시도해주세요."
 
 #: conf/templates/conf/_left_sidebar_empty.html:4
 msgid "No menu"

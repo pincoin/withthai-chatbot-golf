@@ -48,7 +48,7 @@
     <div class="modal-background"></div>
     <div class="modal-content left-sidebar-content">
         <ul>
-            {% include './_left_sidebar_empty.html' with left_sidebar_close_button=True %}
+            {% include 'conf/_left_sidebar_empty.html' with left_sidebar_close_button=True %}
         </ul>
     </div>
 </div>
@@ -56,7 +56,7 @@
     <div class="modal-background"></div>
     <div class="modal-content right-sidebar-content">
         <ul>
-            {% include './_right_sidebar_my_account.html' with right_sidebar_close_button=True %}
+            {% include 'conf/_right_sidebar_my_account.html' with right_sidebar_close_button=True %}
         </ul>
     </div>
 </div>
@@ -68,9 +68,8 @@
         <div class="container">
             <div class="columns is-multiline">
                 <div class="column is-one-third is-offset-one-third has-text-centered">
-                    <h1 class="is-size-1">{% trans '404 Not found' %}</h1>
+                    <h1 class="is-size-1 is-capitalized">{% trans '404 Not found' %}</h1>
                 </div>
-
                 <div class="column is-one-third is-offset-one-third">
                     <article class="message is-danger">
                         <div class="message-body">
