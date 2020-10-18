@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-10-17 17:00+0700\n"
+"POT-Creation-Date: 2020-10-18 16:20+0700\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -21,10 +21,11 @@ msgstr ""
 #: allauth/templates/account/logout.html:5
 #: allauth/templates/account/logout.html:13
 #: allauth/templates/account/logout.html:33 conf/templates/403.html:33
+#: conf/templates/404.html:33
 #: conf/templates/conf/_right_sidebar_my_account.html:18
 #: conf/templates/conf/_right_sidebar_my_account_close.html:11
 #: conf/templates/conf/conf_base.html:33
-#: conf/templates/conf/console_base.html:33 conf/templates/conf/home.html:34
+#: conf/templates/conf/console_base.html:33
 #: console/templates/console/console_base.html:33
 msgid "Sign out"
 msgstr "로그아웃"
@@ -35,11 +36,11 @@ msgstr "로그아웃"
 #: allauth/templates/account/signup_closed.html:31
 #: allauth/templates/socialaccount/authentication_error.html:31
 #: allauth/templates/socialaccount/login_cancelled.html:32
-#: conf/templates/403.html:38
+#: conf/templates/403.html:38 conf/templates/404.html:38
 #: conf/templates/conf/_right_sidebar_my_account.html:22
 #: conf/templates/conf/_right_sidebar_my_account_close.html:15
 #: conf/templates/conf/conf_base.html:38
-#: conf/templates/conf/console_base.html:38 conf/templates/conf/home.html:39
+#: conf/templates/conf/console_base.html:38
 #: console/templates/console/console_base.html:38
 msgid "Sign in"
 msgstr "로그인"
@@ -62,6 +63,7 @@ msgid "Thank you."
 msgstr "감사합니다."
 
 #: allauth/templates/account/email/email_confirmation_message.txt:14
+#: conf/templates/conf/home.html:5
 msgid "WITH THAI"
 msgstr "위드타이"
 
@@ -461,9 +463,17 @@ msgstr "403 Forbidden"
 msgid "You do not have permission to access."
 msgstr "페이지 접근 권한이 없습니다."
 
+#: conf/templates/404.html:71
+msgid "404 Not found"
+msgstr "404 Not found"
+
+#: conf/templates/404.html:77
+msgid "Page not found."
+msgstr "페이지를 찾을 수 없습니다."
+
 #: conf/templates/conf/_left_sidebar_empty.html:4
 msgid "No menu"
-msgstr ""
+msgstr "메뉴 없음"
 
 #: conf/templates/conf/_right_sidebar_my_account.html:4
 #: conf/templates/conf/_right_sidebar_my_account_close.html:3
