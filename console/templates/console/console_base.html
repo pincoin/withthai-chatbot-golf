@@ -10,18 +10,7 @@
 {% block header %}
 <nav class="navbar is-fixed-top" id="navbar-top">
     <div class="container">
-        <div class="navbar-brand">
-            <a class="navbar-item is-hidden-tablet" id="left-sidebar-open">
-                <span class="fas fa-bars fa-fw"></span>
-            </a>
-            <a class="navbar-item" style="" href="{% url 'console:home' slug %}">
-                <img src="{% static 'images/conf/withthai_logo_en.png' %}"
-                     width="168" height="30" alt="with thai logo">
-            </a>
-            <a class="navbar-item is-hidden-tablet" id="right-sidebar-open">
-                <span class="fas fa-user-cog fa-fw"></span>
-            </a>
-        </div>
+        {% include 'conf/_top_navbar_brand.html' %}
 
         <div class="navbar-menu">
             <div class="navbar-end">
